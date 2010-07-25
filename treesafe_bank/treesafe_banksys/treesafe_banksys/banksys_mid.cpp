@@ -73,3 +73,20 @@ void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send){
 	printf("convert from bankDB_result_info to bankDB_send_info...\n");
 #endif
 }
+
+//一次从net中接受数据,并把数据传给db的过程
+void mid_recieve_frame(banksys_net* _net, banksys_db* _db){
+#ifdef DEBUG_INFO
+	printf("foundate a new middle convertor\n");
+#endif
+	//为一个新的中继器申请数据内存
+	banksys_mid* _mid = (banksys_mid*)malloc(sizeof(banksys_mid));
+	//判断是否申请成功
+	if(_mid == NULL) return;
+	//开始从net接受一个数据
+	mid_get_data_from_net(_mid , &_net->rec);
+	//转化数据
+	mid_convert_rec_to_req(&_mid->rec , &_mid->req);
+	//将请求数据发给db
+	mid_send_data_to_db(_mid,&_db->req);
+}
