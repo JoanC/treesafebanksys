@@ -13,6 +13,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	banksys_mid* mid = (banksys_mid*)malloc(sizeof(banksys_mid));
 	mid_recieve_frame(net_layer , mid , db_layer);
 	mid_send_frame(net_layer , mid , db_layer);
+	free(net_layer);
+	free(db_layer);
+	free(mid);
 	return 0;
 }
 
