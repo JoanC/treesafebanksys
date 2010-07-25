@@ -9,7 +9,7 @@ void mid_get_data_from_net(banksys_mid* _mid ,net_recieved_info* _rec){
 #endif
 	_mid->rec = *_rec;//获得数据
 #ifdef DEBUG_INFO
-	printf("check data , success\n");
+	printf("check recieved data , success\n");
 #endif
 }
 
@@ -21,7 +21,7 @@ void mid_get_data_from_db(banksys_mid* _mid ,bankDB_result_info* _rlt){
 #endif
 	_mid->rlt = *_rlt;//获得数据
 #ifdef DEBUG_INFO
-	printf("check data , success\n");
+	printf("check recieved data , success\n");
 #endif
 }
 
@@ -29,10 +29,10 @@ void mid_get_data_from_db(banksys_mid* _mid ,bankDB_result_info* _rlt){
 void mid_send_data_to_db(banksys_mid* _mid ,bankDB_request_info* _req){
 		if(_mid == NULL) return;//中间转换器无效
 #ifdef DEBUG_INFO
-	printf("get reslut data from db\n");
-#endif
-	_mid->rlt = *_rlt;//获得数据
-#ifdef DEBUG_INFO
 	printf("check data , success\n");
 #endif
+#ifdef DEBUG_INFO
+	printf("check recieved data , success\n");
+#endif
+	*_req = _mid->req;//发送数据
 }
