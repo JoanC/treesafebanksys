@@ -26,7 +26,7 @@ void mid_get_data_from_db(banksys_mid* _mid ,banksys_db* _db){
 #endif
 	_mid->rlt = _db->rlt;//获得数据
 #ifdef DEBUG_INFO
-	printf("recieve done\n");
+	printf("recieve done\n"); 
 #endif
 #ifdef DEBUG_INFO
 	printf("check recieved data , success\n");
