@@ -47,3 +47,4 @@ void login_jump(login_competence* _compe);
 
 //Ö÷µÇÂ½Á÷³Ì
 void login_frame(login_info* _info);
+
