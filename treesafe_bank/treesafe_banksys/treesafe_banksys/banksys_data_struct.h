@@ -1,7 +1,7 @@
 #ifndef _BANKSYS_DATA_STRUCT_H_
 #define _BANKSYS_DATA_STRUCT_H_
 
-//存放了所有数据结构体
+//存放了所有数据结构体 
 
 //request_type : 申请类型,可拓展
 struct net_request_info{
