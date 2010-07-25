@@ -30,3 +30,20 @@ struct login_info{
 //否则为false
 void login_check_username(char* _name , bool* _rlt);
 
+//检查用户密码
+//结果存储在rlt中
+//密码正确则为true
+//否则为false
+void login_check_pwd(char* _name , char* _pwd , bool* _rlt);
+
+//检查验证码
+void login_check_verify(char* _input , char* _vertfy , bool* _rlt);
+
+//出错处理
+void login_err_occour(login_info* _info);
+
+//登陆成功后,跳转
+void login_jump(login_competence* _compe);
+
+//主登陆流程
+void login_frame(login_info* _info);
