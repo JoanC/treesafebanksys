@@ -16,13 +16,13 @@ struct banksys_mid{
 };
 
 //从网络中接受数据
-void mid_get_data_from_net(banksys_mid* _mid , net_recieved_info* _rec);
+void mid_get_data_from_net(banksys_mid* _mid , banksys_net* _net);
 //从数据库中接受数据
-void mid_get_data_from_db(banksys_mid* _mid ,bankDB_result_info* _rlt);
+void mid_get_data_from_db(banksys_mid* _mid , banksys_db* _db);
 //向数据库中发送数据
-void mid_send_data_to_db(banksys_mid* _mid ,bankDB_request_info* _req);
+void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db);
 //向网络中发送数据
-void mid_send_data_to_net(banksys_mid* _mid , net_send_info* _send);
+void mid_send_data_to_net(banksys_mid* _mid , banksys_net* _net);
 //将从网络中接受的数据转化为向数据库的请求
 void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req);
 //将从数据库接受的运行结果数据转化为数据
