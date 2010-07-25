@@ -38,5 +38,8 @@
     <ClCompile Include="treesafe_banksys.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="banksys_mid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
