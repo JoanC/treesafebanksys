@@ -29,6 +29,10 @@ void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req)
 void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
 
 //一次从net中接受数据,并把数据传给db的过程
-void mid_recieve_frame(banksys_net* _net, banksys_db* _db);
+void mid_recieve_frame(banksys_net* _net,
+	banksys_mid* _mid ,banksys_db* _db);
+//一次从db中接受数据,并把数据传给net的过程
+void mid_send_frame(banksys_net* _net,
+	banksys_mid* _mid ,banksys_db* _db);
 
 #endif

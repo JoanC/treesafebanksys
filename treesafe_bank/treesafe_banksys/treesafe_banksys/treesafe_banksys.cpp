@@ -2,12 +2,17 @@
 //
 
 #include "stdafx.h"
+#include "banksys_db.h"
+#include "banksys_net.h"
 #include "banksys_mid.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	banksys_mid* _mid = (banksys_mid*)malloc(sizeof(banksys_mid));
-	net_recieved_info* _rec = (net_recieved_info*)malloc(sizeof(net_recieved_info));
+	banksys_net* net_layer = (banksys_net*)malloc(sizeof(banksys_net));
+	banksys_db* db_layer = (banksys_db*)malloc(sizeof(banksys_db));
+	banksys_mid* mid = (banksys_mid*)malloc(sizeof(banksys_mid));
+	mid_recieve_frame(net_layer , mid , db_layer);
+	mid_send_frame(net_layer , mid , db_layer);
 	return 0;
 }
 
