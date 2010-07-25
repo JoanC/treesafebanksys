@@ -8,6 +8,9 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	printf("-------------------------\n");
+	printf("mid compute...\n");
+	printf("-------------------------\n");
 	banksys_net* net_layer = (banksys_net*)malloc(sizeof(banksys_net));
 	banksys_db* db_layer = (banksys_db*)malloc(sizeof(banksys_db));
 	banksys_mid* mid = (banksys_mid*)malloc(sizeof(banksys_mid));
