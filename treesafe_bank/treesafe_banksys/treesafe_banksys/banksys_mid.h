@@ -1,3 +1,7 @@
+#ifndef _BANKSYS_MID_H_
+#define _BANKSYS_MID_H_
+
+
 #include "banksys_data_struct.h"
 
 //中间过渡模块
@@ -21,3 +25,5 @@ void mid_send_data_to_net(banksys_mid* _mid , net_send_info* _send);
 void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req);
 //将从数据库接受的运行结果数据转化为数据
 void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
+
+#endif
