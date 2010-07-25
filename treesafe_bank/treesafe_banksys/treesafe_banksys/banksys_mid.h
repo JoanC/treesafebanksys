@@ -18,6 +18,6 @@ void mid_send_data_to_db(banksys_mid* _mid ,bankDB_request_info* _req);
 //向网络中发送数据
 void mid_send_data_to_net(banksys_mid* _mid , net_send_info* _send);
 //将从网络中接受的数据转化为向数据库的请求
-void mid_convert_rec_to_req(banksys_mid* _mid ,net_recieved_info* _rec , bankDB_request_info* _req);
+void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req);
 //将从数据库接受的运行结果数据转化为数据
-void mid_convert_rlt_to_send(banksys_mid* _mid ,bankDB_result_info* _rlt , net_send_info* _send);
+void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
