@@ -1,4 +1,8 @@
 #include "stdafx.h"
+#include "banksys_data_struct.h"
+
+//中间过渡模块
+
 //从网络中接受数据
 void mid_get_data_from_net(net_recieved_info* _rec);
 //从数据库中接受数据
