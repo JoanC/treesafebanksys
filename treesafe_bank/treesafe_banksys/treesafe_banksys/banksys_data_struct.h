@@ -2,27 +2,32 @@
 #define _BANKSYS_DATA_STRUCT_H_
 
 //存放了所有数据结构体 
+#include <winsock2.h>
+//server socket struct
 
-//request_type : 申请类型,可拓展
-struct net_request_info{
-	int request_type;//...
-	void* _info;
+struct Server
+{
+	SOCKET sServer;   //server socket
+	BOOL bServerRunning;   //whether server is working
 };
 
-//packet结构体,是一个通用结构
-struct net_packet{
-	void* _data;
-	//...
-};
-//接受的信息
-//是网络段处理后的数据,在中间的过渡模块中可以被处理成一个数据库层可用的数据
-struct net_recieved_info{
-	void* _data;
+//recieve info
+struct net_recieved_info
+{
+	size_t stRecPackSize;
+	char* cRecieveInfo;
 };
 
-//网络发送的信息
+//send info
 struct net_send_info{
-	void* _data;
+	size_t stSendPackSize;
+	char* cSendInfo;
+};
+
+struct banksys_net{
+	net_recieved_info rec;//接受到的数据
+	net_send_info send;//发送的数据
+	Server banksys_server;
 };
 
 //将请求数据发送给数据库

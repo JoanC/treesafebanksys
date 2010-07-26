@@ -1,5 +1,8 @@
-#include "banksys_net.h"
+#include "stdafx.h"
 
+#include "banksys_net.h"
+#include <winsock2.h>
+#pragma comment(lib,"ws2_32.lib")
 
 //add connection
 void net_add_connection(banksys_net &sServer)
@@ -39,5 +42,4 @@ void net_send_data(banksys_net &sServer)
 {
 	int reVal;
 	reVal = send(sServer.banksys_server.sServer,sServer.send.cSendInfo,sServer.send.stSendPackSize,0);
-
 }
