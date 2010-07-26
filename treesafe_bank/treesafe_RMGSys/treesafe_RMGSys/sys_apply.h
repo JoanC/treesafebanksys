@@ -32,6 +32,10 @@ struct apply_info{
 void apply_get_input_info(apply_info* _apply_info,
 	apply_input_info* _input);
 
+//检查输入信息的合法性
+//包括是否有信息缺漏,是否有信息与数据库中的实际数据不符
+void apply_check_input(apply_info* _apply_info,void* _db);
+
 //信息整合
 //将调查员输入的信息转化为调查系统可识别的申请调查信息
 void apply_convert_info(apply_input_info* _org
