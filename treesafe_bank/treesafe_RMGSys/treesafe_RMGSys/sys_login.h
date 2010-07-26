@@ -25,19 +25,16 @@ struct login_info{
 };
 
 //检查用户名
-//结果存储在rlt中
-//用户名存在则为true
-//否则为false
-void login_check_username(login_info* _login , char* _name , bool* _rlt);
+//错误结果存储在err中
+void login_check_username(login_info* _login , char* _name , err_login* _err);
 
 //检查用户密码
-//结果存储在rlt中
-//密码正确则为true
-//否则为false
-void login_check_pwd(login_info* login , char* _name , char* _pwd , bool* _rlt);
+//错误结果存储在err中
+void login_check_pwd(login_info* login , char* _name , char* _pwd , err_login* _err);
 
 //检查验证码
-void login_check_verify(login_info* _login ,char* _input , char* _vertfy , bool* _rlt);
+//错误结果存储在err中
+void login_check_verify(login_info* _login ,char* _input , char* _vertfy , err_login* _err);
 
 //出错处理
 void login_err_occour(login_info* _info);
