@@ -15,6 +15,8 @@ struct apply_sys_info{
 
 //申请处理的所有信息结构
 struct apply_info{
+	int apply_id;//申请编号
+
 	apply_input_info input;//输入的信息
 	apply_sys_info sys;//待调查的信息
 	
@@ -45,8 +47,19 @@ void apply_convert_info(apply_input_info* _org
 	,apply_sys_info* _rlt);
 
 //将待调查的信息发送给调查信息整合模块
+//把申请发送到调查模块,那里有一个队列,存放尚未审核的申请
 //调查信息模块还需设计
 void apply_send_info_to_survey(apply_sys_info* _info,void* survey);
+
+//接受审核通知信息
+//接到审核通知信息后,判断是否通过
+//如果没有通过,则进行错误处理
+//如果通过,则进行存储
+void apply_get_access_info(apply_sys_info* _info, void* _access);
+
+//错误处理
+//包括错误记录,报表
+void apply_err_mgr(apply_sys_info* _info);
 
 //存储申请结果
 //当调查结束,且申请成功后,将保存该次申请的结果到数据库中
@@ -57,3 +70,7 @@ void apply_save(apply_info* _info, void* _db_table);
 //将报表信息发送给报表系统
 //报表模块还应设计
 void apply_send_report(apply_info* _info, void* _report);
+
+//撤销申请
+//这个撤销的存在性,可行性还需讨论!!
+void apply_undo(apply_info* _info);
