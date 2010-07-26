@@ -39,8 +39,8 @@ void login_check_verify(login_info* _login ,char* _input , char* _vertfy , err_l
 //出错处理
 void login_err_occour(login_info* _info);
 
-//登陆成功后,跳转
-void login_jump(login_competence* _compe);
+//登陆成功后,跳转UI
+void login_jump(login_info* _info,void* _new_ui);
 
 //主登陆流程
 void login_frame(login_info* _info);
