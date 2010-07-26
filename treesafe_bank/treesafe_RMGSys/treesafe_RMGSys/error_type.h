@@ -4,10 +4,10 @@
 /////////////////////////////////////////////////////
 //登陆错误代码
 enum err_type_login{
-	none,
-	username_err,
-	pwd_err,
-	verifycode_err
+	login_success,
+	login_username_err,
+	login_pwd_err,
+	login_verifycode_err
 	//...其它错误
 };
 
@@ -20,7 +20,8 @@ struct err_login{
 /////////////////////////////////////////////////////
 //申请处理中的错误类型和信息
 enum err_type_apply{
-	none
+	apply_success,
+	apply_info_missing
 	//...
 };
 
