@@ -9,7 +9,6 @@ void net_add_connection(banksys_net &sServer)
 	reVal = ioctlsocket(sServer.banksys_server, FIONBIO,(unsigned long*)&u1);
 	if (SOCKET_ERROR == reVal)
 		return;
-	return;
 }
 
 //release connection
