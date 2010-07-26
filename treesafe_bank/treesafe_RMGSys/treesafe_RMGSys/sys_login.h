@@ -45,3 +45,4 @@ void login_jump(login_info* _info,void* _new_ui);
 //Ö÷µÇÂ½Á÷³Ì
 void login_frame(login_info* _info);
 
+
