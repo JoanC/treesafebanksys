@@ -35,4 +35,6 @@ void apply_get_input_info(apply_info* _apply_info,
 //信息整合
 //将调查员输入的信息转化为调查系统可识别的申请调查信息
 void apply_convert_info(apply_input_info* _org
-	,apply_sys_info);
+	,apply_sys_info* _rlt);
+
+//将待调查的信息发送给调查信息整合模块
