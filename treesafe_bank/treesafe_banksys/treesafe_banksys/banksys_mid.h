@@ -13,7 +13,7 @@ struct banksys_mid{
 	net_send_info send;//转化后，将要发送的数据
 	bankDB_request_info req;//发送给数据库DB的请求数据
 	bankDB_result_info rlt;//从数据库接受的DB结果信息
-};
+};   
 
 //从网络中接受数据
 void mid_get_data_from_net(banksys_mid* _mid , banksys_net* _net);
