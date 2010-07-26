@@ -50,5 +50,8 @@
     <ClCompile Include="treesafe_RMGSys.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sys_login.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
