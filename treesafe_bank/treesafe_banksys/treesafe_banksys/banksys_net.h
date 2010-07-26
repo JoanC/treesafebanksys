@@ -43,12 +43,7 @@ void net_wait_for_request(banksys_net &sServer);
 //recieve net data(the size of data is less than 80 bytes)
 void net_recieve_data(banksys_net &sServer);
 
-//recieve net packet(the size of packet is greater than 80 bytes)
-void NetRecievePacket(banksys_net &sServer);
-
 //send net data(the size of data is less than 80 bytes)
 void net_send_data(banksys_net &sServer);
 
-//send net packet(the size of packet is greater than 80 bytes)
-void NetSendPacket(banksys_net &sServer);
 #endif
