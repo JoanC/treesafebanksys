@@ -38,3 +38,16 @@ void apply_convert_info(apply_input_info* _org
 	,apply_sys_info* _rlt);
 
 //将待调查的信息发送给调查信息整合模块
+//调查信息模块还需设计
+void apply_send_info_to_survey(apply_sys_info* _info,void* survey);
+
+//存储申请结果
+//当调查结束,且申请成功后,将保存该次申请的结果到数据库中
+
+//数据库部分还应涉及
+void apply_save(apply_info* _info, void* _db_table);
+
+//存储报表信息
+//将报表信息发送给报表系统
+//报表模块还应设计
+void apply_send_report(apply_info* _info, void* _report);
