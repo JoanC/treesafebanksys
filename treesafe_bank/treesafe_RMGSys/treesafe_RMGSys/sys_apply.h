@@ -16,6 +16,7 @@ struct apply_sys_info{
 //申请处理的所有信息结构
 struct apply_info{
 	int apply_id;//申请编号
+	void* date;//申请发布的日期
 
 	apply_input_info input;//输入的信息
 	apply_sys_info sys;//待调查的信息
