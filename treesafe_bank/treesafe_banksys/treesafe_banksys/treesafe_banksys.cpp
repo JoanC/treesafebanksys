@@ -9,13 +9,23 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	printf("-------------------------\n");
-	printf("mid compute...\n");
+	printf("banksys compute...\n");
 	printf("-------------------------\n");
 	banksys_net* net_layer = (banksys_net*)malloc(sizeof(banksys_net));
 	banksys_db* db_layer = (banksys_db*)malloc(sizeof(banksys_db));
 	banksys_mid* mid = (banksys_mid*)malloc(sizeof(banksys_mid));
-	mid_recieve_frame(net_layer , mid , db_layer);
-	mid_send_frame(net_layer , mid , db_layer);
+	
+	//net...
+	//mid...
+	//mid_recieve_frame(net_layer , mid , db_layer);
+
+	//db....
+
+	//mid...
+	//mid_send_frame(net_layer , mid , db_layer);
+
+	//net...
+	
 	free(net_layer);
 	free(db_layer);
 	free(mid);
