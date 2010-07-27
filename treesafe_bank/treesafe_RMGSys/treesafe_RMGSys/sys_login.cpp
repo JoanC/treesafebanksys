@@ -122,11 +122,11 @@ void login_check_pwd(char* _name , char* _pwd , err_info* _err , bool* _rlt){
 	if(!isTrue){
 		//密码不正确
 #ifdef DEBUG_LOGIN_INFO
-	printf("password can't match!");
-	printf("login fail!");
+	printf("password can't match!\n");
+	printf("login fail!\n");
 #endif
 #ifdef DEBUG_LOGIN_INFO
-	printf("error occour! manage error...");
+	printf("error occour! manage error...\n");
 #endif
 	    err_search_info(ERR_LOGIN_PED_UNMATCHED,_err);//搜寻错误信息
 		login_err_occour(_err);//错误处理
@@ -136,9 +136,36 @@ void login_check_pwd(char* _name , char* _pwd , err_info* _err , bool* _rlt){
 	else{
 		//密码正确
 #ifdef DEBUG_LOGIN_INFO
-	printf("password match access!");
+	printf("password match access!\n");
 #endif
 	    *_rlt = true;
+		return;
+	}
+}
+
+
+void login_check_verify(char* _input , char* _verify , err_info* _err , bool* _rlt){
+	//检查验证码
+    //错误结果存储在err中
+#ifdef DEBUG_LOGIN_INFO
+	printf("check verify code...\n");
+#endif
+	if(!strcmp(_input,_verify)){
+		//验证码相等
+#ifdef DEBUG_LOGIN_INFO
+		printf("verify code check access...\n");
+#endif
+		*_rlt = true;
+		return;
+	}
+	else{
+		//验证码失败
+#ifdef DEBUG_LOGIN_INFO
+		printf("verify code check error!...\n");
+#endif
+		err_search_info(ERR_LOGIN_VERIFY_WRONG,_err);
+		login_err_occour(_err);
+		*_rlt = false;
 		return;
 	}
 }

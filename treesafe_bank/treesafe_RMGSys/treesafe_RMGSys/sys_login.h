@@ -53,7 +53,7 @@ void login_check_pwd(char* _name , char* _pwd , err_info* _err , bool* _rlt);
 
 //检查验证码
 //错误结果存储在err中
-void login_check_verify(char* _input , char* _vertfy , err_info* _err , bool* _rlt);
+void login_check_verify(char* _input , char* _verify , err_info* _err , bool* _rlt);
 
 //检测函数
 //把三个检测过程合起
@@ -79,4 +79,8 @@ void login_err_occour(err_info* _err);
 //错误处理子函数
 //在_err_occour函数中的分支小函数
 void login_err_user_unexsit();//用户不存在
+
+void login_err_pwd_unmatch();//用户密码错误
+
+void login_err_verify_wrong();//验证码输入错误
 

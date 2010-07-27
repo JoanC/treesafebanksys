@@ -5,7 +5,8 @@
 enum err_type{
 	//登陆模块的错误
  ERR_LOGIN_USER_UNEXIST,//用户名不正确
- ERR_LOGIN_PED_UNMATCHED//密码错误
+ ERR_LOGIN_PED_UNMATCHED,//密码错误
+ ERR_LOGIN_VERIFY_WRONG//验证码错误
 };
 
 
