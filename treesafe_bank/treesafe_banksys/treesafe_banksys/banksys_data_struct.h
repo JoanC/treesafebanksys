@@ -41,9 +41,6 @@ struct bankDB_request_info{
 
 //结果数据
 //输出的数据都存入其中
-struct bankDB_result_info{
-	void* data;
-};
 struct bankDB_result_cust_info{
 	char		cust_id[19] ;			//id
 	char		cust_name[51] ;		//name
@@ -53,7 +50,7 @@ struct bankDB_result_cust_info{
 	char		home_addr[51] ;	//...
 } ;
 struct	bankDB_result_account_info{
-	char		account_num[19] ;	// account number , length:18 
+	char		account_num[19] ;	// account number , length:18
 	char		open_branch[51] ;	// opened in which branch
 	char		open_date[11] ;		// when opened
 	bool		type ;						// true for 活期 ， 否则死期
@@ -68,7 +65,12 @@ struct bankDB_result_loan_info{
 	int		month_remain ;			//how many months remain
 	long		monthly_return ;		//how much monthly return
 };
-
+union bankDB_result_info
+{
+	bankDB_result_cust_info			result_cust_info ;			
+	bankDB_result_account_info		result_account_info ;
+	bankDB_result_loan_info			result_loan_info ;
+};
 struct banksys_db{
 	bankDB_request_info req;//数据库DB的请求数据
 	bankDB_result_info rlt;//DB结果信息
