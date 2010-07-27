@@ -59,13 +59,13 @@ void login_get_input_info(login_input_info* _input){
 void login_check_username(char* _name , err_login* _err){
 	//检查用户名
     //错误结果存储在err中
-	bool isExit;
+	bool isExsit;
 #ifdef DEBUG_INFO
 	printf("connect to database\n");
 	printf("check if this user exist\n");
 #endif
 	// DB查询
-	if(!isExit){
+	if(!isExsit){
 		//如果用户不存在
 		_err->isSuccess = false;
 		_err->errType = login_username_err;
