@@ -73,10 +73,6 @@ void login_check_username(char* _name , err_info* _err , bool* _rlt){
 	//检查用户名
     //错误结果存储在err中
 	bool isExsit = false;
-#ifdef DEBUG_LOGIN_INFO
-	printf("connect to database\n");
-	printf("check if this user exist\n");
-#endif
 	// DB查询
 	//更改isExist
 #ifdef DEBUG_LOGIN_INFO
@@ -206,7 +202,28 @@ void login_auto_add(login_info* _info,login_input_info* _input){
 	//Add code here...
 }
 
+void login_frame(login_info* _info , login_input_info* _input){
+	//主登陆流程
+	if(!(_info && _input)) return;//信息为空
+	//?//?
+	//要不要get_input？
+	//要看怎样从界面上去得到数据！
+	//void login_get_input_info(_input);
+	login_check_info(_info , _input);
+	login_auto_add(_info , _input);
+	//这个也要看界面上的那些数值怎么得到
+	login_jump(_info);
+}
+
 void login_err_occour(err_info* _err){
 	//登陆模块错误处理
 	//...
+}
+
+void login_jump(login_info* _info,void* _new_ui){
+	//...jump to another ui
+	if(!_info->isSuccess) return;
+#ifdef DEBUG_LOGIN_INFO
+	printf("jump to different ui...\n");
+#endif
 }

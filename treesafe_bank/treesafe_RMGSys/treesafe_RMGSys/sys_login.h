@@ -68,10 +68,10 @@ void login_auto_add(login_info* _info,login_input_info* _input);
 
 //登陆成功后,跳转UI
 //根据用户权限的不同,会有不同的界面跳出
-void login_jump(login_info* _info,void* _new_ui);
+void login_jump(login_info* _info,void* _new_ui = 0);
 
 //主登陆流程
-void login_frame(login_info* _info);
+void login_frame(login_info* _info,login_input_info* _input);
 
 //登陆中的错误处理函数
 //错误处理一定要仔细

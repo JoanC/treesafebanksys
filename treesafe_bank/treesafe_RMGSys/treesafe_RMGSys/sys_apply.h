@@ -22,7 +22,7 @@ struct apply_info{
 	apply_sys_info sys;//待调查的信息
 	
 	//下面是错误,日志,和报表信息
-	err_apply errInfo;//申请处理中的错误信息
+	err_type errInfo;//申请处理中的错误信息
 	void* logInfo;//日志信息
 	void* reportInfo;//报表信息
 };
@@ -40,7 +40,7 @@ void apply_get_input_info(apply_info* _apply_info,
 void apply_check_input(apply_info* _apply_info);
 
 //如果出错,把错误信息发送到apply界面上
-void apply_send_err(err_apply* _errInfo);
+void apply_send_err(err_type* _errInfo);
 
 //信息整合
 //将调查员输入的信息转化为调查系统可识别的申请调查信息

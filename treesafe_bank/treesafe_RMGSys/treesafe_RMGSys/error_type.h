@@ -44,7 +44,7 @@ enum err_info_apply{
 	//...
 };
 
-struct err_apply{
+struct err_type{
 	bool isSuccess;
 	void* errInfo;
 	//...

@@ -5,6 +5,6 @@ void err_search_info(err_type _err_id , err_info* _err_rlt){
 	//根据err的id去搜索错误信息
 	//...db查询
 #ifdef DEBUG_ERR_INFO
-	printf("search the error: %d",_err_id);
+	printf("search the error: %d\n",_err_id);
 #endif
 }
