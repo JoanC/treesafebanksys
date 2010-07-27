@@ -16,3 +16,6 @@
 
 //mid debug information
 #define DEBUG_MID_INFO
+
+//net debug information
+#define DEBUG_NET_INFO

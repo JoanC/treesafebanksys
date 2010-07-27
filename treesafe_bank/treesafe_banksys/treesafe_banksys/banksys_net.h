@@ -7,19 +7,19 @@
 
 
 //add connection
-void net_add_connection(banksys_net &sServer);
+void net_add_connection(banksys_net *sServer);
 
 //release connection
-void net_release_connection(banksys_net &sServer);
+void net_release_connection(banksys_net *sServer);
 
 //wait for request
-void net_wait_for_request(banksys_net &sServer);
+void net_wait_for_request(banksys_net *sServer);
 
 //recieve net data(the size of data is less than 80 bytes)
-void net_recieve_data(banksys_net &sServer);
+void net_recieve_data(banksys_net *sServer);
 
 //send net data(the size of data is less than 80 bytes)
-void net_send_data(banksys_net &sServer);
+void net_send_data(banksys_net *sServer);
 
 //jiraiya's code
 //把上面的小函数合并成主函式
