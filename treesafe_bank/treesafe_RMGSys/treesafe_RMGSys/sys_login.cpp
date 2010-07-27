@@ -163,13 +163,27 @@ void login_check_verify(char* _input , char* _verify , err_info* _err , bool* _r
 #ifdef DEBUG_LOGIN_INFO
 		printf("verify code check error!...\n");
 #endif
+		//查找错误信息
 		err_search_info(ERR_LOGIN_VERIFY_WRONG,_err);
-		login_err_occour(_err);
+		login_err_occour(_err);//错误处理函数
 		*_rlt = false;
 		return;
 	}
 }
 
+void login_check_info(login_info* _info , login_input_info* _input){
+	//检查输入信息
+	login_check_username(_input->input_user_name
+		,&_info->err,&_info->isSuccess);//验证用户名
+	if(!_info->isSuccess) return;
+	//验证密码
+	login_check_pwd(_input->input_user_name,
+		_input->input_user_pwd,&_info->err,&_info->isSuccess);
+	if(!_info->isSuccess) return;
+	//验证码比较
+	login_check_verify(_input->input_verify_code,
+		_input->verify_code,&_info->err,&_info->isSuccess);
+}
 
 void login_err_occour(err_info* _err){
 	//登陆模块错误处理

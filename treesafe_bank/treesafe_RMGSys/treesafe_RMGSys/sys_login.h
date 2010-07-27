@@ -20,6 +20,8 @@ struct login_input_info{
 
 struct login_info{
 	//登陆信息存储
+	bool isSuccess;//是否成功
+	//用户权限
 	login_competence compe;
 	//用户名
 	char* user_name;//用户名
@@ -60,10 +62,9 @@ void login_check_verify(char* _input , char* _verify , err_info* _err , bool* _r
 //login_info 和 input_info结合在一起
 void login_check_info(login_info* _info , login_input_info* _input);
 
-//填充其它信息
-//如果用户存在,密码正确,且验证码通过
-//则把其它跟这个用户有关的信息
-void login_auto_add(login_info* _info);
+//填充信息
+//前提如果用户存在,密码正确,且验证码通过
+void login_auto_add(login_info* _info,login_input_info* _input);
 
 //登陆成功后,跳转UI
 //根据用户权限的不同,会有不同的界面跳出
