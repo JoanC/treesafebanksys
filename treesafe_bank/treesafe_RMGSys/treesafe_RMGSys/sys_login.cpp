@@ -185,6 +185,27 @@ void login_check_info(login_info* _info , login_input_info* _input){
 		_input->verify_code,&_info->err,&_info->isSuccess);
 }
 
+void login_auto_add(login_info* _info,login_input_info* _input){
+	//填充信息
+    //前提如果用户存在,密码正确,且验证码通过
+	if(!_info->isSuccess) return;//登陆不成功则返回
+#ifdef DEBUG_LOGIN_INFO
+	printf("save the user information...\n");
+#endif
+	//记载用户数据
+	_info->user_name = _input->input_user_name;
+	_info->user_pwd = _input->input_user_pwd;
+	_info->verify_code = _input->input_verify_code;
+	//连接数据库，查找对应的权限及其它
+#ifdef DEBUG_LOGIN_INFO
+	printf("connect to the database...\n");
+	printf("search the comperence of the user...\n");
+	//...
+#endif
+	//compe...
+	//Add code here...
+}
+
 void login_err_occour(err_info* _err){
 	//登陆模块错误处理
 	//...
