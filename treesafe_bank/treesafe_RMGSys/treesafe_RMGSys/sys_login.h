@@ -27,7 +27,7 @@ struct login_info{
 	char* verify_code;//验证码
 
 	//登陆信息
-	err_login err;//错误信息
+	err_info err;//错误信息
 	void* log_login;//日志信息
 	void* report_login;//报表信息
 	//...其他
@@ -45,15 +45,15 @@ void login_get_input_info(login_input_info* _input);
 
 //检查用户名
 //错误结果存储在err中
-void login_check_username(char* _name , err_login* _err);
+void login_check_username(char* _name , err_info* _err , bool* _rlt);
 
 //检查用户密码
 //错误结果存储在err中
-void login_check_pwd(char* _name , char* _pwd , err_login* _err);
+void login_check_pwd(char* _name , char* _pwd , err_info* _err , bool* _rlt);
 
 //检查验证码
 //错误结果存储在err中
-void login_check_verify(char* _input , char* _vertfy , err_login* _err);
+void login_check_verify(char* _input , char* _vertfy , err_info* _err , bool* _rlt);
 
 //检测函数
 //把三个检测过程合起
@@ -65,9 +65,6 @@ void login_check_info(login_info* _info , login_input_info* _input);
 //则把其它跟这个用户有关的信息
 void login_auto_add(login_info* _info);
 
-//出错处理
-void login_err_occour(login_info* _info);
-
 //登陆成功后,跳转UI
 //根据用户权限的不同,会有不同的界面跳出
 void login_jump(login_info* _info,void* _new_ui);
@@ -75,4 +72,11 @@ void login_jump(login_info* _info,void* _new_ui);
 //主登陆流程
 void login_frame(login_info* _info);
 
+//登陆中的错误处理函数
+//错误处理一定要仔细
+void login_err_occour(err_info* _err);
+
+//错误处理子函数
+//在_err_occour函数中的分支小函数
+void login_err_user_unexsit();//用户不存在
 

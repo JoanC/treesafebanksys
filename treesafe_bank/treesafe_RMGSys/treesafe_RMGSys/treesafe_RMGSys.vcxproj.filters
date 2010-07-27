@@ -53,5 +53,8 @@
     <ClCompile Include="sys_login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="error_type.cpp">
+      <Filter>error</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
