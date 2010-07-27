@@ -41,8 +41,32 @@ struct bankDB_request_info{
 
 //结果数据
 //输出的数据都存入其中
-struct bankDB_result_info{  //
+struct bankDB_result_info{
 	void* data;
+};
+struct bankDB_result_cust_info{
+	char		cust_id[19] ;			//id
+	char		cust_name[51] ;		//name
+	bool		gend ;						// "true" for boy...
+	int		age ;						//age
+	char		phone_num[12] ;	//...
+	char		home_addr[51] ;	//...
+} ;
+struct	bankDB_result_account_info{
+	char		account_num[19] ;	// account number , length:18 
+	char		open_branch[51] ;	// opened in which branch
+	char		open_date[11] ;		// when opened
+	bool		type ;						// true for 活期 ， 否则死期
+	long		balance ;					// balance
+	int		month_remain ;		// if 死期 ...
+};
+struct bankDB_result_loan_info{
+	char		loan_num[19] ; 			//loan number , length:18 
+	char		open_branch[51] ;		//opened in which branch
+	char		open_date[11] ;			//when opened
+	long		amount ;						//how much
+	int		month_remain ;			//how many months remain
+	long		monthly_return ;		//how much monthly return
 };
 
 struct banksys_db{
