@@ -41,7 +41,7 @@ struct bankDB_request_info{
 
 //结果数据
 //输出的数据都存入其中
-struct bankDB_result_info{
+struct bankDB_result_info{  //
 	void* data;
 };
 
