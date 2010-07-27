@@ -14,5 +14,5 @@
 
 // TODO: reference additional headers your program requires here
 
-//debug information
-#define DEBUG_INFO
+//mid debug information
+#define DEBUG_MID_INFO
