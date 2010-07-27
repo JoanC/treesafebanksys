@@ -1,7 +1,13 @@
 #pragma once
 //错误类型
 //错误类型以常数的形式记录
-#define ERR_LOGIN_USER_UNEXIST 0
+
+enum err_type{
+	//登陆模块的错误
+ ERR_LOGIN_USER_UNEXIST,//用户名不正确
+ ERR_LOGIN_PED_UNMATCHED//密码错误
+};
+
 
 //第二种方法,把error信息放入db中统一管理
 struct err_info{
@@ -10,7 +16,7 @@ struct err_info{
 };
 
 //根据id查询错误信息
-void err_search_info(int _err_id , err_info* _err_rlt);
+void err_search_info(err_type _err_id , err_info* _err_rlt);
 
 /*
 /////////////////////////////////////////////////////

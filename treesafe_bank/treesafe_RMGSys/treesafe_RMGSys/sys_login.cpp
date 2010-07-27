@@ -114,5 +114,37 @@ void login_check_pwd(char* _name , char* _pwd , err_info* _err , bool* _rlt){
 	//检查用户密码
    //错误结果存储在err中
 	bool isTrue = false;//密码是否正确
+#ifdef DEBUG_LOGIN_INFO
+	printf("connect to database\n");
+	printf("check if this the password of the user is true\n");
+#endif
+	//db处理函数
+	if(!isTrue){
+		//密码不正确
+#ifdef DEBUG_LOGIN_INFO
+	printf("password can't match!");
+	printf("login fail!");
+#endif
+#ifdef DEBUG_LOGIN_INFO
+	printf("error occour! manage error...");
+#endif
+	    err_search_info(ERR_LOGIN_PED_UNMATCHED,_err);//搜寻错误信息
+		login_err_occour(_err);//错误处理
+	    *_rlt = false;//错误结果
+		return;
+	}
+	else{
+		//密码正确
+#ifdef DEBUG_LOGIN_INFO
+	printf("password match access!");
+#endif
+	    *_rlt = true;
+		return;
+	}
+}
 
+
+void login_err_occour(err_info* _err){
+	//登陆模块错误处理
+	//...
 }
