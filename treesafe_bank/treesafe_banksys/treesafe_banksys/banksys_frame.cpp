@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "banksys_frame.h"
 
+
 banksys_frame* banksys_frame_allocate(){
 	banksys_frame* _frame;
 	//为三个模块申请内存
