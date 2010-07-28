@@ -1,3 +1,6 @@
+#pragma  once
+#include "banksys_data_struct.h"
+
 /****************************************Copyright (c)**************************************************
 **                         treesafe bank system                             
 **
@@ -19,14 +22,14 @@
 
 #ifndef _BANKSYS_DB_H_
 #define _BANKSYS_DB_H_
-#include "banksys_data_struct.h"
+//#include "banksys_data_struct.h"
 
 
 #endif
 #include<stdio.h>
 #include<conio.h>
 
-#import "C:\\Program Files\\Common Files\\System\\ado\\msado25.tlb" no_namespace rename("EOF","ENDOFRS")
+#import "C:\\Program Files\\Common Files\\System\\ado\\msado25.tlb" no_namespace rename("EOF","rsEOF")
 /*********************************************************************************************************
 ** Function name:			ConnectDB
 **
@@ -72,11 +75,8 @@ bool ConnectDB(_ConnectionPtr *pConn) ;	   //connect the db
 void DisconnectDB(_ConnectionPtr *pConn) ; //disconnect the db
 
 
-
-
-
 /*********************************************************************************************************
-** Function name:			
+** Function name:			Cust_info_inquiry
 **
 ** Descriptions:		
 **
@@ -87,10 +87,76 @@ void DisconnectDB(_ConnectionPtr *pConn) ; //disconnect the db
 ** Calling modules:			
 **
 ** Created by:			S
-** Created Date:	 2010/7/27
+** Created Date:	 2010/7/28
 **-------------------------------------------------------------------------------------------------------
 ** Modified by:			
 ** Modified date:	 
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-bool	InquiryResult(banksys_db *_rlt) ;
+bool	Cust_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn) ;
+
+
+
+/*********************************************************************************************************
+** Function name:			Account_info_inquiry
+**
+** Descriptions:		
+**
+** input parameters:		
+** Returned value:		
+**         
+** Used global variables:	 /
+** Calling modules:			
+**
+** Created by:			S
+** Created Date:	 2010/7/28
+**-------------------------------------------------------------------------------------------------------
+** Modified by:			
+** Modified date:	 
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool	Account_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn) ;
+
+
+/*********************************************************************************************************
+** Function name:			Loan_info_inquiry
+**
+** Descriptions:		
+**
+** input parameters:		
+** Returned value:		
+**         
+** Used global variables:	 /
+** Calling modules:			
+**
+** Created by:			S
+** Created Date:	 2010/7/28
+**-------------------------------------------------------------------------------------------------------
+** Modified by:			
+** Modified date:	 
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool	Loan_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn) ;
+
+
+
+
+/*********************************************************************************************************
+** Function name:			InquiryResult
+**
+** Descriptions:		
+**
+** input parameters:		
+** Returned value:		
+**         
+** Used global variables:	 /
+** Calling modules:			
+**
+** Created by:			S
+** Created Date:	 2010/7/28
+**-------------------------------------------------------------------------------------------------------
+** Modified by:			
+** Modified date:	 
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool	InquiryResult(banksys_db *_rlt,_ConnectionPtr *_pConn) ;

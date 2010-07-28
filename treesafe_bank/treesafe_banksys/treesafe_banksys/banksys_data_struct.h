@@ -1,7 +1,7 @@
 #ifndef _BANKSYS_DATA_STRUCT_H_
 #define _BANKSYS_DATA_STRUCT_H_
 
-//存放了所有数据结构体 
+//存放了所有数据结构体
 #include <winsock2.h>
 //server socket struct
 
@@ -34,16 +34,21 @@ struct banksys_net{
 //数据库模块
 //将请求数据发送给数据库
 //数据中包括了请求与请求的相关数据
+enum  en_require_type{
+	CUST_INFO = 1 ,
+	ACCOUNT_INFO = 2 ,
+	LOAN_INFO = 3 ,
+}  ;
 struct bankDB_request_info{
-	int type;
-	int index;
+	en_require_type		type ;
+	char								id[19] ;
 };
 
 //结果数据
 //输出的数据都存入其中
 struct bankDB_result_cust_info{
-	char		cust_id[19] ;			//id
-	char		cust_name[51] ;		//name
+	char		id[19] ;			//id
+	char		name[51] ;		//name
 	bool		gend ;						// "true" for boy...
 	int		age ;						//age
 	char		phone_num[12] ;	//...
