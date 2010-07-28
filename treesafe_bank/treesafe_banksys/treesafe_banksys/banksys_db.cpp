@@ -128,7 +128,7 @@ bool	InquiryResult(banksys_db *_rlt,_ConnectionPtr *_pConn)
 		break ;
 
 	case LOAN_INFO :
-		Loan_info_inquiry( _rlt , _pConn ) ;
+		Loan_info_inquiry( _rlt , _pConn );
 		break ;
 
 	default :
