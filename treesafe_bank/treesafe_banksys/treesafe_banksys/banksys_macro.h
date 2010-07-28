@@ -9,6 +9,5 @@
 //并将内存全部出示化为0
 #define MALLOC_POINTER(__p_malloc , __type) \
 	(__p_malloc) = (__type*)calloc(1,sizeof(__type) ); \
-	//memset((char*)__p_malloc + sizeof(__type*),'\0',strlen((char*)__p_malloc)); \
 
 
