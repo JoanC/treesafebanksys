@@ -65,15 +65,14 @@ struct bankDB_result_loan_info{
 	int		month_remain ;			//how many months remain
 	long		monthly_return ;		//how much monthly return
 };
-union bankDB_result_info
+struct bankDB_result_info
 {
-	bankDB_result_cust_info			result_cust_info ;			
-	bankDB_result_account_info		result_account_info ;
-	bankDB_result_loan_info			result_loan_info ;
+	int		nCount ;	//an counter that shows how many results in the array(*pRlt). 
+	void		*pRlt ;		//pointer to the result struct , such as bankDB_result_account_info...
 };
 struct banksys_db{
-	bankDB_request_info req;//数据库DB的请求数据
-	bankDB_result_info rlt;//DB结果信息
+	bankDB_request_info		req;//数据库DB的请求数据
+	bankDB_result_info			rlt;//DB结果信息
 	//...
 };
 

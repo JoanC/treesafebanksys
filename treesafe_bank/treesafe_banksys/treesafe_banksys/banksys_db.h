@@ -28,24 +28,53 @@
 
 #import "C:\\Program Files\\Common Files\\System\\ado\\msado25.tlb" no_namespace rename("EOF","ENDOFRS")
 /*********************************************************************************************************
-** Function name:			
+** Function name:			ConnectDB
+**
+** Descriptions:		
+**
+** input parameters:		_ConnectionPtr *pConn
+** Returned value:		bool :  return success or not
+**         
+** Used global variables:	
+** Calling modules:			
+**
+** Created by:				S
+** Created Date:		2010/7/27
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				S
+** Modified date:     2010/7/28
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool ConnectDB(_ConnectionPtr *pConn) ;	   //connect the db
+
+
+
+
+
+/*********************************************************************************************************
+** Function name:		DisConnectDB			
 **
 ** Descriptions:		
 **
 ** input parameters:		
 ** Returned value:		
 **         
-** Used global variables:	
+** Used global variables:	 /
 ** Calling modules:			
 **
-** Created by:				
-** Created Date:		
+** Created by:			S
+** Created Date:	 2010/7/27
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:			
+** Modified date:	 
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void ConnectDB(_ConnectionPtr &pConn) ;	   //connect the db
+void DisconnectDB(_ConnectionPtr *pConn) ; //disconnect the db
+
+
+
+
+
 /*********************************************************************************************************
 ** Function name:			
 **
@@ -54,14 +83,14 @@ void ConnectDB(_ConnectionPtr &pConn) ;	   //connect the db
 ** input parameters:		
 ** Returned value:		
 **         
-** Used global variables:	
+** Used global variables:	 /
 ** Calling modules:			
 **
-** Created by:				
-** Created Date:		
+** Created by:			S
+** Created Date:	 2010/7/27
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:			
+** Modified date:	 
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void DisconnectDB(_ConnectionPtr &pConn) ; //disconnect the db
+bool	InquiryResult(banksys_db *_rlt) ;
