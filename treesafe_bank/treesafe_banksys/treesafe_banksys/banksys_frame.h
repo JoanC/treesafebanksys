@@ -8,7 +8,7 @@
 //建立所有模块
 //包括内存的分配和初始化
 //返回一个frame结构体的指针
-void banksys_frame_allocate(banksys_frame* _frame);
+banksys_frame* banksys_frame_allocate();
 
 //接受数据主函式
 void banksys_frame_recieve(banksys_frame* _frame);
