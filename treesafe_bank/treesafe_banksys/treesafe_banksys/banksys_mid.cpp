@@ -70,14 +70,14 @@ void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req)
 #ifdef DEBUG_MID_INFO
 	printf("convert from net_recieved_info to bankDB_request_info...\n");
 #endif
-	memcpy(_req,_rec->cRecieveInfo,strlen(_rec->cRecieveInfo));
+	memcpy(_req,_rec->cRecieveInfo,strlen(_rec->cRecieveInfo));//数据复制
 }
 //将从数据库接受的运行结果数据转化为数据
 void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send){
 #ifdef DEBUG_MID_INFO
 	printf("convert from bankDB_result_info to net_send_info...\n");
 #endif
-	memcpy(_send->cSendInfo,_rlt,strlen((char*)_rlt));
+	memcpy(_send->cSendInfo,_rlt,strlen((char*)_rlt));//数据复制
 }
 
 //一次从net中接受数据,并把数据传给db的过程

@@ -95,9 +95,9 @@ struct banksys_mid{
 //frame模块
 //主流程的指针
 struct banksys_frame{
-	banksys_net* sys_net;
-	banksys_mid* sys_mid;
-	banksys_db* sys_db;
+	banksys_net* sys_net;//指向网络模块
+	banksys_mid* sys_mid;//指向中继器
+	banksys_db* sys_db;//指向数据库模块
 };
 
 #endif
