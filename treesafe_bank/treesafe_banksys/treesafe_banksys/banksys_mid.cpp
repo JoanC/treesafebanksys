@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "banksys_mid.h"
+#include "banksys_macro.h"
 
 //从网络层中获取数据
 void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
-	if(_mid == NULL) return;//中间转换器无效
-	if(_net == NULL) return;//_net层为空
+	ARRSERT_POINTER_NULL(_mid && _net)//中间转换器无效或_net层为空
 #ifdef DEBUG_MID_INFO
 	printf("get recieved data from net\n");
 #endif
@@ -19,8 +19,7 @@ void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
 
 //从数据库中接受数据
 void mid_get_data_from_db(banksys_mid* _mid ,banksys_db* _db){
-	if(_mid == NULL) return;//中间转换器无效
-	if(_db == NULL) return;//数据库无效
+	ARRSERT_POINTER_NULL(_mid && _db)//中间转换器无效或数据库无效
 #ifdef DEBUG_MID_INFO
 	printf("get reslut data from db\n");
 #endif
@@ -35,8 +34,7 @@ void mid_get_data_from_db(banksys_mid* _mid ,banksys_db* _db){
 
 //向数据库中发送数据
 void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db){
-	if(_mid == NULL) return;//中间转换器无效
-	if(_db == NULL) return;//数据库无效
+	ARRSERT_POINTER_NULL(_mid && _db)//中间转换器无效或数据库无效
 #ifdef DEBUG_MID_INFO
 	printf("check send data , success\n");
 #endif
@@ -51,8 +49,7 @@ void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db){
 
 //向网络中发送数据
 void mid_send_data_to_net(banksys_mid* _mid ,banksys_net* _net){
-	if(_mid == NULL) return;//中间转换器无效
-	if(_net == NULL) return;//网络层无效
+	ARRSERT_POINTER_NULL(_mid && _net)//中间转换器无效或_net层为空
 #ifdef DEBUG_MID_INFO
 	printf("check send data , success\n");
 #endif
@@ -67,6 +64,7 @@ void mid_send_data_to_net(banksys_mid* _mid ,banksys_net* _net){
 
 //将从网络中接受的数据转化为向数据库的请求
 void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req){
+   ARRSERT_POINTER_NULL(_rec) //接收数据为空
 #ifdef DEBUG_MID_INFO
 	printf("convert from net_recieved_info to bankDB_request_info...\n");
 #endif
@@ -74,6 +72,7 @@ void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req)
 }
 //将从数据库接受的运行结果数据转化为数据
 void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send){
+    ARRSERT_POINTER_NULL(_rlt)//结果数据为空
 #ifdef DEBUG_MID_INFO
 	printf("convert from bankDB_result_info to net_send_info...\n");
 #endif
@@ -83,7 +82,7 @@ void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send){
 //一次从net中接受数据,并把数据传给db的过程
 void mid_recieve_frame(banksys_net* _net, 
 	banksys_mid* _mid , banksys_db* _db){
-	if(!(_mid && _net && _db)) return;
+	ARRSERT_POINTER_NULL(_mid && _net && _db)//不可有一者为空
 	//开始从net接受一个数据
 	mid_get_data_from_net(_mid , _net);
 	//转化数据
