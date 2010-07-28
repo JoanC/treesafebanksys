@@ -72,18 +72,20 @@ void mid_get_data_from_net(banksys_mid* _mid , banksys_net* _net);
 void mid_get_data_from_db(banksys_mid* _mid , banksys_db* _db);
 //向数据库中发送数据
 /*********************************************************************************************************
-** Function name:			
+** Function name:		mid_send_data_to_db
 **
-** Descriptions:		
+** Descriptions:		向数据库输出请求数据
 **
 ** input parameters:		
-** Returned value:		
+**                        banksys_mid* _mid :　 中继器模块结构体
+**                        banksys_db* _db :　数据库模块结构体
+** Returned value:		none
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	none
+** Calling modules:		调用了数据库模块
 **
-** Created by:				
-** Created Date:		
+** Created by:				Jiraiya    wanjunya.jiraiya@gmail.com
+** Created Date:		2010-7-2
 **-------------------------------------------------------------------------------------------------------
 ** Modified by:
 ** Modified date:
@@ -92,12 +94,14 @@ void mid_get_data_from_db(banksys_mid* _mid , banksys_db* _db);
 void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db);
 //向网络中发送数据
 /*********************************************************************************************************
-** Function name:			
+** Function name:			mid_send_data_to_net
 **
-** Descriptions:		
+** Descriptions:		向网络层发送将要被发送的数据
 **
 ** input parameters:		
-** Returned value:		
+**                banksys_mid* _mid : 中继器模块的结构体
+**                banksys_db* _net : 数据库模块的结构体
+** Returned value:		none
 **         
 ** Used global variables:	
 ** Calling modules:			
