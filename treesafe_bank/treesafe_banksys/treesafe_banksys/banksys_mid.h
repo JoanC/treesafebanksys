@@ -166,11 +166,11 @@ void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
 ** input parameters:		
 **                           banksys_net* _net : 网络模块,从这里接受接收的数据
 **                           banksys_mid* _mid : 中继器模块
-**                           banksys_db* _db : 数据库模块
+**                           banksys_db* _db : 数据库模块,把请求模块发送到这里
 ** Returned value:	   void (none)
 **         
 ** Used global variables: none
-** Calling modules:		none
+** Calling modules:		数据库模块和网络模块
 **
 ** Created by:				Jiraiya    wanjunya.jiraiya@gmail.com
 ** Created Date:		2010-7-26		
@@ -182,24 +182,26 @@ void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
 void mid_recieve_frame(banksys_net* _net,
 	banksys_mid* _mid ,banksys_db* _db);
 /*********************************************************************************************************
-** Function name:			
+** Function name:		mid_send_frame
 **
-** Descriptions:		
+** Descriptions:		一次从db中接受数据,并把数据传给net的过程
 **
-** input parameters:		
-** Returned value:		
+** input parameters:  
+**                        banksys_net* _net :　网络模块，向这里发送信息
+**	                       banksys_mid* _mid：中继器模块
+**                        banksys_db* _db : 数据库模块,从这里接受数据库的结果信息
+** Returned value:		none
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	none
+** Calling modules:	数据库模块和网络模块
 **
-** Created by:				
-** Created Date:		
+** Created by:				Jiraiya    wanjunya.jiraiya@gmail.com
+** Created Date:		2010-7-26	
 **-------------------------------------------------------------------------------------------------------
 ** Modified by:
 ** Modified date:
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-//一次从db中接受数据,并把数据传给net的过程
 void mid_send_frame(banksys_net* _net,
 	banksys_mid* _mid ,banksys_db* _db);
 
