@@ -14,6 +14,10 @@
     <ProjectGuid>{82573340-B64A-4C00-97F0-96B65525A924}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>treesafe_banksys</RootNamespace>
+    <SccProjectName>Svn</SccProjectName>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
