@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="banksys_db.cpp" />
+    <ClCompile Include="banksys_frame.cpp" />
     <ClCompile Include="banksys_mid.cpp" />
     <ClCompile Include="banksys_net.cpp" />
     <ClCompile Include="stdafx.cpp">

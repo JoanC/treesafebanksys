@@ -12,3 +12,6 @@ void banksys_frame_allocate(banksys_frame* _frame);
 
 //接受数据主函式
 void banksys_frame_recieve(banksys_frame* _frame);
+
+//释放模块
+void banksys_frame_deallocate(banksys_frame* _frame);
