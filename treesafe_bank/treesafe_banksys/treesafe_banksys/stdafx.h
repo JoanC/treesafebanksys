@@ -15,14 +15,16 @@
 
 // TODO: reference additional headers your program requires here
 
-//mid debug information
+extern "C"{
+	//mid debug information
 #define DEBUG_MID_INFO
 
-//net debug information
+	//net debug information
 #define DEBUG_NET_INFO
 
-//db debug information
+	//db debug information
 #define DEBUG_DB_INFO
 
-//frame debug information
+	//frame debug information
 #define DEBUG_FRAME_INFO
+}
