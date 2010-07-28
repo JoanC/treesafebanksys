@@ -20,6 +20,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	//mid_recieve_frame(net_layer , mid , db_layer);
 
 	//db....
+	_ConnectionPtr *pConn = new _ConnectionPtr;
+	ConnectDB(pConn);
+	banksys_db _rlt  ;
+	_rlt.req.type = CUST_INFO ;
+	strcpy_s(_rlt.req.id	,"123456789123456789") ;
+	InquiryResult(&_rlt,pConn);
 
 	//mid...
 	//mid_send_frame(net_layer , mid , db_layer);
