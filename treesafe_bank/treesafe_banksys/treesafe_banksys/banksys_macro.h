@@ -8,7 +8,7 @@
 //申请类型为__type的内存,存放在指针__p_malloc中
 //并将内存全部出示化为0
 #define MALLOC_POINTER(__p_malloc , __type) \
-	(__p_malloc) = (__type*)malloc( sizeof(__type) ); \
-	memset((char*)__p_malloc,'\0',strlen((char*)__p_malloc)); \
+	(__p_malloc) = (__type*)calloc(1,sizeof(__type) ); \
+	//memset((char*)__p_malloc + sizeof(__type*),'\0',strlen((char*)__p_malloc)); \
 
 
