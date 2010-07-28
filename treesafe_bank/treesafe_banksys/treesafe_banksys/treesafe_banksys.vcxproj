@@ -82,6 +82,7 @@
     <ClInclude Include="banksys_data_struct.h" />
     <ClInclude Include="banksys_db.h" />
     <ClInclude Include="banksys_frame.h" />
+    <ClInclude Include="banksys_macro.h" />
     <ClInclude Include="banksys_mid.h" />
     <ClInclude Include="banksys_net.h" />
     <ClInclude Include="resource.h" />
