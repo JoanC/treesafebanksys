@@ -103,11 +103,11 @@ void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db);
 **                banksys_db* _net : 数据库模块的结构体
 ** Returned value:		none
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	none
+** Calling modules:		调用了网络模块
 **
-** Created by:				
-** Created Date:		
+** Created by:				Jiraiya    wanjunya.jiraiya@gmail.com
+** Created Date:		2010-7-2
 **-------------------------------------------------------------------------------------------------------
 ** Modified by:
 ** Modified date:
