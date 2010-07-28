@@ -59,16 +59,16 @@ struct	bankDB_result_account_info{
 	char		open_branch[51] ;	// opened in which branch
 	char		open_date[11] ;		// when opened
 	bool		type ;						// true for 活期 ， 否则死期
-	long		balance ;					// balance
+	double	balance ;					// balance
 	int		month_remain ;		// if 死期 ...
 };
 struct bankDB_result_loan_info{
 	char		loan_num[19] ; 			//loan number , length:18 
 	char		open_branch[51] ;		//opened in which branch
 	char		open_date[11] ;			//when opened
-	long		amount ;						//how much
+	double	amount ;						//how much
 	int		month_remain ;			//how many months remain
-	long		monthly_return ;		//how much monthly return
+	double	monthly_return ;		//how much monthly return
 };
 struct bankDB_result_info
 {
