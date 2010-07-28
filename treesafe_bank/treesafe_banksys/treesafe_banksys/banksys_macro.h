@@ -1,4 +1,5 @@
 //定义了一些简易的宏模板
+#define DEBUG_MID_INFO_TEST true
 
 //若指针__p_name为NULL,则返回void
 #define ARRSERT_POINTER_NULL(__p_name) \
@@ -9,5 +10,7 @@
 //并将内存全部出示化为0
 #define MALLOC_POINTER(__p_malloc , __type) \
 	(__p_malloc) = (__type*)calloc(1,sizeof(__type) ); \
+
+
 
 
