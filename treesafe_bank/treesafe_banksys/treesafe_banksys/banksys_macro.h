@@ -7,9 +7,11 @@
 	  return; \
 
 //申请类型为__type的内存,存放在指针__p_malloc中
+//实际是一个长度为n的数组
+//n = 1时，就是一个一般的内存申请
 //并将内存全部初始化为0
-#define MALLOC_POINTER(__p_malloc , __type) \
-	(__p_malloc) = (__type*)calloc(1,sizeof(__type) ); \
+#define MALLOC_POINTER(__p_malloc , _type , _len) \
+	(__p_malloc) = (_type*)calloc(_len,sizeof(_type) ); \
 
 
 
