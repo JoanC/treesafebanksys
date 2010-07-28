@@ -138,18 +138,20 @@ void mid_send_data_to_net(banksys_mid* _mid , banksys_net* _net);
 void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req);
 //将从数据库接受的运行结果数据转化为数据
 /*********************************************************************************************************
-** Function name:			
+** Function name:		mid_convert_rlt_to_send
 **
-** Descriptions:		
+** Descriptions:		将数据库的结果信息转化为将要被网络层发送的数据
 **
-** input parameters:		
-** Returned value:		
+** input parameters:	 
+**                       bankDB_result_info* _rlt : 数据库结果信息 
+**                       net_send_info* _send : 网络层将要发送的信息
+** Returned value:	 (void) none
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	none
+** Calling modules:		none
 **
-** Created by:				
-** Created Date:		
+** Created by:				Jiraiya    wanjunya.jiraiya@gmail.com
+** Created Date:		2010-7-26	
 **-------------------------------------------------------------------------------------------------------
 ** Modified by:
 ** Modified date:
@@ -157,24 +159,26 @@ void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req)
 ********************************************************************************************************/
 void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
 /*********************************************************************************************************
-** Function name:			
+** Function name:		mid_recieve_frame
 **
-** Descriptions:		
+** Descriptions:		一次从net中接受数据,并把数据传给db的过程
 **
 ** input parameters:		
-** Returned value:		
+**                           banksys_net* _net : 网络模块,从这里接受接收的数据
+**                           banksys_mid* _mid : 中继器模块
+**                           banksys_db* _db : 数据库模块
+** Returned value:	   void (none)
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables: none
+** Calling modules:		none
 **
-** Created by:				
-** Created Date:		
+** Created by:				Jiraiya    wanjunya.jiraiya@gmail.com
+** Created Date:		2010-7-26		
 **-------------------------------------------------------------------------------------------------------
 ** Modified by:
 ** Modified date:
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-//一次从net中接受数据,并把数据传给db的过程
 void mid_recieve_frame(banksys_net* _net,
 	banksys_mid* _mid ,banksys_db* _db);
 /*********************************************************************************************************
