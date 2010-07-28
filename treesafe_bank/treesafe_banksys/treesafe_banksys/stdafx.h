@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <tchar.h>
 #include <stdlib.h>
+#include <signal.h>
 
 
 // TODO: reference additional headers your program requires here
@@ -19,3 +20,9 @@
 
 //net debug information
 #define DEBUG_NET_INFO
+
+//db debug information
+#define DEBUG_DB_INFO
+
+//frame debug information
+#define DEBUG_FRAME_INFO
