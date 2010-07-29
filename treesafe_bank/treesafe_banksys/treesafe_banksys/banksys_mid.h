@@ -22,6 +22,7 @@
 #define _BANKSYS_MID_H_
 
 #include "banksys_data_struct.h"
+#include "banksys_macro.h"
 //#include "banksys_net.h"
 //#include "banksys_db.h"
 

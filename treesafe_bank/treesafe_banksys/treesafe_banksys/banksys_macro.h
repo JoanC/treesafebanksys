@@ -13,6 +13,11 @@
 #define MALLOC_POINTER(__p_malloc , _type , _len) \
 	(__p_malloc) = (_type*)calloc(_len,sizeof(_type) ); \
 
-
+//mid的输出信息
+#if defined DEBUG_MID_INFO
+#define DEBUG_MID_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_MID_PRINT(x) {};
+#endif
 
 
