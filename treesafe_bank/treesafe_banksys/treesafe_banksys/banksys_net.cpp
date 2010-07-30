@@ -64,3 +64,20 @@ void net_send_data(banksys_net &sServer)
 	printf("end send data!\n");
 #endif
 }
+
+void net_recieve_frame(banksys_net* sServer)
+{
+	net_add_connection(sServer);
+	net_wait_for_request(sServer);
+	net_recieve_data(sServer);
+	net_release_connection(sServer);
+}
+
+void net_send_frame(banksys_net* sServer)
+{
+	net_add_connection(sServer);
+	net_wait_for_request(sServer);
+	net_send_data(sServer);
+	net_release_connection(sServer);
+}
+
