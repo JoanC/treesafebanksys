@@ -1,10 +1,15 @@
+#define __LIST_NODE_NAME(_type) _list_node_##_type
+
 #define __DATA_LIST_NODE(_type) \
-struct list_node{ \
+struct __LIST_NODE_NAME(_type){ \
 	_type _data; \
-    list_node* _next; \
-};\
+    __LIST_NODE_NAME(_type)* _next; \
+} ;
 
+#define List(_type){ \
+    
 
+/*
 #define _LIST_DEC(_type) \
   __DATA_LIST_NODE(_type)
 
@@ -29,7 +34,7 @@ struct list_node{ \
 	_pos->_next = _new; \
 	_new->_next = _temp; \
 	return; \
-} \
+} \*/
 
 
 void test();
