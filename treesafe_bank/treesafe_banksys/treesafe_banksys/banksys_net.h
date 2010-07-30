@@ -28,7 +28,7 @@
 **
 ** Descriptions:			add a connect to banksys		
 **
-** input parameters:		banksys_net *sServer
+** input parameters:		banksys_net *sServer------the banksys_net struct modules
 ** Returned value:		    NULL
 **         
 ** Used global variables:	NULL
@@ -47,7 +47,7 @@ void net_add_connection(banksys_net *sServer);
 **
 ** Descriptions:			release a connection
 **
-** input parameters:		banksys_net *sServer
+** input parameters:		banksys_net *sServer------the banksys_net struct modules   
 ** Returned value:		
 **         
 ** Used global variables:	NULL
@@ -67,7 +67,7 @@ void net_release_connection(banksys_net *sServer);
 **
 ** Descriptions:			wait for client to request
 **
-** input parameters:		banksys_net *sServer
+** input parameters:		banksys_net *sServer------the banksys_net struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
@@ -86,7 +86,7 @@ void net_wait_for_request(banksys_net *sServer);
 **
 ** Descriptions:			recieve net data
 **
-** input parameters:		banksys_net *sServer
+** input parameters:		banksys_net *sServer------the banksys_net struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
@@ -105,7 +105,7 @@ void net_recieve_data(banksys_net *sServer);
 **
 ** Descriptions:			send net data
 **
-** input parameters:		banksys_net *sServer
+** input parameters:		banksys_net *sServer------the banksys_net struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
@@ -127,7 +127,8 @@ void net_send_data(banksys_net *sServer);
 **
 ** Descriptions:			recieve from the mid
 **
-** input parameters:		banksys_mid* _mid,banksys_net* sServer
+** input parameters:		banksys_mid* _mid------the banksys_mid struct modules
+**                          banksys_net* sServer------the banksys_net struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	mid
@@ -147,7 +148,8 @@ void net_recieve_frame(banksys_mid* _mid,banksys_net* sServer);
 **
 ** Descriptions:			send data to mid
 **
-** input parameters:		banksys_mid* _mid,banksys_net* sServer
+** input parameters:		banksys_mid* _mid------the banksys_mid struct modules
+**							banksys_net* sServer------the banksys_net struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
