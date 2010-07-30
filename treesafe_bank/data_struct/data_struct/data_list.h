@@ -1,13 +1,26 @@
 #define __LIST_NODE_NAME(_type) _list_node_##_type
 
+#define LIST(_type) __LIST_NODE_NAME(_type)
+
 #define __DATA_LIST_NODE(_type) \
 struct __LIST_NODE_NAME(_type){ \
 	_type _data; \
     __LIST_NODE_NAME(_type)* _next; \
 } ;
 
-#define List(_type){ \
-    
+#define __LIST_DEC(_type){
+   static bool is_dec; 
+}
+
+#define _LIST_ADD_NODE(_type,_pos,_new){\
+   if(!(_pos&&_new)) return;\
+   if(!_pos->_next){\
+       _pos->_next = _new; \
+       _new->_next = NULL; \
+	   return; \
+   } \
+
+}
 
 /*
 #define _LIST_DEC(_type) \
