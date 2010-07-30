@@ -118,7 +118,7 @@ void net_recieve_data(banksys_net *sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-/ nd net data(the size of data is less than 80 bytes)
+// send net data(the size of data is less than 80 bytes)
 void net_send_data(banksys_net *sServer);
 
 ////////////////////////////////////////////////////////////////
