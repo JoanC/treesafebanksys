@@ -4,15 +4,15 @@
 **                                
 **
 **--------------File Info-------------------------------------------------------------------------------
-** File name:			
-** Last modified Date:
-** Last Version:		
-** Descriptions: 		
+** File name:			banksys_net			
+** Last modified Date:	2010-7-30
+** Last Version:		0.4		
+** Descriptions:		the net action of treesafe and banksys 		
 **
 **------------------------------------------------------------------------------------------------------
-** Created by:			
-** Created date:		
-** Version:			
+** Created by:			zhoujiayun
+** Created date:		2010-7-1
+** Version:				0.1
 ** Descriptions:		
 **
 ********************************************************************************************************/
@@ -24,152 +24,142 @@
 
 
 /*********************************************************************************************************
-** Function name:			
+** Function name:			net_add_connect
 **
-** Descriptions:		
+** Descriptions:			add a connect to banksys		
 **
-** input parameters:		
-** Returned value:		
+** input parameters:		banksys_net *sServer
+** Returned value:		    NULL
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	NULL
+** Calling modules:			NULL
 **
-** Created by:				
-** Created Date:		
+** Created by:				zhoujiayun
+** Created Date:			2010-7-18
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:				zhoujiayun
+** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-//add connection
 void net_add_connection(banksys_net *sServer);
 /*********************************************************************************************************
-** Function name:			
+** Function name:			net_release_connection
 **
-** Descriptions:		
+** Descriptions:			release a connection
 **
-** input parameters:		
+** input parameters:		banksys_net *sServer
 ** Returned value:		
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	NULL
+** Calling modules:			NULL
 **
-** Created by:				
-** Created Date:		
+** Created by:				zhoujiayun
+** Created Date:			2010-7-18
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:				zhoujiayun
+** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 //release connection
 void net_release_connection(banksys_net *sServer);
 /*********************************************************************************************************
-** Function name:			
+** Function name:			net_wait_for_request
 **
-** Descriptions:		
+** Descriptions:			wait for client to request
 **
-** input parameters:		
-** Returned value:		
+** input parameters:		banksys_net *sServer
+** Returned value:			NULL
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	NULL
+** Calling modules:			NULL
 **
-** Created by:				
-** Created Date:		
+** Created by:				zhoujiayun
+** Created Date:			2010-7-18
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:				zhoujiayun
+** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-//wait for request
 void net_wait_for_request(banksys_net *sServer);
 /*********************************************************************************************************
-** Function name:			
+** Function name:			net_recieve_data
 **
-** Descriptions:		
+** Descriptions:			recieve net data
 **
-** input parameters:		
-** Returned value:		
+** input parameters:		banksys_net *sServer
+** Returned value:			NULL
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	NULL
+** Calling modules:			NULL
 **
-** Created by:				
-** Created Date:		
+** Created by:				zhoujiayun
+** Created Date:			2010-7-18
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:				zhoujiayun
+** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-//recieve net data(the size of data is less than 80 bytes)
 void net_recieve_data(banksys_net *sServer);
 /*********************************************************************************************************
-** Function name:			
+** Function name:			net_send_data
 **
-** Descriptions:		
+** Descriptions:			send net data
 **
-** input parameters:		
-** Returned value:		
+** input parameters:		banksys_net *sServer
+** Returned value:			NULL
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	NULL
+** Calling modules:			NULL
 **
-** Created by:				
-** Created Date:		
+** Created by:				zhoujiayun
+** Created Date:			2010-7-18
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:				zhoujiayun
+** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-//send net data(the size of data is less than 80 bytes)
+/ nd net data(the size of data is less than 80 bytes)
 void net_send_data(banksys_net *sServer);
 
 ////////////////////////////////////////////////////////////////
-//jiraiya's code
-//把上面的小函数合并成主函式
-//接受主函式
-//接受包 --> 整合为接收信息 --> 发送给mid 的过程...
 /*********************************************************************************************************
-** Function name:			
+** Function name:			net_recieve_frame
 **
-** Descriptions:		
+** Descriptions:			recieve from the mid
 **
-** input parameters:		
-** Returned value:		
+** input parameters:		banksys_mid* _mid,banksys_net* sServer
+** Returned value:			NULL
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	mid
+** Calling modules:			NULL
 **
-** Created by:				
-** Created Date:		
+** Created by:				zhoujiayun
+** Created Date:			2010-7-28
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:				zhoujiayun
+** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 void net_recieve_frame(banksys_mid* _mid,banksys_net* sServer);
 
 /*********************************************************************************************************
-** Function name:			
+** Function name:			net_send_frame
 **
-** Descriptions:		
+** Descriptions:			send data to mid
 **
-** input parameters:		
-** Returned value:		
+** input parameters:		banksys_mid* _mid,banksys_net* sServer
+** Returned value:			NULL
 **         
-** Used global variables:	
-** Calling modules:			
+** Used global variables:	NULL
+** Calling modules:			mid
 **
-** Created by:				
-** Created Date:		
+** Created by:				zhoujiayun
+** Created Date:			2010-7-28
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by:				zhoujiayun
+** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-//jiraiya's code
-//发送主函式
-//从mid接受信息 --> 发送信息
 void net_send_frame(banksys_mid* _mid,banksys_net* sServer);
 
 #endif
