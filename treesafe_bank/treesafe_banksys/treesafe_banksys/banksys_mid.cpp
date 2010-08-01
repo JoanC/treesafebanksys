@@ -25,6 +25,7 @@ void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
 void mid_get_data_from_db(banksys_mid* _mid ,banksys_db* _db){
 	ARRSERT_POINTER_NULL(_mid && _db)//中间转换器无效或数据库无效
 		DEBUG_MID_PRINT("get reslut data from db\n")
+	ARRSERT_POINTER_NULL(_db->rlt.pRlt)
 	_mid->rlt.nCount = _db->rlt.nCount;
 	memcpy(_mid->rlt.pRlt,_db->rlt.pRlt,strlen((char*)_db->rlt.pRlt));
 		//_mid->rlt = _db->rlt;//获得数据
@@ -52,7 +53,8 @@ void mid_send_data_to_net(banksys_mid* _mid ,banksys_net* _net){
 		//发送，传递
 		//??????
 	//不知道 stSendPaketSize怎么传递
-	memcpy(_net->send.cSendInfo,_mid->send.cSendInfo,sizeof(_mid->send.cSendInfo));
+	ARRSERT_POINTER_NULL(_mid->send.cSendInfo)
+	memcpy(_net->send.cSendInfo,_mid->send.cSendInfo,strlen(_mid->send.cSendInfo));
 	DEBUG_MID_PRINT("send done\n")
 }
 
