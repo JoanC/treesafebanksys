@@ -5,8 +5,10 @@
 //从网络层中获取数据
 void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
 	ARRSERT_POINTER_NULL(_mid && _net)//中间转换器无效或_net层为空
-		DEBUG_MID_PRINT("get recieved data from net\n")
-		_mid->rec = _net->rec;//获得数据
+	DEBUG_MID_PRINT("get recieved data from net\n")
+	_mid->rec.stRecPackSize = _net->rec.stRecPackSize;
+	strcpy(_mid->rec.cRecieveInfo,_net->rec.cRecieveInfo);
+		//_mid->rec = _net->rec;//获得数据
 	//#ifdef DEBUG_MID_INFO
 	DEBUG_MID_PRINT("recieve done\n")
 		//#endif
@@ -19,7 +21,9 @@ void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
 void mid_get_data_from_db(banksys_mid* _mid ,banksys_db* _db){
 	ARRSERT_POINTER_NULL(_mid && _db)//中间转换器无效或数据库无效
 		DEBUG_MID_PRINT("get reslut data from db\n")
-		_mid->rlt = _db->rlt;//获得数据
+	_mid->rlt.nCount = _db->rlt.nCount;
+	memcpy(_mid->rlt.pRlt,_db->rlt.pRlt,strlen((char*)_db->rlt.pRlt));
+		//_mid->rlt = _db->rlt;//获得数据
 	DEBUG_MID_PRINT("recieve done\n")
 		DEBUG_MID_PRINT("check recieved data , success\n")
 }
@@ -29,9 +33,10 @@ void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db){
 	ARRSERT_POINTER_NULL(_mid && _db)//中间转换器无效或数据库无效
 		DEBUG_MID_PRINT("check send data , success\n")
 		DEBUG_MID_PRINT("send request data to db\n")
-		//发送/传递
-		_db->req = _mid->req;//发送数据
-
+	//发送/传递
+	strcpy(_db->req.id,_mid->req.id);
+	_db->req.type = _mid->req.type;
+	//	_db->req = _mid->req;//发送数据
 	DEBUG_MID_PRINT("send done\n")
 }
 
@@ -41,8 +46,9 @@ void mid_send_data_to_net(banksys_mid* _mid ,banksys_net* _net){
 		DEBUG_MID_PRINT("check send data , success\n")
 		DEBUG_MID_PRINT("send result data to net\n")
 		//发送，传递
-		_net->send = _mid->send;//发送数据
-
+		//??????
+	//不知道 stSendPaketSize怎么传递
+	memcpy(_net->send.cSendInfo,_mid->send.cSendInfo,sizeof(_mid->send.cSendInfo));
 	DEBUG_MID_PRINT("send done\n")
 }
 
