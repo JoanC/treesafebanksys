@@ -1,0 +1,3 @@
+﻿<?xml version="1.0"?>
+<ServiceConfiguration serviceName="test" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+</ServiceConfiguration>
