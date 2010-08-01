@@ -7,6 +7,10 @@ void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
 	ARRSERT_POINTER_NULL(_mid && _net)//中间转换器无效或_net层为空
 	DEBUG_MID_PRINT("get recieved data from net\n")
 	_mid->rec.stRecPackSize = _net->rec.stRecPackSize;
+	if(_net->rec.stRecPackSize == 0){
+		DEBUG_MID_PRINT("can't recieve data from net\n");
+		return;
+	}
 	strcpy(_mid->rec.cRecieveInfo,_net->rec.cRecieveInfo);
 		//_mid->rec = _net->rec;//获得数据
 	//#ifdef DEBUG_MID_INFO
@@ -56,6 +60,7 @@ void mid_send_data_to_net(banksys_mid* _mid ,banksys_net* _net){
 void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req){
 	ARRSERT_POINTER_NULL(_rec) //接收数据为空
 		DEBUG_MID_PRINT("convert from net_recieved_info to bankDB_request_info...\n")
+		ARRSERT_POINTER_NULL(_rec->cRecieveInfo);
 		memcpy(_req,_rec->cRecieveInfo,strlen(_rec->cRecieveInfo));//数据复制
 }
 //将从数据库接受的运行结果数据转化为数据
@@ -70,7 +75,7 @@ void mid_recieve_frame(banksys_net* _net,
 	banksys_mid* _mid , banksys_db* _db){
 		ARRSERT_POINTER_NULL(_mid && _net && _db)//不可有一者为空
 			//开始从net接受一个数据
-			mid_get_data_from_net(_mid , _net);
+		mid_get_data_from_net(_mid , _net);
 		//转化数据
 		mid_convert_rec_to_req(&_mid->rec , &_mid->req);
 		//将请求数据发给db
