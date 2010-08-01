@@ -13,7 +13,6 @@ bool ConnectDB(_ConnectionPtr *pConn)
 	//setting param...
 	(*pConn) ->Open("","","",-1) ;
 	//open it 
-
 	return true ; //return success or not
 }
 void DisconnectDB(_ConnectionPtr *pConn)

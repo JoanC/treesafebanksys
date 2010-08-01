@@ -15,6 +15,9 @@ banksys_frame*  banksys_frame_allocate();
 //接受数据主函式
 void banksys_frame_recieve(banksys_frame* _frame);
 
+//数据库处理总函数
+void banksys_frame_db(banksys_frame* _frame);
+
 //发送主函式
 void banksys_frame_send(banksys_frame* _frame);
 

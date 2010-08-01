@@ -141,7 +141,7 @@ void net_send_data(banksys_net *sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void net_recieve_frame(banksys_mid* _mid,banksys_net* sServer);
+void net_recieve_frame(banksys_net* sServer);
 
 /*********************************************************************************************************
 ** Function name:			net_send_frame
@@ -162,6 +162,6 @@ void net_recieve_frame(banksys_mid* _mid,banksys_net* sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void net_send_frame(banksys_mid* _mid,banksys_net* sServer);
+void net_send_frame(banksys_net* sServer);
 
 #endif
