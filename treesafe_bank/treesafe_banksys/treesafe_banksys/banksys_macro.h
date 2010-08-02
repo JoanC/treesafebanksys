@@ -1,3 +1,5 @@
+#ifndef _BANKSYS_MACRO_H_
+#define _BANKSYS_MACRO_H_
 
 extern "C"{
 	//定义了一些简易的宏模板
@@ -23,3 +25,4 @@ extern "C"{
 #endif
 }
 
+#endif
