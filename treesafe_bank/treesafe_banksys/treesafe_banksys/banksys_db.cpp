@@ -13,6 +13,10 @@ bool ConnectDB(_ConnectionPtr *pConn)
 	//setting param...
 	(*pConn) ->Open("","","",-1) ;
 	//open it 
+
+	char outputStr[] = "success to connect the database..." ;
+	printf("%s\r\n",outputStr) ;
+
 	return true ; //return success or not
 }
 void DisconnectDB(_ConnectionPtr *pConn)
@@ -20,9 +24,16 @@ void DisconnectDB(_ConnectionPtr *pConn)
 	(*pConn)->Close();
 	pConn->Release();
 	::CoUninitialize();
+
+	char outputStr[] = "success to disconnect the database..." ;
+	printf("%s\r\n",outputStr) ;
 }
 bool Cust_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn)
 {
+	char outputStr[100] = "request for the customer's information whose id = " ;
+	strcat_s(outputStr,_rlt->req.id) ;
+	printf("%s\r\n",outputStr) ;
+
 	_variant_t vt ;
 	char cSqlStr[100] = "select * from Table_Cust_Info where id = " ;
 	strcat_s(cSqlStr,_rlt->req.id) ;
@@ -108,6 +119,11 @@ bool Cust_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn)
 }
 bool	Account_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn)
 {
+	char outputStr[100] = "request for the account information whose id = " ;
+	strcat_s(outputStr,_rlt->req.id) ;
+	printf("%s\r\n",outputStr) ;
+
+
 	const char table_deposit[]		=	" Table_Deposit " ;
 	const char table_account[]		=	" Table_Account " ;
 
@@ -214,8 +230,13 @@ bool	Account_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn)
 }
 bool	Loan_info_inquiry(banksys_db *_rlt,_ConnectionPtr *_pConn)
 {
+	char outputStr[100] = "request for the loan information whose id = " ;
+	strcat_s(outputStr,_rlt->req.id) ;
+	printf("%s\r\n",outputStr) ;
+
+
 	const char table_borrow[]		=	" Table_Borrow " ;
-	const char table_Loan[]		=	" Table_Loan " ;
+	const char table_Loan[]			=	" Table_Loan " ;
 
 	char cSqlStr[100] = "select * from" ;
 	strcat_s(cSqlStr,table_borrow) ;
