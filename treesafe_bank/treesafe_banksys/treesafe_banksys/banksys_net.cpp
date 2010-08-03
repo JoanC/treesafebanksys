@@ -7,14 +7,34 @@
 //add connection
 void net_add_connection(banksys_net *sServer)
 {
-	int reVal;
-	unsigned long u1 = 1;
-#ifdef DEBUG_NET_INFO
-	printf("init server socket!\n");
-#endif
-	reVal = ioctlsocket(sServer->banksys_server.sServer, FIONBIO,(unsigned long*)&u1);
-	if (SOCKET_ERROR == reVal)
+	int retVal;
+	if(WSAStartup(MAKEWORD(2,2),&sServer->banksys_server.wsd)!=0)
+	{
+		printf("WSAStartup failed!\n");
 		return;
+	}
+
+	sServer->banksys_server.sServer = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+	if(INVALID_SOCKET == sServer->banksys_server.sServer)
+	{
+		printf("socket failed!\n");
+		WSACleanup();
+		return;
+	}
+
+
+
+	sServer->banksys_server.addrServ.sin_family = AF_INET;
+	sServer->banksys_server.addrServ.sin_port = htons(4999);
+	sServer->banksys_server.addrServ.sin_addr.s_addr = INADDR_ANY;
+	retVal = bind(sServer->banksys_server.sServer,(LPSOCKADDR)&sServer->banksys_server.addrServ,sizeof(SOCKADDR_IN));
+	if(SOCKET_ERROR == retVal)
+	{
+		printf("bind failed!");
+		closesocket(sServer->banksys_server.sServer);
+		WSACleanup();
+		return;
+	}
 }
 
 //release connection
@@ -29,13 +49,28 @@ void net_release_connection(banksys_net *sServer)
 //wait for request
 void net_wait_for_request(banksys_net *sServer)
 {
+	int retVal;
 #ifdef DEBUG_NET_INFO
 	printf("wait for client!\n");
 #endif
-	int reVal;
-	reVal = listen(sServer->banksys_server.sServer,SOMAXCONN);
-	if (SOCKET_ERROR == reVal)
+	retVal = listen(sServer->banksys_server.sServer,1);
+	if (SOCKET_ERROR == retVal)
+	{
+		printf("listen failed!\n");
+		closesocket(sServer->banksys_server.sServer);
+		WSACleanup();
 		return;
+	}
+	
+	int addrClientlen = sizeof(sServer->banksys_server.addrClient);
+	sServer->banksys_server.sClient = accept(sServer->banksys_server.sServer,(sockaddr FAR*)&sServer->banksys_server.addrClient,&addrClientlen);
+	if(INVALID_SOCKET == sServer->banksys_server.sClient)
+	{
+		printf("accept failed!\n");
+		closesocket(sServer->banksys_server.sServer);
+		WSACleanup();
+		return;
+	}
 }
 
 //recieve net data(the size of data is less than 80 bytes)
@@ -45,7 +80,15 @@ void net_recieve_data(banksys_net* sServer)
 	printf("start to recevie data!\n");
 #endif
 	int reVal;
-	reVal = recv(sServer->banksys_server.sServer,sServer->rec.cRecieveInfo,sServer->rec.stRecPackSize,0);
+	reVal = recv(sServer->banksys_server.sClient,sServer->rec.cRecieveInfo,128,0);
+	if(SOCKET_ERROR == reVal)
+	{
+		printf("recv failed!\n");
+		closesocket(sServer->banksys_server.sServer);
+		closesocket(sServer->banksys_server.sClient);
+		WSACleanup();
+		return;
+	}
 #ifdef DEBUG_NET_INFO
 	printf("end receive data!\n");
 #endif
