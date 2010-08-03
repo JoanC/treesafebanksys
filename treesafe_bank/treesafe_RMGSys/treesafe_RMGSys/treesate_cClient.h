@@ -17,9 +17,11 @@
 **
 ********************************************************************************************************/
 
+#include <winsock2.h>
+#pragma comment(lib,"ws2_32.lib")
+
 #ifndef _CCLIENT_H_
 #define _CCLIENT_H_
-#include <winsock2.h>
 const int BUF_SIZE = 80;
 
 struct cClient
