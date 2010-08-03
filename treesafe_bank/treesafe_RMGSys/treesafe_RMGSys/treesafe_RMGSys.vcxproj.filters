@@ -22,6 +22,9 @@
     <Filter Include="error">
       <UniqueIdentifier>{09273592-3687-49e8-9de0-6ec28c7b7703}</UniqueIdentifier>
     </Filter>
+    <Filter Include="database">
+      <UniqueIdentifier>{e3e35608-ad8d-418e-865c-ec5d90a075ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -42,6 +45,12 @@
     <ClInclude Include="error_type.h">
       <Filter>error</Filter>
     </ClInclude>
+    <ClInclude Include="database_mgr.h">
+      <Filter>database</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_db_struct.h">
+      <Filter>database</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -50,11 +59,11 @@
     <ClCompile Include="treesafe_RMGSys.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sys_login.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="error_type.cpp">
       <Filter>error</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_login.cpp">
+      <Filter>login</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

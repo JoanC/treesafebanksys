@@ -33,6 +33,9 @@ struct login_info{
 	void* log_login;//日志信息
 	void* report_login;//报表信息
 	//...其他
+	bool is_employee;//登陆的用户是否是雇员
+	int cust_id;//如果是用户,那么用户id
+	int employee_id;//如果是雇员,那么雇员的id
 };
 
 //从UI中取得输入信息
