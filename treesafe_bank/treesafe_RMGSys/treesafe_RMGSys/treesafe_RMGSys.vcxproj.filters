@@ -54,7 +54,7 @@
     <ClInclude Include="sys_db_struct.h">
       <Filter>database</Filter>
     </ClInclude>
-    <ClInclude Include="G:\treesate_cClient.h">
+    <ClInclude Include="treesate_cClient.h">
       <Filter>net_client</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClCompile Include="sys_login.cpp">
       <Filter>login</Filter>
     </ClCompile>
-    <ClCompile Include="G:\treesafe_cClient.cpp">
+    <ClCompile Include="treesafe_cClient.cpp">
       <Filter>net_client</Filter>
     </ClCompile>
   </ItemGroup>

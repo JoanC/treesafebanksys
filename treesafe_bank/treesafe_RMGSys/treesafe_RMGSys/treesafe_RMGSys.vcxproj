@@ -77,21 +77,21 @@
   <ItemGroup>
     <ClInclude Include="database_mgr.h" />
     <ClInclude Include="error_type.h" />
-    <ClInclude Include="G:\treesate_cClient.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="sys_apply.h" />
     <ClInclude Include="sys_db_struct.h" />
     <ClInclude Include="sys_login.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error_type.cpp" />
-    <ClCompile Include="G:\treesafe_cClient.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="sys_login.cpp" />
+    <ClCompile Include="treesafe_cClient.cpp" />
     <ClCompile Include="treesafe_RMGSys.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
