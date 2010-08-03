@@ -1,4 +1,5 @@
-#include "cClient.h"
+#include "StdAfx.h"
+#include "treesate_cClient.h"
 
 
 //init client
@@ -8,7 +9,7 @@ void InitClient(cClient* client)
 	if (WSAStartup(MAKEWORD(2,2),&wsd) !=0)
 	{
 		printf("WSAStartup failed!\n");
-		return -1;
+		return;
 	}
 
 }
