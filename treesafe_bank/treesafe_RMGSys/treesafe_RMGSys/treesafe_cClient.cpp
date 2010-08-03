@@ -44,6 +44,7 @@ void Connect2Server(cClient* client)
 		WSACleanup();
 		return;
 	}
+	printf("connect OK");
 }
 
 //send data
