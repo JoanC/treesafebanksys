@@ -25,6 +25,9 @@
     <Filter Include="database">
       <UniqueIdentifier>{e3e35608-ad8d-418e-865c-ec5d90a075ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="net_client">
+      <UniqueIdentifier>{76658221-6b22-4776-91b6-e37389e5d62f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -51,6 +54,9 @@
     <ClInclude Include="sys_db_struct.h">
       <Filter>database</Filter>
     </ClInclude>
+    <ClInclude Include="G:\treesate_cClient.h">
+      <Filter>net_client</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -64,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="sys_login.cpp">
       <Filter>login</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\treesafe_cClient.cpp">
+      <Filter>net_client</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
