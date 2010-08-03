@@ -164,4 +164,25 @@ void net_recieve_frame(banksys_net* sServer);
 ********************************************************************************************************/
 void net_send_frame(banksys_net* sServer);
 
+/*********************************************************************************************************
+** Function name:			net_send_frame
+**
+** Descriptions:			send data to mid
+**
+** input parameters:		banksys_net* sServer------the banksys_net struct modules
+**							
+** Returned value:			NULL
+**         
+** Used global variables:	NULL
+** Calling modules:			mid
+**
+** Created by:				zhoujiayun
+** Created Date:			2010-8-3
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				zhoujiayun
+** Modified date:			2010-8-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+void initNet(banksys_net* sServer);
+
 #endif

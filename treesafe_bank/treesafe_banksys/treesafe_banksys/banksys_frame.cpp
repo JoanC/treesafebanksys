@@ -2,12 +2,12 @@
 #include "banksys_frame.h"
 #include "banksys_macro.h"
 
-
 banksys_frame* banksys_frame_allocate(){
 	banksys_frame* _frame;
 	//为三个模块申请内存
 	MALLOC_POINTER(_frame,banksys_frame,1);
 	MALLOC_POINTER(_frame->sys_net,banksys_net,1);
+	//_frame->sys_net = (banksys_net*)malloc(sizeof(banksys_net));
 	MALLOC_POINTER(_frame->sys_mid,banksys_mid,1);
 	MALLOC_POINTER(_frame->sys_db,banksys_db,1);
 	return _frame;

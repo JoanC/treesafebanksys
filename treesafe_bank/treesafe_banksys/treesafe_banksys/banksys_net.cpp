@@ -124,3 +124,11 @@ void net_send_frame(banksys_net* sServer)
 	net_release_connection(sServer);
 }
 
+void initNet(banksys_net* sServer)
+{
+	sServer->rec.stRecPackSize = BUF_SIZE;
+	sServer->rec.cRecieveInfo = (char*)malloc(sizeof(char));
+	sServer->send.stSendPackSize = BUF_SIZE;
+	sServer->send.cSendInfo = (char*)malloc(sizeof(char));
+}
+

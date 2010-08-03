@@ -95,3 +95,4 @@ void mid_send_frame(banksys_net* _net,
 		//将请求发给net
 		mid_send_data_to_net(_mid,_net);
 }
+

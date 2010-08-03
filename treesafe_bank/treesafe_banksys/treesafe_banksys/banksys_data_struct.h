@@ -22,22 +22,12 @@ struct net_recieved_info
 {
 	size_t stRecPackSize;
 	char* cRecieveInfo;
-	net_recieved_info()
-	{
-		stRecPackSize = BUF_SIZE;
-		cRecieveInfo = (char*)malloc(sizeof(char)*BUF_SIZE);
-	}
 };
 
 //send info
 struct net_send_info{
 	size_t stSendPackSize;
 	char* cSendInfo;
-	net_send_info()
-	{
-		stSendPackSize = BUF_SIZE;
-		cSendInfo = (char*)malloc(sizeof(char)*BUF_SIZE);
-	}
 };
 
 struct banksys_net{
