@@ -19,7 +19,7 @@
 
 #ifndef _CCLIENT_H_
 #define _CCLIENT_H_
-
+#include <winsock2.h>
 const int BUF_SIZE = 80;
 
 struct cClient
@@ -129,3 +129,5 @@ void SendData(cClient* client);
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 void ExitClient(cClient* client);
+
+#endif
