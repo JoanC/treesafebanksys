@@ -51,7 +51,6 @@ void Connect2Server(cClient* client)
 void SendData(cClient* client)
 {
 	int retVal;
-	ZeroMemory(client->buf,BUF_SIZE);
 	retVal = send(client->sHost,client->buf,strlen(client->buf),0);
 	if (SOCKET_ERROR == retVal)
 	{
