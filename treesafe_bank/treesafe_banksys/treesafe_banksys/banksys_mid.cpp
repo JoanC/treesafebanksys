@@ -11,8 +11,12 @@ void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
 		DEBUG_MID_PRINT("can't recieve data from net\n");
 		return;
 	}
-	strcpy(_mid->rec.cRecieveInfo,_net->rec.cRecieveInfo);
-		//_mid->rec = _net->rec;//获得数据
+	//为接受的字符串开辟一个空间
+	_mid->rec.cRecieveInfo = (char*)malloc(strlen(_net->rec.cRecieveInfo));
+	//strcpy(_mid->rec.cRecieveInfo,_net->rec.cRecieveInfo,);
+	memcpy(_mid->rec.cRecieveInfo,_net->rec.cRecieveInfo
+		,strlen(_net->rec.cRecieveInfo));
+	//_mid->rec = _net->rec;//获得数据
 	//#ifdef DEBUG_MID_INFO
 	DEBUG_MID_PRINT("recieve done\n")
 		//#endif
