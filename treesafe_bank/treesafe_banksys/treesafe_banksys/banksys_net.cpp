@@ -112,6 +112,7 @@ void net_recieve_frame(banksys_net* sServer)
 {
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
+	initNet(sServer);
 	net_recieve_data(sServer);
 	net_release_connection(sServer);
 }
@@ -120,6 +121,7 @@ void net_send_frame(banksys_net* sServer)
 {
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
+	initNet(sServer);
 	net_send_data(sServer);
 	net_release_connection(sServer);
 }
@@ -127,8 +129,8 @@ void net_send_frame(banksys_net* sServer)
 void initNet(banksys_net* sServer)
 {
 	sServer->rec.stRecPackSize = BUF_SIZE;
-	sServer->rec.cRecieveInfo = (char*)malloc(sizeof(char));
+	sServer->rec.cRecieveInfo = (char*)malloc(sizeof(char)*BUF_SIZE);
 	sServer->send.stSendPackSize = BUF_SIZE;
-	sServer->send.cSendInfo = (char*)malloc(sizeof(char));
+	sServer->send.cSendInfo = (char*)malloc(sizeof(char)*BUF_SIZE);
 }
 
