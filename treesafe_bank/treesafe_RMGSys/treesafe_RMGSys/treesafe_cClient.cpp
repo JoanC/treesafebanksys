@@ -12,7 +12,6 @@ void InitClient(cClient* client)
 		printf("WSAStartup failed!\n");
 		return;
 	}
-
 }
 
 //create socket
