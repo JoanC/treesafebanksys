@@ -7,17 +7,20 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	struct bankDB_request_info{
+	struct bankDB_request_info
+	{
 	int		type ;
 	char								id[19] ;
+	
 };
 
 	bankDB_request_info* test = new bankDB_request_info;
-	test->type = 1;
 	strcpy(test->id,"100000000000000000");
+	test->type = 1;
+
 
 	cClient client;
-	memset(client.buf,'\0',sizeof(*client.buf));
+	memset(client.buf,' ',sizeof(client.buf));
 	memcpy(client.buf,test,sizeof(*test));
 
 	InitClient(&client);
