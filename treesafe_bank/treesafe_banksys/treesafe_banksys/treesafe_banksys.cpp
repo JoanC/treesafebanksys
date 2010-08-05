@@ -16,11 +16,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		banksys_frame_send(pframe);
 		banksys_frame_deallocate(pframe);
 	}
-	banksys_net server;
-	net_add_connection(&server);
-	net_wait_for_request(&server);
-	net_recieve_data(&server);
-	printf("%s\n",server.rec.cRecieveInfo);
+	//banksys_net server;
+	//net_add_connection(&server);
+	//net_wait_for_request(&server);
+	//net_recieve_data(&server);
+	//printf("%s\n",server.rec.cRecieveInfo);
 	/*net_recieve_frame(&server);
 	printf("%s\n",server.rec.cRecieveInfo);*/
 	return 0;
