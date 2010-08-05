@@ -23,10 +23,11 @@ void banksys_frame_recieve(banksys_frame* _frame){
 
 void banksys_frame_db(banksys_frame* _frame){
 	_ConnectionPtr* _pConn = NULL;//数据库连接指针
-	ARRSERT_POINTER_NULL(_pConn)
 	MALLOC_POINTER(_pConn,_ConnectionPtr,1);
-	Loan_info_inquiry(_frame->sys_db,_pConn);//请求数据
+	ConnectDB(_pConn);
 	InquiryResult(_frame->sys_db,_pConn);//返回数据
+	DisconnectDB(_pConn);
+	free(_pConn);
 }
 
 void banksys_frame_send(banksys_frame* _frame){

@@ -12,6 +12,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	while(1){
 		banksys_frame* pframe = banksys_frame_allocate();
 		banksys_frame_recieve(pframe);
+		banksys_frame_db(pframe);
 		printf("%s\n",pframe->sys_net->rec.cRecieveInfo);
 		banksys_frame_send(pframe);
 		banksys_frame_deallocate(pframe);

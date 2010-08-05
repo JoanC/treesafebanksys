@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "banksys_db.h"
 
-const char c_strConenctionString[] = "Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source=192.168.0.101" ;
+const char c_strConenctionString[] = "Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source=10.60.37.110" ;
 
 bool ConnectDB(_ConnectionPtr *pConn)
 {
