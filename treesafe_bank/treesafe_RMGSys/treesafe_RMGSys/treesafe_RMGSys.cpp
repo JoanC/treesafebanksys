@@ -10,7 +10,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	struct bankDB_request_info
 	{
 	int		type ;
-	char								id[19] ;
+	char		id[19] ;
 	
 };
 
