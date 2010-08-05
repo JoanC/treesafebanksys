@@ -132,5 +132,7 @@ void initNet(banksys_net* sServer)
 	sServer->rec.cRecieveInfo = (char*)malloc(sizeof(char)*BUF_SIZE);
 	sServer->send.stSendPackSize = BUF_SIZE;
 	sServer->send.cSendInfo = (char*)malloc(sizeof(char)*BUF_SIZE);
+	memset(sServer->rec.cRecieveInfo,'\0',sizeof(sServer->rec.stRecPackSize));
+
 }
 
