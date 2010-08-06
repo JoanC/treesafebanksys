@@ -12,6 +12,7 @@ void mid_get_data_from_net(banksys_mid* _mid ,banksys_net* _net){
 		return;
 	}
 	//为接受的字符串开辟一个空间
+	//尚未free掉!!!
 	_mid->rec.cRecieveInfo = (char*)malloc(BUF_SIZE);
 	memset(_mid->rec.cRecieveInfo,'\0',BUF_SIZE);
 	//strcpy(_mid->rec.cRecieveInfo,_net->rec.cRecieveInfo,);
@@ -32,7 +33,14 @@ void mid_get_data_from_db(banksys_mid* _mid ,banksys_db* _db){
 		DEBUG_MID_PRINT("get reslut data from db\n")
 		ARRSERT_POINTER_NULL(_db->rlt.pRlt)
 		_mid->rlt.nCount = _db->rlt.nCount;
-	memcpy(_mid->rlt.pRlt,_db->rlt.pRlt,strlen((char*)_db->rlt.pRlt));
+	//如果使用memcpy则会报错
+	//	memcpy(_mid->rlt.pRlt,(char*)_db->rlt.pRlt,strlen((char*)_db->rlt.pRlt));
+	int _size = 0;
+	DB_INFO_SIZE(_mid->req.type,_size)
+	//分配内存!
+	//尚未释放!
+	_mid->rlt.pRlt = malloc(_size);
+	memcpy((char*)_mid->rlt.pRlt,(char*)_db->rlt.pRlt,_size);
 	//_mid->rlt = _db->rlt;//获得数据
 	DEBUG_MID_PRINT("recieve done\n")
 		DEBUG_MID_PRINT("check recieved data , success\n")
@@ -58,6 +66,8 @@ void mid_send_data_to_net(banksys_mid* _mid ,banksys_net* _net){
 		//发送，传递
 		//??????
 		//不知道 stSendPaketSize怎么传递
+		//难道传的是BUF_SIZE??
+		
 		ARRSERT_POINTER_NULL(_mid->send.cSendInfo)
 		memcpy(_net->send.cSendInfo,_mid->send.cSendInfo,strlen(_mid->send.cSendInfo));
 	DEBUG_MID_PRINT("send done\n")
@@ -74,6 +84,8 @@ void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req)
 void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send){
 	ARRSERT_POINTER_NULL(_rlt)//结果数据为空
 		DEBUG_MID_PRINT("convert from bankDB_result_info to net_send_info...\n")
+		int _size = 0;
+	    
 		memcpy(_send->cSendInfo,_rlt,strlen((char*)_rlt));//数据复制
 }
 

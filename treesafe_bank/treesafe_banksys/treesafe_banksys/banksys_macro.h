@@ -25,4 +25,15 @@ extern "C"{
 #endif
 }
 
+//根据type的不同,传递不同的结构体大小值
+//
+#define DB_INFO_SIZE(__db_type,__rlt_size){ \
+	switch (__db_type) { \
+	case(CUST_INFO): __rlt_size = sizeof(bankDB_result_cust_info);break;\
+	case(ACCOUNT_INFO):__rlt_size = sizeof(bankDB_result_account_info);break;\
+	case(LOAN_INFO):__rlt_size = sizeof(bankDB_result_loan_info);break;\
+	default:__rlt_size = -1;\
+};\
+}\
+
 #endif
