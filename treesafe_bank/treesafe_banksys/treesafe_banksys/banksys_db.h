@@ -31,6 +31,24 @@
 
 #import "C:\\Program Files\\Common Files\\System\\ado\\msado25.tlb" no_namespace rename("EOF","rsEOF")
 /*********************************************************************************************************
+** Function name:				GetIP
+**
+** Descriptions:					get ip address of the database by customer's inputing
+**
+** input parameters:			connectStr : char *
+** Returned value:				bool	
+**         
+** Used global variables:	
+** Calling modules:			
+**
+** Created by:					Sun
+** Created Date:				2010/8/7
+
+********************************************************************************************************/
+bool	GetIP(char *connectStr) ;
+
+
+/*********************************************************************************************************
 ** Function name:				ConnectDB
 **
 ** Descriptions:					before using the database, you must call this function.

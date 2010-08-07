@@ -1,10 +1,26 @@
 #include "stdafx.h"
 #include "banksys_db.h"
 
-const char c_strConenctionString[] = "Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source=10.60.37.110" ;
+const int nLenOfConnStr = 100 ;
+
+bool	GetIP(char *connectStr)
+{
+	char ch_ip[16] ;
+	memset( ch_ip , '\0' , sizeof(ch_ip) ) ;
+	printf("please input the ip address of the database...\r\n") ;
+	scanf("%s",ch_ip) ;
+	strcpy_s(connectStr,nLenOfConnStr,"Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source=") ;
+	strcat_s(connectStr,nLenOfConnStr,ch_ip) ;
+
+	return true ;
+}
 
 bool ConnectDB(_ConnectionPtr *pConn)
 {
+	char c_strConenctionString[nLenOfConnStr] ;
+	memset(c_strConenctionString,'\0',nLenOfConnStr ) ;
+
+	GetIP(c_strConenctionString) ;
 	::CoInitialize(0);
 	pConn->CreateInstance(__uuidof(Connection));
 	(*pConn)->ConnectionString = c_strConenctionString ;
