@@ -6,8 +6,7 @@
 
 char *	GetIP()
 {
-	
-	const char partConnStr[] = "Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source="  ; 
+	const char partConnStr[] = "Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source="  ;
 	const int IPLen = 16 ;
 	int nLenOfConnStr = strlen(partConnStr) + IPLen ;
 	char *connStr = new char[nLenOfConnStr] ;
