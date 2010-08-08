@@ -1,35 +1,43 @@
 #include "stdafx.h"
 #include "banksys_db.h"
 
-const int nLenOfConnStr = 100 ;
 
-bool	GetIP(char *connectStr)
+  
+
+char *	GetIP()
 {
-	char ch_ip[16] ;
-	memset( ch_ip , '\0' , sizeof(ch_ip) ) ;
-	printf("please input the ip address of the database...\r\n") ;
-	scanf("%s",ch_ip) ;
-	strcpy_s(connectStr,nLenOfConnStr,"Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source=") ;
-	strcat_s(connectStr,nLenOfConnStr,ch_ip) ;
+	
+	const char partConnStr[] = "Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Initial Catalog=bank_data;Data Source="  ; 
+	const int IPLen = 16 ;
+	int nLenOfConnStr = strlen(partConnStr) + IPLen ;
+	char *connStr = new char[nLenOfConnStr] ;
 
-	return true ;
+	char ch_ip[IPLen] ;
+	memset( ch_ip , '\0' , IPLen ) ;
+	
+	printf("please input the ip address of the database...\r\n") ;
+	scanf_s("%s",ch_ip) ;
+	
+	strcpy_s(connStr,nLenOfConnStr ,partConnStr ) ;
+	strcat_s(connStr,nLenOfConnStr,ch_ip) ;
+
+	return connStr ;
 }
 
 bool ConnectDB(_ConnectionPtr *pConn)
-{
-	char c_strConenctionString[nLenOfConnStr] ;
-	memset(c_strConenctionString,'\0',nLenOfConnStr ) ;
-
-	GetIP(c_strConenctionString) ;
+{	
+	char *connStr = GetIP() ;
 	::CoInitialize(0);
 	pConn->CreateInstance(__uuidof(Connection));
-	(*pConn)->ConnectionString = c_strConenctionString ;
+	(*pConn)->ConnectionString = connStr ;
 	(*pConn) ->ConnectionTimeout = 10 ;
 	(*pConn) ->CursorLocation = adUseServer;
 	//setting param...
 	(*pConn) ->Open("","","",-1) ;
 	//open it 
-
+	delete []connStr ;
+	connStr = NULL ;
+	//delete connStr that was newed in GetIP()
 	char outputStr[] = "success to connect the database..." ;
 	printf("%s\r\n",outputStr) ;
 
