@@ -15,7 +15,7 @@ char *	GetIP()
 	memset( ch_ip , '\0' , IPLen ) ;
 	
 	printf("please input the ip address of the database...\r\n") ;
-	scanf_s("%s",ch_ip) ;
+	scanf("%s",ch_ip) ;
 	
 	strcpy_s(connStr,nLenOfConnStr ,partConnStr ) ;
 	strcat_s(connStr,nLenOfConnStr,ch_ip) ;
