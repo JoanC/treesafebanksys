@@ -19,24 +19,20 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+             
         }
         protected void SaveNewPass()
         {
             TcpClient client;
             NetworkStream netstream;
-            string _serverip = "127.0.0.1";
+            string _serverip = "10.60.37.19";
             int _port = 4999;
 
             client = new TcpClient(_serverip, _port);
             netstream = client.GetStream();
 
             byte[] data = Encoding.UTF8.GetBytes("Hello world!");
-            byte[] resultData = new byte[8 + data.Length];
-            BitConverter.GetBytes(data.Length).CopyTo(resultData, 0);
-            data.CopyTo(resultData, 8);
-
-            netstream.Write(resultData, 0, resultData.Length);
+            netstream.Write(data, 0, data.Length);
 
             client.Close();
         }
