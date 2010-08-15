@@ -100,7 +100,7 @@ void net_send_data(banksys_net* sServer)
 {
 #ifdef DEBUG_NET_INFO
 	printf("start to send data!\n");
-#endif
+#endif-
 	int reVal;
 	reVal = send(sServer->banksys_server.sServer,sServer->send.cSendInfo,sServer->send.stSendPackSize,0);
 #ifdef DEBUG_NET_INFO
