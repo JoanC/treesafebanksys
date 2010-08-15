@@ -25,7 +25,7 @@ namespace WebApplication3
         {
             TcpClient client;
             NetworkStream netstream;
-            string _serverip = "10.60.37.19";
+            string _serverip = "10.60.37.200";
             int _port = 4999;
 
             client = new TcpClient(_serverip, _port);
