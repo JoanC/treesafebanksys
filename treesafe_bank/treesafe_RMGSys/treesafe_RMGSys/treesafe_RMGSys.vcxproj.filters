@@ -22,8 +22,20 @@
     <Filter Include="database">
       <UniqueIdentifier>{e3e35608-ad8d-418e-865c-ec5d90a075ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="net_client">
+    <Filter Include="net">
+      <UniqueIdentifier>{7d60c6cd-931e-4a1e-a2f3-d44fa9ef0a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net\net_client">
       <UniqueIdentifier>{76658221-6b22-4776-91b6-e37389e5d62f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net\net_server">
+      <UniqueIdentifier>{97e8dc93-d3b0-49db-853b-b9c30a618c37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sys_frame">
+      <UniqueIdentifier>{66ce3cd4-ab20-4a5d-9c65-0549ccb429ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mid_compute">
+      <UniqueIdentifier>{4d3f288c-91aa-4e3f-a2fb-bb3466d3d01d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -49,10 +61,22 @@
       <Filter>database</Filter>
     </ClInclude>
     <ClInclude Include="treesate_cClient.h">
-      <Filter>net_client</Filter>
+      <Filter>net\net_client</Filter>
     </ClInclude>
     <ClInclude Include="Grobal_Macro.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="treesafe_cServer.h">
+      <Filter>net\net_server</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_frame.h">
+      <Filter>sys_frame</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_command_analysis.h">
+      <Filter>mid_compute</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_send_info_mgr.h">
+      <Filter>mid_compute</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +90,7 @@
       <Filter>login</Filter>
     </ClCompile>
     <ClCompile Include="treesafe_cClient.cpp">
-      <Filter>net_client</Filter>
+      <Filter>net\net_client</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

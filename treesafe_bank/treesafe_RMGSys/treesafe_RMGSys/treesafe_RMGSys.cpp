@@ -5,6 +5,8 @@
 #include "sys_login.h"
 #include "treesate_cClient.h"
 
+#include "sys_login.h"
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	/*********************
