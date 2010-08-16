@@ -1,5 +1,9 @@
 #include "error_type.h"
 
+typedef char* USER_NAME ;//用户名
+typedef char*  USER_PWD;//密码
+typedef  char* VRY_CODE;//验证码
+
 //登陆系统
 
 //登陆权限
@@ -10,81 +14,91 @@ enum login_competence{
 	//...other competence
 };
 
-struct login_input_info{
-	//用户从UI输入的信息
-	char* input_user_name;//用户名
-	char* input_user_pwd;//用户密码
-	char* input_verify_code;//验证码
-	char* verify_code;//正确的(UI)生成的验证码
+struct login_user_info{
+	USER_NAME input_user_name;//用户名
+	USER_PWD input_USER_PWDd;//用户密码
 };
 
+struct login_check_info{
+	//用户从UI输入的信息
+	login_user_info user_info;//用户名和密码
+	VRY_CODE input_verify_code;//验证码
+	VRY_CODE verify_code;//正确的(UI)生成的验证码
+};
+
+//一次登陆过程的信息记载
 struct login_info{
-	//登陆信息存储
-	bool isSuccess;//是否成功
 	//用户权限
 	login_competence compe;
 	//用户名
 	char* user_name;//用户名
-	char* user_pwd;//用户密码
-	char* verify_code;//验证码
-
-	//登陆信息
-	err_info err;//错误信息
-	void* log_login;//日志信息
-	void* report_login;//报表信息
 	//...其他
 	bool is_employee;//登陆的用户是否是雇员
 	int cust_id;//如果是用户,那么用户id
 	int employee_id;//如果是雇员,那么雇员的id
 };
 
-//从UI中取得输入信息
+struct login_send{
+	bool is_suceess;
+	login_info login_info;
+	int error_num;//错误号
+};
+
+//模块1--登陆
+/*********************************************************/
+//模块 1.1 
+//0.1 -- 网络接受部分
+//以下部分由ducky完成
+//通过soket从UI中取得输入信息
+//信息以byte的形式传入_info,而结果为_rlt
+void login_net_get_info(char* _info,bool* _rlt);
+/********************************************************/
+//以下由Jiraiya完成
+//模块1.2
+//0.2 -- 输入信息整合,将模块1的信息整理成sunni可见的信息
 //与UI的交互层
-char* login_ui_get_username();//从ui上获取用户名
-char* login_ui_get_pwd();//获取密码
-char* login_ui_get_input_verify();//获取输入的验证码
-char* login_ui_get_verify();//获取正确的验证码
 //整合输入信息
-//填入_input结构体中
-void login_get_input_info(login_input_info* _input);
+//从网络上接受信息
+void login_get_username(USER_NAME _name , char* _info);//从ui上获取用户名
+void login_get_pwd(USER_PWD _pwd , char* _info);//获取密码
+void login_get_input_verify(VRY_CODE _vry , char* _info);//获取输入的验证码
+void login_get_verify(VRY_CODE _vry , char* _info);//获取正确的验证码
+//整合总流程
+void login_get_info(login_check_info* _check , char* _info);//获取待验证的信息
+/*******************************************************/
+//以下由sunni完成
+//模块1.3
+//0.3 -- 查询
+//////////////////////////////
+//根据0.2的username,进行查询(不要去比较值),并将查询结果存储在一个结构体login_user_info中
+//如果没有查询到该用户,结果_rlt返回false
 
-//检查用户名
-//错误结果存储在err中
-void login_check_username(char* _name , err_info* _err , bool* _rlt);
+//这个查询可能有子过程,由sunni自行设计
 
-//检查用户密码
-//错误结果存储在err中
-void login_check_pwd(char* _name , char* _pwd , err_info* _err , bool* _rlt);
+void login_db_query(USER_NAME _user , login_user_info* _info , bool* _rlt);
 
-//检查验证码
-//错误结果存储在err中
-void login_check_verify(char* _input , char* _verify , err_info* _err , bool* _rlt);
+/******************************************************/
+//以下由Jiraiya完成
+//模块1.4
+//0.4 -- 验证
+//根据0.2的整合信息和0.3的查询信息,进行验证
+//成功说明登陆成功,否则失败,结果记录在_rlt中
+void login_check(login_check_info* _input , login_user_info* _db);
+void login_check_name(USER_NAME _input , USER_NAME _db);
+void login_check_pwd(USER_PWD _input , USER_PWD _db);
+void login_check_vry(VRY_CODE _input , VRY_CODE _ui);
 
-//检测函数
-//把三个检测过程合起
-//login_info 和 input_info结合在一起
-void login_check_info(login_info* _info , login_input_info* _input);
+/******************************************************/
+//以下由sunni完成
+//模块1.5
+//0.5 -- 如果登陆成功,根据正确的用户名密码,进行高级信息查询处理,
+//并将登陆信息存入login_info
+//如果成功,则进行该模块的处理
 
-//填充信息
-//前提如果用户存在,密码正确,且验证码通过
-void login_auto_add(login_info* _info,login_input_info* _input);
+//具体的login_info就要看sunni怎么定了
+void login_db_summery(login_user_info* _user_info , login_info* _info);
 
-//登陆成功后,跳转UI
-//根据用户权限的不同,会有不同的界面跳出
-void login_jump(login_info* _info,void* _new_ui = 0);
-
-//主登陆流程
-void login_frame(login_info* _info,login_input_info* _input);
-
-//登陆中的错误处理函数
-//错误处理一定要仔细
-void login_err_occour(err_info* _err);
-
-//错误处理子函数
-//在_err_occour函数中的分支小函数
-void login_err_user_unexsit();//用户不存在
-
-void login_err_pwd_unmatch();//用户密码错误
-
-void login_err_verify_wrong();//验证码输入错误
-
+/******************************************************/
+//以下有Jiraiya完成
+//模块1.6
+//0.6 -- 如果登陆失败

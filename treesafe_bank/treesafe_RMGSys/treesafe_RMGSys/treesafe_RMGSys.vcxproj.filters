@@ -19,9 +19,6 @@
     <Filter Include="apply">
       <UniqueIdentifier>{f109574f-1361-454b-b325-44e6bfe2345c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="error">
-      <UniqueIdentifier>{09273592-3687-49e8-9de0-6ec28c7b7703}</UniqueIdentifier>
-    </Filter>
     <Filter Include="database">
       <UniqueIdentifier>{e3e35608-ad8d-418e-865c-ec5d90a075ee}</UniqueIdentifier>
     </Filter>
@@ -45,9 +42,6 @@
     <ClInclude Include="sys_apply.h">
       <Filter>apply</Filter>
     </ClInclude>
-    <ClInclude Include="error_type.h">
-      <Filter>error</Filter>
-    </ClInclude>
     <ClInclude Include="database_mgr.h">
       <Filter>database</Filter>
     </ClInclude>
@@ -57,6 +51,9 @@
     <ClInclude Include="treesate_cClient.h">
       <Filter>net_client</Filter>
     </ClInclude>
+    <ClInclude Include="Grobal_Macro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -64,9 +61,6 @@
     </ClCompile>
     <ClCompile Include="treesafe_RMGSys.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="error_type.cpp">
-      <Filter>error</Filter>
     </ClCompile>
     <ClCompile Include="sys_login.cpp">
       <Filter>login</Filter>
