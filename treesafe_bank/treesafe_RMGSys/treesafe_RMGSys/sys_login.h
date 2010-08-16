@@ -152,4 +152,4 @@ void login_summer_send_info(login_info* _info);
 
 /******************************************************/
 //登陆模块的总流程
-void login_frame();
+void login_frame(char* _command , int _arg_len);
