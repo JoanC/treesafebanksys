@@ -19,7 +19,7 @@ login_modle* login_init(){
 
 void login_init_login_user_info(login_user_info* _init){
 	_init->input_user_name = "";//名字为空
-	_init->input_USER_PWD = "";//密码为空
+	_init->input_user_pwd = "";//密码为空
 }
 
 void login_init_login_check_info(login_check_info* _init){
@@ -65,10 +65,8 @@ login_check_info* login_get_info(char* _data , int _data_len){
 	return login_get_convert(_check);
 }
 
-bool login_check_name(USER_NAME _input , USER_NAME _db){
-	if(_input && _db) return false;//名字为空
-	//字符串比对
-	return strcmp(_input,_db) == 0 ? true : false;
+bool login_check_name(USER_NAME _db){
+	return _db == "" ? true : false;//用户名是否存在
 }
 
 bool login_check_pwd(USER_PWD _input , USER_PWD _db){
@@ -76,6 +74,10 @@ bool login_check_pwd(USER_PWD _input , USER_PWD _db){
 	return strcmp(_input,_db) == 0? true : false;
 }
 
+bool login_check(login_check_info* _input , login_user_info* _db){
+	return (login_check_name(_db->input_user_name)&&
+		login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd));
+}
 
 
 
