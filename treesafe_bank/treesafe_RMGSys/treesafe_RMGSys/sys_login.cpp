@@ -46,8 +46,6 @@ void login_release(login_modle* _release){
 /*3.2*/
 
 void login_get_copy_data(char* _info , char* _copy_data , int _len){
-	//内存段的复制
-	if(_info && _copy_data) return;
 	//内存段复制
     memcpy(_copy_data,_info,_len);
 }
@@ -61,7 +59,8 @@ login_check_info* login_get_convert(char* _info){
 }
 
 login_check_info* login_get_info(char* _data , int _data_len){
-	char* _check = "";
+	char _check[MAX_OTHER_STR_LEN];
+	memset(_check,'\0',MAX_OTHER_STR_LEN);
 	login_get_copy_data(_data,_check , _data_len);
 	return login_get_convert(_check);
 }
@@ -76,7 +75,7 @@ bool login_check_pwd(USER_PWD* _input , USER_PWD* _db){
 }
 
 bool login_check(login_check_info* _input , login_user_info* _db){
-	return (login_check_name(_db->input_user_name)&&
+	return !(login_check_name(_db->input_user_name)||
 		login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd));
 }
 
@@ -113,6 +112,11 @@ void login_frame(char* _command , int _arg_len , char* _rlt){
 	}
 	//db...
 	//这个过程中,就是_db_query的改动过程
+
+	//以下是为了测试
+	strcpy(_login_frame->db_query.input_user_name,"haha");
+	strcpy(_login_frame->db_query.input_user_pwd,"123");
+
 
 	//
 	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
