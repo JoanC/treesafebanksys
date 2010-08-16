@@ -35,6 +35,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	SendData(&client);
 	ExitClient(&client);
 #endif
+	login_check_info _test;
+	strcpy(_test.user_info.input_user_name,"haha");
+	strcpy(_test.user_info.input_user_pwd ,"123");
+	_test.vry_is_correct = true;
+
+	char* _command = "";
+	char* _rlt = "";
+	memcpy(_command,&_test,sizeof(_test));
+	
+	login_frame(_command,sizeof(_test),_rlt);
+
 	return 0;
 }
 

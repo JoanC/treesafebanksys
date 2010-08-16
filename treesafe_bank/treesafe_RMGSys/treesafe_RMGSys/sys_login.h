@@ -4,10 +4,14 @@
 
 #define DEFAULT_INFO_LEN 64
 
-typedef char* USER_NAME ;//用户名
-typedef char*  USER_PWD;//密码
+#define MAX_USER_NAME_LEN 32
+#define MAX_USER_PWD_LEN 16
+#define MAX_OTHER_STR_LEN 128
+
+typedef char USER_NAME ;//用户名
+typedef char  USER_PWD;//密码
 //typedef  char* VRY_CODE;//验证码
-typedef bool* VRY_RESULT;//验证码的检测结果
+typedef bool VRY_RESULT;//验证码的检测结果
 
 
 //登陆系统
@@ -28,8 +32,8 @@ enum login_err_type{
 };
 
 struct login_user_info{
-	USER_NAME input_user_name;//用户名
-	USER_PWD input_user_pwd;//用户密码
+	USER_NAME input_user_name[MAX_USER_NAME_LEN];//用户名
+	USER_PWD input_user_pwd[MAX_USER_PWD_LEN];//用户密码
 };
 
 
@@ -49,7 +53,7 @@ struct login_info{
 	//用户权限
 	login_competence compe;
 	//用户名
-	char* user_name;//用户名
+	char user_name[MAX_USER_NAME_LEN];//用户名
 	//...其他
 	bool is_employee;//登陆的用户是否是雇员
 	int cust_id;//如果是用户,那么用户id
@@ -58,14 +62,14 @@ struct login_info{
 	//错误信息
 	//????这里是否合并成一个结构体??//
 	login_err_type err;
-	char* err_info;//错误信息
+	char err_info[MAX_OTHER_STR_LEN];//错误信息
 };
 
 //整体模块
 struct login_modle{
 	bool login_succ;
 	int command_arg_len;//网络数据的长度
-	char* command_info;//指令的信息
+	char command_info[MAX_OTHER_STR_LEN];//指令的信息
 	login_check_info check_info;
 	login_user_info db_query;//数据库在3.3中的查找模块
 	login_info rlt_info;
@@ -116,7 +120,7 @@ login_check_info* login_get_info(char* _data , int _data_len);//获取待验证的信息
 
 //这个查询可能有子过程,由sunni自行设计
 
-void login_db_query(USER_NAME _user , login_user_info* _info , bool* _rlt);
+void login_db_query(USER_NAME* _user , login_user_info* _info , bool* _rlt);
 
 /******************************************************/
 //以下由Jiraiya完成
@@ -124,8 +128,8 @@ void login_db_query(USER_NAME _user , login_user_info* _info , bool* _rlt);
 //0.4 -- 验证
 //根据0.2的整合信息和0.3的查询信息,进行验证
 //成功说明登陆成功,否则失败,如果失败
-bool login_check_name(USER_NAME _db);
-bool login_check_pwd(USER_PWD _input , USER_PWD _db);
+bool login_check_name(USER_NAME* _db);
+bool login_check_pwd(USER_PWD* _input , USER_PWD* _db);
 //void login_check_vry(VRY_CODE _input , VRY_CODE _ui , login_err_type _type);
 bool login_check(login_check_info* _input , login_user_info* _db);
 /******************************************************/

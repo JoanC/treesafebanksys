@@ -10,7 +10,7 @@ login_modle* login_init(){
 	if(_init == NULL) return _init;
 	//初始化个成员变量
 	_init->command_arg_len = 0;
-	_init->command_info = "";
+	memset(_init->command_info,'\0',MAX_OTHER_STR_LEN);
 	_init->login_succ = false;
 	login_init_login_check_info(&_init->check_info);
 	login_init_login_info(&_init->rlt_info);
@@ -19,8 +19,8 @@ login_modle* login_init(){
 }
 
 void login_init_login_user_info(login_user_info* _init){
-	_init->input_user_name = "";//名字为空
-	_init->input_user_pwd = "";//密码为空
+	memset(_init->input_user_name,'\0',MAX_USER_NAME_LEN);
+	memset(_init->input_user_pwd,'\0',MAX_USER_PWD_LEN);
 }
 
 void login_init_login_check_info(login_check_info* _init){
@@ -33,9 +33,9 @@ void login_init_login_info(login_info* _init){
 	_init->cust_id = 0;
 	_init->employee_id = 0;
 	_init->err = login_no_err;
-	_init->err_info = "";
+	memset(_init->err_info,'\0',MAX_OTHER_STR_LEN);
 	_init->is_employee = false;
-	_init->user_name = "";
+	memset(_init->user_name,'\0',MAX_USER_NAME_LEN);
 }
 
 void login_release(login_modle* _release){
@@ -66,11 +66,11 @@ login_check_info* login_get_info(char* _data , int _data_len){
 	return login_get_convert(_check);
 }
 
-bool login_check_name(USER_NAME _db){
+bool login_check_name(USER_NAME* _db){
 	return _db == "" ? true : false;//用户名是否存在
 }
 
-bool login_check_pwd(USER_PWD _input , USER_PWD _db){
+bool login_check_pwd(USER_PWD* _input , USER_PWD* _db){
 	if(_input && _db) return false;
 	return strcmp(_input,_db) == 0? true : false;
 }
