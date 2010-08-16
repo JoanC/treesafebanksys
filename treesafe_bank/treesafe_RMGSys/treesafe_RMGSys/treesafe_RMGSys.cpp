@@ -33,7 +33,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	login_info* info = 
 		(login_info*)malloc(sizeof(login_info));
 	login_frame(info,input);*/
-	SendData(&client);
+	/*SendData(&client);
 	ExitClient(&client);*/
 	return 0;
 }
