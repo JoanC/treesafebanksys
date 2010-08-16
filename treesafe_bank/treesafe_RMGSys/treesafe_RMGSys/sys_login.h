@@ -22,8 +22,7 @@ enum login_competence{
 
 enum login_err_type{
 	login_no_err,
-	login_user_not_eixt,
-	login_pwd_not_correct,
+	login_user_not_eixt_or_pwd_err,
 	login_vry_not_correct,
 	login_server_err
 };
@@ -149,10 +148,23 @@ void login_db_err_query(login_err_type _err , char* _err_info);
 /******************************************************/
 //以下是Jiraiya完成
 //模块3.7
-//0.8将结果信息发送给发送过渡层
+//0.7将结果信息发送给发送过渡层
 void login_summer_send_info(login_info* _info);
+
+/******************************************************/
+//以下是Jiraiya完成
+//模块3.8
+//0.8进行登陆过程中的错误处理
+
+void login_err_mgr(login_err_type _err,login_modle* _mld);
+
+/******************************************************/
+//以下是Jiraiya完成
+//模块3.9
+//0.9对最终结果进行处理
+void login_convert_rlt(login_info* _info , char* _rlt);
 
 /******************************************************/
 //登陆模块的总流程
 //Jiraiya整合
-void login_frame(char* _command , int _arg_len);
+void login_frame(char* _command , int _arg_len , char* _rlt);

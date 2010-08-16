@@ -80,22 +80,58 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 		login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd));
 }
 
+
+/////////////////////////////////////////////////
+/*3.8*/
+void login_err_mgr(login_err_type _err,login_modle* _mld){
+	_mld->login_succ = false;
+	//db...查找错误信息
+	char* _temp_err_info = "";
+	//将错误信息复制到模块的错误记录中去
+	strcpy(_mld->rlt_info.err_info,_temp_err_info);//字符串复制
+}
+
+/////////////////////////////////////////////////
+/*3.9*/
+void login_convert_rlt(login_info* _info , char* _rlt){
+	//将结果复制在rlt中传出
+	memcpy(_rlt,_info,sizeof(login_info));
+}
+
 /******************************************************/
 //登陆模块的总流程
 //Jiraiya整合
-void login_frame(char* _command , int _arg_len){
+void login_frame(char* _command , int _arg_len , char* _rlt){
 	//建立登陆模块
 	login_modle* _login_frame = login_init();//初始化登陆模块
 	_login_frame->check_info = *login_get_info(_command,_arg_len);
+	if(!_login_frame->check_info.vry_is_correct){
+		//登陆验证码错误
+		//错误处理
+		login_err_mgr(login_vry_not_correct,_login_frame);
+		return;
+	}
 	//db...
 	//这个过程中,就是_db_query的改动过程
+
 	//
 	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
-		//检测出错误
+		//用户名或密码不正确
 		//错误处理...
-
+		login_err_mgr(login_user_not_eixt_or_pwd_err,_login_frame);
+		return;
 	}
 
+	//进行高级数据查询
+	//调用模块3.5
+	//得到login_info,即rlt_info
+	//...
+
+	//结果转化
+	login_convert_rlt(&_login_frame->rlt_info,_rlt);
+
+	//释放模块
+	login_release(_login_frame);
 }
 
 
