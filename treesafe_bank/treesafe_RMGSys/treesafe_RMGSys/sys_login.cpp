@@ -8,12 +8,13 @@ login_modle* login_init(){
 	//初始化登陆模块
 	login_modle* _init = (login_modle*)malloc(sizeof(login_modle));
 	if(_init == NULL) return _init;
-	//初始化
+	//初始化个成员变量
 	_init->command_arg_len = 0;
 	_init->command_info = "";
 	_init->login_succ = false;
 	login_init_login_check_info(&_init->check_info);
 	login_init_login_info(&_init->rlt_info);
+	login_init_login_user_info(&_init->db_query);
 	return _init;
 }
 
@@ -83,6 +84,17 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 //登陆模块的总流程
 //Jiraiya整合
 void login_frame(char* _command , int _arg_len){
+	//建立登陆模块
+	login_modle* _login_frame = login_init();//初始化登陆模块
+	_login_frame->check_info = *login_get_info(_command,_arg_len);
+	//db...
+	//这个过程中,就是_db_query的改动过程
+	//
+	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
+		//检测出错误
+		//错误处理...
+
+	}
 
 }
 

@@ -68,6 +68,7 @@ struct login_modle{
 	int command_arg_len;//网络数据的长度
 	char* command_info;//指令的信息
 	login_check_info check_info;
+	login_user_info db_query;//数据库在3.3中的查找模块
 	login_info rlt_info;
 };
 
@@ -104,6 +105,7 @@ void login_get_vry_result(VRY_RESULT _vry_rlt);//得到验证码的结果
 //整合总流程,其实就是一个copy,即一个复制和类型转换的过程
 void login_get_copy_data(char* _info , char* _copy_data , int _len);
 login_check_info* login_get_convert(char* _info);
+
 login_check_info* login_get_info(char* _data , int _data_len);//获取待验证的信息
 /*******************************************************/
 //以下由sunni完成

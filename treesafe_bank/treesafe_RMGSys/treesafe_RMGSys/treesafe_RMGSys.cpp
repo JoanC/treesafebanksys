@@ -9,8 +9,9 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	/*********************
-	/*银行子系统代码段
+#ifdef TEST_BANK_SYS_CONNECTION
+	/*********************/
+	银行子系统代码段
 	struct bankDB_request_info
 	{
 	int		type ;
@@ -31,8 +32,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	login_info* info = 
 		(login_info*)malloc(sizeof(login_info));
 	login_frame(info,input);*/
-	/*SendData(&client);
-	ExitClient(&client);*/
+	SendData(&client);
+	ExitClient(&client);
+#endif
 	return 0;
 }
 

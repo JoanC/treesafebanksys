@@ -2,4 +2,4 @@
 //由Jiraiya完成
 
 //debug 调试代码
-#define TEST_BANK_SYS_CONNECTION
+//#define TEST_BANK_SYS_CONNECTION
