@@ -149,3 +149,6 @@ void login_db_err_query(login_err_type _err , char* _err_info);
 //模块3.7
 //0.8将结果信息发送给发送过渡层
 void login__summer_send_info(login_info* _info);
+
+/******************************************************/
+//登陆模块的
