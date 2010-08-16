@@ -30,7 +30,7 @@ enum login_err_type{
 
 struct login_user_info{
 	USER_NAME input_user_name;//用户名
-	USER_PWD input_USER_PWD;//用户密码
+	USER_PWD input_user_pwd;//用户密码
 };
 
 
@@ -123,7 +123,7 @@ void login_db_query(USER_NAME _user , login_user_info* _info , bool* _rlt);
 //0.4 -- 验证
 //根据0.2的整合信息和0.3的查询信息,进行验证
 //成功说明登陆成功,否则失败,如果失败
-bool login_check_name(USER_NAME _input , USER_NAME _db);
+bool login_check_name(USER_NAME _db);
 bool login_check_pwd(USER_PWD _input , USER_PWD _db);
 //void login_check_vry(VRY_CODE _input , VRY_CODE _ui , login_err_type _type);
 bool login_check(login_check_info* _input , login_user_info* _db);
@@ -148,7 +148,8 @@ void login_db_err_query(login_err_type _err , char* _err_info);
 //以下是Jiraiya完成
 //模块3.7
 //0.8将结果信息发送给发送过渡层
-void login__summer_send_info(login_info* _info);
+void login_summer_send_info(login_info* _info);
 
 /******************************************************/
-//登陆模块的
+//登陆模块的总流程
+void login_frame();
