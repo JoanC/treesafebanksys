@@ -79,6 +79,11 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 		login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd));
 }
 
+/******************************************************/
+//登陆模块的总流程
+//Jiraiya整合
+void login_frame(char* _command , int _arg_len){
 
+}
 
 
