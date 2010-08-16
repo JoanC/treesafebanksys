@@ -14,6 +14,14 @@ enum login_competence{
 	//...other competence
 };
 
+enum login_err_type{
+	login_no_err,
+	login_user_not_eixt,
+	login_pwd_not_correct,
+	login_vry_not_correct,
+	login_server_err
+};
+
 struct login_user_info{
 	USER_NAME input_user_name;//用户名
 	USER_PWD input_USER_PWDd;//用户密码
@@ -41,7 +49,8 @@ struct login_info{
 struct login_send{
 	bool is_suceess;
 	login_info login_info;
-	int error_num;//错误号
+	int err_num;//错误号
+	char* err_info;//错误信息
 };
 
 //模块1--登陆
@@ -82,11 +91,11 @@ void login_db_query(USER_NAME _user , login_user_info* _info , bool* _rlt);
 //模块1.4
 //0.4 -- 验证
 //根据0.2的整合信息和0.3的查询信息,进行验证
-//成功说明登陆成功,否则失败,结果记录在_rlt中
-void login_check(login_check_info* _input , login_user_info* _db);
-void login_check_name(USER_NAME _input , USER_NAME _db);
-void login_check_pwd(USER_PWD _input , USER_PWD _db);
-void login_check_vry(VRY_CODE _input , VRY_CODE _ui);
+//成功说明登陆成功,否则失败,如果失败
+bool login_check(login_check_info* _input , login_user_info* _db);
+bool login_check_name(USER_NAME _input , USER_NAME _db);
+bool login_check_pwd(USER_PWD _input , USER_PWD _db);
+void login_check_vry(VRY_CODE _input , VRY_CODE _ui , login_err_type _type);
 
 /******************************************************/
 //以下由sunni完成
@@ -99,6 +108,18 @@ void login_check_vry(VRY_CODE _input , VRY_CODE _ui);
 void login_db_summery(login_user_info* _user_info , login_info* _info);
 
 /******************************************************/
-//以下有Jiraiya完成
+//以下有sunni完成
 //模块1.6
 //0.6 -- 如果登陆失败
+//根据错误编码进行错误信息的查询
+void login_db_err_query(login_err_type _err , char* _err_info);
+
+/******************************************************/
+//以下是Jiraiya完成
+//整合发送信息
+void login__summer_send_info(login_info* _info , login_send* _send);
+
+/******************************************************/
+//以下ducky完成
+//发送信息
+void login_send_info(login_send* _send);
