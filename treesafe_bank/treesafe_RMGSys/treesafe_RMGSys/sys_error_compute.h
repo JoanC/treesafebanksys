@@ -20,3 +20,15 @@ enum sys_err_type{
 	err_login_user_or_pwd_err,//用户名或密码不对
 	err_login_vry_uncmp//验证码不匹配
 };
+
+//错误信息结构体
+struct sys_err{
+	sys_err_type type;
+	char* info[MAX_ERR_INFO];
+};
+
+
+//模块4.2
+//错误信息查找
+//根据错误编码号,查找错误信息
+void sys_err_search(sys_err* _err);
