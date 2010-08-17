@@ -101,5 +101,8 @@
     <ClCompile Include="sys_error_compute.cpp">
       <Filter>error_compute</Filter>
     </ClCompile>
+    <ClCompile Include="database_mgr.cpp">
+      <Filter>database</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
