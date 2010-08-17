@@ -2,10 +2,9 @@
 //
 
 #include "stdafx.h"
-#include "sys_login.h"
 #include "treesate_cClient.h"
 
-#include "sys_login.h"
+#include "sys_command.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -40,11 +39,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	strcpy(_test.user_info.input_user_pwd ,"123");
 	_test.vry_is_correct = true;
 
-	char _command[128];
-	char _rlt[128];
-	memcpy(_command,&_test,sizeof(_test));
-	
-	login_frame(_command,sizeof(_test),_rlt);
+     char _command[128];
+	 char _rlt[128];
+     memcpy(_command,&_test,sizeof(_test));
+
+	sys_net_data cmd;
+	cmd.type = sys_cmd_login;
+	cmd.len = sizeof(login_check_info);
+
+	sys_command(&cmd,_rlt);
+
 	return 0;
 }
 

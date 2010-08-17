@@ -28,7 +28,7 @@ enum{
 //一个大的switch_case
 //根据不同的命令参数,调用不同的处理函数
 //运行指令的结果存在将要发送的一个net_datazhogn 
-void sys_command(const sys_net_data* _command,sys_net_data* _rlt);
+void sys_command(const sys_net_data* _command,char* _rlt);
 
 
 //模块2.2
