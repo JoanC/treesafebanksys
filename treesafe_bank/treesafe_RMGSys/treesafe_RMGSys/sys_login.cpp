@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "sys_login.h"
-
+#include "database_mgr.h"
 /////////////////////////////////////////////////
 /*3.1*/
 
@@ -54,6 +54,12 @@ void login_get_copy_data(char* _info , char* _copy_data , int _len){
 
 /////////////////////////////////////////////////
 /*3.3*/
+void login_db_query(_ConnectionPtr *_pConn,USER_NAME *_user , login_user_info* _info , bool* _rlt)
+{
+	strcpy_s(_info->input_user_name, MAX_USER_NAME_LEN,_user) ;
+	*_rlt = Password_inquiry(_pConn,_user,_info->input_user_pwd) ;
+}
+/////////////////////////////////////////////////
 
 login_check_info* login_get_convert(char* _info){
 	//类型转化
