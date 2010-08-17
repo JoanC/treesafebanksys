@@ -14,7 +14,7 @@ void InitClient(cClient* client)
 	}
 }
 
-//create socket
+//create socket 
 void CreateSocket(cClient* client)
 {
 	client->sHost = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
