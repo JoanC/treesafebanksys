@@ -94,6 +94,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="sys_command.cpp" />
+    <ClCompile Include="sys_error_compute.cpp" />
     <ClCompile Include="sys_login.cpp" />
     <ClCompile Include="treesafe_cClient.cpp" />
     <ClCompile Include="treesafe_RMGSys.cpp" />

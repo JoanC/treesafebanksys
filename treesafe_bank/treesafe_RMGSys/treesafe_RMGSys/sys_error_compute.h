@@ -14,8 +14,8 @@
 //编码命名 err_模块名称_错误原因
 //一个枚举类型
 enum sys_err_type{
-	//未知错误
-	err_unknow,
+	err_no_err,//无错误
+	err_unknow,//不可解析错误
 	//登陆过程中将会遇到的错误
 	err_login_user_or_pwd_err,//用户名或密码不对
 	err_login_vry_uncmp//验证码不匹配
@@ -24,8 +24,11 @@ enum sys_err_type{
 //错误信息结构体
 struct sys_err{
 	sys_err_type type;
-	char* info[MAX_ERR_INFO];
+	char info[MAX_ERR_INFO];
 };
+
+//错误信息结构体的初始化函数
+void init_sys_err(sys_err* _err);
 
 
 //模块4.2

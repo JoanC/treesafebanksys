@@ -32,8 +32,10 @@ void login_init_login_info(login_info* _init){
 	_init->compe = compe_user;
 	_init->cust_id = 0;
 	_init->employee_id = 0;
-	_init->err = login_no_err;
-	memset(_init->err_info,'\0',MAX_OTHER_STR_LEN);
+//	_init->login_err.type = login_no_err;
+//	memset(_init->err_info,'\0',MAX_OTHER_STR_LEN);
+	//初始化错误信息结构体
+	init_sys_err(&_init->login_err);
 	_init->is_employee = false;
 	memset(_init->user_name,'\0',MAX_USER_NAME_LEN);
 }
@@ -82,12 +84,13 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 
 /////////////////////////////////////////////////
 /*3.8*/
-void login_err_mgr(login_err_type _err,login_modle* _mld){
+void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
 	_mld->login_succ = false;
-	//db...查找错误信息
-	char* _temp_err_info = "";
+	//db...查找错误信息,填充结构体
+	//sys_err_search(&_mld->rlt_info.login_err);
+
 	//将错误信息复制到模块的错误记录中去
-	strcpy(_mld->rlt_info.err_info,_temp_err_info);//字符串复制
+	//strcpy(_mld->rlt_info.login_err.info,_temp_err_info);//字符串复制
 }
 
 /////////////////////////////////////////////////
@@ -107,7 +110,7 @@ void login_frame(char* _command , int _arg_len , char* _rlt){
 	if(!_login_frame->check_info.vry_is_correct){
 		//登陆验证码错误
 		//错误处理
-		login_err_mgr(login_vry_not_correct,_login_frame);
+		login_err_mgr(err_login_vry_uncmp,_login_frame);
 		return;
 	}
 	//db...
@@ -122,7 +125,7 @@ void login_frame(char* _command , int _arg_len , char* _rlt){
 	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
 		//用户名或密码不正确
 		//错误处理...
-		login_err_mgr(login_user_not_eixt_or_pwd_err,_login_frame);
+		login_err_mgr(err_login_user_or_pwd_err,_login_frame);
 		return;
 	}
 

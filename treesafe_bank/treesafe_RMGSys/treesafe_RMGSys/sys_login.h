@@ -24,13 +24,6 @@ enum login_competence{
 	//...other competence
 };
 
-enum login_err_type{
-	login_no_err,
-	login_user_not_eixt_or_pwd_err,
-	login_vry_not_correct,
-	login_server_err
-};
-
 struct login_user_info{
 	USER_NAME input_user_name[MAX_USER_NAME_LEN];//用户名
 	USER_PWD input_user_pwd[MAX_USER_PWD_LEN];//用户密码
@@ -60,9 +53,7 @@ struct login_info{
 	int employee_id;//如果是雇员,那么雇员的id
 
 	//错误信息
-	//????这里是否合并成一个结构体??//
-	login_err_type err;
-	char err_info[MAX_OTHER_STR_LEN];//错误信息
+	sys_err login_err;//错误信息
 };
 
 //整体模块
@@ -147,7 +138,7 @@ void login_db_summery(login_user_info* _user_info , login_info* _info);
 //模块3.6
 //0.6 -- 如果登陆失败
 //根据错误编码进行错误信息的查询
-void login_db_err_query(login_err_type _err , char* _err_info);
+//void login_db_err_query(login_err_type _err , char* _err_info);
 
 /******************************************************/
 //以下是Jiraiya完成
@@ -160,7 +151,7 @@ void login_summer_send_info(login_info* _info);
 //模块3.8
 //0.8进行登陆过程中的错误处理
 
-void login_err_mgr(login_err_type _err,login_modle* _mld);
+void login_err_mgr(sys_err_type _err_type,login_modle* _mld);
 
 /******************************************************/
 //以下是Jiraiya完成
