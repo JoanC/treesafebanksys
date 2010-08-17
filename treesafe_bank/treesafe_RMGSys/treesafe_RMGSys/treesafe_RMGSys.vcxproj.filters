@@ -92,5 +92,8 @@
     <ClCompile Include="treesafe_cClient.cpp">
       <Filter>net\net_client</Filter>
     </ClCompile>
+    <ClCompile Include="sys_command_analysis.cpp">
+      <Filter>mid_compute</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

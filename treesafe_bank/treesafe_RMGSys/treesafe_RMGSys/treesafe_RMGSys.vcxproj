@@ -93,6 +93,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="sys_command_analysis.cpp" />
     <ClCompile Include="sys_login.cpp" />
     <ClCompile Include="treesafe_cClient.cpp" />
     <ClCompile Include="treesafe_RMGSys.cpp" />
