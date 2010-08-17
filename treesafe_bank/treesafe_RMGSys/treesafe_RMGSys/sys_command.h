@@ -3,6 +3,7 @@
 
 //所有子流程都要包含
 #include "sys_login.h"//登陆的子流程
+#include "sys_error_compute.h"//错误处理模块
 
 typedef char* COMMAND_DATA;
 

@@ -81,6 +81,7 @@
     <ClInclude Include="sys_apply.h" />
     <ClInclude Include="sys_command.h" />
     <ClInclude Include="sys_db_struct.h" />
+    <ClInclude Include="sys_error_compute.h" />
     <ClInclude Include="sys_frame.h" />
     <ClInclude Include="sys_login.h" />
     <ClInclude Include="targetver.h" />

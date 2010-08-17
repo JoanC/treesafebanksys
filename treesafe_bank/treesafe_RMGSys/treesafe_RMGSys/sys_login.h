@@ -1,6 +1,6 @@
 #pragma once
 
-#include "error_type.h"
+#include "sys_error_compute.h"
 
 #define DEFAULT_INFO_LEN 64
 

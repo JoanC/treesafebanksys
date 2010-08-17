@@ -37,6 +37,9 @@
     <Filter Include="mid_compute">
       <UniqueIdentifier>{4d3f288c-91aa-4e3f-a2fb-bb3466d3d01d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="error_compute">
+      <UniqueIdentifier>{910fe32a-e2ba-4674-b907-2f4122ec1792}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="sys_command.h">
       <Filter>mid_compute</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_error_compute.h">
+      <Filter>error_compute</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
