@@ -75,9 +75,6 @@
     <ClInclude Include="sys_command_analysis.h">
       <Filter>mid_compute</Filter>
     </ClInclude>
-    <ClInclude Include="sys_send_info_mgr.h">
-      <Filter>mid_compute</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
