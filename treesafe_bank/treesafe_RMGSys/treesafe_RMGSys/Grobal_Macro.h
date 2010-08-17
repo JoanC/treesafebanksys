@@ -1,3 +1,5 @@
+#pragma once
+
 //全局宏
 //由Jiraiya完成
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "error_type.h"
 
 //申请处理流程

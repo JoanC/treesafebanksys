@@ -1,3 +1,5 @@
+#pragma once
+
 //登陆模块的信息查询
 struct sys_db_login{
 	int cust_id;
