@@ -1,14 +1,14 @@
 #pragma once
 
 #include "sys_error_compute.h"
-
+#include "database_mgr.h"
 #define DEFAULT_INFO_LEN 64
 
 #define MAX_USER_NAME_LEN 32
 #define MAX_USER_PWD_LEN 16
 #define MAX_OTHER_STR_LEN 128
 
-typedef char USER_NAME ;//用户名
+typedef char  USER_NAME ;//用户名
 typedef char  USER_PWD;//密码
 //typedef  char* VRY_CODE;//验证码
 typedef bool VRY_RESULT;//验证码的检测结果
@@ -111,7 +111,7 @@ login_check_info* login_get_info(char* _data , int _data_len);//获取待验证的信息
 
 //这个查询可能有子过程,由sunni自行设计
 
-void login_db_query(USER_NAME* _user , login_user_info* _info , bool* _rlt);
+void login_db_query(_ConnectionPtr *_pConn,USER_NAME *_user , login_user_info* _info , bool* _rlt);
 
 /******************************************************/
 //以下由Jiraiya完成
