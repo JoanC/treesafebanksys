@@ -79,7 +79,7 @@
     <ClInclude Include="Grobal_Macro.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="sys_apply.h" />
-    <ClInclude Include="sys_command_analysis.h" />
+    <ClInclude Include="sys_command.h" />
     <ClInclude Include="sys_db_struct.h" />
     <ClInclude Include="sys_frame.h" />
     <ClInclude Include="sys_login.h" />
@@ -92,7 +92,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="sys_command_analysis.cpp" />
+    <ClCompile Include="sys_command.cpp" />
     <ClCompile Include="sys_login.cpp" />
     <ClCompile Include="treesafe_cClient.cpp" />
     <ClCompile Include="treesafe_RMGSys.cpp" />

@@ -45,7 +45,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	memcpy(_command,&_test,sizeof(_test));
 	
 	login_frame(_command,sizeof(_test),_rlt);
-
 	return 0;
 }
 

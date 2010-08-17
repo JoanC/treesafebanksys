@@ -72,7 +72,7 @@
     <ClInclude Include="sys_frame.h">
       <Filter>sys_frame</Filter>
     </ClInclude>
-    <ClInclude Include="sys_command_analysis.h">
+    <ClInclude Include="sys_command.h">
       <Filter>mid_compute</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,7 +89,7 @@
     <ClCompile Include="treesafe_cClient.cpp">
       <Filter>net\net_client</Filter>
     </ClCompile>
-    <ClCompile Include="sys_command_analysis.cpp">
+    <ClCompile Include="sys_command.cpp">
       <Filter>mid_compute</Filter>
     </ClCompile>
   </ItemGroup>

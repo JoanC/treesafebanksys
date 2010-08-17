@@ -35,8 +35,8 @@ void sys_command(const sys_net_data* _command,sys_net_data* _rlt);
 //0.2不同的子处理函数
 
 //登陆模块的处理函数2.2.1
-void sys_command_login(const sys_net_data* _cmd);
+void sys_command_login(const sys_net_data* _cmd,char* _rlt);
 
 //模块2.3
 //未知命令的处理函式
-void sys_command_err(const sys_net_data* _command);
+void sys_command_err(const sys_net_data* _command,char* _rlt);
