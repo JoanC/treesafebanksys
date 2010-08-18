@@ -3,6 +3,22 @@
 //目的在于网络将数据传输后,可以进行正确的类型转换
 //结果数据
 //输出的数据都存入其中
+/////////////////////////////////////////////////////////
+//数据库模块
+//将请求数据发送给数据库
+//数据中包括了请求与请求的相关数据
+enum  en_require_type{
+	CUST_INFO = 1 ,
+	ACCOUNT_INFO = 2 ,
+	LOAN_INFO = 3 ,
+}  ;
+struct bankDB_request_info{
+	en_require_type		type ;
+	char								id[19] ;
+};
+
+//结果数据
+//输出的数据都存入其中
 struct bankDB_result_cust_info{
 	char		id[19] ;			//id
 	char		name[51] ;		//name
