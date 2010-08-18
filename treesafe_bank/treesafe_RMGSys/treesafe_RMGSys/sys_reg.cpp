@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "sys_reg.h"
-/*
 
 /**********************************/
 //模块6的实现文件
@@ -60,3 +59,22 @@ void reg_release(reg_modle* _release){
 	//释放整体模块
 	free(_release);
 }
+
+//模块6.2
+void reg_copy_cmd(char* _dst,char* _cmd_info,int _len){
+	//复制信息
+	memcpy(_dst,_cmd_info,_len);
+}
+
+reg_input_info* reg_convert_cmd(char* _info){
+	//强制类型转化
+	return (reg_input_info*)_info;
+}
+
+reg_input_info* reg_get_info(char* _cmd , int _len){
+	if(_cmd&&_len) return NULL;//字符串为空或长度为0
+	char _temp_input[REG_MAX_OTHER_STR_LEN];
+	reg_copy_cmd(_temp_input,_cmd,_len);
+	return reg_convert_cmd(_temp_input);
+}
+//...

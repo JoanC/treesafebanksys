@@ -95,9 +95,9 @@ void reg_init_reg_info(reg_info* _init);
 //复制信息,避免指针的直接改动
 void reg_copy_cmd(char* _dst,char* _cmd_info,int _len);
 //类型转换,返回一个reg_input_info类型,即将复制后的信息转化
-void reg_convert_cmd(char* _cmd);
-//模块3.3主函式
-void reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
+reg_input_info* reg_convert_cmd(char* _info);
+//模块6.2主函式
+reg_input_info* reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
 
 /******************************************************/
 //6.3
