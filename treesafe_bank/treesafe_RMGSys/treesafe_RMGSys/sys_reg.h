@@ -54,7 +54,9 @@ struct reg_cust_info{
 
 //综合信息,即要发送给网络端的信息
 struct reg_info{
-	
+	//用户名
+	//用于在界面上输出"XXX,您好!注册成功"
+	REG_USER_ID user_name[REG_MAX_USER_NAME];
 	sys_err reg_err;//注册过程中出现的错误和异常
 };
 
@@ -73,6 +75,11 @@ struct reg_modle{
 //Jiraiya完成
 //登录信息的初始化
 //以下过程由Jiraiya完成
+
+//初始化注册整体模块
+reg_modle* reg_init();
+//释放整体模块
+void reg_release();
 
 //初始化基本信息
 void reg_init_reg_basic_info(reg_basic_info* _init);
@@ -125,9 +132,10 @@ void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* 
 //根据用户信息,将对应的登陆用的用户号和密码,以及身份证号
 //内部的转化和扩充后存入db中
 //只要存入基础信息即可
-void reg_add_user_to_db(reg_input_info* _info);
+void reg_add_user_to_db(reg_basic_info* _info);
 
 /********************************************************/
 //6.6
 //由Jiraiya完成
 //注册结束后,将结果信息转化成将要发送的信息
+void reg_generate_result(reg_info* _info , char* _rlt);
