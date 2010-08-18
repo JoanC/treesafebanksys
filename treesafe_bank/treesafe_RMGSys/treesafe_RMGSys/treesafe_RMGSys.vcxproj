@@ -79,7 +79,9 @@
     <ClInclude Include="Grobal_Macro.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="sys_apply.h" />
+    <ClInclude Include="sys_bank_query.h" />
     <ClInclude Include="sys_command.h" />
+    <ClInclude Include="sys_connc_banksys_db.h" />
     <ClInclude Include="sys_db_struct.h" />
     <ClInclude Include="sys_error_compute.h" />
     <ClInclude Include="sys_frame.h" />

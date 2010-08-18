@@ -5,6 +5,7 @@
 #include "sys_error_compute.h"
 #include "database_mgr.h"
 #include "treesate_cClient.h"//需要与银行子系统进行进行交互
+#include "sys_connc_banksys_db.h"
 
 #define REG_MAX_USER_NAME idLen
 #define REG_MAX_USER_PWD pwdLen
@@ -57,10 +58,13 @@ void reg_convert_cmd(char* _cmd);
 void reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
 
 /******************************************************/
-//6.6
-//由ducky完成
+//6.3
+//协同完成
 //将用户输入的身份证id通过net(client)端发送给banksys,在银行段查询是否有此人的信息
 //如果没有,返回一个错误结果
 //如果有,把这位用户的相关信息从银行系统里调出来,并填充在reg_cust_info中
+
+//由于ducky的接受函数尚未写好,所以这里看看,我觉得还需设计一个模块,把这个过程封
+//在一个主函式里,见sys_connc_bank
 
 void 

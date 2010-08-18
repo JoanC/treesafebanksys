@@ -46,6 +46,9 @@
     <Filter Include="login_regist\reg">
       <UniqueIdentifier>{6063543f-1d6e-4f56-988e-90bbae6deb53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sys_connc_bank">
+      <UniqueIdentifier>{82394c79-378e-488a-be1f-5d2d8ca8f075}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -89,6 +92,12 @@
     </ClInclude>
     <ClInclude Include="sys_reg.h">
       <Filter>login_regist\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_connc_banksys_db.h">
+      <Filter>sys_connc_bank</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_bank_query.h">
+      <Filter>sys_connc_bank</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
