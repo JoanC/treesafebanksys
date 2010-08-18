@@ -55,3 +55,8 @@ reg_modle* reg_init(){
 	reg_init_reg_info(&_new_modle->info);
 	return _new_modle;
 }
+
+void reg_release(reg_modle* _release){
+	//释放整体模块
+	free(_release);
+}
