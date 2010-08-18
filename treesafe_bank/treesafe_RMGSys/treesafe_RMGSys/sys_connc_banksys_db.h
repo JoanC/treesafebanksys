@@ -44,8 +44,7 @@ struct bankDB_result_loan_info{
 	double	monthly_return ;		//how much monthly return
 };
 
-struct bankDB_result_info
-{
+struct bankDB_result_info{
 	int		nCount ;	//an counter that shows how many results in the array(*pRlt). 
 	void		*pRlt ;		//pointer to the result struct , such as bankDB_result_account_info...
 };

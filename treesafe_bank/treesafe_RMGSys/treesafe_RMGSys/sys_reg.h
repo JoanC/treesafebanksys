@@ -79,3 +79,4 @@ void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* 
 //6.4
 //sunni完成
 //将注册的用户填入到数据库中
+void reg_add_user_to_db();
