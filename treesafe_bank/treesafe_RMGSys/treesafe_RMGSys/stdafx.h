@@ -19,8 +19,4 @@
 
 // TODO: reference additional headers your program requires here
 
-//调试login模块信息输出
-#define DEBUG_LOGIN_INFO
-
-//调试错误处理模块的信息输出
-#define DEBUG_ERR_INFO
+#include "Grobal_Macro.h"

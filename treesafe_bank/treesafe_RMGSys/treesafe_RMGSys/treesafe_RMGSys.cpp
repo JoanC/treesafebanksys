@@ -6,6 +6,10 @@
 
 //#include "sys_command.h"
 
+#ifdef TEST_REG_MODLE
+#include "sys_reg.h"
+#endif
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 
@@ -52,9 +56,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	sys_command(&cmd,(char*)_rlt);
 	free(_test);
 	free(_rlt);
-	return 0;
 #endif
 
-
+#ifdef TEST_REG_MODLE
+	reg_modle* _reg = reg_init();
+	reg_release(_reg);
+#endif
+	return 0;
 }
 
