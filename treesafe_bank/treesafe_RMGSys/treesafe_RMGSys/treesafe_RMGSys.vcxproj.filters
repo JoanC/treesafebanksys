@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="login">
-      <UniqueIdentifier>{bf35383d-622b-4cdb-9d62-6eac5750dcda}</UniqueIdentifier>
-    </Filter>
     <Filter Include="apply">
       <UniqueIdentifier>{f109574f-1361-454b-b325-44e6bfe2345c}</UniqueIdentifier>
     </Filter>
@@ -40,6 +37,15 @@
     <Filter Include="error_compute">
       <UniqueIdentifier>{910fe32a-e2ba-4674-b907-2f4122ec1792}</UniqueIdentifier>
     </Filter>
+    <Filter Include="login_regist">
+      <UniqueIdentifier>{cab6d3a9-2a6f-4909-96b0-2b904fe46a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="login_regist\login">
+      <UniqueIdentifier>{bf35383d-622b-4cdb-9d62-6eac5750dcda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="login_regist\reg">
+      <UniqueIdentifier>{6063543f-1d6e-4f56-988e-90bbae6deb53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -52,7 +58,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sys_login.h">
-      <Filter>login</Filter>
+      <Filter>login_regist\login</Filter>
     </ClInclude>
     <ClInclude Include="sys_apply.h">
       <Filter>apply</Filter>
@@ -81,6 +87,9 @@
     <ClInclude Include="sys_error_compute.h">
       <Filter>error_compute</Filter>
     </ClInclude>
+    <ClInclude Include="sys_reg.h">
+      <Filter>login_regist\reg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -90,7 +99,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sys_login.cpp">
-      <Filter>login</Filter>
+      <Filter>login_regist\login</Filter>
     </ClCompile>
     <ClCompile Include="treesafe_cClient.cpp">
       <Filter>net\net_client</Filter>
