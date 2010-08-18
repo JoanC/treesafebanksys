@@ -8,6 +8,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+
 #ifdef TEST_BANK_SYS_CONNECTION
 	/*********************/
 	银行子系统代码段
@@ -34,7 +35,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	SendData(&client);
 	ExitClient(&client);
 #endif
-	/*
+
+#ifdef TEST_LOGIN_MODLE
 	login_check_info* _test = 
 		(login_check_info*)malloc(sizeof(login_check_info));
 	strcpy(_test->user_info.input_user_name,"haha");
@@ -50,6 +52,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	sys_command(&cmd,(char*)_rlt);
 	free(_test);
 	free(_rlt);
-	return 0;*/
+	return 0;
+#endif
+
+
 }
 
