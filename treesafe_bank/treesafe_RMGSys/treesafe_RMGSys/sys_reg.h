@@ -48,11 +48,6 @@ struct reg_input_info{
 	bool is_pwd_vry_crr;
 };
 
-struct reg_cust_info{
-	REG_USER_ID cust_id[REG_MAX_USER_BANK_ID];//身份id
-	//...其它信息
-};
-
 //综合信息,即要发送给网络端的信息
 struct reg_info{
 	//用户名
@@ -89,8 +84,8 @@ void reg_init_reg_basic_info(reg_basic_info* _init);
 //初始化用户将要输入的信息
 void reg_init_reg_input_info(reg_input_info* _init);
 
-//初始化用户信息
-void reg_init_reg_cust_info(reg_cust_info* _init);
+//初始化注册过程的结果信息
+void reg_init_reg_info(reg_info* _init);
 
 /*******************************************************/
 //模块6.2
@@ -115,14 +110,14 @@ void reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
 
 //由于ducky的接受函数尚未写好,所以这里看看,我觉得还需设计一个模块,把这个过程封
 //在一个主函式里,见sys_connc_bank
-void reg_query_user(reg_cust_info* _cust_info);
+void reg_query_user(reg_basic_info* _cust_info);
 
 //生成一个请求信息,_req
 void reg_query_user_generate_req(bankDB_request_info* _req);
 //查询结果,将结果转化为bankDB_result_cust_info
 void reg_query_user_get_rlt(bankDB_result_cust_info* _db_rlt);
 //根据_db_rlt,提取相关信息,填充到reg_cust_info中
-void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* _cust_info);
+void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_basic_info* _cust_info);
 
 /********************************************************/
 //6.4
