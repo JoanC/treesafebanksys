@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "sys_login.h"
-#include "database_mgr.h"
 /////////////////////////////////////////////////
 /*3.1*/
 
