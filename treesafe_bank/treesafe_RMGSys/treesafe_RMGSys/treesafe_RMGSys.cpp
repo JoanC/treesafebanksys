@@ -15,7 +15,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 #ifdef TEST_BANK_SYS_CONNECTION
 	/*********************/
-	银行子系统代码段
+	//银行子系统代码段
 	struct bankDB_request_info
 	{
 	int		type ;
