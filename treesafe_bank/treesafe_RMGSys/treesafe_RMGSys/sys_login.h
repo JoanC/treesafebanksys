@@ -18,14 +18,6 @@ typedef bool VRY_RESULT;//验证码的检测结果
 
 //登陆系统
 
-//登陆权限
-//管理员,一般用户...
-enum login_competence{
-	compe_admin,
-	compe_user
-	//...other competence
-};
-
 struct login_user_info{
 	USER_NAME input_user_name[MAX_USER_NAME_LEN];//用户名
 	USER_PWD input_user_pwd[MAX_USER_PWD_LEN];//用户密码

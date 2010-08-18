@@ -11,21 +11,30 @@
 #define REG_MAX_USER_NAME idLen
 #define REG_MAX_USER_PWD pwdLen
 #define REG_MAX_USER_BANK_ID 18//十八位身份证号
-#define REG_MAX_EMAIL_ADDR 32//联系邮箱地址
+#define REG_MAX_ADDR 64//联系地址
 #define REG_MAX_OTHER_STR_LEN 256
 
 typedef char REG_USER_NAME;
 typedef char REG_USER_PWD;
 typedef char REG_USER_ID;
+enum REG_GENDER_TYPE{male , female};
 
 
 struct reg_basic_info{
 	//登陆用户名
-	REG_USER_NAME reg_name[REG_MAX_USER_NAME];
+	REG_USER_ID reg_name[REG_MAX_USER_NAME];
 	//用户密码
 	REG_USER_PWD reg_pwd[REG_MAX_USER_PWD];
 	//身份证号,18位
 	REG_USER_ID reg_id[REG_MAX_USER_BANK_ID];
+	//用户真实姓名
+	char* reg_basic_user_name[REG_MAX_USER_NAME];
+	//性别
+	REG_GENDER_TYPE reg_gender;
+	//年龄
+	int reg_age;
+	//家庭住址
+	char reg_home_addr[REG_MAX_ADDR];
 };
 
 struct reg_input_info{
@@ -33,7 +42,7 @@ struct reg_input_info{
 	//输入基本信息
 	reg_basic_info basic_info;
 	//其它的附加信息
-	char email_addr[REG_MAX_EMAIL_ADDR];
+	char email_addr[REG_MAX_ADDR];
 	//密码两次验证是否正确
 	bool is_pwd_vry_crr;
 };
@@ -43,10 +52,9 @@ struct reg_cust_info{
 	//...其它信息
 };
 
-//综合信息
+//综合信息,即要发送给网络端的信息
 struct reg_info{
-	reg_input_info input_info;//用户输入的信息
-	reg_cust_info cust_info;//通过id在银行系统中得到的数据
+	
 	sys_err reg_err;//注册过程中出现的错误和异常
 };
 
@@ -56,8 +64,8 @@ struct reg_modle{
 	int command_len;//命令信息的长度
 	char command_info[REG_MAX_OTHER_STR_LEN];//命令长度
 	/*下面是数据*/
+	reg_input_info input_info;//用户输入的信息
 	reg_info info;//注册过程中的数据,也是结果数据
-
 };
 
 /********************************************************/
