@@ -4,8 +4,10 @@
 #include "database_mgr.h"
 #define DEFAULT_INFO_LEN 64
 
-#define MAX_USER_NAME_LEN 32
-#define MAX_USER_PWD_LEN 16
+//这两个值在"sys_db_struct中定义"
+#define MAX_USER_NAME_LEN idLen
+#define MAX_USER_PWD_LEN pwdLen
+
 #define MAX_OTHER_STR_LEN 128
 
 typedef char  USER_NAME ;//用户名
