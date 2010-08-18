@@ -120,6 +120,9 @@ void login_frame(char* _command , int _arg_len , char* _rlt){
 	}
 	//db...
 	//这个过程中,就是_db_query的改动过程
+	//调用模块3.3
+	//该模块需要修改,在主程序中,最好不要出现_ConnectionPtr,不和谐
+    
 
 	//以下是为了测试
 	strcpy(_login_frame->db_query.input_user_name,"haha");
@@ -138,6 +141,7 @@ void login_frame(char* _command , int _arg_len , char* _rlt){
 	//调用模块3.5
 	//得到login_info,即rlt_info
 	//...
+
 
 	//结果转化
 	login_convert_rlt(&_login_frame->rlt_info,_rlt);
