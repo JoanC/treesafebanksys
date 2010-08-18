@@ -122,5 +122,8 @@
     <ClCompile Include="database_mgr.cpp">
       <Filter>database</Filter>
     </ClCompile>
+    <ClCompile Include="sys_bank_query.cpp">
+      <Filter>sys_connc_bank</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
