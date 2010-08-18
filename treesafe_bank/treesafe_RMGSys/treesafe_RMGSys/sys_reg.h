@@ -12,7 +12,7 @@
 #define REG_MAX_USER_PWD pwdLen
 #define REG_MAX_USER_BANK_ID 18//十八位身份证号
 #define REG_MAX_EMAIL_ADDR 32//联系邮箱地址
-#define REG_MAX_OTHER_STR_LEN 128
+#define REG_MAX_OTHER_STR_LEN 256
 
 typedef char REG_USER_NAME;
 typedef char REG_USER_PWD;
@@ -40,7 +40,24 @@ struct reg_input_info{
 
 struct reg_cust_info{
 	REG_USER_ID cust_id[REG_MAX_USER_BANK_ID];//身份id
-	//...
+	//...其它信息
+};
+
+//综合信息
+struct reg_info{
+	reg_input_info input_info;//用户输入的信息
+	reg_cust_info cust_info;//通过id在银行系统中得到的数据
+	sys_err reg_err;//注册过程中出现的错误和异常
+};
+
+//注册过程的整体模块
+struct reg_modle{
+	bool reg_succ;//注册过程成功
+	int command_len;//命令信息的长度
+	char command_info[REG_MAX_OTHER_STR_LEN];//命令长度
+	/*下面是数据*/
+	reg_info info;//注册过程中的数据,也是结果数据
+
 };
 
 /********************************************************/
@@ -91,10 +108,18 @@ void reg_query_user_get_rlt(bankDB_result_cust_info* _db_rlt);
 void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* _cust_info);
 
 /********************************************************/
-//6.4
+
+
+/********************************************************/
+//6.5
 //sunni完成
 //将注册的用户填入到数据库中
-//根据用户信息,将对应的登陆用的用户号和密码,以及身份证号存入db中
+//根据用户信息,将对应的登陆用的用户号和密码,以及身份证号
+//内部的转化和扩充后存入db中
 //只要存入基础信息即可
 void reg_add_user_to_db(reg_input_info* _info);
 
+/********************************************************/
+//6.6
+//由Jiraiya完成
+//注册结束后,将结果信息转化成将要发送的信息
