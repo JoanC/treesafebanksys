@@ -15,7 +15,7 @@
 
 //#include <string.h>
 
-
+#pragma warning(disable: 4996) //disableµô¹ØÓÚstrcpyµÄ´íÎó
 
 // TODO: reference additional headers your program requires here
 
