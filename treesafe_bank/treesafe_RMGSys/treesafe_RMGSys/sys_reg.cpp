@@ -47,7 +47,7 @@ reg_modle* reg_init(){
 	//分配内存
 	reg_modle* _new_modle = 
 		(reg_modle*)malloc(sizeof(reg_modle));
-	//注册是否成功
+	//注册是否成功 
 	_new_modle->reg_succ = false;
 	//初始化各数据块
 	reg_init_reg_input_info(&_new_modle->input_info);
