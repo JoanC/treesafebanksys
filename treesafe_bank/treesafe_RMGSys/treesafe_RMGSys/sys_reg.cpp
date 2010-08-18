@@ -35,7 +35,23 @@ void reg_init_reg_input_info(reg_input_info* _init){
 	_init->is_pwd_vry_crr = false;
 }
 
-void reg_init_reg_cust_info(reg_cust_info* _init){
-	//初始化用户信息
-	
+void reg_init_reg_info(reg_info* _init){
+	//初始化注册过程信息
+	//初始化错误信息
+	init_sys_err(&_init->reg_err);
+	strcpy(_init->user_name,"");
+}
+
+reg_modle* reg_init(){
+	//初始化注册模块
+	//分配内存
+	reg_modle* _new_modle = 
+		(reg_modle*)malloc(sizeof(reg_modle));
+	//注册是否成功
+	_new_modle->reg_succ = false;
+	//初始化各数据块
+	reg_init_reg_input_info(&_new_modle->input_info);
+	reg_init_reg_basic_info(&_new_modle->db_query_from_bank);
+	reg_init_reg_info(&_new_modle->info);
+	return _new_modle;
 }
