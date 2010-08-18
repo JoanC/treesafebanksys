@@ -6,6 +6,7 @@
 #include "database_mgr.h"
 #include "treesate_cClient.h"//需要与银行子系统进行进行交互
 #include "sys_connc_banksys_db.h"
+#include "sys_error_compute.h"//错误处理
 
 #define REG_MAX_USER_NAME idLen
 #define REG_MAX_USER_PWD pwdLen
@@ -17,21 +18,29 @@ typedef char REG_USER_NAME;
 typedef char REG_USER_PWD;
 typedef char REG_USER_ID;
 
-struct reg_input_info{
-	//用户注册所输入的相关信息
-	//输入登陆用户名
+
+struct reg_basic_info{
+	//登陆用户名
 	REG_USER_NAME reg_name[REG_MAX_USER_NAME];
-	//输入的用户密码
+	//用户密码
 	REG_USER_PWD reg_pwd[REG_MAX_USER_PWD];
-	//密码两次验证是否正确
-	bool is_pwd_vry_crr;
 	//身份证号,18位
 	REG_USER_ID reg_id[REG_MAX_USER_BANK_ID];
 };
 
+struct reg_input_info{
+	//用户注册所输入的相关信息
+	//输入基本信息
+	reg_basic_info basic_info;
+	//其它的附加信息
+	char email_addr[REG_MAX_EMAIL_ADDR];
+	//密码两次验证是否正确
+	bool is_pwd_vry_crr;
+};
+
 struct reg_cust_info{
 	REG_USER_ID cust_id[REG_MAX_USER_BANK_ID];//身份id
-
+	//...
 };
 
 /********************************************************/
@@ -40,8 +49,14 @@ struct reg_cust_info{
 //登录信息的初始化
 //以下过程由Jiraiya完成
 
+//初始化基本信息
+void reg_init_reg_basic_info(reg_basic_info* _init);
+
 //初始化用户将要输入的信息
-void reg_init_reg_input_info(reg_input_info* _info);
+void reg_init_reg_input_info(reg_input_info* _init);
+
+//初始化用户信息
+void reg_init_reg_cust_info(reg_cust_info* _init);
 
 /*******************************************************/
 //模块6.2
@@ -79,4 +94,7 @@ void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* 
 //6.4
 //sunni完成
 //将注册的用户填入到数据库中
-void reg_add_user_to_db();
+//根据用户信息,将对应的登陆用的用户号和密码,以及身份证号存入db中
+//只要存入基础信息即可
+void reg_add_user_to_db(reg_input_info* _info);
+
