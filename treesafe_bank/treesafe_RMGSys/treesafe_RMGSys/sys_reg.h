@@ -28,6 +28,11 @@ struct reg_input_info{
 	REG_USER_ID reg_id[REG_MAX_USER_BANK_ID];
 };
 
+struct reg_cust_info{
+	REG_USER_ID cust_id[REG_MAX_USER_BANK_ID];//身份id
+
+};
+
 /********************************************************/
 //模块6.1
 //Jiraiya完成
@@ -50,3 +55,12 @@ void reg_copy_cmd(char* _dst,char* _cmd_info,int _len);
 void reg_convert_cmd(char* _cmd);
 //模块3.3主函式
 void reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
+
+/******************************************************/
+//6.6
+//由ducky完成
+//将用户输入的身份证id通过net(client)端发送给banksys,在银行段查询是否有此人的信息
+//如果没有,返回一个错误结果
+//如果有,把这位用户的相关信息从银行系统里调出来,并填充在reg_cust_info中
+
+void 
