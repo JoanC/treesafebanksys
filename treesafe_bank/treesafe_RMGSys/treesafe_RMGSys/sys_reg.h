@@ -10,7 +10,7 @@
 
 #define REG_MAX_USER_NAME idLen
 #define REG_MAX_USER_PWD pwdLen
-#define REG_MAX_USER_BANK_ID 18//十八位身份证号
+#define REG_MAX_USER_BANK_ID 19//十八位身份证号,加'\0'19
 #define REG_MAX_ADDR 64//联系地址
 #define REG_MAX_OTHER_STR_LEN 256
 
@@ -28,7 +28,7 @@ struct reg_basic_info{
 	//身份证号,18位
 	REG_USER_ID reg_id[REG_MAX_USER_BANK_ID];
 	//用户真实姓名
-	char* reg_basic_user_name[REG_MAX_USER_NAME];
+	char reg_basic_user_name[REG_MAX_USER_NAME];
 	//性别
 	REG_GENDER_TYPE reg_gender;
 	//年龄
@@ -67,6 +67,7 @@ struct reg_modle{
 	char command_info[REG_MAX_OTHER_STR_LEN];//命令长度
 	/*下面是数据*/
 	reg_input_info input_info;//用户输入的信息
+	reg_basic_info db_query_from_bank;//从银行系统调出的基础信息
 	reg_info info;//注册过程中的数据,也是结果数据
 };
 
@@ -79,7 +80,7 @@ struct reg_modle{
 //初始化注册整体模块
 reg_modle* reg_init();
 //释放整体模块
-void reg_release();
+void reg_release(reg_modle* _release);
 
 //初始化基本信息
 void reg_init_reg_basic_info(reg_basic_info* _init);
@@ -123,7 +124,12 @@ void reg_query_user_get_rlt(bankDB_result_cust_info* _db_rlt);
 void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* _cust_info);
 
 /********************************************************/
-
+//6.4
+//由Jiraiya完成
+//数据对比,对比用户输入的基础信息和从银行调出的信息进行必要的比对
+//比对项尚要商讨,比如联系电话可以不用验证
+//目前先比对用户真实姓名,性别,年龄,家庭住址
+void reg_info_cmp(reg_basic_info* _input , reg_basic_info* _bank_data);
 
 /********************************************************/
 //6.5
@@ -135,7 +141,7 @@ void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* 
 void reg_add_user_to_db(reg_basic_info* _info);
 
 /********************************************************/
-//6.6
+//6.5
 //由Jiraiya完成
 //注册结束后,将结果信息转化成将要发送的信息
 void reg_generate_result(reg_info* _info , char* _rlt);
