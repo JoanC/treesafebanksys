@@ -66,5 +66,16 @@ void reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
 
 //由于ducky的接受函数尚未写好,所以这里看看,我觉得还需设计一个模块,把这个过程封
 //在一个主函式里,见sys_connc_bank
+void reg_query_user(reg_cust_info* _cust_info);
 
-void 
+//生成一个请求信息,_req
+void reg_query_user_generate_req(bankDB_request_info* _req);
+//查询结果,将结果转化为bankDB_result_cust_info
+void reg_query_user_get_rlt(bankDB_result_cust_info* _db_rlt);
+//根据_db_rlt,提取相关信息,填充到reg_cust_info中
+void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* _cust_info);
+
+/********************************************************/
+//6.4
+//sunni完成
+//将注册的用户填入到数据库中
