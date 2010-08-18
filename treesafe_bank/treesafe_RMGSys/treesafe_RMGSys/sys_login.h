@@ -53,8 +53,6 @@ struct login_info{
 //整体模块
 struct login_modle{
 	bool login_succ;//登陆过程成功
-	int command_arg_len;//网络数据的长度
-	char command_info[MAX_OTHER_STR_LEN];//指令的信息
 	login_check_info check_info;
 	login_user_info db_query;//数据库在3.3中的查找模块
 	login_info rlt_info;

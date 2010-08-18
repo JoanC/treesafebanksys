@@ -8,8 +8,8 @@ login_modle* login_init(){
 	login_modle* _init = (login_modle*)malloc(sizeof(login_modle));
 	if(_init == NULL) return _init;
 	//初始化个成员变量
-	_init->command_arg_len = 0;
-	memset(_init->command_info,'\0',MAX_OTHER_STR_LEN);
+	//_init->command_arg_len = 0;
+	//memset(_init->command_info,'\0',MAX_OTHER_STR_LEN);
 	_init->login_succ = false;
 	login_init_login_check_info(&_init->check_info);
 	login_init_login_info(&_init->rlt_info);

@@ -59,8 +59,6 @@ struct reg_info{
 //注册过程的整体模块
 struct reg_modle{
 	bool reg_succ;//注册过程成功
-	int command_len;//命令信息的长度
-	char command_info[REG_MAX_OTHER_STR_LEN];//命令长度
 	/*下面是数据*/
 	reg_input_info input_info;//用户输入的信息
 	reg_basic_info db_query_from_bank;//从银行系统调出的基础信息
