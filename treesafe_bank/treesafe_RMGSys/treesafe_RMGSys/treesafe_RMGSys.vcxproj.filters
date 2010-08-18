@@ -125,5 +125,8 @@
     <ClCompile Include="sys_bank_query.cpp">
       <Filter>sys_connc_bank</Filter>
     </ClCompile>
+    <ClCompile Include="sys_reg.cpp">
+      <Filter>login_regist\reg</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

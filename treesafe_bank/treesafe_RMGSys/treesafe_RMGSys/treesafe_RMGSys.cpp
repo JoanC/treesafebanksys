@@ -2,9 +2,9 @@
 //
 
 #include "stdafx.h"
-#include "treesate_cClient.h"
+//#include "treesate_cClient.h"
 
-#include "sys_command.h"
+//#include "sys_command.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -34,6 +34,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	SendData(&client);
 	ExitClient(&client);
 #endif
+	/*
 	login_check_info* _test = 
 		(login_check_info*)malloc(sizeof(login_check_info));
 	strcpy(_test->user_info.input_user_name,"haha");
@@ -49,6 +50,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	sys_command(&cmd,(char*)_rlt);
 	free(_test);
 	free(_rlt);
-	return 0;
+	return 0;*/
 }
 

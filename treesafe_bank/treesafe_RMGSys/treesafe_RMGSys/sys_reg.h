@@ -2,9 +2,10 @@
 /******************************************/
 //此模块仅仅处理普通的用户处理程式
 //而雇员的增加与减少则是在管理员的(管理雇员)模块功能中实现
+#pragma once
+
 #include "sys_error_compute.h"
 #include "database_mgr.h"
-#include "treesate_cClient.h"//需要与银行子系统进行进行交互
 #include "sys_connc_banksys_db.h"
 #include "sys_error_compute.h"//错误处理
 
@@ -129,7 +130,7 @@ void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_cust_info* 
 //数据对比,对比用户输入的基础信息和从银行调出的信息进行必要的比对
 //比对项尚要商讨,比如联系电话可以不用验证
 //目前先比对用户真实姓名,性别,年龄,家庭住址
-void reg_info_cmp(reg_basic_info* _input , reg_basic_info* _bank_data);
+bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data);
 
 /********************************************************/
 //6.5

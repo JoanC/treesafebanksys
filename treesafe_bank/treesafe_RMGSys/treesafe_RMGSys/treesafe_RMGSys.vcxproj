@@ -101,6 +101,7 @@
     <ClCompile Include="sys_bank_query.cpp" />
     <ClCompile Include="sys_error_compute.cpp" />
     <ClCompile Include="sys_login.cpp" />
+    <ClCompile Include="sys_reg.cpp" />
     <ClCompile Include="treesafe_cClient.cpp" />
     <ClCompile Include="treesafe_RMGSys.cpp" />
   </ItemGroup>

@@ -6,6 +6,8 @@
 //此模块高度独立,要做的就是将一个net_data的结构体发送和接收
 
 //接受的数据是一个类型和一个字符串及这个侧内存块的长度
+#pragma once
+
 typedef int COMMAND_TYPE;
 typedef char* NET_INFO;
 typedef int DATA_LEN;
