@@ -11,6 +11,7 @@
 #include "sys_error_compute.h"//错误处理
 
 #define REG_MAX_USER_NAME idLen
+#define REG_MAX_REAL_USER_NAME 51
 #define REG_MAX_USER_PWD pwdLen
 #define REG_MAX_USER_BANK_ID 19//十八位身份证号,加'\0'19
 #define REG_MAX_ADDR 64//联系地址
@@ -30,7 +31,7 @@ struct reg_basic_info{
 	//身份证号,18位
 	REG_USER_ID reg_id[REG_MAX_USER_BANK_ID];
 	//用户真实姓名
-	char reg_basic_user_name[REG_MAX_USER_NAME];
+	char reg_basic_user_name[REG_MAX_REAL_USER_NAME];
 	//性别
 	REG_GENDER_TYPE reg_gender;
 	//年龄

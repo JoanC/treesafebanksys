@@ -103,5 +103,7 @@ void reg_query_user_convert_rlt(bankDB_result_info* _db_rlt,reg_basic_info* _cus
 	//将结果信息的信息指针转化成cust_info
 	bankDB_result_cust_info* _cust = (bankDB_result_cust_info*)_db_rlt->pRlt;
 	//信息传输
-	
+	_cust_info->reg_age = _cust->age;
+	strcpy(_cust_info->reg_basic_user_name,_cust->name);
+
 }
