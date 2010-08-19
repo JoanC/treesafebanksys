@@ -88,7 +88,13 @@ void reg_query_user_get_rlt(bankDB_request_info* _req , bankDB_result_info* _db_
 	//...这个得ducky做啦
 	//即把_req传出去,再把_db_rlt接收到
 	//这个过程封装在sys_connc_bank_query过程中
+#ifdef TEST_REG_MODLE
+	//这是测试代码段
+	_db_rlt->nCount = 0;
+	//strcpy((char*)_db_rlt->pRlt,"");
+#endif
 	sys_connc_bank_query(_req,_db_rlt);
+
 }
 
 
@@ -154,7 +160,8 @@ void reg_add_user_to_db(reg_input_info* _info){
 //6.6
 //注册结束后,将结果信息转化成将要发送的信息
 void reg_generate_result(reg_modle* _mld , char* _rlt){
-	reg_summery_rlt_data(_mld);//整理模块中的数据
+	if(_mld->info.reg_err.type == err_no_err)
+		reg_summery_rlt_data(_mld);//整理模块中的数据
 	//复制结果,模块释放后,结果将被发到网络传输层
 	memcpy(_rlt,&_mld->info,sizeof(reg_info));
 }
@@ -198,8 +205,9 @@ void reg_frame(char* _command , int _arg_len , char* _rlt){
 		reg_error_compute(err_reg_info_check_wrong,_reg_frame_modle);
 	}
 	
-	//6.5 将信息添加到数据库
-	reg_add_user_to_db(&_reg_frame_modle->input_info);
+	//6.5 如果没有错误,则将信息添加到数据库
+	if(_reg_frame_modle->info.reg_err.type == err_no_err) 
+		reg_add_user_to_db(&_reg_frame_modle->input_info);
 	
 	//6.6转化信息,输出结果
 	reg_generate_result(_reg_frame_modle,_rlt);
