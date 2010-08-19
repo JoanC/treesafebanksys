@@ -36,7 +36,7 @@ void login_init_login_info(login_info* _init){
 	//初始化错误信息结构体
 	init_sys_err(&_init->login_err);
 //	_init->is_employee = false;
-	memset(_init->user_name,'\0',MAX_USER_NAME_LEN);
+	memset(_init->user_id,'\0',MAX_USER_NAME_LEN);
 }
 
 void login_release(login_modle* _release){
@@ -85,7 +85,16 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 	return !(login_check_name(_db->input_user_name)||
 		login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd));
 }
+/////////////////////////////////////////////////
+/*3.5*/
+void login_db_summery(_ConnectionPtr *_pConn,login_user_info* _user_info , login_info* _info)
+{
+	sys_db_login temp ;
+	Summery_inquiry(_pConn, _user_info->input_user_name,&temp) ;
 
+	_info->compe = temp.cmpt ;
+	strcpy_s(_info->user_id ,MAX_USER_NAME_LEN ,temp.user_id ) ;
+}
 
 /////////////////////////////////////////////////
 /*3.8*/

@@ -20,6 +20,7 @@ char *GetIP()
 
 	return connStr ;
 }
+
 bool ConnectDB(_ConnectionPtr *pConn) 
 {	
 	char *connStr = GetIP() ;
@@ -77,5 +78,38 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 	{
 		strcpy_s(pwd_rlt, PWD_LEN, (char *)(_bstr_t)varPwd)  ;
 		return true ;
+	}
+}
+
+void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
+{
+	_variant_t vt ;
+	char sqlStr[200] = "select * from Table_Login where id = " ;
+	strcat_s(sqlStr,idLen,user_name) ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	// visit the db...
+
+	_variant_t varUserID ; 
+	_variant_t varCmpt ; 
+	 
+	varCmpt			=	rsp->Fields->GetItem(long(2))->Value ;
+	varUserID		=	rsp->Fields->GetItem(long(3))->Value ;
+	
+	if (varUserID.vt == VT_NULL)
+	{
+		strcpy_s(user_info_rlt->user_id , "null" ) ;
+	}
+	else
+	{
+		strcpy_s(user_info_rlt->user_id, (char *)(_bstr_t)varUserID)  ;
+	}
+	
+	if (varCmpt.vt == VT_NULL)
+	{
+		user_info_rlt->cmpt = compe_err ;
+	}
+	else
+	{
+		user_info_rlt->cmpt = (login_competence)varCmpt.intVal  ;
 	}
 }

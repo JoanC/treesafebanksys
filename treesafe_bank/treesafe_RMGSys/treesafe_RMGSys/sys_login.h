@@ -38,16 +38,9 @@ struct login_check_info{
 //一次登陆过程的信息记载
 struct login_info{
 	//用户权限
-	login_competence compe;
-	//用户名
-	char user_name[MAX_USER_NAME_LEN];//用户名
-	//...其他
-	bool is_employee;//登陆的用户是否是雇员
-	int cust_id;//如果是用户,那么用户id
-	int employee_id;//如果是雇员,那么雇员的id
-
-	//错误信息
-	sys_err login_err;//错误信息
+	login_competence		compe ;       													//权限
+	USER_NAME				user_id[MAX_USER_NAME_LEN]	 ;		//用户id
+	sys_err						login_err ;													//错误信息
 };
 
 //整体模块
@@ -123,7 +116,7 @@ bool login_check(login_check_info* _input , login_user_info* _db);
 //如果成功,则进行该模块的处理
 
 //具体的login_info就要看sunni怎么定了
-void login_db_summery(login_user_info* _user_info , login_info* _info);
+void login_db_summery(_ConnectionPtr *_pConn,login_user_info* _user_info , login_info* _info);
 
 /******************************************************/
 //以下有sunni完成
