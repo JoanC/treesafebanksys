@@ -11,6 +11,10 @@ void sys_command(const sys_net_data* _command,char* _rlt){
 		//调用登录处理子函数
 		sys_command_login(_command,_rlt);
 						}break;
+	case(sys_cmd_reg):{
+		//调用登录处理子函数
+		sys_command_reg(_command,_rlt);
+					  }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt);
 						   }break;
@@ -24,6 +28,11 @@ void sys_command(const sys_net_data* _command,char* _rlt){
 void sys_command_login(const sys_net_data* _cmd,char* _rlt){
 	//调用登陆主函式
 	login_frame(_cmd->data,_cmd->len,_rlt);
+}
+
+//2,2,2 注册处理
+void sys_command_reg(const sys_net_data* _cmd , char* _rlt){
+	reg_frame(_cmd->data,_cmd->len,_rlt);
 }
 
 void sys_command_err(const sys_net_data* _command,char* _rlt){

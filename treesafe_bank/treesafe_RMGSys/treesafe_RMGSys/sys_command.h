@@ -1,15 +1,18 @@
+#pragma once
 //模块2
 #include "treesafe_cServer.h"
 
 //所有子流程都要包含
 #include "sys_login.h"//登陆的子流程
 #include "sys_error_compute.h"//错误处理模块
+#include "sys_reg.h"
 
 typedef char* COMMAND_DATA;
 
 enum{
 	//命令编号集合
 	sys_cmd_login,//登录指令
+	sys_cmd_reg,//注册指令
 	sys_cmd_unexpect//未知命令(不可解析)
 };
 #pragma once
@@ -37,6 +40,9 @@ void sys_command(const sys_net_data* _command,char* _rlt);
 
 //登陆模块的处理函数2.2.1
 void sys_command_login(const sys_net_data* _cmd,char* _rlt);
+
+//注册模块子处理函式
+void sys_command_reg(const sys_net_data* _cmd , char* _rlt);
 
 //模块2.3
 //未知命令的处理函式
