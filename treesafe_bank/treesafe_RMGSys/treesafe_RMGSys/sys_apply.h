@@ -5,6 +5,9 @@
 //申请处理流程
 #define APPLY_CUST_ID_LEN 19 //申请人身份证号长度
 #define APPLY_CUST_NAME_LEN 51//姓名长度
+
+enum APPLY_GENDER_TYPR {male , female};
+
 //操作员输入的信息结构
 struct apply_custmor_info{
 	//申请人(社员)的信息
@@ -12,11 +15,10 @@ struct apply_custmor_info{
 	//姓名
 	char* cust_name[APPLY_CUST_NAME_LEN];
 	//性别
-}
+};
 
 struct apply_input_info{
 	
-
 };
 
 //经整合后,系统可读的信息

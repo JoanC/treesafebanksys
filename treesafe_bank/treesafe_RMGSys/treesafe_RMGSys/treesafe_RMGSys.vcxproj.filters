@@ -128,5 +128,8 @@
     <ClCompile Include="sys_reg.cpp">
       <Filter>login_regist\reg</Filter>
     </ClCompile>
+    <ClCompile Include="sys_apply.cpp">
+      <Filter>apply</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
