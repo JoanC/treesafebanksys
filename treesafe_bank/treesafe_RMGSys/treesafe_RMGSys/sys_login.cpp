@@ -28,14 +28,14 @@ void login_init_login_check_info(login_check_info* _init){
 }
 
 void login_init_login_info(login_info* _init){
-	_init->compe = compe_user;
-	_init->cust_id = 0;
-	_init->employee_id = 0;
+	_init->compe = compe_cust;
+//	_init->cust_id = 0;
+//	_init->employee_id = 0;
 //	_init->login_err.type = login_no_err;
 //	memset(_init->err_info,'\0',MAX_OTHER_STR_LEN);
 	//初始化错误信息结构体
 	init_sys_err(&_init->login_err);
-	_init->is_employee = false;
+//	_init->is_employee = false;
 	memset(_init->user_name,'\0',MAX_USER_NAME_LEN);
 }
 
