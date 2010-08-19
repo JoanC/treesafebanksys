@@ -11,4 +11,4 @@
 //#define TEST_LOGIN_MODLE
 
 //reg²âÊÔµÄ´úÂë¶Î
-#define TEST_REG_MODLE
+//#define TEST_REG_MODLE
