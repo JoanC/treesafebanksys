@@ -59,8 +59,18 @@ int _tmain(int argc, _TCHAR* argv[])
 #endif
 
 #ifdef TEST_REG_MODLE
-	reg_modle* _reg = reg_init();
-	reg_release(_reg);
+	reg_input_info test_input;
+	test_input.basic_info.reg_age = 20;
+	strcpy(test_input.basic_info.reg_basic_user_name,"Amor");
+	test_input.basic_info.reg_gender = female;
+	strcpy(test_input.basic_info.reg_home_addr ,"江西省南昌市上海路");
+	strcpy(test_input.basic_info.reg_id,"123456789123456789");
+	strcpy(test_input.basic_info.reg_name,"my baby");
+	strcpy(test_input.basic_info.reg_pwd,"xbx8206897");
+	char cmd[256];
+	char rlt[256];
+	memcpy(cmd,&test_input,sizeof(reg_input_info));
+	reg_frame(cmd,sizeof(reg_input_info),rlt);
 #endif
 	return 0;
 }
