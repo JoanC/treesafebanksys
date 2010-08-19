@@ -77,4 +77,31 @@ reg_input_info* reg_get_info(char* _cmd , int _len){
 	reg_copy_cmd(_temp_input,_cmd,_len);
 	return reg_convert_cmd(_temp_input);
 }
-//...
+
+//模块6.3
+void reg_query_user_generate_req(char* _cust_id,bankDB_request_info* _req){
+	//根据信息,产生一个给银行子系统的请求
+	strcpy(_req->id,_cust_id);
+	_req->type = CUST_INFO;
+}
+
+void reg_query_user_get_rlt(bankDB_request_info* _req , bankDB_result_info* _db_rlt){
+	//...这个得ducky做啦
+	//即把_req传出去,再把_db_rlt接收到
+	//这个过程封装在sys_connc_bank_query过程中
+	sys_connc_bank_query(_req,_db_rlt);
+}
+
+
+void reg_query_user_convert_rlt(bankDB_result_info* _db_rlt,reg_basic_info* _cust_info){
+	//把从银行子系统数据库调来的数据转化成为基础信息
+	//首先将_db_rlt进行转化
+	if(!_db_rlt->nCount){
+		//查询结果为0
+		return;
+	}
+	//将结果信息的信息指针转化成cust_info
+	bankDB_result_cust_info* _cust = (bankDB_result_cust_info*)_db_rlt->pRlt;
+	//信息传输
+	
+}

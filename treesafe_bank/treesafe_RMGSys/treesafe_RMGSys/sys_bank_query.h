@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sys_connc_banksys_db.h"//数据库协议
-#include "treesate_cClient.h"//用户网络交互
+//#include "treesate_cClient.h"//用户网络交互
 
 /************************************************/
 //模块7

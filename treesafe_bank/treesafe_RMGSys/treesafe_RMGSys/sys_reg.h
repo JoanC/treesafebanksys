@@ -6,7 +6,8 @@
 
 #include "sys_error_compute.h"
 #include "database_mgr.h"
-#include "sys_connc_banksys_db.h"
+//#include "sys_connc_banksys_db.h"
+#include "sys_bank_query.h"
 #include "sys_error_compute.h"//错误处理
 
 #define REG_MAX_USER_NAME idLen
@@ -108,14 +109,14 @@ reg_input_info* reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
 
 //由于ducky的接受函数尚未写好,所以这里看看,我觉得还需设计一个模块,把这个过程封
 //在一个主函式里,见sys_connc_bank
-void reg_query_user(reg_basic_info* _cust_info);
+void reg_query_user(char* _query_id,reg_basic_info* _rlt_cust_info);
 
 //生成一个请求信息,_req
-void reg_query_user_generate_req(bankDB_request_info* _req);
+void reg_query_user_generate_req(char* _cust_id,bankDB_request_info* _req);
 //查询结果,将结果转化为bankDB_result_cust_info
-void reg_query_user_get_rlt(bankDB_result_cust_info* _db_rlt);
+void reg_query_user_get_rlt(bankDB_request_info* _req , bankDB_result_info* _db_rlt);
 //根据_db_rlt,提取相关信息,填充到reg_cust_info中
-void reg_query_user_convert_rlt(bankDB_result_cust_info* _db_rlt,reg_basic_info* _cust_info);
+void reg_query_user_convert_rlt(bankDB_result_info* _db_rlt,reg_basic_info* _cust_info);
 
 /********************************************************/
 //6.4

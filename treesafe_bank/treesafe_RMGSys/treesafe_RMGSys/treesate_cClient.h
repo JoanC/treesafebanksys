@@ -1,3 +1,5 @@
+#ifndef _CCLIENT_H_
+#define _CCLIENT_H_
 /****************************************Copyright (c)**************************************************
 **                         treesafe bank system                             
 **
@@ -16,13 +18,10 @@
 ** Descriptions:		
 **
 ********************************************************************************************************/
-#pragma once
 
 #include <winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
 
-#ifndef _CCLIENT_H_
-#define _CCLIENT_H_
 const int BUF_SIZE = 80;
 
 struct cClient
