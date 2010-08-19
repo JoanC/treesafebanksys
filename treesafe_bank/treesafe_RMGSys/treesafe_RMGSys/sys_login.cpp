@@ -92,10 +92,7 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
 	_mld->login_succ = false;
 	//db...查找错误信息,填充结构体
-	//sys_err_search(&_mld->rlt_info.login_err);
-
-	//将错误信息复制到模块的错误记录中去
-	//strcpy(_mld->rlt_info.login_err.info,_temp_err_info);//字符串复制
+	sys_err_search(&_mld->rlt_info.login_err);
 }
 
 /////////////////////////////////////////////////

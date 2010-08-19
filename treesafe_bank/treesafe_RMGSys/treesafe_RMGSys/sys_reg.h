@@ -133,11 +133,21 @@ bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data);
 //将注册的用户填入到数据库中
 //根据用户信息,将对应的登陆用的用户号和密码,以及身份证号
 //内部的转化和扩充后存入db中
-//只要存入基础信息即可
-void reg_add_user_to_db(reg_basic_info* _info);
+void reg_add_user_to_db(reg_input_info* _info);
 
 /********************************************************/
-//6.5
+//6.6
 //由Jiraiya完成
 //注册结束后,将结果信息转化成将要发送的信息
-void reg_generate_result(reg_info* _info , char* _rlt);
+void reg_generate_result(reg_modle* _mld , char* _rlt);
+void reg_summery_rlt_data(reg_modle* _mld);//整理数据
+/********************************************************/
+//6.7
+//由Jiraiya完成
+//注册过程中的错误处理函式
+void reg_error_compute(sys_err_type _type , reg_modle* _modle);
+/********************************************************/
+//模块6主函式
+//由Jiraiya完成
+
+void reg_frame(char* _command , int _arg_len , char* _rlt);

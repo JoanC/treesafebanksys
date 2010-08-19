@@ -102,8 +102,109 @@ void reg_query_user_convert_rlt(bankDB_result_info* _db_rlt,reg_basic_info* _cus
 	}
 	//将结果信息的信息指针转化成cust_info
 	bankDB_result_cust_info* _cust = (bankDB_result_cust_info*)_db_rlt->pRlt;
-	//信息传输
-	_cust_info->reg_age = _cust->age;
+	//信息传输,填充基本信息
+	//这个被填充的结构体是用于与用户输入的基本信息进行比对的
+	//需要比对的信息包括姓名,年龄,性别
+	//姓名
 	strcpy(_cust_info->reg_basic_user_name,_cust->name);
+	//身份证号码
+	strcpy(_cust_info->reg_id , _cust->id);
+	//年龄
+	_cust_info->reg_age = _cust->age;
+	//性别
+	_cust_info->reg_gender = _cust->gend ? male : female;
+	//家庭住址
+	//...家庭住址不用比较
+	//strcpy(_cust_info->reg_home_addr,_cust->home_addr);
+}
 
+void reg_query_user(char* _query_id,reg_basic_info* _rlt_cust_info){
+	//模块6.3的主函式
+	//首先为请求和结果的结构体申请内存
+	bankDB_request_info* _req = 
+		(bankDB_request_info*)malloc(sizeof(bankDB_request_info));
+	bankDB_result_info* _rlt = 
+		(bankDB_result_info*)malloc(sizeof(bankDB_result_info));
+	//生成相应的请求信息
+	reg_query_user_generate_req(_query_id,_req);
+	//查询
+	reg_query_user_get_rlt(_req,_rlt);
+	//转化
+	reg_query_user_convert_rlt(_rlt,_rlt_cust_info);
+	//释放内存
+	free(_req);
+	free(_rlt);
+}
+
+bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
+	//信息验证
+	//比对姓名,年龄,性别
+	if(_input->reg_age != _bank_data->reg_age) return false;
+	if(!strcmp(_input->reg_basic_user_name,_bank_data->reg_basic_user_name))
+		return false;
+	if(_input->reg_gender != _bank_data->reg_gender) return false;
+	return true;
+}
+
+//模块6.5
+void reg_add_user_to_db(reg_input_info* _info){
+	//根据basic信息,把该用户加入数据库中
+	//...待sunni实现
+}
+
+//6.6
+//注册结束后,将结果信息转化成将要发送的信息
+void reg_generate_result(reg_modle* _mld , char* _rlt){
+	reg_summery_rlt_data(_mld);//整理模块中的数据
+	//复制结果,模块释放后,结果将被发到网络传输层
+	memcpy(_rlt,&_mld->info,sizeof(reg_info));
+}
+void reg_summery_rlt_data(reg_modle* _mld){
+	//整理要发送给网页端的数据
+	//错误信息已经在主流程中填充完毕
+	strcpy(_mld->info.user_name,_mld->input_info.basic_info.reg_id);
+	//...其它(可添加)
+}
+
+//6.7
+void reg_error_compute(sys_err_type _type , reg_modle* _modle){
+	_modle->reg_succ = false;
+	//查找错误信息
+	_modle->info.reg_err.type = _type;
+	sys_err_search(&_modle->info.reg_err);
+}
+
+void reg_frame(char* _command , int _arg_len , char* _rlt){
+	//以下代码整合了模块6的所有子块
+	
+	//6.1
+	//初始化注册模块
+	reg_modle* _reg_frame_modle = reg_init();
+	
+	//6.2 获取输入信息
+	_reg_frame_modle->input_info = *reg_get_info(_command,_arg_len);
+	if(!_reg_frame_modle->input_info.is_pwd_vry_crr){
+		//两次密码验证不正确
+		reg_error_compute(err_reg_vry_pwd_err,_reg_frame_modle);
+	}
+	
+	//6.3 银行子系统的查询
+	reg_query_user(_reg_frame_modle->input_info.basic_info.reg_id,
+		&_reg_frame_modle->db_query_from_bank);
+	
+	//6.4 对比
+	if(!reg_info_cmp(&_reg_frame_modle->input_info.basic_info
+		,&_reg_frame_modle->db_query_from_bank)){
+		//信息对比有错误
+		reg_error_compute(err_reg_info_check_wrong,_reg_frame_modle);
+	}
+	
+	//6.5 将信息添加到数据库
+	reg_add_user_to_db(&_reg_frame_modle->input_info);
+	
+	//6.6转化信息,输出结果
+	reg_generate_result(_reg_frame_modle,_rlt);
+	
+	//释放模块
+	reg_release(_reg_frame_modle);
 }

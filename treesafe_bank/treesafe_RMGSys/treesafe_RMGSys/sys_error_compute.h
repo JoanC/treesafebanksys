@@ -18,7 +18,10 @@ enum sys_err_type{
 	err_unknow,//不可解析错误
 	//登陆过程中将会遇到的错误
 	err_login_user_or_pwd_err,//用户名或密码不对
-	err_login_vry_uncmp//验证码不匹配
+	err_login_vry_uncmp,//验证码不匹配
+	//注册过程中会遇到的错误
+	err_reg_vry_pwd_err,//密码确认出错
+	err_reg_info_check_wrong//与银行中的数据比对时出错
 };
 
 //错误信息结构体
