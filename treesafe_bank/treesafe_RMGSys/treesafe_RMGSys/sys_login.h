@@ -142,9 +142,9 @@ void login_err_mgr(sys_err_type _err_type,login_modle* _mld);
 //以下是Jiraiya完成
 //模块3.9
 //0.9对最终结果进行处理
-void login_convert_rlt(login_info* _info , char* _rlt);
+void login_convert_rlt(login_info* _info , char* _rlt , int* _rlt_len);
 
 /******************************************************/
 //登陆模块的总流程
 //Jiraiya整合
-void login_frame(char* _command , int _arg_len , char* _rlt);
+void login_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len);
