@@ -66,3 +66,8 @@ bool apply_check_cust_info(apply_custmor_info* _input
 		}
 		return true;
 }
+
+//7.5
+
+
+//7.6
