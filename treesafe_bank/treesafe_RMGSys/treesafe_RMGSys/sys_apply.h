@@ -75,10 +75,10 @@ void apply_init_apply_modle(apply_modle* _apply);
 //模块7.2
 //从命令中获取可用信息
 // Jiraiya完成
-void apply_get_input_info(char* _command , char* _len);
+apply_input_info* apply_get_input_info(char* _command , int _len);
 
 //复制命令
-void apply_get_copy_command(char* _dest , char* _command);
+void apply_get_copy_command(char* _dest , char* _command , int _len);
 //将命令转化为用户的输入信息
 //当然,这个依赖于双方的协议
 apply_input_info* apply_get_convert_input(char* _data);

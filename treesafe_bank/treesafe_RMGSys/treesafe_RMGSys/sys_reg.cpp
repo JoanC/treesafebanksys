@@ -159,11 +159,13 @@ void reg_add_user_to_db(reg_input_info* _info){
 
 //6.6
 //注册结束后,将结果信息转化成将要发送的信息
-void reg_generate_result(reg_modle* _mld , char* _rlt){
+void reg_generate_result(reg_modle* _mld , char* _rlt , int* _rlt_len){
 	if(_mld->info.reg_err.type == err_no_err)
 		reg_summery_rlt_data(_mld);//整理模块中的数据
 	//复制结果,模块释放后,结果将被发到网络传输层
 	memcpy(_rlt,&_mld->info,sizeof(reg_info));
+	//结果信息
+	*_rlt_len = sizeof(reg_info);
 }
 void reg_summery_rlt_data(reg_modle* _mld){
 	//整理要发送给网页端的数据
@@ -180,7 +182,7 @@ void reg_error_compute(sys_err_type _type , reg_modle* _modle){
 	sys_err_search(&_modle->info.reg_err);
 }
 
-void reg_frame(char* _command , int _arg_len , char* _rlt){
+void reg_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len){
 	//以下代码整合了模块6的所有子块
 	
 	//6.1
@@ -210,7 +212,7 @@ void reg_frame(char* _command , int _arg_len , char* _rlt){
 		reg_add_user_to_db(&_reg_frame_modle->input_info);
 	
 	//6.6转化信息,输出结果
-	reg_generate_result(_reg_frame_modle,_rlt);
+	reg_generate_result(_reg_frame_modle,_rlt,_rlt_len);
 	
 	//释放模块
 	reg_release(_reg_frame_modle);

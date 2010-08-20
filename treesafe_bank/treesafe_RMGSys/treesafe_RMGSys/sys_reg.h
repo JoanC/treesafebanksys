@@ -139,7 +139,7 @@ void reg_add_user_to_db(reg_input_info* _info);
 //6.6
 //由Jiraiya完成
 //注册结束后,将结果信息转化成将要发送的信息
-void reg_generate_result(reg_modle* _mld , char* _rlt);
+void reg_generate_result(reg_modle* _mld , char* _rlt , int* _rlt_len);
 void reg_summery_rlt_data(reg_modle* _mld);//整理数据
 /********************************************************/
 //6.7
@@ -149,5 +149,4 @@ void reg_error_compute(sys_err_type _type , reg_modle* _modle);
 /********************************************************/
 //模块6主函式
 //由Jiraiya完成
-
-void reg_frame(char* _command , int _arg_len , char* _rlt);
+void reg_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len);
