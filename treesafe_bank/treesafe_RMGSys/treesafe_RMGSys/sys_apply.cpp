@@ -71,3 +71,32 @@ bool apply_check_cust_info(apply_custmor_info* _input
 
 
 //7.6
+void apply_err_compute(sys_err_type _type , apply_modle* _modle){
+	_modle->rlt_info.errInfo.type = _type;
+}
+
+//申请处理的主函式
+void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
+	//7.1
+	//初始化模块
+	apply_modle* _apply_frame = 
+		(apply_modle*)malloc(sizeof(apply_modle));
+	apply_init_apply_modle(_apply_frame);
+	
+	//7.2
+	//接收输入信息
+	_apply_frame->input_info = 
+		*apply_get_input_info(_command,_len);
+	
+	//7.3
+	//调出数据
+	//apply_query_cust_info(&_apply_frame->rlt_info);
+
+	//7.4
+	//比对数据
+	if(apply_check_cust_info(&_apply_frame->input_info.input_basic_info,
+		&_apply_frame->db_cust_info)){
+
+	}
+
+}
