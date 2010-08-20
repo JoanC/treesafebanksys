@@ -32,18 +32,18 @@ enum{
 //一个大的switch_case
 //根据不同的命令参数,调用不同的处理函数
 //运行指令的结果存在将要发送的一个net_datazhogn 
-void sys_command(const sys_net_data* _command,char* _rlt);
+void sys_command(const sys_net_data* _command,char* _rlt,int* _rlt_len);
 
 
 //模块2.2
 //0.2不同的子处理函数
 
 //登陆模块的处理函数2.2.1
-void sys_command_login(const sys_net_data* _cmd,char* _rlt);
+void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
 //注册模块子处理函式
-void sys_command_reg(const sys_net_data* _cmd , char* _rlt);
+void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
 
 //模块2.3
 //未知命令的处理函式
-void sys_command_err(const sys_net_data* _command,char* _rlt);
+void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len);
