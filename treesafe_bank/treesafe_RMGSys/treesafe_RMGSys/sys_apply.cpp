@@ -32,6 +32,10 @@ void apply_init_apply_modle(apply_modle* _init){
 	apply_init_apply_info(&_init->rlt_info);
 }
 
+void apply_release(apply_modle* _mld){
+	free(_mld);
+}
+
 //7.2
 //获取输入信息
 void apply_get_copy_command(char* _dest , char* _command,int _len){
@@ -84,6 +88,13 @@ void apply_err_compute(sys_err_type _type , apply_modle* _modle){
 	sys_err_search(&_modle->rlt_info.errInfo);
 }
 
+void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len){
+	//数据复制
+	//将数据复制到结果信息
+	memcpy(_rlt,_info,sizeof(apply_info));
+	*_rlt_len = sizeof(apply_info);
+}
+
 //申请处理的主函式
 void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
 	//7.1
@@ -109,6 +120,15 @@ void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
 				, _apply_frame);
 	}
 
+	//7.5
 
 
+	//7.6
+	//整理结果
+	apply_convert_rlt(&_apply_frame->rlt_info
+		,_rlt, &_rlt_len);
+
+	//7.7
+	//释放模块
+	apply_release(_apply_frame);
 }

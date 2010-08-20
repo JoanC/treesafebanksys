@@ -71,6 +71,9 @@ void apply_init_apply_info(apply_info* _init);
 //初始化申请模块
 void apply_init_apply_modle(apply_modle* _init);
 
+//释放模块
+void apply_release(apply_modle* _mld);
+
 /*******************************************************/
 //模块7.2
 //从命令中获取可用信息
@@ -116,7 +119,7 @@ void apply_save_to_research_table(char* _new_id , apply_input_info* _info);
 //由Jiraiya完成
 //结果处理
 
-void apply_err_
+void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len);
 
 /********************************************************/
 //模块7.7
