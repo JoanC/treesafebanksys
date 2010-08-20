@@ -69,7 +69,7 @@ void apply_init_apply_input_info(apply_input_info* _init);
 void apply_init_apply_info(apply_info* _init);
 
 //初始化申请模块
-void apply_init_apply_modle(apply_modle* _apply);
+void apply_init_apply_modle(apply_modle* _init);
 
 /*******************************************************/
 //模块7.2

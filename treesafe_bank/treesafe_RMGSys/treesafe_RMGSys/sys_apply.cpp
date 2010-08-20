@@ -25,6 +25,13 @@ void apply_init_apply_info(apply_info* _init){
 	//初始化其他信息...
 }
 
+void apply_init_apply_modle(apply_modle* _init){
+	//初始化各个指针
+	apply_init_apply_input_info(&_init->input_info);
+	apply_init_apply_custmor_info(&_init->db_cust_info);
+	apply_init_apply_info(&_init->rlt_info);
+}
+
 //7.2
 //获取输入信息
 void apply_get_copy_command(char* _dest , char* _command,int _len){
@@ -73,6 +80,8 @@ bool apply_check_cust_info(apply_custmor_info* _input
 //7.6
 void apply_err_compute(sys_err_type _type , apply_modle* _modle){
 	_modle->rlt_info.errInfo.type = _type;
+	//从数据库中调出这个错误的相关信息
+	sys_err_search(&_modle->rlt_info.errInfo);
 }
 
 //申请处理的主函式
@@ -94,7 +103,7 @@ void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
 
 	//7.4
 	//比对数据
-	if(apply_check_cust_info(&_apply_frame->input_info.input_basic_info,
+	if(!apply_check_cust_info(&_apply_frame->input_info.input_basic_info,
 		&_apply_frame->db_cust_info)){
 
 	}
