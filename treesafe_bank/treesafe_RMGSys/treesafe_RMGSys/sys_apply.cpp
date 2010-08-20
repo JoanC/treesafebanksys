@@ -105,7 +105,10 @@ void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
 	//比对数据
 	if(!apply_check_cust_info(&_apply_frame->input_info.input_basic_info,
 		&_apply_frame->db_cust_info)){
-
+			apply_err_compute(err_apply_info_chech_wrong
+				, _apply_frame);
 	}
+
+
 
 }

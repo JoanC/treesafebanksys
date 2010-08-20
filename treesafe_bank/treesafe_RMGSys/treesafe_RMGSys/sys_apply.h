@@ -110,12 +110,21 @@ void apply_save_generate_id(char* _new_id);
 //把这个申请存入待审核的表中
 void apply_save_to_research_table(char* _new_id , apply_input_info* _info);
 
-/********************************************************/
+
+/*********************************************************/
 //模块7.6
+//由Jiraiya完成
+//结果处理
+
+void apply_err_
+
+/********************************************************/
+//模块7.7
 //由jiraiya完成
 //错误处理
 //...
 void apply_err_compute(sys_err_type _type , apply_modle* _modle);
+
 
 /*********************************************************/
 //申请流程的主函式
