@@ -106,15 +106,17 @@ void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
 
 /////////////////////////////////////////////////
 /*3.9*/
-void login_convert_rlt(login_info* _info , char* _rlt){
+void login_convert_rlt(login_info* _info , char* _rlt , int* _rlt_len){
 	//将结果复制在rlt中传出
 	memcpy(_rlt,_info,sizeof(login_info));
+	//长度就是login_info的长度
+	*_rlt_len = sizeof(login_info);
 }
 
 /******************************************************/
 //登陆模块的总流程
 //Jiraiya整合
-void login_frame(char* _command , int _arg_len , char* _rlt){
+void login_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len){
 	//建立登陆模块
 	login_modle* _login_frame = login_init();//初始化登陆模块
 	_login_frame->check_info = *login_get_info(_command,_arg_len);
@@ -150,7 +152,7 @@ void login_frame(char* _command , int _arg_len , char* _rlt){
 
 
 	//结果转化
-	login_convert_rlt(&_login_frame->rlt_info,_rlt);
+	login_convert_rlt(&_login_frame->rlt_info,_rlt,_rlt_len);
 
 	//释放模块
 	login_release(_login_frame);
