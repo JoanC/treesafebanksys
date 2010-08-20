@@ -47,3 +47,22 @@ apply_input_info* apply_get_input_info(char* _command , int _len){
 void apply_query_cust_info(apply_custmor_info* _rlt){
 	//查询结果
 }
+
+//7.4
+bool apply_check_cust_info(apply_custmor_info* _input 
+	, apply_custmor_info* _db_query){
+		//数据检测
+		if(strcmp(_input->cust_id,_db_query->cust_id) != 0)
+			return false;
+		if(strcmp(_input->cust_name,_db_query->cust_name) != 0){
+			return false;
+		}
+		//性别检测
+		if(_input->cust_gender != _db_query->cust_gender)
+			return false;
+		if(_input->cust_age == _db_query->cust_age){
+			//检测年龄
+			return false;
+		}
+		return true;
+}

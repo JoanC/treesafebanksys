@@ -145,7 +145,7 @@ bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
 	//信息验证
 	//比对姓名,年龄,性别
 	if(_input->reg_age != _bank_data->reg_age) return false;
-	if(!strcmp(_input->reg_basic_user_name,_bank_data->reg_basic_user_name))
+	if(strcmp(_input->reg_basic_user_name,_bank_data->reg_basic_user_name) != 0)
 		return false;
 	if(_input->reg_gender != _bank_data->reg_gender) return false;
 	return true;
