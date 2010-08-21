@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "sys_login.h"
+
+extern _ConnectionPtr* database_connection;
+
 /////////////////////////////////////////////////
 /*3.1*/
 
