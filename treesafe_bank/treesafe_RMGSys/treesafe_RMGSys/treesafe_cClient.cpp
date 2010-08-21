@@ -4,10 +4,10 @@
 
 
 //init client
-void InitClient(cClient* client)
+void InitClient(sys_Client* client)
 {
 
-	if (WSAStartup(MAKEWORD(2,2),&client->wsd) !=0)
+	if (WSAStartup(MAKEWORD(2,2),&client->sys_net.wsd) !=0)
 	{
 		printf("WSAStartup failed!\n");
 		return;
@@ -15,10 +15,10 @@ void InitClient(cClient* client)
 }
 
 //create socket 
-void CreateSocket(cClient* client)
+void CreateSocket(sys_Client* client)
 {
-	client->sHost = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
-	if (INVALID_SOCKET == client->sHost)
+	client->sys_net.sHost = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+	if (INVALID_SOCKET == client->sys_net.sHost)
 	{
 		printf("socket failed!\n");
 		WSACleanup();
@@ -28,18 +28,18 @@ void CreateSocket(cClient* client)
 
 
 //connect to server
-void Connect2Server(cClient* client)
+void Connect2Server(sys_Client* client,char* ConnectIP,short port)
 {
 	int retVal;
-	client->servAddr.sin_family = AF_INET;
-	client->servAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	client->servAddr.sin_port = htons((short)4999);
-	int nServAddlen = sizeof(client->servAddr);
-	retVal = connect(client->sHost,(LPSOCKADDR)&client->servAddr,sizeof(client->servAddr));
+	client->sys_net.servAddr.sin_family = AF_INET;
+	client->sys_net.servAddr.sin_addr.s_addr = inet_addr(BANKIP);
+	client->sys_net.servAddr.sin_port = htons(port);
+	int nServAddlen = sizeof(client->sys_net.servAddr);
+	retVal = connect(client->sys_net.sHost,(LPSOCKADDR)&client->sys_net.servAddr,sizeof(client->sys_net.servAddr));
 	if (SOCKET_ERROR == retVal)
 	{
 		printf("connect failed!\n");
-		closesocket(client->sHost);
+		closesocket(client->sys_net.sHost);
 		WSACleanup();
 		return;
 	}
@@ -47,13 +47,13 @@ void Connect2Server(cClient* client)
 }
 
 //send data
-void SendData(cClient* client)
+void SendData(sys_Client* client)
 {
 	int retVal;
-	retVal = send(client->sHost,client->buf,BUF_SIZE,0);
+	retVal = send(client->sys_net.sHost,client->send.cNetDataInfo,client->send.stNetDataLength,0);
 	if (SOCKET_ERROR == retVal)
 	{
-		closesocket(client->sHost);
+		closesocket(client->sys_net.sHost);
 		WSACleanup();
 		return;
 	}
@@ -61,16 +61,16 @@ void SendData(cClient* client)
 
 
 //rec data
-void RecData(cClient* client)
+void RecData(sys_Client* client)
 {
 	int reVal;
-	reVal = recv(client->sHost,client->buf,sizeof(client->buf),0);
+	reVal = recv(client->sys_net.sHost,client->rec.cNetDataInfo,client->rec.stNetDataLength,0);
 }
 
 //exit client
-void ExitClient(cClient* client)
+void ExitClient(sys_Client* client)
 {
-	closesocket(client->sHost);
+	closesocket(client->sys_net.sHost);
 	WSACleanup();
 	return;
 }

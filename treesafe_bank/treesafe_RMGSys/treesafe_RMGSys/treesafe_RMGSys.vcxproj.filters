@@ -102,6 +102,9 @@
     <ClInclude Include="treesafe_cServer.h">
       <Filter>net\net_server</Filter>
     </ClInclude>
+    <ClInclude Include="net.h">
+      <Filter>net</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
