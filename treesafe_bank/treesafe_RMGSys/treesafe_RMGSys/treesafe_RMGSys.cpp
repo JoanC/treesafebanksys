@@ -12,6 +12,13 @@
 #include "sys_reg.h"
 #endif
 
+//作为网页的服务器
+sys_Server server_of_website;
+
+
+//作为银行子系统的服客户端
+sys_Client client_of_bank;
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 

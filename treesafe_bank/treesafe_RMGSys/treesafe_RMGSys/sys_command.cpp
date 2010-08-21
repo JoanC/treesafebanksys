@@ -75,6 +75,9 @@ void sys_command_run_frame(net_recieved_info* _rev , net_send_info* _send){
 	//生成要发送的信息
 	_send->netType = 1;//...
 	_send->stNetDataLength = _len;
+	//生成信息
+//	_send->cNetDataInfo = 
+//		(char*)
 	memcpy(_send->cNetDataInfo,rlt,_len);
 
 	//释放
