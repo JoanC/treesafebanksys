@@ -7,7 +7,7 @@ void sys_command_convert(net_recieved_info* _rev , sys_net_data* _cmd){
 	_cmd->data = (COMMAND_DATA)malloc(_rev->stNetDataLength);
 	strcpy(_cmd->data,"");
 	//内存复制,转化
-	memcpy(_cmd,_rev->cNetDataInfo,sizeof(sys_net_data));
+    memcpy(_cmd,_rev->cNetDataInfo,sizeof(sys_net_data));
 }
 
 void sys_command_init_sys_net_data(sys_net_data* _init){
@@ -76,9 +76,10 @@ void sys_command_run_frame(net_recieved_info* _rev , net_send_info* _send){
 	_send->netType = NETDATA;//...
 	_send->stNetDataLength = _len;
 	//生成信息
-	_send->cNetDataInfo = 
-		(char*)malloc(_len);
-	memcpy(_send->cNetDataInfo,rlt,_len);
+	if(_len != 0){
+		_send->cNetDataInfo = (char*)malloc(_len);
+		memcpy(_send->cNetDataInfo,rlt,_len);
+	}
 	//释放
 	sys_command_release_sys_net_data(_cmd_info);
 }

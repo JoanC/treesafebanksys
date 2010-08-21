@@ -78,7 +78,7 @@ void net_recieve_data(sys_Server* sServer)
 #endif
 	int reVal;
 	char cCount[] = "99";
-	reVal = recv(sServer->sys_server.sClient,cCount,sizeof(cCount),0);
+	reVal = recv(sServer->sys_server.sClient,cCount,sizeof(cCount)-1,0);
 	int iCount = atoi(cCount);
 	sServer->rec.cNetDataInfo = (char*)malloc(sizeof(char)*PackageSize*iCount);
 	sServer->rec.stNetDataLength = PackageSize*iCount;
@@ -87,7 +87,7 @@ void net_recieve_data(sys_Server* sServer)
 	{
 		char tempPack[PackageSize];
 		reVal = recv(sServer->sys_server.sClient,tempPack,PackageSize,0);
-		memcpy(sServer->rec.cNetDataInfo + iCount*PackageSize,tempPack,PackageSize);
+		memcpy(sServer->rec.cNetDataInfo + i*PackageSize,tempPack,PackageSize);
 	}
 	if(SOCKET_ERROR == reVal)
 	{
@@ -147,13 +147,13 @@ void net_recieve_frame(sys_Server* sServer)
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
 	net_recieve_data(sServer);
-	net_release_connection(sServer);
+//	net_release_connection(sServer);
 }
 
 void net_send_frame(sys_Server* sServer)
 {
-	net_add_connection(sServer);
-	net_wait_for_request(sServer);
+//	net_add_connection(sServer);
+//	net_wait_for_request(sServer);
 	net_send_data(sServer);
 	net_release_connection(sServer);
 }

@@ -62,7 +62,7 @@ void SendData(sys_Client* client)
 	if(client->send.stNetDataLength <= PackageSize)
 	{
 		char temp[] = "01";
-		reVal = send(client->sys_net.sHost,temp,sizeof(temp),0);
+		reVal = send(client->sys_net.sHost,temp,sizeof(temp)-1,0);
 		reVal = send(client->sys_net.sHost,client->send.cNetDataInfo,client->send.stNetDataLength,0);	
 	}
 	else
