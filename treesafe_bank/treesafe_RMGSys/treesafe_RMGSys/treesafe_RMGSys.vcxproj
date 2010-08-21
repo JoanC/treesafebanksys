@@ -75,6 +75,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="treesafe_cServer.h" />
     <ClInclude Include="database_mgr.h" />
     <ClInclude Include="Grobal_Macro.h" />
     <ClInclude Include="stdafx.h" />
@@ -88,10 +89,10 @@
     <ClInclude Include="sys_login.h" />
     <ClInclude Include="sys_reg.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="treesafe_cServer.h" />
     <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="treesafe_cServer.cpp" />
     <ClCompile Include="database_mgr.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

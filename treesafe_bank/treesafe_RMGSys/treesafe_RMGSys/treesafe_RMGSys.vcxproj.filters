@@ -78,9 +78,6 @@
     <ClInclude Include="Grobal_Macro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="treesafe_cServer.h">
-      <Filter>net\net_server</Filter>
-    </ClInclude>
     <ClInclude Include="sys_frame.h">
       <Filter>sys_frame</Filter>
     </ClInclude>
@@ -98,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="sys_bank_query.h">
       <Filter>sys_connc_bank</Filter>
+    </ClInclude>
+    <ClInclude Include="treesafe_cServer.h">
+      <Filter>net\net_server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="sys_apply.cpp">
       <Filter>apply</Filter>
+    </ClCompile>
+    <ClCompile Include="treesafe_cServer.cpp">
+      <Filter>net\net_server</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
