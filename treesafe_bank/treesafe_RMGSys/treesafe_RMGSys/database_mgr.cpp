@@ -4,7 +4,7 @@
 
 char *GetIP()
 {
-	const char partConnStr[] = "Provider=SQLOLEDB.1;Password=123;Persist Security Info=True;User ID=ts_login;Initial Catalog=treesafe_Login;Data Source ="  ;
+	const char partConnStr[] = "Provider=SQLOLEDB.1;Password=123;Persist Security Info=True;User ID=ts_login;Initial Catalog=treesafe_Login;Data Source = "  ;
 	const int IPLen = 16 ;
 	int nLenOfConnStr = strlen(partConnStr) + IPLen ;
 	char *connStr = new char[nLenOfConnStr] ;
