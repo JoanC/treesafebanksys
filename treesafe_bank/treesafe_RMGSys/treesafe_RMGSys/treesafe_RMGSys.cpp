@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "sys_login.h"
 //#include "treesate_cClient.h"
 
 //#include "sys_command.h"
@@ -40,23 +41,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	ExitClient(&client);
 #endif
 
-#ifdef TEST_LOGIN_MODLE
-	login_check_info* _test = 
-		(login_check_info*)malloc(sizeof(login_check_info));
-	strcpy(_test->user_info.input_user_name,"haha");
-	strcpy(_test->user_info.input_user_pwd ,"123");
-	_test->vry_is_correct = true;
-	 char* _rlt = (char*)malloc(256);
-	 memset(_rlt,'\0',128);
-	sys_net_data cmd;
-	cmd.type = sys_cmd_login;
-	cmd.len = sizeof(login_check_info);
-	cmd.data = (char*)malloc(cmd.len);
-	memcpy(cmd.data,_test,cmd.len);
-	sys_command(&cmd,(char*)_rlt);
-	free(_test);
-	free(_rlt);
-#endif
 
 #ifdef TEST_REG_MODLE
 	reg_input_info test_input;

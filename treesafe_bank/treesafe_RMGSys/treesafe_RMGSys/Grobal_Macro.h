@@ -7,8 +7,6 @@
 //与银行端进行网络测试的代码段
 //#define TEST_BANK_SYS_CONNECTION
 
-//login测试的代码段
-#define TEST_LOGIN_MODLE
 
 //reg测试的代码段
 //#define TEST_REG_MODLE

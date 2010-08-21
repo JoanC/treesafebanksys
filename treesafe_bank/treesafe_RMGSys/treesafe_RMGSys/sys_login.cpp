@@ -113,7 +113,7 @@ void login_db_summery(_ConnectionPtr *_pConn,login_user_info* _user_info , login
 /////////////////////////////////////////////////
 /*3.8*/
 void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
-	DEBUG_LOGIN_PRINT("error : %d" , _err_type);
+	DEBUG_LOGIN_PRINT("error occured");
 	_mld->login_succ = false;
 	//db...查找错误信息,填充结构体
 	sys_err_search(&_mld->rlt_info.login_err);
