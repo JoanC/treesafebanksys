@@ -26,6 +26,7 @@ void login_init_login_user_info(login_user_info* _init){
 }
 
 void login_init_login_check_info(login_check_info* _init){
+	DEBUG_LOGIN_PRINT("init the login_check_info...");
 	login_init_login_user_info(&_init->user_info);
 	_init->vry_is_correct = false;//初始验证码为false
 }
