@@ -32,6 +32,7 @@ void login_init_login_check_info(login_check_info* _init){
 }
 
 void login_init_login_info(login_info* _init){
+	DEBUG_LOGIN_PRINT("init the login_info...");
 	_init->compe = compe_cust;
 //	_init->cust_id = 0;
 //	_init->employee_id = 0;
@@ -44,6 +45,7 @@ void login_init_login_info(login_info* _init){
 }
 
 void login_release(login_modle* _release){
+	DEBUG_LOGIN_PRINT("release the login_modle...");
 	free(_release);
 }
 
@@ -52,6 +54,7 @@ void login_release(login_modle* _release){
 
 void login_get_copy_data(char* _info , char* _copy_data , int _len){
 	//ÄÚ´æ¶Î¸´ÖÆ
+	DEBUG_LOGIN_PRINT("copy command data ...");
     memcpy(_copy_data,_info,_len);
 }
 
