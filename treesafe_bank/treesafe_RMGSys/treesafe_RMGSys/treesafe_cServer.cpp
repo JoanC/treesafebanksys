@@ -146,7 +146,6 @@ void net_recieve_frame(sys_Server* sServer)
 {
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
-//	initNet(sServer);
 	net_recieve_data(sServer);
 	net_release_connection(sServer);
 }
@@ -155,7 +154,6 @@ void net_send_frame(sys_Server* sServer)
 {
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
-//	initNet(sServer);
 	net_send_data(sServer);
 	net_release_connection(sServer);
 }

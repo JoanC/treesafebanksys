@@ -41,8 +41,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	bankDB_request_info* test = new bankDB_request_info;
 	strcpy(test->id,"123456789123456789");
 	test->type = 1;
-	cClient client;
-	memset(client.buf,' ',sizeof(client.buf));
+	sys_Client client;
+	memset(client.send.,' ',sizeof(client.buf));
 	memcpy(client.buf,test,sizeof(*test));
 	InitClient(&client);
 	CreateSocket(&client);
