@@ -22,10 +22,8 @@ void net_add_connection(sys_Server *sServer)
 		return;
 	}
 
-
-
 	sServer->sys_server.addrServ.sin_family = AF_INET;
-	sServer->sys_server.addrServ.sin_port = htons(4999);
+	sServer->sys_server.addrServ.sin_port = BANKPORT;
 	sServer->sys_server.addrServ.sin_addr.s_addr = INADDR_ANY;
 	retVal = bind(sServer->sys_server.sServer,(LPSOCKADDR)&sServer->sys_server.addrServ,sizeof(SOCKADDR_IN));
 	if(SOCKET_ERROR == retVal)
@@ -73,14 +71,24 @@ void net_wait_for_request(sys_Server *sServer)
 	}
 }
 
-//recieve net data(the size of data is less than 80 bytes)
 void net_recieve_data(sys_Server* sServer)
 {
 #ifdef DEBUG_NET_INFO
 	printf("start to recevie data!\n");
 #endif
 	int reVal;
-	reVal = recv(sServer->sys_server.sClient,sServer->rec.cNetDataInfo,sServer->rec.stNetDataLength,0);
+	char cCount[] = "99";
+	reVal = recv(sServer->sys_server.sClient,cCount,sizeof(cCount),0);
+	int iCount = atoi(cCount);
+	sServer->rec.cNetDataInfo = (char*)malloc(sizeof(char)*PackageSize*iCount);
+	sServer->rec.stNetDataLength = PackageSize*iCount;
+	memset(sServer->rec.cNetDataInfo,'\0',sServer->rec.stNetDataLength);
+	for(int i = 0;i!=iCount;i++)
+	{
+		char tempPack[PackageSize];
+		reVal = recv(sServer->sys_server.sClient,tempPack,PackageSize,0);
+		memcpy(sServer->rec.cNetDataInfo + iCount*PackageSize,tempPack,PackageSize);
+	}
 	if(SOCKET_ERROR == reVal)
 	{
 		printf("recv failed!\n");
@@ -102,7 +110,33 @@ void net_send_data(sys_Server* sServer)
 	printf("start to send data!\n");
 #endif
 	int reVal;
-	reVal = send(sServer->sys_server.sServer,sServer->send.cNetDataInfo,sServer->send.stNetDataLength,0);
+	if(sServer->send.stNetDataLength <= PackageSize)
+	{
+		char temp[] = "01";
+		reVal = send(sServer->sys_server.sServer,temp,sizeof(temp),0);
+		reVal = send(sServer->sys_server.sServer,sServer->send.cNetDataInfo,sServer->send.stNetDataLength,0);	
+	}
+	else
+	{
+		char temp[] =  "99";
+		int iCount = sServer->send.stNetDataLength / PackageSize + 1;
+		int iLastPackageSize = sServer->send.stNetDataLength - PackageSize * iCount;
+		_itoa(iCount,temp,10);
+		reVal = send(sServer->sys_server.sServer,temp,sizeof(temp),0);
+		while(iCount--)
+		{
+			reVal = send(sServer->sys_server.sServer,sServer->send.cNetDataInfo,PackageSize,0);
+			sServer->send.cNetDataInfo += PackageSize;
+		}
+	}
+	if(SOCKET_ERROR == reVal)
+	{
+		printf("recv failed!\n");
+		closesocket(sServer->sys_server.sServer);
+		closesocket(sServer->sys_server.sClient);
+		WSACleanup();
+		return;
+	}
 #ifdef DEBUG_NET_INFO
 	printf("end send data!\n");
 #endif
