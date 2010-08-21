@@ -96,7 +96,7 @@ login_check_info* login_get_info(char* _data , int _data_len);//获取待验证的信息
 
 //这个查询可能有子过程,由sunni自行设计
 
-void login_db_query(_ConnectionPtr *_pConn,USER_NAME *_user , login_user_info* _info , bool* _rlt);
+void login_db_query(USER_NAME *_user , login_user_info* _info , bool* _rlt);
 
 /******************************************************/
 //以下由Jiraiya完成
@@ -116,7 +116,7 @@ bool login_check(login_check_info* _input , login_user_info* _db);
 //如果成功,则进行该模块的处理
 
 //具体的login_info就要看sunni怎么定了
-void login_db_summery(_ConnectionPtr *_pConn,login_user_info* _user_info , login_info* _info);
+void login_db_summery(login_user_info* _user_info , login_info* _info);
 
 /******************************************************/
 //以下有sunni完成

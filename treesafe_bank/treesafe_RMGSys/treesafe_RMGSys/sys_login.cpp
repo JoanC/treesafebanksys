@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "sys_login.h"
 
-extern _ConnectionPtr* database_connection;
+extern _ConnectionPtr* database_connection ; 
 
 /////////////////////////////////////////////////
 /*3.1*/
@@ -63,11 +63,11 @@ void login_get_copy_data(char* _info , char* _copy_data , int _len){
 
 /////////////////////////////////////////////////
 /*3.3*/
-void login_db_query(_ConnectionPtr *_pConn,USER_NAME *_user , login_user_info* _info , bool* _rlt)
+void login_db_query(USER_NAME *_user , login_user_info* _info , bool* _rlt)
 {
 	DEBUG_LOGIN_PRINT("get login data from database ...");
 	strcpy_s(_info->input_user_name, MAX_USER_NAME_LEN,_user) ;
-	*_rlt = Password_inquiry(_pConn,_user,_info->input_user_pwd) ;
+	*_rlt = Password_inquiry(database_connection,_user,_info->input_user_pwd) ;
 }
 /////////////////////////////////////////////////
 
@@ -103,11 +103,11 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 }
 /////////////////////////////////////////////////
 /*3.5*/
-void login_db_summery(_ConnectionPtr *_pConn,login_user_info* _user_info , login_info* _info)
+void login_db_summery(login_user_info* _user_info , login_info* _info)
 {
 	DEBUG_LOGIN_PRINT("query more data from database ...");
 	sys_db_login temp ;
-	Summery_inquiry(_pConn, _user_info->input_user_name,&temp) ;
+	Summery_inquiry(database_connection, _user_info->input_user_name,&temp) ;
 
 	_info->compe = temp.cmpt ;
 	strcpy_s(_info->user_id ,MAX_USER_NAME_LEN ,temp.user_id ) ;
