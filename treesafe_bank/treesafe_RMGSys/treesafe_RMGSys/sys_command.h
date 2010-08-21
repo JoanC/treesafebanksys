@@ -15,7 +15,12 @@ enum{
 	sys_cmd_reg,//注册指令
 	sys_cmd_unexpect//未知命令(不可解析)
 };
-#pragma once
+
+struct sys_net_data{
+	int type;//命令类型
+	int len;//命令长度
+	COMMAND_DATA data;//命令中的数据
+};
 
 /************************************************/
 //模块2
@@ -27,7 +32,14 @@ enum{
 //每个模块解析网络层中传来的命令
 //并将data发送到对应的子过程中去
 
-//模块2.1
+
+/************************************************/
+//模块2.2
+//0.2 -- 将网络的接受信息转化为命令信息
+void sys_command_convert(net_recieved_info* _rev , sys_net_data* _cmd);
+
+/************************************************/
+//模块2.3
 //0.1 -- 接受收网络服务层的数据,并且予以解析,并执行相应的子流程函式
 //一个大的switch_case
 //根据不同的命令参数,调用不同的处理函数
@@ -35,15 +47,18 @@ enum{
 void sys_command(const sys_net_data* _command,char* _rlt,int* _rlt_len);
 
 
-//模块2.2
-//0.2不同的子处理函数
+//模块2.3
+//0.3不同的子处理函数
 
-//登陆模块的处理函数2.2.1
+//登陆模块的处理函数2.3.1
 void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
-//注册模块子处理函式
+//注册模块子处理函式2.3.2
 void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
 
-//模块2.3
+//模块2.4
 //未知命令的处理函式
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len);
+
+//总体模块
+void sys_command_run_frame(net_recieved_info* _rev , net_send_info* _send);

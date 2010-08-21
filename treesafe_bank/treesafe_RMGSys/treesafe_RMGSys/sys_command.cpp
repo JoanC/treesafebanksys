@@ -1,8 +1,15 @@
 #include "stdafx.h"
 #include "sys_command.h"
 
-
 //模块2.1
+void sys_command_convert(net_recieved_info* _rev , sys_net_data* _cmd){
+	//生成的结构体必然会比
+	//_cmd->data = (COMMAND_DATA)malloc(_rev->stRecPackSize);
+	//复制转化
+}
+
+
+//模块2.2
 void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	int _command_type = _command->type;//获取命令的类型
 	//协议分析
@@ -23,18 +30,19 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	}
 }
 
-//模块2.2
-//2.2.1 登陆处理
+//模块2.3
+//2.3.1 登陆处理
 void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	//调用登陆主函式
 	login_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
-//2,2,2 注册处理
+//2.3.2 注册处理
 void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
 	reg_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
+//模块2.3
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 
 }
