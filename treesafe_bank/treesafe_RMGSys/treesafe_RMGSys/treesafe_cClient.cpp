@@ -57,14 +57,60 @@ void SendData(sys_Client* client)
 		WSACleanup();
 		return;
 	}
+
+		int reVal;
+	if(client->send.stNetDataLength <= PackageSize)
+	{
+		char temp[] = "01";
+		reVal = send(client->sys_net.sHost,temp,sizeof(temp),0);
+		reVal = send(client->sys_net.sHost,client->send.cNetDataInfo,client->send.stNetDataLength,0);	
+	}
+	else
+	{
+		char temp[] =  "99";
+		int iCount = client->send.stNetDataLength / PackageSize + 1;
+		int iLastPackageSize = client->send.stNetDataLength - PackageSize * iCount;
+		_itoa(iCount,temp,10);
+		reVal = send(client->sys_net.sHost,temp,sizeof(temp),0);
+		while(iCount--)
+		{
+			reVal = send(client->sys_net.sHost,client->send.cNetDataInfo,PackageSize,0);
+			client->send.cNetDataInfo += PackageSize;
+		}
+	}
+	if(SOCKET_ERROR == reVal)
+	{
+		printf("recv failed!\n");
+		closesocket(client->sys_net.sHost);
+		WSACleanup();
+		return;
+	}
+
 }
 
 
 //rec data
 void RecData(sys_Client* client)
 {
-	int reVal;
-	reVal = recv(client->sys_net.sHost,client->rec.cNetDataInfo,client->rec.stNetDataLength,0);
+	char cCount[] = "99";
+	int reVal = recv(client->sys_net.sHost,cCount,sizeof(cCount),0);
+	int iCount = atoi(cCount);
+	client->rec.cNetDataInfo = (char*)malloc(sizeof(char)*PackageSize*iCount);
+	client->rec.stNetDataLength = PackageSize*iCount;
+	memset(client->rec.cNetDataInfo,'\0',client->rec.stNetDataLength);
+	for(int i = 0;i!=iCount;i++)
+	{
+		char tempPack[PackageSize];
+		reVal = recv(client->sys_net.sHost,tempPack,PackageSize,0);
+		memcpy(client->rec.cNetDataInfo + iCount*PackageSize,tempPack,PackageSize);
+	}
+	if(SOCKET_ERROR == reVal)
+	{
+		printf("recv failed!\n");
+		closesocket(client->sys_net.sHost);
+		WSACleanup();
+		return;
+	}
 }
 
 //exit client
