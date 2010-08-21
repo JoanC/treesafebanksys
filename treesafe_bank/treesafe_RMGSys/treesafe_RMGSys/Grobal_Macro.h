@@ -21,3 +21,8 @@
 #else
 #define DEBUG_LOGIN_INFO(x) {};
 #endif
+
+
+#ifndef DEBUG_NET_INFO
+#define DEBUG_NET_INFO
+#endif
