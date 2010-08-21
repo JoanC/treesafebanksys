@@ -62,6 +62,7 @@ void login_get_copy_data(char* _info , char* _copy_data , int _len){
 /*3.3*/
 void login_db_query(_ConnectionPtr *_pConn,USER_NAME *_user , login_user_info* _info , bool* _rlt)
 {
+	DEBUG_LOGIN_PRINT("get login data from database ...");
 	strcpy_s(_info->input_user_name, MAX_USER_NAME_LEN,_user) ;
 	*_rlt = Password_inquiry(_pConn,_user,_info->input_user_pwd) ;
 }
@@ -69,10 +70,12 @@ void login_db_query(_ConnectionPtr *_pConn,USER_NAME *_user , login_user_info* _
 
 login_check_info* login_get_convert(char* _info){
 	//类型转化
+	DEBUG_LOGIN_PRINT("convert string to login_check_info ... ");
 	return (login_check_info*)_info;
 }
 
 login_check_info* login_get_info(char* _data , int _data_len){
+	DEBUG_LOGIN_PRINT("get the login_check_info ... ");
 	char _check[MAX_OTHER_STR_LEN];
 	memset(_check,'\0',MAX_OTHER_STR_LEN);
 	login_get_copy_data(_data,_check , _data_len);
@@ -80,15 +83,18 @@ login_check_info* login_get_info(char* _data , int _data_len){
 }
 
 bool login_check_name(USER_NAME* _db){
+	DEBUG_LOGIN_PRINT("check user name ...");
 	return _db == "" ? true : false;//用户名是否存在
 }
 
 bool login_check_pwd(USER_PWD* _input , USER_PWD* _db){
-	if(_input && _db) return false;
+	//if(_input && _db) return false;
+	DEBUG_LOGIN_PRINT("check user password ...");
 	return strcmp(_input,_db) == 0? true : false;
 }
 
 bool login_check(login_check_info* _input , login_user_info* _db){
+	DEBUG_LOGIN_PRINT("check user's name and password ...");
 	return !(login_check_name(_db->input_user_name)||
 		login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd));
 }
@@ -96,6 +102,7 @@ bool login_check(login_check_info* _input , login_user_info* _db){
 /*3.5*/
 void login_db_summery(_ConnectionPtr *_pConn,login_user_info* _user_info , login_info* _info)
 {
+	DEBUG_LOGIN_PRINT("query more data from database ...");
 	sys_db_login temp ;
 	Summery_inquiry(_pConn, _user_info->input_user_name,&temp) ;
 
@@ -106,6 +113,7 @@ void login_db_summery(_ConnectionPtr *_pConn,login_user_info* _user_info , login
 /////////////////////////////////////////////////
 /*3.8*/
 void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
+	DEBUG_LOGIN_PRINT("error : %d" , _err_type);
 	_mld->login_succ = false;
 	//db...查找错误信息,填充结构体
 	sys_err_search(&_mld->rlt_info.login_err);
@@ -115,6 +123,7 @@ void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
 /*3.9*/
 void login_convert_rlt(login_info* _info , char* _rlt , int* _rlt_len){
 	//将结果复制在rlt中传出
+	DEBUG_LOGIN_PRINT("convert the result (login_info) to the string");
 	memcpy(_rlt,_info,sizeof(login_info));
 	//长度就是login_info的长度
 	*_rlt_len = sizeof(login_info);
@@ -124,6 +133,7 @@ void login_convert_rlt(login_info* _info , char* _rlt , int* _rlt_len){
 //登陆模块的总流程
 //Jiraiya整合
 void login_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len){
+	DEBUG_LOGIN_PRINT("login start ... ");
 	//建立登陆模块
 	login_modle* _login_frame = login_init();//初始化登陆模块
 	_login_frame->check_info = *login_get_info(_command,_arg_len);
@@ -163,6 +173,8 @@ void login_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len){
 
 	//释放模块
 	login_release(_login_frame);
+
+	DEBUG_LOGIN_PRINT("login end ...");
 }
 
 
