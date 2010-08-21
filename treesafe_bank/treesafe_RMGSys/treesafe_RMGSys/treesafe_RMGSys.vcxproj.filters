@@ -49,6 +49,9 @@
     <Filter Include="sys_connc_bank">
       <UniqueIdentifier>{82394c79-378e-488a-be1f-5d2d8ca8f075}</UniqueIdentifier>
     </Filter>
+    <Filter Include="frame">
+      <UniqueIdentifier>{0911037a-9328-4f63-9b6e-01b4ccb2bb67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
