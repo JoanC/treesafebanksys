@@ -6,6 +6,7 @@
 login_modle* login_init(){
 	//初始化登陆模块
 	login_modle* _init = (login_modle*)malloc(sizeof(login_modle));
+	DEBUG_LOGIN_PRINT("init the login modle");
 	if(_init == NULL) return _init;
 	//初始化个成员变量
 	//_init->command_arg_len = 0;
@@ -14,10 +15,12 @@ login_modle* login_init(){
 	login_init_login_check_info(&_init->check_info);
 	login_init_login_info(&_init->rlt_info);
 	login_init_login_user_info(&_init->db_query);
+	DEBUG_LOGIN_PRINT("init done...");
 	return _init;
 }
 
 void login_init_login_user_info(login_user_info* _init){
+	DEBUG_LOGIN_PRINT("init the login_user_info...");
 	memset(_init->input_user_name,'\0',MAX_USER_NAME_LEN);
 	memset(_init->input_user_pwd,'\0',MAX_USER_PWD_LEN);
 }
