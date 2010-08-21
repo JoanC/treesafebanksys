@@ -8,6 +8,7 @@
 #include "net.h"
 
 typedef char* COMMAND_DATA;
+#define SYS_CMD_MAX_RLT_SIZE 256
 
 enum{
 	//命令编号集合
@@ -32,6 +33,11 @@ struct sys_net_data{
 //每个模块解析网络层中传来的命令
 //并将data发送到对应的子过程中去
 
+/***********************************************/
+//模块2.1
+//初始化和释放sys_net_info
+void sys_command_init_sys_net_data(sys_net_data* _init);
+void sys_command_release_sys_net_data(sys_net_data* _release);
 
 /************************************************/
 //模块2.2
