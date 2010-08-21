@@ -94,7 +94,6 @@ void reg_query_user_get_rlt(bankDB_request_info* _req , bankDB_result_info* _db_
 	//strcpy((char*)_db_rlt->pRlt,"");
 #endif
 	sys_connc_bank_query(_req,_db_rlt);
-
 }
 
 
