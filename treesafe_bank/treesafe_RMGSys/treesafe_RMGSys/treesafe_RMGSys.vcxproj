@@ -93,6 +93,7 @@
     <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="sys_frame.cpp" />
     <ClCompile Include="treesafe_cServer.cpp" />
     <ClCompile Include="database_mgr.cpp" />
     <ClCompile Include="stdafx.cpp">

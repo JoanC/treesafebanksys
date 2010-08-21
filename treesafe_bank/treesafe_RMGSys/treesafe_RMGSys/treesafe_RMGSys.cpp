@@ -2,10 +2,11 @@
 //
 
 #include "stdafx.h"
-#include "sys_login.h"
 //#include "treesate_cClient.h"
 
 //#include "sys_command.h"
+
+#include "sys_frame.h"
 
 #ifdef TEST_REG_MODLE
 #include "sys_reg.h"
@@ -56,6 +57,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	memcpy(cmd,&test_input,sizeof(reg_input_info));
 	reg_frame(cmd,sizeof(reg_input_info),rlt);
 #endif
+	sys_frame_work();
+
 	return 0;
 }
 

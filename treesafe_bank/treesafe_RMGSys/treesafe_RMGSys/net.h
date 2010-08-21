@@ -1,3 +1,4 @@
+#pragma once
 
 const int BUF_SIZE = 80;
 typedef int DataType;

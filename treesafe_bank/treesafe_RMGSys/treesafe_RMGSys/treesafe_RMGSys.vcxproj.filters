@@ -140,5 +140,8 @@
     <ClCompile Include="treesafe_cServer.cpp">
       <Filter>net\net_server</Filter>
     </ClCompile>
+    <ClCompile Include="sys_frame.cpp">
+      <Filter>sys_frame</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
