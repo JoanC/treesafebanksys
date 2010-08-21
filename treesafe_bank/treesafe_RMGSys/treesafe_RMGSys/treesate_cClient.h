@@ -1,5 +1,5 @@
-#ifndef _CCLIENT_H_
-#define _CCLIENT_H_
+#pragma once
+#include "net.h"
 /****************************************Copyright (c)**************************************************
 **                         treesafe bank system                             
 **
@@ -22,14 +22,11 @@
 #include <winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
 
-const int BUF_SIZE = 80;
-
 struct cClient
 {
 	WSADATA			wsd;
 	SOCKET			sHost;
 	SOCKADDR_IN		servAddr;
-	char			buf[BUF_SIZE];
 };
 
 /*********************************************************************************************************
