@@ -1,4 +1,5 @@
 #pragma once
+#include "net.h"
 /****************************************Copyright (c)**************************************************
 **                         treesafe bank system                             
 **
@@ -20,8 +21,6 @@
 
 #include <winsock2.h>
 //server socket struct
-
-const int BUF_SIZE = 80;
 
 //网络结构体声明
 //与银行系统相同
@@ -152,7 +151,6 @@ void net_recieve_data(banksys_net *sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-// send net data(the size of data is less than 80 bytes)
 void net_send_data(banksys_net *sServer);
 
 ////////////////////////////////////////////////////////////////
