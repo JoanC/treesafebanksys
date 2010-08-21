@@ -102,7 +102,7 @@ void login_db_query(USER_NAME *_user , login_user_info* _info , bool* _rlt);
 //以下由Jiraiya完成
 //模块3.4
 //0.4 -- 验证
-//根据0.2的整合信息和0.3的查询信息,进行验证
+//根据0.2的整合信息和0.3的查询信息,进行验证 
 //成功说明登陆成功,否则失败,如果失败
 bool login_check_name(USER_NAME* _db);
 bool login_check_pwd(USER_PWD* _input , USER_PWD* _db);
