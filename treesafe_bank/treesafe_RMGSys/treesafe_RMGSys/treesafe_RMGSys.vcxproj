@@ -75,6 +75,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="net.h" />
     <ClInclude Include="treesafe_cServer.h" />
     <ClInclude Include="database_mgr.h" />
     <ClInclude Include="Grobal_Macro.h" />
