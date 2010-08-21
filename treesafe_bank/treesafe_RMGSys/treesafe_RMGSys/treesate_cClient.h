@@ -113,6 +113,25 @@ void Connect2Server(cClient* client);
 void SendData(cClient* client);
 
 /*********************************************************************************************************
+** Function name:			RecData
+**
+** Descriptions:			recevie data to server		
+**
+** input parameters:		cClient* client------the cCLient struct modules
+** Returned value:		    NULL
+**         
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				zhoujiayun
+** Created Date:			2010-7-30
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				zhoujiayun
+** Modified date:			2010-8-2
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+void RecData(cClient* client);
+/*********************************************************************************************************
 ** Function name:			ExitClient
 **
 ** Descriptions:			exit client	
