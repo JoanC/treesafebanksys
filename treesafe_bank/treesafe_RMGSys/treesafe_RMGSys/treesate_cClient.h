@@ -22,12 +22,19 @@
 #include <winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
 
-struct cClient
+struct net_Client
 {
 	WSADATA			wsd;
 	SOCKET			sHost;
 	SOCKADDR_IN		servAddr;
 };
+
+struct sys_Client{
+	net_recieved_info rec;//接受到的数据
+	net_send_info send;//发送的数据
+	net_Client sys_net;
+};
+
 
 /*********************************************************************************************************
 ** Function name:			InitClient
