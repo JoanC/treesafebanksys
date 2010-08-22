@@ -74,7 +74,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	database_connection = new _ConnectionPtr;
 
-	ConnectDB(database_connection);
+	//ConnectDB(database_connection);
 
 
 
@@ -90,7 +90,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
 
-	DisconnectDB(database_connection);
+	//DisconnectDB(database_connection);
 	free(database_connection);
 
 	return 0;
