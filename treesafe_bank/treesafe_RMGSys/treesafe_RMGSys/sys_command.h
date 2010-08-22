@@ -20,7 +20,7 @@ enum{
 struct sys_net_data{
 	int type;//命令类型
 	int len;//命令长度
-	COMMAND_DATA data;//命令中的数据
+	char data[1024];//命令中的数据
 };
 
 /************************************************/

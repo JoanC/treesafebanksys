@@ -5,8 +5,8 @@
 #define DEFAULT_INFO_LEN 64
 
 //这两个值在"sys_db_struct中定义"
-#define MAX_USER_NAME_LEN idLen
-#define MAX_USER_PWD_LEN pwdLen
+#define MAX_USER_NAME_LEN 19
+#define MAX_USER_PWD_LEN 51
 
 #define MAX_OTHER_STR_LEN 128
 
@@ -82,10 +82,10 @@ void login_get_vry_result(VRY_RESULT _vry_rlt);//得到验证码的结果
 */
 
 //整合总流程,其实就是一个copy,即一个复制和类型转换的过程
-void login_get_copy_data(char* _info , char* _copy_data , int _len);
+void login_get_copy_data(const char* _info , char* _copy_data , int _len);
 login_check_info* login_get_convert(char* _info);
 
-login_check_info* login_get_info(char* _data , int _data_len);//获取待验证的信息
+login_check_info* login_get_info(const char* _data , int _data_len);//获取待验证的信息
 /*******************************************************/
 //以下由sunni完成
 //模块3.3
@@ -147,4 +147,4 @@ void login_convert_rlt(login_info* _info , char* _rlt , int* _rlt_len);
 /******************************************************/
 //登陆模块的总流程
 //Jiraiya整合
-void login_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len);
+void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len);
