@@ -23,6 +23,7 @@ void sys_command_release_sys_net_data(sys_net_data* _release){
 //模块2.2
 void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	int _command_type = _command->type;//获取命令的类型
+	
 	//协议分析
 	switch (_command_type){
 	case(sys_cmd_login):{

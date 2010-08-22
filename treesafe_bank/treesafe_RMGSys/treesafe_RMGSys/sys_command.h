@@ -9,6 +9,7 @@
 
 typedef char* COMMAND_DATA;
 #define SYS_CMD_MAX_RLT_SIZE 256
+#define SYS_CMD_MAX_SIZE 512
 
 enum{
 	//命令编号集合
@@ -20,7 +21,7 @@ enum{
 struct sys_net_data{
 	int type;//命令类型
 	int len;//命令长度
-	char data[1024];//命令中的数据
+	char data[SYS_CMD_MAX_SIZE];//命令中的数据
 };
 
 /************************************************/

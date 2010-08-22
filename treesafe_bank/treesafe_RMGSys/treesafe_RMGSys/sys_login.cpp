@@ -90,7 +90,7 @@ void login_db_query(USER_NAME *_user , login_user_info* _info , bool* _rlt)
 
 bool login_check_name(USER_NAME* _db){
 	DEBUG_LOGIN_PRINT("check user name ...\n");
-	return _db == "" ? true : false;//用户名是否存在
+	return _db != "" ? true : false;//用户名是否存在
 }
 
 bool login_check_pwd(USER_PWD* _input , USER_PWD* _db){
@@ -101,8 +101,10 @@ bool login_check_pwd(USER_PWD* _input , USER_PWD* _db){
 
 bool login_check(login_check_info* _input , login_user_info* _db){
 	DEBUG_LOGIN_PRINT("check user's name and password ...\n");
-	return !(login_check_name(_db->input_user_name)||
-		login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd));
+	if(login_check_name(_db->input_user_name) == false) return false;
+	if(login_check_pwd(_input->user_info.input_user_pwd,_db->input_user_pwd)
+		== false) return false;
+	return true;
 }
 /////////////////////////////////////////////////
 /*3.5*/
@@ -157,7 +159,7 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 
 	//以下是为了测试
 	strcpy(_login_frame->db_query.input_user_name,"haha");
-	strcpy(_login_frame->db_query.input_user_pwd,"123");
+	strcpy(_login_frame->db_query.input_user_pwd,"KOKO");
 
 
 	//
