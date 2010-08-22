@@ -14,7 +14,7 @@ login_modle* login_init(){
 	//初始化个成员变量
 	//_init->command_arg_len = 0;
 	//memset(_init->command_info,'\0',MAX_OTHER_STR_LEN);
-	_init->login_succ = false;
+	_init->login_succ = true;
 	login_init_login_check_info(&_init->check_info);
 	login_init_login_info(&_init->rlt_info);
 	login_init_login_user_info(&_init->db_query);
