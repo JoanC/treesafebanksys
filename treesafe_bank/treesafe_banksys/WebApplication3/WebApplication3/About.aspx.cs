@@ -178,14 +178,14 @@ namespace WebApplication3
         }
         protected void SaveNewPass()
         {
-            reg_input_info _reg_test;
-            _reg_test.basic_info = new reg_basic_info("1234","1234","haha","here",10,true);
-            string _email = "bill002@yahoo.cn";
-            _reg_test.email_addr = _email.PadRight(64, '\0').ToCharArray();
-            _reg_test.is_pwd_vry_crr = false;
+          //  reg_input_info _reg_test;
+            //_reg_test.basic_info = new reg_basic_info("1234","1234","haha","here",10,true);
+            //string _email = "bill002@yahoo.cn";
+            //_reg_test.email_addr = _email.PadRight(64, '\0').ToCharArray();
+            //_reg_test.is_pwd_vry_crr = false;
             web_net_client_mgr _test = new web_net_client_mgr("127.0.0.1",4999); 
-            //login_check_info login_input = new login_check_info("haha","KOKO");
-            _test.send_command_data(1,_reg_test);
+            login_check_info login_input = new login_check_info("haha","KOKO");
+            _test.send_command_data(0,login_input);
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
