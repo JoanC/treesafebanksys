@@ -1,4 +1,3 @@
-/*
 #pragma once
 
 //#include "database_mgr.h"//数据库处理中心
@@ -38,7 +37,7 @@ struct research_exact_info{
 /********************************************/
 //模块8.2
 //接收命令
-/*
+
 void research_exact_get_cmd(const char* _cmd , int _cmd_len);
 //复制命令
 void research_exact_copy_cmd(const char* _cmd , char* _dest , int _cmd_len);
