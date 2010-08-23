@@ -30,6 +30,7 @@ struct apply_loan_info{
 struct apply_input_info{
 	//输入申请人的基本信息
 	apply_custmor_info input_basic_info;
+	//与贷款相关的其它信息
 	apply_loan_info input_loan_info;
 };
 
