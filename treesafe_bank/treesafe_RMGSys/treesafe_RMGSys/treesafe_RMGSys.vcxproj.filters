@@ -52,6 +52,9 @@
     <Filter Include="frame">
       <UniqueIdentifier>{0911037a-9328-4f63-9b6e-01b4ccb2bb67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="research">
+      <UniqueIdentifier>{d1065bee-c85e-4dee-b3c5-5838c6263ca8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -104,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="net.h">
       <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_research_exact.h">
+      <Filter>research</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
