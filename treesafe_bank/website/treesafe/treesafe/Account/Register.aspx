@@ -37,10 +37,10 @@
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
-                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
-                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
-                                     CssClass="failureNotification" ErrorMessage="E-mail is required." ToolTip="E-mail is required." 
+                                <asp:Label ID="UserIDLabel" runat="server" AssociatedControlID="UserID">身份证号:</asp:Label>
+                                <asp:TextBox ID="UserId" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="UserIDRequired" runat="server" ControlToValidate="UserID" 
+                                     CssClass="failureNotification" ErrorMessage="User ID is required." ToolTip="User ID is required." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
@@ -59,6 +59,25 @@
                                 <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
                                      CssClass="failureNotification" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
+                            </p>
+                             <p>
+                                <asp:Label ID="PhoneNumberLabel" runat="server" AssociatedControlID="PhoneNumber">联系电话:</asp:Label>
+                                <asp:TextBox ID="PhoneNumber" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="PhoneNumberRequire" runat="server" ControlToValidate="PhoneNumber" 
+                                     CssClass="failureNotification" ErrorMessage="Phone Number is required." ToolTip="Phone Number is required." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                             <p>
+                                <asp:Label ID="HomeAddressLabel" runat="server" AssociatedControlID="HomeAddress">家庭住址:</asp:Label>
+                                <asp:TextBox ID="HomeAddress" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="HomeAddressRequire" runat="server" ControlToValidate="HomeAddress"  
+                                     CssClass="failureNotification" ErrorMessage="Home Address is required." ToolTip="Home Address is required." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                             <p>
+                                <asp:Label ID="Label1" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
+                                <asp:TextBox ID="TextBox1" runat="server" CssClass="textEntry"></asp:TextBox>
+                 
                             </p>
                         </fieldset>
                         <p class="submitButton">
