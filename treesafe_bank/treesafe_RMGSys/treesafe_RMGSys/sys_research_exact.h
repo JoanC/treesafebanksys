@@ -1,7 +1,8 @@
+/*
 #pragma once
 
-#include "database_mgr.h"//数据库处理中心
-#include "sys_error_compute.h"//错误处理模块
+//#include "database_mgr.h"//数据库处理中心
+//#include "sys_error_compute.h"//错误处理模块
 
 //模块8
 //审核信息的提取模块
@@ -37,6 +38,7 @@ struct research_exact_info{
 /********************************************/
 //模块8.2
 //接收命令
+/*
 void research_exact_get_cmd(const char* _cmd , int _cmd_len);
 //复制命令
 void research_exact_copy_cmd(const char* _cmd , char* _dest , int _cmd_len);
@@ -44,5 +46,4 @@ void research_exact_copy_cmd(const char* _cmd , char* _dest , int _cmd_len);
 research_exact_input_info* reasearch_exact_convert_cmd(char* _info);
 
 /********************************************/
-
-
+//模块8.3
