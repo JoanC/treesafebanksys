@@ -8,9 +8,16 @@
 //如果该审核员正在审核,则返回这个申请的信息和状态
 //功能:向一个审核员提交一个需要审核的申请
 
+#define RESEARCHER_ID_LEN 19
 
 //输入信息
 //从网页发过来一个审核员的id
 struct research_exact_input_info{
-	
-}
+	char investigator_id[RESEARCHER_ID_LEN];
+};
+
+/********************************************/
+//模块8.1
+//接收命令
+
+
