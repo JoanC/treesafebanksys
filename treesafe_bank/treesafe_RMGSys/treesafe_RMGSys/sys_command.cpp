@@ -14,7 +14,9 @@ void sys_command_init_sys_net_data(sys_net_data* _init){
 	//_init->data = NULL;
 	_init->len = 0;
 	_init->type = sys_cmd_unexpect;
+	strcpy(_init->data,"");
 }
+
 void sys_command_release_sys_net_data(sys_net_data* _release){
 	//if(_release->data != NULL) free(_release->data);
 	free(_release);
@@ -51,7 +53,7 @@ void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 
 //2.3.2 ×¢²á´¦Àí
 void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
-	//reg_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+	reg_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
 //Ä£¿é2.4

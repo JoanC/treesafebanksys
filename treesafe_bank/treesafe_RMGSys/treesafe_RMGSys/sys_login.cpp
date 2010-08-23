@@ -149,19 +149,25 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 		//登陆验证码错误
 		//错误处理
 		login_err_mgr(err_login_vry_uncmp,_login_frame);
+		DEBUG_LOGIN_PRINT("the verify code error!\n");
+		DEBUG_LOGIN_PRINT("login failed\n");
 		return;
 	}
 	//db...
 	//这个过程中,就是_db_query的改动过程
 	//调用模块3.3
 	//该模块需要修改,在主程序中,最好不要出现_ConnectionPtr,不和谐
-    
-
+	bool _is_db_corr = false;
+	login_db_query(_login_frame->check_info.user_info.input_user_name
+		,&_login_frame->db_query,&_is_db_corr);
+	if(!_is_db_corr){
+		DEBUG_LOGIN_PRINT("the database query error,check the database connection....\n");
+		login_err_mgr(err_login_db_err,_login_frame);
+		return;
+	}
 	//以下是为了测试
-	strcpy(_login_frame->db_query.input_user_name,"haha");
-	strcpy(_login_frame->db_query.input_user_pwd,"KOKO");
-
-
+//	strcpy(_login_frame->db_query.input_user_name,"haha");
+//	strcpy(_login_frame->db_query.input_user_pwd,"KOKO");
 	//
 	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
 		//用户名或密码不正确
@@ -173,9 +179,8 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 	//进行高级数据查询
 	//调用模块3.5
 	//得到login_info,即rlt_info
-	//...
-
-
+	login_db_summery(&_login_frame->db_query
+		,&_login_frame->rlt_info);
 	//结果转化
 	login_convert_rlt(&_login_frame->rlt_info,_rlt,_rlt_len);
 

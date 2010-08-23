@@ -9,11 +9,11 @@
 void reg_init_reg_basic_info(reg_basic_info* _init){
 	//初始化基本信息
 	//初始用户名
-	strcpy(_init->reg_name,"");
-	//初始化用户密码
-	strcpy(_init->reg_pwd,"");
 	//初始化身份证号,十八位0
 	strcpy(_init->reg_id,"000000000000000000");
+//	strcpy(_init->reg_name,"");
+	//初始化用户密码
+	strcpy(_init->reg_pwd,"");
 	//初始化真实姓名
 	strcpy(_init->reg_basic_user_name,"");
 	//初始化性别,男
@@ -61,7 +61,7 @@ void reg_release(reg_modle* _release){
 }
 
 //模块6.2
-void reg_copy_cmd(char* _dst,char* _cmd_info,int _len){
+void reg_copy_cmd(char* _dst,const char* _cmd_info,int _len){
 	//复制信息
 	memcpy(_dst,_cmd_info,_len);
 }
@@ -71,7 +71,7 @@ reg_input_info* reg_convert_cmd(char* _info){
 	return (reg_input_info*)_info;
 }
 
-reg_input_info* reg_get_info(char* _cmd , int _len){
+reg_input_info* reg_get_info(const char* _cmd , int _len){
 	char _temp_input[REG_MAX_OTHER_STR_LEN];
 	reg_copy_cmd(_temp_input,_cmd,_len);
 	return reg_convert_cmd(_temp_input);
@@ -181,7 +181,7 @@ void reg_error_compute(sys_err_type _type , reg_modle* _modle){
 	sys_err_search(&_modle->info.reg_err);
 }
 
-void reg_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len){
+void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len){
 	//以下代码整合了模块6的所有子块
 	
 	//6.1

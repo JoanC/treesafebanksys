@@ -5,8 +5,8 @@
 #define DEFAULT_INFO_LEN 64
 
 //这两个值在"sys_db_struct中定义"
-#define MAX_USER_NAME_LEN 18
-#define MAX_USER_PWD_LEN 50
+#define MAX_USER_NAME_LEN idLen
+#define MAX_USER_PWD_LEN pwdLen
 
 #define MAX_OTHER_STR_LEN 128
 

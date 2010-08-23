@@ -10,9 +10,9 @@
 #include "sys_bank_query.h"
 #include "sys_error_compute.h"//错误处理
 
-#define REG_MAX_USER_NAME idLen
+#define REG_MAX_USER_NAME 19
 #define REG_MAX_REAL_USER_NAME 51
-#define REG_MAX_USER_PWD pwdLen
+#define REG_MAX_USER_PWD 16
 #define REG_MAX_USER_BANK_ID 19//十八位身份证号,加'\0'19
 #define REG_MAX_ADDR 64//联系地址
 #define REG_MAX_OTHER_STR_LEN 256
@@ -24,28 +24,27 @@ enum REG_GENDER_TYPE{male , female};
 
 
 struct reg_basic_info{
-	//登陆用户名
-	REG_USER_ID reg_name[REG_MAX_USER_NAME];
-	//用户密码
-	REG_USER_PWD reg_pwd[REG_MAX_USER_PWD];
-	//身份证号,18位
-	REG_USER_ID reg_id[REG_MAX_USER_BANK_ID];
-	//用户真实姓名
-	char reg_basic_user_name[REG_MAX_REAL_USER_NAME];
 	//性别
 	REG_GENDER_TYPE reg_gender;
 	//年龄
 	int reg_age;
 	//家庭住址
+	//身份证号,18位
+	REG_USER_ID reg_id[REG_MAX_USER_BANK_ID];
+	//REG_USER_ID reg_name[REG_MAX_USER_NAME];
+	//用户密码
+	REG_USER_PWD reg_pwd[REG_MAX_USER_PWD];
+	//用户真实姓名
+	char reg_basic_user_name[REG_MAX_REAL_USER_NAME];
 	char reg_home_addr[REG_MAX_ADDR];
 };
 
 struct reg_input_info{
 	//用户注册所输入的相关信息
+    //其它的附加信息
+	char email_addr[REG_MAX_ADDR];
 	//输入基本信息
 	reg_basic_info basic_info;
-	//其它的附加信息
-	char email_addr[REG_MAX_ADDR];
 	//密码两次验证是否正确
 	bool is_pwd_vry_crr;
 };
@@ -95,11 +94,11 @@ void reg_init_reg_info(reg_info* _init);
 
 /*6.2子过程*/
 //复制信息,避免指针的直接改动
-void reg_copy_cmd(char* _dst,char* _cmd_info,int _len);
+void reg_copy_cmd(char* _dst,const char* _cmd_info,int _len);
 //类型转换,返回一个reg_input_info类型,即将复制后的信息转化
 reg_input_info* reg_convert_cmd(char* _info);
 //模块6.2主函式
-reg_input_info* reg_get_info(char* _cmd , int _len);//输入命令的信息和信息长度
+reg_input_info* reg_get_info(const char* _cmd , int _len);//输入命令的信息和信息长度
 
 /******************************************************/
 //6.3
@@ -149,4 +148,4 @@ void reg_error_compute(sys_err_type _type , reg_modle* _modle);
 /********************************************************/
 //模块6主函式
 //由Jiraiya完成
-void reg_frame(char* _command , int _arg_len , char* _rlt , int* _rlt_len);
+void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len);
