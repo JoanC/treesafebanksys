@@ -121,7 +121,8 @@ void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
 	}
 
 	//7.5
-
+	//apply_save_to_research_table(apply_save_generate_id()
+	//,&_apply_frame->input_info);
 
 	//7.6
 	//整理结果

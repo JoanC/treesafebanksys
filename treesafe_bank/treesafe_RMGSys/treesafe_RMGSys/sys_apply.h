@@ -109,7 +109,7 @@ bool apply_check_cust_info(apply_custmor_info* _input
 //这个表中的内容还需商定
 
 //为这个申请产生自动编号的代码,要独一无二
-void apply_save_generate_id(char* _new_id);
+char* apply_save_generate_id();
 
 //把这个申请存入待审核的表中
 void apply_save_to_research_table(char* _new_id , apply_input_info* _info);
