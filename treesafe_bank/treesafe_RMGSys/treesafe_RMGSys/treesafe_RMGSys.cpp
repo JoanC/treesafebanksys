@@ -72,7 +72,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	reg_frame(cmd,sizeof(reg_input_info),rlt);
 #endif
 
-	database_connection = new _ConnectionPtr;
+	database_connection = 
+		(_ConnectionPtr*)calloc(sizeof(_ConnectionPtr),1);
 	ConnectDB(database_connection);
 	while(1){
 		server_of_website.rec.cNetDataInfo =NULL;
