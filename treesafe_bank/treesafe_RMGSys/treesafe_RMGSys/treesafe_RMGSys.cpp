@@ -73,11 +73,7 @@ int _tmain(int argc, _TCHAR* argv[])
 #endif
 
 	database_connection = new _ConnectionPtr;
-
 	ConnectDB(database_connection);
-
-
-
 	while(1){
 		server_of_website.rec.cNetDataInfo =NULL;
 		server_of_website.send.cNetDataInfo = NULL;
