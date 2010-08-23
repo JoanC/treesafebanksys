@@ -19,3 +19,15 @@ struct sys_db_login{
 	char								login_pwd[pwdLen] ;
 	login_competence		cmpt ;
 };
+
+//以下的结构体
+//由Jiraiya添加
+//用途在各个名字前做详细说明
+
+//模块7,8要用的
+//审核表
+//即申请信息加各个信息是否正确(bit)和一个注释
+//具体的你命名
+struct sys_db_research{
+
+}
