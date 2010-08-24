@@ -41,6 +41,10 @@ struct research_commit_input_info{
 //将会做为结果数据发送到网络端
 struct research_commit_info{
 	bool is_commit_succ;//提交是否成功
+	//表单信息
+	//提交审核编号
+	//...
+	//这个再议...
 	//错误信息
 	sys_err err_info;
 };
@@ -55,10 +59,10 @@ struct research_commit_modle{
 /*******************************************/
 //模块9.1
 //初始化和释放模块
-
+//由Jiraiya完成
 
 //初始化审核提交的输入信息
-void research_commit_init_research_commit_input_info(research_commit_input_info* _init)
+void research_commit_init_research_commit_input_info(research_commit_input_info* _init);
 
 //初始化结果记录信息
 void research_commit_init_research_commit_info(research_commit_info* _init);
@@ -68,3 +72,12 @@ research_commit_modle* research_commit_init_research_commoit_modle();
 
 //释放模块
 void release_research_commit_modle(research_commit_modle* _release);
+
+/*********************************************/
+//模块9.2
+//根据输入的research_apply_id
+//从审核表中删除这个表项
+//查询的正确与否记录在_rlt中
+void research_delete_research_apply(const char* _research_apply_id , bool* _rlt);
+
+/*********************************************/
