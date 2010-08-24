@@ -29,3 +29,7 @@ research_exact_modle* research_exact_init_research_exact_modle(){
 	//返回这个新建的指针
 	return _new_modle;
 }
+
+void release_research_exact_modle(research_exact_modle* _release){
+	free(_release);
+}
