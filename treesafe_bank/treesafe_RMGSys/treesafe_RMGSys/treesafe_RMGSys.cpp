@@ -9,6 +9,10 @@
 #include "sys_frame.h"
 #include "database_mgr.h"
 
+#ifdef TEST_RESEARCH_EXACT_MODLE
+#include "sys_research_exact.h"
+#endif
+
 #ifdef TEST_REG_MODLE
 #include "sys_reg.h"
 #endif
@@ -72,6 +76,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	reg_frame(cmd,sizeof(reg_input_info),rlt);
 #endif
 
+#ifdef TEST_RESEARCH_EXACT_MODLE
+	char rlt[256];
+	char cmd[256] = "";
+	int rlt_len = 0;
+	research_exact_frame(cmd,12,rlt,&rlt_len);
+#endif
+	/*
 	database_connection = 
 		(_ConnectionPtr*)calloc(sizeof(_ConnectionPtr),1);
 	ConnectDB(database_connection);
@@ -89,7 +100,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	DisconnectDB(database_connection);
 	free(database_connection);
-
+	*/
 	return 0;
 }
 

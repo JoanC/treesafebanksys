@@ -11,6 +11,9 @@
 //reg测试的代码段
 //#define TEST_REG_MODLE
 
+//research_exact 的测试代码段
+#define TEST_RESEARCH_EXACT_MODLE
+
 
 //login的输出信息
 

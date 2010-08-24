@@ -69,7 +69,7 @@ void release_research_exact_modle(research_exact_modle* _release);
 //接收命令
 //由Jiraiya完成
 
-void research_exact_get_cmd(const char* _cmd , int _cmd_len);
+research_exact_input_info* research_exact_get_cmd(const char* _cmd , int _cmd_len);
 //复制命令
 void research_exact_copy_cmd(const char* _cmd , char* _dest , int _cmd_len);
 //将复制的命令转化为模块可读的输入信息
@@ -130,3 +130,8 @@ void research_exact_generate_rlt(research_exact_info* _rlt_info);
 //完成对结果信息的复制和转换
 void research_exact_convert_rlt(research_exact_info* _info
 	,char* _rlt , int* _len);
+
+/**********************************************/
+//模块8的主函式
+void research_exact_frame(const char* _cmd
+	,int _cmd_len,char* _rlt , int* _rlt_len);
