@@ -58,6 +58,9 @@
     <Filter Include="research\exact">
       <UniqueIdentifier>{92eee625-f3d1-4759-8b68-04b2fce8fb85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="research\commit">
+      <UniqueIdentifier>{89891b34-a439-4260-97f6-1e0a94a02024}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -116,6 +119,9 @@
     </ClInclude>
     <ClInclude Include="sys_research_exact.h">
       <Filter>research\exact</Filter>
+    </ClInclude>
+    <ClInclude Include="research_commit.h">
+      <Filter>research\commit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

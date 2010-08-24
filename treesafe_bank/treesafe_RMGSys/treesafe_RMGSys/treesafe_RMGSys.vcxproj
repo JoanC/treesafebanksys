@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="net.h" />
+    <ClInclude Include="research_commit.h" />
     <ClInclude Include="sys_research_exact.h" />
     <ClInclude Include="treesafe_cServer.h" />
     <ClInclude Include="database_mgr.h" />
