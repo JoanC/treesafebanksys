@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sys_frame.cpp" />
+    <ClCompile Include="sys_research_exact.cpp" />
     <ClCompile Include="treesafe_cServer.cpp" />
     <ClCompile Include="database_mgr.cpp" />
     <ClCompile Include="stdafx.cpp">

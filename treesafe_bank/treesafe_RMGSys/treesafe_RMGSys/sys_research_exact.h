@@ -62,6 +62,8 @@ void research_exact_init_research_exact_info(research_exact_info* _init);
 
 research_exact_modle* research_exact_init_research_exact_modle();
 
+void release_research_exact_modle(research_exact_modle* _release);
+
 /********************************************/
 //Ä£¿é8.2
 //½ÓÊÕÃüÁî

@@ -149,5 +149,8 @@
     <ClCompile Include="sys_frame.cpp">
       <Filter>sys_frame</Filter>
     </ClCompile>
+    <ClCompile Include="sys_research_exact.cpp">
+      <Filter>research</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
