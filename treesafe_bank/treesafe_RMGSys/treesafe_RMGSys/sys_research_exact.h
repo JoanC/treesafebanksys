@@ -60,7 +60,7 @@ void research_exact_init_research_exact_investigator_prop(research_exact_investi
 
 void research_exact_init_research_exact_info(research_exact_info* _init);
 
-void research_exact_init_research_exact_modle(research_exact_modle* _init);
+research_exact_modle* research_exact_init_research_exact_modle();
 
 /********************************************/
 //Ä£¿é8.2
