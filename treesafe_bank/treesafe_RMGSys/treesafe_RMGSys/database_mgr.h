@@ -8,10 +8,14 @@
 #include<conio.h>
 
 #import "C:\\Program Files\\Common Files\\System\\ado\\msado25.tlb" no_namespace rename("EOF","rsEOF")
+
 #define PWD_LEN 16
 
+const char CSFileName[] = "ConnStrs.txt" ;
+const size_t connStrLen = 241  ; // max 3 lines
 char *	GetIP() ;
-
+bool GetConnStr(int index,char *outcome) ;
+//index means in which line of the connStr.txt.
 bool ConnectDB(_ConnectionPtr *pConn) ;
 
 void DisconnectDB(_ConnectionPtr *pConn) ;

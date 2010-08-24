@@ -216,3 +216,4 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 	//ÊÍ·ÅÄ£¿é
 	reg_release(_reg_frame_modle);
 }
+

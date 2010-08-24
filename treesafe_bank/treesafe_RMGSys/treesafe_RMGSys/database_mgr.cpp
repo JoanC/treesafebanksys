@@ -2,28 +2,26 @@
 #include "database_mgr.h"
 
 
-char *GetIP()
+bool GetConnStr(int index,char *outcome) 
 {
-	const char partConnStr[] = "Provider=SQLOLEDB.1;Password=123;Persist Security Info=True;User ID=ts_login;Initial Catalog=treesafe_Login;Data Source = "  ;
-	const int IPLen = 16 ;
-	int nLenOfConnStr = strlen(partConnStr) + IPLen ;
-	char *connStr = new char[nLenOfConnStr] ;
+	FILE *pFile = NULL ;
+	if (fopen_s(&pFile,CSFileName,"rt") == S_OK ){
+		for(int i  = 0 ; i <= index ; ++i){
+	 		fgets(outcome,connStrLen,pFile) ;
 
-	char ch_ip[IPLen] ;
-	memset( ch_ip , '\0' , IPLen ) ;
-	
-	printf("please input the ip address of the database...\r\n") ;
-	scanf("%s",ch_ip) ;
-	
-	strcpy_s(connStr,nLenOfConnStr ,partConnStr ) ;
-	strcat_s(connStr,nLenOfConnStr,ch_ip) ;
+		}
+		fclose(pFile) ; 
+		return true ;
+	}
+	else
+		return false ;
 
-	return connStr ;
 }
 
 bool ConnectDB(_ConnectionPtr *pConn) 
 {	
-	char *connStr = GetIP() ;
+	char connStr[connStrLen] ;
+	GetConnStr(0,connStr) ;
 	::CoInitialize(0);
 	pConn->CreateInstance(__uuidof(Connection));
 	(*pConn)->ConnectionString = connStr ;
@@ -32,8 +30,7 @@ bool ConnectDB(_ConnectionPtr *pConn)
 	//setting param...
 	(*pConn) ->Open("","","",-1) ;
 	//open it 
-	delete []connStr ;
-	connStr = NULL ;
+
 	//delete connStr that was newed in GetIP()
 	char outputStr[] = "success to connect the database..." ;
 	printf("%s\r\n",outputStr) ;
