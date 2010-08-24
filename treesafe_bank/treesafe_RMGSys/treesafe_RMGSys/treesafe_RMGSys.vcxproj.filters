@@ -55,6 +55,9 @@
     <Filter Include="research">
       <UniqueIdentifier>{d1065bee-c85e-4dee-b3c5-5838c6263ca8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="research\exact">
+      <UniqueIdentifier>{92eee625-f3d1-4759-8b68-04b2fce8fb85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -109,7 +112,7 @@
       <Filter>net</Filter>
     </ClInclude>
     <ClInclude Include="sys_research_exact.h">
-      <Filter>research</Filter>
+      <Filter>research\exact</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -150,7 +153,7 @@
       <Filter>sys_frame</Filter>
     </ClCompile>
     <ClCompile Include="sys_research_exact.cpp">
-      <Filter>research</Filter>
+      <Filter>research\exact</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
