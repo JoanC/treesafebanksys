@@ -153,7 +153,7 @@ bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
 //模块6.5
 void reg_add_user_to_db(reg_input_info* _info){
 	//根据basic信息,把该用户加入数据库中
-	//...待sunni实现
+	
 }
 
 //6.6

@@ -21,6 +21,7 @@ bool GetConnStr(int index,char *outcome)
 bool ConnectDB(_ConnectionPtr *pConn) 
 {	
 	char connStr[connStrLen] ;
+	memset(connStr,0,connStrLen) ;
 
 	printf("please input the index of the database you want to connect:\r\n") ;
 	
@@ -116,4 +117,9 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 	{
 		user_info_rlt->cmpt = (login_competence)varCmpt.intVal  ;
 	}
+}
+
+void Add_login_info(_ConnectionPtr *_pConn,sys_db_login *_info_to_add)
+{
+
 }

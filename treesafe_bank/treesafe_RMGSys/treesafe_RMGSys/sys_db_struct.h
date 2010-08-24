@@ -37,6 +37,4 @@ struct sys_db_research{
 
 	//注释信息(1个即可)
 	//...
-
-
 };

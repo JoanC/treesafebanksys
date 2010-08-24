@@ -23,3 +23,5 @@ void DisconnectDB(_ConnectionPtr *pConn) ;
 bool	Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt) ;
 
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info) ;
+
+void Add_login_info(_ConnectionPtr *_pConn,sys_db_login *_info_to_add) ;
