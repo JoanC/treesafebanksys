@@ -44,6 +44,5 @@ struct sys_db_research{
 struct sys_db_apply{
 	//正式申请的编号
 	//各信息的最终数据(申请人id等)
-
-
+	//...
 };
