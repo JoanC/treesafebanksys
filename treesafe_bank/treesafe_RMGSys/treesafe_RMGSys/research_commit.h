@@ -73,11 +73,18 @@ research_commit_modle* research_commit_init_research_commoit_modle();
 //释放模块
 void release_research_commit_modle(research_commit_modle* _release);
 
+/**********************************************/
+//9.2
+//sunni完成
+//将成功(是否成功不用你判断)通过审核的申请的信息提取出来
+//复制到正式的申请表结构中(子函式1)
+//将填充好的结构体信息存入数据库中(子函式2)
+void research_commit_pad_data();
+
 /*********************************************/
-//模块9.2
+//模块9.3
+//sunni完成
 //根据输入的research_apply_id
 //从审核表中删除这个表项
 //查询的正确与否记录在_rlt中
 void research_delete_research_apply(const char* _research_apply_id , bool* _rlt);
-
-/*********************************************/
