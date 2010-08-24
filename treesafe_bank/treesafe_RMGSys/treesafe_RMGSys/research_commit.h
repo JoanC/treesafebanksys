@@ -33,7 +33,38 @@ struct research_commit_input_info{
 	//各种bool或是枚举变量
 	//...
 	//有待亦可确定
-
+	bool is_research_approved;//审核是否通过
+	//...
 };
 
-//
+
+//将会做为结果数据发送到网络端
+struct research_commit_info{
+	bool is_commit_succ;//提交是否成功
+	//错误信息
+	sys_err err_info;
+};
+
+
+//申请结果提交模块
+struct research_commit_modle{
+	research_commit_input_info input_info;
+	research_commit_info rlt_info;
+};
+
+/*******************************************/
+//模块9.1
+//初始化和释放模块
+
+
+//初始化审核提交的输入信息
+void research_commit_init_research_commit_input_info(research_commit_input_info* _init)
+
+//初始化结果记录信息
+void research_commit_init_research_commit_info(research_commit_info* _init);
+
+//初始化审核提交模块信息
+research_commit_modle* research_commit_init_research_commoit_modle();
+
+//释放模块
+void release_research_commit_modle(research_commit_modle* _release);
