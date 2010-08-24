@@ -30,7 +30,7 @@ struct sys_db_login{
 //具体的你命名
 struct sys_db_research{
 	//审核申请的编号
-	//...
+	//各信息的原始数据(申请人id等)
 
 	//各信息的是否正确
 	//...
@@ -39,3 +39,11 @@ struct sys_db_research{
 	//...
 };
 
+//模块9使用的
+//正式的申请信息
+struct sys_db_apply{
+	//正式申请的编号
+	//各信息的最终数据(申请人id等)
+
+	//注释信息
+};
