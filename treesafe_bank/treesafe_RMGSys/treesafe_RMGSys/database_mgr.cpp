@@ -21,7 +21,14 @@ bool GetConnStr(int index,char *outcome)
 bool ConnectDB(_ConnectionPtr *pConn) 
 {	
 	char connStr[connStrLen] ;
-	GetConnStr(0,connStr) ;
+
+	printf("please input the index of the database you want to connect:\r\n") ;
+	
+	int index = 0 ;
+	scanf("%d",index) ;
+
+	GetConnStr(index,connStr) ;
+
 	::CoInitialize(0);
 	pConn->CreateInstance(__uuidof(Connection));
 	(*pConn)->ConnectionString = connStr ;
