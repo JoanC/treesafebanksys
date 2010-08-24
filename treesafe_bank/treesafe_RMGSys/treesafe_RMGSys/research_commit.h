@@ -90,10 +90,11 @@ void research_commit_save_apply(sys_db_apply* _apply_info);
 //根据输入的research_apply_id
 //从审核表中删除这个表项
 //查询的正确与否记录在_rlt中
-void research_delete_research_apply(const char* _research_apply_id , bool* _rlt);
+void research_commit_delete_research_apply(const char* _research_apply_id , bool* _rlt);
 
 
 /**********************************************/
 //模块9.4
 //Jiraiya完成
 //生成结果信息
+void research_commit_convert_rlt(research_commit_info* _rlt);
