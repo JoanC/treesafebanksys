@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Title="Auditor Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+<%@ Page Title="Auditor Page" Language="C#" MasterPageFile="~/Auditor.master" AutoEventWireup="true"
     CodeBehind="AuditorRootPage.aspx.cs" Inherits="treesafe.AuditorRootPage" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

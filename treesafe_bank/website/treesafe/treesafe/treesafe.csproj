@@ -55,8 +55,13 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="AdmintratorLaborManagementPage.aspx" />
+    <Content Include="AdmintratorRiskManagementPage.aspx" />
     <Content Include="AdmintratorRootPage.aspx" />
+    <Content Include="AuditorHelpPage.aspx" />
+    <Content Include="AuditorListPage.aspx" />
     <Content Include="AuditorRootPage.aspx" />
+    <Content Include="AuditorTeamListPage.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -114,6 +119,27 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admintrator.Master.cs">
+      <DependentUpon>Admintrator.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admintrator.Master.designer.cs">
+      <DependentUpon>Admintrator.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdmintratorLaborManagementPage.aspx.cs">
+      <DependentUpon>AdmintratorLaborManagementPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdmintratorLaborManagementPage.aspx.designer.cs">
+      <DependentUpon>AdmintratorLaborManagementPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdmintratorRiskManagementPage.aspx.cs">
+      <DependentUpon>AdmintratorRiskManagementPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdmintratorRiskManagementPage.aspx.designer.cs">
+      <DependentUpon>AdmintratorRiskManagementPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdmintratorRootPage.aspx.cs">
       <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,12 +147,40 @@
     <Compile Include="AdmintratorRootPage.aspx.designer.cs">
       <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Auditor.Master.cs">
+      <DependentUpon>Auditor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditor.Master.designer.cs">
+      <DependentUpon>Auditor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AuditorHelpPage.aspx.cs">
+      <DependentUpon>AuditorHelpPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuditorHelpPage.aspx.designer.cs">
+      <DependentUpon>AuditorHelpPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AuditorListPage.aspx.cs">
+      <DependentUpon>AuditorListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuditorListPage.aspx.designer.cs">
+      <DependentUpon>AuditorListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AuditorRootPage.aspx.cs">
       <DependentUpon>AuditorRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AuditorRootPage.aspx.designer.cs">
       <DependentUpon>AuditorRootPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AuditorTeamListPage.aspx.cs">
+      <DependentUpon>AuditorTeamListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuditorTeamListPage.aspx.designer.cs">
+      <DependentUpon>AuditorTeamListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -222,6 +276,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="User.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admintrator.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Auditor.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
