@@ -75,6 +75,23 @@ void release_research_commit_modle(research_commit_modle* _release);
 
 /**********************************************/
 //9.2
+//Jiraiya 完成
+//命令的解析和复制
+
+//9.2主函式,获取命令信息,并从中提取输入信息
+research_commit_input_info* research_commit_get_cmd(const char* _cmd
+	,int _cmd_len);
+
+//复制命令信息
+//将传入的命令信息复制到_dest中
+void research_commit_copy_cmd(const char* _cmd,char* _dest,int _cmd_len);
+
+//转化
+//将字符串信息转化为用户输入的信息
+research_commit_input_info* research_commit_convert_input(char* _info);
+
+/**********************************************/
+//9.3
 //sunni完成
 //将成功(是否成功不用你判断)通过审核的申请的信息提取出来
 //复制到正式的申请表结构中(子函式1)
@@ -85,7 +102,7 @@ void research_commit_pad_data(const char* research_apply_id
 void research_commit_save_apply(sys_db_apply* _apply_info);
 
 /*********************************************/
-//模块9.3
+//模块9.4
 //sunni完成
 //根据输入的research_apply_id
 //从审核表中删除这个表项
@@ -94,10 +111,11 @@ void research_commit_delete_research_apply(const char* _research_apply_id , bool
 
 
 /**********************************************/
-//模块9.4
+//模块9.5
 //Jiraiya完成
 //生成结果信息
-void research_commit_convert_rlt(research_commit_info* _rlt);
+void research_commit_convert_rlt(research_commit_info* _rlt_info
+	,char* _rlt , int* _rlt_len);
 
 
 /**********************************************/
