@@ -75,8 +75,8 @@
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                              <p>
-                                <asp:Label ID="Label1" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
+                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
                  
                             </p>
                         </fieldset>
