@@ -170,9 +170,9 @@ namespace treesafe.Account
         }
 
         public void send_to_server(string _user_name, string _pwd) {
-            login_check_info _send_info = new login_check_info(_user_name, _pwd);
-            web_net_client_mgr _net = new web_net_client_mgr("127.0.0.1", 4999);
-            _net.send_command_data(0,_send_info);
+           // login_check_info _send_info = new login_check_info(_user_name, _pwd);
+           // web_net_client_mgr _net = new web_net_client_mgr("127.0.0.1", 4999);
+            //_net.send_command_data(0,_send_info);
         }
 
     }
