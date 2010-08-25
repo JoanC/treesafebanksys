@@ -164,5 +164,8 @@
     <ClCompile Include="sys_research_exact.cpp">
       <Filter>research\exact</Filter>
     </ClCompile>
+    <ClCompile Include="research_commit.cpp">
+      <Filter>research\commit</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -98,3 +98,9 @@ void research_commit_delete_research_apply(const char* _research_apply_id , bool
 //Jiraiya完成
 //生成结果信息
 void research_commit_convert_rlt(research_commit_info* _rlt);
+
+
+/**********************************************/
+//模块9的主函式
+void research_commit_frame(const char* _cmd , int _cmd_len
+	,char* _rlt , int* _rlt_len);
