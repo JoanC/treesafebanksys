@@ -13,13 +13,13 @@
             <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
                 <ContentTemplate>
                     <h2>
-                        Create a New Account
+                        注册
                     </h2>
                     <p>
-                        Use the form below to create a new account.
+                       请认真填写下表，创建新账号
                     </p>
                     <p>
-                        Passwords are required to be a minimum of <%= Membership.MinRequiredPasswordLength %> characters in length.
+                        密码至少需要 <%= Membership.MinRequiredPasswordLength %> 位数。
                     </p>
                     <span class="failureNotification">
                         <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
@@ -28,7 +28,7 @@
                          ValidationGroup="RegisterUserValidationGroup"/>
                     <div class="accountInfo">
                         <fieldset class="register">
-                            <legend>Account Information</legend>
+                            <legend>账户信息</legend>
                             <p>
                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">姓名:</asp:Label>
                                 <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -75,13 +75,13 @@
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                              <p>
-                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
+                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">电子邮件（选填）:</asp:Label>
                                 <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
                  
                             </p>
                         </fieldset>
                         <p class="submitButton">
-                            <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Create User" 
+                            <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="确定，创建新账号" 
                                  ValidationGroup="RegisterUserValidationGroup"/>
                         </p>
                     </div>
