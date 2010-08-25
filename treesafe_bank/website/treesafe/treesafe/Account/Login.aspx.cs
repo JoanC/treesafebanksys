@@ -140,9 +140,33 @@ namespace treesafe.Account
             RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
            
             //在这里调用函数~判断用户权限~并决定用户进入的界面
+            //在此处传值
 
-            LoginUser.DestinationPageUrl = String.Format("~/About.aspx?{0}", Request.QueryString.ToString());
+            uint destinationPage = 0;
 
+            //0: 进入用户界面（农民）
+            //1：进入操作员界面（前台工作人员）
+            //2: 进入审核员界面
+            //3：进入管理员权限（评定权值设定，人员调动）
+
+            switch (destinationPage)
+            {
+                case 0:
+                    LoginUser.DestinationPageUrl = String.Format("~/UserRootPage.aspx?{0}", Request.QueryString.ToString());
+                    break;
+                case 1:
+                    LoginUser.DestinationPageUrl = String.Format("~/WorkerRootPage.aspx?{0}", Request.QueryString.ToString());
+                    break;
+                case 2:
+                    LoginUser.DestinationPageUrl = String.Format("~/AuditorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    break;
+                case 3:
+                    LoginUser.DestinationPageUrl = String.Format("~/AdmintratorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    break;
+                default:
+                    Console.WriteLine("Default");
+                    break;
+            }
         }
 
         public void send_to_server(string _user_name, string _pwd) {

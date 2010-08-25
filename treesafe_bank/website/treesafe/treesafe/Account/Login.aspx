@@ -2,6 +2,7 @@
     CodeBehind="Login.aspx.cs" Inherits="treesafe.Account.Login" %>
 
 <SCRIPT runat="server">
+
 private bool SiteSpecificAuthenticationMethod(string UserName, string Password)
 {   
     // Insert code that implements a site-specific custom 
@@ -18,7 +19,7 @@ private void OnAuthenticate(object sender, AuthenticateEventArgs e)
     Authenticated = SiteSpecificAuthenticationMethod(LoginUser.UserName, LoginUser.Password);
 
     e.Authenticated = Authenticated;
-}
+} 
 
 </SCRIPT>
 

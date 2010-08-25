@@ -55,12 +55,15 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="AdmintratorRootPage.aspx" />
+    <Content Include="AuditorRootPage.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="UserRootPage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -68,6 +71,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WorkerRootPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -105,6 +109,20 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdmintratorRootPage.aspx.cs">
+      <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdmintratorRootPage.aspx.designer.cs">
+      <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AuditorRootPage.aspx.cs">
+      <DependentUpon>AuditorRootPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuditorRootPage.aspx.designer.cs">
+      <DependentUpon>AuditorRootPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -123,12 +141,26 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="UserRootPage.aspx.cs">
+      <DependentUpon>UserRootPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserRootPage.aspx.designer.cs">
+      <DependentUpon>UserRootPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Welcome.Master.cs">
       <DependentUpon>Welcome.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Welcome.Master.designer.cs">
       <DependentUpon>Welcome.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerRootPage.aspx.cs">
+      <DependentUpon>WorkerRootPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkerRootPage.aspx.designer.cs">
+      <DependentUpon>WorkerRootPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
