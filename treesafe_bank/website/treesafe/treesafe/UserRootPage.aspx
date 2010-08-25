@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Title="User Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+<%@ Page Title="User Page" Language="C#" MasterPageFile="~/User.master" AutoEventWireup="true"
     CodeBehind="UserRootPage.aspx.cs" Inherits="treesafe.UserRootPage" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

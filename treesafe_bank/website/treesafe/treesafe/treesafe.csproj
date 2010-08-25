@@ -63,7 +63,12 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="UserApplicationPage.aspx" />
+    <Content Include="UserHelpPage.aspx" />
+    <Content Include="UserInfoPage.aspx" />
+    <Content Include="UserRiskEvaluationPage.aspx" />
     <Content Include="UserRootPage.aspx" />
+    <Content Include="UserTeamPage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -141,12 +146,54 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="User.Master.cs">
+      <DependentUpon>User.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.Master.designer.cs">
+      <DependentUpon>User.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserApplicationPage.aspx.cs">
+      <DependentUpon>UserApplicationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserApplicationPage.aspx.designer.cs">
+      <DependentUpon>UserApplicationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserHelpPage.aspx.cs">
+      <DependentUpon>UserHelpPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserHelpPage.aspx.designer.cs">
+      <DependentUpon>UserHelpPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoPage.aspx.cs">
+      <DependentUpon>UserInfoPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfoPage.aspx.designer.cs">
+      <DependentUpon>UserInfoPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserRiskEvaluationPage.aspx.cs">
+      <DependentUpon>UserRiskEvaluationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserRiskEvaluationPage.aspx.designer.cs">
+      <DependentUpon>UserRiskEvaluationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserRootPage.aspx.cs">
       <DependentUpon>UserRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserRootPage.aspx.designer.cs">
       <DependentUpon>UserRootPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserTeamPage.aspx.cs">
+      <DependentUpon>UserTeamPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserTeamPage.aspx.designer.cs">
+      <DependentUpon>UserTeamPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Welcome.Master.cs">
       <DependentUpon>Welcome.Master</DependentUpon>
@@ -172,6 +219,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Welcome.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="User.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
