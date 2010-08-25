@@ -81,7 +81,11 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WorkerApplicationPage.aspx" />
+    <Content Include="WorkerHelpPage.aspx" />
     <Content Include="WorkerRootPage.aspx" />
+    <Content Include="WorkerTeamPage.aspx" />
+    <Content Include="WorkerUserDataPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -256,12 +260,47 @@
     <Compile Include="Welcome.Master.designer.cs">
       <DependentUpon>Welcome.Master</DependentUpon>
     </Compile>
+    <Compile Include="Worker.Master.cs">
+      <DependentUpon>Worker.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Worker.Master.designer.cs">
+      <DependentUpon>Worker.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerApplicationPage.aspx.cs">
+      <DependentUpon>WorkerApplicationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkerApplicationPage.aspx.designer.cs">
+      <DependentUpon>WorkerApplicationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerHelpPage.aspx.cs">
+      <DependentUpon>WorkerHelpPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkerHelpPage.aspx.designer.cs">
+      <DependentUpon>WorkerHelpPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WorkerRootPage.aspx.cs">
       <DependentUpon>WorkerRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WorkerRootPage.aspx.designer.cs">
       <DependentUpon>WorkerRootPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerTeamPage.aspx.cs">
+      <DependentUpon>WorkerTeamPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkerTeamPage.aspx.designer.cs">
+      <DependentUpon>WorkerTeamPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerUserDataPage.aspx.cs">
+      <DependentUpon>WorkerUserDataPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WorkerUserDataPage.aspx.designer.cs">
+      <DependentUpon>WorkerUserDataPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +321,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Auditor.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Worker.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

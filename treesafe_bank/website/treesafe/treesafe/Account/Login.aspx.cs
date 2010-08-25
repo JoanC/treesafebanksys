@@ -142,7 +142,7 @@ namespace treesafe.Account
             //在这里调用函数~判断用户权限~并决定用户进入的界面
             //在此处传值
 
-            uint destinationPage = 2;
+            uint destinationPage = 1;
 
             //0: 进入用户界面（农民）
             //1：进入操作员界面（前台工作人员）
