@@ -17,7 +17,7 @@ void reg_init_reg_basic_info(reg_basic_info* _init){
 	//初始化真实姓名
 	strcpy(_init->reg_basic_user_name,"");
 	//初始化性别,男
-	_init->reg_gender = male;
+	_init->reg_gender = reg_info_male;
 	//初始化年龄,18
 	_init->reg_age = 18;
 	//家庭住址
@@ -116,7 +116,7 @@ void reg_query_user_convert_rlt(bankDB_result_info* _db_rlt,reg_basic_info* _cus
 	//年龄
 	_cust_info->reg_age = _cust->age;
 	//性别
-	_cust_info->reg_gender = _cust->gend ? male : female;
+	_cust_info->reg_gender = _cust->gend ? reg_info_male : reg_info_female;
 	//家庭住址
 	//...家庭住址不用比较
 	//strcpy(_cust_info->reg_home_addr,_cust->home_addr);

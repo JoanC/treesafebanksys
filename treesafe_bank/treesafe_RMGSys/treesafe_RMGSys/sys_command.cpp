@@ -36,6 +36,10 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 		//调用登录处理子函数
 		sys_command_reg(_command,_rlt,_rlt_len);
 					  }break;
+	case(sys_cmd_apply):{
+		//调用申请处理函数
+		sys_command_apply(_command,_rlt,_rlt_len);
+						}break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -54,6 +58,11 @@ void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 //2.3.2 注册处理
 void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
 	reg_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
+
+//2.3.3 申请处理
+void sys_command_apply(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
+	apply_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
 //模块2.4

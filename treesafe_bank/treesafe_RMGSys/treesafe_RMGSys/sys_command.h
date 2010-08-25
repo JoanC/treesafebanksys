@@ -2,10 +2,11 @@
 //模块2
 
 //所有子流程都要包含
-#include "sys_login.h"//登陆的子流程
 #include "sys_error_compute.h"//错误处理模块
-#include "sys_reg.h"
-#include "net.h"
+#include "net.h"//网络层
+#include "sys_login.h"//登陆的子流程
+#include "sys_reg.h"//注册子过程
+#include "sys_apply.h"//申请子过程
 
 typedef char* COMMAND_DATA;
 #define SYS_CMD_MAX_RLT_SIZE 256
@@ -15,6 +16,7 @@ enum{
 	//命令编号集合
 	sys_cmd_login,//登录指令
 	sys_cmd_reg,//注册指令
+	sys_cmd_apply,//提交申请指令
 	sys_cmd_unexpect//未知命令(不可解析)
 };
 
@@ -62,6 +64,9 @@ void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
 //注册模块子处理函式2.4.2
 void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
+
+//申请模块的子处理函式2.4.3
+void sys_command_apply(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
 
 //模块2.5
 //未知命令的处理函式

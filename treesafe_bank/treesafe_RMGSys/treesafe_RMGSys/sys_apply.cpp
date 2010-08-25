@@ -5,8 +5,8 @@
 //初始化
 void apply_init_apply_custmor_info(apply_custmor_info* _init){
 	_init->cust_age = 18;
-	_init->cust_gender = male;
-	strcpy(_init->cust_id,"000000000000000000");
+	_init->cust_gender = apply_info_male;
+	strcpy(_init->cust_id,"");
 	strcpy(_init->cust_name,"");
 }
 
@@ -38,7 +38,7 @@ void apply_release(apply_modle* _mld){
 
 //7.2
 //获取输入信息
-void apply_get_copy_command(char* _dest , char* _command,int _len){
+void apply_get_copy_command(char* _dest , const char* _command,int _len){
 	//信息复制
 	memcpy(_dest,_command,_len);
 }
@@ -47,7 +47,7 @@ apply_input_info* apply_get_convert_input(char* _data){
 	return (apply_input_info*)_data;
 }
 
-apply_input_info* apply_get_input_info(char* _command , int _len){
+apply_input_info* apply_get_input_info(const char* _command , int _len){
 	//信息复制
 	char _info[sizeof(apply_input_info)];
 	apply_get_copy_command(_info,_command,_len);
@@ -96,7 +96,7 @@ void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len){
 }
 
 //申请处理的主函式
-void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
+void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len){
 	//7.1
 	//初始化模块
 	apply_modle* _apply_frame = 
@@ -127,7 +127,7 @@ void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len){
 	//7.6
 	//整理结果
 	apply_convert_rlt(&_apply_frame->rlt_info
-		,_rlt, &_rlt_len);
+		,_rlt, _rlt_len);
 
 	//7.7
 	//释放模块

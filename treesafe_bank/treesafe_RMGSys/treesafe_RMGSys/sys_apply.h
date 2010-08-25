@@ -7,7 +7,7 @@
 #define APPLY_CUST_ID_LEN 19 //申请人身份证号长度
 #define APPLY_CUST_NAME_LEN 51//姓名长度
 
-enum APPLY_GENDER_TYPE {male , female};
+enum APPLY_GENDER_TYPE {apply_info_male , apply_info_female};
 
 //操作员输入的信息结构
 struct apply_custmor_info{
@@ -79,10 +79,10 @@ void apply_release(apply_modle* _mld);
 //模块7.2
 //从命令中获取可用信息
 // Jiraiya完成
-apply_input_info* apply_get_input_info(char* _command , int _len);
+apply_input_info* apply_get_input_info(const char* _command , int _len);
 
 //复制命令
-void apply_get_copy_command(char* _dest , char* _command , int _len);
+void apply_get_copy_command(char* _dest , const char* _command , int _len);
 //将命令转化为用户的输入信息
 //当然,这个依赖于双方的协议
 apply_input_info* apply_get_convert_input(char* _data);
@@ -135,7 +135,7 @@ void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len);
 //...
 void apply_err_compute(sys_err_type _type , apply_modle* _modle);
 
-
+ 
 /*********************************************************/
 //申请流程的主函式
-void apply_frame(char* _command , int _len , char* _rlt , int _rlt_len);
+void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len);

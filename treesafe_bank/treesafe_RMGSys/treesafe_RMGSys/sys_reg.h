@@ -20,7 +20,7 @@
 typedef char REG_USER_NAME;
 typedef char REG_USER_PWD;
 typedef char REG_USER_ID;
-enum REG_GENDER_TYPE{male , female};
+enum REG_GENDER_TYPE{reg_info_male , reg_info_female};
 
 
 struct reg_basic_info{
