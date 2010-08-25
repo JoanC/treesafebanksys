@@ -54,7 +54,7 @@ void sys_command_convert(net_recieved_info* _rev , sys_net_data* _cmd);
 void sys_command(const sys_net_data* _command,char* _rlt,int* _rlt_len);
 
 
-//模块2.3
+//模块2.4
 //0.3不同的子处理函数
 
 //登陆模块的处理函数2.3.1
@@ -63,7 +63,7 @@ void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 //注册模块子处理函式2.3.2
 void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
 
-//模块2.4
+//模块2.5
 //未知命令的处理函式
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len);
 
