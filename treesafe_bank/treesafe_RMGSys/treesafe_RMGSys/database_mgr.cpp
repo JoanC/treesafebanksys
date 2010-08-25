@@ -26,7 +26,7 @@ bool ConnectDB(_ConnectionPtr *pConn)
 	printf("please input the index of the database you want to connect:\r\n") ;
 	
 	int index = 0 ;
-	scanf("%d",index) ;
+	scanf("%d",&index) ;
 
 	GetConnStr(index,connStr) ;
 
