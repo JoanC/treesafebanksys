@@ -61,6 +61,12 @@
     <Filter Include="research\commit">
       <UniqueIdentifier>{89891b34-a439-4260-97f6-1e0a94a02024}</UniqueIdentifier>
     </Filter>
+    <Filter Include="credit_compute">
+      <UniqueIdentifier>{0f66ad68-9ff2-42b9-92fb-b4d38968f562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="risk_compute">
+      <UniqueIdentifier>{eda1acc8-55c2-453e-92d7-0a1d8c10d49f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
