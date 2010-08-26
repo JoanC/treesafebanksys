@@ -13,7 +13,7 @@ enum admin_employee_type{
 	employ_type_investigator//审核(调查)员
 };
 
-//输入的雇员信息
+//雇员信息
 struct admin_employee_info{
 	admin_employee_type employee_type;//雇员类型
 	char employee_id[EMPLOYEE_ID_LEN];//雇员的身份证号
