@@ -129,6 +129,9 @@
     <ClInclude Include="research_commit.h">
       <Filter>research\commit</Filter>
     </ClInclude>
+    <ClInclude Include="sys_credit_compute.h">
+      <Filter>credit_compute</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="research_commit.cpp">
       <Filter>research\commit</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_credit_compute.cpp">
+      <Filter>credit_compute</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

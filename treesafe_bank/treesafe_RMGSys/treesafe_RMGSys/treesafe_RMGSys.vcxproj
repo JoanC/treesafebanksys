@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="net.h" />
     <ClInclude Include="research_commit.h" />
+    <ClInclude Include="sys_credit_compute.h" />
     <ClInclude Include="sys_research_exact.h" />
     <ClInclude Include="treesafe_cServer.h" />
     <ClInclude Include="database_mgr.h" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="research_commit.cpp" />
+    <ClCompile Include="sys_credit_compute.cpp" />
     <ClCompile Include="sys_frame.cpp" />
     <ClCompile Include="sys_research_exact.cpp" />
     <ClCompile Include="treesafe_cServer.cpp" />
