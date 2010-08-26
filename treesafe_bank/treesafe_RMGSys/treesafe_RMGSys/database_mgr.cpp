@@ -121,6 +121,17 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
 {
+	char sqlStrTest[200] = "select login_competence from Table_Login where login_id = " ;
+	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+	rsp.Release() ;
+
 	char sqlStr[200] = "insert into Table_Login values('" ;
 	strcat(sqlStr,_reg_info->basic_info.reg_id) ;
 	strcat(sqlStr,"','") ;
@@ -138,6 +149,17 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 
 bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 {
+	char sqlStrTest[200] = "select name from Table_Cust_Info where id = " ;
+	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+	rsp.Release() ;
+
 	char sqlStr[300] = "insert into Table_Cust_Info values('" ;
 	strcat(sqlStr,_reg_info->basic_info.reg_id) ;
 	strcat(sqlStr,"','") ;

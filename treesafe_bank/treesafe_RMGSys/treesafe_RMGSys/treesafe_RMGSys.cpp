@@ -74,12 +74,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	strcpy(test_input.basic_info.reg_id,"123456789123456789");
 	strcpy(test_input.basic_info.reg_basic_user_name,"my baby");
 	strcpy(test_input.basic_info.reg_pwd,"xbx8206897");
+	strcpy(test_input.basic_info.reg_phone_num,"13805123684") ;
 	char cmd[256];
 	char rlt[256];
 	int len = 0;
 	memcpy(cmd,&test_input,sizeof(reg_input_info));
 	reg_frame(cmd,sizeof(reg_input_info),rlt,&len);
-
+	
 	DisconnectDB(treesafe_db_connection);
 	free(treesafe_db_connection);
 #endif
