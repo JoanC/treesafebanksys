@@ -58,7 +58,7 @@
     <Content Include="AdmintratorLaborManagementPage.aspx" />
     <Content Include="AdmintratorRiskManagementPage.aspx" />
     <Content Include="AdmintratorRootPage.aspx" />
-    <Content Include="ApplicationPage.aspx" />
+    <Content Include="Users\ApplicationPage.aspx" />
     <Content Include="AuditorHelpPage.aspx" />
     <Content Include="AuditorListPage.aspx" />
     <Content Include="AuditorRootPage.aspx" />
@@ -69,12 +69,12 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="UserApplicationPage.aspx" />
-    <Content Include="UserHelpPage.aspx" />
-    <Content Include="UserInfoPage.aspx" />
-    <Content Include="UserRiskEvaluationPage.aspx" />
-    <Content Include="UserRootPage.aspx" />
-    <Content Include="UserTeamPage.aspx" />
+    <Content Include="Users\UserApplicationPage.aspx" />
+    <Content Include="Users\UserHelpPage.aspx" />
+    <Content Include="Users\UserInfoPage.aspx" />
+    <Content Include="Users\UserRiskEvaluationPage.aspx" />
+    <Content Include="Users\UserRootPage.aspx" />
+    <Content Include="Users\UserTeamPage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -152,11 +152,11 @@
     <Compile Include="AdmintratorRootPage.aspx.designer.cs">
       <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationPage.aspx.cs">
+    <Compile Include="Users\ApplicationPage.aspx.cs">
       <DependentUpon>ApplicationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ApplicationPage.aspx.designer.cs">
+    <Compile Include="Users\ApplicationPage.aspx.designer.cs">
       <DependentUpon>ApplicationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auditor.Master.cs">
@@ -219,46 +219,46 @@
     <Compile Include="User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
     </Compile>
-    <Compile Include="UserApplicationPage.aspx.cs">
+    <Compile Include="Users\UserApplicationPage.aspx.cs">
       <DependentUpon>UserApplicationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserApplicationPage.aspx.designer.cs">
+    <Compile Include="Users\UserApplicationPage.aspx.designer.cs">
       <DependentUpon>UserApplicationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserHelpPage.aspx.cs">
+    <Compile Include="Users\UserHelpPage.aspx.cs">
       <DependentUpon>UserHelpPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserHelpPage.aspx.designer.cs">
+    <Compile Include="Users\UserHelpPage.aspx.designer.cs">
       <DependentUpon>UserHelpPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserInfoPage.aspx.cs">
+    <Compile Include="Users\UserInfoPage.aspx.cs">
       <DependentUpon>UserInfoPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserInfoPage.aspx.designer.cs">
+    <Compile Include="Users\UserInfoPage.aspx.designer.cs">
       <DependentUpon>UserInfoPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserRiskEvaluationPage.aspx.cs">
+    <Compile Include="Users\UserRiskEvaluationPage.aspx.cs">
       <DependentUpon>UserRiskEvaluationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserRiskEvaluationPage.aspx.designer.cs">
+    <Compile Include="Users\UserRiskEvaluationPage.aspx.designer.cs">
       <DependentUpon>UserRiskEvaluationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserRootPage.aspx.cs">
+    <Compile Include="Users\UserRootPage.aspx.cs">
       <DependentUpon>UserRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserRootPage.aspx.designer.cs">
+    <Compile Include="Users\UserRootPage.aspx.designer.cs">
       <DependentUpon>UserRootPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserTeamPage.aspx.cs">
+    <Compile Include="Users\UserTeamPage.aspx.cs">
       <DependentUpon>UserTeamPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserTeamPage.aspx.designer.cs">
+    <Compile Include="Users\UserTeamPage.aspx.designer.cs">
       <DependentUpon>UserTeamPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Welcome.Master.cs">
