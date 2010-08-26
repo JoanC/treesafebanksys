@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" 
-CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.ApplicationPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/User.Master" AutoEventWireup="true" 
+CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.User.ApplicationPage" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
