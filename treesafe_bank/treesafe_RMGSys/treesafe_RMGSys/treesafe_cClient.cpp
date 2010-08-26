@@ -6,7 +6,6 @@
 //init client
 void InitClient(sys_Client* client)
 {
-
 	if (WSAStartup(MAKEWORD(2,2),&client->sys_net.wsd) !=0)
 	{
 		printf("WSAStartup failed!\n");
