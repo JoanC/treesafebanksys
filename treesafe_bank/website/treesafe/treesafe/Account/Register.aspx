@@ -19,7 +19,7 @@
                        请认真填写下表，创建新账号
                     </p>
                     <p>
-                        密码至少需要 <%= Membership.MinRequiredPasswordLength %> 位数。
+                        *密码至少需要 <%= Membership.MinRequiredPasswordLength %> 位数*
                     </p>
                     <span class="failureNotification">
                         <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>

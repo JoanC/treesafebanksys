@@ -58,6 +58,7 @@
     <Content Include="AdmintratorLaborManagementPage.aspx" />
     <Content Include="AdmintratorRiskManagementPage.aspx" />
     <Content Include="AdmintratorRootPage.aspx" />
+    <Content Include="ApplicationPage.aspx" />
     <Content Include="AuditorHelpPage.aspx" />
     <Content Include="AuditorListPage.aspx" />
     <Content Include="AuditorRootPage.aspx" />
@@ -150,6 +151,13 @@
     </Compile>
     <Compile Include="AdmintratorRootPage.aspx.designer.cs">
       <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationPage.aspx.cs">
+      <DependentUpon>ApplicationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplicationPage.aspx.designer.cs">
+      <DependentUpon>ApplicationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auditor.Master.cs">
       <DependentUpon>Auditor.Master</DependentUpon>
