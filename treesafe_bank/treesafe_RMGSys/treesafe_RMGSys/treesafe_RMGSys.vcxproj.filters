@@ -70,6 +70,15 @@
     <Filter Include="group">
       <UniqueIdentifier>{208a4729-8b51-4403-b48e-68b1343f50c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="group\group_recommand">
+      <UniqueIdentifier>{31acf35f-91f6-4f73-95a1-86b28db60f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="group\group_setup">
+      <UniqueIdentifier>{0cf4c334-51e0-41d4-8f07-50c526072dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="employee_manager">
+      <UniqueIdentifier>{17d05b37-fbdd-4584-b778-ec9d9b10ac2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -139,7 +148,10 @@
       <Filter>risk_compute</Filter>
     </ClInclude>
     <ClInclude Include="sys_group_recommand.h">
-      <Filter>group</Filter>
+      <Filter>group\group_recommand</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_group_setup.h">
+      <Filter>group\group_setup</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
