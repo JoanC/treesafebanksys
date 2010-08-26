@@ -67,6 +67,9 @@
     <Filter Include="risk_compute">
       <UniqueIdentifier>{eda1acc8-55c2-453e-92d7-0a1d8c10d49f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="group">
+      <UniqueIdentifier>{208a4729-8b51-4403-b48e-68b1343f50c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -131,6 +134,12 @@
     </ClInclude>
     <ClInclude Include="sys_credit_compute.h">
       <Filter>credit_compute</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_risk_compute.h">
+      <Filter>risk_compute</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_group_recommand.h">
+      <Filter>group</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
