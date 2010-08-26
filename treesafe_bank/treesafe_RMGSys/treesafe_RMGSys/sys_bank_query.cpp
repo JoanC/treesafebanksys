@@ -1,6 +1,10 @@
 #include "stdafx.h"
-#include "treesate_cClient.h"
 #include "sys_bank_query.h"
+#include "treesate_cClient.h"
+#include "net.h"
+
+
+extern sys_Client client_of_bank;
 
 void sys_connc_bank_query(bankDB_request_info* _req , bankDB_result_info* _rlt){
 	//cClient client;
@@ -12,17 +16,13 @@ void sys_connc_bank_query(bankDB_request_info* _req , bankDB_result_info* _rlt){
 	//RecData(&client);
 	//memcpy((char*)_rlt,client.buf,sizeof(client.buf));
 	//ExitClient(&client);
-	sys_Client treesafe_client;
-	InitClient(&treesafe_client);
-	
 	//?????????????
-	treesafe_client.send.cNetDataInfo = (char*)malloc(sizeof(bankDB_request_info));
+	client_of_bank.send.cNetDataInfo = (char*)malloc(sizeof(bankDB_request_info));
+	client_of_bank.rec.cNetDataInfo = (char*)malloc(sizeof(bankDB_result_info));
 	//
-
-	CreateSocket(&treesafe_client);
-	Connect2Server(&treesafe_client,BANKIP,BANKPORT);
-	memcpy(treesafe_client.send.cNetDataInfo,(char*)_req,sizeof(bankDB_request_info));
-	SendData(&treesafe_client);
-	RecData(&treesafe_client);
-	memcpy((char*)_rlt,treesafe_client.send.cNetDataInfo,treesafe_client.send.stNetDataLength);
+	//
+	memcpy(client_of_bank.send.cNetDataInfo,_req,sizeof(bankDB_request_info));
+	CreateSocket(&client_of_bank);
+	Connect2Server(&client_of_bank,BANKIP,4999);
+	SendData(&client_of_bank);
 }
