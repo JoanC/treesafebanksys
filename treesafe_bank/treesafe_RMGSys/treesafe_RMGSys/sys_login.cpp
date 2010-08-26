@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "sys_login.h"
 
-extern _ConnectionPtr* database_connection ; 
+extern _ConnectionPtr* treesafe_db_connection ; 
 
 /////////////////////////////////////////////////
 /*3.1*/
@@ -83,7 +83,7 @@ void login_db_query(USER_NAME *_user , login_user_info* _info , bool* _rlt)
 {
 	DEBUG_LOGIN_PRINT("get login data from database ...\n");
 	strcpy_s(_info->input_user_name, MAX_USER_NAME_LEN,_user) ;
-	*_rlt = Password_inquiry(database_connection,_user,_info->input_user_pwd) ;
+	*_rlt = Password_inquiry( treesafe_db_connection  ,_user,_info->input_user_pwd) ;
 }
 
 /////////////////////////
@@ -112,7 +112,7 @@ void login_db_summery(login_user_info* _user_info , login_info* _info)
 {
 	DEBUG_LOGIN_PRINT("query more data from database ...\n");
 	sys_db_login temp ;
-	Summery_inquiry(database_connection, _user_info->input_user_name,&temp) ;
+	Summery_inquiry(treesafe_db_connection,  _user_info->input_user_name,&temp) ;
 
 	_info->compe = temp.cmpt ;
 	strcpy_s(_info->user_id ,MAX_USER_NAME_LEN ,temp.user_id ) ;

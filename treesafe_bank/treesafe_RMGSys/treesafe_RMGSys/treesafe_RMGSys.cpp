@@ -26,7 +26,7 @@ sys_Client client_of_bank;
 
 
 //风险系统的数据库连接指针
-_ConnectionPtr* database_connection;
+_ConnectionPtr* treesafe_db_connection;
 
 
 
@@ -83,9 +83,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	research_exact_frame(cmd,12,rlt,&rlt_len);
 #endif
 	/*
-	database_connection = 
+	treesafe_db_connection = 
 		(_ConnectionPtr*)calloc(sizeof(_ConnectionPtr),1);
-	ConnectDB(database_connection);
+	ConnectDB(treesafe_db_connection);
 	while(1){
 		server_of_website.rec.cNetDataInfo =NULL;
 		server_of_website.send.cNetDataInfo = NULL;
@@ -98,8 +98,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
 
-	DisconnectDB(database_connection);
-	free(database_connection);
+	DisconnectDB(treesafe_db_connection);
+	free(treesafe_db_connection);
 	*/
 	return 0;
 }

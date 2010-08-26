@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "sys_reg.h"
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 /**********************************/
 //模块6的实现文件
 
@@ -153,7 +153,8 @@ bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
 //模块6.5
 void reg_add_user_to_db(reg_input_info* _info){
 	//根据basic信息,把该用户加入数据库中
-	
+	add_new_to_Tab_Login(treesafe_db_connection,_info) ;
+	add_new_to_Tab_Cust(treesafe_db_connection,_info) ;
 }
 
 //6.6

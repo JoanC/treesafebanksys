@@ -119,7 +119,46 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 	}
 }
 
-void Add_login_info(_ConnectionPtr *_pConn,sys_db_login *_info_to_add)
+bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
 {
+	char sqlStr[200] = "insert into Table_Login values('" ;
+	strcat(sqlStr,_reg_info->basic_info.reg_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_reg_info->basic_info.reg_pwd) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"1") ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_reg_info->basic_info.reg_id) ;
+	strcat(sqlStr,"')") ;
 
+	_variant_t vt ;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	return true ;
+}
+
+bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
+{
+	char sqlStr[300] = "insert into Table_Cust_Info values('" ;
+	strcat(sqlStr,_reg_info->basic_info.reg_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_reg_info->basic_info.reg_basic_user_name) ;
+	strcat(sqlStr,"','") ;
+	char temp[6] ;
+	strcpy(temp, _reg_info->basic_info.reg_gender == reg_info_male ? "true" : "false") ;
+	
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	char age[4] ;
+	itoa(_reg_info->basic_info.reg_age,age,10) ;
+	strcat(sqlStr,age) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_reg_info->basic_info.reg_phone_num) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_reg_info->basic_info.reg_home_addr) ;
+	strcat(sqlStr,"')") ;
+
+	_variant_t vt ;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	return true ;
 }
