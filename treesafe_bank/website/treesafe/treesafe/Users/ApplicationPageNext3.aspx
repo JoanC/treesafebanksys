@@ -39,8 +39,9 @@ CodeBehind="ApplicationPageNext3.aspx.cs" Inherits="treesafe.Users.ApplicationPa
               <asp:Label ID="ApplicationLoanTimeLabel" runat="server" AssociatedControlID="ApplicationLoanTime">
               2. 预计还贷期限：
               </asp:Label>
-              </br>
-              <asp:TextBox ID="ApplicationLoanTime" runat="server" CssClass="textEntry" Width="129px"></asp:TextBox>
+              <br/>          
+              <asp:TextBox ID="ApplicationLoanTime" runat="server" CssClass="textEntry" 
+                  Width="129px"></asp:TextBox>
               个月
            </p>
 
@@ -65,7 +66,7 @@ CodeBehind="ApplicationPageNext3.aspx.cs" Inherits="treesafe.Users.ApplicationPa
                <asp:Label ID="ApplicationLoanNoteLabel" runat="server" AssociatedControlID="ApplicationLoanNote">
                5. 申贷项目可行性说明：
                </asp:Label>
-               </br>
+               <br/>
                <asp:TextBox ID="ApplicationLoanNote" runat="server" CssClass="textEntry" 
                    Height="80px" TextMode="MultiLine" Width="337px"></asp:TextBox>
           </p>
@@ -73,7 +74,7 @@ CodeBehind="ApplicationPageNext3.aspx.cs" Inherits="treesafe.Users.ApplicationPa
           <p>
                <asp:Label ID="ApplicationIsMessageLabel" runat="server" AssociatedControlID="ApplicationIsMessage">
                6. 是否希望接收我们的短信通知?
-               <br></br>
+               <br/>
                （建议选择接收短信通知，这可以让您更方便的了解整个贷款及还贷过程）</asp:Label>
                <asp:RadioButtonList ID="ApplicationIsMessage" runat="server" RepeatDirection="Horizontal">
                    <asp:ListItem Value="1">是</asp:ListItem> 
