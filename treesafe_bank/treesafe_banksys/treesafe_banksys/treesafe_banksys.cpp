@@ -16,7 +16,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		banksys_frame_send(pframe);
 		banksys_frame_deallocate(pframe);
 	}
-	//banksys_net server;
+	//sys_Server server;
 	//net_add_connection(&server);
 	//net_wait_for_request(&server);
 	//net_recieve_data(&server);

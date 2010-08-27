@@ -3,38 +3,39 @@
 
 //存放了所有数据结构体
 #include <winsock2.h>
+#include "banksys_net.h"
 //server socket struct
 
-const int BUF_SIZE = 80;
+//const int PackageSize = 80;
+//
+//struct net_Server
+//{
+//	WSADATA		wsd;
+//	SOCKET sServer;   //server socket
+//	SOCKET sClient;
+//	SOCKADDR_IN	addrServ;
+//	sockaddr_in addrClient;
+//	BOOL bServerRunning;   //whether server is working
+//};
+//
+////recieve info
+//struct net_recieved_info
+//{
+//	size_t stRecPackSize;
+//	char* cRecieveInfo;
+//};
+//
+////send info
+//struct net_send_info{
+//	size_t stSendPackSize;
+//	char* cNetDataInfo;
+//};
 
-struct net_Server
-{
-	WSADATA		wsd;
-	SOCKET sServer;   //server socket
-	SOCKET sClient;
-	SOCKADDR_IN	addrServ;
-	sockaddr_in addrClient;
-	BOOL bServerRunning;   //whether server is working
-};
-
-//recieve info
-struct net_recieved_info
-{
-	size_t stRecPackSize;
-	char* cRecieveInfo;
-};
-
-//send info
-struct net_send_info{
-	size_t stSendPackSize;
-	char* cSendInfo;
-};
-
-struct banksys_net{
-	net_recieved_info rec;//接受到的数据
-	net_send_info send;//发送的数据
-	net_Server banksys_server;
-};
+//struct sys_Server{
+//	net_recieved_info rec;//接受到的数据
+//	net_send_info send;//发送的数据
+//   net_Server banksys_server;
+//};
 
 /////////////////////////////////////////////////////////
 //数据库模块
@@ -101,7 +102,7 @@ struct banksys_mid{
 //frame模块
 //主流程的指针
 struct banksys_frame{
-	banksys_net* sys_net;//指向网络模块
+	sys_Server* sys_net;//指向网络模块
 	banksys_mid* sys_mid;//指向中继器
 	banksys_db* sys_db;//指向数据库模块
 };

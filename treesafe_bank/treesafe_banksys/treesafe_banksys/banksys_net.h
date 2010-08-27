@@ -6,7 +6,7 @@
 **                                
 **
 **--------------File Info-------------------------------------------------------------------------------
-** File name:			banksys_net			
+** File name:			sys_Server			
 ** Last modified Date:	2010-7-30
 ** Last Version:		0.4		
 ** Descriptions:		the net action of treesafe and banksys 		
@@ -34,6 +34,7 @@ struct net_Server
 	BOOL bServerRunning;   //whether server is working
 };
 
+
 struct sys_Server{
 	net_recieved_info rec;//接受到的数据
 	net_send_info send;//发送的数据
@@ -48,7 +49,7 @@ struct sys_Server{
 **
 ** Descriptions:			add a connect to banksys		
 **
-** input parameters:		banksys_net *sServer------the banksys_net struct modules
+** input parameters:		sys_Server *sServer------the sys_Server struct modules
 ** Returned value:		    NULL
 **         
 ** Used global variables:	NULL
@@ -67,7 +68,7 @@ void net_add_connection(sys_Server *sServer);
 **
 ** Descriptions:			release a connection
 **
-** input parameters:		banksys_net *sServer------the banksys_net struct modules   
+** input parameters:		sys_Server *sServer------the sys_Server struct modules   
 ** Returned value:		
 **         
 ** Used global variables:	NULL
@@ -87,7 +88,7 @@ void net_release_connection(sys_Server *sServer);
 **
 ** Descriptions:			wait for client to request
 **
-** input parameters:		banksys_net *sServer------the banksys_net struct modules
+** input parameters:		sys_Server *sServer------the sys_Server struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
@@ -106,7 +107,7 @@ void net_wait_for_request(sys_Server *sServer);
 **
 ** Descriptions:			recieve net data
 **
-** input parameters:		banksys_net *sServer------the banksys_net struct modules
+** input parameters:		sys_Server *sServer------the sys_Server struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
@@ -125,7 +126,7 @@ void net_recieve_data(sys_Server *sServer);
 **
 ** Descriptions:			send net data
 **
-** input parameters:		banksys_net *sServer------the banksys_net struct modules
+** input parameters:		sys_Server *sServer------the sys_Server struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
@@ -147,7 +148,7 @@ void net_send_data(sys_Server *sServer);
 ** Descriptions:			recieve from the mid
 **
 ** input parameters:		banksys_mid* _mid------the banksys_mid struct modules
-**                          banksys_net* sServer------the banksys_net struct modules
+**                          sys_Server* sServer------the sys_Server struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	mid
@@ -168,7 +169,7 @@ void net_recieve_frame(sys_Server* sServer);
 ** Descriptions:			send data to mid
 **
 ** input parameters:		banksys_mid* _mid------the banksys_mid struct modules
-**							banksys_net* sServer------the banksys_net struct modules
+**							sys_Server* sServer------the sys_Server struct modules
 ** Returned value:			NULL
 **         
 ** Used global variables:	NULL
@@ -188,7 +189,7 @@ void net_send_frame(sys_Server* sServer);
 **
 ** Descriptions:			send data to mid
 **
-** input parameters:		banksys_net* sServer------the banksys_net struct modules
+** input parameters:		sys_Server* sServer------the sys_Server struct modules
 **							
 ** Returned value:			NULL
 **         

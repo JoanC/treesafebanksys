@@ -23,7 +23,7 @@
 
 #include "banksys_data_struct.h"
 #include "banksys_macro.h"
-//#include "banksys_net.h"
+//#include "sys_Server.h"
 //#include "banksys_db.h"
 
 //中间过渡模块
@@ -35,7 +35,7 @@
 **
 ** input parameters:	
 **                banksys_mid* _mid : 中继器模块的结构体
-**                banksys_net* _net : 网络模块的结构体
+**                sys_Server* _net : 网络模块的结构体
 ** Returned value:	 void(none)
 **         
 ** Used global variables:	none
@@ -48,7 +48,7 @@
 ** Modified date:
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void mid_get_data_from_net(banksys_mid* _mid , banksys_net* _net);
+void mid_get_data_from_net(banksys_mid* _mid , sys_Server* _net);
 //从数据库中接受数据
 /*********************************************************************************************************
 ** Function name:		mid_get_data_from_db
@@ -114,7 +114,7 @@ void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db);
 ** Modified date:
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void mid_send_data_to_net(banksys_mid* _mid , banksys_net* _net);
+void mid_send_data_to_net(banksys_mid* _mid , sys_Server* _net);
 //将从网络中接受的数据转化为向数据库的请求
 /*********************************************************************************************************
 ** Function name:		mid_convert_rec_to_req
@@ -165,7 +165,7 @@ void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
 ** Descriptions:		一次从net中接受数据,并把数据传给db的过程
 **
 ** input parameters:		
-**                           banksys_net* _net : 网络模块,从这里接受接收的数据
+**                           sys_Server* _net : 网络模块,从这里接受接收的数据
 **                           banksys_mid* _mid : 中继器模块
 **                           banksys_db* _db : 数据库模块,把请求模块发送到这里
 ** Returned value:	   void (none)
@@ -180,7 +180,7 @@ void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
 ** Modified date:
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void mid_recieve_frame(banksys_net* _net,
+void mid_recieve_frame(sys_Server* _net,
 	banksys_mid* _mid ,banksys_db* _db);
 /*********************************************************************************************************
 ** Function name:		mid_send_frame
@@ -188,7 +188,7 @@ void mid_recieve_frame(banksys_net* _net,
 ** Descriptions:		一次从db中接受数据,并把数据传给net的过程
 **
 ** input parameters:  
-**                        banksys_net* _net :　网络模块，向这里发送信息
+**                        sys_Server* _net :　网络模块，向这里发送信息
 **	                       banksys_mid* _mid：中继器模块
 **                        banksys_db* _db : 数据库模块,从这里接受数据库的结果信息
 ** Returned value:		none
@@ -203,7 +203,7 @@ void mid_recieve_frame(banksys_net* _net,
 ** Modified date:
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void mid_send_frame(banksys_net* _net,
+void mid_send_frame(sys_Server* _net,
 	banksys_mid* _mid ,banksys_db* _db);
 
 #endif

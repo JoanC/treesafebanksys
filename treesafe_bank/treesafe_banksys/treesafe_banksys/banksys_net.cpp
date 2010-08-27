@@ -10,7 +10,7 @@ void net_add_connection(sys_Server *sServer)
 	int retVal;
 	if(WSAStartup(MAKEWORD(2,2),&sServer->sys_server.wsd)!=0)
 	{
-		MessageBox(NULL,"ÍøÂç³õÊ¼»¯´íÎó£¡","´íÎóÐÅÏ¢",MB_OK);
+		MessageBox(NULL,L"ÍøÂç³õÊ¼»¯´íÎó£¡",L"´íÎóÐÅÏ¢",MB_OK);
 		return;
 	}
 
@@ -121,7 +121,7 @@ void net_send_data(sys_Server* sServer)
 		char temp[] =  "99";
 		int iCount = sServer->send.stNetDataLength / PackageSize + 1;
 		int iLastPackageSize = sServer->send.stNetDataLength - PackageSize * iCount;
-		_itoa(iCount,temp,10);
+		_itoa_s(iCount,temp,10);
 		reVal = send(sServer->sys_server.sServer,temp,sizeof(temp),0);
 		while(iCount--)
 		{
