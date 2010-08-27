@@ -34,7 +34,9 @@ add_employee_modle* init_add_employee_modle(){
 	return _new_modle;
 }
 
-
+void release_add_employee_modle(add_employee_modle* _release){
+	free(_release);
+}
 //15.2
 
 void add_employee_copy_cmd(const char* _cmd , char* _dest , int _cmd_len){
@@ -47,9 +49,42 @@ add_employee_input* add_employee_convert_cmd(char* _info){
 	return (add_employee_input*)_info;
 }
 
-add_employee_input* add_employee_get_cmd(const char* _cmd,
-	char* _dest , int _cmd_len){
+add_employee_input* add_employee_get_cmd(const char* _cmd,int _cmd_len){
 	//转化并且复制指令
-	char* _info = (char*)malloc;
+	char* _info = (char*)malloc(_cmd_len);
+	//复制命令
+	add_employee_copy_cmd(_cmd,_info,_cmd_len);
+	//转化指令
+	return add_employee_convert_cmd(_info);
+}
 
+//15.3
+//..
+
+//15.4
+void add_employee_covert_result(add_employee_info* _info
+	,char* _rlt , int* _rlt_len){
+	memcpy(_rlt,_info,sizeof(add_employee_info));
+	*_rlt_len = sizeof(add_employee_info);
+}
+
+
+//模块15的主函式
+void add_employee_frame(const char* _cmd , int _cmd_len
+	,char* _rlt , int* _rlt_len){
+	//15.1
+	//初始化模块
+	add_employee_modle* _new_frame = init_add_employee_modle();
+	//15.2
+	//接受指令信息
+	_new_frame->input_info = *add_employee_get_cmd(_cmd,_cmd_len);
+	//15.3
+	//...
+
+
+	//15.4
+	add_employee_covert_result(&_new_frame->rlt_info,_rlt,_rlt_len);
+
+	//释放模块
+	release_add_employee_modle(_new_frame);
 }
