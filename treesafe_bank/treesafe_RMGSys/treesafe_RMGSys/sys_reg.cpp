@@ -195,7 +195,7 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 		//两次密码验证不正确
 		reg_error_compute(err_reg_vry_pwd_err,_reg_frame_modle);
 	}
-/*	
+
 	//6.3 银行子系统的查询
 	reg_query_user(_reg_frame_modle->input_info.basic_info.reg_id,
 		&_reg_frame_modle->db_query_from_bank);
@@ -209,7 +209,7 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 	//6.5 如果没有错误,则将信息添加到数据库
 	if(_reg_frame_modle->info.reg_err.type == err_no_err) 
 		reg_add_user_to_db(&_reg_frame_modle->input_info);
-	*/
+	
 
 	reg_add_user_to_db(&_reg_frame_modle->input_info);
 
