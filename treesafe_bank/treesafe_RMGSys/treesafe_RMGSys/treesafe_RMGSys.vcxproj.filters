@@ -224,5 +224,8 @@
     <ClCompile Include="sys_credit_compute.cpp">
       <Filter>credit_compute</Filter>
     </ClCompile>
+    <ClCompile Include="sys_admin_add_employee.cpp">
+      <Filter>admin_manager\add</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
