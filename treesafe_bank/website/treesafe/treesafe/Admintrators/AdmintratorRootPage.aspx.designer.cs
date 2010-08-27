@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace treesafe {
+namespace treesafe.Admintrotors {
     
     
     public partial class AdmintratorRootPage {

@@ -55,9 +55,9 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="AdmintratorLaborManagementPage.aspx" />
-    <Content Include="AdmintratorRiskManagementPage.aspx" />
-    <Content Include="AdmintratorRootPage.aspx" />
+    <Content Include="Admintrators\AdmintratorLaborManagementPage.aspx" />
+    <Content Include="Admintrators\AdmintratorRiskManagementPage.aspx" />
+    <Content Include="Admintrators\AdmintratorRootPage.aspx" />
     <Content Include="Users\ApplicationPage.aspx" />
     <Content Include="AuditorHelpPage.aspx" />
     <Content Include="AuditorListPage.aspx" />
@@ -134,25 +134,25 @@
     <Compile Include="Admintrator.Master.designer.cs">
       <DependentUpon>Admintrator.Master</DependentUpon>
     </Compile>
-    <Compile Include="AdmintratorLaborManagementPage.aspx.cs">
+    <Compile Include="Admintrators\AdmintratorLaborManagementPage.aspx.cs">
       <DependentUpon>AdmintratorLaborManagementPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdmintratorLaborManagementPage.aspx.designer.cs">
+    <Compile Include="Admintrators\AdmintratorLaborManagementPage.aspx.designer.cs">
       <DependentUpon>AdmintratorLaborManagementPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdmintratorRiskManagementPage.aspx.cs">
+    <Compile Include="Admintrators\AdmintratorRiskManagementPage.aspx.cs">
       <DependentUpon>AdmintratorRiskManagementPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdmintratorRiskManagementPage.aspx.designer.cs">
+    <Compile Include="Admintrators\AdmintratorRiskManagementPage.aspx.designer.cs">
       <DependentUpon>AdmintratorRiskManagementPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdmintratorRootPage.aspx.cs">
+    <Compile Include="Admintrators\AdmintratorRootPage.aspx.cs">
       <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdmintratorRootPage.aspx.designer.cs">
+    <Compile Include="Admintrators\AdmintratorRootPage.aspx.designer.cs">
       <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\ApplicationPage.aspx.cs">

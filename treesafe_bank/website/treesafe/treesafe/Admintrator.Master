@@ -32,9 +32,9 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/AdmintratorRootPage.aspx" Text="主页"/>
-                        <asp:MenuItem NavigateUrl="~/AdmintratorRiskManagementPage.aspx" Text="风险评估管理"/>
-                        <asp:MenuItem NavigateUrl="~/AdmintratorLaborManagementPage.aspx" Text="工作人员管理"/>
+                        <asp:MenuItem NavigateUrl="~/Admintrators/AdmintratorRootPage.aspx" Text="主页"/>
+                        <asp:MenuItem NavigateUrl="~/Admintrators/AdmintratorRiskManagementPage.aspx" Text="风险评估管理"/>
+                        <asp:MenuItem NavigateUrl="~/Admintrators/AdmintratorLaborManagementPage.aspx" Text="工作人员管理"/>
                     </Items>
                 </asp:Menu>
             </div>
