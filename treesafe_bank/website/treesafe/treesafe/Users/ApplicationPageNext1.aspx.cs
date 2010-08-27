@@ -11,7 +11,7 @@ namespace treesafe.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void CreateApplicationButton_Click(object sender, EventArgs e)
@@ -19,7 +19,7 @@ namespace treesafe.Users
             //将信息存入数据库。。。
             //使用方法同Register
             //（此处所使用方法和控件基本一致）
-
+            
 
 
             //读取完成信息后，跳转到下一个页面继续申请表的填写

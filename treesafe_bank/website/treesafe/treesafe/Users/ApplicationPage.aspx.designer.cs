@@ -58,6 +58,60 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationNameRequired;
         
         /// <summary>
+        /// ApplicationAgeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationAgeLabel;
+        
+        /// <summary>
+        /// ApplicationAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationAge;
+        
+        /// <summary>
+        /// ApplicationAgeRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationAgeRequired;
+        
+        /// <summary>
+        /// ApplicationSexLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationSexLabel;
+        
+        /// <summary>
+        /// ApplicationSex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList ApplicationSex;
+        
+        /// <summary>
+        /// ApplicationSexRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationSexRequired;
+        
+        /// <summary>
         /// ApplicationIDTypeLabel control.
         /// </summary>
         /// <remarks>
@@ -130,6 +184,60 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationAddressRequired;
         
         /// <summary>
+        /// ApplicationPostCodeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationPostCodeLabel;
+        
+        /// <summary>
+        /// ApplicationPostCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationPostCode;
+        
+        /// <summary>
+        /// ApplicationPostCodeRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationPostCodeRequired;
+        
+        /// <summary>
+        /// ApplicationHouseTypeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationHouseTypeLabel;
+        
+        /// <summary>
+        /// ApplicationHouseType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList ApplicationHouseType;
+        
+        /// <summary>
+        /// ApplicationHouseTypeRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationHouseTypeRequired;
+        
+        /// <summary>
         /// ApplicationPhoneNumberLabel control.
         /// </summary>
         /// <remarks>
@@ -175,58 +283,22 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.TextBox ApplicationPhoneNumber1;
         
         /// <summary>
-        /// ApplicationWorkLabel control.
+        /// ApplicationEducationLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationWorkLabel;
+        protected global::System.Web.UI.WebControls.Label ApplicationEducationLabel;
         
         /// <summary>
-        /// ApplicationWork control.
+        /// ApplicationEducation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ApplicationWork;
-        
-        /// <summary>
-        /// ApplicationWorkRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationWorkRequired;
-        
-        /// <summary>
-        /// ApplicationPositionLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationPositionLabel;
-        
-        /// <summary>
-        /// ApplicationPosition control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ApplicationPosition;
-        
-        /// <summary>
-        /// ApplicationPositionRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationPositionRequired;
+        protected global::System.Web.UI.WebControls.DropDownList ApplicationEducation;
         
         /// <summary>
         /// CreateApplicationButton control.

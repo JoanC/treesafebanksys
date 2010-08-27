@@ -94,40 +94,40 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationIsHaveDepositRequired;
         
         /// <summary>
-        /// ApplicationDepositSumLabel control.
+        /// ApplicationDepositFixedLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationDepositSumLabel;
+        protected global::System.Web.UI.WebControls.Label ApplicationDepositFixedLabel;
         
         /// <summary>
-        /// ApplicationDepositSum control.
+        /// ApplicationDepositFixed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ApplicationDepositSum;
+        protected global::System.Web.UI.WebControls.DropDownList ApplicationDepositFixed;
         
         /// <summary>
-        /// ApplicationFixedDepositLabel control.
+        /// ApplicationCurrentDepositLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationFixedDepositLabel;
+        protected global::System.Web.UI.WebControls.Label ApplicationCurrentDepositLabel;
         
         /// <summary>
-        /// ApplicationFixedDeposit control.
+        /// ApplicationCurrentDeposit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ApplicationFixedDeposit;
+        protected global::System.Web.UI.WebControls.DropDownList ApplicationCurrentDeposit;
         
         /// <summary>
         /// ApplicationIsHaveLoanLabel control.
@@ -191,6 +191,123 @@ namespace treesafe.Users {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ApplicationLoanDeadline;
+        
+        /// <summary>
+        /// ApplicationIsMortgageLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationIsMortgageLabel;
+        
+        /// <summary>
+        /// ApplicationIsMortgage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList ApplicationIsMortgage;
+        
+        /// <summary>
+        /// ApplicationIsMortgageRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationIsMortgageRequired;
+        
+        /// <summary>
+        /// ApplicationMortgageLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMortgageLabel;
+        
+        /// <summary>
+        /// ApplicationMortgage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList ApplicationMortgage;
+        
+        /// <summary>
+        /// ApplicationIndustryLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationIndustryLabel;
+        
+        /// <summary>
+        /// ApplicationIndustry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList ApplicationIndustry;
+        
+        /// <summary>
+        /// ApplicationWorkLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationWorkLabel;
+        
+        /// <summary>
+        /// ApplicationWork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationWork;
+        
+        /// <summary>
+        /// ApplicationWorkRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationWorkRequired;
+        
+        /// <summary>
+        /// ApplicationPositionLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationPositionLabel;
+        
+        /// <summary>
+        /// ApplicationPosition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationPosition;
+        
+        /// <summary>
+        /// ApplicationPositionRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationPositionRequired;
         
         /// <summary>
         /// CreateApplicationButton control.
