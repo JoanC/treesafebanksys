@@ -16,5 +16,41 @@ struct delete_employee_input{
 //其实就是一个是否删除成功的标记
 struct delete_employee_info{
 	bool is_succ;//是否删除成功
-	sys_err
+	sys_err err_info;//错误信息
 };
+
+//模块16的整体
+struct delete_employee_modle{
+	delete_employee_input input_info;
+	delete_employee_info rlt_info;
+};
+
+/*******************************************/
+//模块16.1
+//初始化和释放模块
+//由Jiraiya完成
+
+
+//初始化输入的信息
+void init_delete_employee_input(delete_employee_input* _init);
+
+//初始化结果记录信息
+void init_delete_employee_info(delete_employee_info* _init);
+
+//初始化模块16的整体
+delete_employee_modle* init_delete_employee_modle();
+
+/*********************************************/
+//模块16.2
+//接受指令
+//Jiraiya完成
+
+//16.2主函式
+delete_employee_input* delete_employee_get_cmd();
+
+//复制命令
+void delete_employee_copy_cmd(const char* _cmd , char* _dest 
+	, int _cmd_len);
+
+//转化指令
+delete_employee_input* delete_employee_convert_cmd(char* _info);

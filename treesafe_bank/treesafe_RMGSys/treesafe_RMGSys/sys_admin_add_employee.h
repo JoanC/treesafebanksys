@@ -51,6 +51,7 @@ void release_add_employee_modle(add_employee_modle* _release);
 
 /******************************************/
 //模块15.2
+//Jiraiya完成
 //接受指令信息
 //将接受的指令转化成输入的信息
 //Jiraiya完成
