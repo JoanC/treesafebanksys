@@ -64,7 +64,7 @@ int _tmain(int argc, _TCHAR* argv[])
 #ifdef TEST_REG_MODLE
 		treesafe_db_connection = 
 		(_ConnectionPtr*)calloc(sizeof(_ConnectionPtr),1);
-	ConnectDB(treesafe_db_connection);
+	//ConnectDB(treesafe_db_connection);
 
 	reg_input_info test_input;
 	test_input.basic_info.reg_age = 20;
@@ -81,7 +81,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	memcpy(cmd,&test_input,sizeof(reg_input_info));
 	reg_frame(cmd,sizeof(reg_input_info),rlt,&len);
 	
-	DisconnectDB(treesafe_db_connection);
+	//DisconnectDB(treesafe_db_connection);
 	free(treesafe_db_connection);
 #endif
 
