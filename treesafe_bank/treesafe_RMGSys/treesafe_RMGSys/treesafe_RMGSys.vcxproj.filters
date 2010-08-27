@@ -85,8 +85,11 @@
     <Filter Include="admin_manager\delete">
       <UniqueIdentifier>{c5c18904-623c-49af-a9d8-2fa251a27231}</UniqueIdentifier>
     </Filter>
-    <Filter Include="admin_manager\query">
-      <UniqueIdentifier>{a5d52b39-8394-4ebb-8796-121dc6d54ef1}</UniqueIdentifier>
+    <Filter Include="group\group_query">
+      <UniqueIdentifier>{b5c3fd42-c2aa-48b8-b81a-b7477bf81f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="query_info">
+      <UniqueIdentifier>{fd0347b6-76ae-4fb1-b415-3abc594161e9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
