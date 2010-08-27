@@ -1,3 +1,5 @@
+#pragma once
+#include "net.h"
 /****************************************Copyright (c)**************************************************
 **                         treesafe bank system                             
 **
@@ -16,11 +18,29 @@
 ** Descriptions:		
 **
 ********************************************************************************************************/
-#ifndef _BANKSYS_NET_H_
-#define _BANKSYS_NET_H_
+
+#include <winsock2.h>
+//server socket struct
+
+//网络结构体声明
+//与银行系统相同
+struct net_Server
+{
+	WSADATA		wsd;
+	SOCKET sServer;   //server socket
+	SOCKET sClient;
+	SOCKADDR_IN	addrServ;
+	sockaddr_in addrClient;
+	BOOL bServerRunning;   //whether server is working
+};
+
+struct sys_Server{
+	net_recieved_info rec;//接受到的数据
+	net_send_info send;//发送的数据
+	net_Server sys_server;
+};
 
 
-#include"banksys_data_struct.h"
 
 
 /*********************************************************************************************************
@@ -41,7 +61,7 @@
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void net_add_connection(banksys_net *sServer);
+void net_add_connection(sys_Server *sServer);
 /*********************************************************************************************************
 ** Function name:			net_release_connection
 **
@@ -61,7 +81,7 @@ void net_add_connection(banksys_net *sServer);
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 //release connection
-void net_release_connection(banksys_net *sServer);
+void net_release_connection(sys_Server *sServer);
 /*********************************************************************************************************
 ** Function name:			net_wait_for_request
 **
@@ -80,7 +100,7 @@ void net_release_connection(banksys_net *sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void net_wait_for_request(banksys_net *sServer);
+void net_wait_for_request(sys_Server *sServer);
 /*********************************************************************************************************
 ** Function name:			net_recieve_data
 **
@@ -99,7 +119,7 @@ void net_wait_for_request(banksys_net *sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void net_recieve_data(banksys_net *sServer);
+void net_recieve_data(sys_Server *sServer);
 /*********************************************************************************************************
 ** Function name:			net_send_data
 **
@@ -118,8 +138,7 @@ void net_recieve_data(banksys_net *sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-// send net data(the size of data is less than 80 bytes)
-void net_send_data(banksys_net *sServer);
+void net_send_data(sys_Server *sServer);
 
 ////////////////////////////////////////////////////////////////
 /*********************************************************************************************************
@@ -141,7 +160,7 @@ void net_send_data(banksys_net *sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void net_recieve_frame(banksys_net* sServer);
+void net_recieve_frame(sys_Server* sServer);
 
 /*********************************************************************************************************
 ** Function name:			net_send_frame
@@ -162,7 +181,7 @@ void net_recieve_frame(banksys_net* sServer);
 ** Modified date:			2010-7-30
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void net_send_frame(banksys_net* sServer);
+void net_send_frame(sys_Server* sServer);
 
 /*********************************************************************************************************
 ** Function name:			net_send_frame
@@ -183,6 +202,4 @@ void net_send_frame(banksys_net* sServer);
 ** Modified date:			2010-8-3
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void initNet(banksys_net* sServer);
-
-#endif
+//void initNet(sys_Server* sServer);

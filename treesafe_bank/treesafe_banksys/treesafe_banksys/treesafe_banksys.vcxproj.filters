@@ -46,6 +46,9 @@
     <ClInclude Include="banksys_macro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="net.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

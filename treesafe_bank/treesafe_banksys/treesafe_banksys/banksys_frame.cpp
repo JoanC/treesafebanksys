@@ -16,7 +16,7 @@ banksys_frame* banksys_frame_allocate(){
 void banksys_frame_recieve(banksys_frame* _frame){
 	//接受数据主函式
 	ARRSERT_POINTER_NULL(_frame)
-	net_recieve_frame(_frame->sys_net);
+		net_recieve_frame(_frame->sys_net->banksys_);
 	mid_recieve_frame(_frame->sys_net,_frame->sys_mid,_frame->sys_db);
 	//db ... 
 }
