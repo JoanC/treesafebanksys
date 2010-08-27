@@ -31,6 +31,141 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.ValidationSummary ApplicationValidationSummary;
         
         /// <summary>
+        /// ApplicationMarrigeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMarrigeLabel;
+        
+        /// <summary>
+        /// ApplicationMarrige control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList ApplicationMarrige;
+        
+        /// <summary>
+        /// ApplicationMarrigeRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationMarrigeRequired;
+        
+        /// <summary>
+        /// ApplicationChildrenNumberLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationChildrenNumberLabel;
+        
+        /// <summary>
+        /// ApplicationChildrenNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationChildrenNumber;
+        
+        /// <summary>
+        /// ApplicationMateNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMateNameLabel;
+        
+        /// <summary>
+        /// ApplicationMateName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationMateName;
+        
+        /// <summary>
+        /// ApplicationMateIDNumberLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMateIDNumberLabel;
+        
+        /// <summary>
+        /// ApplicationMateIDNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationMateIDNumber;
+        
+        /// <summary>
+        /// ApplicationMateWorkLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMateWorkLabel;
+        
+        /// <summary>
+        /// ApplicationMateWork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ApplicationMateWork;
+        
+        /// <summary>
+        /// ApplicationMateEducationLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMateEducationLabel;
+        
+        /// <summary>
+        /// ApplicationMateEducation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ApplicationMateEducation;
+        
+        /// <summary>
+        /// ApplicationMateIsHaveDepositLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMateIsHaveDepositLabel;
+        
+        /// <summary>
+        /// ApplicationMateIsHaveDeposit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList ApplicationMateIsHaveDeposit;
+        
+        /// <summary>
         /// CreateApplicationButton control.
         /// </summary>
         /// <remarks>
