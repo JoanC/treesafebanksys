@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace treesafe.Users
 {
-    public partial class ApplicationPageNext1 : System.Web.UI.Page
+    public partial class ApplicationPageNext2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace treesafe.Users
 
 
             //读取完成信息后，跳转到下一个页面继续申请表的填写
-            Server.Transfer("~/Users/ApplicationPageNext2.aspx", true);
+            Server.Transfer("~/Users/ApplicationPageNext3.aspx", true);
         }
     }
 }

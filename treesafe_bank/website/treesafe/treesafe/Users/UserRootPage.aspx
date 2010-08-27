@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Welcome to User Page!
+        Welcome to User Page!主页
     </h2>
     <p>
         Add Codes Here

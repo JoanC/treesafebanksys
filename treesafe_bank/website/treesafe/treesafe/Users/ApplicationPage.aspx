@@ -83,44 +83,6 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>          
            </p>
 
-           <p>
-              <asp:Label ID="ApplicationPersonIncomeLabel" runat="server" AssociatedControlID="ApplicationPersonIncome">个人年收入:</asp:Label>
-              &nbsp;&nbsp;
-              <asp:DropDownList ID="ApplicationPersonIncome" runat="server">
-                 <asp:ListItem Value="0">5万元以下</asp:ListItem>
-                 <asp:ListItem Value="1">5~10万元</asp:ListItem>
-                 <asp:ListItem Value="2">10~15万元</asp:ListItem>
-                 <asp:ListItem Value="3">15~20万元</asp:ListItem>
-                 <asp:ListItem Value="4">20~25万元</asp:ListItem>
-                 <asp:ListItem Value="5">25~30万元</asp:ListItem>
-                 <asp:ListItem Value="6">30~40万元</asp:ListItem>
-                 <asp:ListItem Value="7">40~50万元</asp:ListItem>
-                 <asp:ListItem Value="8">50~60万元</asp:ListItem>
-                 <asp:ListItem Value="9">60~70万元</asp:ListItem>
-                 <asp:ListItem Value="10">70~100万元</asp:ListItem>
-                 <asp:ListItem Value="11">100万元以上</asp:ListItem>
-              </asp:DropDownList>
-           </p>
-
-           <p>
-              <asp:Label ID="ApplicationHomeIncomeLabel" runat="server" AssociatedControlID="ApplicationHomeIncome">家庭年收入:</asp:Label>
-              &nbsp;&nbsp;
-              <asp:DropDownList ID="ApplicationHomeIncome" runat="server">
-                 <asp:ListItem Value="0">5万元以下</asp:ListItem>
-                 <asp:ListItem Value="1">5~10万元</asp:ListItem>
-                 <asp:ListItem Value="2">10~15万元</asp:ListItem>
-                 <asp:ListItem Value="3">15~20万元</asp:ListItem>
-                 <asp:ListItem Value="4">20~25万元</asp:ListItem>
-                 <asp:ListItem Value="5">25~30万元</asp:ListItem>
-                 <asp:ListItem Value="6">30~40万元</asp:ListItem>
-                 <asp:ListItem Value="7">40~50万元</asp:ListItem>
-                 <asp:ListItem Value="8">50~60万元</asp:ListItem>
-                 <asp:ListItem Value="9">60~70万元</asp:ListItem>
-                 <asp:ListItem Value="10">70~100万元</asp:ListItem>
-                 <asp:ListItem Value="11">100万元以上</asp:ListItem>
-              </asp:DropDownList>
-           </p>
-
   
      
            </fieldset>

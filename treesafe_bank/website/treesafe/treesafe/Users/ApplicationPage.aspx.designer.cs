@@ -229,42 +229,6 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationPositionRequired;
         
         /// <summary>
-        /// ApplicationPersonIncomeLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationPersonIncomeLabel;
-        
-        /// <summary>
-        /// ApplicationPersonIncome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ApplicationPersonIncome;
-        
-        /// <summary>
-        /// ApplicationHomeIncomeLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationHomeIncomeLabel;
-        
-        /// <summary>
-        /// ApplicationHomeIncome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ApplicationHomeIncome;
-        
-        /// <summary>
         /// CreateApplicationButton control.
         /// </summary>
         /// <remarks>
