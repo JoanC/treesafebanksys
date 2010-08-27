@@ -22,3 +22,10 @@ struct admin_employee_info{
 	int employee_age;//雇员的年龄
 	char employee_addr[EMPLOYEE_ADDR_LEN];//雇员的地址
 };
+
+//出始化函数
+void init_admin_employee_info(admin_employee_info* _init){
+	//初始化雇员类型,默认为操作员
+	_init->employee_type = employ_type_operator;
+
+}
