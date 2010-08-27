@@ -69,7 +69,9 @@ void mid_send_data_to_net(banksys_mid* _mid ,sys_Server* _net){
 		//难道传的是PackageSize??
 		
 		ARRSERT_POINTER_NULL(_mid->send.cNetDataInfo)
+
 		memcpy(_net->send.cNetDataInfo,_mid->send.cNetDataInfo,strlen(_mid->send.cNetDataInfo));
+
 	DEBUG_MID_PRINT("send done\n")
 }
 

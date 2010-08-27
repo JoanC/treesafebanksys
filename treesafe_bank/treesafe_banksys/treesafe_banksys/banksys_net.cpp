@@ -23,7 +23,7 @@ void net_add_connection(sys_Server *sServer)
 	}
 
 	sServer->sys_server.addrServ.sin_family = AF_INET;
-	sServer->sys_server.addrServ.sin_port = 4999;
+	sServer->sys_server.addrServ.sin_port = BANKPORT;
 	sServer->sys_server.addrServ.sin_addr.s_addr = INADDR_ANY;
 	retVal = bind(sServer->sys_server.sServer,(LPSOCKADDR)&sServer->sys_server.addrServ,sizeof(SOCKADDR_IN));
 	if(SOCKET_ERROR == retVal)
