@@ -83,16 +83,8 @@ CodeBehind="ApplicationPageNext3.aspx.cs" Inherits="treesafe.Users.ApplicationPa
                <asp:RequiredFieldValidator ID="ApplicationIsMessageRequired" runat="server" ControlToValidate="ApplicationIsMessage"
                    CssClass="failureNotification" ErrorMessage="请填写：是否希望接收我们的短信通知?" ToolTip="请填写：是否希望接收我们的短信通知?"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
-
-
            </p>
 
-
-
-
-
-  
-     
            </fieldset>
            <p class="submitButton">
               <asp:Button ID="CreateApplicationButton" runat="server" CommandName="MoveNext" Text="完成，提交申请" 
