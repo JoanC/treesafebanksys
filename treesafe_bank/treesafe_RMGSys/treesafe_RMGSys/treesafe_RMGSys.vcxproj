@@ -79,6 +79,7 @@
     <ClInclude Include="net.h" />
     <ClInclude Include="research_commit.h" />
     <ClInclude Include="sys_admin_add_employee.h" />
+    <ClInclude Include="sys_admin_delete_employee.h" />
     <ClInclude Include="sys_admin_employee_info.h" />
     <ClInclude Include="sys_credit_compute.h" />
     <ClInclude Include="sys_group_recommand.h" />

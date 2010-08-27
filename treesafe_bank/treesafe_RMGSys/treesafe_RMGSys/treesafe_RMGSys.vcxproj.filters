@@ -162,6 +162,9 @@
     <ClInclude Include="sys_admin_employee_info.h">
       <Filter>admin_manager</Filter>
     </ClInclude>
+    <ClInclude Include="sys_admin_delete_employee.h">
+      <Filter>admin_manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
