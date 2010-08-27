@@ -1,3 +1,5 @@
+#pragma once
+
 #include "database_mgr.h"//数据库处理函式
 #include "sys_error_compute.h"//错误处理
 
