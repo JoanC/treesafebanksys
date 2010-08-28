@@ -73,6 +73,7 @@
     <Content Include="Users\ApplicationPageNext2.aspx" />
     <Content Include="Users\ApplicationPageNext3.aspx" />
     <Content Include="Users\UserApplicationPage.aspx" />
+    <Content Include="Users\UserFinishApplicationPage.aspx" />
     <Content Include="Users\UserHelpPage.aspx" />
     <Content Include="Users\UserInfoPage.aspx" />
     <Content Include="Users\UserRiskEvaluationPage.aspx" />
@@ -86,6 +87,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Workers\WorkerApplicationPage.aspx" />
+    <Content Include="Workers\WorkerFinishApplicationPage.aspx" />
     <Content Include="Workers\WorkerHelpPage.aspx" />
     <Content Include="Workers\WorkerRootPage.aspx" />
     <Content Include="Workers\WorkerTeamPage.aspx" />
@@ -250,6 +252,13 @@
     <Compile Include="Users\UserApplicationPage.aspx.designer.cs">
       <DependentUpon>UserApplicationPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Users\UserFinishApplicationPage.aspx.cs">
+      <DependentUpon>UserFinishApplicationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserFinishApplicationPage.aspx.designer.cs">
+      <DependentUpon>UserFinishApplicationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users\UserHelpPage.aspx.cs">
       <DependentUpon>UserHelpPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,6 +314,13 @@
     </Compile>
     <Compile Include="Workers\WorkerApplicationPage.aspx.designer.cs">
       <DependentUpon>WorkerApplicationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workers\WorkerFinishApplicationPage.aspx.cs">
+      <DependentUpon>WorkerFinishApplicationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Workers\WorkerFinishApplicationPage.aspx.designer.cs">
+      <DependentUpon>WorkerFinishApplicationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Workers\WorkerHelpPage.aspx.cs">
       <DependentUpon>WorkerHelpPage.aspx</DependentUpon>

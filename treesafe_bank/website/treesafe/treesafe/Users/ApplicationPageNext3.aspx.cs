@@ -23,7 +23,7 @@ namespace treesafe.Users
 
 
             //读取完成信息后，将结束申请，并跳转回到用户主页。
-            Server.Transfer("~/Users/UserRootPage.aspx", true);
+            Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
         }
     }
 }
