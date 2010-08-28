@@ -30,6 +30,10 @@ delete_employee_modle* init_delete_employee_modle(){
 }
 
 
+void release_delete_modle_employee(delete_employee_modle* _release){
+	free(_release);
+}
+
 //16.2
 
 delete_employee_input* delete_employee_get_cmd(const char* _cmd,int _cmd_len){
@@ -72,4 +76,12 @@ void delete_employee_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _
 	//16.2
 	//获取指令
 	_frame->input_info = *delete_employee_get_cmd(_cmd,_cmd_len);
+	//16.3
+	//...
+
+	//16.4
+	delete_employee_convert_rlt(&_frame->rlt_info,_rlt,_rlt_len);
+
+	//释放模块
+	release_delete_modle_employee(_frame);
 }

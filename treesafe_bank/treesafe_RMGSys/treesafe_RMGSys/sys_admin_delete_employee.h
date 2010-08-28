@@ -40,6 +40,9 @@ void init_delete_employee_info(delete_employee_info* _init);
 //初始化模块16的整体
 delete_employee_modle* init_delete_employee_modle();
 
+//释放模块
+void release_delete_modle_employee(delete_employee_modle* _release);
+
 /*********************************************/
 //模块16.2
 //接受指令
