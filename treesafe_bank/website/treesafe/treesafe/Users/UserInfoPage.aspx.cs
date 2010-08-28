@@ -11,6 +11,12 @@ namespace treesafe.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //显示数据从这里调
+
+        }
+
+        protected void ChangeUserInfoButton_Click(object sender, EventArgs e)
+        {
 
         }
     }
