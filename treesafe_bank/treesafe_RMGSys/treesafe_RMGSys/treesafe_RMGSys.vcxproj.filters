@@ -177,6 +177,9 @@
     <ClInclude Include="sys_admin_delete_employee.h">
       <Filter>admin_manager\delete</Filter>
     </ClInclude>
+    <ClInclude Include="sys_apply_info.h">
+      <Filter>apply</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
