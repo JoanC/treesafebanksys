@@ -11,7 +11,8 @@ namespace treesafe.Workers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+          //读入操作员基本信息，直接可用如下方法赋值
+          //  WorkerPosition.Text = "dfsf";
         }
     }
 }
