@@ -77,11 +77,19 @@ enum APPLY_DEPOSIT_RANGE{//存款范围
 	none_range//空范围
 };
 
+enum APPLY_UNSECURED_FIXED_ASSETS{
+	//未抵押的固定资产类型
+};
+
 struct apply_cust_asset_info{
 	int cust_personal_annual_income;//个人年收入
 	int cust_family_annual_income;//家庭年收入
 	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
 	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+	bool cust_is_has_loan;//是否有贷款
+	int cust_loan_sum;//贷款总金额
+	int cust_loan_time;//经过多少年后还款
+	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
 };
 
 
