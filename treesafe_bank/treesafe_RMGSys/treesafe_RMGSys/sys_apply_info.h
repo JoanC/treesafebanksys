@@ -81,6 +81,17 @@ enum APPLY_UNSECURED_FIXED_ASSETS{
 	//未抵押的固定资产类型
 };
 
+enum APPLY_INDUSTRY_TYPE{
+	//从事行业
+	plant_farming,//种植页
+	livestock_farming,//畜牧业
+	forestry_farming, //林业
+	fish_farming,//渔业
+};
+
+#define APPLY_WORK_UINT_LEN  51//工作单位长度
+#define APPLY_WORK_POSITION_LEN 21 //工作职务
+
 struct apply_cust_asset_info{
 	int cust_personal_annual_income;//个人年收入
 	int cust_family_annual_income;//家庭年收入
@@ -90,6 +101,9 @@ struct apply_cust_asset_info{
 	int cust_loan_sum;//贷款总金额
 	int cust_loan_time;//经过多少年后还款
 	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
+	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
+	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
+	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
 };
 
 
