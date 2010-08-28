@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace treesafe {
+namespace treesafe.Auditors {
     
     
-    public partial class WorkerRootPage {
+    public partial class AuditorListPage {
     }
 }

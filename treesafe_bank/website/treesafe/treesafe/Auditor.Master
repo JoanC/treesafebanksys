@@ -32,10 +32,10 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/AuditorRootPage.aspx" Text="主页"/>
-                        <asp:MenuItem NavigateUrl="~/AuditorListPage.aspx" Text="审核申请人信息"/>
-                        <asp:MenuItem NavigateUrl="~/AuditorTeamListPage.aspx" Text="审核联保贷款信息"/>
-                        <asp:MenuItem NavigateUrl="~/AuditorHelpPage.aspx" Text="帮助"/>
+                        <asp:MenuItem NavigateUrl="~/Auditors/AuditorRootPage.aspx" Text="主页"/>
+                        <asp:MenuItem NavigateUrl="~/Auditors/AuditorListPage.aspx" Text="审核申请人信息"/>
+                        <asp:MenuItem NavigateUrl="~/Auditors/AuditorTeamListPage.aspx" Text="审核联保贷款信息"/>
+                        <asp:MenuItem NavigateUrl="~/Auditors/AuditorHelpPage.aspx" Text="帮助"/>
                     </Items>
                 </asp:Menu>
             </div>

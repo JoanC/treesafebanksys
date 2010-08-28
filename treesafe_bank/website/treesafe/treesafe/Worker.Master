@@ -32,11 +32,11 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/WorkerRootPage.aspx" Text="主页"/>
-                        <asp:MenuItem NavigateUrl="~/WorkerApplicationPage.aspx" Text="在线申请"/>
-                        <asp:MenuItem NavigateUrl="~/WorkerUserDataPage.aspx" Text="农户信息查询"/>
-                        <asp:MenuItem NavigateUrl="~/WorkerTeamPage.aspx" Text="联保小组管理"/>
-                        <asp:MenuItem NavigateUrl="~/WorkerHelpPage.aspx" Text="帮助"/>
+                        <asp:MenuItem NavigateUrl="~/Workers/WorkerRootPage.aspx" Text="主页"/>
+                        <asp:MenuItem NavigateUrl="~/Workers/WorkerApplicationPage.aspx" Text="在线申请"/>
+                        <asp:MenuItem NavigateUrl="~/Workers/WorkerUserDataPage.aspx" Text="农户信息查询"/>
+                        <asp:MenuItem NavigateUrl="~/Workers/WorkerTeamPage.aspx" Text="联保小组管理"/>
+                        <asp:MenuItem NavigateUrl="~/Workers/WorkerHelpPage.aspx" Text="帮助"/>
                     </Items>
                 </asp:Menu>
             </div>

@@ -59,10 +59,10 @@
     <Content Include="Admintrators\AdmintratorRiskManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorRootPage.aspx" />
     <Content Include="Users\ApplicationPage.aspx" />
-    <Content Include="AuditorHelpPage.aspx" />
-    <Content Include="AuditorListPage.aspx" />
-    <Content Include="AuditorRootPage.aspx" />
-    <Content Include="AuditorTeamListPage.aspx" />
+    <Content Include="Auditors\AuditorHelpPage.aspx" />
+    <Content Include="Auditors\AuditorListPage.aspx" />
+    <Content Include="Auditors\AuditorRootPage.aspx" />
+    <Content Include="Auditors\AuditorTeamListPage.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -85,11 +85,11 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="WorkerApplicationPage.aspx" />
-    <Content Include="WorkerHelpPage.aspx" />
-    <Content Include="WorkerRootPage.aspx" />
-    <Content Include="WorkerTeamPage.aspx" />
-    <Content Include="WorkerUserDataPage.aspx" />
+    <Content Include="Workers\WorkerApplicationPage.aspx" />
+    <Content Include="Workers\WorkerHelpPage.aspx" />
+    <Content Include="Workers\WorkerRootPage.aspx" />
+    <Content Include="Workers\WorkerTeamPage.aspx" />
+    <Content Include="Workers\WorkerUserDataPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -169,32 +169,32 @@
     <Compile Include="Auditor.Master.designer.cs">
       <DependentUpon>Auditor.Master</DependentUpon>
     </Compile>
-    <Compile Include="AuditorHelpPage.aspx.cs">
+    <Compile Include="Auditors\AuditorHelpPage.aspx.cs">
       <DependentUpon>AuditorHelpPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AuditorHelpPage.aspx.designer.cs">
+    <Compile Include="Auditors\AuditorHelpPage.aspx.designer.cs">
       <DependentUpon>AuditorHelpPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AuditorListPage.aspx.cs">
+    <Compile Include="Auditors\AuditorListPage.aspx.cs">
       <DependentUpon>AuditorListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AuditorListPage.aspx.designer.cs">
+    <Compile Include="Auditors\AuditorListPage.aspx.designer.cs">
       <DependentUpon>AuditorListPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AuditorRootPage.aspx.cs">
+    <Compile Include="Auditors\AuditorRootPage.aspx.cs">
       <DependentUpon>AuditorRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AuditorRootPage.aspx.designer.cs">
+    <Compile Include="Auditors\AuditorRootPage.aspx.designer.cs">
       <DependentUpon>AuditorRootPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AuditorTeamListPage.aspx.cs">
+    <Compile Include="Auditors\AuditorTeamListPage.aspx.cs">
       <DependentUpon>AuditorTeamListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AuditorTeamListPage.aspx.designer.cs">
+    <Compile Include="Auditors\AuditorTeamListPage.aspx.designer.cs">
       <DependentUpon>AuditorTeamListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -299,39 +299,39 @@
     <Compile Include="Worker.Master.designer.cs">
       <DependentUpon>Worker.Master</DependentUpon>
     </Compile>
-    <Compile Include="WorkerApplicationPage.aspx.cs">
+    <Compile Include="Workers\WorkerApplicationPage.aspx.cs">
       <DependentUpon>WorkerApplicationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WorkerApplicationPage.aspx.designer.cs">
+    <Compile Include="Workers\WorkerApplicationPage.aspx.designer.cs">
       <DependentUpon>WorkerApplicationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WorkerHelpPage.aspx.cs">
+    <Compile Include="Workers\WorkerHelpPage.aspx.cs">
       <DependentUpon>WorkerHelpPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WorkerHelpPage.aspx.designer.cs">
+    <Compile Include="Workers\WorkerHelpPage.aspx.designer.cs">
       <DependentUpon>WorkerHelpPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WorkerRootPage.aspx.cs">
+    <Compile Include="Workers\WorkerRootPage.aspx.cs">
       <DependentUpon>WorkerRootPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WorkerRootPage.aspx.designer.cs">
+    <Compile Include="Workers\WorkerRootPage.aspx.designer.cs">
       <DependentUpon>WorkerRootPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WorkerTeamPage.aspx.cs">
+    <Compile Include="Workers\WorkerTeamPage.aspx.cs">
       <DependentUpon>WorkerTeamPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WorkerTeamPage.aspx.designer.cs">
+    <Compile Include="Workers\WorkerTeamPage.aspx.designer.cs">
       <DependentUpon>WorkerTeamPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WorkerUserDataPage.aspx.cs">
+    <Compile Include="Workers\WorkerUserDataPage.aspx.cs">
       <DependentUpon>WorkerUserDataPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WorkerUserDataPage.aspx.designer.cs">
+    <Compile Include="Workers\WorkerUserDataPage.aspx.designer.cs">
       <DependentUpon>WorkerUserDataPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
