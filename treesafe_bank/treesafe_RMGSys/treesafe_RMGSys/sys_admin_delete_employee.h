@@ -54,3 +54,21 @@ void delete_employee_copy_cmd(const char* _cmd , char* _dest
 
 //转化指令
 delete_employee_input* delete_employee_convert_cmd(char* _info);
+
+/*********************************************/
+//模块16.3
+//数据库操作
+//sunni完成
+
+void delete_employee_from_database(const char* _id , bool* _rlt);
+
+/*********************************************/
+//模块16.4总结结果信息
+//将结果转化成字符串信息
+
+void delete_employee_convert_rlt(delete_employee_info* _info , char* _rlt , int* _rlt_len);
+
+/**********************************************/
+//信息删除模块
+//模块16的主函式
+void delete_employee_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _rlt_len);
