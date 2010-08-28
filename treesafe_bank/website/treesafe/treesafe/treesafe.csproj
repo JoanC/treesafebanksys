@@ -59,6 +59,8 @@
     <Content Include="Admintrators\AdmintratorLaborManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorRiskManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorRootPage.aspx" />
+    <Content Include="Admintrators\AdmintratorSystemIntro.aspx" />
+    <Content Include="Auditors\AuditoSystemIntro.aspx" />
     <Content Include="Users\ApplicationPage.aspx" />
     <Content Include="Auditors\AuditorHelpPage.aspx" />
     <Content Include="Auditors\AuditorListPage.aspx" />
@@ -79,6 +81,7 @@
     <Content Include="Users\UserInfoPage.aspx" />
     <Content Include="Users\UserRiskEvaluationPage.aspx" />
     <Content Include="Users\UserRootPage.aspx" />
+    <Content Include="Users\UserSystemIntro.aspx" />
     <Content Include="Users\UserTeamPage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -91,6 +94,7 @@
     <Content Include="Workers\WorkerFinishApplicationPage.aspx" />
     <Content Include="Workers\WorkerHelpPage.aspx" />
     <Content Include="Workers\WorkerRootPage.aspx" />
+    <Content Include="Workers\WorkerSystemIntro.aspx" />
     <Content Include="Workers\WorkerTeamPage.aspx" />
     <Content Include="Workers\WorkerUserDataPage.aspx" />
   </ItemGroup>
@@ -164,6 +168,20 @@
     </Compile>
     <Compile Include="Admintrators\AdmintratorRootPage.aspx.designer.cs">
       <DependentUpon>AdmintratorRootPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorSystemIntro.aspx.cs">
+      <DependentUpon>AdmintratorSystemIntro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorSystemIntro.aspx.designer.cs">
+      <DependentUpon>AdmintratorSystemIntro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditors\AuditoSystemIntro.aspx.cs">
+      <DependentUpon>AuditoSystemIntro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditors\AuditoSystemIntro.aspx.designer.cs">
+      <DependentUpon>AuditoSystemIntro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\ApplicationPage.aspx.cs">
       <DependentUpon>ApplicationPage.aspx</DependentUpon>
@@ -295,6 +313,13 @@
     <Compile Include="Users\UserRootPage.aspx.designer.cs">
       <DependentUpon>UserRootPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Users\UserSystemIntro.aspx.cs">
+      <DependentUpon>UserSystemIntro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserSystemIntro.aspx.designer.cs">
+      <DependentUpon>UserSystemIntro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Users\UserTeamPage.aspx.cs">
       <DependentUpon>UserTeamPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -343,6 +368,13 @@
     </Compile>
     <Compile Include="Workers\WorkerRootPage.aspx.designer.cs">
       <DependentUpon>WorkerRootPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workers\WorkerSystemIntro.aspx.cs">
+      <DependentUpon>WorkerSystemIntro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Workers\WorkerSystemIntro.aspx.designer.cs">
+      <DependentUpon>WorkerSystemIntro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Workers\WorkerTeamPage.aspx.cs">
       <DependentUpon>WorkerTeamPage.aspx</DependentUpon>
