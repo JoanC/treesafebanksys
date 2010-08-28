@@ -34,7 +34,7 @@ struct admin_employee_info{
 	admin_mgr_gender employee_gender;//雇员性别
 	int employee_age;//雇员的年龄
 	char employee_addr[EMPLOYEE_ADDR_LEN];//雇员的地址
-	char employee_
+	char employee_email[EMPLOYEE_EMAIL_ADDR_LEN];//雇员电子邮件地址
 };
 
 //出始化函数
