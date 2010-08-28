@@ -106,6 +106,8 @@
   <ItemGroup>
     <ClCompile Include="research_commit.cpp" />
     <ClCompile Include="sys_admin_add_employee.cpp" />
+    <ClCompile Include="sys_admin_delete_employee.cpp" />
+    <ClCompile Include="sys_admin_employee_info.cpp" />
     <ClCompile Include="sys_credit_compute.cpp" />
     <ClCompile Include="sys_frame.cpp" />
     <ClCompile Include="sys_research_exact.cpp" />

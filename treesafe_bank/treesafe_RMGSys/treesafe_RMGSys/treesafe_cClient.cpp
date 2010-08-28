@@ -48,16 +48,7 @@ void Connect2Server(sys_Client* client,char* ConnectIP,short port)
 //send data
 void SendData(sys_Client* client)
 {
-	int retVal;
-	retVal = send(client->sys_net.sHost,client->send.cNetDataInfo,client->send.stNetDataLength,0);
-	if (SOCKET_ERROR == retVal)
-	{
-		closesocket(client->sys_net.sHost);
-		WSACleanup();
-		return;
-	}
-
-		int reVal;
+	int reVal;
 	if(client->send.stNetDataLength <= PackageSize)
 	{
 		char temp[] = "01";

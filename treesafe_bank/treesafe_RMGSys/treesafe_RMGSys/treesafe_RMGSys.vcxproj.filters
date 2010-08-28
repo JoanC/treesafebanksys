@@ -227,5 +227,11 @@
     <ClCompile Include="sys_admin_add_employee.cpp">
       <Filter>admin_manager\add</Filter>
     </ClCompile>
+    <ClCompile Include="sys_admin_delete_employee.cpp">
+      <Filter>admin_manager\delete</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_admin_employee_info.cpp">
+      <Filter>admin_manager</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
