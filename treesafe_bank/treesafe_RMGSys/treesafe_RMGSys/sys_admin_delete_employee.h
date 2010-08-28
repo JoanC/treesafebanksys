@@ -46,7 +46,7 @@ delete_employee_modle* init_delete_employee_modle();
 //Jiraiya完成
 
 //16.2主函式
-delete_employee_input* delete_employee_get_cmd();
+delete_employee_input* delete_employee_get_cmd(const char* _cmd,int _cmd_len);
 
 //复制命令
 void delete_employee_copy_cmd(const char* _cmd , char* _dest 
