@@ -11,6 +11,9 @@
 #define EMPLOYEE_TEL_LEN 16
 #define EMPLOYEE_ADDR_LEN 51
 #define EMPLOYEE_PWD_LEN 18
+
+#define EMPLOYEE_WORK_ID_LEN 8 //雇员工号 
+
 enum admin_mgr_gender{employee_male,employee_female};
 
 //雇员的种类
@@ -25,6 +28,7 @@ enum admin_employee_type{
 struct admin_employee_info{
 	admin_employee_type employee_type;//雇员类型
 	char employee_id[EMPLOYEE_ID_LEN];//雇员的身份证号
+	//雇员工号
 	char employee_name[EMPLOYEE_NAME_LEN];//雇员的姓名;
 	admin_mgr_gender employee_gender;//雇员性别
 	int employee_age;//雇员的年龄
