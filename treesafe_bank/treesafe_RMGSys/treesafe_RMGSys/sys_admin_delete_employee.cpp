@@ -60,6 +60,16 @@ delete_employee_input* delete_employee_convert_cmd(char* _info){
 //16.4
 //...
 void delete_employee_convert_rlt(delete_employee_info* _info , char* _rlt , int* _rlt_len){
-
+	
 }
 
+
+void delete_employee_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _rlt_len){
+    //16.1
+	//初始化模块
+	delete_employee_modle* _frame
+		=(delete_employee_modle*)malloc(sizeof(delete_employee_modle));
+	//16.2
+	//获取指令
+	_frame->input_info = *delete_employee_get_cmd(_cmd,_cmd_len);
+}
