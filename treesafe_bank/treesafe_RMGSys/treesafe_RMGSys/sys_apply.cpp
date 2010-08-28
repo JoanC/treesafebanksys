@@ -4,10 +4,7 @@
 //7.1
 //初始化
 void apply_init_apply_custmor_info(apply_custmor_info* _init){
-	_init->cust_age = 18;
-	_init->cust_gender = apply_info_male;
-	strcpy(_init->cust_id,"");
-	strcpy(_init->cust_name,"");
+
 }
 
 void apply_init_apply_loan_info(apply_loan_info* _init){
@@ -62,6 +59,7 @@ void apply_query_cust_info(apply_custmor_info* _rlt){
 //7.4
 bool apply_check_cust_info(apply_custmor_info* _input 
 	, apply_custmor_info* _db_query){
+	/*
 		//数据检测
 		if(strcmp(_input->cust_id,_db_query->cust_id) != 0)
 			return false;
@@ -75,6 +73,7 @@ bool apply_check_cust_info(apply_custmor_info* _input
 			//检测年龄
 			return false;
 		}
+		*/
 		return true;
 }
 
