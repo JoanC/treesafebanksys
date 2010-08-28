@@ -6,9 +6,9 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Welcome to Admintrator Page!
+        欢迎使用农民联保风险控制系统
     </h2>
     <p>
-        Add Codes Here
+    祝您工作顺利！
     </p>
 </asp:Content>

@@ -35,6 +35,7 @@
                         <asp:MenuItem NavigateUrl="~/Admintrators/AdmintratorRootPage.aspx" Text="主页"/>
                         <asp:MenuItem NavigateUrl="~/Admintrators/AdmintratorRiskManagementPage.aspx" Text="风险评估管理"/>
                         <asp:MenuItem NavigateUrl="~/Admintrators/AdmintratorLaborManagementPage.aspx" Text="工作人员管理"/>
+                        <asp:MenuItem NavigateUrl="~/Admintrators/AdmintratorHelpPage.aspx" Text="帮助"/>
                     </Items>
                 </asp:Menu>
             </div>

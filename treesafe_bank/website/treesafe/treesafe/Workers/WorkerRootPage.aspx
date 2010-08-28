@@ -57,6 +57,11 @@
         <asp:Label ID="WorkerEmail" runat="server" Text="xxx#@SFDF.COM"></asp:Label>
     </p>
     </fieldset>
+    <p>
+        &nbsp;</p>
+        <p>
 
+    祝您工作顺利！
+    </p>
 
 </asp:Content>
