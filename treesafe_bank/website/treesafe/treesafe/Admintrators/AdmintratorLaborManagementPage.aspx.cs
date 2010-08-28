@@ -13,5 +13,15 @@ namespace treesafe.Admintrotors
         {
 
         }
+
+        protected void ButtonAddWorker_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonDeleteWorker_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
