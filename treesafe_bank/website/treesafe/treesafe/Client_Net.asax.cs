@@ -18,8 +18,7 @@ using System.Runtime.Serialization;
 
 namespace ClientNet
 {
-    public partial class Login : System.Web.UI.Page
-    {
+  
         class web_net_client_mgr
         {
             //成员变量
@@ -113,6 +112,13 @@ namespace ClientNet
             return obj;
            }
 
+            public static int bytesToInt(byte[] bytes)
+            {
+                int addr = bytes[0] & 0xFF;
+                addr |= ((bytes[1] << 8) & 0xFF00);
+                addr |= ((bytes[2] << 16) & 0xFF0000);
+                return addr;
+            }
 
             public void send_command_data(int _cmd_type, object _obj_data)
             {
@@ -137,7 +143,6 @@ namespace ClientNet
                   //网络数据
                   this.m_net_stream.Write(StructToBytes(_send), 0, Marshal.SizeOf(_send));
                   //关闭连接
-                  this.m_client.Close();
 	            }
 	            else
 	            {
@@ -152,15 +157,14 @@ namespace ClientNet
                       this.m_net_stream.Write(dataSend,iCount * BufSize,BufSize);
       	          }
                      //关闭连接
-                  this.m_client.Close();
 	            }  
             }
                public void recevie_data(Type _obj_type,object _obj_data)
                {
-                    this.connect_server();
-                   	byte[] cCount = Encoding.UTF8.GetBytes("99");
+                    int iCount = 99;
+                    byte[] cCount = System.BitConverter.GetBytes(iCount);
                     this.m_net_stream.Read(cCount,0,cCount.Length);
-	                int iCount = System.BitConverter.ToInt32(cCount,10);
+                    iCount =Convert.ToInt32(cCount);
                    	byte[] buffer = new byte[iCount * BufSize];
                     for(int i = 0;i!=iCount;i++)
 	                {
@@ -171,6 +175,6 @@ namespace ClientNet
                    _obj_data = BytesToStruct(buffer,_obj_type);
                }
             
-        };
+       
     }
 }
