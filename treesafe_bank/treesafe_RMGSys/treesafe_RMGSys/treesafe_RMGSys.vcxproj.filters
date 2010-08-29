@@ -195,6 +195,9 @@
     <ClInclude Include="sys_group_start.h">
       <Filter>group\group_start</Filter>
     </ClInclude>
+    <ClInclude Include="sys_group_info.h">
+      <Filter>group</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
