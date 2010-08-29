@@ -2,20 +2,6 @@
 #include "sys_apply.h"
 
 //7.1
-//初始化
-void apply_init_apply_custmor_info(apply_custmor_info* _init){
-
-}
-
-void apply_init_apply_loan_info(apply_loan_info* _init){
-	//初始化各个数据
-}
-
-void apply_init_apply_input_info(apply_input_info* _init){
-	apply_init_apply_custmor_info(&_init->input_basic_info);
-	apply_init_apply_loan_info(&_init->input_loan_info);
-}
-
 void apply_init_apply_info(apply_info* _init){
 	//初始化错误信息
 	init_sys_err(&_init->errInfo);
@@ -24,9 +10,9 @@ void apply_init_apply_info(apply_info* _init){
 
 void apply_init_apply_modle(apply_modle* _init){
 	//初始化各个指针
-	apply_init_apply_input_info(&_init->input_info);
-	apply_init_apply_custmor_info(&_init->db_cust_info);
-	apply_init_apply_info(&_init->rlt_info);
+	//apply_init_apply_input_info(&_init->input_info);
+	//apply_init_apply_custmor_info(&_init->db_cust_info);
+	//apply_init_apply_info(&_init->rlt_info);
 }
 
 void apply_release(apply_modle* _mld){

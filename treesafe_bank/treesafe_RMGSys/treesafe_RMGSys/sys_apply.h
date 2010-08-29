@@ -2,23 +2,29 @@
 #include "sys_apply_info.h"
 
 //模块7
+//申请处理的所有信息结构
+struct apply_info{
+	//即要传给网络层的信息
+	//个人认为:
+	//只需要把对比基本信息时的错误传给当前的页面
+	//如果没有错误
+	//则表示该申请正在进行审核...
+	//下面是错误信息,如果错误信息显示no_err,则是申请成功
+	bool is_succ;//是否成功
+	sys_err errInfo;//申请处理中的错误信息
+};
+
+//申请处理的整体模块
+struct apply_modle{
+	apply_input_info input_info;//输入信息
+	apply_custmor_info db_cust_info;//从数据库中读入的信息
+	apply_info rlt_info;//存储申请过程中的信息,作为结果传到网络层中
+};
 
 /*******************************************************/
 //由Jiraiya完成
 //7.1
 //初始化申请模块
-
-//初始化用户信息
-void apply_init_apply_custmor_info(apply_custmor_info* _init);
-
-//初始化申请信息
-void apply_init_apply_loan_info(apply_loan_info* _init);
-
-//初始化输入信息
-void apply_init_apply_input_info(apply_input_info* _init);
-
-//初始化申请的过程信息
-void apply_init_apply_info(apply_info* _init);
 
 //初始化申请模块
 void apply_init_apply_modle(apply_modle* _init);

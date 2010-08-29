@@ -28,6 +28,7 @@
 enum APPLY_GENDER_TYPE {apply_info_male , apply_info_female};//性别值
 enum APPLY_CARD_TYPE{id_card/*身份证*/,ｍilitary_card/*军人证*/};//证件类型
 enum APPLY_CUST_HOUSING_TENURE{own/*自有*/,lease/*租赁*/,other/*其他*/};//住房权属
+
 enum APPLY_CUST_EDUCATION_DEGREE{
 	edu_master_and_above,/*硕士及以上*/
 	edu_undergraduate,/*本科*/
@@ -45,6 +46,7 @@ struct apply_custmor_info{
 	char cust_id[APPLY_CARD_NUMBER_LEN];//证件id
 	char cust_tel_num[APPLY_CUST_TEL_LEN];//联系电话
 	char cust_other_tel_num[APPLY_CUST_TEL_LEN];//其他联系电话
+	APPLY_CUST_EDUCATION_DEGREE cust_edu;//受教育情况
 };
 
 /*
@@ -58,7 +60,7 @@ struct apply_custmor_info{
 预计还清贷款日期（年月日）：
 是否有已抵押的固定资产：□是 □否
 如有未抵押的固定资产请选择并对其做出评估：
-•房地产
+         •房地产
          •交通工具
          •生产设备
          •其他
@@ -78,6 +80,10 @@ enum APPLY_DEPOSIT_RANGE{//存款范围
 
 enum APPLY_UNSECURED_FIXED_ASSETS{
 	//未抵押的固定资产类型
+	asset_none,//无
+	asset_house,//房地产
+	asset_transport,//交通工具
+	asset_production_equipment//生产设备
 };
 
 enum APPLY_INDUSTRY_TYPE{
@@ -128,7 +134,8 @@ struct apply_cust_family_info{
 	APPLY_CUST_MARITAL_STATUS cust_marital_status;//申请人的婚姻状况
 	int cust_children_num;//子女人数
 	char cust_spouse_name[APPLY_CUST_NAME_LEN];//陪偶姓名
-	char cust_spouse_id[APPLY_CARD_NUMBER_LEN];//配偶的身份证号
+	APPLY_CARD_TYPE cust_apouse_card_type;//配偶的卡类型
+	char cust_spouse_id[APPLY_CARD_NUMBER_LEN];//配偶的卡号
 	char cust_spouse_work_unit[APPLY_WORK_UINT_LEN];//配偶的工作单位
 	APPLY_CUST_EDUCATION_DEGREE cust_spouse_edu_degree;//配偶的受教育程度
 	bool cust_spouse_is_has_loan;//配偶是否有贷款
@@ -180,21 +187,22 @@ struct apply_input_info{
 	apply_loan_info input_loan_info;
 };
 
-//申请处理的所有信息结构
-struct apply_info{
-	//即要传给网络层的信息
-	//个人认为:
-	//只需要把对比基本信息时的错误传给当前的页面
-	//如果没有错误
-	//则表示该申请正在进行审核...
-	//下面是错误信息,如果错误信息显示no_err,则是申请成功
-	bool is_succ;//是否成功
-	sys_err errInfo;//申请处理中的错误信息
-};
 
-//申请处理的整体模块
-struct apply_modle{
-	apply_input_info input_info;//输入信息
-	apply_custmor_info db_cust_info;//从数据库中读入的信息
-	apply_info rlt_info;//存储申请过程中的信息,作为结果传到网络层中
-};
+/***********************************************/
+//初始化函数
+//所有结构体的初始化函数
+
+//初始化用户信息
+void apply_init_apply_custmor_info(apply_custmor_info* _init);
+
+//初始化用户资产信息
+void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init);
+
+//初始化用户家庭信息
+void apply_init_apply_custmor_family_info(apply_cust_family_info* _init);
+
+//初始化贷款信息
+void apply_init_apply_loan_info(apply_loan_info* _init);
+
+//初始化输入信息
+void apply_init_apply_input_info(apply_input_info* _init);
