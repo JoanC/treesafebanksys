@@ -91,7 +91,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	int rlt_len = 0;
 	research_exact_frame(cmd,12,rlt,&rlt_len);
 #endif
-	/*
 	treesafe_db_connection = 
 		(_ConnectionPtr*)calloc(sizeof(_ConnectionPtr),1);
 	ConnectDB(treesafe_db_connection);
@@ -109,7 +108,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	DisconnectDB(treesafe_db_connection);
 	free(treesafe_db_connection);
-	*/
 	return 0;
 }
 
