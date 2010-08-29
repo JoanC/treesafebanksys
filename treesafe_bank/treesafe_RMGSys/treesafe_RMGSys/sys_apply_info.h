@@ -1,4 +1,6 @@
-﻿//申请处理流程
+﻿#include "sys_error_compute.h"
+
+//申请处理流程
 
 /*
 //申请人基本信息
@@ -66,8 +68,6 @@ struct apply_custmor_info{
 职位：
 */
 
-//
-
 enum APPLY_DEPOSIT_TYPE{none_deposit/*无存款*/,
 	regular_deposit/*定期存款*/,
 	demand_deposit/*活期存款*/
@@ -104,6 +104,29 @@ struct apply_cust_asset_info{
 	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
 	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
 	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
+};
+
+
+/*
+家庭情况资料
+婚姻状况：□已婚 □未婚
+子女人数：
+配偶姓名：
+配偶身份证号：
+配偶工作单位（工作情况）：
+配偶受教育程度：□硕士及以上 □本科 □大专 □高中 □初中及以下
+配偶是否有已申请贷款：□是 □否
+*/
+
+enum APPLY_CUST_MARITAL_STATUS{
+	//婚姻情况
+	is_married,/*已婚*/
+	not_married/*未婚*/
+};
+
+struct apply_cust_family_info{
+	APPLY_CUST_MARITAL_STATUS cust_marital_status;//申请人的婚姻状况
+	int cust_children_num;//子女人数
 };
 
 
