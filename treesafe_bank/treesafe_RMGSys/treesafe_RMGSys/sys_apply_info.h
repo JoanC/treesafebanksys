@@ -30,11 +30,11 @@ enum APPLY_GENDER_TYPE {apply_info_male , apply_info_female};//性别值
 enum APPLY_CARD_TYPE{id_card/*身份证*/,ｍilitary_card/*军人证*/};//证件类型
 enum APPLY_CUST_HOUSING_TENURE{own/*自有*/,lease/*租赁*/,other/*其他*/};//住房权属
 enum APPLY_CUST_EDUCATION_DEGREE{
-	master_and_above,/*硕士及以上*/
-	undergraduate,/*本科*/
-	college,/*大专*/
-	high_school,/*高中*/
-	primary_and_below/*小学及以下*/
+	edu_master_and_above,/*硕士及以上*/
+	edu_undergraduate,/*本科*/
+	edu_college,/*大专*/
+	edu_high_school,/*高中*/
+	edu_primary_and_below/*小学及以下*/
 };//受教育程度
 
 //操作员输入的信息结构
@@ -87,6 +87,7 @@ enum APPLY_INDUSTRY_TYPE{
 	livestock_farming,//畜牧业
 	forestry_farming, //林业
 	fish_farming,//渔业
+	other_farming
 };
 
 #define APPLY_WORK_UINT_LEN  51//工作单位长度
@@ -127,17 +128,55 @@ enum APPLY_CUST_MARITAL_STATUS{
 struct apply_cust_family_info{
 	APPLY_CUST_MARITAL_STATUS cust_marital_status;//申请人的婚姻状况
 	int cust_children_num;//子女人数
+	char cust_spouse_name[APPLY_CUST_NAME_LEN];//陪偶姓名
+	char cust_spouse_id[APPLY_CARD_NUMBER_LEN];//配偶的身份证号
+	char cust_spouse_work_unit[APPLY_WORK_UINT_LEN];//配偶的工作单位
+	APPLY_CUST_EDUCATION_DEGREE cust_spouse_edu_degree;//配偶的受教育程度
+	bool cust_spouse_is_has_loan;//配偶是否有贷款
 };
 
+/*
+申请金额：人民币   元
+期限：   月
+贷款用途：
+贷款次数：□首次贷款 □多次贷款
+
+申贷项目可行性说明：
+
+是否希望接收我们的短信通知：□是 □否
+*/
+
+//??????????????
+//贷款用途是否要选择性?
+
+#define APPLY_LOAN_COMMENT 51
+
+
+enum APPLY_LOAN_INDUSTRY{
+	loan_industry_other//其他用途
+};
+
+enum APPLY_LOAN_TIMES{
+	//申请人过往的贷款次数
+	loan_times_first,//第一次贷款
+	loan_times_multiple//多次贷款
+};
 
 struct apply_loan_info{
-	//与联保申请的其它相关信息
-	//...有待王亦可来确定
+	//贷款信息
+	int loan_application_amount;//贷款金额
+	int loan_dead_line;//还款期限(单位为月份)
+	APPLY_LOAN_TIMES loan_times;//申请人的贷款次数
+	char loan_comment[APPLY_LOAN_COMMENT];//贷款的使用说明
 };
 
 struct apply_input_info{
 	//输入申请人的基本信息
 	apply_custmor_info input_basic_info;
+	//输入资产信息
+	apply_cust_asset_info input_asset_info;
+	//输入家庭信息
+	apply_cust_family_info input_fammily_info;
 	//与贷款相关的其它信息
 	apply_loan_info input_loan_info;
 };
@@ -150,6 +189,7 @@ struct apply_info{
 	//如果没有错误
 	//则表示该申请正在进行审核...
 	//下面是错误信息,如果错误信息显示no_err,则是申请成功
+	bool is_succ;//是否成功
 	sys_err errInfo;//申请处理中的错误信息
 };
 
