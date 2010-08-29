@@ -93,7 +93,7 @@ int _tmain(int argc, _TCHAR* argv[])
 #endif
 	treesafe_db_connection = 
 		(_ConnectionPtr*)calloc(sizeof(_ConnectionPtr),1);
-//	ConnectDB(treesafe_db_connection);
+	ConnectDB(treesafe_db_connection);
 	while(1){
 		server_of_website.rec.cNetDataInfo =NULL;
 		server_of_website.send.cNetDataInfo = NULL;
@@ -106,7 +106,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
 
-//	DisconnectDB(treesafe_db_connection);
+	DisconnectDB(treesafe_db_connection);
 	free(treesafe_db_connection);
 	return 0;
 }

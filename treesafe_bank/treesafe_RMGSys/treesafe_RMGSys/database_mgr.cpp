@@ -89,8 +89,8 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
 {
 	_variant_t vt ;
-	char sqlStr[200] = "select * from Table_Login where id = " ;
-	strcat_s(sqlStr,idLen,user_name) ;
+	char sqlStr[300] = "select * from Table_Login where login_id = " ;
+	strcat_s(sqlStr,user_name) ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	// visit the db...
 

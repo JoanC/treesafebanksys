@@ -59,7 +59,7 @@ void SendData(sys_Client* client)
 	{
 		char temp[] =  "99";
 		int iCount = client->send.stNetDataLength / PackageSize + 1;
-		int iLastPackageSize = client->send.stNetDataLength - PackageSize * iCount;
+		int iLastPackageSize = client->send.stNetDataLength - PackageSize * (iCount-1);
 		_itoa(iCount,temp,10);
 		reVal = send(client->sys_net.sHost,temp,sizeof(temp),0);
 		while(iCount--)
