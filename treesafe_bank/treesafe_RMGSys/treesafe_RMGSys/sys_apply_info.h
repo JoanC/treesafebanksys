@@ -187,6 +187,8 @@ struct apply_input_info{
 	apply_loan_info input_loan_info;
 };
 
+typedef apply_input_info apply_db_info;
+
 
 /***********************************************/
 //初始化函数
