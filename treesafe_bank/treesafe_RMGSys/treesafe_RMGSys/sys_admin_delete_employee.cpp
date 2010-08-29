@@ -58,7 +58,10 @@ delete_employee_input* delete_employee_convert_cmd(char* _info){
 
 //16.3
 //...
-//´ýsunniÈ¥Íê³É
+void delete_employee_from_database(const char* _id , bool* _rlt)
+{
+	*_rlt = delete_employee(treesafe_db_connection,_id) ;
+}
 
 
 //16.4

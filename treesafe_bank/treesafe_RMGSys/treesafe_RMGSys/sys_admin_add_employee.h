@@ -10,9 +10,9 @@
 #include "sys_admin_employee_info.h"
 
 
-#define ADD_EMPLOYEE_COMMENT_LEN 51
+#define ADD_EMPLOYEE_COMMENT_LEN 201
 
-
+extern _ConnectionPtr* treesafe_db_connection ;
 //添加雇员时填入的信息
 struct add_employee_input{
 	admin_employee_info employ_basic_info;
@@ -71,7 +71,7 @@ add_employee_input* add_employee_get_cmd(const char* _cmd,int _cmd_len);
 //sunni完成
 //数据库添加
 //将输入信息的相关项填入雇员表和*登录表中(填入两张表!!)
-void add_employee_to_db(add_employee_input* _input_info);
+void add_employee_to_db(add_employee_input* _input_info, bool *_rlt);
 
 /*********************************************/
 //15.4

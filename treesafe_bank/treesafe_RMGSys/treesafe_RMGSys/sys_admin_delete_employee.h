@@ -2,7 +2,10 @@
 
 #include "sys_admin_employee_info.h"
 #include "sys_error_compute.h"//错误处理
+#include "database_mgr.h"
 
+
+extern _ConnectionPtr* treesafe_db_connection ;
 //模块16
 //删除雇员信息
 
