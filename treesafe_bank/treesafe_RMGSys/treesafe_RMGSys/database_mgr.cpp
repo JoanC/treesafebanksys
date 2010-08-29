@@ -89,8 +89,8 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
 {
 	_variant_t vt ;
-	char sqlStr[300] = "select * from Table_Login where login_id = " ;
-	strcat_s(sqlStr,user_name) ;
+	char sqlStr[200] = "select * from Table_Login where id = " ;
+	strcat_s(sqlStr,idLen,user_name) ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	// visit the db...
 
@@ -178,6 +178,72 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_reg_info->basic_info.reg_home_addr) ;
 	strcat(sqlStr,"')") ;
+
+	_variant_t vt ;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	return true ;
+}
+
+bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char *_comment)
+{
+	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = " ;
+	strcat(sqlStrTest,emp_info->employee_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+	rsp.Release() ;
+
+	char sqlStr[500] = "insert into Table_Employee values('" ;
+	strcat(sqlStr,emp_info->employee_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,emp_info->employee_work_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,emp_info->employee_name) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr, emp_info->employee_gender == employee_male ? "true" : "false" ) ;
+	strcat(sqlStr,"','") ;
+	char temp_age[4]  = {0,0,0,0} ;
+	itoa(emp_info->employee_age,temp_age,10) ;
+	strcat(sqlStr,temp_age) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,emp_info->employee_addr) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,emp_info->employee_email) ;
+	strcat(sqlStr,"','") ;
+	char temp_type[2] = {0,0} ;
+	itoa(emp_info->employee_type, temp_type , 10 ) ;
+	strcat(sqlStr,temp_type) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,temp_type) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_comment) ;
+	strcat(sqlStr,"')") ;
+
+	_variant_t vt ;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	return true ;
+}
+
+bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) 
+{
+	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = " ;
+	strcat(sqlStrTest,employee_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+	rsp.Release() ;
+
+	char sqlStr[200] = "delete from Table_Employee where employee_id = " ;
+	strcat(sqlStr,employee_id) ;
 
 	_variant_t vt ;
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
