@@ -1,6 +1,4 @@
 #pragma once
-
-#include "sys_error_compute.h"//´íÎó´¦Àí
 #include "sys_apply_info.h"
 
 //Ä£¿é7
