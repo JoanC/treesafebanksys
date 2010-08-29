@@ -3,16 +3,18 @@
 
 //7.1
 void apply_init_apply_info(apply_info* _init){
+	//初始化结果信息
 	//初始化错误信息
+	_init->is_succ = true;
 	init_sys_err(&_init->errInfo);
 	//初始化其他信息...
 }
 
 void apply_init_apply_modle(apply_modle* _init){
 	//初始化各个指针
-	//apply_init_apply_input_info(&_init->input_info);
-	//apply_init_apply_custmor_info(&_init->db_cust_info);
-	//apply_init_apply_info(&_init->rlt_info);
+	apply_init_apply_input_info(&_init->input_info);
+	apply_init_apply_custmor_info(&_init->db_cust_info);
+	apply_init_apply_info(&_init->rlt_info);
 }
 
 void apply_release(apply_modle* _mld){
@@ -45,21 +47,19 @@ void apply_query_cust_info(apply_custmor_info* _rlt){
 //7.4
 bool apply_check_cust_info(apply_custmor_info* _input 
 	, apply_custmor_info* _db_query){
-	/*
-		//数据检测
-		if(strcmp(_input->cust_id,_db_query->cust_id) != 0)
-			return false;
-		if(strcmp(_input->cust_name,_db_query->cust_name) != 0){
-			return false;
-		}
-		//性别检测
-		if(_input->cust_gender != _db_query->cust_gender)
-			return false;
-		if(_input->cust_age == _db_query->cust_age){
-			//检测年龄
-			return false;
-		}
-		*/
+		//基础数据的检测
+		//用户的姓名检测
+		if(strcmp(_input->cust_name,_db_query->cust_name) != 0) return false;
+		//用户的性别检测
+		if(_input->cust_gender != _db_query->cust_gender) return false;
+		//年龄检测
+		if(_input->cust_age != _db_query->cust_age) return false;
+				//用户的卡号检测
+		if(strcmp(_input->cust_id,_db_query->cust_id) != 0) return false;
+		//客户省份卡的类型检测
+		if(_input->cust_card_type != _db_query->cust_card_type) return false;
+		//客户的教育程度检测
+		if(_input->cust_edu != _db_query->cust_edu) return false;
 		return true;
 }
 
