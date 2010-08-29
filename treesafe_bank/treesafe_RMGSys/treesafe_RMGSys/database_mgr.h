@@ -1,5 +1,5 @@
 #pragma once
-
+#include "sys_admin_employee_info.h" 
 //数据库总管理函数
 //为所有模块提供接口
 //以表(table)为基础设计struct的结构
@@ -84,3 +84,7 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) ;
 
 bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info) ;
+
+bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char *_comment) ;
+
+bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) ;
