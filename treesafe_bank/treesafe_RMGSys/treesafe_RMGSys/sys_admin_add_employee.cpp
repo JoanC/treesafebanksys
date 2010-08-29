@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "sys_admin_add_employee.h"
 
+
+
 //模块15 -- 管理员添加雇员模块的实现
 
 //15.1
@@ -59,7 +61,10 @@ add_employee_input* add_employee_get_cmd(const char* _cmd,int _cmd_len){
 }
 
 //15.3
-//..
+void add_employee_to_db(add_employee_input* _input_info, bool *_rlt)
+{
+	*_rlt = add_new_employee(treesafe_db_connection,&(_input_info->employ_basic_info),_input_info->comment) ;
+}
 
 //15.4
 void add_employee_covert_result(add_employee_info* _info
