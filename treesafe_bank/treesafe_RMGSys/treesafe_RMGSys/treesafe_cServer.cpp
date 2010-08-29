@@ -10,7 +10,7 @@ void net_add_connection(sys_Server *sServer)
 	int retVal;
 	if(WSAStartup(MAKEWORD(2,2),&sServer->sys_server.wsd)!=0)
 	{
-		MessageBox(NULL,"ÍøÂç³õÊ¼»¯´íÎó£¡","´íÎóÐÅÏ¢",MB_OK);
+		//MessageBox(NULL,L"ÍøÂç³õÊ¼»¯´íÎó£¡",L"´íÎóÐÅÏ¢",MB_OK);
 		return;
 	}
 
