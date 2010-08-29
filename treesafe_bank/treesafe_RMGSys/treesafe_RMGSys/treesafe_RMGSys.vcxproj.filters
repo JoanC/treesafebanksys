@@ -94,6 +94,9 @@
     <Filter Include="apply\apply">
       <UniqueIdentifier>{7de135a7-ce2c-4b43-9bf0-e8637023a658}</UniqueIdentifier>
     </Filter>
+    <Filter Include="group\group_add_to_group">
+      <UniqueIdentifier>{85ba01d3-6f7c-472e-b679-e05885f8fab1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
