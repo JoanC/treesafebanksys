@@ -49,9 +49,6 @@
     <Filter Include="sys_connc_bank">
       <UniqueIdentifier>{82394c79-378e-488a-be1f-5d2d8ca8f075}</UniqueIdentifier>
     </Filter>
-    <Filter Include="frame">
-      <UniqueIdentifier>{0911037a-9328-4f63-9b6e-01b4ccb2bb67}</UniqueIdentifier>
-    </Filter>
     <Filter Include="research">
       <UniqueIdentifier>{d1065bee-c85e-4dee-b3c5-5838c6263ca8}</UniqueIdentifier>
     </Filter>
@@ -91,6 +88,12 @@
     <Filter Include="query_info">
       <UniqueIdentifier>{fd0347b6-76ae-4fb1-b415-3abc594161e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="apply\Info">
+      <UniqueIdentifier>{409b97da-603e-4754-aacd-6eac85010e2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="apply\apply">
+      <UniqueIdentifier>{7de135a7-ce2c-4b43-9bf0-e8637023a658}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -107,9 +110,6 @@
     </ClInclude>
     <ClInclude Include="sys_login.h">
       <Filter>login_regist\login</Filter>
-    </ClInclude>
-    <ClInclude Include="sys_apply.h">
-      <Filter>apply</Filter>
     </ClInclude>
     <ClInclude Include="database_mgr.h">
       <Filter>database</Filter>
@@ -178,7 +178,10 @@
       <Filter>admin_manager\delete</Filter>
     </ClInclude>
     <ClInclude Include="sys_apply_info.h">
-      <Filter>apply</Filter>
+      <Filter>apply\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_apply.h">
+      <Filter>apply\apply</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +212,6 @@
     <ClCompile Include="sys_reg.cpp">
       <Filter>login_regist\reg</Filter>
     </ClCompile>
-    <ClCompile Include="sys_apply.cpp">
-      <Filter>apply</Filter>
-    </ClCompile>
     <ClCompile Include="treesafe_cServer.cpp">
       <Filter>net\net_server</Filter>
     </ClCompile>
@@ -237,7 +237,10 @@
       <Filter>admin_manager</Filter>
     </ClCompile>
     <ClCompile Include="sys_apply_info.cpp">
-      <Filter>apply</Filter>
+      <Filter>apply\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_apply.cpp">
+      <Filter>apply\apply</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

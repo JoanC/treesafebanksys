@@ -92,7 +92,7 @@ enum APPLY_INDUSTRY_TYPE{
 	livestock_farming,//畜牧业
 	forestry_farming, //林业
 	fish_farming,//渔业
-	other_farming
+	other_farming//其他行业
 };
 
 #define APPLY_WORK_UINT_LEN  51//工作单位长度
