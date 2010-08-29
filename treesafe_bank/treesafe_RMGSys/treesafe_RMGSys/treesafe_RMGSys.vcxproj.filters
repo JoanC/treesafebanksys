@@ -97,6 +97,9 @@
     <Filter Include="group\group_add_to_group">
       <UniqueIdentifier>{85ba01d3-6f7c-472e-b679-e05885f8fab1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="group\group_start">
+      <UniqueIdentifier>{90bc2da2-74e1-419c-a368-9f8e83f1bab3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -185,6 +188,12 @@
     </ClInclude>
     <ClInclude Include="sys_apply.h">
       <Filter>apply\apply</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_group_add_person.h">
+      <Filter>group\group_add_to_group</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_group_start.h">
+      <Filter>group\group_start</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
