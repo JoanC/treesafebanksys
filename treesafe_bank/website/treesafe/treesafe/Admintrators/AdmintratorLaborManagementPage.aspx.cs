@@ -11,6 +11,10 @@ namespace treesafe.Admintrotors
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userright"].ToString() != "3")
+            {
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
 
         }
 

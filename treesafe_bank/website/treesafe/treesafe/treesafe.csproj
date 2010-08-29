@@ -97,6 +97,7 @@
     <Content Include="Workers\WorkerSystemIntro.aspx" />
     <Content Include="Workers\WorkerTeamPage.aspx" />
     <Content Include="Workers\WorkerUserDataPage.aspx" />
+    <Content Include="WrongPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -389,6 +390,13 @@
     </Compile>
     <Compile Include="Workers\WorkerUserDataPage.aspx.designer.cs">
       <DependentUpon>WorkerUserDataPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WrongPage.aspx.cs">
+      <DependentUpon>WrongPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WrongPage.aspx.designer.cs">
+      <DependentUpon>WrongPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

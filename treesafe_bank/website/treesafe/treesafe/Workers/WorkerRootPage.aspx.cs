@@ -13,6 +13,11 @@ namespace treesafe.Workers
         {
           //读入操作员基本信息，直接可用如下方法赋值
           //  WorkerPosition.Text = "dfsf";
+
+            if (Session["userright"].ToString() != "1")
+            {
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
         }
     }
 }

@@ -142,7 +142,7 @@ namespace treesafe.Account
             //在这里调用函数~判断用户权限~并决定用户进入的界面
             //在此处传值
 
-            uint destinationPage = 1;
+            uint destinationPage = 3;
 
             //0: 进入用户界面（农民）
             //1：进入操作员界面（前台工作人员）
@@ -152,16 +152,20 @@ namespace treesafe.Account
             switch (destinationPage)
             {
                 case 0:
-                    LoginUser.DestinationPageUrl = String.Format("~/UserRootPage.aspx?{0}", Request.QueryString.ToString());
+                    LoginUser.DestinationPageUrl = String.Format("~/Users/UserRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "0";
                     break;
                 case 1:
-                    LoginUser.DestinationPageUrl = String.Format("~/WorkerRootPage.aspx?{0}", Request.QueryString.ToString());
+                    LoginUser.DestinationPageUrl = String.Format("~/Workers/WorkerRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "1";
                     break;
                 case 2:
-                    LoginUser.DestinationPageUrl = String.Format("~/AuditorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    LoginUser.DestinationPageUrl = String.Format("~/Auditors/AuditorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "2";
                     break;
                 case 3:
-                    LoginUser.DestinationPageUrl = String.Format("~/AdmintratorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    LoginUser.DestinationPageUrl = String.Format("~/Admintrators/AdmintratorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "3";
                     break;
                 default:
                     Console.WriteLine("Default");

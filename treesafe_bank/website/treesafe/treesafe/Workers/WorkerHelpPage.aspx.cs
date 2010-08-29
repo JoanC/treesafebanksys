@@ -11,6 +11,10 @@ namespace treesafe.Workers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userright"].ToString() != "1")
+            {
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
 
         }
     }
