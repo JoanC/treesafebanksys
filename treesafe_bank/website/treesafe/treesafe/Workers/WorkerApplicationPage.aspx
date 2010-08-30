@@ -139,6 +139,7 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
           <p>
            &nbsp;
            </p>
+           <p>
               <asp:Label ID="ApplicationPersonIncomeLabel" runat="server" AssociatedControlID="ApplicationPersonIncome">
               1. 个人年收入:</asp:Label>
               &nbsp;&nbsp;
