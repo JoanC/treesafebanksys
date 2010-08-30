@@ -75,7 +75,9 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) ;
 
 bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt) ;
 	//for 7.3
-
 bool IsACharNumber(char ch) ;
-
+	// for 7.5
 bool IncreaseCharStr(char *_Dst,size_t _nLen) ; // '1' == 49 , nLen is not include '\0'
+	// for 7.5
+bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID) ;
+	// for 7.5
