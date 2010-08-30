@@ -21,7 +21,9 @@ namespace treesafe.Account
             RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
         }
 
+
         /*与注册有关的结构体的声明*/
+        /*
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
         public struct reg_basic_info
@@ -59,7 +61,41 @@ namespace treesafe.Account
                 this.reg_pwd = _pwd.PadRight(16, '\0').ToCharArray();
             }
         };
+        */
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        public struct reg_basic_info
+        {
+            //身证号
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)] // 声明一个字符数组，大小为11
+            public char[] reg_id;
+            //用户密码
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+            public char[] reg_pwd;
+            //用户真实姓名
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
+            public char[] reg_basic_user_name;
+            //电话号码
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
+            public char[] reg_phone_num;
+            //家庭地址
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+            public char[] reg_home_addr;
+            //性别
+           // bool reg_gender;
+            //年
 
+            public reg_basic_info(string _id,string _pwd,string _name,string _tel ,string _addr) 
+            {
+              //  reg_age = _age;
+                reg_id = _id.PadRight(19,'\0').ToCharArray();
+                reg_pwd = _pwd.PadRight(16,'\0').ToCharArray();
+                reg_basic_user_name = _name.PadRight(51, '\0').ToCharArray();
+                reg_phone_num = _tel.PadRight(12,'\0').ToCharArray();
+                reg_home_addr = _addr.PadRight(64,'\0').ToCharArray();
+            }
+        };
+        /*
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
         public struct reg_input_info 
@@ -72,13 +108,13 @@ namespace treesafe.Account
             //密码是否正确
             public bool is_pwd_corr;
             /*初始化信息*/
-            public reg_input_info(string _email,reg_basic_info _info) {
+  /*          public reg_input_info(string _email,reg_basic_info _info) {
                 this.is_pwd_corr = true;
                 this.reg_email_addr = _email.PadRight(64, '\0').ToCharArray();
                 this.reg_basic = _info;
             }
         };
-
+    */
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
@@ -92,9 +128,15 @@ namespace treesafe.Account
             //创建网络接口
             web_net_client_mgr reg_net = new web_net_client_mgr();
             //读取输入的数据，并发送
-            reg_basic_info _info = new reg_basic_info(false,18,"123456789123789"
-                ,"1234567","haha","123456","江西");
-            reg_input_info _send = new reg_input_info("bill002@yahoo.cn",_info);
+            string _id = new string("hello".ToCharArray());
+            string _pwd = new string("1234".ToCharArray());
+            string _name = new string("haha".ToCharArray());
+            string _tel = new string("1234".ToCharArray());
+            string _addr = new string("jiangxi".ToCharArray());
+           // int _age = 10;
+
+            reg_basic_info _info = new reg_basic_info(_id,_pwd,_name,_tel,_addr);
+           // reg_input_info _send = new reg_input_info("bill002@yahoo.cn",_info);
             reg_net.send_command_data(1,_info);
 
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
