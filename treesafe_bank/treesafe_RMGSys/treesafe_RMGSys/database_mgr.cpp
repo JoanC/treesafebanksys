@@ -329,3 +329,29 @@ bool IncreaseCharStr(char *_Dst,size_t _nLen) // '1' == 49 , nLen is not include
 	}
 	return true ;
 }
+bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID) 
+{
+	char sqlStr[200] = "select max(apply_id) from Table_App_ID_Set" ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	// execute sql... 
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+	
+	_variant_t varAppID = rsp->Fields->GetItem(long(0))->Value ;
+	if(VT_NULL == varAppID.vt)
+	{
+		return false ;
+	}
+	else 
+	{
+		strcpy(_appID,(char*)(_bstr_t)varAppID ) ;
+	}
+	
+	rsp.Release() ;
+	return true ;
+}
