@@ -10,6 +10,22 @@
 #include "sys_bank_query.h"
 
 
+//综合信息,即要发送给网络端的信息
+struct reg_info{
+	//用户名
+	//用于在界面上输出"XXX,您好!注册成功"
+	REG_USER_ID user_name[REG_MAX_USER_NAME];
+	sys_err reg_err;//注册过程中出现的错误和异常
+};
+
+//注册过程的整体模块
+struct reg_modle{
+	bool reg_succ;//注册过程成功
+	/*下面是数据*/
+	reg_input_info input_info;//用户输入的信息
+	reg_basic_info db_query_from_bank;//从银行系统调出的基础信息
+	reg_info info;//注册过程中的数据,也是结果数据
+};
 
 /********************************************************/
 //模块6.1
