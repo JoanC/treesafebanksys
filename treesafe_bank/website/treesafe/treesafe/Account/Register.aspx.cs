@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using ClientNet;
+using System.Text;
 
 namespace treesafe.Account
 {
@@ -83,12 +84,15 @@ namespace treesafe.Account
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
             public char[] reg_home_addr;
             //性别
-           // bool reg_gender;
-            //年
+            bool reg_gender;
+            //年龄
+            int reg_age;
 
-            public reg_basic_info(string _id,string _pwd,string _name,string _tel ,string _addr) 
+            public reg_basic_info(bool _gender
+                ,int _age,string _id,string _pwd,string _name,string _tel ,string _addr) 
             {
-              //  reg_age = _age;
+                reg_age = _age;
+                reg_gender = _gender;
                 reg_id = _id.PadRight(19,'\0').ToCharArray();
                 reg_pwd = _pwd.PadRight(16,'\0').ToCharArray();
                 reg_basic_user_name = _name.PadRight(51, '\0').ToCharArray();
@@ -137,10 +141,11 @@ namespace treesafe.Account
 
             char[]_test = _name.ToCharArray();
             byte[]_byte_test = System.Text.Encoding.UTF8.GetBytes(_name);
+            string name = new string(Encoding.ASCII.GetChars(_byte_test));
 
            // int _age = 10;
 
-            reg_basic_info _info = new reg_basic_info(_id,_pwd,_name,_tel,_addr);
+            reg_basic_info _info = new reg_basic_info(true,18,_id,_pwd,name,_tel,_addr);
            // reg_input_info _send = new reg_input_info("bill002@yahoo.cn",_info);
             
             reg_net.send_command_data(1,_info);
