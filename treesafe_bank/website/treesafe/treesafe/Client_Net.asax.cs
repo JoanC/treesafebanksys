@@ -18,7 +18,27 @@ using System.Runtime.Serialization;
 
 namespace ClientNet
 {
-  
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+    public struct sys_err
+    {
+        int type;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
+        char[] info;
+        public sys_err(int _err_type, string _err_info)
+        {
+            this.type = _err_type;
+            this.info = _err_info.PadRight(128, '\0').ToCharArray();
+        }
+        public sys_err(sys_err _err)
+        {
+            this.type = _err.type;
+            this.info = new char[128];
+            Array.Copy(_err.info, this.info, 128);
+        }
+    };
+
         class web_net_client_mgr
         {
             //成员变量
@@ -57,6 +77,10 @@ namespace ClientNet
             public web_net_client_mgr(string _ip, int _server_port)
             {
                 m_config = new net_config(_ip, _server_port);
+            }
+
+            public web_net_client_mgr() {
+                m_config = new net_config("127.0.0.1",4999);
             }
 
             public void config_client(string _server_ip, int _server_port)
