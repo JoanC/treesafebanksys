@@ -15,7 +15,7 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
     </span>
     <asp:ValidationSummary ID="ApplicationValidationSummary" runat="server" CssClass="failureNotification" 
     ValidationGroup="ApplicationValidationGroup"/>
-       <div class="accountInfo">
+       <div>
           <fieldset>
          <p class="header" style="font-size: medium; color: #FFFFFF;">
         申请人基本信息</p>
@@ -144,18 +144,12 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
               1. 个人年收入:</asp:Label>
               &nbsp;&nbsp;
               <asp:DropDownList ID="ApplicationPersonIncome" runat="server">
-                 <asp:ListItem Value="0">5万元以下</asp:ListItem>
-                 <asp:ListItem Value="1">5~10万元</asp:ListItem>
-                 <asp:ListItem Value="2">10~15万元</asp:ListItem>
-                 <asp:ListItem Value="3">15~20万元</asp:ListItem>
-                 <asp:ListItem Value="4">20~25万元</asp:ListItem>
-                 <asp:ListItem Value="5">25~30万元</asp:ListItem>
-                 <asp:ListItem Value="6">30~40万元</asp:ListItem>
-                 <asp:ListItem Value="7">40~50万元</asp:ListItem>
-                 <asp:ListItem Value="8">50~60万元</asp:ListItem>
-                 <asp:ListItem Value="9">60~70万元</asp:ListItem>
-                 <asp:ListItem Value="10">70~100万元</asp:ListItem>
-                 <asp:ListItem Value="11">100万元以上</asp:ListItem>
+                 <asp:ListItem Value="0">2000元以下</asp:ListItem>
+                 <asp:ListItem Value="1">2000~5000元</asp:ListItem>
+                 <asp:ListItem Value="2">5000~8000元</asp:ListItem>
+                 <asp:ListItem Value="3">10000~15000元</asp:ListItem>
+                 <asp:ListItem Value="4">15000~20000元</asp:ListItem>
+                 <asp:ListItem Value="5">2万元以上</asp:ListItem>
               </asp:DropDownList>
            </p>
 
@@ -164,18 +158,13 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
               2. 家庭年收入:</asp:Label>
               &nbsp;&nbsp;
               <asp:DropDownList ID="ApplicationHomeIncome" runat="server">
-                 <asp:ListItem Value="0">5万元以下</asp:ListItem>
-                 <asp:ListItem Value="1">5~10万元</asp:ListItem>
-                 <asp:ListItem Value="2">10~15万元</asp:ListItem>
-                 <asp:ListItem Value="3">15~20万元</asp:ListItem>
-                 <asp:ListItem Value="4">20~25万元</asp:ListItem>
-                 <asp:ListItem Value="5">25~30万元</asp:ListItem>
-                 <asp:ListItem Value="6">30~40万元</asp:ListItem>
-                 <asp:ListItem Value="7">40~50万元</asp:ListItem>
-                 <asp:ListItem Value="8">50~60万元</asp:ListItem>
-                 <asp:ListItem Value="9">60~70万元</asp:ListItem>
-                 <asp:ListItem Value="10">70~100万元</asp:ListItem>
-                 <asp:ListItem Value="11">100万元以上</asp:ListItem>
+                 <asp:ListItem Value="0">2000元</asp:ListItem>
+                 <asp:ListItem Value="1">2000~5000元</asp:ListItem>
+                 <asp:ListItem Value="2">5000~1万元</asp:ListItem>
+                 <asp:ListItem Value="3">1~3万元</asp:ListItem>
+                 <asp:ListItem Value="4">3~5万元</asp:ListItem>
+                 <asp:ListItem Value="5">5~10万元</asp:ListItem>
+                 <asp:ListItem Value="6">10万元以上</asp:ListItem>
               </asp:DropDownList>
            </p>
               <p>
@@ -198,16 +187,14 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   </asp:Label>
                   &nbsp;&nbsp;
                   <asp:DropDownList ID="ApplicationDepositFixed" runat="server">
-                     <asp:ListItem Value="0">5万元以下</asp:ListItem>
-                     <asp:ListItem Value="1">5~10万元</asp:ListItem>
-                     <asp:ListItem Value="2">10~20万元</asp:ListItem>
-                     <asp:ListItem Value="3">20~30万元</asp:ListItem>
-                     <asp:ListItem Value="4">30~50万元</asp:ListItem>
-                     <asp:ListItem Value="5">50~70万元</asp:ListItem>
-                     <asp:ListItem Value="6">70~100万元</asp:ListItem>
-                     <asp:ListItem Value="7">100~150万元</asp:ListItem>
-                     <asp:ListItem Value="8">150~200万元</asp:ListItem>
-                     <asp:ListItem Value="9">200万元以上</asp:ListItem>
+                     <asp:ListItem Value="0">无存款</asp:ListItem>
+                     <asp:ListItem Value="1">2000元以下</asp:ListItem>
+                     <asp:ListItem Value="2">2000~5000元</asp:ListItem>
+                     <asp:ListItem Value="3">5000~8000元</asp:ListItem>
+                     <asp:ListItem Value="4">8000~1万元</asp:ListItem>
+                     <asp:ListItem Value="5">1万~2万元</asp:ListItem>
+                     <asp:ListItem Value="6">2万~5万元</asp:ListItem>
+                     <asp:ListItem Value="7">5万元以上</asp:ListItem>
                    </asp:DropDownList>
               </p>
 
@@ -217,16 +204,14 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   </asp:Label>
                   &nbsp;&nbsp;
                   <asp:DropDownList ID="ApplicationCurrentDeposit" runat="server">
-                     <asp:ListItem Value="0">5万元以下</asp:ListItem>
-                     <asp:ListItem Value="1">5~10万元</asp:ListItem>
-                     <asp:ListItem Value="2">10~20万元</asp:ListItem>
-                     <asp:ListItem Value="3">20~30万元</asp:ListItem>
-                     <asp:ListItem Value="4">30~50万元</asp:ListItem>
-                     <asp:ListItem Value="5">50~70万元</asp:ListItem>
-                     <asp:ListItem Value="6">70~100万元</asp:ListItem>
-                     <asp:ListItem Value="7">100~150万元</asp:ListItem>
-                     <asp:ListItem Value="8">150~200万元</asp:ListItem>
-                     <asp:ListItem Value="9">200万元以上</asp:ListItem>
+                     <asp:ListItem Value="0">无存款</asp:ListItem>
+                     <asp:ListItem Value="1">2000元以下</asp:ListItem>
+                     <asp:ListItem Value="2">2000~5000元</asp:ListItem>
+                     <asp:ListItem Value="3">5000~8000元</asp:ListItem>
+                     <asp:ListItem Value="4">8000~1万元</asp:ListItem>
+                     <asp:ListItem Value="5">1万~2万元</asp:ListItem>
+                     <asp:ListItem Value="6">2万~5万元</asp:ListItem>
+                     <asp:ListItem Value="7">5万元以上</asp:ListItem>
                    </asp:DropDownList>
               </p>
               <p>
@@ -249,16 +234,14 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   7. 如果有贷款的话，贷款总金额为：</asp:Label>
                   &nbsp;&nbsp;
                   <asp:DropDownList ID="ApplicationLoanSum" runat="server">
-                     <asp:ListItem Value="0">5万元以下</asp:ListItem>
-                     <asp:ListItem Value="1">5~10万元</asp:ListItem>
-                     <asp:ListItem Value="2">10~20万元</asp:ListItem>
-                     <asp:ListItem Value="3">20~30万元</asp:ListItem>
-                     <asp:ListItem Value="4">30~50万元</asp:ListItem>
-                     <asp:ListItem Value="5">50~70万元</asp:ListItem>
-                     <asp:ListItem Value="6">70~100万元</asp:ListItem>
-                     <asp:ListItem Value="7">100~150万元</asp:ListItem>
-                     <asp:ListItem Value="8">150~200万元</asp:ListItem>
-                     <asp:ListItem Value="9">200万元以上</asp:ListItem>
+                     <asp:ListItem Value="0">无</asp:ListItem>
+                     <asp:ListItem Value="1">2000元以下</asp:ListItem>
+                     <asp:ListItem Value="2">2000~5000元</asp:ListItem>
+                     <asp:ListItem Value="3">5000~8000元</asp:ListItem>
+                     <asp:ListItem Value="4">8000~1万元</asp:ListItem>
+                     <asp:ListItem Value="5">1~2万元</asp:ListItem>
+                     <asp:ListItem Value="6">2~5万元</asp:ListItem>
+                     <asp:ListItem Value="7">5万元以上</asp:ListItem>
                    </asp:DropDownList>
               </p>
               
@@ -266,7 +249,13 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   <asp:Label ID="ApplicationLoanDeadlineLabel" runat="server" AssociatedControlID="ApplicationLoanDeadline">
                   8. 预计还清贷款日期（年月日，例如：2012年2月2日）：
                   </asp:Label>
-                  <asp:TextBox ID="ApplicationLoanDeadline" runat="server" CssClass="textEntry"></asp:TextBox>
+                  <asp:DropDownList ID="ApplicationLoanDeadline" runat="server">
+                     <asp:ListItem Value="0">无</asp:ListItem>
+                     <asp:ListItem Value="1">6个月内</asp:ListItem>
+                     <asp:ListItem Value="2">6个月~12个月</asp:ListItem>
+                     <asp:ListItem Value="3">12个月~24个月</asp:ListItem>
+                     <asp:ListItem Value="4">24个月以上</asp:ListItem>
+                   </asp:DropDownList>
               </p>
 
               <p>
@@ -287,10 +276,12 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   10.未抵押的主要固定资产：
                   </asp:Label>
                   <asp:CheckBoxList ID="ApplicationMortgage" runat="server">
-                      <asp:ListItem Value="0">房地产</asp:ListItem>
-                      <asp:ListItem Value="1">交通工具</asp:ListItem>
-                      <asp:ListItem Value="2">生产设备</asp:ListItem>
-                      <asp:ListItem Value="3">其他</asp:ListItem>
+                      <asp:ListItem Value="0">住宅</asp:ListItem>
+                      <asp:ListItem Value="1">工作建筑（厂房）</asp:ListItem>
+                      <asp:ListItem Value="2">个人交通工具</asp:ListItem>
+                      <asp:ListItem Value="3">运输工具</asp:ListItem>
+                      <asp:ListItem Value="4">生产设备</asp:ListItem>
+                      <asp:ListItem Value="5">其他</asp:ListItem>
                   </asp:CheckBoxList>
               </p>
               <p>
@@ -301,12 +292,19 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   11.从事行业：
                   </asp:Label>
                   <asp:CheckBoxList ID="ApplicationIndustry" runat="server">
-                      <asp:ListItem Value="0">种植业</asp:ListItem>
-                      <asp:ListItem Value="1">林业</asp:ListItem>
-                      <asp:ListItem Value="2">畜牧业</asp:ListItem>
-                      <asp:ListItem Value="3">渔业</asp:ListItem>
-                      <asp:ListItem Value="4">农、林、牧、渔服务业</asp:ListItem>
-                      <asp:ListItem Value="5">其他</asp:ListItem>
+                      <asp:ListItem Value="0">作物种植</asp:ListItem>
+                      <asp:ListItem Value="1">水产渔业</asp:ListItem>
+                      <asp:ListItem Value="2">林业苗木</asp:ListItem>
+                      <asp:ListItem Value="3">果树蔬菜</asp:ListItem>
+                      <asp:ListItem Value="4">观赏园艺</asp:ListItem>
+                      <asp:ListItem Value="5">农资企业</asp:ListItem>
+                      <asp:ListItem Value="6">农业机械</asp:ListItem>
+                      <asp:ListItem Value="7">加工贮藏</asp:ListItem>
+                      <asp:ListItem Value="8">粮油食品</asp:ListItem>
+                      <asp:ListItem Value="9">交通运输</asp:ListItem>
+                      <asp:ListItem Value="10">生物技术</asp:ListItem>
+                      <asp:ListItem Value="11">遗传育种</asp:ListItem>
+                      <asp:ListItem Value="12">其他</asp:ListItem>
                   </asp:CheckBoxList>
               </p>
 
