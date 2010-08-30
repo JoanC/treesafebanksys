@@ -31,7 +31,7 @@ namespace treesafe
         void Session_Start(object sender, EventArgs e)
         {
             // Code that runs when a new session is started
-            Session["userright"] = "-1"; 
+            Session["userright"] = "-1";
         }
 
         void Session_End(object sender, EventArgs e)

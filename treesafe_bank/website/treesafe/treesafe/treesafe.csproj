@@ -57,6 +57,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Admintrators\AdmintratorHelpPage.aspx" />
     <Content Include="Admintrators\AdmintratorLaborManagementPage.aspx" />
+    <Content Include="Admintrators\AdmintratorLaborOneInfo.aspx" />
     <Content Include="Admintrators\AdmintratorRiskManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorRootPage.aspx" />
     <Content Include="Admintrators\AdmintratorSystemIntro.aspx" />
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="Admintrators\AdmintratorLaborManagementPage.aspx.designer.cs">
       <DependentUpon>AdmintratorLaborManagementPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorLaborOneInfo.aspx.cs">
+      <DependentUpon>AdmintratorLaborOneInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorLaborOneInfo.aspx.designer.cs">
+      <DependentUpon>AdmintratorLaborOneInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admintrators\AdmintratorRiskManagementPage.aspx.cs">
       <DependentUpon>AdmintratorRiskManagementPage.aspx</DependentUpon>

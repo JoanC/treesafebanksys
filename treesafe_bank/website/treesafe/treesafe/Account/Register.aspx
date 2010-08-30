@@ -37,6 +37,16 @@
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
+                                <asp:Label ID="UserSexLabel" runat="server" AssociatedControlID="UserSex">性别:</asp:Label>
+                                <asp:RadioButtonList ID="UserSex" runat="server" RepeatDirection="Horizontal">
+                                   <asp:ListItem Value="0">男</asp:ListItem> 
+                                   <asp:ListItem Value="1">女</asp:ListItem>
+                                </asp:RadioButtonList>
+                                <asp:RequiredFieldValidator ID="UserSexRequired" runat="server" ControlToValidate="UserSex" 
+                                     CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                            <p>
                                 <asp:Label ID="UserIDLabel" runat="server" AssociatedControlID="UserID">身份证号:</asp:Label>
                                 <asp:TextBox ID="UserId" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserIDRequired" runat="server" ControlToValidate="UserID" 
