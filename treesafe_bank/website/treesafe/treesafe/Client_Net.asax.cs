@@ -159,11 +159,11 @@ namespace ClientNet
                      //关闭连接
 	            }  
             }
-               public void recevie_data(Type _obj_type,object _obj_data)
+               public object recevie_data(Type _obj_type)
                {
                     int iCount = 99;
                     byte[] cCount = System.BitConverter.GetBytes(iCount);
-                    this.m_net_stream.Read(cCount,0,cCount.Length);
+                    this.m_net_stream.Read(cCount,0,cCount.Length - 1);
                    
                    char[] _temp_num = Encoding.ASCII.GetChars(cCount);
                    string _num_str = new string(_temp_num);
@@ -176,7 +176,8 @@ namespace ClientNet
 	                }
                     //关闭连接
                   this.m_client.Close();
-                   _obj_data = BytesToStruct(buffer,_obj_type);
+                  object _obj_data = BytesToStruct(buffer,_obj_type);
+                  return _obj_data;
                }
               
     }
