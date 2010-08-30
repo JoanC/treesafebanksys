@@ -26,10 +26,6 @@ namespace treesafe.Account
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
         public struct reg_basic_info
         {
-            //性别
-            public bool reg_gender;
-            //年龄
-            public int reg_age;
             //家庭住址
             //身份证号,18位
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
@@ -47,11 +43,15 @@ namespace treesafe.Account
             //家庭地址
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
             public char[] reg_home_addr;
+            //性别
+            public bool reg_gender;
+            //年龄
+            public int reg_age;
             //初始赋值函数
             public reg_basic_info(bool _gender , int _age
                 ,string _id,string _pwd,string _name,string _tel,string _addr) {
-                this.reg_gender = _gender;
-                this.reg_age = _age;
+                this.reg_gender =  true;
+                this.reg_age = 0;
                 this.reg_basic_user_name = _name.PadRight(51,'\0').ToCharArray();
                 this.reg_home_addr = _addr.PadRight(64,'\0').ToCharArray();
                 this.reg_id = _id.PadRight(19,'\0').ToCharArray();
@@ -92,7 +92,10 @@ namespace treesafe.Account
             //创建网络接口
             web_net_client_mgr reg_net = new web_net_client_mgr();
             //读取输入的数据，并发送
-            reg_basic_info _info = new reg_basic_info();
+            reg_basic_info _info = new reg_basic_info(false,18,"123456789123789"
+                ,"1234567","haha","123456","江西");
+            reg_input_info _send = new reg_input_info("bill002@yahoo.cn",_info);
+            reg_net.send_command_data(1,_info);
 
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
