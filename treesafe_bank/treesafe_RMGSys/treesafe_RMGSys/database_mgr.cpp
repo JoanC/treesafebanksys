@@ -309,3 +309,23 @@ bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt)
 	rsp.Release() ;
 	return true ;
 }
+bool IsACharNumber(char ch) 
+{
+	return ( ch >= 48 && ch <=  57 ) ;
+}
+
+bool IncreaseCharStr(char *_Dst,size_t _nLen) // '1' == 49 , nLen is not include '\0'
+{
+	for (unsigned int i = 0 ; i < _nLen ; ++i )
+		if ( ! IsACharNumber(_Dst[i] ) )
+			return false ;
+	
+	for (unsigned int i = _nLen-1 ; i >= 0 ; --i )
+	{
+		if ( ! IsACharNumber( ++_Dst[i] ) )
+			_Dst[i] = '0' ;
+		else
+			break ;
+	}
+	return true ;
+}
