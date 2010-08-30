@@ -20,7 +20,7 @@ void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 	_init->cust_deposit_type = regular_deposit;
 	_init->cust_family_annual_income = 0;
 	_init->cust_industry = other_farming;
-	_init->cust_is_has_loan = false;
+	_init->does_cust_have_loan = false;
 	_init->cust_loan_sum = 0;
 	_init->cust_loan_time = 0;
 	_init->cust_personal_annual_income = 0;

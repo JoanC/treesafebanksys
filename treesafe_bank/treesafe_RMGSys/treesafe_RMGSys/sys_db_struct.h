@@ -80,15 +80,16 @@ enum APPLY_CARD_TYPE{id_card/*身份证*/,ｍilitary_card/*军人证*/};//证件
 enum APPLY_CUST_HOUSING_TENURE{own/*自有*/,lease/*租赁*/,other/*其他*/};//住房权属
 
 enum APPLY_CUST_EDUCATION_DEGREE{
-	edu_master_and_above,/*硕士及以上*/
-	edu_undergraduate,/*本科*/
-	edu_college,/*大专*/
-	edu_high_school,/*高中*/
-	edu_primary_and_below/*小学及以下*/
+	edu_master_and_above = 1,/*硕士及以上*/
+	edu_undergraduate = 2 ,/*本科*/
+	edu_college = 3 ,/*大专*/
+	edu_high_school = 4 ,/*高中*/
+	edu_primary_and_below = 5/*小学及以下*/
 };//受教育程度
 
 //操作员输入的信息结构
 struct apply_custmor_info{
+	char app_id[APPLY_ID] ;
 	char cust_name[APPLY_CUST_NAME_LEN];//申请人信息
 	APPLY_GENDER_TYPE cust_gender;//申请人性别
 	int cust_age;//申请人性别
@@ -149,11 +150,12 @@ enum APPLY_INDUSTRY_TYPE{
 #define APPLY_WORK_POSITION_LEN 51 //工作职务
 
 struct apply_cust_asset_info{
+	char app_id[APPLY_ID] ;
 	int cust_personal_annual_income;//个人年收入
 	int cust_family_annual_income;//家庭年收入
 	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
 	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
-	bool cust_is_has_loan;//是否有贷款
+	bool does_cust_have_loan;//是否有贷款
 	int cust_loan_sum;//贷款总金额
 	int cust_loan_time;//经过多少年后还款
 	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
@@ -181,6 +183,7 @@ enum APPLY_CUST_MARITAL_STATUS{
 };
 
 struct apply_cust_family_info{
+	char app_id[APPLY_ID] ;
 	APPLY_CUST_MARITAL_STATUS cust_marital_status;//申请人的婚姻状况
 	int cust_children_num;//子女人数
 	char cust_spouse_name[APPLY_CUST_NAME_LEN];//陪偶姓名
@@ -220,6 +223,7 @@ enum APPLY_LOAN_TIMES{
 
 struct apply_loan_info{
 	//贷款信息
+	char app_id[APPLY_ID] ;
 	int loan_application_amount;//贷款金额
 	int loan_dead_line;//还款期限(单位为月份)
 	APPLY_LOAN_TIMES loan_times;//申请人的贷款次数

@@ -81,3 +81,11 @@ bool IncreaseCharStr(char *_Dst,size_t _nLen) ; // '1' == 49 , nLen is not inclu
 	// for 7.5
 bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID) ;
 	// for 7.5
+bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info) ;
+	//for 7.5
+bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_info) ;
+	//for 7.5
+bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_info *_info) ;
+	//for 7.5
+bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_info) ;
+	//for 7.5

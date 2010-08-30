@@ -355,3 +355,187 @@ bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID)
 	rsp.Release() ;
 	return true ;
 }
+
+bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info) 
+{
+	char sqlStrTest[200] = "select cust_gend from Table_App_Cust_Info where apply_id = " ;
+	strcat(sqlStrTest,_info->app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+	char sqlStr[300] = "insert into Table_App_Cust_Info values('" ;
+	strcat(sqlStr,_info->app_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_name) ;
+	strcat(sqlStr,"','") ;
+	char temp[6] ;
+	strcpy(temp, _info->cust_gender == apply_info_male ? "true" : "false") ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,6) ;
+	itoa(_info->cust_age,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,6) ;
+	itoa(_info->cust_card_type,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_tel_num) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_other_tel_num) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,6) ;
+	itoa(_info->cust_edu,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"')") ;
+
+	_variant_t vt;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	rsp.Release() ;
+	return true ;
+}
+bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_info) 
+{
+	char sqlStrTest[200] = "select cust_app_indus_type from Table_App_Cust_Asset_Info where apply_id = " ;
+	strcat(sqlStrTest,_info->app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+
+	char sqlStr[300] = "insert into Table_App_Cust_Asset_Info values('" ;
+	strcat(sqlStr,_info->app_id) ;
+	strcat(sqlStr,"','") ;
+	char temp[15] ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_family_annual_income,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_deposit_type,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_deposit_range,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->does_cust_have_loan == true ? "true" : "false" ) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_loan_sum,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_loan_time,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_unsecured_fixed_asset,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_industry,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_work_unit) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_work_pos) ;
+	strcat(sqlStr,"')") ;
+
+	_variant_t vt;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	rsp.Release() ;
+	return true ;
+}
+
+bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_info *_info)
+{
+	char sqlStrTest[200] = "select cust_app_marital_status from Table_App_Cust_Fami_Info where apply_id = " ;
+	strcat(sqlStrTest,_info->app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+
+	char sqlStr[300] = "insert into Table_App_Cust_Asset_Info values('" ;
+	strcat(sqlStr,_info->app_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_marital_status == is_married ? "true" : "false" ) ;
+	strcat(sqlStr,"','") ;
+	char temp[4] ;
+	memset(temp,0,4) ;
+	itoa(_info->cust_children_num,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_spouse_name) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,4) ;
+	itoa(_info->cust_apouse_card_type,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_spouse_card_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_spouse_work_unit) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,4) ;
+	itoa(_info->cust_spouse_edu_degree,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->does_cust_spouse_has_loan == true ? "true" : "false") ;
+	strcat(sqlStr,"')") ;
+
+	_variant_t vt;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	rsp.Release() ;
+	return true ;
+}
+
+bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_info) 
+{
+	char sqlStrTest[200] = "select cust_loan_amount from Table_App_Loan_Info where apply_id = " ;
+	strcat(sqlStrTest,_info->app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+
+	char sqlStr[300] = "insert into Table_App_Loan_Info values('" ;
+	strcat(sqlStr,_info->app_id) ;
+	strcat(sqlStr,"','") ;
+	char temp[15] ;
+	memset(temp,0,15) ;
+	itoa(_info->loan_application_amount,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->loan_dead_line,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->loan_times,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->loan_comment) ;
+	strcat(sqlStr,"')") ;
+
+	_variant_t vt;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	rsp.Release() ;
+	return true ;
+}

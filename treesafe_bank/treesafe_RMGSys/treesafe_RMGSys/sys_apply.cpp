@@ -75,7 +75,22 @@ bool apply_save_generate_id(char *_outcome)
 
 	return false ;
 }
-
+bool apply_save_to_research_table(apply_input_info* _info)
+{
+	char app_id[APPLY_ID] ;
+	bool bFlag0 = apply_save_generate_id(app_id) ;
+	if ( bFlag0 )
+	{
+		bool bFlag1 = Insert_app_cust_info(treesafe_db_connection,&_info->input_basic_info) ;
+		bool	bFlag2 = Insert_app_asset_info(treesafe_db_connection,&_info->input_asset_info) ;
+		bool	bFlag3 = Insert_app_cust_fami_info(treesafe_db_connection,&_info->input_fammily_info) ;
+		bool bFlag4 = Insert_app_cust_loan_info(treesafe_db_connection,&_info->input_loan_info) ;
+	
+		return bFlag1 && bFlag2 && bFlag3 && bFlag4 ;
+	}
+	else
+		return false ;
+}
 
 //7.6
 void apply_err_compute(sys_err_type _type , apply_modle* _modle){
