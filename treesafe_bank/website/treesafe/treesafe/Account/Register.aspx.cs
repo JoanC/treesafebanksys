@@ -135,7 +135,7 @@ namespace treesafe.Account
             //读取输入的数据，并发送
             string _id = new string("hello".ToCharArray());
             string _pwd = new string("1234".ToCharArray());
-            string _name = new string("万君亚".ToCharArray());
+            string _name = new string("jiraiya".ToCharArray());
             string _tel = new string("1234".ToCharArray());
             string _addr = new string("jiangxi".ToCharArray());
 
