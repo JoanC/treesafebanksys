@@ -164,7 +164,11 @@ namespace ClientNet
                     int iCount = 99;
                     byte[] cCount = System.BitConverter.GetBytes(iCount);
                     this.m_net_stream.Read(cCount,0,cCount.Length);
-                    iCount =Convert.ToInt32(cCount);
+                   
+                   char[] _temp_num = Encoding.ASCII.GetChars(cCount);
+                   string _num_str = new string(_temp_num);
+                   iCount = Convert.ToInt32(_num_str);
+
                    	byte[] buffer = new byte[iCount * BufSize];
                     for(int i = 0;i!=iCount;i++)
 	                {
