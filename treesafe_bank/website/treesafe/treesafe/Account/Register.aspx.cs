@@ -71,6 +71,12 @@ namespace treesafe.Account
             public reg_basic_info reg_basic;
             //密码是否正确
             public bool is_pwd_corr;
+            /*初始化信息*/
+            public reg_input_info(string _email,reg_basic_info _info) {
+                this.is_pwd_corr = true;
+                this.reg_email_addr = _email.PadRight(64, '\0').ToCharArray();
+                this.reg_basic = _info;
+            }
         };
 
 
@@ -86,6 +92,7 @@ namespace treesafe.Account
             //创建网络接口
             web_net_client_mgr reg_net = new web_net_client_mgr();
             //读取输入的数据，并发送
+           // reg_basic_info _info = new reg_basic_info(RegisterUser,);
 
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
