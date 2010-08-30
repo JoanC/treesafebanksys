@@ -75,6 +75,8 @@ namespace treesafe.Account
             }
         };
 
+        static sys_err _err = new sys_err(0, "");
+        static login_info _rlt = new login_info(0, "",_err);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,7 +85,7 @@ namespace treesafe.Account
             //在这里调用函数~判断用户权限~并决定用户进入的界面
             //在此处传值
 
-            uint destinationPage = 3;
+            int destinationPage = _rlt.compe;
 
             //0: 进入用户界面（农民）
             //1：进入操作员界面（前台工作人员）
@@ -117,11 +119,9 @@ namespace treesafe.Account
         public void send_to_server(string _user_name, string _pwd)
         {
             login_check_info _send_info = new login_check_info(_user_name, _pwd);
-            sys_err _err = new sys_err(0,"");
-            login_info _rlt = new login_info(0,_user_name,_err);
             web_net_client_mgr _net = new web_net_client_mgr("10.60.37.200", 4999);
             _net.send_command_data(0, _send_info);
-            _net.recevie_data(_send_info.GetType(), _rlt);
+            _rlt = (login_info)_net.recevie_data(_rlt.GetType());
         }
     }
 }
