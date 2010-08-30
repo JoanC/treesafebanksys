@@ -123,10 +123,13 @@ void net_send_data(sys_Server* sServer)
 		int iLastPackageSize = sServer->send.stNetDataLength - PackageSize * (iCount-1);
 		_itoa(iCount,temp,10);
 		reVal = send(sServer->sys_server.sClient,temp,sizeof(temp),0);
+		
+		char* _temp_send_ptr = sServer->send.cNetDataInfo;
+
 		while(iCount--)
 		{
-			reVal = send(sServer->sys_server.sClient,sServer->send.cNetDataInfo,PackageSize,0);
-			sServer->send.cNetDataInfo += PackageSize;
+			reVal = send(sServer->sys_server.sClient,_temp_send_ptr,PackageSize,0);
+			_temp_send_ptr += PackageSize;
 		}
 	}
 	if(SOCKET_ERROR == reVal)

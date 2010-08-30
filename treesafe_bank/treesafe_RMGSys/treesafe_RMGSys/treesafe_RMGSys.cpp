@@ -102,10 +102,9 @@ int _tmain(int argc, _TCHAR* argv[])
 			free(server_of_website.rec.cNetDataInfo);
 		}
 		if(server_of_website.send.cNetDataInfo != NULL){
-			free(server_of_website.rec.cNetDataInfo);
+			free(server_of_website.send.cNetDataInfo);
 		}
 	}
-
 	DisconnectDB(treesafe_db_connection);
 	free(treesafe_db_connection);
 	return 0;
