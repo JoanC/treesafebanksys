@@ -14,10 +14,10 @@ typedef char* COMMAND_DATA;
 
 enum{
 	//命令编号集合
-	sys_cmd_login,//登录指令
-	sys_cmd_reg,//注册指令
-	sys_cmd_apply,//提交申请指令
-	sys_cmd_unexpect//未知命令(不可解析)
+	sys_cmd_login = 0,//登录指令
+	sys_cmd_reg = 1,//注册指令
+	sys_cmd_apply = 2,//提交申请指令
+	sys_cmd_unexpect = -1//未知命令(不可解析)
 };
 
 struct sys_net_data{
