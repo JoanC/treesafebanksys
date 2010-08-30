@@ -35,8 +35,8 @@ void apply_init_apply_custmor_family_info(apply_cust_family_info* _init){
 	_init->cust_children_num = 0;
 	_init->cust_marital_status = not_married;
 	_init->cust_spouse_edu_degree = edu_primary_and_below;
-	strcpy(_init->cust_spouse_id,"");
-	_init->cust_spouse_is_has_loan = false;
+	strcpy(_init->cust_spouse_card_id,"");
+	_init->does_cust_spouse_has_loan = false;
 	strcpy(_init->cust_spouse_name,"");
 	strcpy(_init->cust_spouse_work_unit,"");
 }

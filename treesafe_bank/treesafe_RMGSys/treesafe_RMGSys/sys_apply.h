@@ -1,6 +1,6 @@
 #pragma once
 #include "sys_apply_info.h"
-
+#include "database_mgr.h"
 //模块7
 //申请处理的所有信息结构
 struct apply_info{
@@ -49,7 +49,7 @@ apply_input_info* apply_get_convert_input(char* _data);
 //由sunni完成
 //从风险控制系统的数据库中调出用户的基础数据
 //将数据填入一个apply_custmor_info中
-void apply_query_cust_info(apply_custmor_info* _rlt);
+void apply_query_cust_info(apply_custmor_info* _rlt,bool *_isSucceeded) ;
 
 /******************************************************/
 //模块7.4
@@ -95,4 +95,4 @@ void apply_err_compute(sys_err_type _type , apply_modle* _modle);
  
 /*********************************************************/
 //申请流程的主函式
-void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len);
+void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len) ;

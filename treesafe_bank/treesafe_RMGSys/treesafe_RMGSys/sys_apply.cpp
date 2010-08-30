@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "sys_apply.h"
 
+extern _ConnectionPtr* treesafe_db_connection ; 
 //7.1
 void apply_init_apply_info(apply_info* _init){
 	//初始化结果信息
@@ -40,8 +41,9 @@ apply_input_info* apply_get_input_info(const char* _command , int _len){
 }
 
 //7.3
-void apply_query_cust_info(apply_custmor_info* _rlt){
-	//查询结果
+void apply_query_cust_info(apply_custmor_info* _rlt,bool *_isSucceeded)
+{
+	*_isSucceeded = Apply_cust_info_query(treesafe_db_connection,_rlt) ;
 }
 
 //7.4
