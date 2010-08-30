@@ -40,11 +40,46 @@ namespace treesafe.Account
                 this.is_vry_right = true;
             }
         };
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        public struct sys_err
+        {
+            int type;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
+            char[] info;
+            public sys_err(int _err_type, string _err_info) {
+                this.type = _err_type;
+                this.info = _err_info.PadRight(128, '\0').ToCharArray();
+            }
+            public sys_err(sys_err _err) {
+                this.type = _err.type;
+                this.info = new char[128];
+                Array.Copy(_err.info,this.info,128);
+            }
+        };
+
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        //一次登陆过程的信息记载
+        public struct login_info
+        {
+            //用户权限
+            public int compe; //权限
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+            public char[] user_id;		//用户id
+            sys_err login_err;		    //错误信息
+            public login_info(int _compe , string _id , sys_err _err) {
+                this.compe = _compe;
+                this.user_id = _id.PadRight(19, '\0').ToCharArray();
+                login_err = new sys_err(_err);
+            }
+        };
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-           
+
             //在这里调用函数~判断用户权限~并决定用户进入的界面
             //在此处传值
 
@@ -79,12 +114,14 @@ namespace treesafe.Account
             }
         }
 
-        public void send_to_server(string _user_name, string _pwd) {
+        public void send_to_server(string _user_name, string _pwd)
+        {
             login_check_info _send_info = new login_check_info(_user_name, _pwd);
+            sys_err _err = new sys_err(0,"");
+            login_info _rlt = new login_info(0,_user_name,_err);
             web_net_client_mgr _net = new web_net_client_mgr("10.60.37.200", 4999);
-            _net.send_command_data(0,_send_info);
-            _net.recevie_data(_send_info.GetType(), _send_info);
+            _net.send_command_data(0, _send_info);
+            _net.recevie_data(_send_info.GetType(), _rlt);
         }
-
     }
 }
