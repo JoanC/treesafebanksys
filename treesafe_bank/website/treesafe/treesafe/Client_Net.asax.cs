@@ -16,9 +16,9 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
+
 namespace ClientNet
 {
-
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
     public struct sys_err

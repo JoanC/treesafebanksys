@@ -101,15 +101,15 @@ namespace treesafe.Account
 
         public void send_to_server(string _user_name, string _pwd)
         {
-         //   byte[] _byte_user_name = System.Text.Encoding.Unicode.GetBytes(_user_name);
-           // string _name_asc = System.Text.Encoding.UTF7.GetString(_byte_user_name);
+            //byte[] _byte_user_name = System.Text.Encoding.Unicode.GetBytes(_user_name);
+           // string _name_asc = System.Text.Encoding.ASCII.GetString(_byte_user_name);
            // _byte_user_name = System.Text.Encoding.ASCII.GetBytes(_name_asc);
            // string _name_asc = Encoding.UTF8.GetString(_byte_user_name);
 
-            //byte[] _byte_pwd = System.Text.Encoding.UTF8.GetBytes(_pwd);
-            //string _pwd_asc = new string(Encoding.ASCII.GetChars(_byte_pwd));
+          //  byte[] _byte_pwd = System.Text.Encoding.UTF8.GetBytes(_pwd);
+          //  string _pwd_asc = new string(Encoding.ASCII.GetChars(_byte_pwd));
 
-            login_check_info _send_info = new login_check_info(_user_name, _user_name);
+            login_check_info _send_info = new login_check_info(_user_name, _pwd);
             web_net_client_mgr _net = new web_net_client_mgr();
             _net.send_command_data(0, _send_info);
             _rlt = (login_info)_net.recevie_data(_rlt.GetType());
