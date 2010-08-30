@@ -52,7 +52,7 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 //2.3.1 登陆处理
 void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	//调用登陆主函式
-	login_frame(&_cmd->data[0],_cmd->len,_rlt,_rlt_len);
+	login_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
 //2.3.2 注册处理

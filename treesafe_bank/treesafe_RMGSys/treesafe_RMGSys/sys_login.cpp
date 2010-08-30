@@ -72,10 +72,10 @@ login_check_info* login_get_convert(char* _info){
 
 login_check_info* login_get_info(const char* _data , int _data_len){
 	DEBUG_LOGIN_PRINT("get the login_check_info ...\n ");
-	char _check[MAX_OTHER_STR_LEN];
+	wchar_t _check[MAX_OTHER_STR_LEN];
 	memset(_check,'\0',MAX_OTHER_STR_LEN);
-	login_get_copy_data(_data,_check , _data_len);
-	return login_get_convert(_check);
+	login_get_copy_data(_data,(char*)_check , _data_len);
+	return login_get_convert((char*)_check);
 }
 /////////////////////////////////////////////////
 /*3.3*/
@@ -153,6 +153,12 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 		DEBUG_LOGIN_PRINT("login failed\n");
 		return;
 	}
+
+	wchar_t name[20];
+	mbstowcs(name,_login_frame->check_info.user_info.input_user_name
+		,20); 
+
+
 
 	//db...
 	//这个过程中,就是_db_query的改动过程

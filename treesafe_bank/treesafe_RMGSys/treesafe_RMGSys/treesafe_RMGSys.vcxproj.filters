@@ -257,5 +257,8 @@
     <ClCompile Include="sys_apply.cpp">
       <Filter>apply\apply</Filter>
     </ClCompile>
+    <ClCompile Include="Grobal_Func.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
