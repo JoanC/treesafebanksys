@@ -176,9 +176,13 @@ namespace ClientNet
                   int iLastPackageSize = Marshal.SizeOf(_send) - BufSize * iCount;
                   dataLen = System.BitConverter.GetBytes(iCount);
 		          this.m_net_stream.Write(dataLen,0,dataLen.Length);
-		          for(int i =0;i!=iCount;i++)
+		          for(int i =0;i < iCount;i++)
 		          {
-                      this.m_net_stream.Write(dataSend,iCount * BufSize,BufSize);
+                      if (i == iCount - 1) {
+                          this.m_net_stream.Write(dataSend,i*BufSize,
+                               Marshal.SizeOf(_send) % BufSize);
+                      }
+                      else this.m_net_stream.Write(dataSend,i * BufSize,BufSize);
       	          }
                      //关闭连接
 	            }  
