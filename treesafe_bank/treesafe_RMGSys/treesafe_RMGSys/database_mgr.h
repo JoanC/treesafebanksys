@@ -88,3 +88,6 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info) ;
 bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char *_comment) ;
 
 bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) ;
+
+bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt) ;
+	//for 7.3
