@@ -172,7 +172,7 @@ namespace ClientNet
                    	byte[] buffer = new byte[iCount * BufSize];
                     for(int i = 0;i!=iCount;i++)
 	                {
-                        this.m_net_stream.Read(buffer,iCount * BufSize,BufSize);
+                        this.m_net_stream.Read(buffer,i * BufSize,BufSize);
 	                }
                     //关闭连接
                   this.m_client.Close();
