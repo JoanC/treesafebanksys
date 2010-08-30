@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
@@ -130,13 +131,18 @@ namespace treesafe.Account
             //读取输入的数据，并发送
             string _id = new string("hello".ToCharArray());
             string _pwd = new string("1234".ToCharArray());
-            string _name = new string("haha".ToCharArray());
+            string _name = new string("万君亚".ToCharArray());
             string _tel = new string("1234".ToCharArray());
             string _addr = new string("jiangxi".ToCharArray());
+
+            char[]_test = _name.ToCharArray();
+            byte[]_byte_test = System.Text.Encoding.UTF8.GetBytes(_name);
+
            // int _age = 10;
 
             reg_basic_info _info = new reg_basic_info(_id,_pwd,_name,_tel,_addr);
            // reg_input_info _send = new reg_input_info("bill002@yahoo.cn",_info);
+            
             reg_net.send_command_data(1,_info);
 
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
