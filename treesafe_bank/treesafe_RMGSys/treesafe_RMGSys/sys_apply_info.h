@@ -96,7 +96,7 @@ enum APPLY_INDUSTRY_TYPE{
 };
 
 #define APPLY_WORK_UINT_LEN  51//工作单位长度
-#define APPLY_WORK_POSITION_LEN 21 //工作职务
+#define APPLY_WORK_POSITION_LEN 51 //工作职务
 
 struct apply_cust_asset_info{
 	int cust_personal_annual_income;//个人年收入
@@ -135,10 +135,10 @@ struct apply_cust_family_info{
 	int cust_children_num;//子女人数
 	char cust_spouse_name[APPLY_CUST_NAME_LEN];//陪偶姓名
 	APPLY_CARD_TYPE cust_apouse_card_type;//配偶的卡类型
-	char cust_spouse_id[APPLY_CARD_NUMBER_LEN];//配偶的卡号
+	char cust_spouse_card_id[APPLY_CARD_NUMBER_LEN];//配偶的卡号
 	char cust_spouse_work_unit[APPLY_WORK_UINT_LEN];//配偶的工作单位
 	APPLY_CUST_EDUCATION_DEGREE cust_spouse_edu_degree;//配偶的受教育程度
-	bool cust_spouse_is_has_loan;//配偶是否有贷款
+	bool does_cust_spouse_has_loan;//配偶是否有贷款
 };
 
 /*
