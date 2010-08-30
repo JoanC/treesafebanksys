@@ -67,6 +67,7 @@ struct sys_db_apply{
 
 //以下定义了用户基础数据中的各个字符串的最大长度
 
+#define APPLY_ID 11 //申请表号（自动生成）
 #define APPLY_CUST_ID_LEN 19 //申请人身份证号长度
 #define APPLY_CUST_NAME_LEN 51//姓名长度
 #define APPLY_CARD_NUMBER_LEN 19//证件号码长度
