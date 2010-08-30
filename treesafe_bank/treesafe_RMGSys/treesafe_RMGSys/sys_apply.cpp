@@ -66,6 +66,8 @@ bool apply_check_cust_info(apply_custmor_info* _input
 }
 
 //7.5
+void apply_save_generate_id(char *_outcome) 
+{}
 
 
 //7.6

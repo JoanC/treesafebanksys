@@ -72,10 +72,10 @@ bool apply_check_cust_info(apply_custmor_info* _input
 //在模块9中,才从"审核表"中正式生成一个申请,并加入"申请表"
 
 //为这个申请产生自动编号的代码,要独一无二
-char* apply_save_generate_id();
+void apply_save_generate_id(char *_outcome) ;
 
 //把这个申请存入待审核的表中
-void apply_save_to_research_table(char* _new_id , apply_input_info* _info);
+void apply_save_to_research_table(char* _new_id , apply_input_info* _info) ; 
 
 
 /*********************************************************/
