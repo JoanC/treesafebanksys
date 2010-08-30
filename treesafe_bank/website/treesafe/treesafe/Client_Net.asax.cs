@@ -178,7 +178,6 @@ namespace ClientNet
                   this.m_client.Close();
                    _obj_data = BytesToStruct(buffer,_obj_type);
                }
-            
-       
+              
     }
 }
