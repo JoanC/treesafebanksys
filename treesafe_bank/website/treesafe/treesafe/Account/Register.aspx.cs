@@ -92,7 +92,7 @@ namespace treesafe.Account
             //创建网络接口
             web_net_client_mgr reg_net = new web_net_client_mgr();
             //读取输入的数据，并发送
-           // reg_basic_info _info = new reg_basic_info(RegisterUser,);
+            reg_basic_info _info = new reg_basic_info();
 
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
