@@ -250,3 +250,62 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 
 	return true ;
 }
+
+bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt)
+{
+	char sqlStrTest[200] = "select * from Table_Cust_Info where id = " ;
+	strcat(sqlStrTest,_rlt->cust_id) ;
+	_variant_t vt ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&vt,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp.Release() ;
+		return false ;
+	}
+
+	_variant_t varName ;
+	_variant_t varGender ;
+	_variant_t varAge ;
+	_variant_t varPhone ;
+
+	varName		=		rsp->Fields->GetItem(long(1))->Value ;
+	varGender	=		rsp->Fields->GetItem(long(2))->Value ;
+	varAge		=		rsp->Fields->GetItem(long(3))->Value ;
+	varPhone		=		rsp->Fields->GetItem(long(4))->Value ;
+
+	if( VT_NULL == varName.vt)
+	{
+		return false ;
+	}
+	else
+	{
+		strcpy(_rlt->cust_name,(char *)(_bstr_t)varName) ;
+	}
+	if( VT_NULL == varGender.vt )
+	{
+		return false ;
+	}
+	else
+	{
+		_rlt->cust_gender = varGender.boolVal ? apply_info_male : apply_info_female ;
+	}
+	if (VT_NULL == varAge.vt )
+	{
+		return false ;
+	}
+	else 
+	{
+		_rlt->cust_age = varAge.intVal ;
+	}
+	if (VT_NULL == varPhone.vt )
+	{
+		return false ;
+	}
+	else
+	{
+		strcpy(_rlt->cust_tel_num,(char *)(_bstr_t)varPhone) ;
+	}
+
+	rsp.Release() ;
+	return true ;
+}
