@@ -137,7 +137,7 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_reg_info->basic_info.reg_pwd) ;
 	strcat(sqlStr,"','") ;
-	strcat(sqlStr,"1") ;
+	strcat(sqlStr,"0") ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_reg_info->basic_info.reg_id) ;
 	strcat(sqlStr,"')") ;

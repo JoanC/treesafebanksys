@@ -4,9 +4,9 @@
 //登陆权限
 //管理员,一般用户...
 enum login_competence{
-	compe_err	= 0 ,	
-	compe_cust = 1 ,
-	compe_operater = 2 ,
+	compe_err	= -1 ,	
+	compe_cust = 0 ,
+	compe_operater = 1 ,
 	compe_admin = 3,
 	//...other competence
 };
