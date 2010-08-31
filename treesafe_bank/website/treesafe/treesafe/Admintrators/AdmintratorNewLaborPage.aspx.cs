@@ -119,7 +119,7 @@ namespace treesafe.Admintrators
             //电话号码
             string _tel = Chinese_Encode_Mgr.utf7_convert(LaborPhoneNumber.Text);
             //注释信息
-            string _comment = Chinese_Encode_Mgr.utf7_convert("注释信息 。。。");
+            string _comment = Chinese_Encode_Mgr.utf7_convert(LaborNotes.Text);
 
             /*生成发送信息*/
             admin_employ_info _info =
