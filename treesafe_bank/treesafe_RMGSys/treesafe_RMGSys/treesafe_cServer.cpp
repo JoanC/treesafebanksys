@@ -77,7 +77,7 @@ void net_recieve_data(sys_Server* sServer)
 	printf("start to recevie data!\n");
 #endif
 	int reVal;
-	char cCount[] = "99";
+    char cCount[] = "99";
 	reVal = recv(sServer->sys_server.sClient,cCount,sizeof(cCount)-1,0);
 	int iCount = atoi(cCount);
 	sServer->rec.cNetDataInfo = (char*)malloc(sizeof(char)*PackageSize*iCount);
