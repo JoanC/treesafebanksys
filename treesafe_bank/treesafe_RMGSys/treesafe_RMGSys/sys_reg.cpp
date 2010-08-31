@@ -68,7 +68,14 @@ void reg_copy_cmd(char* _dst,const char* _cmd_info,int _len){
 
 reg_input_info* reg_convert_cmd(char* _info){
 	//强制类型转化
-	return (reg_input_info*)_info;
+	reg_input_info * _new_info = (reg_input_info*)_info;
+	/*中文解码器*/
+	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_basic_user_name);
+	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_home_addr);
+	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_id);
+	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_phone_num);
+	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_pwd);
+	return _new_info;
 }
 
 reg_input_info* reg_get_info(const char* _cmd , int _len){
