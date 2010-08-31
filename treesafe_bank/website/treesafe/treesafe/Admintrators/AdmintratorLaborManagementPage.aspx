@@ -63,7 +63,7 @@ color:#333333;
     </h2>
         <asp:Panel ID="Panel1" runat="server" BackColor="#6699FF">
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="ButtonAddWorker" runat="server" Text="增加雇员" onclick="ButtonAddWorker_Click" />
+        <asp:Button ID="ButtonAddWorker" runat="server" Text="增加雇员"/>
     </asp:Panel>
 
     <table style="width: 100%;" class="css_Grid" id="LaborTable" cellpadding="5" cellspacing="0" border="1" runat="server" >

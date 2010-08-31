@@ -19,6 +19,9 @@ namespace treesafe.Admintrotors
                 //Server.Transfer("~/WrongPage.aspx", true);
             }
 
+            //
+            ButtonAddWorker.Attributes.Add("onclick","ShowDialog('AdmintratorNewLaborPage.aspx')");
+
 
             //读取雇员数据
             GetLaborInfo();
@@ -58,14 +61,6 @@ namespace treesafe.Admintrotors
 
             }
 
-        }
-
-        protected void ButtonAddWorker_Click(object sender, EventArgs e)
-        {
-            // Response.Redirect("AdmintratorNewLaborPage.aspx");
-            //Response.Write("<script>javascript:window.open('AdmintratorNewLaborPage.aspx')</script>");
-            //  Response.Write("<script>window.open('AdmintratorNewLaborPage.aspx')</script>");
-            // Response.Write("<script>window.showModelessDialog('AdmintratorNewLaborPage.aspx')</script>");
         }
     }
 }
