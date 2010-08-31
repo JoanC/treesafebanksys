@@ -228,6 +228,8 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	strcat(sqlStr,temp_type) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_comment) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,emp_info->employee_tel) ;
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt ;
@@ -412,6 +414,7 @@ bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+			rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
@@ -470,7 +473,9 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
+
 		return false ;
 	}
 
@@ -504,7 +509,8 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	_variant_t vt;
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 
-	rsp.Release() ;
+		rsp->Close() ;
+		rsp.Release() ;
 	return true ;
 }
 
@@ -516,7 +522,9 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
+		
 		return false ;
 	}
 
@@ -542,6 +550,7 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 	_variant_t vt;
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 
+	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
 }
