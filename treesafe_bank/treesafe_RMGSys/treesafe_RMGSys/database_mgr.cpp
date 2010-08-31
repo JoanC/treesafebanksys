@@ -199,9 +199,11 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
+	rsp->Close() ;
 	rsp.Release() ;
 
 	char sqlStr[500] = "insert into Table_Employee values('" ;
@@ -223,8 +225,6 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	strcat(sqlStr,"','") ;
 	char temp_type[2] = {0,0} ;
 	itoa(emp_info->employee_type, temp_type , 10 ) ;
-	strcat(sqlStr,temp_type) ;
-	strcat(sqlStr,"','") ;
 	strcat(sqlStr,temp_type) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_comment) ;
