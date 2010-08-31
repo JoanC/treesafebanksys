@@ -64,6 +64,7 @@
     <Content Include="Admintrators\AdmintratorSystemIntro.aspx" />
     <Content Include="Auditors\AuditoSystemIntro.aspx" />
     <Content Include="Client_Net.asax" />
+    <Content Include="Chinese_Coding.asax" />
     <Content Include="Users\ApplicationPage.aspx" />
     <Content Include="Auditors\AuditorHelpPage.aspx" />
     <Content Include="Auditors\AuditorListPage.aspx" />
@@ -196,6 +197,9 @@
     </Compile>
     <Compile Include="Client_Net.asax.cs">
       <DependentUpon>Client_Net.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Chinese_Coding.asax.cs">
+      <DependentUpon>Chinese_Coding.asax</DependentUpon>
     </Compile>
     <Compile Include="Users\ApplicationPage.aspx.cs">
       <DependentUpon>ApplicationPage.aspx</DependentUpon>
