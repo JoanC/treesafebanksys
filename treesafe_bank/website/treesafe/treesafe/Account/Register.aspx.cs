@@ -20,7 +20,7 @@ namespace treesafe.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+         //   RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
         }
 
 
@@ -131,36 +131,46 @@ namespace treesafe.Account
             //以下添加代码由Jiraiya编写
             /*发送数据给服务器*/
             //创建网络接口
-            web_net_client_mgr reg_net = new web_net_client_mgr();
+      //      web_net_client_mgr reg_net = new web_net_client_mgr();
             //读取输入的数据，并发送
-            string _id = new string("hello".ToCharArray());
-            string _pwd = new string("1234".ToCharArray());
-            string _name = new string("jiraiya".ToCharArray());
-            string _tel = new string("1234".ToCharArray());
-            string _addr = new string("jiangxi".ToCharArray());
+      //      string _id = new string("hello".ToCharArray());
+        //    string _pwd = new string("1234".ToCharArray());
+        //    string _name = new string("jiraiya".ToCharArray());
+       //     string _tel = new string("1234".ToCharArray());
+        //    string _addr = new string("jiangxi".ToCharArray());
 
-            char[]_test = _name.ToCharArray();
-            byte[]_byte_test = System.Text.Encoding.UTF8.GetBytes(_name);
-            string name = new string(Encoding.ASCII.GetChars(_byte_test));
+        //    char[]_test = _name.ToCharArray();
+        //    byte[]_byte_test = System.Text.Encoding.UTF8.GetBytes(_name);
+        //    string name = new string(Encoding.ASCII.GetChars(_byte_test));
 
            // int _age = 10;
 
-            reg_basic_info _info = new reg_basic_info(true,18,_id,_pwd,name,_tel,_addr);
+        //    reg_basic_info _info = new reg_basic_info(true,18,_id,_pwd,name,_tel,_addr);
            // reg_input_info _send = new reg_input_info("bill002@yahoo.cn",_info);
             
-            reg_net.send_command_data(1,_info);
+         //   reg_net.send_command_data(1,_info);
 
-            FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
+          //  FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
 
 
             //下面的这段代码不要改，是界面显示用的。上面那句看不明白。。。。。。。。。不懂。。。。看着办吧。。
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
-            if (String.IsNullOrEmpty(continueUrl))
-            {
-                continueUrl = "~/";
-            }
-            Response.Redirect(continueUrl);
+           // string continueUrl = RegisterUser.ContinueDestinationPageUrl;
+          //  if (String.IsNullOrEmpty(continueUrl))
+           // {
+          //      continueUrl = "~/";
+          //  }
+          //  Response.Redirect(continueUrl);
+        }
+
+        protected void CreateUserButton_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SetAuthCookie(UserName.Text, false /* createPersistentCookie */);
+            //所有读数据的代码都写到这里
+            //这里是新的创建用户确认按钮提交的地方
+
+            Response.Redirect("Login.aspx");
+
         }
 
     }

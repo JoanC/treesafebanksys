@@ -4,14 +4,6 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="false" OnCreatedUser="RegisterUser_CreatedUser">
-        <LayoutTemplate>
-            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
-            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
-        </LayoutTemplate>
-        <WizardSteps>
-            <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
-                <ContentTemplate>
                     <h2>
                         注册
                     </h2>
@@ -26,7 +18,7 @@
                     </span>
                     <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification" 
                          ValidationGroup="RegisterUserValidationGroup"/>
-                    <div class="accountInfo">
+                    
                         <fieldset class="register">
                             <legend>账户信息</legend>
                             <p>
@@ -92,13 +84,8 @@
                         </fieldset>
                         <p class="submitButton">
                             <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="确定，创建新账号" 
-                                 ValidationGroup="RegisterUserValidationGroup"/>
+                                 ValidationGroup="RegisterUserValidationGroup" 
+                                onclick="CreateUserButton_Click"/>
                         </p>
-                    </div>
-                </ContentTemplate>
-                <CustomNavigationTemplate>
-                </CustomNavigationTemplate>
-            </asp:CreateUserWizardStep>
-        </WizardSteps>
-    </asp:CreateUserWizard>
+                    
 </asp:Content>
