@@ -97,6 +97,7 @@ void net_recieve_data(sys_Server* sServer)
 		WSACleanup();
 		return;
 	}
+	printf("%s\n",sServer->rec.cNetDataInfo);
 #ifdef DEBUG_NET_INFO
 	printf("end receive data!\n");
 #endif

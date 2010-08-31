@@ -21,8 +21,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//net_wait_for_request(&server);
 	//net_recieve_data(&server);
 	//printf("%s\n",server.rec.cRecieveInfo);
-	/*net_recieve_frame(&server);
-	printf("%s\n",server.rec.cRecieveInfo);*/
+	/*net_recieve_frame(&server);*/
+	
 	return 0;
 }
 
