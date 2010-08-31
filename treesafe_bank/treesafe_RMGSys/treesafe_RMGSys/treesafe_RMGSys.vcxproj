@@ -108,7 +108,6 @@
     <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Grobal_Func.cpp" />
     <ClCompile Include="research_commit.cpp" />
     <ClCompile Include="sys_admin_add_employee.cpp" />
     <ClCompile Include="sys_admin_delete_employee.cpp" />

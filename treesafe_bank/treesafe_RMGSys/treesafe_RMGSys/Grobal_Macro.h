@@ -30,3 +30,12 @@
 #define DEBUG_NET_INFO
 #endif
 
+
+//utf-7的编码转换
+//将一个adsc读入,将其解码
+#define DECODE_UTF7_TO_ASC(__src_code)\
+{\
+	WCHAR* _temp = (WCHAR*)calloc(strlen(__src_code),sizeof(wchar_t)); \
+    MultiByteToWideChar(CP_UTF7,0,__src_code,-1,_temp,strlen(__src_code));\
+	WideCharToMultiByte(CP_ACP,0,_temp,strlen(__src_code),__src_code,strlen(__src_code),NULL,0);\
+}

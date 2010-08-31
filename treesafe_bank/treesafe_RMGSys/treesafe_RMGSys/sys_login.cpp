@@ -154,12 +154,6 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 		return;
 	}
 
-	wchar_t name[20];
-	mbstowcs(name,_login_frame->check_info.user_info.input_user_name
-		,20); 
-
-
-
 	//db...
 	//这个过程中,就是_db_query的改动过程
 	//调用模块3.3
@@ -173,11 +167,12 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 		return;
 	}
 
+	strcpy(_login_frame->rlt_info.login_err.info
+		,"万君亚");
 	//以下是为了测试
 //	strcpy(_login_frame->db_query.input_user_name,"haha");
 //	strcpy(_login_frame->db_query.input_user_pwd,"KOKO");
 	//
-
 /*
 	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
 		//用户名或密码不正确
@@ -186,7 +181,6 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 		return;
 	}
 */
-
 	//进行高级数据查询
 	//调用模块3.5
 	//得到login_info,即rlt_info

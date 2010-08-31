@@ -84,13 +84,15 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 		strcpy_s(pwd_rlt, PWD_LEN, (char *)(_bstr_t)varPwd)  ;
 		return true ;
 	}
+	rsp->Close() ;
+	//rsp.Release() ;
 }
 
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
 {
 	_variant_t vt ;
-	char sqlStr[200] = "select * from Table_Login where id = " ;
-	strcat_s(sqlStr,idLen,user_name) ;
+	char sqlStr[200] = "select * from Table_Login where login_id = " ;
+	strcat_s(sqlStr,user_name) ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	// visit the db...
 
@@ -117,6 +119,8 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 	{
 		user_info_rlt->cmpt = (login_competence)varCmpt.intVal  ;
 	}
+	rsp->Close() ;
+	//rsp.Release() ;
 }
 
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
@@ -127,9 +131,11 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
+	rsp->Close() ;
 	rsp.Release() ;
 
 	char sqlStr[200] = "insert into Table_Login values('" ;

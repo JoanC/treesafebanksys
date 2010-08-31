@@ -91,10 +91,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	int rlt_len = 0;
 	research_exact_frame(cmd,12,rlt,&rlt_len);
 #endif
-	treesafe_db_connection = 
-		(_ConnectionPtr*)calloc(sizeof(_ConnectionPtr),1);
-	ConnectDB(treesafe_db_connection);
+
+	char* my_name = (char*)calloc(6,sizeof(char));
+	strcpy(my_name,"\aNT?N");
+	//my_name[1] = 7;
+	//my_name[2] = 78;
+
+
 	while(1){
+		treesafe_db_connection = new _ConnectionPtr;
+		ConnectDB(treesafe_db_connection);
 		server_of_website.rec.cNetDataInfo =NULL;
 		server_of_website.send.cNetDataInfo = NULL;
 		sys_frame_work();
@@ -104,9 +110,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		if(server_of_website.send.cNetDataInfo != NULL){
 			free(server_of_website.send.cNetDataInfo);
 		}
+		DisconnectDB(treesafe_db_connection);
+		delete (treesafe_db_connection);
 	}
-	DisconnectDB(treesafe_db_connection);
-	free(treesafe_db_connection);
 	return 0;
 }
 
