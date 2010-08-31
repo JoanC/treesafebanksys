@@ -13,6 +13,7 @@ void mid_get_data_from_net(banksys_mid* _mid ,sys_Server* _net){
 	}
 	//为接受的字符串开辟一个空间
 	//尚未free掉!!!
+
 	_mid->rec.cNetDataInfo = (char*)malloc(PackageSize);
 	memset(_mid->rec.cNetDataInfo,'\0',PackageSize);
 	//strcpy(_mid->rec.cNetDataInfo,_net->rec.cNetDataInfo,);
@@ -37,9 +38,9 @@ void mid_get_data_from_db(banksys_mid* _mid ,banksys_db* _db){
 	//	memcpy(_mid->rlt.pRlt,(char*)_db->rlt.pRlt,strlen((char*)_db->rlt.pRlt));
 	int _size = 0;
 	DB_INFO_SIZE(_mid->req.type,_size)
-	//分配内存!
-	//尚未释放!
-	_mid->rlt.pRlt = malloc(_size);
+		//分配内存!
+		//尚未释放!
+		_mid->rlt.pRlt = malloc(_size);
 	memcpy((char*)_mid->rlt.pRlt,(char*)_db->rlt.pRlt,_size);
 	//_mid->rlt = _db->rlt;//获得数据
 	DEBUG_MID_PRINT("recieve done\n")
@@ -59,7 +60,7 @@ void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db){
 }
 
 //向网络中发送数据
-void mid_send_data_to_net(banksys_mid* _mid ,sys_Server* _net){
+void mid_send_data_to_net(banksys_mid* _mid ,sys_Server* _net,int _len){
 	ARRSERT_POINTER_NULL(_mid && _net)//中间转换器无效或_net层为空
 		DEBUG_MID_PRINT("check send data , success\n")
 		DEBUG_MID_PRINT("send result data to net\n")
@@ -67,10 +68,12 @@ void mid_send_data_to_net(banksys_mid* _mid ,sys_Server* _net){
 		//??????
 		//不知道 stSendPaketSize怎么传递
 		//难道传的是PackageSize??
-		
-		ARRSERT_POINTER_NULL(_mid->send.cNetDataInfo)
 
-		memcpy(_net->send.cNetDataInfo,_mid->send.cNetDataInfo,strlen(_mid->send.cNetDataInfo));
+		ARRSERT_POINTER_NULL(_mid->send.cNetDataInfo)
+		
+		_net->send.cNetDataInfo = (char*)malloc(_len);
+
+		memcpy(_net->send.cNetDataInfo,_mid->send.cNetDataInfo,_len);
 
 	DEBUG_MID_PRINT("send done\n")
 }
@@ -83,12 +86,11 @@ void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req)
 	memcpy(_req,_rec->cNetDataInfo,PackageSize);//数据复制
 }
 //将从数据库接受的运行结果数据转化为数据
-void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send){
+void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send,int _len){
 	ARRSERT_POINTER_NULL(_rlt)//结果数据为空
 		DEBUG_MID_PRINT("convert from bankDB_result_info to net_send_info...\n")
-		int _size = 0;
-	    
-		memcpy(_send->cNetDataInfo,_rlt,strlen((char*)_rlt));//数据复制
+		_send->cNetDataInfo = (char*)malloc(_len);
+		memcpy(_send->cNetDataInfo,_rlt,_len);//数据复制
 }
 
 //一次从net中接受数据,并把数据传给db的过程
@@ -110,8 +112,10 @@ void mid_send_frame(sys_Server* _net,
 		//开始从数据库中接受一个数据
 		mid_get_data_from_db(_mid,_db);
 		//转化数据
-		mid_convert_rlt_to_send(&_mid->rlt,&_mid->send);
+		int _size = 0;
+		DB_INFO_SIZE(_mid->req.type,_size);
+		mid_convert_rlt_to_send(&_mid->rlt,&_mid->send,_size);
 		//将请求发给net
-		mid_send_data_to_net(_mid,_net);
+		mid_send_data_to_net(_mid,_net,_size);
 }
 

@@ -114,7 +114,7 @@ void mid_send_data_to_db(banksys_mid* _mid ,banksys_db* _db);
 ** Modified date:
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void mid_send_data_to_net(banksys_mid* _mid , sys_Server* _net);
+void mid_send_data_to_net(banksys_mid* _mid , sys_Server* _net , int _len);
 //将从网络中接受的数据转化为向数据库的请求
 /*********************************************************************************************************
 ** Function name:		mid_convert_rec_to_req
@@ -154,11 +154,12 @@ void mid_convert_rec_to_req(net_recieved_info* _rec , bankDB_request_info* _req)
 ** Created by:				Jiraiya    wanjunya.jiraiya@gmail.com
 ** Created Date:		2010-7-26	
 **-------------------------------------------------------------------------------------------------------
-** Modified by:
-** Modified date:
+** Modified by: Jiraiya 
+** Modified date: 2010-8-31
+**add len to copy the memmory
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send);
+void mid_convert_rlt_to_send(bankDB_result_info* _rlt , net_send_info* _send , int _len);
 /*********************************************************************************************************
 ** Function name:		mid_recieve_frame
 **
