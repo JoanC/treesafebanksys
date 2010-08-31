@@ -2,6 +2,10 @@
 CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.AdmintratorNewLaborPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        .textEntry
+        {}
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -99,11 +103,18 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
 
            <p>
                <asp:Label ID="LaborPhoneNumberLabel" runat="server" AssociatedControlID="LaborPhoneNumber">
-               9. 联系电话：</asp:Label>
+               9. 雇员联系电话：</asp:Label>
                <asp:TextBox ID="LaborPhoneNumber" runat="server" CssClass="textEntry"></asp:TextBox>
                <asp:RequiredFieldValidator ID="LaborPhoneNumberRequired" runat="server" ControlToValidate="LaborPhoneNumber"
                    CssClass="failureNotification" ErrorMessage="请输入雇员联系电话" ToolTip="请输入雇员联系电话"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
+           </p>
+           <p>
+               <asp:Label ID="LaborNotesLabel" runat="server" AssociatedControlID="LaborNotes">
+               10. 备注：</asp:Label>
+               <br/>
+               <asp:TextBox ID="LaborNotes" runat="server" CssClass="textEntry" 
+                   TextMode="MultiLine" Height="81px" Width="374px"></asp:TextBox>
            </p>
 
            </fieldset>

@@ -274,6 +274,24 @@ namespace treesafe.Admintrators {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborPhoneNumberRequired;
         
         /// <summary>
+        /// LaborNotesLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LaborNotesLabel;
+        
+        /// <summary>
+        /// LaborNotes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox LaborNotes;
+        
+        /// <summary>
         /// NewLaborButton control.
         /// </summary>
         /// <remarks>

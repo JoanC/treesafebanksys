@@ -9,6 +9,12 @@ CodeBehind="AdmintratorLaborSelectPage.aspx.cs" Inherits="treesafe.Admintrators.
         雇员管理
     </h2>
     <p class="header" style="font-size: medium; color: #FFFFFF;">
+        雇员基本信息</p>
+
+
+
+
+    <p class="header" style="font-size: medium; color: #FFFFFF;">
         请选择您需要的操作</p>
         <p>
                        请慎重操作
