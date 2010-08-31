@@ -15,5 +15,5 @@ struct NetData
 typedef NetData net_recieved_info;
 typedef NetData net_send_info;
 
-#define BANKIP "127.0.0.1"
+#define BANKIP "10.60.37.203"
 #define BANKPORT  htons(4999)
