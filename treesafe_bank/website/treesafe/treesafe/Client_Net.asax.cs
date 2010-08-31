@@ -173,14 +173,18 @@ namespace ClientNet
                   byte[] dataLen = Encoding.UTF8.GetBytes("99");
                   byte[] dataSend = StructToBytes(_send);
                   int iCount = Marshal.SizeOf(_send) / BufSize + 1;
-                  int iLastPackageSize = Marshal.SizeOf(_send) - BufSize * iCount;
-                  dataLen = System.BitConverter.GetBytes(iCount);
+                  int iLastPackageSize = Marshal.SizeOf(_send) - BufSize * (iCount - 1);
+
+                  string _num;
+                  if (iCount > 10) _num = "" + iCount;
+                  else _num = "0" + iCount;
+                  dataLen = Encoding.UTF8.GetBytes(_num);
+
 		          this.m_net_stream.Write(dataLen,0,dataLen.Length);
 		          for(int i =0;i < iCount;i++)
 		          {
                       if (i == iCount - 1) {
-                          this.m_net_stream.Write(dataSend,i*BufSize,
-                               Marshal.SizeOf(_send) % BufSize);
+                          this.m_net_stream.Write(dataSend,i*BufSize,iLastPackageSize);
                       }
                       else this.m_net_stream.Write(dataSend,i * BufSize,BufSize);
       	          }
