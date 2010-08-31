@@ -106,6 +106,9 @@
     <None Include="ConnStrs.txt">
       <Filter>database</Filter>
     </None>
+    <None Include="ini.txt">
+      <Filter>credit_compute</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

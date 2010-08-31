@@ -73,6 +73,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ConnStrs.txt" />
+    <None Include="ini.txt" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

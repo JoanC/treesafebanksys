@@ -74,6 +74,9 @@ add_employee_input* add_employee_get_cmd(const char* _cmd,int _cmd_len){
 void add_employee_to_db(add_employee_input* _input_info, bool *_rlt)
 {
 	*_rlt = add_new_employee(treesafe_db_connection,&(_input_info->employ_basic_info),_input_info->comment) ;
+//	reg_basic_info _info_add_to_login ;
+//	_info_add_to_login.reg_id = _input_info->employ_basic_info.employee_id ;
+
 }
 
 //15.4
