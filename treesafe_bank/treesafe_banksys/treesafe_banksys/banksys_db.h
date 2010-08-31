@@ -29,6 +29,8 @@
 #include<stdio.h>
 #include<conio.h>
 
+const char CSFileName[] = "ConnStrs.txt" ;
+const size_t connStrLen = 241  ; // max 3 lines
 #import "C:\\Program Files\\Common Files\\System\\ado\\msado25.tlb" no_namespace rename("EOF","rsEOF")
 /*********************************************************************************************************
 ** Function name:				GetIP
@@ -46,7 +48,7 @@
 
 ********************************************************************************************************/
 bool	GetIP(char *connectStr) ;
-
+bool GetConnStr(int index,char *outcome) ;
 
 /*********************************************************************************************************
 ** Function name:				ConnectDB

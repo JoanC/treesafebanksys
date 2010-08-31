@@ -15,17 +15,39 @@ char *	GetIP()
 	memset( ch_ip , '\0' , IPLen ) ;
 	
 	printf("please input the ip address of the database...\r\n") ;
-	scanf_s("%s",ch_ip) ;
+	scanf("%s",ch_ip) ;
 	
 	strcpy_s(connStr,nLenOfConnStr ,partConnStr ) ;
 	strcat_s(connStr,nLenOfConnStr,ch_ip) ;
 
 	return connStr ;
 }
+bool GetConnStr(int index,char *outcome) 
+{
+	FILE *pFile = NULL ;
+	if (fopen_s(&pFile,CSFileName,"rt") == S_OK ){
+		for(int i  = 0 ; i <= index ; ++i){
+	 		fgets(outcome,connStrLen,pFile) ;
 
+		}
+		fclose(pFile) ; 
+		return true ;
+	}
+	else
+		return false ;
+
+}
 bool ConnectDB(_ConnectionPtr *pConn)
 {	
-	char *connStr = GetIP() ;
+	char connStr[connStrLen] ;
+	memset(connStr,0,connStrLen) ;
+
+	printf("please input the index of the database you want to connect:\r\n") ;
+	
+	int index = 0 ;
+	scanf("%d",&index) ;
+
+	GetConnStr(index,connStr) ;
 	::CoInitialize(0);
 	pConn->CreateInstance(__uuidof(Connection));
 	(*pConn)->ConnectionString = connStr ;
@@ -34,8 +56,7 @@ bool ConnectDB(_ConnectionPtr *pConn)
 	//setting param...
 	(*pConn) ->Open("","","",-1) ;
 	//open it 
-	delete []connStr ;
-	connStr = NULL ;
+
 	//delete connStr that was newed in GetIP()
 	char outputStr[] = "success to connect the database..." ;
 	printf("%s\r\n",outputStr) ;
