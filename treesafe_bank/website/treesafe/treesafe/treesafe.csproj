@@ -59,6 +59,7 @@
     <Content Include="Admintrators\AdmintratorHelpPage.aspx" />
     <Content Include="Admintrators\AdmintratorLaborManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorLaborOneInfo.aspx" />
+    <Content Include="Admintrators\AdmintratorLaborSelectPage.aspx" />
     <Content Include="Admintrators\AdmintratorNewLaborPage.aspx" />
     <Content Include="Admintrators\AdmintratorRiskManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorRootPage.aspx" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="Admintrators\AdmintratorLaborOneInfo.aspx.designer.cs">
       <DependentUpon>AdmintratorLaborOneInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorLaborSelectPage.aspx.cs">
+      <DependentUpon>AdmintratorLaborSelectPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorLaborSelectPage.aspx.designer.cs">
+      <DependentUpon>AdmintratorLaborSelectPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admintrators\AdmintratorNewLaborPage.aspx.cs">
       <DependentUpon>AdmintratorNewLaborPage.aspx</DependentUpon>

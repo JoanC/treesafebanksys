@@ -63,8 +63,7 @@ color:#333333;
     </h2>
         <asp:Panel ID="Panel1" runat="server" BackColor="#6699FF">
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="ButtonAddWorker" runat="server" Text="增加雇员" 
-            onclick="ButtonAddWorker_Click" />
+        <asp:Button ID="ButtonAddWorker" runat="server" Text="增加雇员" onclick="ButtonAddWorker_Click" />
     </asp:Panel>
 
     <table style="width: 100%;" class="css_Grid" id="LaborTable" cellpadding="5" cellspacing="0" border="1" runat="server" >
@@ -115,8 +114,17 @@ color:#333333;
                    clickTR = me;
                    clickClass = moveClass;
                }
-               alert("您选择的记录ID：" + dataID);
+               //alert("您选择的记录ID：" + dataID);
+               ShowDialog("AdmintratorLaborSelectPage.aspx");
                me.className = "css_TR_CK";
            }
+           function ShowDialog(url) {
+               var iWidth = 960; //模态窗口宽度
+               var iHeight = 540; //模态窗口高度
+               var iTop = (window.screen.height - iHeight) / 2;
+               var iLeft = (window.screen.width - iWidth) / 2;
+               window.open(url, "Detail", "Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=no,   Width=" + iWidth + " ,Height=" + iHeight + ",top=" + iTop + ",left=" + iLeft)
+           } 
+
     </script></p>
 </asp:Content>
