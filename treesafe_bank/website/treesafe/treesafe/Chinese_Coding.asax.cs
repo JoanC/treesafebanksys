@@ -2,46 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
-namespace treesafe
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using ClientNet;
+
+
+namespace Chinese_Encode
 {
-    public class Global : System.Web.HttpApplication
+    class Chinese_Encode_Mgr 
     {
-
-        void Application_Start(object sender, EventArgs e)
+        public static string utf7_convert(string _src) 
         {
-            // Code that runs on application startup
-
+            byte[] bytes = System.Text.Encoding.UTF7.GetBytes(_src);
+            _src = System.Text.Encoding.ASCII.GetString(bytes);
+            return _src;
         }
-
-        void Application_End(object sender, EventArgs e)
-        {
-            //  Code that runs on application shutdown
-
-        }
-
-        void Application_Error(object sender, EventArgs e)
-        {
-            // Code that runs when an unhandled error occurs
-
-        }
-
-        void Session_Start(object sender, EventArgs e)
-        {
-            // Code that runs when a new session is started
-            Session["userright"] = "-1";
-        }
-
-        void Session_End(object sender, EventArgs e)
-        {
-            // Code that runs when a session ends. 
-            // Note: The Session_End event is raised only when the sessionstate mode
-            // is set to InProc in the Web.config file. If session mode is set to StateServer 
-            // or SQLServer, the event is not raised.
-
-        }
-
-    }
+    };
 }
