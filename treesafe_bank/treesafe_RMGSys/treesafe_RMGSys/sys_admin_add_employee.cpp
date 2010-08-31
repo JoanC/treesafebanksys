@@ -95,7 +95,8 @@ void add_employee_frame(const char* _cmd , int _cmd_len
 	_new_frame->input_info = *add_employee_get_cmd(_cmd,_cmd_len);
 	//15.3
 	//...
-
+	bool _db_rlt = false;
+	add_employee_to_db(&_new_frame->input_info,&_db_rlt);
 
 	//15.4
 	add_employee_covert_result(&_new_frame->rlt_info,_rlt,_rlt_len);
