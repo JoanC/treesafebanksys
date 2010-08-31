@@ -67,7 +67,10 @@ void login_get_copy_data(const char* _info , char* _copy_data , int _len){
 login_check_info* login_get_convert(char* _info){
 	//类型转化
 	DEBUG_LOGIN_PRINT("convert string to login_check_info ... \n");
-	return (login_check_info*)_info;
+	login_check_info*_new_info = (login_check_info*)_info;
+	//中文解码
+	DECODE_UTF7_TO_ASC(_new_info->user_info.input_user_name)
+	return _new_info;
 }
 
 login_check_info* login_get_info(const char* _data , int _data_len){
@@ -166,9 +169,6 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 		login_err_mgr(err_login_db_err,_login_frame);
 		return;
 	}
-
-	strcpy(_login_frame->rlt_info.login_err.info
-		,"万君亚");
 	//以下是为了测试
 //	strcpy(_login_frame->db_query.input_user_name,"haha");
 //	strcpy(_login_frame->db_query.input_user_pwd,"KOKO");
