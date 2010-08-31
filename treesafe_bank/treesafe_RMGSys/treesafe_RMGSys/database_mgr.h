@@ -43,12 +43,12 @@ struct reg_basic_info{
 
 struct reg_input_info{
 	//用户注册所输入的相关信息
-    //其它的附加信息
+	//其它的附加信息
 	char email_addr[REG_MAX_ADDR];
+    //密码两次验证是否正确
+	bool is_pwd_vry_crr;
 	//输入基本信息
 	reg_basic_info basic_info;
-	//密码两次验证是否正确
-	bool is_pwd_vry_crr;
 };
 
 
