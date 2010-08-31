@@ -48,7 +48,17 @@ void add_employee_copy_cmd(const char* _cmd , char* _dest , int _cmd_len){
 
 add_employee_input* add_employee_convert_cmd(char* _info){
 	//转化命令成为输入数据
-	return (add_employee_input*)_info;
+	add_employee_input* _new_info = (add_employee_input*)_info;
+
+	//进行中文解码utf7解码
+	DECODE_UTF7_TO_ASC(_new_info->comment);
+	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_addr);
+	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_email);
+	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_id);
+	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_name);
+	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_tel);
+	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_work_id);
+	return _new_info;
 }
 
 add_employee_input* add_employee_get_cmd(const char* _cmd,int _cmd_len){

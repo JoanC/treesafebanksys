@@ -7,6 +7,7 @@
 #include "sys_login.h"//登陆的子流程
 #include "sys_reg.h"//注册子过程
 #include "sys_apply.h"//申请子过程
+#include "sys_admin_add_employee.h"//增加雇员
 
 typedef char* COMMAND_DATA;
 #define SYS_CMD_MAX_RLT_SIZE 256
@@ -68,6 +69,9 @@ void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
 
 //申请模块的子处理函式2.4.3
 void sys_command_apply(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
+
+//增加雇员模处理子函式2.4.4
+void sys_command_add_employee(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
 
 //模块2.5
 //未知命令的处理函式

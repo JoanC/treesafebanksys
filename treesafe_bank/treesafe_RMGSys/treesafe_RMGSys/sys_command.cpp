@@ -40,6 +40,10 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 		//调用申请处理函数
 		sys_command_apply(_command,_rlt,_rlt_len);
 						}break;
+		//调用增加雇员处理函数
+	case(sys_cmd_add_employee):{
+		sys_command_add_employee(_command,_rlt,_rlt_len);
+							   }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -48,24 +52,30 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	}
 }
 
-//模块2.3
-//2.3.1 登陆处理
+//模块2.4
+//2.4.1 登陆处理
 void sys_command_login(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	//调用登陆主函式
 	login_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
-//2.3.2 注册处理
+//2.4.2 注册处理
 void sys_command_reg(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
 	reg_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
-//2.3.3 申请处理
+//2.4.3 申请处理
 void sys_command_apply(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
 	apply_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
-//模块2.4
+//2.4.4
+void sys_command_add_employee(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
+	add_employee_frame(_cmd->data,_cmd->len
+		,_rlt,_rlt_len);
+}
+
+//模块2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 
 }
