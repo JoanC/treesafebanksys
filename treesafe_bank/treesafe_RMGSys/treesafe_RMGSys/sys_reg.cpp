@@ -16,12 +16,12 @@ void reg_init_reg_basic_info(reg_basic_info* _init){
 	strcpy(_init->reg_pwd,"");
 	//初始化真实姓名
 	strcpy(_init->reg_basic_user_name,"");
+	//家庭住址
+	strcpy(_init->reg_home_addr,"");
 	//初始化性别,男
 	_init->reg_gender = reg_info_male;
 	//初始化年龄,18
 	_init->reg_age = 18;
-	//家庭住址
-	strcpy(_init->reg_home_addr,"");
 }
 
 void reg_init_reg_input_info(reg_input_info* _init){
