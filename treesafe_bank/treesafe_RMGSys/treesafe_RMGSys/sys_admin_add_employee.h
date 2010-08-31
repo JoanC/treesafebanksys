@@ -14,6 +14,7 @@
 
 extern _ConnectionPtr* treesafe_db_connection ;
 //添加雇员时填入的信息
+
 struct add_employee_input{
 	admin_employee_info employ_basic_info;
 	char comment[ADD_EMPLOYEE_COMMENT_LEN];

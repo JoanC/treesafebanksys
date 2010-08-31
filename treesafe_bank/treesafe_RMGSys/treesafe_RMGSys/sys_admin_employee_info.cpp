@@ -9,4 +9,5 @@ void init_admin_employee_info(admin_employee_info* _init){
 	_init->employee_gender = employee_male;//性别初始化男性
 	_init->employee_age = 0;//初始化年龄
 	strcpy(_init->employee_addr,"");//初始化地址,为空
+	strcpy(_init->employee_tel,"");//初始化电话号码
 }
