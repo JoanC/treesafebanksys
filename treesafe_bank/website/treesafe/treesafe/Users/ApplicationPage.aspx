@@ -18,7 +18,7 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
     </span>
     <asp:ValidationSummary ID="ApplicationValidationSummary" runat="server" CssClass="failureNotification" 
     ValidationGroup="ApplicationValidationGroup"/>
-       <div class="accountInfo">
+       <div>
           <fieldset>
          
            <p>

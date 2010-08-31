@@ -62,6 +62,10 @@ namespace treesafe.Admintrotors
 
         protected void ButtonAddWorker_Click(object sender, EventArgs e)
         {
+           // Response.Redirect("AdmintratorNewLaborPage.aspx");
+            //Response.Write("<script>javascript:window.open('AdmintratorNewLaborPage.aspx')</script>");
+            Response.Write("<script>window.open('AdmintratorNewLaborPage.aspx')</script>");
+           // Response.Write("<script>window.showModelessDialog('AdmintratorNewLaborPage.aspx')</script>");
 
         }
 
