@@ -21,8 +21,8 @@ enum admin_mgr_gender{employee_male,employee_female};
 //审核员或者操作员
 //管理员有权添加这两种雇员
 enum admin_employee_type{
-	employ_type_operator = 1 ,//操作员
-	employ_type_investigator = 2 ,//审核(调查)员
+	employ_type_operator = 0 ,//操作员
+	employ_type_investigator = 1 ,//审核(调查)员
 };
 
 //雇员信息
