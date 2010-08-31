@@ -75,6 +75,7 @@ reg_input_info* reg_convert_cmd(char* _info){
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_id);
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_phone_num);
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_pwd);
+	DECODE_UTF7_TO_ASC(_new_info->email_addr);
 	return _new_info;
 }
 
