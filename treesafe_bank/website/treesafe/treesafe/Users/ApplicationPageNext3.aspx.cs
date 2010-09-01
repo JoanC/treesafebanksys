@@ -68,19 +68,25 @@ namespace treesafe.Users
 
         //用户资产情况信息
         /*
-    struct apply_cust_asset_info{
-	char app_id[APPLY_ID] ;
-	int cust_personal_annual_income;//个人年收入
-	int cust_family_annual_income;//家庭年收入
+  	char app_id[APPLY_ID] ;
+	APPLY_PERSON_INCOME_RANGE cust_personal_annual_income;//个人年收入
+	APPLY_FAMILY_INCOME_RANGE cust_family_annual_income;//家庭年收入
 	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
-	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+	//这两个金额存入数据库中
+	APPLY_DEPOSIT_RANGE cust_regular_deposit;//定期存款金额(范围)
+	APPLY_DEPOSIT_RANGE cust_demand_deposit;//活期存款额(范围)
+	//以上两个加上
+	//
 	bool does_cust_have_loan;//是否有贷款
-	int cust_loan_sum;//贷款总金额
-	int cust_loan_time;//经过多少年后还款
+	APPLY_LOAN_RANGE cust_loan_sum;//贷款总金额(范围)
+	APPLY_LOAN_TIME cust_loan_time;//经过多少shijian后还款
 	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
 	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
 	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
 	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
+	//-->这个(存款范围)不要了~	
+	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+//为了保持程序运行,这个先留着
 };*/
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
@@ -91,6 +97,14 @@ namespace treesafe.Users
             int cust_personal_annual_income;//个人年收入
             int cust_family_annual_income;//家庭年收入
             int cust_deposit_type;//存款类型,0表示没有存款
+            int cust_regular_deposit;//定期存款金额
+            int cust_demand_deposit;//活期存款额
+            int cust_is_haa_loan;//是否有贷款
+            int cust_loan_sum;//贷款总金额
+            int cust_loan_time;//多少时间返还
+            bool cust_is_has_fixed_asset;//是否有固定资产
+            int cust_unsecured_fixed_asset;//固定资产类型
+            int cust_industry;//从事行业
         }
 
 
