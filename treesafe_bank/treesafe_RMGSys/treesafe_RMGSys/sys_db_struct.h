@@ -294,7 +294,7 @@ struct apply_cust_family_info{
 //??????????????
 //贷款用途是否要选择性?
 
-#define APPLY_LOAN_COMMENT 51
+#define APPLY_LOAN_COMMENT 1024
 
 
 enum APPLY_LOAN_INDUSTRY{
@@ -305,6 +305,11 @@ enum APPLY_LOAN_TIMES{
 	//申请人过往的贷款次数
 	loan_times_first,//第一次贷款
 	loan_times_multiple//多次贷款
+};
+
+enum APPLY_MESSAGE{
+	cust_want_msg,//需要短信
+	cust_not_want_msg//用户不需要短信
 };
 
 struct apply_loan_info{
@@ -325,6 +330,9 @@ struct apply_input_info{
 	apply_cust_family_info input_fammily_info;
 	//与贷款相关的其它信息
 	apply_loan_info input_loan_info;
+	///////////////////////////////////////////
+	
+	///////////////////////////////////////////
 };
 
 typedef apply_input_info apply_db_info;
