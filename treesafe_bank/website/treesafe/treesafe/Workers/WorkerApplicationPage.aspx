@@ -368,22 +368,33 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
            </p>
 
            <p>
+              <asp:Label ID="ApplicationMateIDTypeLabel" runat="server" AssociatedControlID="ApplicationMateIDType">
+              4. 您配偶的证件类型:
+              </asp:Label>
+              &nbsp;&nbsp;
+              <asp:DropDownList ID="ApplicationMateIDType" runat="server">
+                 <asp:ListItem Value="0">身份证</asp:ListItem>
+                 <asp:ListItem Value="1">军人证</asp:ListItem>
+              </asp:DropDownList>
+           </p>
+
+           <p>
                 <asp:Label ID="ApplicationMateIDNumberLabel" runat="server" AssociatedControlID="ApplicationMateIDNumber">
-                4. 您的配偶身份证号：
+                5. 您的配偶证件号码：
                 </asp:Label>
                 <asp:TextBox ID="ApplicationMateIDNumber" runat="server" CssClass="textEntry"></asp:TextBox>
            </p>
 
            <p>
                 <asp:Label ID="ApplicationMateWorkLabel" runat="server" AssociatedControlID="ApplicationMateWork">
-                5. 您的配偶工作单位（工作情况）：
+                6. 您的配偶工作单位（工作情况）：
                 </asp:Label>
                 <asp:TextBox ID="ApplicationMateWork" runat="server" CssClass="textEntry"></asp:TextBox>
            </p>
 
            <p>
                <asp:Label ID="ApplicationMateEducationLabel" runat="server" AssociatedControlID="ApplicationMateEducation">
-               6. 您配偶的受教育状况：</asp:Label>
+               7. 您配偶的受教育状况：</asp:Label>
                &nbsp;&nbsp;
                <asp:DropDownList ID="ApplicationMateEducation" runat="server">
                      <asp:ListItem Value="0">初中及以下</asp:ListItem>
@@ -395,7 +406,7 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
 
            <p> 
                 <asp:Label ID="ApplicationMateIsHaveDepositLabel" runat="server" AssociatedControlID="ApplicationMateIsHaveDeposit">
-                3. 您配偶是否有已经申请的贷款?</asp:Label>
+                8. 您配偶是否有已经申请的贷款?</asp:Label>
                 <asp:RadioButtonList ID="ApplicationMateIsHaveDeposit" runat="server" RepeatDirection="Horizontal">
                     <asp:ListItem Value="1">有</asp:ListItem> 
                     <asp:ListItem Value="0">无</asp:ListItem>
@@ -415,10 +426,20 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
            </p>
 
            <p>
-               <asp:Label ID="Label1" runat="server" AssociatedControlID="ApplicationLoanSum">
+               <asp:Label ID="ApplicationExpectLoanSumLabel" runat="server" AssociatedControlID="ApplicationExpectLoanSum">
                1. 预计申请贷款金额：
                </asp:Label>
-               <asp:TextBox ID="TextBox1" runat="server" CssClass="textEntry"></asp:TextBox>
+                  &nbsp;&nbsp;
+                  <asp:DropDownList ID="ApplicationExpectLoanSum" runat="server">
+                     <asp:ListItem Value="0">无</asp:ListItem>
+                     <asp:ListItem Value="1">2000元以下</asp:ListItem>
+                     <asp:ListItem Value="2">2000~5000元</asp:ListItem>
+                     <asp:ListItem Value="3">5000~8000元</asp:ListItem>
+                     <asp:ListItem Value="4">8000~1万元</asp:ListItem>
+                     <asp:ListItem Value="5">1~2万元</asp:ListItem>
+                     <asp:ListItem Value="6">2~5万元</asp:ListItem>
+                     <asp:ListItem Value="7">5万元以上</asp:ListItem>
+                   </asp:DropDownList>
           </p>
           
           <p>
@@ -431,16 +452,9 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
               个月
            </p>
 
-           <p>
-               <asp:Label ID="ApplicationUseLabel" runat="server" AssociatedControlID="ApplicationUse">
-               3. 贷款用途：
-               </asp:Label>
-               <asp:TextBox ID="ApplicationUse" runat="server" CssClass="textEntry"></asp:TextBox>
-          </p>
-
           <p>
                <asp:Label ID="ApplicationLoanNumberLabel" runat="server" AssociatedControlID="ApplicationLoanNumber">
-               4. 贷款次数：
+               3. 贷款次数：
                </asp:Label>
                <asp:RadioButtonList ID="ApplicationLoanNumber" runat="server" RepeatDirection="Horizontal">
                    <asp:ListItem Value="0">首次贷款</asp:ListItem> 
@@ -450,7 +464,7 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
 
           <p>
                <asp:Label ID="ApplicationLoanNoteLabel" runat="server" AssociatedControlID="ApplicationLoanNote">
-               5. 申贷项目可行性说明：
+               4. 申贷项目可行性说明：
                </asp:Label>
                <br/>
                <asp:TextBox ID="ApplicationLoanNote" runat="server" CssClass="textEntry" 
@@ -459,7 +473,7 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
 
           <p>
                <asp:Label ID="ApplicationIsMessageLabel" runat="server" AssociatedControlID="ApplicationIsMessage">
-               6. 是否希望接收我们的短信通知?
+               5. 是否希望接收我们的短信通知?
                <br/>
                （建议选择接收短信通知，这可以让您更方便的了解整个贷款及还贷过程）</asp:Label>
                <asp:RadioButtonList ID="ApplicationIsMessage" runat="server" RepeatDirection="Horizontal">

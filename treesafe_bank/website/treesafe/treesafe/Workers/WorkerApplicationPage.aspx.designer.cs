@@ -643,6 +643,24 @@ namespace treesafe.Workers {
         protected global::System.Web.UI.WebControls.TextBox ApplicationMateName;
         
         /// <summary>
+        /// ApplicationMateIDTypeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApplicationMateIDTypeLabel;
+        
+        /// <summary>
+        /// ApplicationMateIDType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ApplicationMateIDType;
+        
+        /// <summary>
         /// ApplicationMateIDNumberLabel control.
         /// </summary>
         /// <remarks>
@@ -715,22 +733,22 @@ namespace treesafe.Workers {
         protected global::System.Web.UI.WebControls.RadioButtonList ApplicationMateIsHaveDeposit;
         
         /// <summary>
-        /// Label1 control.
+        /// ApplicationExpectLoanSumLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label ApplicationExpectLoanSumLabel;
         
         /// <summary>
-        /// TextBox1 control.
+        /// ApplicationExpectLoanSum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.DropDownList ApplicationExpectLoanSum;
         
         /// <summary>
         /// ApplicationLoanTimeLabel control.
@@ -749,24 +767,6 @@ namespace treesafe.Workers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ApplicationLoanTime;
-        
-        /// <summary>
-        /// ApplicationUseLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationUseLabel;
-        
-        /// <summary>
-        /// ApplicationUse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ApplicationUse;
         
         /// <summary>
         /// ApplicationLoanNumberLabel control.

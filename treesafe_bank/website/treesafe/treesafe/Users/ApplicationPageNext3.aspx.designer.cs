@@ -31,22 +31,22 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.ValidationSummary ApplicationValidationSummary;
         
         /// <summary>
-        /// ApplicationLoanSumLabel control.
+        /// ApplicationExceptLoanSumLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationLoanSumLabel;
+        protected global::System.Web.UI.WebControls.Label ApplicationExceptLoanSumLabel;
         
         /// <summary>
-        /// ApplicationLoanSum control.
+        /// ApplicationExceptLoanSum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ApplicationLoanSum;
+        protected global::System.Web.UI.WebControls.DropDownList ApplicationExceptLoanSum;
         
         /// <summary>
         /// ApplicationLoanTimeLabel control.
@@ -65,24 +65,6 @@ namespace treesafe.Users {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ApplicationLoanTime;
-        
-        /// <summary>
-        /// ApplicationUseLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationUseLabel;
-        
-        /// <summary>
-        /// ApplicationUse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ApplicationUse;
         
         /// <summary>
         /// ApplicationLoanNumberLabel control.
