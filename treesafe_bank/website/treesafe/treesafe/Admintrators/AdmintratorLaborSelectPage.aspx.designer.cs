@@ -22,13 +22,22 @@ namespace treesafe.Admintrators {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Button2 control.
+        /// ErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
+        
+        /// <summary>
+        /// ApplicationValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ApplicationValidationSummary;
         
         /// <summary>
         /// LaborIDLabel control.
@@ -46,7 +55,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborID;
+        protected global::System.Web.UI.WebControls.TextBox LaborID;
+        
+        /// <summary>
+        /// LaborIDRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborIDRequired;
         
         /// <summary>
         /// LaborTypeLabel control.
@@ -64,7 +82,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborType;
+        protected global::System.Web.UI.WebControls.RadioButtonList LaborType;
+        
+        /// <summary>
+        /// LaborTypeRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborTypeRequired;
         
         /// <summary>
         /// LaborNameLabel control.
@@ -82,7 +109,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborName;
+        protected global::System.Web.UI.WebControls.TextBox LaborName;
+        
+        /// <summary>
+        /// LaborNameRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborNameRequired;
         
         /// <summary>
         /// LaborIDNumberLabel control.
@@ -100,7 +136,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborIDNumber;
+        protected global::System.Web.UI.WebControls.TextBox LaborIDNumber;
+        
+        /// <summary>
+        /// LaborIDNumberRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborIDNumberRequired;
         
         /// <summary>
         /// LaborSexLabel control.
@@ -118,7 +163,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborSex;
+        protected global::System.Web.UI.WebControls.RadioButtonList LaborSex;
+        
+        /// <summary>
+        /// LaborSexRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborSexRequired;
         
         /// <summary>
         /// LaborAgeLabel control.
@@ -136,7 +190,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborAge;
+        protected global::System.Web.UI.WebControls.TextBox LaborAge;
+        
+        /// <summary>
+        /// LaborAgeRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborAgeRequired;
         
         /// <summary>
         /// LaborAddressLabel control.
@@ -154,7 +217,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborAddress;
+        protected global::System.Web.UI.WebControls.TextBox LaborAddress;
+        
+        /// <summary>
+        /// LaborAddressRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborAddressRequired;
         
         /// <summary>
         /// LaborEmailLabel control.
@@ -172,7 +244,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborEmail;
+        protected global::System.Web.UI.WebControls.TextBox LaborEmail;
+        
+        /// <summary>
+        /// LaborEmailRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborEmailRequired;
         
         /// <summary>
         /// LaborPhoneNumberLabel control.
@@ -190,7 +271,16 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborPhoneNumber;
+        protected global::System.Web.UI.WebControls.TextBox LaborPhoneNumber;
+        
+        /// <summary>
+        /// LaborPhoneNumberRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborPhoneNumberRequired;
         
         /// <summary>
         /// LaborNotesLabel control.
@@ -208,6 +298,15 @@ namespace treesafe.Admintrators {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LaborNotes;
+        protected global::System.Web.UI.WebControls.TextBox LaborNotes;
+        
+        /// <summary>
+        /// EditLaborButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EditLaborButton;
     }
 }

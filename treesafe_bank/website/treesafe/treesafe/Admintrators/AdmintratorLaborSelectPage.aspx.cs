@@ -28,19 +28,15 @@ namespace treesafe.Admintrators
             Response.Write("<script language='javascript'>window.close();</script>");
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void EditLaborButton_Click(object sender, EventArgs e)
         {
-            //window.open(url, "", "Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes,   Width=" + iWidth + " ,Height=" + iHeight + ",top=" + iTop + ",left=" + iLeft)
-            //"AdmintratorLaborSelectPage.aspx?id="+dataID
+            //在此调用从数据库删除该雇员信息的函数
 
-            //跳转到修改雇员信息界面
-            Session["userright"] = LaborID.Text;
-            Response.Redirect("AdmintratorEditLaborPage.aspx");
-         //   window.location.href = "fieldDefine.do?method=findAllFieldDefineByTable&sysname= " + sys + "&tablename= " + encodeURIComponent(tab); 
-            //"", "Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes,   Width=" + iWidth + " ,Height=" + iHeight + ",top=" + iTop + ",left=" + iLeft
-           // Response.Write("<script language='javascript'>window.location='AdmintratorEditLaborPage.aspx'?id="+LaborID.Text+"</script>");
-            //Response.Write("<script language='javascript'>window.open('AdmintratorEditLaborPage.aspx?id=" + LaborID.Text +"','',Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes</script>");
 
+            //刷新父页面,关闭该窗口并返回主界面
+
+            Response.Write("<script language='javascript'>window.opener.location.reload()</script>");
+            Response.Write("<script language='javascript'>window.close();</script>");
         }
     }
 }
