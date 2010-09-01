@@ -11,7 +11,7 @@ namespace treesafe.Admintrators
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            LaborID.Text = Session["userright"].ToString();
         }
 
         protected void NewLaborButton_Click(object sender, EventArgs e)

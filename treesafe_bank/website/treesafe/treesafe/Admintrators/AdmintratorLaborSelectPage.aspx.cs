@@ -30,12 +30,16 @@ namespace treesafe.Admintrators
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            //跳转到修改雇员信息界面
-           // Response.Redirect("AdmintratorEditLaborPage.aspx");
-         //   window.location.href = "fieldDefine.do?method=findAllFieldDefineByTable&sysname= " + sys + "&tablename= " + encodeURIComponent(tab); 
+            //window.open(url, "", "Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes,   Width=" + iWidth + " ,Height=" + iHeight + ",top=" + iTop + ",left=" + iLeft)
+            //"AdmintratorLaborSelectPage.aspx?id="+dataID
 
+            //跳转到修改雇员信息界面
+            Session["userright"] = LaborID.Text;
+            Response.Redirect("AdmintratorEditLaborPage.aspx");
+         //   window.location.href = "fieldDefine.do?method=findAllFieldDefineByTable&sysname= " + sys + "&tablename= " + encodeURIComponent(tab); 
+            //"", "Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes,   Width=" + iWidth + " ,Height=" + iHeight + ",top=" + iTop + ",left=" + iLeft
            // Response.Write("<script language='javascript'>window.location='AdmintratorEditLaborPage.aspx'?id="+LaborID.Text+"</script>");
-           //Response.Write("<script language='javascript'>window.location='AdmintratorEditLaborPage.aspx'?id="+Request.QueryString["id"]+"</script>");
+            //Response.Write("<script language='javascript'>window.open('AdmintratorEditLaborPage.aspx?id=" + LaborID.Text +"','',Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes</script>");
 
         }
     }
