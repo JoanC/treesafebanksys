@@ -33,12 +33,22 @@ apply_input_info* apply_get_convert_input(char* _data){
 	apply_input_info* _new_data =  (apply_input_info*)_data;
 	/*中文解码*/
 	/*仅针对字符串*/
+	//用户基础信息
 	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_addr);
 	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_id);
 	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_name);
 	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_other_tel_num);
 	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_tel_num);
 	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_zip_code);
+	//申请人资产 信息
+	DECODE_UTF7_TO_ASC(_new_data->input_asset_info.cust_work_pos);
+	DECODE_UTF7_TO_ASC(_new_data->input_asset_info.cust_work_unit);
+	//家庭信息
+	DECODE_UTF7_TO_ASC(_new_data->input_fammily_info.cust_spouse_card_id);
+	DECODE_UTF7_TO_ASC(_new_data->input_fammily_info.cust_spouse_name);
+	DECODE_UTF7_TO_ASC(_new_data->input_fammily_info.cust_spouse_work_unit);
+	//贷款信息
+	DECODE_UTF7_TO_ASC(_new_data->input_loan_info.loan_comment);
 	return _new_data;
 }
 
