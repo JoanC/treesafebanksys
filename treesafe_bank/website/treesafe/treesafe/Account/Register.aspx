@@ -25,7 +25,7 @@
                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">姓名:</asp:Label>
                                 <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
-                                     CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required." 
+                                     CssClass="failureNotification" ErrorMessage="请输入您的姓名" ToolTip="请输入您的姓名" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
@@ -35,45 +35,45 @@
                                    <asp:ListItem Value="1">女</asp:ListItem>
                                 </asp:RadioButtonList>
                                 <asp:RequiredFieldValidator ID="UserSexRequired" runat="server" ControlToValidate="UserSex" 
-                                     CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required." 
+                                     CssClass="failureNotification" ErrorMessage="请输入您的性别" ToolTip="请输入您的性别" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
                                 <asp:Label ID="UserIDLabel" runat="server" AssociatedControlID="UserID">身份证号:</asp:Label>
                                 <asp:TextBox ID="UserId" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserIDRequired" runat="server" ControlToValidate="UserID" 
-                                     CssClass="failureNotification" ErrorMessage="User ID is required." ToolTip="User ID is required." 
+                                     CssClass="failureNotification" ErrorMessage="请输入您的身份证号" ToolTip="请输入您的身份证号" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
                                 <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密码:</asp:Label>
                                 <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
-                                     CssClass="failureNotification" ErrorMessage="Password is required." ToolTip="Password is required." 
+                                     CssClass="failureNotification" ErrorMessage="请输入您的密码" ToolTip="请输入您的密码" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
                                 <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">确认密码:</asp:Label>
                                 <asp:TextBox ID="ConfirmPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ControlToValidate="ConfirmPassword" CssClass="failureNotification" Display="Dynamic" 
-                                     ErrorMessage="Confirm Password is required." ID="ConfirmPasswordRequired" runat="server" 
-                                     ToolTip="Confirm Password is required." ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                     ErrorMessage="请输入您的确认密码" ID="ConfirmPasswordRequired" runat="server" 
+                                     ToolTip="请输入您的确认密码" ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                                 <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
-                                     CssClass="failureNotification" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
+                                     CssClass="failureNotification" Display="Dynamic" ErrorMessage="密码和确认密码必须一致"
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
                             </p>
                              <p>
                                 <asp:Label ID="PhoneNumberLabel" runat="server" AssociatedControlID="PhoneNumber">联系电话:</asp:Label>
                                 <asp:TextBox ID="PhoneNumber" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="PhoneNumberRequire" runat="server" ControlToValidate="PhoneNumber" 
-                                     CssClass="failureNotification" ErrorMessage="Phone Number is required." ToolTip="Phone Number is required." 
+                                     CssClass="failureNotification" ErrorMessage="请输入您的联系电话" ToolTip="请输入您的联系电话" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                              <p>
                                 <asp:Label ID="HomeAddressLabel" runat="server" AssociatedControlID="HomeAddress">家庭住址:</asp:Label>
                                 <asp:TextBox ID="HomeAddress" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="HomeAddressRequire" runat="server" ControlToValidate="HomeAddress"  
-                                     CssClass="failureNotification" ErrorMessage="Home Address is required." ToolTip="Home Address is required." 
+                                     CssClass="failureNotification" ErrorMessage="请输入您的家庭住址" ToolTip="请输入您的家庭住址" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                              <p>
