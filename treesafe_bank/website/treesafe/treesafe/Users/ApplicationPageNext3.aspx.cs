@@ -270,6 +270,16 @@ namespace treesafe.Users
             cust_loan_comment =
                 Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationLoanNote.Text);
             cust_is_want_msg = int.Parse(ApplicationIsMessage.Text);
+            apply_loan_info _loan_info =
+                new apply_loan_info(cust_loan_amount,cust_loan_deadline,cust_loan_times,cust_is_want_msg,cust_loan_comment);
+            /*整理总信息*/
+            apply_input_info _input_info =
+                new apply_input_info(_cust_info,_asset_info,_family_info,_loan_info);
+            /*发送数据*/
+            web_net_client_mgr _net_mgr = new web_net_client_mgr();
+            //2表示提交申请的命令
+            _net_mgr.send_command_data(2,_input_info);
+
 
             //读取完成信息后，将结束申请，并跳转回到用户主页。
             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
