@@ -19,10 +19,7 @@ using ClientNet;
 using Chinese_Encode;
 
 namespace treesafe.Users
-{
-
-    public partial class ApplicationPageNext3 : System.Web.UI.Page
-    {
+{ 
         //用户信息结构体
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
@@ -178,12 +175,6 @@ namespace treesafe.Users
             }
         }
 
-        public int cust_loan_amount;
-        public int cust_loan_deadline;
-        public int cust_loan_times;
-        public int cust_is_want_msg;
-        public string cust_loan_comment;
-
         /*
          * void apply_init_apply_input_info(apply_input_info* _init){
 	//初始化输入信息
@@ -211,6 +202,14 @@ namespace treesafe.Users
             }
         };
 
+    public partial class ApplicationPageNext3 : System.Web.UI.Page
+    {
+        public int cust_loan_amount;
+        public int cust_loan_deadline;
+        public int cust_loan_times;
+        public int cust_is_want_msg;
+        public string cust_loan_comment;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userright"].ToString() != "0")
@@ -225,6 +224,7 @@ namespace treesafe.Users
             //将信息存入数据库。。。
             //使用方法同Register
             //（此处所使用方法和控件基本一致）
+
             /*从第一个界面读取信息*/
             apply_custmor_info _cust_info
                 = new apply_custmor_info(ApplicationPage.apply_cust_gender,
