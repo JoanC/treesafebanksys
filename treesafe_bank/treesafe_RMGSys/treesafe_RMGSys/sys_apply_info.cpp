@@ -12,6 +12,10 @@ void apply_init_apply_custmor_info(apply_custmor_info* _init){
 	strcpy(_init->cust_other_tel_num,"");
 	strcpy(_init->cust_tel_num,"");
 	_init->cust_edu = edu_primary_and_below;
+	//初始化邮政编码,家庭住址和住房权属
+	strcpy(_init->cust_zip_code,"");
+	strcpy(_init->cust_addr,"");
+	_init->cust_house_type = own;//初始值为自有房产
 }
 
 void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){

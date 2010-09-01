@@ -102,6 +102,8 @@ struct apply_custmor_info{
 	/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 	//紧急，加填到数据库中
 	char cust_addr[APPLY_CUST_ADDR_LEN];//地址
+	char cust_zip_code[APPLY_CUST_ZIP_CODE_LEN];//邮政编码
+	APPLY_CUST_HOUSING_TENURE cust_house_type;//住宅权属
 
 };
 
