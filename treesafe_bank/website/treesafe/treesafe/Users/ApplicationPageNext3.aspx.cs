@@ -41,11 +41,11 @@ namespace treesafe.Users
             char[] cust_tel;//电话号码
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
             char[] cust_other_tel;//其他联系电话
+            int cust_edu_degree;//受教育情况
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
             char[] cust_addr;//家庭地址
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]
             char[] cust_zip;//邮政编码
-            int cust_edu_degree;//受教育情况
             int cust_house_type;//住宅权属
             public apply_custmor_info(int _gender, int _age
                 , int _card_type, int _edu,int _house, string _name
@@ -65,6 +65,34 @@ namespace treesafe.Users
                 this.cust_house_type = _house;
             }
         };
+
+        //用户资产情况信息
+        /*
+    struct apply_cust_asset_info{
+	char app_id[APPLY_ID] ;
+	int cust_personal_annual_income;//个人年收入
+	int cust_family_annual_income;//家庭年收入
+	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
+	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+	bool does_cust_have_loan;//是否有贷款
+	int cust_loan_sum;//贷款总金额
+	int cust_loan_time;//经过多少年后还款
+	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
+	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
+	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
+	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
+};*/
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
+        struct apply_cust_asset_info
+        {
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
+            char[] app_id;//申请id
+            int cust_personal_annual_income;//个人年收入
+            int cust_family_annual_income;//家庭年收入
+            int cust_deposit_type;//存款类型,0表示没有存款
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
