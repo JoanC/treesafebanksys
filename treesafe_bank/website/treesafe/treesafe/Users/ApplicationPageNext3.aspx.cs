@@ -180,6 +180,9 @@ namespace treesafe.Users
                     ApplicationPageNext1.apply_cust_industry,
                     ApplicationPageNext1.apply_cust_work_unit,
                     ApplicationPageNext1.apply_cust_work_pos);
+            /*从第三个界面读取信息*/
+
+
             //读取完成信息后，将结束申请，并跳转回到用户主页。
             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
         }
