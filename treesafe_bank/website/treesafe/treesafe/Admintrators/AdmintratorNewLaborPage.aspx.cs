@@ -21,18 +21,6 @@ using Chinese_Encode;
 namespace treesafe.Admintrators
 {
     /*有关雇员信息的结构体*/
-/*
-    struct admin_employee_info{
-	admin_employee_type employee_type;//雇员类型
-	char employee_id[EMPLOYEE_ID_LEN];//雇员的身份证号
-	char employee_work_id[EMPLOYEE_WORK_ID_LEN];//雇员工号
-	char employee_name[EMPLOYEE_NAME_LEN];//雇员的姓名;
-	admin_mgr_gender employee_gender;//雇员性别
-	int employee_age;//雇员的年龄
-	char employee_addr[EMPLOYEE_ADDR_LEN];//雇员的地址
-	char employee_email[EMPLOYEE_EMAIL_ADDR_LEN];//雇员电子邮件地址
-};
- * */
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
     struct admin_employ_info
@@ -127,7 +115,7 @@ namespace treesafe.Admintrators
                     ,_card_id,_work_id,_name,_addr,_emial,_tel);
             admin_add_employee_input_info _send_info=
                 new admin_add_employee_input_info(_comment,_info);
-           // _net_mgr.send_command_data(3,_send_info);
+            _net_mgr.send_command_data(3,_send_info);
 
 
 
