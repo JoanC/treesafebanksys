@@ -154,6 +154,16 @@ namespace treesafe.Users
             }
         };
 
+ /*
+struct apply_loan_info{
+	//贷款信息
+	char app_id[APPLY_ID] ;
+	int loan_application_amount;//贷款金额
+	int loan_dead_line;//还款期限(单位为月份)
+	APPLY_LOAN_TIMES loan_times;//申请人的贷款次数
+	char loan_comment[APPLY_LOAN_COMMENT];//贷款的使用说明
+};
+  * */
 
 
         protected void Page_Load(object sender, EventArgs e)
