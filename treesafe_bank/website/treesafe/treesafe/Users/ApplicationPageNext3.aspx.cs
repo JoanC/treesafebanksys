@@ -247,6 +247,13 @@ namespace treesafe.Users
                     ApplicationPageNext2.apply_cust_sps_name,
                     ApplicationPageNext2.apply_cust_sps_card_id,
                     ApplicationPageNext2.apply_cust_sps_work_unit);
+            /*从第四个界面(即本界面)读取数据*/
+            cust_loan_amount = int.Parse(ApplicationLoanSum.Text);
+            cust_loan_deadline = int.Parse(ApplicationLoanTime.Text);
+            cust_loan_times = int.Parse(ApplicationLoanNumber.Text);
+            cust_loan_comment =
+                Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationLoanNote.Text);
+            cust_is_want_msg = int.Parse(ApplicationIsMessage.Text);
 
             //读取完成信息后，将结束申请，并跳转回到用户主页。
             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
