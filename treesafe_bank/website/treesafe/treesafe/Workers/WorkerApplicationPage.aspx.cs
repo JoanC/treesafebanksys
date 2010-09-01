@@ -31,7 +31,6 @@ namespace treesafe.Workers
             {
               //  Server.Transfer("~/WrongPage.aspx", true);
             }
-
         }
 
         protected void CreateApplicationButton_Click(object sender, EventArgs e)
