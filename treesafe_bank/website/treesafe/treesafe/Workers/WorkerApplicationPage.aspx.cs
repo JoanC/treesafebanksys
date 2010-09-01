@@ -124,7 +124,11 @@ namespace treesafe.Workers
                     cust_is_want_msg, 
                     cust_loan_comment);
             /*总结最终数据*/
-
+            apply_input_info _input_info =
+               new apply_input_info(_cust_info, _asset_info, _family_info, _loan_info);
+            /*发送数据*/
+            web_net_client_mgr _net_mgr = new web_net_client_mgr();
+            _net_mgr.send_command_data(2, _input_info);
 
             Server.Transfer("~/Workers/WorkerFinishApplicationPage.aspx", true);
         }
