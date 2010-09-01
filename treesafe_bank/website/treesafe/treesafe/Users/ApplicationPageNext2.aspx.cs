@@ -18,6 +18,16 @@ namespace treesafe.Users
 
         }
 
+        /*定义与用户UI的交互数据*/
+        public static int apply_cust_mar_stu;
+        public static int apply_cust_chd_num;
+        public static int apply_cust_sps_card_type;
+        public static int apply_cust_sps_edu;
+        public static int apply_cust_is_sps_has_loan;
+        public static string apply_cust_sps_name;
+        public static string apply_cust_sps_card_id;
+        public static string apply_cust_sps_work_unit;
+
         protected void CreateApplicationButton_Click(object sender, EventArgs e)
         {
             //将信息存入数据库。。。
