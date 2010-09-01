@@ -1,5 +1,4 @@
 #include "stdafx.h"
-
 #include "banksys_net.h"
 //#include <winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
@@ -10,7 +9,7 @@ void net_add_connection(sys_Server *sServer)
 	int retVal;
 	if(WSAStartup(MAKEWORD(2,2),&sServer->sys_server.wsd)!=0)
 	{
-		MessageBox(NULL,L"ÍøÂç³õÊ¼»¯´íÎó£¡",L"´íÎóÐÅÏ¢",MB_OK);
+		//MessageBox(NULL,L"ÍøÂç³õÊ¼»¯´íÎó£¡",L"´íÎóÐÅÏ¢",MB_OK);
 		return;
 	}
 
@@ -41,6 +40,8 @@ void net_release_connection(sys_Server *sServer)
 #ifdef DEBUG_NET_INFO
 	printf("release server socket!\n");
 #endif
+	closesocket(sServer->sys_server.sServer);
+	closesocket(sServer->sys_server.sClient);
 	WSACleanup();
 }
 
@@ -77,7 +78,7 @@ void net_recieve_data(sys_Server* sServer)
 	printf("start to recevie data!\n");
 #endif
 	int reVal;
-	char cCount[] = "99";
+    char cCount[] = "99";
 	reVal = recv(sServer->sys_server.sClient,cCount,sizeof(cCount)-1,0);
 	int iCount = atoi(cCount);
 	sServer->rec.cNetDataInfo = (char*)malloc(sizeof(char)*PackageSize*iCount);
@@ -97,7 +98,6 @@ void net_recieve_data(sys_Server* sServer)
 		WSACleanup();
 		return;
 	}
-	printf("%s\n",sServer->rec.cNetDataInfo);
 #ifdef DEBUG_NET_INFO
 	printf("end receive data!\n");
 #endif
@@ -109,25 +109,28 @@ void net_send_data(sys_Server* sServer)
 {
 #ifdef DEBUG_NET_INFO
 	printf("start to send data!\n");
-#endif-
+#endif
 	int reVal;
 	if(sServer->send.stNetDataLength <= PackageSize)
 	{
 		char temp[] = "01";
-		reVal = send(sServer->sys_server.sServer,temp,sizeof(temp),0);
-		reVal = send(sServer->sys_server.sServer,sServer->send.cNetDataInfo,sServer->send.stNetDataLength,0);	
+		reVal = send(sServer->sys_server.sClient,temp,sizeof(temp),0);
+		reVal = send(sServer->sys_server.sClient,sServer->send.cNetDataInfo,sServer->send.stNetDataLength,0);	
 	}
 	else
 	{
 		char temp[] =  "99";
 		int iCount = sServer->send.stNetDataLength / PackageSize + 1;
-		int iLastPackageSize = sServer->send.stNetDataLength - PackageSize * iCount;
-		_itoa_s(iCount,temp,10);
-		reVal = send(sServer->sys_server.sServer,temp,sizeof(temp),0);
+		int iLastPackageSize = sServer->send.stNetDataLength - PackageSize * (iCount-1);
+		_itoa(iCount,temp,10);
+		reVal = send(sServer->sys_server.sClient,temp,sizeof(temp),0);
+		
+		char* _temp_send_ptr = sServer->send.cNetDataInfo;
+
 		while(iCount--)
 		{
-			reVal = send(sServer->sys_server.sServer,sServer->send.cNetDataInfo,PackageSize,0);
-			sServer->send.cNetDataInfo += PackageSize;
+			reVal = send(sServer->sys_server.sClient,_temp_send_ptr,PackageSize,0);
+			_temp_send_ptr += PackageSize;
 		}
 	}
 	if(SOCKET_ERROR == reVal)
