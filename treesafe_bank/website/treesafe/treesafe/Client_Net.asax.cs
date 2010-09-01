@@ -50,13 +50,13 @@ namespace ClientNet
             {
                 public int type;//命令类型
                 public int len;//命令长度
-                [MarshalAs(UnmanagedType.ByValArray, SizeConst = 512)]
+                [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3048)]
                 public char[] data;//命令中的数据
                 public sys_net_data(char[] _data)
                 {
                     this.type = 0;
                     this.len = 0;
-                    this.data = new char[512];
+                    this.data = new char[3048];
                     Array.Copy(_data, data, _data.Length);
                 }
             };
