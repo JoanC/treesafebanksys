@@ -79,7 +79,7 @@ CodeBehind="ApplicationPageNext2.aspx.cs" Inherits="treesafe.Users.ApplicationPa
 
            <p> 
                 <asp:Label ID="ApplicationMateIsHaveDepositLabel" runat="server" AssociatedControlID="ApplicationMateIsHaveDeposit">
-                3. 您配偶是否有已经申请的贷款?</asp:Label>
+                7. 您配偶是否有已经申请的贷款?</asp:Label>
                 <asp:RadioButtonList ID="ApplicationMateIsHaveDeposit" runat="server" RepeatDirection="Horizontal">
                     <asp:ListItem Value="1">有</asp:ListItem> 
                     <asp:ListItem Value="0">无</asp:ListItem>
