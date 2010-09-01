@@ -43,10 +43,13 @@ namespace treesafe.Users
             char[] cust_other_tel;//其他联系电话
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
             char[] cust_addr;//家庭地址
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]
+            char[] cust_zip;//邮政编码
             int cust_edu_degree;//受教育情况
+            int cust_house_type;//住宅权属
             public apply_custmor_info(int _gender, int _age
-                , int _card_type, int _edu, string _name
-                , string _card_id, string _tel, string _other_tel,string _addr)
+                , int _card_type, int _edu,int _house, string _name
+                , string _card_id, string _tel, string _other_tel,string _addr,string _zip)
             {
                 this.app_id = "".PadRight(11, '\0').ToCharArray();
                 this.cust_age = _age;
@@ -58,6 +61,8 @@ namespace treesafe.Users
                 this.cust_other_tel = _other_tel.PadRight(11, '\0').ToCharArray();
                 this.cust_tel = _tel.PadRight(11, '\0').ToCharArray();
                 this.cust_addr = _addr.PadRight(51, '\0').ToCharArray();
+                this.cust_zip = _zip.PadRight(7, '\0').ToCharArray();
+                this.cust_house_type = _house;
             }
         };
 
@@ -75,9 +80,19 @@ namespace treesafe.Users
             //将信息存入数据库。。。
             //使用方法同Register
             //（此处所使用方法和控件基本一致）
-
-
-
+            /*从第一个界面读取信息*/
+            apply_custmor_info _cust_info
+                = new apply_custmor_info(ApplicationPage.apply_cust_gender,
+                    ApplicationPage.apply_cust_age,
+                    ApplicationPage.apply_cust_card_type
+                    ,ApplicationPage.apply_cust_edu,
+                    ApplicationPage.apply_cust_house_type,
+                    ApplicationPage.apply_cust_name,
+                    ApplicationPage.apply_cust_id,
+                    ApplicationPage.apply_cust_tel,
+                    ApplicationPage.apply_cust_other_tel,
+                    ApplicationPage.apply_cust_addr,
+                    ApplicationPage.apply_cust_zip);
             //读取完成信息后，将结束申请，并跳转回到用户主页。
             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
         }
