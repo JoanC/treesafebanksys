@@ -154,17 +154,46 @@ namespace treesafe.Users
             }
         };
 
- /*
-struct apply_loan_info{
-	//贷款信息
-	char app_id[APPLY_ID] ;
-	int loan_application_amount;//贷款金额
-	int loan_dead_line;//还款期限(单位为月份)
-	APPLY_LOAN_TIMES loan_times;//申请人的贷款次数
-	char loan_comment[APPLY_LOAN_COMMENT];//贷款的使用说明
-};
-  * */
+        /*
+           //贷款信息
+           char app_id[APPLY_ID] ;
+           int loan_application_amount;//贷款金额
+           int loan_dead_line;//还款期限(单位为月份)
+           APPLY_LOAN_TIMES loan_times;//申请人的贷款次数
+           char loan_comment[APPLY_LOAN_COMMENT];//贷款的使用说明
+           ///////////////////////////////////////////
+           APPLY_MESSAGE is_want_msg;
+           ///////////////////////////////////////////
+         * */
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
+        struct apply_loan_info
+        {
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
+            public char[] app_id;//申请id,为空,其值在服务器赋予
+            int loan_application_amount;//贷款金额
+            int loan_dead_line;//还款期限(单位为月份)
+            int loan_times;//申请人的贷款次数;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
+            char[] loan_comment;//注释信息
+            int is_want_msg;//是否需要短信提示
+            public apply_loan_info(int _amount, int _deadline, int _loan_times
+                , int _is_want_msg, string _loan_comment)
+            {
+                this.app_id = "".PadRight(11,'\0').ToCharArray();
+                this.is_want_msg = _is_want_msg;
+                this.loan_application_amount = _amount;
+                this.loan_comment = _loan_comment.PadRight(1024,'\0').ToCharArray();
+                this.loan_dead_line = _deadline;
+                this.loan_times = _loan_times;
+            }
+        }
 
+        public int cust_loan_amount;
+        public int cust_loan_deadline;
+        public int cust_loan_times;
+        public int cust_is_want_msg;
+        public string 
 
         protected void Page_Load(object sender, EventArgs e)
         {
