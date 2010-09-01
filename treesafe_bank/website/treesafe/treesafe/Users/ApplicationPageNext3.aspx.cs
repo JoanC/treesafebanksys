@@ -248,7 +248,7 @@ namespace treesafe.Users
                     ApplicationPageNext2.apply_cust_sps_card_id,
                     ApplicationPageNext2.apply_cust_sps_work_unit);
             /*从第四个界面(即本界面)读取数据*/
-            cust_loan_amount = int.Parse(ApplicationLoanSum.Text);
+            cust_loan_amount = int.Parse(ApplicationExceptLoanSum.Text);
             cust_loan_deadline = int.Parse(ApplicationLoanTime.Text);
             cust_loan_times = int.Parse(ApplicationLoanNumber.Text);
             cust_loan_comment =
