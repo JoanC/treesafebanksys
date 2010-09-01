@@ -165,6 +165,21 @@ namespace treesafe.Users
                     ApplicationPage.apply_cust_other_tel,
                     ApplicationPage.apply_cust_addr,
                     ApplicationPage.apply_cust_zip);
+            /*从第二个界面读取信息*/
+            apply_cust_asset_info _asset_info
+                = new apply_cust_asset_info(ApplicationPageNext1.apply_cust_pincome,
+                    ApplicationPageNext1.apply_cust_fincome,
+                    ApplicationPageNext1.apply_cust_dep_type,
+                    ApplicationPageNext1.apply_cust_reg_dep,
+                    ApplicationPageNext1.apply_cust_dem_dep,
+                    ApplicationPageNext1.apply_cust_is_has_loan,
+                    ApplicationPageNext1.apply_cust_loan_sum,
+                    ApplicationPageNext1.apply_cust_loan_time,
+                    ApplicationPageNext1.apply_cust_is_has_fixed,
+                    ApplicationPageNext1.apply_cust_fixed_type,
+                    ApplicationPageNext1.apply_cust_industry,
+                    ApplicationPageNext1.apply_cust_work_unit,
+                    ApplicationPageNext1.apply_cust_work_pos);
             //读取完成信息后，将结束申请，并跳转回到用户主页。
             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
         }
