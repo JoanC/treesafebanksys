@@ -33,7 +33,12 @@ apply_input_info* apply_get_convert_input(char* _data){
 	apply_input_info* _new_data =  (apply_input_info*)_data;
 	/*中文解码*/
 	/*仅针对字符串*/
-	
+	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_addr);
+	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_id);
+	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_name);
+	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_other_tel_num);
+	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_tel_num);
+	DECODE_UTF7_TO_ASC(_new_data->input_basic_info.cust_zip_code);
 	return _new_data;
 }
 
