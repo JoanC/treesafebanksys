@@ -97,10 +97,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	//my_name[1] = 7;
 	//my_name[2] = 78;
 
-
+	treesafe_db_connection = new _ConnectionPtr;
+	ConnectDB(treesafe_db_connection);
 	while(1){
-		treesafe_db_connection = new _ConnectionPtr;
-		ConnectDB(treesafe_db_connection);
 		server_of_website.rec.cNetDataInfo =NULL;
 		server_of_website.send.cNetDataInfo = NULL;
 		sys_frame_work();
@@ -110,9 +109,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		if(server_of_website.send.cNetDataInfo != NULL){
 			free(server_of_website.send.cNetDataInfo);
 		}
-		DisconnectDB(treesafe_db_connection);
-		delete (treesafe_db_connection);
 	}
+	DisconnectDB(treesafe_db_connection);
+	delete (treesafe_db_connection);
 	return 0;
 }
 

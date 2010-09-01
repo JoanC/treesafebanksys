@@ -20,17 +20,19 @@ void apply_init_apply_custmor_info(apply_custmor_info* _init){
 
 void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 	//初始化用户资产信息
-	_init->cust_deposit_range = none_range;
+	
 	_init->cust_deposit_type = none_deposit;
-	_init->cust_family_annual_income = 0;
+	_init->cust_family_annual_income = fincome_down_2000;
 	_init->cust_industry = other_farming;
 	_init->does_cust_have_loan = false;
-	_init->cust_loan_sum = 0;
-	_init->cust_loan_time = 0;
-	_init->cust_personal_annual_income = 0;
+	_init->cust_loan_sum = loan_none_range;
+	_init->cust_loan_time = apply_time_none;
+	_init->cust_personal_annual_income = pincome_down_2000;
 	_init->cust_unsecured_fixed_asset = asset_none;
 	strcpy(_init->cust_work_unit,"");
 	strcpy(_init->cust_work_pos,"");
+	//-------------------------------------
+	_init->cust_deposit_range = deposit_none_range;
 }
 
 void apply_init_apply_custmor_family_info(apply_cust_family_info* _init){

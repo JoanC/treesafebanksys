@@ -132,8 +132,59 @@ enum APPLY_DEPOSIT_TYPE{
 	has_deposit//有存款
 };
 
-enum APPLY_DEPOSIT_RANGE{//存款范围
-	none_range//空范围
+enum APPLY_PERSON_INCOME_RANGE{
+	//个人收入范围(年)
+	pincome_down_2000,//2000以下
+	pincome_2000_to_5000,//2000到5000
+	pincome_5000_to_8000,//5000到8000
+	pincome_8000_to_1w,//8000到1w
+	pincome_1w_to_15q,//1w到1.5w
+	pincome_15q_to_2w,//1.5w到2w
+	pincome_up_2w//2w以上
+};
+
+enum APPLY_FAMILY_INCOME_RANGE{
+	//家庭收入范围
+	fincome_down_2000,//2000以下
+	fincome_2000_to_5000,//2000到5000
+	fincome_5000_to_1w,//5000到1w
+	fincome_1w_to_3w,//1w到3w
+	fincome_3w_to_5w,//3w到5w
+	fincome_5w_to_10w,//5w到10w
+	fincome_up_10w//10w以上
+};
+
+enum APPLY_DEPOSIT_RANGE{
+	//存款范围
+	deposit_none_range,//空范围
+	deposit_down_2000,//2000以下
+	deposit_2000_to_5000,//5000以下
+	deposit_5000_to_8000,//5000-8000
+	deposit_8000_to_1w,//8000-1w
+	deposit_1w_to_2w,//1w-2w
+	deposit_2w_to_5w,//2w-5w
+	deposit_up_5w//5w以上
+};
+
+enum APPLY_LOAN_RANGE{
+	//贷款范围
+	loan_none_range,//空范围
+	loan_down_2000,//2000以下
+    loan_2000_to_5000,//5000以下
+	loan_5000_to_8000,//5000-8000
+	loan_8000_to_1w,//8000-1w
+	loan_1w_to_2w,//1w-2w
+	loan_2w_to_5w,//2w-5w
+	loan_up_5w//5w以上
+};
+
+enum APPLY_LOAN_TIME{
+	//换贷款的时间范围
+	apply_time_none,//无
+	apply_time_down_6m,//6个月以下
+	apply_time_6m_to_12m,//6个月 - 12个月
+	apply_time_12m_to_24m,//12个月-24个月
+	apply_time_up_24m//24个月以上
 };
 
 enum APPLY_UNSECURED_FIXED_ASSETS{
@@ -158,20 +209,17 @@ enum APPLY_INDUSTRY_TYPE{
 
 struct apply_cust_asset_info{
 	char app_id[APPLY_ID] ;
-	int cust_personal_annual_income;//个人年收入
-	int cust_family_annual_income;//家庭年收入
-
+	APPLY_PERSON_INCOME_RANGE cust_personal_annual_income;//个人年收入
+	APPLY_FAMILY_INCOME_RANGE cust_family_annual_income;//家庭年收入
 	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
-	
 	//这两个金额存入数据库中
-	int cust_regular_deposit;//定期存款金额
-	int cust_demand_deposit;//活期存款额
+	APPLY_DEPOSIT_RANGE cust_regular_deposit;//定期存款金额(范围)
+	APPLY_DEPOSIT_RANGE cust_demand_deposit;//活期存款额(范围)
 	//以上两个加上
 	//
-
 	bool does_cust_have_loan;//是否有贷款
-	int cust_loan_sum;//贷款总金额
-	int cust_loan_time;//经过多少年后还款
+	APPLY_LOAN_RANGE cust_loan_sum;//贷款总金额(范围)
+	APPLY_LOAN_TIME cust_loan_time;//经过多少shijian后还款
 	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
 	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
 	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
