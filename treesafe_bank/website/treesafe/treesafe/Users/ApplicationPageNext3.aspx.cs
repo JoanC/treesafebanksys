@@ -138,10 +138,10 @@ namespace treesafe.Users
             public int cust_spouse_edu_degree;//配偶的受教育程度
             public int cust_spouse_is_has_loan;//配偶是否有贷款
             public apply_cust_family_info(int _mar_stu, int _chd_num
-                , int _sps_card_type, int _sps_edu, int _is_sps_has_loan
+                , int _sps_card_type, int _sps_edu, int _is_sps_has_loan , int _spouse_card_type
                 , string _sps_name, string _sps_card_id, string _sps_work_unit)
             {
-                this.cust_apouse_card_type = 0;
+                this.cust_apouse_card_type = _spouse_card_type;
                 this.app_id = "".PadRight(11, '\0').ToCharArray();
                 this.cust_apouse_card_type = _sps_card_type;
                 this.cust_children_num = _chd_num;
@@ -260,6 +260,7 @@ namespace treesafe.Users
                     ApplicationPageNext2.apply_cust_sps_card_type,
                     ApplicationPageNext2.apply_cust_sps_edu,
                     ApplicationPageNext2.apply_cust_is_sps_has_loan,
+                    ApplicationPageNext2.apply_cust_sps_card_type,
                     ApplicationPageNext2.apply_cust_sps_name,
                     ApplicationPageNext2.apply_cust_sps_card_id,
                     ApplicationPageNext2.apply_cust_sps_work_unit);
