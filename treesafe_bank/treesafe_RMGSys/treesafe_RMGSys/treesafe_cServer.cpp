@@ -1,5 +1,4 @@
 #include "stdafx.h"
-
 #include "treesafe_cServer.h"
 //#include <winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
@@ -41,6 +40,8 @@ void net_release_connection(sys_Server *sServer)
 #ifdef DEBUG_NET_INFO
 	printf("release server socket!\n");
 #endif
+	closesocket(sServer->sys_server.sServer);
+	closesocket(sServer->sys_server.sClient);
 	WSACleanup();
 }
 
