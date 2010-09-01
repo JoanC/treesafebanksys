@@ -13,7 +13,7 @@ namespace treesafe.Auditors
         {
             if (Session["userright"].ToString() != "2")
             {
-                Server.Transfer("~/WrongPage.aspx", true);
+            //    Server.Transfer("~/WrongPage.aspx", true);
             }
 
         }
