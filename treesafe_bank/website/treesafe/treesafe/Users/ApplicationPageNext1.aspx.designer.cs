@@ -235,7 +235,7 @@ namespace treesafe.Users {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList ApplicationMortgage;
+        protected global::System.Web.UI.WebControls.RadioButtonList ApplicationMortgage;
         
         /// <summary>
         /// ApplicationIndustryLabel control.
@@ -253,7 +253,7 @@ namespace treesafe.Users {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList ApplicationIndustry;
+        protected global::System.Web.UI.WebControls.RadioButtonList ApplicationIndustry;
         
         /// <summary>
         /// ApplicationWorkLabel control.

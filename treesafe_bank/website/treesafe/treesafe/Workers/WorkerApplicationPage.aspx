@@ -276,14 +276,14 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   <asp:Label ID="ApplicationMortgageLabel" runat="server" AssociatedControlID="ApplicationMortgage">
                   10.未抵押的主要固定资产：
                   </asp:Label>
-                  <asp:CheckBoxList ID="ApplicationMortgage" runat="server">
+                  <asp:RadioButtonList ID="ApplicationMortgage" runat="server">
                       <asp:ListItem Value="0">住宅</asp:ListItem>
                       <asp:ListItem Value="1">工作建筑（厂房）</asp:ListItem>
                       <asp:ListItem Value="2">个人交通工具</asp:ListItem>
                       <asp:ListItem Value="3">运输工具</asp:ListItem>
                       <asp:ListItem Value="4">生产设备</asp:ListItem>
                       <asp:ListItem Value="5">其他</asp:ListItem>
-                  </asp:CheckBoxList>
+                  </asp:RadioButtonList>
               </p>
               <p>
                   &nbsp;</p>
@@ -292,7 +292,7 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                   <asp:Label ID="ApplicationIndustryLabel" runat="server" AssociatedControlID="ApplicationIndustry">
                   11.从事行业：
                   </asp:Label>
-                  <asp:CheckBoxList ID="ApplicationIndustry" runat="server">
+                  <asp:RadioButtonList ID="ApplicationIndustry" runat="server">
                       <asp:ListItem Value="0">作物种植</asp:ListItem>
                       <asp:ListItem Value="1">水产渔业</asp:ListItem>
                       <asp:ListItem Value="2">林业苗木</asp:ListItem>
@@ -306,7 +306,7 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                       <asp:ListItem Value="10">生物技术</asp:ListItem>
                       <asp:ListItem Value="11">遗传育种</asp:ListItem>
                       <asp:ListItem Value="12">其他</asp:ListItem>
-                  </asp:CheckBoxList>
+                  </asp:RadioButtonList>
               </p>
 
             <p> 

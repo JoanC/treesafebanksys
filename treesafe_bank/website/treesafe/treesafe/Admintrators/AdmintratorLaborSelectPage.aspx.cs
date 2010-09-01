@@ -31,7 +31,12 @@ namespace treesafe.Admintrators
         protected void Button2_Click(object sender, EventArgs e)
         {
             //跳转到修改雇员信息界面
-            Server.Transfer("~/Users/ApplicationPageNext1.aspx", true);
+           // Response.Redirect("AdmintratorEditLaborPage.aspx");
+         //   window.location.href = "fieldDefine.do?method=findAllFieldDefineByTable&sysname= " + sys + "&tablename= " + encodeURIComponent(tab); 
+
+           // Response.Write("<script language='javascript'>window.location='AdmintratorEditLaborPage.aspx'?id="+LaborID.Text+"</script>");
+           //Response.Write("<script language='javascript'>window.location='AdmintratorEditLaborPage.aspx'?id="+Request.QueryString["id"]+"</script>");
+
         }
     }
 }
