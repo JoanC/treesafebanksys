@@ -85,6 +85,15 @@ CodeBehind="AuditorListPage.aspx.cs" Inherits="treesafe.Auditors.AuditorListPage
                    oncheckedchanged="CheckBox1_CheckedChanged"/>经核实，上述信息均正确无误（请慎重选择）
            </p>
            <p>
+               <asp:Label ID="NotesLabel1" runat="server" AssociatedControlID="Notes1">
+               如存在问题，请简要描述：
+               </asp:Label>
+               <br/>
+               <asp:TextBox ID="Notes1" runat="server" TextMode="MultiLine" Height="100px" 
+                   Width="480px"></asp:TextBox>
+              
+           </p>
+           <p>
            &nbsp;
            </p>
 
@@ -179,6 +188,14 @@ CodeBehind="AuditorListPage.aspx.cs" Inherits="treesafe.Auditors.AuditorListPage
                    oncheckedchanged="CheckBox2_CheckedChanged"/>经核实，上述信息均正确无误（请慎重选择）
            </p>
            <p>
+               <asp:Label ID="NotesLabel2" runat="server" AssociatedControlID="Notes2">
+               如存在问题，请简要描述：
+               </asp:Label>
+               <br/>
+               <asp:TextBox ID="Notes2" runat="server" TextMode="MultiLine" Height="100px" 
+                   Width="480px"></asp:TextBox>            
+           </p>
+           <p>
            &nbsp;
            </p>
            <p class="header" style="font-size: medium; color: #FFFFFF;">
@@ -243,6 +260,14 @@ CodeBehind="AuditorListPage.aspx.cs" Inherits="treesafe.Auditors.AuditorListPage
                <asp:CheckBox ID="CheckBox3" runat="server" 
                    oncheckedchanged="CheckBox3_CheckedChanged"/>经核实，上述信息均正确无误（请慎重选择）
            </p>
+           <p>
+               <asp:Label ID="NotesLabel3" runat="server" AssociatedControlID="Notes3">
+               如存在问题，请简要描述：
+               </asp:Label>
+               <br/>
+               <asp:TextBox ID="Notes3" runat="server" TextMode="MultiLine" Height="100px" 
+                   Width="480px"></asp:TextBox>            
+           </p>
 
            <p>
            &nbsp;
@@ -296,7 +321,16 @@ CodeBehind="AuditorListPage.aspx.cs" Inherits="treesafe.Auditors.AuditorListPage
                <asp:CheckBox ID="CheckBox4" runat="server" 
                     oncheckedchanged="CheckBox4_CheckedChanged"/>经核实，上述信息均正确无误（请慎重选择）
            </p>
-     
+
+           <p>
+               <asp:Label ID="NotesLabel4" runat="server" AssociatedControlID="Notes4">
+               如存在问题，请简要描述：
+               </asp:Label>
+               <br/>
+               <asp:TextBox ID="Notes4" runat="server" TextMode="MultiLine" Height="100px" 
+                   Width="480px"></asp:TextBox>            
+           </p>
+ 
            </fieldset>
            <p style="color: #3366FF;">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

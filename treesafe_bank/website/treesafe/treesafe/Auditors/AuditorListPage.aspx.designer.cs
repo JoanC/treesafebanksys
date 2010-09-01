@@ -220,6 +220,24 @@ namespace treesafe.Auditors {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
         
         /// <summary>
+        /// NotesLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NotesLabel1;
+        
+        /// <summary>
+        /// Notes1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Notes1;
+        
+        /// <summary>
         /// ApplicationPersonIncomeLabel control.
         /// </summary>
         /// <remarks>
@@ -463,6 +481,24 @@ namespace treesafe.Auditors {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
         
         /// <summary>
+        /// NotesLabel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NotesLabel2;
+        
+        /// <summary>
+        /// Notes2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Notes2;
+        
+        /// <summary>
         /// ApplicationMarrigeLabel control.
         /// </summary>
         /// <remarks>
@@ -616,6 +652,24 @@ namespace treesafe.Auditors {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox3;
         
         /// <summary>
+        /// NotesLabel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NotesLabel3;
+        
+        /// <summary>
+        /// Notes3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Notes3;
+        
+        /// <summary>
         /// ApplicationExpectLoanSumLabel control.
         /// </summary>
         /// <remarks>
@@ -713,6 +767,24 @@ namespace treesafe.Auditors {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox4;
+        
+        /// <summary>
+        /// NotesLabel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NotesLabel4;
+        
+        /// <summary>
+        /// Notes4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Notes4;
         
         /// <summary>
         /// CommitApplicationButton control.
