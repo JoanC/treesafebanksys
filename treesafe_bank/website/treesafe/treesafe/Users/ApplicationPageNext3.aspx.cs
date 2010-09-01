@@ -154,17 +154,6 @@ namespace treesafe.Users
             }
         };
 
-        /*
-           //贷款信息
-           char app_id[APPLY_ID] ;
-           int loan_application_amount;//贷款金额
-           int loan_dead_line;//还款期限(单位为月份)
-           APPLY_LOAN_TIMES loan_times;//申请人的贷款次数
-           char loan_comment[APPLY_LOAN_COMMENT];//贷款的使用说明
-           ///////////////////////////////////////////
-           APPLY_MESSAGE is_want_msg;
-           ///////////////////////////////////////////
-         * */
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
         struct apply_loan_info
@@ -194,6 +183,33 @@ namespace treesafe.Users
         public int cust_loan_times;
         public int cust_is_want_msg;
         public string cust_loan_comment;
+
+        /*
+         * void apply_init_apply_input_info(apply_input_info* _init){
+	//初始化输入信息
+	apply_init_apply_custmor_info(&_init->input_basic_info);
+	apply_init_apply_custmor_assets_info(&_init->input_asset_info);
+	apply_init_apply_custmor_family_info(&_init->input_fammily_info);
+	apply_init_apply_loan_info(&_init->input_loan_info);
+}
+*/
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        struct apply_input_info
+        {
+            apply_custmor_info cust_info;
+            apply_cust_asset_info asset_info;
+            apply_cust_family_info family_info;
+            apply_loan_info loan_info;
+            public apply_input_info(apply_custmor_info _cust,
+               apply_cust_asset_info _asset,apply_cust_family_info _family,apply_loan_info _loan)
+            {
+                this.asset_info = _asset;
+                this.cust_info = _cust;
+                this.family_info = _family;
+                this.loan_info = _loan;
+            }
+        };
 
         protected void Page_Load(object sender, EventArgs e)
         {
