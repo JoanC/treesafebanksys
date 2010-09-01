@@ -98,6 +98,11 @@ struct apply_custmor_info{
 	char cust_tel_num[APPLY_CUST_TEL_LEN];//联系电话
 	char cust_other_tel_num[APPLY_CUST_TEL_LEN];//其他联系电话
 	APPLY_CUST_EDUCATION_DEGREE cust_edu;//受教育情况
+
+	/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+	//紧急，加填到数据库中
+	char cust_addr[APPLY_CUST_ADDR_LEN];//地址
+
 };
 
 /*
