@@ -99,12 +99,42 @@ namespace treesafe.Users
             int cust_deposit_type;//存款类型,0表示没有存款
             int cust_regular_deposit;//定期存款金额
             int cust_demand_deposit;//活期存款额
-            int cust_is_haa_loan;//是否有贷款
+            int cust_is_has_loan;//是否有贷款
             int cust_loan_sum;//贷款总金额
             int cust_loan_time;//多少时间返还
-            bool cust_is_has_fixed_asset;//是否有固定资产
+            int cust_is_has_fixed_asset;//是否有固定资产
             int cust_unsecured_fixed_asset;//固定资产类型
             int cust_industry;//从事行业
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
+            char[] cust_work_unit;//工作单位
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
+            char[] cust_work_position;//工作职位
+            
+            //-------------------------------------------------------
+            int _pad;//
+            //-------------------------------------------------------
+            public apply_cust_asset_info(int _pincome, int _fincome,
+             int _dep_type, int _reg_dep, int _dem_dep,
+                int _is_has_loan, int _loan_sum, int _loan_time,
+                   int _is_has_fixed, int _fixed_type, int _industry,
+            string _unit, string _pos)
+            {
+                this._pad = 0;
+                this.app_id = "".PadRight(11,'\0').ToCharArray();
+                this.cust_demand_deposit = _dem_dep;
+                this.cust_deposit_type = _dep_type;
+                this.cust_family_annual_income = _fincome;
+                this.cust_industry = _industry;
+                this.cust_is_has_fixed_asset = _is_has_fixed;
+                this.cust_is_has_loan = _is_has_loan;
+                this.cust_loan_sum = _loan_sum;
+                this.cust_loan_time = _loan_time;
+                this.cust_personal_annual_income = _pincome;
+                this.cust_regular_deposit = _reg_dep;
+                this.cust_unsecured_fixed_asset = _fixed_type;
+                this.cust_work_position = _pos.PadRight(51,'\0').ToCharArray();
+                this.cust_work_unit = _unit.PadRight(51,'\0').ToCharArray();
+            }
         }
 
 
