@@ -9,6 +9,13 @@ CodeBehind="WrongPage.aspx.cs" Inherits="treesafe.WrongPage" %>
         错误
     </h2>
     <p>
+    &nbsp;
+    </p>
+    <p>
+        <asp:Label ID="WrongMsg" runat="server" Text="WrongMsg"></asp:Label>
+    </p>
+
+    <p>
         请先登录系统
         <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false" NavigateUrl="~/Account/Login.aspx">注册</asp:HyperLink>。
     </p>
