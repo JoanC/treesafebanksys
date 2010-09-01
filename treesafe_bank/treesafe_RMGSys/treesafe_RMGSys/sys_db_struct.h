@@ -73,7 +73,7 @@ struct sys_db_apply{
 #define APPLY_CARD_NUMBER_LEN 19//证件号码长度
 #define APPLY_CUST_ADDR_LEN 51//家庭住址长度
 #define APPLY_CUST_ZIP_CODE_LEN 7 //邮政编码长度
-#define APPLY_CUST_TEL_LEN 19 //联系电话长度
+#define APPLY_CUST_TEL_LEN 11 //联系电话长度
 
 enum APPLY_GENDER_TYPE {apply_info_male , apply_info_female};//性别值
 enum APPLY_CARD_TYPE{id_card/*身份证*/,ｍilitary_card/*军人证*/};//证件类型
