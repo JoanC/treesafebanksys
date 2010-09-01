@@ -193,7 +193,7 @@ namespace treesafe.Users
         public int cust_loan_deadline;
         public int cust_loan_times;
         public int cust_is_want_msg;
-        public string 
+        public string cust_loan_comment;
 
         protected void Page_Load(object sender, EventArgs e)
         {
