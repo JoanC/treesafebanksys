@@ -92,7 +92,7 @@ struct apply_custmor_info{
 	char app_id[APPLY_ID] ;
 	char cust_name[APPLY_CUST_NAME_LEN];//申请人信息
 	APPLY_GENDER_TYPE cust_gender;//申请人性别
-	int cust_age;//申请人性别
+	int cust_age;//申请人年龄
 	APPLY_CARD_TYPE cust_card_type;//证件类型
 	char cust_id[APPLY_CARD_NUMBER_LEN];//证件id
 	char cust_tel_num[APPLY_CUST_TEL_LEN];//联系电话
@@ -127,9 +127,9 @@ struct apply_custmor_info{
 职位：
 */
 
-enum APPLY_DEPOSIT_TYPE{none_deposit/*无存款*/,
-	regular_deposit/*定期存款*/,
-	demand_deposit/*活期存款*/
+enum APPLY_DEPOSIT_TYPE{
+	none_deposit/*无存款*/,
+	has_deposit//有存款
 };
 
 enum APPLY_DEPOSIT_RANGE{//存款范围
@@ -160,8 +160,15 @@ struct apply_cust_asset_info{
 	char app_id[APPLY_ID] ;
 	int cust_personal_annual_income;//个人年收入
 	int cust_family_annual_income;//家庭年收入
+
 	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
-	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+	
+	//这两个金额存入数据库中
+	int cust_regular_deposit;//定期存款金额
+	int cust_demand_deposit;//活期存款额
+	//以上两个加上
+	//
+
 	bool does_cust_have_loan;//是否有贷款
 	int cust_loan_sum;//贷款总金额
 	int cust_loan_time;//经过多少年后还款
@@ -169,6 +176,10 @@ struct apply_cust_asset_info{
 	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
 	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
 	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
+
+	//-->这个(存款范围)不要了~	
+	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+//为了保持程序运行,这个先留着
 };
 
 

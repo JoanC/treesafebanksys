@@ -21,7 +21,7 @@ void apply_init_apply_custmor_info(apply_custmor_info* _init){
 void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 	//初始化用户资产信息
 	_init->cust_deposit_range = none_range;
-	_init->cust_deposit_type = regular_deposit;
+	_init->cust_deposit_type = none_deposit;
 	_init->cust_family_annual_income = 0;
 	_init->cust_industry = other_farming;
 	_init->does_cust_have_loan = false;
