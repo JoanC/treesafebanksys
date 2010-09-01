@@ -38,7 +38,7 @@ namespace treesafe.Users
             //使用方法同Register
             //（此处所使用方法和控件基本一致）
             //把第一步信息传输到主申请信息中
-
+            
 
             //读取完成信息后，跳转到下一个页面继续申请表的填写
             Server.Transfer("~/Users/ApplicationPageNext2.aspx", true);
