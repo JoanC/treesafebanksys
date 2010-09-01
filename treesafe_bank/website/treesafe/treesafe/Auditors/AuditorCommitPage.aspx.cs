@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace treesafe.Auditors
 {
-    public partial class AuditorRootPage : System.Web.UI.Page
+    public partial class AuditorCommitPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userright"].ToString() != "2")
-            {
-            //    Server.Transfer("~/WrongPage.aspx", true);
-            }
 
-            //从此处读取该审核员的工号
         }
     }
 }

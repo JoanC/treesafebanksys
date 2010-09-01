@@ -63,6 +63,7 @@
     <Content Include="Admintrators\AdmintratorRiskManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorRootPage.aspx" />
     <Content Include="Admintrators\AdmintratorSystemIntro.aspx" />
+    <Content Include="Auditors\AuditorCommitPage.aspx" />
     <Content Include="Auditors\AuditoSystemIntro.aspx" />
     <Content Include="Client_Net.asax" />
     <Content Include="Chinese_Coding.asax" />
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="Admintrators\AdmintratorSystemIntro.aspx.designer.cs">
       <DependentUpon>AdmintratorSystemIntro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditors\AuditorCommitPage.aspx.cs">
+      <DependentUpon>AuditorCommitPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditors\AuditorCommitPage.aspx.designer.cs">
+      <DependentUpon>AuditorCommitPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auditors\AuditoSystemIntro.aspx.cs">
       <DependentUpon>AuditoSystemIntro.aspx</DependentUpon>

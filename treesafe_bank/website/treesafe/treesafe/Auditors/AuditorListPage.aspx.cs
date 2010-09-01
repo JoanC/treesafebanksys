@@ -11,11 +11,44 @@ namespace treesafe.Auditors
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //判断权限
             if (Session["userright"].ToString() != "2")
             {
              //   Server.Transfer("~/WrongPage.aspx", true);
             }
 
+            //从服务器端读取农户的申请信息，并显示在对应页面控件上
+
+
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CheckBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CommitApplicationButton_Click(object sender, EventArgs e)
+        {
+            //读取审核结果
+
+
+            //跳转到申请成功界面
+            Response.Redirect("AuditorCommitPage.aspx");
         }
     }
 }
