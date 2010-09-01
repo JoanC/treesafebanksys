@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using treesafe;
+
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -113,6 +115,7 @@ namespace treesafe.Account
             }
             catch (Exception)
             {
+                WrongPage.wrong_msg = "与服务器连接失败!请重新登陆";
                 Server.Transfer("~/WrongPage.aspx", true);
             }
             _rlt = (login_info)_net.recevie_data(_rlt.GetType());
