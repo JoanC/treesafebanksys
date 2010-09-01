@@ -53,7 +53,7 @@ namespace treesafe.Workers
             int apply_cust_fincome = int.Parse(ApplicationHomeIncome.Text);
             int apply_cust_dep_type = int.Parse(ApplicationIsHaveDeposit.Text);
             int apply_cust_reg_dep = int.Parse(ApplicationDepositFixed.Text);
-            int apply_cust_dem_dep = int.Parse(ApplicationCurrentDepositLabel.Text); ;
+            int apply_cust_dem_dep = int.Parse(ApplicationCurrentDeposit.Text); ;
             int apply_cust_is_has_loan = int.Parse(ApplicationIsHaveLoan.Text);
             int apply_cust_loan_sum = int.Parse(ApplicationLoanSum.Text);
             int apply_cust_loan_time = int.Parse(ApplicationLoanDeadline.Text);
