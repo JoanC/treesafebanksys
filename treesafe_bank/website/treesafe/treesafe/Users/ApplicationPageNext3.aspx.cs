@@ -29,7 +29,7 @@ namespace treesafe.Users
         struct apply_custmor_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
-            char[] app_id;//申请编号
+            char[] app_id;//申请id,为空,其值在服务器段赋予
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
             char[] cust_name;//申请人姓名
             int cust_gender;//性别
@@ -48,8 +48,8 @@ namespace treesafe.Users
             char[] cust_zip;//邮政编码
             int cust_house_type;//住宅权属
             public apply_custmor_info(int _gender, int _age
-                , int _card_type, int _edu,int _house, string _name
-                , string _card_id, string _tel, string _other_tel,string _addr,string _zip)
+                , int _card_type, int _edu, int _house, string _name
+                , string _card_id, string _tel, string _other_tel, string _addr, string _zip)
             {
                 this.app_id = "".PadRight(11, '\0').ToCharArray();
                 this.cust_age = _age;
@@ -67,33 +67,12 @@ namespace treesafe.Users
         };
 
         //用户资产情况信息
-        /*
-  	char app_id[APPLY_ID] ;
-	APPLY_PERSON_INCOME_RANGE cust_personal_annual_income;//个人年收入
-	APPLY_FAMILY_INCOME_RANGE cust_family_annual_income;//家庭年收入
-	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
-	//这两个金额存入数据库中
-	APPLY_DEPOSIT_RANGE cust_regular_deposit;//定期存款金额(范围)
-	APPLY_DEPOSIT_RANGE cust_demand_deposit;//活期存款额(范围)
-	//以上两个加上
-	//
-	bool does_cust_have_loan;//是否有贷款
-	APPLY_LOAN_RANGE cust_loan_sum;//贷款总金额(范围)
-	APPLY_LOAN_TIME cust_loan_time;//经过多少shijian后还款
-	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
-	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
-	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
-	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
-	//-->这个(存款范围)不要了~	
-	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
-//为了保持程序运行,这个先留着
-};*/
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
         struct apply_cust_asset_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
-            char[] app_id;//申请id
+            char[] app_id;//申请id,为空,其值在服务器段赋予
             int cust_personal_annual_income;//个人年收入
             int cust_family_annual_income;//家庭年收入
             int cust_deposit_type;//存款类型,0表示没有存款
@@ -109,7 +88,7 @@ namespace treesafe.Users
             char[] cust_work_unit;//工作单位
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
             char[] cust_work_position;//工作职位
-            
+
             //-------------------------------------------------------
             int _pad;//
             //-------------------------------------------------------
@@ -120,7 +99,7 @@ namespace treesafe.Users
             string _unit, string _pos)
             {
                 this._pad = 0;
-                this.app_id = "".PadRight(11,'\0').ToCharArray();
+                this.app_id = "".PadRight(11, '\0').ToCharArray();
                 this.cust_demand_deposit = _dem_dep;
                 this.cust_deposit_type = _dep_type;
                 this.cust_family_annual_income = _fincome;
@@ -132,11 +111,48 @@ namespace treesafe.Users
                 this.cust_personal_annual_income = _pincome;
                 this.cust_regular_deposit = _reg_dep;
                 this.cust_unsecured_fixed_asset = _fixed_type;
-                this.cust_work_position = _pos.PadRight(51,'\0').ToCharArray();
-                this.cust_work_unit = _unit.PadRight(51,'\0').ToCharArray();
+                this.cust_work_position = _pos.PadRight(51, '\0').ToCharArray();
+                this.cust_work_unit = _unit.PadRight(51, '\0').ToCharArray();
             }
         }
 
+        //申请人的家庭信息
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
+        struct apply_cust_family_info
+        {
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
+            public char[] app_id;//申请id,为空,其值在服务器赋予
+            public int cust_marital_status;//婚姻情况
+            public int cust_children_num;//子女人数
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
+            public char[] cust_spouse_name;//陪偶姓名
+            /////////////////////////////////////////////////
+            //这里界面要加!? 就是配偶的卡号类型
+            public int cust_apouse_card_type;//卡类型
+            ////////////////////////////////////////////////
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+            public char[] cust_spouse_card_id;//配偶的卡号
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
+            public char[] cust_spouse_work_unit;//配偶的工作单位
+            public int cust_spouse_edu_degree;//配偶的受教育程度
+            public int cust_spouse_is_has_loan;//配偶是否有贷款
+            public apply_cust_family_info(int _mar_stu, int _chd_num
+                , int _sps_card_type, int _sps_edu, int _is_sps_has_loan
+                , string _sps_name, string _sps_card_id, string _sps_work_unit)
+            {
+                this.cust_apouse_card_type = 0;
+                this.app_id = "".PadRight(11, '\0').ToCharArray();
+                this.cust_apouse_card_type = _sps_card_type;
+                this.cust_children_num = _chd_num;
+                this.cust_marital_status = _mar_stu;
+                this.cust_spouse_card_id = _sps_card_id.PadRight(19, '\0').ToCharArray();
+                this.cust_spouse_edu_degree = _sps_edu;
+                this.cust_spouse_is_has_loan = _is_sps_has_loan;
+                this.cust_spouse_name = _sps_name.PadRight(51, '\0').ToCharArray();
+                this.cust_spouse_work_unit = _sps_work_unit.PadRight(51, '\0').ToCharArray();
+            }
+        };
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -157,7 +173,7 @@ namespace treesafe.Users
                 = new apply_custmor_info(ApplicationPage.apply_cust_gender,
                     ApplicationPage.apply_cust_age,
                     ApplicationPage.apply_cust_card_type
-                    ,ApplicationPage.apply_cust_edu,
+                    , ApplicationPage.apply_cust_edu,
                     ApplicationPage.apply_cust_house_type,
                     ApplicationPage.apply_cust_name,
                     ApplicationPage.apply_cust_id,
