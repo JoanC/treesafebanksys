@@ -28,9 +28,10 @@
                  <asp:ListItem Value="0">2000元以下</asp:ListItem>
                  <asp:ListItem Value="1">2000~5000元</asp:ListItem>
                  <asp:ListItem Value="2">5000~8000元</asp:ListItem>
-                 <asp:ListItem Value="3">10000~15000元</asp:ListItem>
-                 <asp:ListItem Value="4">15000~20000元</asp:ListItem>
-                 <asp:ListItem Value="5">2万元以上</asp:ListItem>
+                 <asp:ListItem Value="3">8000元~10000元</asp:ListItem>
+                 <asp:ListItem Value="4">10000~15000元</asp:ListItem>
+                 <asp:ListItem Value="5">15000~20000元</asp:ListItem>
+                 <asp:ListItem Value="6">2万元以上</asp:ListItem>
               </asp:DropDownList>
            </p>
 

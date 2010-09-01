@@ -30,9 +30,8 @@ namespace treesafe.Admintrators
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            //修改用户信息
-
-           
+            //跳转到修改雇员信息界面
+            Server.Transfer("~/Users/ApplicationPageNext1.aspx", true);
         }
     }
 }

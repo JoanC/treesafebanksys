@@ -123,7 +123,7 @@ color:#333333;
                var iHeight = 540; //模态窗口高度
                var iTop = (window.screen.height - iHeight) / 2;
                var iLeft = (window.screen.width - iWidth) / 2;
-                  window.open(url, "Detail", "Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes,   Width=" + iWidth + " ,Height=" + iHeight + ",top=" + iTop + ",left=" + iLeft)
+                  window.open(url, "", "Scrollbars=yes,Toolbar=no,Location=no,Direction=no,Resizeable=yes,   Width=" + iWidth + " ,Height=" + iHeight + ",top=" + iTop + ",left=" + iLeft)
            } 
 
     </script></p>
