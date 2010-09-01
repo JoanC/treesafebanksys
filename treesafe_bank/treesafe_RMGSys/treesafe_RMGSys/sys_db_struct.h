@@ -315,10 +315,13 @@ enum APPLY_MESSAGE{
 struct apply_loan_info{
 	//贷款信息
 	char app_id[APPLY_ID] ;
-	int loan_application_amount;//贷款金额
+	APPLY_LOAN_RANGE loan_application_amount;//贷款金额(范围)
 	int loan_dead_line;//还款期限(单位为月份)
 	APPLY_LOAN_TIMES loan_times;//申请人的贷款次数
 	char loan_comment[APPLY_LOAN_COMMENT];//贷款的使用说明
+    ///////////////////////////////////////////
+	APPLY_MESSAGE is_want_msg;
+	///////////////////////////////////////////
 };
 
 struct apply_input_info{
@@ -330,9 +333,6 @@ struct apply_input_info{
 	apply_cust_family_info input_fammily_info;
 	//与贷款相关的其它信息
 	apply_loan_info input_loan_info;
-	///////////////////////////////////////////
-	
-	///////////////////////////////////////////
 };
 
 typedef apply_input_info apply_db_info;

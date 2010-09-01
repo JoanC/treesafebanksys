@@ -52,7 +52,7 @@ void apply_init_apply_custmor_family_info(apply_cust_family_info* _init){
 void apply_init_apply_loan_info(apply_loan_info* _init){
 	//初始化申请信息
 	strcpy(_init->app_id,"");
-	_init->loan_application_amount = 0;
+	_init->loan_application_amount = loan_down_2000;
 	strcpy(_init->loan_comment,"");
 	_init->loan_dead_line = 0;
 	_init->loan_times = loan_times_first;
