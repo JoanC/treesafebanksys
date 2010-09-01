@@ -11,7 +11,7 @@
 
 typedef char* COMMAND_DATA;
 #define SYS_CMD_MAX_RLT_SIZE 256
-#define SYS_CMD_MAX_SIZE 512
+#define SYS_CMD_MAX_SIZE 3048
 
 enum{
 	//√¸¡Ó±‡∫≈ºØ∫œ
