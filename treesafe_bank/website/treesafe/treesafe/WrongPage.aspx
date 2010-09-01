@@ -17,6 +17,6 @@ CodeBehind="WrongPage.aspx.cs" Inherits="treesafe.WrongPage" %>
 
     <p>
         请先登录系统
-        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false" NavigateUrl="~/Account/Login.aspx">注册</asp:HyperLink>。
+        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false" NavigateUrl="~/Account/Login.aspx">登录</asp:HyperLink>。
     </p>
 </asp:Content>
