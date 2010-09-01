@@ -4,6 +4,7 @@
 
 void apply_init_apply_custmor_info(apply_custmor_info* _init){
 	//初始化用户信息
+	strcpy(_init->app_id,"");
 	_init->cust_age = 0;
 	_init->cust_card_type = id_card;
 	_init->cust_gender = apply_info_male;
@@ -20,7 +21,7 @@ void apply_init_apply_custmor_info(apply_custmor_info* _init){
 
 void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 	//初始化用户资产信息
-	
+	strcpy(_init->app_id,"");
 	_init->cust_deposit_type = none_deposit;
 	_init->cust_family_annual_income = fincome_down_2000;
 	_init->cust_industry = farm_industry_other;
@@ -37,6 +38,7 @@ void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 
 void apply_init_apply_custmor_family_info(apply_cust_family_info* _init){
 	//初始化用户家庭信息
+	strcpy(_init->app_id,"");
 	_init->cust_apouse_card_type = id_card;
 	_init->cust_children_num = 0;
 	_init->cust_marital_status = not_married;
@@ -49,10 +51,12 @@ void apply_init_apply_custmor_family_info(apply_cust_family_info* _init){
 
 void apply_init_apply_loan_info(apply_loan_info* _init){
 	//初始化申请信息
+	strcpy(_init->app_id,"");
 	_init->loan_application_amount = 0;
 	strcpy(_init->loan_comment,"");
 	_init->loan_dead_line = 0;
 	_init->loan_times = loan_times_first;
+	_init->is_want_msg = cust_want_msg;
 }
 
 
