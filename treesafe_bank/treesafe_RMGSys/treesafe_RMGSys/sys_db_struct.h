@@ -99,11 +99,12 @@ struct apply_custmor_info{
 	char cust_other_tel_num[APPLY_CUST_TEL_LEN];//其他联系电话
 	APPLY_CUST_EDUCATION_DEGREE cust_edu;//受教育情况
 
-	/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+	//////////////////////////////////////////////////////////
 	//紧急，加填到数据库中
 	char cust_addr[APPLY_CUST_ADDR_LEN];//地址
 	char cust_zip_code[APPLY_CUST_ZIP_CODE_LEN];//邮政编码
 	APPLY_CUST_HOUSING_TENURE cust_house_type;//住宅权属
+	//////////////////////////////////////////////////////////
 
 };
 
@@ -156,7 +157,7 @@ enum APPLY_FAMILY_INCOME_RANGE{
 
 enum APPLY_DEPOSIT_RANGE{
 	//存款范围
-	deposit_none_range,//空范围
+	deposit_none_range,//空范围(无存款)
 	deposit_down_2000,//2000以下
 	deposit_2000_to_5000,//5000以下
 	deposit_5000_to_8000,//5000-8000
@@ -168,7 +169,7 @@ enum APPLY_DEPOSIT_RANGE{
 
 enum APPLY_LOAN_RANGE{
 	//贷款范围
-	loan_none_range,//空范围
+	loan_none_range,//空范围(无存款)
 	loan_down_2000,//2000以下
     loan_2000_to_5000,//5000以下
 	loan_5000_to_8000,//5000-8000
@@ -189,19 +190,30 @@ enum APPLY_LOAN_TIME{
 
 enum APPLY_UNSECURED_FIXED_ASSETS{
 	//未抵押的固定资产类型
-	asset_none,//无
 	asset_house,//房地产
-	asset_transport,//交通工具
-	asset_production_equipment//生产设备
+	asset_factory,//工作厂房
+	asset_peronal_transport,//个人交通工具
+	asset_transport,//运输工具
+	asset_production_equipment,//生产设备
+	asset_other//其它
 };
 
 enum APPLY_INDUSTRY_TYPE{
 	//从事行业
-	plant_farming,//种植页
-	livestock_farming,//畜牧业
-	forestry_farming, //林业
-	fish_farming,//渔业
-	other_farming//其他行业
+	farm_industry_plant,//种植页
+	farm_industry_fish,//渔业
+	farm_industry_forestry, //林业
+	farm_industry_livestock,//畜牧业
+	farm_industry_fruit_vegetables,//水果蔬菜
+	farm_industry_ornamental_horticulture,//观赏园艺
+	farm_industry_agricultural_corporation,//农资企业
+	farm_industry_agricultural_machinery,//农业器械
+	farm_industry_processing_storage,//加工贮藏
+	farm_industry_foodstuffs,//粮油食品
+	farm_industry_transportation,//交通运输
+	farm_industry_biotechnology,//生物技术
+	farm_industry_genetics,//基因工程
+	farm_industry_other//其他行业
 };
 
 #define APPLY_WORK_UINT_LEN  51//工作单位长度
@@ -213,20 +225,26 @@ struct apply_cust_asset_info{
 	APPLY_FAMILY_INCOME_RANGE cust_family_annual_income;//家庭年收入
 	APPLY_DEPOSIT_TYPE cust_deposit_type;//是否有存款以及存款类型
 	//这两个金额存入数据库中
+	///////////////////////////////////////////////////////////////////
 	APPLY_DEPOSIT_RANGE cust_regular_deposit;//定期存款金额(范围)
 	APPLY_DEPOSIT_RANGE cust_demand_deposit;//活期存款额(范围)
+	///////////////////////////////////////////////////////////////////
 	//以上两个加上
 	//
 	bool does_cust_have_loan;//是否有贷款
 	APPLY_LOAN_RANGE cust_loan_sum;//贷款总金额(范围)
 	APPLY_LOAN_TIME cust_loan_time;//经过多少shijian后还款
+	////////////////////////////////////////////////////////////
+	bool is_has_fixed_asset;//是否有固定资产
+	////////////////////////////////////////////////////////////
 	APPLY_UNSECURED_FIXED_ASSETS cust_unsecured_fixed_asset;//固定资产类型
 	APPLY_INDUSTRY_TYPE cust_industry;//从事行业
 	char cust_work_unit[APPLY_WORK_UINT_LEN];//工作单位
 	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
-
 	//-->这个(存款范围)不要了~	
+	//------------------------------------------------
 	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+	//------------------------------------------------
 //为了保持程序运行,这个先留着
 };
 
@@ -245,7 +263,9 @@ struct apply_cust_asset_info{
 enum APPLY_CUST_MARITAL_STATUS{
 	//婚姻情况
 	is_married,/*已婚*/
-	not_married/*未婚*/
+	not_married,/*未婚*/
+	divorced,/*离异*/
+	spouse_die/*丧偶*/
 };
 
 struct apply_cust_family_info{
