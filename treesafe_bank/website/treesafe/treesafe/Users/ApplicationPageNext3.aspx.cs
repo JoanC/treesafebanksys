@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using treesafe;
+
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -279,9 +281,16 @@ namespace treesafe.Users
             /*发送数据*/
             web_net_client_mgr _net_mgr = new web_net_client_mgr();
             //2表示提交申请的命令
-            _net_mgr.send_command_data(2,_input_info);
-
-
+            try
+            {
+                _net_mgr.send_command_data(2, _input_info);
+            }
+            catch
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);
+                //发送失败
+            }
             //读取完成信息后，将结束申请，并跳转回到用户主页。
             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
         }

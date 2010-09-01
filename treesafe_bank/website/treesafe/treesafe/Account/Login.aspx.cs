@@ -115,7 +115,7 @@ namespace treesafe.Account
             }
             catch (Exception)
             {
-                WrongPage.wrong_msg = "与服务器连接失败!请重新登陆";
+                WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
                 Server.Transfer("~/WrongPage.aspx", true);
             }
             _rlt = (login_info)_net.recevie_data(_rlt.GetType());

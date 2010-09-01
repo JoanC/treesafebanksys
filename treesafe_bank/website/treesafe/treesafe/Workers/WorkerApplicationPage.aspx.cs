@@ -128,7 +128,15 @@ namespace treesafe.Workers
                new apply_input_info(_cust_info, _asset_info, _family_info, _loan_info);
             /*发送数据*/
             web_net_client_mgr _net_mgr = new web_net_client_mgr();
-            _net_mgr.send_command_data(2, _input_info);
+            try
+            {
+                _net_mgr.send_command_data(2, _input_info);
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
 
             Server.Transfer("~/Workers/WorkerFinishApplicationPage.aspx", true);
         }
