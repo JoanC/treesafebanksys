@@ -154,6 +154,8 @@ namespace treesafe.Users
             }
         };
 
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userright"].ToString() != "0")
@@ -197,7 +199,15 @@ namespace treesafe.Users
                     ApplicationPageNext1.apply_cust_work_unit,
                     ApplicationPageNext1.apply_cust_work_pos);
             /*从第三个界面读取信息*/
-
+            apply_cust_family_info _family_info
+                = new apply_cust_family_info(ApplicationPageNext2.apply_cust_mar_stu,
+                    ApplicationPageNext2.apply_cust_chd_num,
+                    ApplicationPageNext2.apply_cust_sps_card_type,
+                    ApplicationPageNext2.apply_cust_sps_edu,
+                    ApplicationPageNext2.apply_cust_is_sps_has_loan,
+                    ApplicationPageNext2.apply_cust_sps_name,
+                    ApplicationPageNext2.apply_cust_sps_card_id,
+                    ApplicationPageNext2.apply_cust_sps_work_unit);
 
             //读取完成信息后，将结束申请，并跳转回到用户主页。
             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
