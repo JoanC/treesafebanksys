@@ -30,7 +30,11 @@ void apply_get_copy_command(char* _dest , const char* _command,int _len){
 }
 
 apply_input_info* apply_get_convert_input(char* _data){
-	return (apply_input_info*)_data;
+	apply_input_info* _new_data =  (apply_input_info*)_data;
+	/*中文解码*/
+	/*仅针对字符串*/
+	
+	return _new_data;
 }
 
 apply_input_info* apply_get_input_info(const char* _command , int _len){
