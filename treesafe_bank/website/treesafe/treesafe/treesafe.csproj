@@ -64,6 +64,7 @@
     <Content Include="Admintrators\AdmintratorRootPage.aspx" />
     <Content Include="Admintrators\AdmintratorSystemIntro.aspx" />
     <Content Include="Auditors\AuditorCommitPage.aspx" />
+    <Content Include="Auditors\AuditorGradePage.aspx" />
     <Content Include="Auditors\AuditoSystemIntro.aspx" />
     <Content Include="Client_Net.asax" />
     <Content Include="Chinese_Coding.asax" />
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="Auditors\AuditorCommitPage.aspx.designer.cs">
       <DependentUpon>AuditorCommitPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditors\AuditorGradePage.aspx.cs">
+      <DependentUpon>AuditorGradePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditors\AuditorGradePage.aspx.designer.cs">
+      <DependentUpon>AuditorGradePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auditors\AuditoSystemIntro.aspx.cs">
       <DependentUpon>AuditoSystemIntro.aspx</DependentUpon>

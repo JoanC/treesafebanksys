@@ -46,9 +46,24 @@ namespace treesafe.Auditors
         {
             //读取审核结果
 
+           
 
             //跳转到申请成功界面
-            Response.Redirect("AuditorCommitPage.aspx");
+            if (CheckBox1.Checked && CheckBox2.Checked && CheckBox3.Checked && CheckBox4.Checked)
+            { 
+                //申请通过
+                //跳转到打分界面
+                Response.Redirect("AuditorGradePage.aspx?id=" + ApplicationIDNumber.Text);
+
+
+                
+            }
+            else
+            {
+                //申请没有通过
+                //跳转到审核成功界面
+                Response.Redirect("AuditorCommitPage.aspx");
+            }
         }
     }
 }
