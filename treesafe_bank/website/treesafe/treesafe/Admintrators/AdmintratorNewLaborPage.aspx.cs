@@ -127,7 +127,19 @@ namespace treesafe.Admintrators
                     ,_card_id,_work_id,_name,_addr,_emial,_tel);
             admin_add_employee_input_info _send_info=
                 new admin_add_employee_input_info(_comment,_info);
-            _net_mgr.send_command_data(3,_send_info);
+           // _net_mgr.send_command_data(3,_send_info);
+
+
+
+            //关闭窗口
+            FinishNewLabor();
+        }
+        protected void FinishNewLabor()
+        {
+            //刷新父页面,关闭该窗口并返回主界面
+
+            Response.Write("<script language='javascript'>window.opener.location.reload()</script>");
+            Response.Write("<script language='javascript'>window.close();</script>");
         }
     }
 }

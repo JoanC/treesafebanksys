@@ -9,9 +9,6 @@ CodeBehind="AdmintratorLaborSelectPage.aspx.cs" Inherits="treesafe.Admintrators.
         雇员管理
     </h2>
 
-
-
-
      <p>
     &nbsp;
     </p>
@@ -27,11 +24,13 @@ CodeBehind="AdmintratorLaborSelectPage.aspx.cs" Inherits="treesafe.Admintrators.
                   onclick="DeleteButton_Click" />
     </p>
     <p>
-        如需修改此雇员资料，请点击：<asp:Button ID="Button2" runat="server" Text="修改雇员资料" />
+        如需修改此雇员资料，请点击：<asp:Button ID="Button2" runat="server" Text="修改雇员资料" 
+            onclick="Button2_Click" />
     </p>
      <p class="header" style="font-size: medium; color: #FFFFFF;">
         雇员信息</p>
-
+        <div>
+          <fieldset>
     <p>
           <asp:Label ID="LaborIDLabel" runat="server" AssociatedControlID="LaborID">
           雇员工号:
@@ -102,5 +101,6 @@ CodeBehind="AdmintratorLaborSelectPage.aspx.cs" Inherits="treesafe.Admintrators.
         <asp:Label ID="LaborNotes" runat="server" Text="LaborNotes"></asp:Label>
     </p>
     </fieldset>
+    </div>
 
 </asp:Content>

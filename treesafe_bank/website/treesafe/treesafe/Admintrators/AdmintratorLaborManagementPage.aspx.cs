@@ -51,7 +51,9 @@ namespace treesafe.Admintrotors
                     r.Cells.Add(c); //添加该单元格对象
                 }
 
-                r.Attributes.Add("onclick", "Ck(this,'1')");
+                
+
+                r.Attributes.Add("onclick", "Ck(this,"+j+")");
                 r.Attributes.Add("onmousemove", "Move(this)");
                 r.Attributes.Add("ondblclick", "DbCK(me)");
                 r.Attributes.Add("onmouseout", "Out(this)");
