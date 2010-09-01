@@ -107,7 +107,14 @@ namespace treesafe.Account
             /*准备发送信息*/
             login_check_info _send_info = new login_check_info(_user_name, _pwd);
             web_net_client_mgr _net = new web_net_client_mgr();
-            _net.send_command_data(0, _send_info);
+            try
+            {
+                _net.send_command_data(0, _send_info);
+            }
+            catch (Exception)
+            {
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
             _rlt = (login_info)_net.recevie_data(_rlt.GetType());
         }
     }
