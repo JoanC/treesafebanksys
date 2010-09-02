@@ -33,7 +33,7 @@ void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 	strcpy(_init->cust_work_unit,"");
 	strcpy(_init->cust_work_pos,"");
 	//-------------------------------------
-	_init->cust_deposit_range = deposit_none_range;
+//	_init->cust_deposit_range = deposit_none_range;
 }
 
 void apply_init_apply_custmor_family_info(apply_cust_family_info* _init){
