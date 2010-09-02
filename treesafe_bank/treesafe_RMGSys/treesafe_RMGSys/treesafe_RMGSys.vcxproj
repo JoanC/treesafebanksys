@@ -117,6 +117,7 @@
     <ClCompile Include="sys_admin_employee_info.cpp" />
     <ClCompile Include="sys_apply_info.cpp" />
     <ClCompile Include="sys_credit_compute.cpp" />
+    <ClCompile Include="sys_employee_query.cpp" />
     <ClCompile Include="sys_frame.cpp" />
     <ClCompile Include="sys_research_exact.cpp" />
     <ClCompile Include="sys_research_info_query.cpp" />

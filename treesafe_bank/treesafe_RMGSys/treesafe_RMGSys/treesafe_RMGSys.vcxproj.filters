@@ -112,6 +112,9 @@
     <Filter Include="employee\query">
       <UniqueIdentifier>{e087a619-c18a-4e49-8dce-f44579c8d1eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="employee\info">
+      <UniqueIdentifier>{5a1f7b4e-c4ff-48f3-bcbd-2f7038a53eef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -189,9 +192,6 @@
     <ClInclude Include="sys_risk_track.h">
       <Filter>risk_compute</Filter>
     </ClInclude>
-    <ClInclude Include="sys_admin_employee_info.h">
-      <Filter>employee</Filter>
-    </ClInclude>
     <ClInclude Include="sys_admin_add_employee.h">
       <Filter>employee\add</Filter>
     </ClInclude>
@@ -218,6 +218,9 @@
     </ClInclude>
     <ClInclude Include="sys_employee_query.h">
       <Filter>employee\query</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_admin_employee_info.h">
+      <Filter>employee\info</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -269,9 +272,6 @@
     <ClCompile Include="sys_admin_delete_employee.cpp">
       <Filter>employee\delete</Filter>
     </ClCompile>
-    <ClCompile Include="sys_admin_employee_info.cpp">
-      <Filter>employee</Filter>
-    </ClCompile>
     <ClCompile Include="sys_apply_info.cpp">
       <Filter>apply\Info</Filter>
     </ClCompile>
@@ -280,6 +280,12 @@
     </ClCompile>
     <ClCompile Include="sys_research_info_query.cpp">
       <Filter>research\research_info_query</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_admin_employee_info.cpp">
+      <Filter>employee\info</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_employee_query.cpp">
+      <Filter>employee\query</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
