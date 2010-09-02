@@ -38,3 +38,32 @@ void employee_query_copy_cmd(const char* _cmd , char* _dest , int _cmd_len){
 		//复制命令
 		memcpy(_dest,_cmd,_cmd_len);
 }
+
+employee_query_input_info* employee_query_convert_cmd(char* _info){
+	//将命令转化为输入信息
+	return (employee_query_input_info*)_info;
+}
+
+employee_query_input_info* employee_query_get_cmd(const char* _cmd
+	,int _cmd_len){
+		//19.2主函式
+		//开辟空间
+		char* _new_info = 
+			(char*)malloc(_cmd_len);
+		//复制
+		employee_query_copy_cmd(_cmd,_new_info,_cmd_len);
+		//转化
+		return employee_query_convert_cmd(_new_info);
+}
+
+//19.3
+
+
+//19.4
+void employee_query_convert_rlt(employee_query_info* _info,
+	char* _rlt , int* _rlt_len){
+	   //转化结果
+	*_rlt_len = sizeof(employee_query_info);
+
+}
+
