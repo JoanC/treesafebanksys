@@ -1,14 +1,16 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
 
-body   
+body
 {
-    background: #b6b7bc;
     font-size: .80em;
-    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
     color: #696969;
+    background-image: url('Pictures/bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 a:link, a:visited
@@ -88,10 +90,11 @@ first child of the left and right table columns */
 
 .page
 {
+    border-style: none;
+    border-width: 1px;
     width: 960px;
-    background-color: #fff;
     margin: 20px auto 0px auto;
-    border: 1px solid #496077;
+    background-image: url('Pictures/pagebg.png');
 }
 
 .header
@@ -144,8 +147,8 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
-    width:100%;
+    width: 100%;
+    background-image: url('Pictures/nav.png');
 }
 
 div.menu

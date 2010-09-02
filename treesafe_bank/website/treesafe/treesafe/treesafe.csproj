@@ -71,6 +71,9 @@
     <Content Include="Auditors\AuditoSystemIntro.aspx" />
     <Content Include="Client_Net.asax" />
     <Content Include="Chinese_Coding.asax" />
+    <Content Include="Styles\Pictures\bg.png" />
+    <Content Include="Styles\Pictures\pagebg.png" />
+    <Content Include="Styles\Pictures\nav.png" />
     <Content Include="Users\ApplicationPage.aspx" />
     <Content Include="Auditors\AuditorHelpPage.aspx" />
     <Content Include="Auditors\AuditorListPage.aspx" />
