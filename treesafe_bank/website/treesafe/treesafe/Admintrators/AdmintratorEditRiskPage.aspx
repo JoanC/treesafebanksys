@@ -11,7 +11,6 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
     <p>
     *建议从上到下修改*
     <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;
     当您对其中一项作出修改时，我们会动态调整其下项目的百分比。
     </p>
      <div>
@@ -25,7 +24,9 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
           <p>
               <asp:Label ID="WeightIncomeLabel" runat="server" AssociatedControlID="WeightIncome">
               1. 申请人收入:</asp:Label>
+              <br/>
                <asp:Label ID="WeightIncome" runat="server" Text="WeightIncome"></asp:Label>
+
            </p>
             <p>
               <asp:Label ID="WeightDepositLabel" runat="server" AssociatedControlID="WeightDeposit">
