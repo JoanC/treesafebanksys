@@ -66,7 +66,7 @@ research_query_input_info* research_query_get_cmd(const char* _cmd,int _cmd_len)
 //由sunni完成
 //本函数将数据库中的数据调出来,装载到结构体_data中..
 
-void research_query_get_data(const char* _app_id,research_query_data* _data);
+void research_query_get_data(const char* _app_id,research_query_data* _data,bool* _rlt);
 
 /******************************************/
 //模块18.4

@@ -33,6 +33,7 @@ struct employee_query_modle{
 /***************************************/
 //19.1
 //初始化和释放模块及其数据
+//Jiraiya完成
 
 void init_employee_query_input_info(employee_query_input_info* _init);
 
@@ -43,7 +44,7 @@ employee_query_modle* init_employee_query_modle();
 /*****************************************/
 //19.2
 //复制并转化指令
-
+//Jiraiya完成
 
 //复制命令
 void employee_query_copy_cmd(const char* _cmd , int _cmd_len,
@@ -53,7 +54,28 @@ void employee_query_copy_cmd(const char* _cmd , int _cmd_len,
 //将指令中的数据读入到输入信息中
 employee_query_input_info* employee_query_convert_cmd(char* _info);
 
+//19.2主函式
+employee_query_input_info* employee_query_get_cmd(const char* _cmd
+	,int _cmd_len);
 
+/*******************************************/
+//19.3
+//数据库查询
+//sunni完成
+//通过工号,将雇员的信息从数据库中调出
 
+void employee_query_get_data(const char* _app_id
+	,employee_query_data* _info,bool* _rlt);
+
+/********************************************/
+//19.4
+//整合数据结果
+//Jiraiya完成
+//将查询结果转化为数据
+void employee_query_convert_rlt(employee_query_info* _info,
+	char* _rlt , int* _rlt_len);
+
+/*********************************************/
+//模块19的主函式
 
 
