@@ -8,6 +8,7 @@
 #include "sys_reg.h"//注册子过程
 #include "sys_apply.h"//申请子过程
 #include "sys_admin_add_employee.h"//增加雇员
+#include "sys_admin_delete_employee.h"//删除雇员
 
 typedef char* COMMAND_DATA;
 #define SYS_CMD_MAX_RLT_SIZE 256
@@ -19,6 +20,7 @@ enum{
 	sys_cmd_reg = 1,//注册指令
 	sys_cmd_apply = 2,//提交申请指令
 	sys_cmd_add_employee = 3,//增加雇员
+	sys_cmd_delete_employee = 4,//删除雇员
 	sys_cmd_unexpect = -1//未知命令(不可解析)
 };
 
@@ -72,6 +74,9 @@ void sys_command_apply(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
 
 //增加雇员模处理子函式2.4.4
 void sys_command_add_employee(const sys_net_data* _cmd , char* _rlt,int* _rlt_len);
+
+//删除雇员子函式2.4.5
+void sys_command_delete_employee(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
 //模块2.5
 //未知命令的处理函式

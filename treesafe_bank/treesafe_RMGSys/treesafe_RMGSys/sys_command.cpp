@@ -7,7 +7,7 @@ void sys_command_convert(net_recieved_info* _rev , sys_net_data* _cmd){
 	//_cmd->data = (COMMAND_DATA)malloc(_rev->stNetDataLength);
 	strcpy(_cmd->data,"");
 	//内存复制,转化
-    memcpy(_cmd,_rev->cNetDataInfo,sizeof(sys_net_data));
+	memcpy(_cmd,_rev->cNetDataInfo,sizeof(sys_net_data));
 }
 
 void sys_command_init_sys_net_data(sys_net_data* _init){
@@ -25,7 +25,7 @@ void sys_command_release_sys_net_data(sys_net_data* _release){
 //模块2.2
 void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	int _command_type = _command->type;//获取命令的类型
-	
+
 	//协议分析
 	switch (_command_type){
 	case(sys_cmd_login):{
@@ -44,6 +44,10 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	case(sys_cmd_add_employee):{
 		sys_command_add_employee(_command,_rlt,_rlt_len);
 							   }break;
+		//调用删除雇员的处理函数
+	case(sys_cmd_delete_employee):{
+		sys_command_delete_employee(_command,_rlt,_rlt_len);
+								  }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -73,6 +77,11 @@ void sys_command_apply(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
 void sys_command_add_employee(const sys_net_data* _cmd , char* _rlt,int* _rlt_len){
 	add_employee_frame(_cmd->data,_cmd->len
 		,_rlt,_rlt_len);
+}
+
+//2.4.5
+void sys_command_delete_employee(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	delete_employee_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
 //模块2.5
