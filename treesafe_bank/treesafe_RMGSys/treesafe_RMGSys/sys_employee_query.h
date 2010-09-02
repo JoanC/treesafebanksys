@@ -23,7 +23,12 @@ struct employee_query_info{
 };
 
 //模块19的主模块结构体
-struct employee_query_
+struct employee_query_modle{
+	//输入信息
+	employee_query_input_info input_info;
+	//查询过程中得到的结果信息
+	employee_query_info rlt_info;
+};
 
 /***************************************/
 //19.1
@@ -32,4 +37,11 @@ struct employee_query_
 void init_employee_query_input_info(employee_query_input_info* _init);
 
 void init_employee_query_info(employee_query_info* _init);
+
+employee_query_modle* init_employee_query_modle();
+
+/*****************************************/
+//19.2
+//复制并转化指令
+
 
