@@ -547,7 +547,6 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 	{
 		rsp->Close() ;
 		rsp.Release() ;
-		
 		return false ;
 	}
 
