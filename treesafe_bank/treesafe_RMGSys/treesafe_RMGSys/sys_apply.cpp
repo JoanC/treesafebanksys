@@ -111,7 +111,9 @@ bool apply_save_to_research_table(apply_input_info* _info)
 		return false ;
 }
 
-//7.6
+//
+
+//7.7
 void apply_err_compute(sys_err_type _type , apply_modle* _modle){
 	_modle->rlt_info.errInfo.type = _type;
 	//从数据库中调出这个错误的相关信息
