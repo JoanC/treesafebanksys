@@ -37,15 +37,6 @@
     <Filter Include="error_compute">
       <UniqueIdentifier>{910fe32a-e2ba-4674-b907-2f4122ec1792}</UniqueIdentifier>
     </Filter>
-    <Filter Include="login_regist">
-      <UniqueIdentifier>{cab6d3a9-2a6f-4909-96b0-2b904fe46a39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="login_regist\login">
-      <UniqueIdentifier>{bf35383d-622b-4cdb-9d62-6eac5750dcda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="login_regist\reg">
-      <UniqueIdentifier>{6063543f-1d6e-4f56-988e-90bbae6deb53}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sys_connc_bank">
       <UniqueIdentifier>{82394c79-378e-488a-be1f-5d2d8ca8f075}</UniqueIdentifier>
     </Filter>
@@ -103,6 +94,21 @@
     <Filter Include="research\research_info_query">
       <UniqueIdentifier>{c7763b15-e4ab-4378-b795-d982510307c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Account">
+      <UniqueIdentifier>{0288038f-9b16-4e1c-aa99-e15981b783d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\login_regist">
+      <UniqueIdentifier>{cab6d3a9-2a6f-4909-96b0-2b904fe46a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\login_regist\login">
+      <UniqueIdentifier>{bf35383d-622b-4cdb-9d62-6eac5750dcda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\login_regist\reg">
+      <UniqueIdentifier>{6063543f-1d6e-4f56-988e-90bbae6deb53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\person_info_query">
+      <UniqueIdentifier>{6d183704-8439-40da-9987-98786dc747fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -121,7 +127,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sys_login.h">
-      <Filter>login_regist\login</Filter>
+      <Filter>Account\login_regist\login</Filter>
     </ClInclude>
     <ClInclude Include="database_mgr.h">
       <Filter>database</Filter>
@@ -145,7 +151,7 @@
       <Filter>error_compute</Filter>
     </ClInclude>
     <ClInclude Include="sys_reg.h">
-      <Filter>login_regist\reg</Filter>
+      <Filter>Account\login_regist\reg</Filter>
     </ClInclude>
     <ClInclude Include="sys_connc_banksys_db.h">
       <Filter>sys_connc_bank</Filter>
@@ -216,7 +222,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sys_login.cpp">
-      <Filter>login_regist\login</Filter>
+      <Filter>Account\login_regist\login</Filter>
     </ClCompile>
     <ClCompile Include="treesafe_cClient.cpp">
       <Filter>net\net_client</Filter>
@@ -234,7 +240,7 @@
       <Filter>sys_connc_bank</Filter>
     </ClCompile>
     <ClCompile Include="sys_reg.cpp">
-      <Filter>login_regist\reg</Filter>
+      <Filter>Account\login_regist\reg</Filter>
     </ClCompile>
     <ClCompile Include="treesafe_cServer.cpp">
       <Filter>net\net_server</Filter>
