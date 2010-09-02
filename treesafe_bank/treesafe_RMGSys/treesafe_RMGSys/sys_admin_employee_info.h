@@ -38,5 +38,5 @@ struct admin_employee_info{
 	char employee_tel[EMPLOYEE_TEL_LEN];//电话号码
 };
 
-//出始化函数
+//初始化函数
 void init_admin_employee_info(admin_employee_info* _init);
