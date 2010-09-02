@@ -17,5 +17,10 @@ namespace treesafe.Admintrotors
             }
 
         }
+
+        protected void EditWeightButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdmintratorEditRiskPage.aspx?id=" + WeightIncome.Text);
+        }
     }
 }

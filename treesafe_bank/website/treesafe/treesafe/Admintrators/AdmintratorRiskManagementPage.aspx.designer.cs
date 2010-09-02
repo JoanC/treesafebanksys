@@ -13,15 +13,6 @@ namespace treesafe.Admintrotors {
     public partial class AdmintratorRiskManagementPage {
         
         /// <summary>
-        /// RegisterHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
-        
-        /// <summary>
         /// WeightIncomeLabel control.
         /// </summary>
         /// <remarks>
@@ -200,5 +191,14 @@ namespace treesafe.Admintrotors {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label WeightWork;
+        
+        /// <summary>
+        /// EditWeightButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EditWeightButton;
     }
 }

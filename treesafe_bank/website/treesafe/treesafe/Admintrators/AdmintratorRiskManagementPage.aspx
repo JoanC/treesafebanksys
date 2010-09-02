@@ -8,11 +8,7 @@ CodeBehind="AdmintratorRiskManagementPage.aspx.cs" Inherits="treesafe.Admintroto
     <h2>
        当前使用风险评估权重
     </h2>
-     <p>
-        想要修改权重请点击
-        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false" NavigateUrl="~/Admintrators/AdmintratorEditRiskPage.aspx">
-        这里</asp:HyperLink>
-    </p>
+     
      <div>
           <fieldset>
     <p class="header" style="font-size: medium; color: #FFFFFF;">
@@ -87,6 +83,11 @@ CodeBehind="AdmintratorRiskManagementPage.aspx.cs" Inherits="treesafe.Admintroto
                <asp:Label ID="WeightWork" runat="server" Text="WeightWork"></asp:Label>
            </p>
            </fieldset>
+           <p class="submitButton">
+              <asp:Button ID="EditWeightButton" runat="server" CommandName="MoveNext" Text="修改权重" 
+                          ValidationGroup="ApplicationValidationGroup" 
+                   onclick="EditWeightButton_Click" />
+           </p>
         </div>
 
 </asp:Content>

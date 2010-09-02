@@ -13,5 +13,13 @@ namespace treesafe.Admintrators
         {
 
         }
+
+        protected void FinishEditWeightButton_Click(object sender, EventArgs e)
+        {
+            //刷新父页面,关闭该窗口并返回主界面
+
+            Response.Write("<script language='javascript'>window.opener.location.reload()</script>");
+            Response.Write("<script language='javascript'>window.close();</script>");
+        }
     }
 }
