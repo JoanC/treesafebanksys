@@ -92,7 +92,7 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 		return true ;
 	}
 	rsp->Close() ;
-	//rsp.Release() ;
+	rsp.Release() ;
 }
 
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
@@ -127,7 +127,7 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 		user_info_rlt->cmpt = (login_competence)varCmpt.intVal  ;
 	}
 	rsp->Close() ;
-	//rsp.Release() ;
+	rsp.Release() ;
 }
 
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
@@ -176,9 +176,11 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
+	rsp->Close() ;
 	rsp.Release() ;
 
 	char sqlStr[300] = "insert into Table_Cust_Info values('" ;
@@ -260,9 +262,11 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
+	rsp->Close() ;
 	rsp.Release() ;
 
 	char sqlStr[200] = "delete from Table_Employee where employee_id = " ;
@@ -282,6 +286,7 @@ bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt)
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&vt,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
@@ -328,7 +333,7 @@ bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt)
 	{
 		strcpy(_rlt->cust_tel_num,(char *)(_bstr_t)varPhone) ;
 	}
-
+	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
 }
@@ -361,6 +366,7 @@ bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID)
 	// execute sql... 
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
@@ -374,7 +380,7 @@ bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID)
 	{
 		strcpy(_appID,(char*)(_bstr_t)varAppID ) ;
 	}
-	
+	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
 }
@@ -387,6 +393,7 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
@@ -417,7 +424,7 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 
 	_variant_t vt;
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
-
+	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
 }
@@ -429,7 +436,7 @@ bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
 	{
-			rsp->Close() ;
+		rsp->Close() ;
 		rsp.Release() ;
 		return false ;
 	}
@@ -476,6 +483,7 @@ bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_
 	_variant_t vt;
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 
+	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
 }
@@ -524,8 +532,8 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	_variant_t vt;
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 
-		rsp->Close() ;
-		rsp.Release() ;
+	rsp->Close() ;
+	rsp.Release() ;
 	return true ;
 }
 
