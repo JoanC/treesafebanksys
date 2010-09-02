@@ -45,3 +45,15 @@ employee_query_modle* init_employee_query_modle();
 //复制并转化指令
 
 
+//复制命令
+void employee_query_copy_cmd(const char* _cmd , int _cmd_len,
+	char* _rlt , int* _rlt_len);
+
+//命令转化
+//将指令中的数据读入到输入信息中
+employee_query_input_info* employee_query_convert_cmd(char* _info);
+
+
+
+
+
