@@ -26,12 +26,12 @@
 struct research_commit_input_info{
 	//审核员的相关信息
 	char researcher_id[RESEARCH_COMMIT_RESEARCHER_ID_LEN];
-	char researcher_name[RESEARCH_COMMIT_RESEARCHER_NAME_LEN];
-	char research_tel[RESEARCH_COMMIT_RESEARCHER_TEL_LEN];
 	//被提交的申请的相关信息
 	char research_apply_id[RESEARCH_COMMIT_APPLY_ID_LEN];
 	//各种bool或是枚举变量
-	//...
+	bool is_cust_info_true;
+	bool is_family_info_true;
+	bool is_asset_info_true;
 	//有待亦可确定
 	bool is_research_approved;//审核是否通过
 	//...
