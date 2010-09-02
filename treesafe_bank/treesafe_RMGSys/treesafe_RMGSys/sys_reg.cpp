@@ -44,6 +44,7 @@ void reg_init_reg_info(reg_info* _init){
 reg_modle* reg_init(){
 	//初始化注册模块
 	//分配内存
+	DEBUG_REG_PRINT("init the regist modle...\n");
 	reg_modle* _new_modle = 
 		(reg_modle*)malloc(sizeof(reg_modle));
 	//注册是否成功 
@@ -57,12 +58,15 @@ reg_modle* reg_init(){
 
 void reg_release(reg_modle* _release){
 	//释放整体模块
+	DEBUG_REG_PRINT("release the regist modle\n");
 	free(_release);
+	DEBUG_REG_PRINT("release done!\n");
 }
 
 //模块6.2
 void reg_copy_cmd(char* _dst,const char* _cmd_info,int _len){
 	//复制信息
+	DEBUG_REG_PRINT("copy command data...\n");
 	memcpy(_dst,_cmd_info,_len);
 }
 
@@ -70,16 +74,19 @@ reg_input_info* reg_convert_cmd(char* _info){
 	//强制类型转化
 	reg_input_info * _new_info = (reg_input_info*)_info;
 	/*中文解码器*/
+	DEBUG_REG_PRINT("convert the string..\n.");
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_basic_user_name);
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_home_addr);
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_id);
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_phone_num);
 	DECODE_UTF7_TO_ASC(_new_info->basic_info.reg_pwd);
 	DECODE_UTF7_TO_ASC(_new_info->email_addr);
+	DEBUG_REG_PRINT("convert done!\n");
 	return _new_info;
 }
 
 reg_input_info* reg_get_info(const char* _cmd , int _len){
+	DEBUG_REG_PRINT("get the regist infomation...\n");
 	char _temp_input[REG_MAX_OTHER_STR_LEN];
 	reg_copy_cmd(_temp_input,_cmd,_len);
 	return reg_convert_cmd(_temp_input);
@@ -88,6 +95,7 @@ reg_input_info* reg_get_info(const char* _cmd , int _len){
 //模块6.3
 void reg_query_user_generate_req(char* _cust_id,bankDB_request_info* _req){
 	//根据信息,产生一个给银行子系统的请求
+	DEBUG_REG_PRINT("send a requst to bank system...\n");
 	strcpy(_req->id,_cust_id);
 	_req->type = CUST_INFO;
 }
@@ -101,6 +109,7 @@ void reg_query_user_get_rlt(bankDB_request_info* _req , bankDB_result_info* _db_
 	_db_rlt->nCount = 0;
 	//strcpy((char*)_db_rlt->pRlt,"");
 #endif
+	DEBUG_REG_PRINT("get the bank information...\n");
 	sys_connc_bank_query(_req,_db_rlt);
 }
 
@@ -108,6 +117,7 @@ void reg_query_user_get_rlt(bankDB_request_info* _req , bankDB_result_info* _db_
 void reg_query_user_convert_rlt(bankDB_result_info* _db_rlt,reg_basic_info* _cust_info){
 	//把从银行子系统数据库调来的数据转化成为基础信息
 	//首先将_db_rlt进行转化
+	DEBUG_REG_PRINT("convert the information from bank to treedafe system...\n");
 	if(!_db_rlt->nCount){
 		//查询结果为0
 		return;
@@ -131,6 +141,7 @@ void reg_query_user_convert_rlt(bankDB_result_info* _db_rlt,reg_basic_info* _cus
 }
 
 void reg_query_user(char* _query_id,reg_basic_info* _rlt_cust_info){
+	DEBUG_REG_PRINT("query bank database...\n");
 	//模块6.3的主函式
 	//首先为请求和结果的结构体申请内存
 	bankDB_request_info* _req = 
@@ -149,6 +160,7 @@ void reg_query_user(char* _query_id,reg_basic_info* _rlt_cust_info){
 }
 
 bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
+	DEBUG_REG_PRINT("compare the data between bank and input information...\n");
 	//信息验证
 	//比对姓名,性别
 	//if(_input->reg_age != _bank_data->reg_age) return false;
@@ -161,6 +173,7 @@ bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
 //模块6.5
 bool reg_add_user_to_db(reg_input_info* _info){
 	//根据basic信息,把该用户加入数据库中
+	DEBUG_REG_PRINT("add the user to login table and cust table...\n");
 	return 
 		(add_new_to_Tab_Login(treesafe_db_connection,_info)
 		&& add_new_to_Tab_Cust(treesafe_db_connection,_info));
@@ -169,6 +182,7 @@ bool reg_add_user_to_db(reg_input_info* _info){
 //6.6
 //注册结束后,将结果信息转化成将要发送的信息
 void reg_generate_result(reg_modle* _mld , char* _rlt , int* _rlt_len){
+	DEBUG_REG_PRINT("convert the result to the send message...\n");
 	if(_mld->info.reg_err.type == err_no_err)
 		reg_summery_rlt_data(_mld);//整理模块中的数据
 	//复制结果,模块释放后,结果将被发到网络传输层
@@ -185,6 +199,7 @@ void reg_summery_rlt_data(reg_modle* _mld){
 
 //6.7
 void reg_error_compute(sys_err_type _type , reg_modle* _modle){
+	DEBUG_REG_PRINT("regist error occured !\n");
 	_modle->reg_succ = false;
 	//查找错误信息
 	_modle->info.reg_err.type = _type;
@@ -232,5 +247,6 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 	
 	//释放模块
 	reg_release(_reg_frame_modle);
+	DEBUG_REG_PRINT("regist done!\n");
 }
 

@@ -23,7 +23,7 @@ struct research_exact_investigator_prop{
 	//正在审核的申请id
 	//该值初始化为null
 	//如果审核员正在审核,则有值,否则保持是null
-	char research_apply_id[RESEARCH_APPLY_ID];
+	char research_apply_id[APPLY_ID];
 };
 
 //这个将做为结果发送到网页层

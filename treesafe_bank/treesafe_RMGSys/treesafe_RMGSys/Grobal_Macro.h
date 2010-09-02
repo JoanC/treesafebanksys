@@ -30,6 +30,14 @@
 #define DEBUG_NET_INFO
 #endif
 
+//注册模块的注释信息
+#define DEBUG_REG_INFO
+
+#if defined DEBUG_REG_INFO
+#define DEBUG_REG_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_REG_PRINT(x){};
+#endif
 
 //utf-7的编码转换
 //将一个adsc读入,将其解码
