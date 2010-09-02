@@ -357,7 +357,7 @@ struct research_commit_input_info{
 	//被提交的申请的相关信息
 	char research_apply_id[RESEARCH_COMMIT_APPLY_ID_LEN];
 	//申请的相关信息
-	char researcher_id[RESEARCH_COMMIT_RESEARCHER_ID_LEN];
+	char researcher_id[EMPLOYEE_ID_LEN];
 	//有待亦可确定
 	bool is_research_approved;//审核是否通过
 	//个人信息审核注释
