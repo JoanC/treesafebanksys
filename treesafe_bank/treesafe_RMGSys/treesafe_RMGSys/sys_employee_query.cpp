@@ -80,4 +80,10 @@ void employee_query_frame(const char* _cmd , int _cmd_len
 			= init_employee_query_modle();
 		//19.2
 		_frame_modle->input_info = *employee_query_get_cmd(_cmd,_cmd_len);
+		//19.3...
+
+		//19.4
+		employee_query_convert_rlt(&_frame_modle->rlt_info,_rlt,_rlt_len);
+		//йм╥едё©И
+		release_employee_query_modle(_frame_modle);
 }
