@@ -64,6 +64,8 @@
     <Content Include="Admintrators\AdmintratorRiskManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorRootPage.aspx" />
     <Content Include="Admintrators\AdmintratorSystemIntro.aspx" />
+    <Content Include="Admintrators\Pictures\add.png" />
+    <Content Include="Admintrators\Pictures\sub.png" />
     <Content Include="Auditors\AuditorCommitPage.aspx" />
     <Content Include="Auditors\AuditorGradePage.aspx" />
     <Content Include="Auditors\AuditoSystemIntro.aspx" />

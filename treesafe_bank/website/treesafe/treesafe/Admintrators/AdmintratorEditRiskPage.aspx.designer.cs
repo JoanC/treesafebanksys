@@ -13,6 +13,24 @@ namespace treesafe.Admintrators {
     public partial class AdmintratorEditRiskPage {
         
         /// <summary>
+        /// WeightIncomeAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightIncomeAdd;
+        
+        /// <summary>
+        /// WeightIncomeSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightIncomeSub;
+        
+        /// <summary>
         /// WeightIncomeLabel control.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,24 @@ namespace treesafe.Admintrators {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label WeightIncome;
+        
+        /// <summary>
+        /// WeightDepositAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightDepositAdd;
+        
+        /// <summary>
+        /// WeightDepositSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightDepositSub;
         
         /// <summary>
         /// WeightDepositLabel control.
@@ -49,6 +85,24 @@ namespace treesafe.Admintrators {
         protected global::System.Web.UI.WebControls.Label WeightDeposit;
         
         /// <summary>
+        /// WeightLoanAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightLoanAdd;
+        
+        /// <summary>
+        /// WeightLoanSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightLoanSub;
+        
+        /// <summary>
         /// WeightLoanLabel control.
         /// </summary>
         /// <remarks>
@@ -65,6 +119,24 @@ namespace treesafe.Admintrators {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label WeightLoan;
+        
+        /// <summary>
+        /// WeightMortagageAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightMortagageAdd;
+        
+        /// <summary>
+        /// WeightMortagageSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightMortagageSub;
         
         /// <summary>
         /// WeightMortagageLabel control.
@@ -85,6 +157,24 @@ namespace treesafe.Admintrators {
         protected global::System.Web.UI.WebControls.Label WeightMortagage;
         
         /// <summary>
+        /// WeightIDAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightIDAdd;
+        
+        /// <summary>
+        /// WeightIDSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightIDSub;
+        
+        /// <summary>
         /// WeightIDLabel control.
         /// </summary>
         /// <remarks>
@@ -101,6 +191,24 @@ namespace treesafe.Admintrators {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label WeightID;
+        
+        /// <summary>
+        /// WeightEducationAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightEducationAdd;
+        
+        /// <summary>
+        /// WeightEducationSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightEducationSub;
         
         /// <summary>
         /// WeightEducationLabel control.
@@ -121,6 +229,24 @@ namespace treesafe.Admintrators {
         protected global::System.Web.UI.WebControls.Label WeightEducation;
         
         /// <summary>
+        /// WeightHomeAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightHomeAdd;
+        
+        /// <summary>
+        /// WeightHomeSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightHomeSub;
+        
+        /// <summary>
         /// WeightHomeLabel control.
         /// </summary>
         /// <remarks>
@@ -137,6 +263,24 @@ namespace treesafe.Admintrators {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label WeightHome;
+        
+        /// <summary>
+        /// WeightLoanRecordAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightLoanRecordAdd;
+        
+        /// <summary>
+        /// WeightLoanRecordSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightLoanRecordSub;
         
         /// <summary>
         /// WeightLoanRecordLabel control.
@@ -157,6 +301,24 @@ namespace treesafe.Admintrators {
         protected global::System.Web.UI.WebControls.Label WeightLoanRecord;
         
         /// <summary>
+        /// WeightSocietyRecordAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightSocietyRecordAdd;
+        
+        /// <summary>
+        /// WeightSocietyRecordSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightSocietyRecordSub;
+        
+        /// <summary>
         /// WeightSocietyRecordLabel control.
         /// </summary>
         /// <remarks>
@@ -173,6 +335,24 @@ namespace treesafe.Admintrators {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label WeightSocietyRecord;
+        
+        /// <summary>
+        /// WeightWorkAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightWorkAdd;
+        
+        /// <summary>
+        /// WeightWorkSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton WeightWorkSub;
         
         /// <summary>
         /// WeightWorkLabel control.
