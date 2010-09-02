@@ -454,7 +454,11 @@ bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	memset(temp,0,15) ;
-	itoa(_info->cust_deposit_range,temp,10) ;
+	itoa(_info->cust_regular_deposit,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,15) ;
+	itoa(_info->cust_demand_deposit,temp,10) ;
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_info->does_cust_have_loan == true ? "true" : "false" ) ;
