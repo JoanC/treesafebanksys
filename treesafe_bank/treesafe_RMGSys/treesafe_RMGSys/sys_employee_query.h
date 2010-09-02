@@ -77,5 +77,6 @@ void employee_query_convert_rlt(employee_query_info* _info,
 
 /*********************************************/
 //模块19的主函式
-
+void employee_query_frame(const char* _cmd , int _cmd_len
+	,char* _rlt,int* _rlt_len);
 
