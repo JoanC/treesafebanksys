@@ -144,14 +144,13 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
               1. 个人年收入:</asp:Label>
               &nbsp;&nbsp;
               <asp:DropDownList ID="ApplicationPersonIncome" runat="server">
-                 <asp:ListItem Value="0">2000元</asp:ListItem>
+                                 <asp:ListItem Value="0">2000元以下</asp:ListItem>
                  <asp:ListItem Value="1">2000~5000元</asp:ListItem>
                  <asp:ListItem Value="2">5000~8000元</asp:ListItem>
-                 <asp:ListItem Value="3">5000~1万元</asp:ListItem>
-                 <asp:ListItem Value="4">1~3万元</asp:ListItem>
-                 <asp:ListItem Value="5">3~5万元</asp:ListItem>
-                 <asp:ListItem Value="6">5~10万元</asp:ListItem>
-                 <asp:ListItem Value="7">10万元以上</asp:ListItem>
+                 <asp:ListItem Value="3">8000元~10000元</asp:ListItem>
+                 <asp:ListItem Value="4">10000~15000元</asp:ListItem>
+                 <asp:ListItem Value="5">15000~20000元</asp:ListItem>
+                 <asp:ListItem Value="6">2万元以上</asp:ListItem>
               </asp:DropDownList>
            </p>
 
@@ -160,14 +159,13 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
               2. 家庭年收入:</asp:Label>
               &nbsp;&nbsp;
               <asp:DropDownList ID="ApplicationHomeIncome" runat="server">
-                 <asp:ListItem Value="0">2000元</asp:ListItem>
+                                  <asp:ListItem Value="0">2000元</asp:ListItem>
                  <asp:ListItem Value="1">2000~5000元</asp:ListItem>
-                 <asp:ListItem Value="2">5000~8000元</asp:ListItem>
-                 <asp:ListItem Value="3">5000~1万元</asp:ListItem>
-                 <asp:ListItem Value="4">1~3万元</asp:ListItem>
-                 <asp:ListItem Value="5">3~5万元</asp:ListItem>
-                 <asp:ListItem Value="6">5~10万元</asp:ListItem>
-                 <asp:ListItem Value="7">10万元以上</asp:ListItem>
+                 <asp:ListItem Value="2">5000~1万元</asp:ListItem>
+                 <asp:ListItem Value="3">1~3万元</asp:ListItem>
+                 <asp:ListItem Value="4">3~5万元</asp:ListItem>
+                 <asp:ListItem Value="5">5~10万元</asp:ListItem>
+                 <asp:ListItem Value="6">10万元以上</asp:ListItem>
               </asp:DropDownList>
            </p>
               <p>
@@ -298,16 +296,17 @@ CodeBehind="WorkerApplicationPage.aspx.cs" Inherits="treesafe.Workers.WorkerAppl
                       <asp:ListItem Value="0">作物种植</asp:ListItem>
                       <asp:ListItem Value="1">水产渔业</asp:ListItem>
                       <asp:ListItem Value="2">林业苗木</asp:ListItem>
-                      <asp:ListItem Value="3">果树蔬菜</asp:ListItem>
-                      <asp:ListItem Value="4">观赏园艺</asp:ListItem>
-                      <asp:ListItem Value="5">农资企业</asp:ListItem>
-                      <asp:ListItem Value="6">农业机械</asp:ListItem>
-                      <asp:ListItem Value="7">加工贮藏</asp:ListItem>
-                      <asp:ListItem Value="8">粮油食品</asp:ListItem>
-                      <asp:ListItem Value="9">交通运输</asp:ListItem>
-                      <asp:ListItem Value="10">生物技术</asp:ListItem>
-                      <asp:ListItem Value="11">遗传育种</asp:ListItem>
-                      <asp:ListItem Value="12">其他</asp:ListItem>
+                      <asp:ListItem Value="3">畜牧养殖</asp:ListItem>
+                      <asp:ListItem Value="4">果树蔬菜</asp:ListItem>
+                      <asp:ListItem Value="5">观赏园艺</asp:ListItem>
+                      <asp:ListItem Value="6">农资企业</asp:ListItem>
+                      <asp:ListItem Value="7">农业机械</asp:ListItem>
+                      <asp:ListItem Value="8">加工贮藏</asp:ListItem>
+                      <asp:ListItem Value="9">粮油食品</asp:ListItem>
+                      <asp:ListItem Value="10">交通运输</asp:ListItem>
+                      <asp:ListItem Value="11">生物技术</asp:ListItem>
+                      <asp:ListItem Value="12">遗传育种</asp:ListItem>
+                      <asp:ListItem Value="13">其他</asp:ListItem>
                   </asp:RadioButtonList>
               </p>
 
