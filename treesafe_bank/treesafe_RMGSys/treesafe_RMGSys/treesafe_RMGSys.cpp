@@ -92,8 +92,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	research_exact_frame(cmd,12,rlt,&rlt_len);
 #endif
 
-	//treesafe_db_connection = new _ConnectionPtr;
-	//ConnectDB(treesafe_db_connection);
+	treesafe_db_connection = new _ConnectionPtr;
+	ConnectDB(treesafe_db_connection);
 	while(1){
 		server_of_website.rec.cNetDataInfo =NULL;
 		server_of_website.send.cNetDataInfo = NULL;
@@ -105,8 +105,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			free(server_of_website.send.cNetDataInfo);
 		}
 	}
-	//DisconnectDB(treesafe_db_connection);
-	//delete (treesafe_db_connection);
+	DisconnectDB(treesafe_db_connection);
+	delete (treesafe_db_connection);
 	return 0;
 }
 
