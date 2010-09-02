@@ -61,8 +61,8 @@ namespace treesafe.Account
             }
         };
 
-        static sys_err _err = new sys_err(0, "");
-        static login_info _rlt = new login_info(-1, "",_err);
+       public  static sys_err _err = new sys_err(0, "");
+       public static login_info login_rlt = new login_info(-1, "",_err);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,7 +70,7 @@ namespace treesafe.Account
 
             //在这里调用函数~判断用户权限~并决定用户进入的界面
             //在此处传值
-            int destinationPage = _rlt.compe;
+            int destinationPage = login_rlt.compe;
 
 
             //0: 进入用户界面（农民）
@@ -101,10 +101,10 @@ namespace treesafe.Account
                     break;
             }
             //一次登陆结束后，将结果信息还原
-            _rlt.compe = -1;
-            _rlt.login_err.type = 0;
-            _rlt.login_err.info = "".ToCharArray();
-            _rlt.user_id = "".ToCharArray();
+            login_rlt.compe = -1;
+            login_rlt.login_err.type = 0;
+            login_rlt.login_err.info = "".ToCharArray();
+            login_rlt.user_id = "".ToCharArray();
         }
 
         public void send_to_server(string _user_name, string _pwd)
@@ -125,7 +125,7 @@ namespace treesafe.Account
             }
             try
             {
-                _rlt = (login_info)_net.recevie_data(_rlt.GetType());
+                login_rlt = (login_info)_net.recevie_data(login_rlt.GetType());
             }
             catch (Exception)
             {
@@ -133,7 +133,7 @@ namespace treesafe.Account
                 Server.Transfer("~/WrongPage.aspx", true);
             }
             /*察看是否有错误信息*/
-            if (_rlt.login_err.type != 0)
+            if (login_rlt.login_err.type != 0)
             {
                 WrongPage.wrong_msg = "用户名或密码错误,请注册或是重新登陆";
                 Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
@@ -147,7 +147,7 @@ namespace treesafe.Account
             //1：进入操作员界面（前台工作人员）
             //2: 进入审核员界面
             //3：进入管理员权限（评定权值设定，人员调动）
-            switch (_rlt.compe)
+            switch (login_rlt.compe)
             {
                 case 0:
                     LoginUser.DestinationPageUrl = String.Format("~/Users/UserRootPage.aspx?{0}", Request.QueryString.ToString());

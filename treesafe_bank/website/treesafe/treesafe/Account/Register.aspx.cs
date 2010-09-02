@@ -25,7 +25,7 @@ namespace treesafe.Account
 
         /*与注册有关的结构体的声明*/
         [Serializable] // 指示可序列化
-        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
         public struct reg_basic_info
         {
             //性别
@@ -61,7 +61,7 @@ namespace treesafe.Account
         };
 
         [Serializable] // 指示可序列化
-        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
         struct reg_input_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
@@ -85,7 +85,20 @@ namespace treesafe.Account
 	sys_err reg_err;//注册过程中出现的错误和异常
 };
  * */
-
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+        struct reg_info
+        {
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+            public char[] user_id;
+            //错误信息
+            sys_err reg_err;
+            public reg_info(string _user_id) 
+            {
+                this.user_id = _user_id.PadRight(19, '\0').ToCharArray();
+                this.reg_err = new sys_err(-1,"");
+            }
+        };
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
@@ -119,6 +132,10 @@ namespace treesafe.Account
                 WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
                 Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
             }
+            
+            /*接收注册信息,得到注册的结果*/
+
+
             Response.Redirect("Login.aspx");
         }
 
