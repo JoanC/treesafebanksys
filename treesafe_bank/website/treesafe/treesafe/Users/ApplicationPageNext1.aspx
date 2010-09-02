@@ -178,16 +178,17 @@
                       <asp:ListItem Value="0">作物种植</asp:ListItem>
                       <asp:ListItem Value="1">水产渔业</asp:ListItem>
                       <asp:ListItem Value="2">林业苗木</asp:ListItem>
-                      <asp:ListItem Value="3">果树蔬菜</asp:ListItem>
-                      <asp:ListItem Value="4">观赏园艺</asp:ListItem>
-                      <asp:ListItem Value="5">农资企业</asp:ListItem>
-                      <asp:ListItem Value="6">农业机械</asp:ListItem>
-                      <asp:ListItem Value="7">加工贮藏</asp:ListItem>
-                      <asp:ListItem Value="8">粮油食品</asp:ListItem>
-                      <asp:ListItem Value="9">交通运输</asp:ListItem>
-                      <asp:ListItem Value="10">生物技术</asp:ListItem>
-                      <asp:ListItem Value="11">遗传育种</asp:ListItem>
-                      <asp:ListItem Value="12">其他</asp:ListItem>
+                      <asp:ListItem Value="3">畜牧养殖</asp:ListItem>
+                      <asp:ListItem Value="4">果树蔬菜</asp:ListItem>
+                      <asp:ListItem Value="5">观赏园艺</asp:ListItem>
+                      <asp:ListItem Value="6">农资企业</asp:ListItem>
+                      <asp:ListItem Value="7">农业机械</asp:ListItem>
+                      <asp:ListItem Value="8">加工贮藏</asp:ListItem>
+                      <asp:ListItem Value="9">粮油食品</asp:ListItem>
+                      <asp:ListItem Value="10">交通运输</asp:ListItem>
+                      <asp:ListItem Value="11">生物技术</asp:ListItem>
+                      <asp:ListItem Value="12">遗传育种</asp:ListItem>
+                      <asp:ListItem Value="13">其他</asp:ListItem>
                   </asp:RadioButtonList>
               </p>
 
