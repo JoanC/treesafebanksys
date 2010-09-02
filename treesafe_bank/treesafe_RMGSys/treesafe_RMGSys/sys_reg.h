@@ -93,7 +93,7 @@ bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data);
 //将注册的用户填入到数据库中
 //根据用户信息,将对应的登陆用的用户号和密码,以及身份证号
 //内部的转化和扩充后存入db中
-void reg_add_user_to_db(reg_input_info* _info);
+bool reg_add_user_to_db(reg_input_info* _info);
 
 /********************************************************/
 //6.6

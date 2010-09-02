@@ -126,6 +126,7 @@ void login_db_summery(login_user_info* _user_info , login_info* _info)
 void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
 	DEBUG_LOGIN_PRINT("error occured\n");
 	_mld->login_succ = false;
+	_mld->rlt_info.login_err.type = err_login_user_or_pwd_err;
 	//db...查找错误信息,填充结构体
 	sys_err_search(&_mld->rlt_info.login_err);
 }
@@ -167,7 +168,7 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 	if(!_is_db_corr){
 		DEBUG_LOGIN_PRINT("the database query error,check the database connection....\n");
 		login_err_mgr(err_login_db_err,_login_frame);
-		return;
+		//return;
 	}
 	//以下是为了测试
 //	strcpy(_login_frame->db_query.input_user_name,"haha");
@@ -184,8 +185,10 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 	//进行高级数据查询
 	//调用模块3.5
 	//得到login_info,即rlt_info
-	login_db_summery(&_login_frame->db_query
-		,&_login_frame->rlt_info);
+	if(_is_db_corr){
+		login_db_summery(&_login_frame->db_query
+			,&_login_frame->rlt_info);
+	}
 	//结果转化
 	login_convert_rlt(&_login_frame->rlt_info,_rlt,_rlt_len);
 

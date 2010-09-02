@@ -61,7 +61,14 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 	_variant_t vt ;
 	char sqlStr[100] = "select login_pwd from Table_Login where login_id = " ;
 	strcat_s(sqlStr,user_name) ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	_RecordsetPtr rsp;
+	
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	//inquiry...
 	_variant_t  varPwd ;
 
@@ -128,7 +135,15 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	char sqlStrTest[200] = "select login_competence from Table_Login where login_id = " ;
 	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	
+	_RecordsetPtr rsp;
+	 try{
+		 rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	 }
+	 catch(...){
+		 return false;
+	 }
+	
 	if( ! rsp->rsEOF )
 	{
 		rsp->Close() ;

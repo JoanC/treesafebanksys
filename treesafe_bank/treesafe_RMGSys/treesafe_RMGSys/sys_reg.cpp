@@ -150,8 +150,8 @@ void reg_query_user(char* _query_id,reg_basic_info* _rlt_cust_info){
 
 bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
 	//信息验证
-	//比对姓名,年龄,性别
-	if(_input->reg_age != _bank_data->reg_age) return false;
+	//比对姓名,性别
+	//if(_input->reg_age != _bank_data->reg_age) return false;
 	if(strcmp(_input->reg_basic_user_name,_bank_data->reg_basic_user_name) != 0)
 		return false;
 	if(_input->reg_gender != _bank_data->reg_gender) return false;
@@ -159,10 +159,11 @@ bool reg_info_cmp(reg_basic_info* _input,reg_basic_info* _bank_data){
 }
 
 //模块6.5
-void reg_add_user_to_db(reg_input_info* _info){
+bool reg_add_user_to_db(reg_input_info* _info){
 	//根据basic信息,把该用户加入数据库中
-	add_new_to_Tab_Login(treesafe_db_connection,_info) ;
-	add_new_to_Tab_Cust(treesafe_db_connection,_info) ;
+	return 
+		(add_new_to_Tab_Login(treesafe_db_connection,_info)
+		&& add_new_to_Tab_Cust(treesafe_db_connection,_info));
 }
 
 //6.6
@@ -204,7 +205,7 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 		reg_error_compute(err_reg_vry_pwd_err,_reg_frame_modle);
 	}
 
-/*
+
 	//6.3 银行子系统的查询
 	reg_query_user(_reg_frame_modle->input_info.basic_info.reg_id,
 		&_reg_frame_modle->db_query_from_bank);
@@ -214,14 +215,15 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 		//信息对比有错误
 		reg_error_compute(err_reg_info_check_wrong,_reg_frame_modle);
 	}
-*/
+
 
 	//6.5 如果没有错误,则将信息添加到数据库
-	if(_reg_frame_modle->info.reg_err.type == err_no_err) 
-		reg_add_user_to_db(&_reg_frame_modle->input_info);
-	
-
-	reg_add_user_to_db(&_reg_frame_modle->input_info);
+	if(_reg_frame_modle->info.reg_err.type == err_no_err){
+		if(! reg_add_user_to_db(&_reg_frame_modle->input_info)){
+			//数据库操作失败
+			reg_error_compute(err_reg_info_db_wrong,_reg_frame_modle);
+		}
+	}
 
 	//6.6转化信息,输出结果
 	reg_generate_result(_reg_frame_modle,_rlt,_rlt_len);
