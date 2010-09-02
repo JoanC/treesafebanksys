@@ -31,6 +31,9 @@ employee_query_modle* init_employee_query_modle(){
 	return _new_modle;
 }
 
+void release_employee_query_modle(employee_query_modle* _release){
+	free(_release);
+}
 
 //19.2
 
@@ -63,7 +66,18 @@ employee_query_input_info* employee_query_get_cmd(const char* _cmd
 void employee_query_convert_rlt(employee_query_info* _info,
 	char* _rlt , int* _rlt_len){
 	   //转化结果
-	*_rlt_len = sizeof(employee_query_info);
-
+	   *_rlt_len = sizeof(employee_query_info);
+	   //复制结果信息
+	   memcpy(_rlt,_info,*_rlt_len);
 }
 
+//模块19的主函式
+void employee_query_frame(const char* _cmd , int _cmd_len
+	,char* _rlt,int* _rlt_len){
+		//新建并初始化模块
+		//19.1
+		employee_query_modle* _frame_modle
+			= init_employee_query_modle();
+		//19.2
+		_frame_modle->input_info = *employee_query_get_cmd(_cmd,_cmd_len);
+}

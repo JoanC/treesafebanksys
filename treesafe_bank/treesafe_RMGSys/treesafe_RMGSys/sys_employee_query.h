@@ -41,6 +41,8 @@ void init_employee_query_info(employee_query_info* _init);
 
 employee_query_modle* init_employee_query_modle();
 
+void release_employee_query_modle(employee_query_modle* _release);
+
 /*****************************************/
 //19.2
 //复制并转化指令

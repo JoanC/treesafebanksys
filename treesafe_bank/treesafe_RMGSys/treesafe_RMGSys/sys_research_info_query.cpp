@@ -93,4 +93,5 @@ void research_query_frame(const char* _cmd,int _cmd_len
 		research_query_convert_rlt(&_modle->rlt_info
 			,_rlt,_rlt_len);
 		//ÊÍ·ÅÄ£¿é
+		release_research_query_modle(_modle);
 }
