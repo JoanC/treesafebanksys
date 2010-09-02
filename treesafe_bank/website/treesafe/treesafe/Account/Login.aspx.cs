@@ -45,7 +45,7 @@ namespace treesafe.Account
         };
 
         [Serializable] // 指示可序列化
-        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
         //一次登陆过程的信息记载
         public struct login_info
         {
@@ -53,7 +53,7 @@ namespace treesafe.Account
             public int compe; //权限
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
             public char[] user_id;		//用户id
-            sys_err login_err;		    //错误信息
+            public sys_err login_err;		    //错误信息
             public login_info(int _compe , string _id , sys_err _err) {
                 this.compe = _compe;
                 this.user_id = _id.PadRight(19, '\0').ToCharArray();
@@ -62,7 +62,7 @@ namespace treesafe.Account
         };
 
         static sys_err _err = new sys_err(0, "");
-        static login_info _rlt = new login_info(0, "",_err);
+        static login_info _rlt = new login_info(-1, "",_err);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,8 +70,8 @@ namespace treesafe.Account
 
             //在这里调用函数~判断用户权限~并决定用户进入的界面
             //在此处传值
-
             int destinationPage = _rlt.compe;
+
 
             //0: 进入用户界面（农民）
             //1：进入操作员界面（前台工作人员）
@@ -100,6 +100,11 @@ namespace treesafe.Account
                     Console.WriteLine("Default");
                     break;
             }
+            //一次登陆结束后，将结果信息还原
+            _rlt.compe = -1;
+            _rlt.login_err.type = 0;
+            _rlt.login_err.info = "".ToCharArray();
+            _rlt.user_id = "".ToCharArray();
         }
 
         public void send_to_server(string _user_name, string _pwd)
@@ -118,7 +123,52 @@ namespace treesafe.Account
                 WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
                 Server.Transfer("~/WrongPage.aspx", true);
             }
-            _rlt = (login_info)_net.recevie_data(_rlt.GetType());
+            try
+            {
+                _rlt = (login_info)_net.recevie_data(_rlt.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+            /*察看是否有错误信息*/
+            if (_rlt.login_err.type != 0)
+            {
+                WrongPage.wrong_msg = "用户名或密码错误,请注册或是重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
+            }
+            login_jump();
+        }
+
+        public void login_jump()
+        {
+            //0: 进入用户界面（农民）
+            //1：进入操作员界面（前台工作人员）
+            //2: 进入审核员界面
+            //3：进入管理员权限（评定权值设定，人员调动）
+            switch (_rlt.compe)
+            {
+                case 0:
+                    LoginUser.DestinationPageUrl = String.Format("~/Users/UserRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "0";
+                    break;
+                case 1:
+                    LoginUser.DestinationPageUrl = String.Format("~/Workers/WorkerRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "1";
+                    break;
+                case 2:
+                    LoginUser.DestinationPageUrl = String.Format("~/Auditors/AuditorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "2";
+                    break;
+                case 3:
+                    LoginUser.DestinationPageUrl = String.Format("~/Admintrators/AdmintratorRootPage.aspx?{0}", Request.QueryString.ToString());
+                    Session["userright"] = "3";
+                    break;
+                default:
+                    Console.WriteLine("Default");
+                    break;
+            }
         }
     }
 }

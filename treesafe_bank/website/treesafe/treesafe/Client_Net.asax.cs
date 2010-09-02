@@ -20,22 +20,23 @@ using System.Runtime.Serialization;
 namespace ClientNet
 {
     [Serializable] // 指示可序列化
-    [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
     public struct sys_err
     {
-        int type;
+        public int type;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
-        char[] info;
+        public char[] info;
         public sys_err(int _err_type, string _err_info)
         {
             this.type = _err_type;
             this.info = _err_info.PadRight(128, '\0').ToCharArray();
         }
-        public sys_err(sys_err _err)
+       public sys_err(sys_err _err)
         {
-            this.type = _err.type;
-            this.info = new char[128];
-            Array.Copy(_err.info, this.info, 128);
+            //this.type = _err.type;
+            //this.info = new char[128];
+            //Array.Copy(_err.info, this.info, 128);
+            this = _err;
         }
     };
 
