@@ -18,11 +18,6 @@ namespace treesafe.Account
     public partial class Register : System.Web.UI.Page
     {
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-         //   RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
-        }
-
         /*与注册有关的结构体的声明*/
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
@@ -77,14 +72,6 @@ namespace treesafe.Account
         }
 
         //接收到的反馈信息
-/*
-        struct reg_info{
-	//用户名
-	//用于在界面上输出"XXX,您好!注册成功"
-	REG_USER_ID user_name[REG_MAX_USER_NAME];
-	sys_err reg_err;//注册过程中出现的错误和异常
-};
- * */
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
         struct reg_info
@@ -92,13 +79,19 @@ namespace treesafe.Account
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
             public char[] user_id;
             //错误信息
-            sys_err reg_err;
-            public reg_info(string _user_id) 
+            public sys_err reg_err;
+            public reg_info(string _user_id)
             {
                 this.user_id = _user_id.PadRight(19, '\0').ToCharArray();
-                this.reg_err = new sys_err(-1,"");
+                this.reg_err = new sys_err(-1, "");
             }
         };
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+         //   RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+        }
+
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
@@ -122,9 +115,9 @@ namespace treesafe.Account
             
             reg_basic_info _info = new reg_basic_info(int.Parse(UserSex.Text),0, _id, _pwd, _name, _tel, _addr);
             reg_input_info _send = new reg_input_info(_email, _info);
+            web_net_client_mgr reg_net = new web_net_client_mgr();
             try
             {
-                web_net_client_mgr reg_net = new web_net_client_mgr();
                 reg_net.send_command_data(1, _send);
             }
             catch(Exception)
@@ -134,8 +127,22 @@ namespace treesafe.Account
             }
             
             /*接收注册信息,得到注册的结果*/
-
-
+            reg_info reg_rlt = new reg_info("");
+            try
+            {
+                reg_rlt = (reg_info)reg_net.recevie_data(reg_rlt.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
+            }
+            /*察看错误*/
+            if (reg_rlt.reg_err.type != 0) 
+            {
+                WrongPage.wrong_msg = "该注册请求被服务器拒绝,请重新核实所填信息的真实性";
+                Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
+            }
             Response.Redirect("Login.aspx");
         }
 
