@@ -11,13 +11,13 @@ void research_commit_init_research_commit_input_info(research_commit_input_info*
 	strcpy(_init->researcher_id,"");
 	//被提交的审核申请编号,初始为空
 	strcpy(_init->research_apply_id,"");
-
-	
-	//各种信息的审核结果(true/false)
-	//细节待定
-
+	//各种审核信息的审核
 	//审核的最终结果,初始值为false
-	_init->is_research_approved = false;
+	_init->is_research_approved = true;
+	strcpy(_init->cust_research_info_comment,"");
+	strcpy(_init->family_research_info_comment,"");
+	strcpy(_init->asset_research_info_comment,"");
+	strcpy(_init->loan_research_info_comment,"");
 }
 
 void research_commit_init_research_commit_info(research_commit_info* _init){
