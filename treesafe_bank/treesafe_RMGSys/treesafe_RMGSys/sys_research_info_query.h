@@ -42,6 +42,9 @@ void init_research_query_info(research_query_info* _init);
 //初始化主模块
 research_query_modle init_research_query_modle();
 
+//释放主模块
+void release_research_query_modle(research_query_modle* _release);
+
 /*****************************************/
 //模块18.2
 //复制并解析指令
@@ -62,4 +65,19 @@ research_query_input_info* research_query_get_cmd(const char* _cmd,int _cmd_len)
 //本函数将数据库中的数据调出来,装载到结构体_data中..
 
 void research_query_get_data(const char* _app_id,research_query_data* _data);
+
+/******************************************/
+//模块18.4
+//整合结果信息
+//将查询的数据整合到结果数据中
+//由Jiraiya完成
+
+void research_query_convert_rlt(const char* _cmd
+	,int _cmd_len,char* _rlt , int* _rlt_len);
+
+/*******************************************/
+//模块18的主函式
+void research_query_frame(const char* _cmd,int _cmd_len
+	,char* _rlt,int* _rlt_len);
+
 
