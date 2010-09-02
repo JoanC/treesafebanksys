@@ -76,6 +76,17 @@ namespace treesafe.Account
             }
         }
 
+        //接收到的反馈信息
+/*
+        struct reg_info{
+	//用户名
+	//用于在界面上输出"XXX,您好!注册成功"
+	REG_USER_ID user_name[REG_MAX_USER_NAME];
+	sys_err reg_err;//注册过程中出现的错误和异常
+};
+ * */
+
+
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
             
@@ -86,7 +97,6 @@ namespace treesafe.Account
             FormsAuthentication.SetAuthCookie(UserName.Text, false /* createPersistentCookie */);
 
             //创建网络接口
-            web_net_client_mgr reg_net = new web_net_client_mgr();
 
             //所有读数据的代码都写到这里
             //这里是新的创建用户确认按钮提交的地方
@@ -99,9 +109,17 @@ namespace treesafe.Account
             
             reg_basic_info _info = new reg_basic_info(int.Parse(UserSex.Text),0, _id, _pwd, _name, _tel, _addr);
             reg_input_info _send = new reg_input_info(_email, _info);
-            reg_net.send_command_data(1, _send);
+            try
+            {
+                web_net_client_mgr reg_net = new web_net_client_mgr();
+                reg_net.send_command_data(1, _send);
+            }
+            catch(Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
+            }
             Response.Redirect("Login.aspx");
-
         }
 
     }
