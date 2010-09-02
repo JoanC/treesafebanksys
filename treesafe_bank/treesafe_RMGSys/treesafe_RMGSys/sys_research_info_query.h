@@ -40,7 +40,7 @@ void init_research_query_input_info(research_query_input_info* _init);
 void init_research_query_info(research_query_info* _init);
 
 //初始化主模块
-research_query_modle init_research_query_modle();
+research_query_modle* init_research_query_modle();
 
 //释放主模块
 void release_research_query_modle(research_query_modle* _release);
@@ -72,8 +72,8 @@ void research_query_get_data(const char* _app_id,research_query_data* _data);
 //将查询的数据整合到结果数据中
 //由Jiraiya完成
 
-void research_query_convert_rlt(const char* _cmd
-	,int _cmd_len,char* _rlt , int* _rlt_len);
+void research_query_convert_rlt(research_query_info* _info
+	,char* _rlt , int* _rlt_len);
 
 /*******************************************/
 //模块18的主函式

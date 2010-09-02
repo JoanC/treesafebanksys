@@ -118,6 +118,7 @@
     <ClCompile Include="sys_credit_compute.cpp" />
     <ClCompile Include="sys_frame.cpp" />
     <ClCompile Include="sys_research_exact.cpp" />
+    <ClCompile Include="sys_research_info_query.cpp" />
     <ClCompile Include="treesafe_cServer.cpp" />
     <ClCompile Include="database_mgr.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -266,5 +266,8 @@
     <ClCompile Include="sys_apply.cpp">
       <Filter>apply\apply</Filter>
     </ClCompile>
+    <ClCompile Include="sys_research_info_query.cpp">
+      <Filter>research\research_info_query</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
