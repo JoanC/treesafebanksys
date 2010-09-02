@@ -13,20 +13,5 @@ namespace treesafe.Admintrators
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Label1.Text = "sdfdsf";
-        }
-
-        protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            Label1.Text = "sdfdsf";
-        }
-
-        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Label1.Text = "sdfsd";
-        }
     }
 }
