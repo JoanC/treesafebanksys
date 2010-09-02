@@ -2,7 +2,6 @@
 #include "sys_error_compute.h"
 #include "sys_db_struct.h"
 
-
 /***********************************************/
 //初始化函数
 //所有结构体的初始化函数
