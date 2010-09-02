@@ -3,53 +3,13 @@
 #include "database_mgr.h"//数据库处理
 #include "sys_error_compute.h"//错误处理
 
-//审核员ID长度
-#define RESEARCH_COMMIT_RESEARCHER_ID_LEN 19
-//审核员姓名长度
-#define RESEARCH_COMMIT_RESEARCHER_NAME_LEN 51
-//审核员的电话联系方式
-#define RESEARCH_COMMIT_RESEARCHER_TEL_LEN 19
-
-//被提交的审核申请的ID
-#define RESEARCH_COMMIT_APPLY_ID_LEN APPLY_ID
-
-//审核
-#define RESEARCH_COMMIT_COMMENT 128
-
-
-
 //模块9
 //审核结果提交模块
-
-
-//提交审核报告的审核员输入信息
-//以下有些是审核员填写的
-//而比如审核员id则是网页端自动生成的
-
-struct research_commit_input_info{
-	//申请的相关信息
-	char researcher_id[RESEARCH_COMMIT_RESEARCHER_ID_LEN];
-	//被提交的申请的相关信息
-	char research_apply_id[RESEARCH_COMMIT_APPLY_ID_LEN];
-	//有待亦可确定
-	bool is_research_approved;//审核是否通过
-	//个人信息审核注释
-	char cust_research_info_comment[RESEARCH_COMMIT_COMMENT];
-	//家庭信息审核过程
-	//资产信息审核过程
-	//
-};
-
 
 //将会做为结果数据发送到网络端
 struct research_commit_info{
 	bool is_commit_succ;//提交是否成功
-	//表单信息
-	//提交审核编号
-	//...
-	//这个再议...
-	//错误信息
-	sys_err err_info;
+	sys_err err_info;//错误信息
 };
 
 
@@ -96,22 +56,11 @@ research_commit_input_info* research_commit_convert_input(char* _info);
 /**********************************************/
 //9.3
 //sunni完成
-//将成功(是否成功不用你判断)通过审核的申请的信息提取出来
-//复制到正式的申请表结构中(子函式1)
-void research_commit_pad_data(const char* research_apply_id
-	,sys_db_apply* _apply_info);
-
-//将填充好的结构体信息存入数据库中(子函式2)
-void research_commit_save_apply(sys_db_apply* _apply_info);
-
-/*********************************************/
-//模块9.4
-//sunni完成
-//根据输入的research_apply_id
-//从审核表中删除这个表项
-//查询的正确与否记录在_rlt中
-void research_commit_delete_research_apply(const char* _research_apply_id , bool* _rlt);
-
+//将结构体信息存入数据库中
+//完成一系列相应操作
+//操作1 : 将这个app_id的审核结果存入
+//操作2 : 将这个app_id下的true/false改掉
+void research_commit_save_apply(research_commit_input_info* _apply_info);
 
 /**********************************************/
 //模块9.5
