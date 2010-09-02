@@ -207,6 +207,7 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 
 
 	//6.3 银行子系统的查询
+/*
 	reg_query_user(_reg_frame_modle->input_info.basic_info.reg_id,
 		&_reg_frame_modle->db_query_from_bank);
 	//6.4 对比
@@ -215,6 +216,7 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 		//信息对比有错误
 		reg_error_compute(err_reg_info_check_wrong,_reg_frame_modle);
 	}
+	*/
 
 
 	//6.5 如果没有错误,则将信息添加到数据库
