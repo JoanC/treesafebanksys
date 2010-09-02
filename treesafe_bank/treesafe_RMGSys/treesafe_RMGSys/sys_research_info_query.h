@@ -1,3 +1,5 @@
+#pragma once
+
 #include "sys_connc_banksys_db.h"
 #include "sys_error_compute.h"
 #include "sys_apply_info.h"
