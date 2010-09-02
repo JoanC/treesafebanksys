@@ -48,6 +48,10 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	case(sys_cmd_delete_employee):{
 		sys_command_delete_employee(_command,_rlt,_rlt_len);
 								  }break;
+		//调用提交审核处理函式
+	case(sys_cmd_commit_research):{
+		sys_command_commit_research(_command,_rlt,_rlt_len);
+								  }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -84,6 +88,10 @@ void sys_command_delete_employee(const sys_net_data* _cmd,char* _rlt,int* _rlt_l
 	delete_employee_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
+//2.4.6
+void sys_command_commit_research(const sys_net_data* _cmd, char* _rlt,int* _rlt_len){
+	research_commit_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
 //模块2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 
