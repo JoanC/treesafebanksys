@@ -243,7 +243,7 @@ struct apply_cust_asset_info{
 	char cust_work_pos[APPLY_WORK_POSITION_LEN];//工作职位
 	//-->这个(存款范围)不要了~	
 	//------------------------------------------------
-	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
+//	APPLY_DEPOSIT_RANGE cust_deposit_range;//存款范围
 	//------------------------------------------------
 //为了保持程序运行,这个先留着
 };
