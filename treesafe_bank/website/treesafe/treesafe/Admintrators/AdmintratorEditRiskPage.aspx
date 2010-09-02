@@ -118,7 +118,7 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
                    ImageUrl="~/Admintrators/Pictures/sub.png" 
                    onclick="WeightSocietyRecordSub_Click"/>
               <asp:Label ID="WeightSocietyRecordLabel" runat="server" AssociatedControlID="WeightSocietyRecord">
-              8. 申请人不良社会记录:</asp:Label>
+              9. 申请人不良社会记录:</asp:Label>
                <asp:Label ID="WeightSocietyRecord" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
            </p>
@@ -135,7 +135,7 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               <asp:ImageButton ID="WeightWorkSub" runat="server" 
                   ImageUrl="~/Admintrators/Pictures/sub.png" onclick="WeightWorkSub_Click" />
               <asp:Label ID="WeightWorkLabel" runat="server" AssociatedControlID="WeightWork">
-              9. 申请人行业风险:</asp:Label>
+              10. 申请人行业风险:</asp:Label>
                <asp:Label ID="WeightWork" runat="server" Text="20" ForeColor="Blue"></asp:Label>
                %
            </p>

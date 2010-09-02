@@ -14,6 +14,18 @@ namespace treesafe.Admintrators
         {
             //从显示权重页面读入数据
 
+            WeightIncome.Text = Request.QueryString["income"];
+            WeightDeposit.Text = Request.QueryString["deposit"];
+            WeightLoan.Text = Request.QueryString["loan"];
+            WeightMortagage.Text = Request.QueryString["mortagage"];
+            WeightID.Text = Request.QueryString["id"];
+            WeightEducation.Text = Request.QueryString["education"];
+            WeightHome.Text = Request.QueryString["home"];
+            WeightLoanRecord.Text = Request.QueryString["loanrecord"];
+            WeightSocietyRecord.Text = Request.QueryString["societyrecord"];
+            WeightWork.Text = Request.QueryString["work"];
+            
+
         }
 
         protected void FinishEditWeightButton_Click(object sender, EventArgs e)

@@ -20,7 +20,19 @@ namespace treesafe.Admintrotors
 
         protected void EditWeightButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdmintratorEditRiskPage.aspx?id=" + WeightIncome.Text);
+            //将本页9个参数传参
+            //Response.Redirect("Add_xmbz.aspx?id="+rid+" && bzid="+rid);
+
+            Response.Redirect("AdmintratorEditRiskPage.aspx?income="+ WeightIncome.Text
+                              + "&deposit=" + WeightDeposit.Text
+                              + "&loan=" + WeightLoan.Text
+                              + "&mortagage=" + WeightMortagage.Text
+                              + "&id=" + WeightID.Text
+                              + "&education=" + WeightEducation.Text
+                              + "&home=" + WeightHome.Text
+                              + "&loanrecord=" + WeightLoanRecord.Text
+                              + "&societyrecord=" + WeightSocietyRecord.Text
+                              + "&work=" + WeightWork.Text);
         }
     }
 }
