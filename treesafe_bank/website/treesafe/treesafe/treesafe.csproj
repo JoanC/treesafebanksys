@@ -56,6 +56,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Admintrators\AdmintratorEditRiskPage.aspx" />
     <Content Include="Admintrators\AdmintratorHelpPage.aspx" />
     <Content Include="Admintrators\AdmintratorLaborManagementPage.aspx" />
     <Content Include="Admintrators\AdmintratorLaborSelectPage.aspx" />
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="Admintrator.Master.designer.cs">
       <DependentUpon>Admintrator.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorEditRiskPage.aspx.cs">
+      <DependentUpon>AdmintratorEditRiskPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admintrators\AdmintratorEditRiskPage.aspx.designer.cs">
+      <DependentUpon>AdmintratorEditRiskPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admintrators\AdmintratorHelpPage.aspx.cs">
       <DependentUpon>AdmintratorHelpPage.aspx</DependentUpon>
