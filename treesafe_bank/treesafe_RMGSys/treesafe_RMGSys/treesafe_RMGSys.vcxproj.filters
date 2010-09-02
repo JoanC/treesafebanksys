@@ -64,15 +64,6 @@
     <Filter Include="group\group_setup">
       <UniqueIdentifier>{0cf4c334-51e0-41d4-8f07-50c526072dd3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="admin_manager">
-      <UniqueIdentifier>{17d05b37-fbdd-4584-b778-ec9d9b10ac2e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="admin_manager\add">
-      <UniqueIdentifier>{d50e77d9-f7ec-411d-b7fa-5b7d06c1ff75}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="admin_manager\delete">
-      <UniqueIdentifier>{c5c18904-623c-49af-a9d8-2fa251a27231}</UniqueIdentifier>
-    </Filter>
     <Filter Include="group\group_query">
       <UniqueIdentifier>{b5c3fd42-c2aa-48b8-b81a-b7477bf81f93}</UniqueIdentifier>
     </Filter>
@@ -108,6 +99,18 @@
     </Filter>
     <Filter Include="Account\person_info_query">
       <UniqueIdentifier>{6d183704-8439-40da-9987-98786dc747fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="employee">
+      <UniqueIdentifier>{17d05b37-fbdd-4584-b778-ec9d9b10ac2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="employee\add">
+      <UniqueIdentifier>{d50e77d9-f7ec-411d-b7fa-5b7d06c1ff75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="employee\delete">
+      <UniqueIdentifier>{c5c18904-623c-49af-a9d8-2fa251a27231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="employee\query">
+      <UniqueIdentifier>{e087a619-c18a-4e49-8dce-f44579c8d1eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -187,13 +190,13 @@
       <Filter>risk_compute</Filter>
     </ClInclude>
     <ClInclude Include="sys_admin_employee_info.h">
-      <Filter>admin_manager</Filter>
+      <Filter>employee</Filter>
     </ClInclude>
     <ClInclude Include="sys_admin_add_employee.h">
-      <Filter>admin_manager\add</Filter>
+      <Filter>employee\add</Filter>
     </ClInclude>
     <ClInclude Include="sys_admin_delete_employee.h">
-      <Filter>admin_manager\delete</Filter>
+      <Filter>employee\delete</Filter>
     </ClInclude>
     <ClInclude Include="sys_apply_info.h">
       <Filter>apply\Info</Filter>
@@ -212,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="sys_research_info_query.h">
       <Filter>research\research_info_query</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_employee_query.h">
+      <Filter>employee\query</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -258,13 +264,13 @@
       <Filter>credit_compute</Filter>
     </ClCompile>
     <ClCompile Include="sys_admin_add_employee.cpp">
-      <Filter>admin_manager\add</Filter>
+      <Filter>employee\add</Filter>
     </ClCompile>
     <ClCompile Include="sys_admin_delete_employee.cpp">
-      <Filter>admin_manager\delete</Filter>
+      <Filter>employee\delete</Filter>
     </ClCompile>
     <ClCompile Include="sys_admin_employee_info.cpp">
-      <Filter>admin_manager</Filter>
+      <Filter>employee</Filter>
     </ClCompile>
     <ClCompile Include="sys_apply_info.cpp">
       <Filter>apply\Info</Filter>

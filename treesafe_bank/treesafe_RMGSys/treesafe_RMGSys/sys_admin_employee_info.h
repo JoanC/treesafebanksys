@@ -1,11 +1,5 @@
 #pragma once
 
-#include <stdio.h>
-#include <tchar.h>
-#include <stdlib.h>
-#include <string.h>
-
-
 #define EMPLOYEE_ID_LEN 19
 #define EMPLOYEE_NAME_LEN 51
 #define EMPLOYEE_TEL_LEN 11

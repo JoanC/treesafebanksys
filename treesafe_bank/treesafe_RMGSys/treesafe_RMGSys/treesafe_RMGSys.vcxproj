@@ -84,6 +84,7 @@
     <ClInclude Include="sys_admin_employee_info.h" />
     <ClInclude Include="sys_apply_info.h" />
     <ClInclude Include="sys_credit_compute.h" />
+    <ClInclude Include="sys_employee_query.h" />
     <ClInclude Include="sys_group_add_person.h" />
     <ClInclude Include="sys_group_info.h" />
     <ClInclude Include="sys_group_recommand.h" />

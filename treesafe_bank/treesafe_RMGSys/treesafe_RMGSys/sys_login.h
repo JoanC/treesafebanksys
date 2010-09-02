@@ -72,15 +72,6 @@ void login_init_login_info(login_info* _init);
 //与UI的交互层
 //整合输入信息
 //从网络上接受信息
-/*
-
-void login_get_username(USER_NAME _name , char* _info);//从ui上获取用户名
-void login_get_pwd(USER_PWD _pwd , char* _info);//获取密码
-//void login_get_input_verify(VRY_CODE _vry , char* _info);//获取输入的验证码
-//void login_get_verify(VRY_CODE _vry , char* _info);//获取正确的验证码
-void login_get_vry_result(VRY_RESULT _vry_rlt);//得到验证码的结果
-*/
-
 //整合总流程,其实就是一个copy,即一个复制和类型转换的过程
 void login_get_copy_data(const char* _info , char* _copy_data , int _len);
 login_check_info* login_get_convert(char* _info);
