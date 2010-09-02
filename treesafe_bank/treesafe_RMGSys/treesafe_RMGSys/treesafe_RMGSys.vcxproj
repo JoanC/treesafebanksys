@@ -90,6 +90,7 @@
     <ClInclude Include="sys_group_setup.h" />
     <ClInclude Include="sys_group_start.h" />
     <ClInclude Include="sys_research_exact.h" />
+    <ClInclude Include="sys_research_info_query.h" />
     <ClInclude Include="sys_risk_compute.h" />
     <ClInclude Include="sys_risk_track.h" />
     <ClInclude Include="treesafe_cServer.h" />

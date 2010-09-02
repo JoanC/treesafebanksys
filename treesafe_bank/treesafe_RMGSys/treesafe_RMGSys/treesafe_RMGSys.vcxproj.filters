@@ -100,6 +100,9 @@
     <Filter Include="group\group_start">
       <UniqueIdentifier>{90bc2da2-74e1-419c-a368-9f8e83f1bab3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="research\research_info_query">
+      <UniqueIdentifier>{c7763b15-e4ab-4378-b795-d982510307c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -200,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="sys_group_info.h">
       <Filter>group</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_research_info_query.h">
+      <Filter>research\research_info_query</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
