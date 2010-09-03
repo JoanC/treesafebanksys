@@ -33,7 +33,7 @@ void init_research_exact_input_info(research_exact_input_info* _init);
 void init_research_exact_info(research_exact_info* _init);
 
 //初始化整体模块
-research_exact_info* init_research_exact_modle();
+research_exact_modle* init_research_exact_modle();
 
 //释放模块
 void release_research_exact_info(research_exact_info* _release);
@@ -52,7 +52,7 @@ research_exact_input_info* research_convert_cmd(char* _info);
 
 //获取指令
 //8.2主函式
-research_exact_input_info research_get_cmd(const char* _cmd,
+research_exact_input_info* research_get_cmd(const char* _cmd,
 	int _cmd_len);
 
 /***************************************/
