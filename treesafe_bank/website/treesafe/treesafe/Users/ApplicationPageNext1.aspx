@@ -40,7 +40,7 @@
               2. 家庭年收入:</asp:Label>
               &nbsp;&nbsp;
               <asp:DropDownList ID="ApplicationHomeIncome" runat="server">
-                 <asp:ListItem Value="0">2000元</asp:ListItem>
+                 <asp:ListItem Value="0">2000元以下</asp:ListItem>
                  <asp:ListItem Value="1">2000~5000元</asp:ListItem>
                  <asp:ListItem Value="2">5000~1万元</asp:ListItem>
                  <asp:ListItem Value="3">1~3万元</asp:ListItem>
@@ -65,7 +65,7 @@
 
               <p>
                   <asp:Label ID="ApplicationDepositFixedLabel" runat="server" AssociatedControlID="ApplicationDepositFixed">
-                  4. 其中，定期存款总金额为（无定期存款填0）：
+                  4. 其中，定期存款总金额为：
                   </asp:Label>
                   &nbsp;&nbsp;
                   <asp:DropDownList ID="ApplicationDepositFixed" runat="server">
@@ -82,7 +82,7 @@
 
               <p>
                   <asp:Label ID="ApplicationCurrentDepositLabel" runat="server" AssociatedControlID="ApplicationCurrentDeposit">
-                  5. 其中，活期存款总金额为（无活期存款填0）：
+                  5. 其中，活期存款总金额为：
                   </asp:Label>
                   &nbsp;&nbsp;
                   <asp:DropDownList ID="ApplicationCurrentDeposit" runat="server">
