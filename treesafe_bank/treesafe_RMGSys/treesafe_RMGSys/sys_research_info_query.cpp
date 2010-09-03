@@ -22,12 +22,14 @@ void init_research_query_info(research_query_info* _init){
 	apply_init_apply_custmor_family_info(&_init->query_info.input_fammily_info);
 	//初始化贷款信息
 	apply_init_apply_loan_info(&_init->query_info.input_loan_info);
+	//初始化错误信息
+	init_sys_err(&_init->err_info);
 }
 
 research_query_modle* init_research_query_modle(){
 	//初始并产生主模块
 	research_query_modle* _new_modle
-		= (research_query_modle*)malloc(sizeof(_new_modle));
+		= (research_query_modle*)malloc(sizeof(research_query_modle));
 	//初始化输入模块
 	init_research_query_input_info(&_new_modle->input_info);
 	//初始化查询信息
