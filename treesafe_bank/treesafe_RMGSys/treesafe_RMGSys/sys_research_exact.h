@@ -65,4 +65,14 @@ research_exact_input_info research_get_cmd(const char* _cmd,
 void research_exact_app_id(char* _nre_app_id);
 
 
-/*********
+/*****************************************/
+//模块8.4
+//整合结果信息
+//由Jiraiya完成
+
+void research_exact_convert_rlt(research_exact_info* _info,
+	char* _rlt , char* _rlt_info);
+
+//模块8主函式
+void research_exact_frame(const char* _cmd 
+	, char* _rlt , int* _rlt_len);
