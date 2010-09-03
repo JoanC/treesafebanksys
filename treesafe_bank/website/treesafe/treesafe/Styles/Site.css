@@ -105,6 +105,14 @@ first child of the left and right table columns */
     background: #4b6c9e;
     width: 100%;
 }
+.headertop
+{
+    background-image: url('Pictures/title.png');
+    width: 960px;
+    height: 200px;
+    margin: 0px;
+    padding: 0px;
+}
 
 .header h1
 {
@@ -291,6 +299,17 @@ div.accountInfo
 
 .submitButton
 {
-    text-align: right;
+    text-align: center;
     padding-right: 10px;
+    background-color: #4b6c9e;
+    height: auto;
+}
+
+.button1
+{
+}
+
+.button2
+{
+    
 }
