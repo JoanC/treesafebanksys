@@ -708,7 +708,7 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 	rsp->Close() ;
 	rsp.Release() ;
 
-	char sqlStr[150] = "update Table_App_ID_Set set apply_is_verified = true from Table_App_ID_Set where apply_id = '" ;
+	char sqlStr[150] = "update Table_App_ID_Set set apply_is_verified = 'true' from Table_App_ID_Set where apply_id = '" ;
 	strcat(sqlStr,_info->research_apply_id) ;
 	strcat(sqlStr, "'") ;
 	try{
