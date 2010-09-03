@@ -60,6 +60,10 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	case(sys_cmd_exact_research):{
 		sys_command_exact_research(_command,_rlt,_rlt_len);
 								 }break;
+		//调用雇员查询函式
+	case(sys_cmd_query_employee):{
+		sys_command_query_employee(_command,_rlt,_rlt_len);
+								 }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -109,6 +113,11 @@ void sys_command_query_research(const sys_net_data* _cmd,char* _rlt,int* _rlt_le
 //2.4.8
 void sys_command_exact_research(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	research_exact_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
+
+//2.4.9
+void sys_command_query_employee(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	employee_query_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
 //模块2.5
