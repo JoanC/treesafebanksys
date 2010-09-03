@@ -33,6 +33,11 @@ namespace treesafe
             // Code that runs when a new session is started
             Session["userright"] = "-1";
 
+
+            //控制用户界面数据处理
+            Session["userapplication"] = "0";
+            Session["userrisk"] = "0";
+
             //防止数据重复提交
             Session["riskpage"] = "0";
             

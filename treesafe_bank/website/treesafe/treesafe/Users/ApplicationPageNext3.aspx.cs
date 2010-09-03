@@ -292,7 +292,8 @@ namespace treesafe.Users
                 //发送失败
             }
             //读取完成信息后，将结束申请，并跳转回到用户主页。
-             Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
+            Session["userapplication"] = "1";
+            Server.Transfer("~/Users/UserFinishApplicationPage.aspx", true);
         }
     }
 }

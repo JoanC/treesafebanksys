@@ -96,6 +96,8 @@
     <Content Include="Users\UserFinishApplicationPage.aspx" />
     <Content Include="Users\UserHelpPage.aspx" />
     <Content Include="Users\UserInfoPage.aspx" />
+    <Content Include="Users\UserNoRiskEvaluationPage.aspx" />
+    <Content Include="Users\UserNoTeamPage.aspx" />
     <Content Include="Users\UserRiskEvaluationPage.aspx" />
     <Content Include="Users\UserRootPage.aspx" />
     <Content Include="Users\UserSystemIntro.aspx" />
@@ -357,6 +359,20 @@
     </Compile>
     <Compile Include="Users\UserInfoPage.aspx.designer.cs">
       <DependentUpon>UserInfoPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserNoRiskEvaluationPage.aspx.cs">
+      <DependentUpon>UserNoRiskEvaluationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserNoRiskEvaluationPage.aspx.designer.cs">
+      <DependentUpon>UserNoRiskEvaluationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserNoTeamPage.aspx.cs">
+      <DependentUpon>UserNoTeamPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserNoTeamPage.aspx.designer.cs">
+      <DependentUpon>UserNoTeamPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\UserRiskEvaluationPage.aspx.cs">
       <DependentUpon>UserRiskEvaluationPage.aspx</DependentUpon>

@@ -27,10 +27,18 @@ namespace treesafe.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //判断权限
             if (Session["userright"].ToString() != "0")
             {
             //    Server.Transfer("~/WrongPage.aspx", true);
             }
+
+            //判断是否已经提交申请表，如果已经提交申请表，自动跳到申请结束界面。
+            if (Session["userapplication"].ToString() == "1")
+            {
+                Server.Transfer("UserFinishApplicationPage.aspx",true);
+            }
+
 
         }
 
