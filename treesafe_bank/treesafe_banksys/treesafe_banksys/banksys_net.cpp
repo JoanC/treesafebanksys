@@ -114,7 +114,7 @@ void net_send_data(sys_Server* sServer)
 	if(sServer->send.stNetDataLength <= PackageSize)
 	{
 		char temp[] = "01";
-		reVal = send(sServer->sys_server.sClient,temp,sizeof(temp),0);
+		reVal = send(sServer->sys_server.sClient,temp,strlen(temp),0);
 		reVal = send(sServer->sys_server.sClient,sServer->send.cNetDataInfo,sServer->send.stNetDataLength,0);	
 	}
 	else
@@ -123,10 +123,11 @@ void net_send_data(sys_Server* sServer)
 		int iCount = sServer->send.stNetDataLength / PackageSize + 1;
 		int iLastPackageSize = sServer->send.stNetDataLength - PackageSize * (iCount-1);
 		_itoa(iCount,temp,10);
-		reVal = send(sServer->sys_server.sClient,temp,sizeof(temp),0);
-		
+		int iLen = strlen(temp);
+		char temp2[] = "00"; 
+		iLen == 1?memcpy(&temp2[1],temp,strlen(temp)):memcpy(temp2,temp,sizeof(temp));
+		reVal = send(sServer->sys_server.sClient,temp2,strlen(temp2),0);
 		char* _temp_send_ptr = sServer->send.cNetDataInfo;
-
 		while(iCount--)
 		{
 			reVal = send(sServer->sys_server.sClient,_temp_send_ptr,PackageSize,0);
