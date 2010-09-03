@@ -13,7 +13,7 @@ namespace treesafe.Workers
         {
             if (Session["userright"].ToString() != "1")
             {
-                Server.Transfer("~/WrongPage.aspx", true);
+           //     Server.Transfer("~/WrongPage.aspx", true);
             }
 
         }

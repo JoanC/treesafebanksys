@@ -29,7 +29,7 @@ namespace treesafe.Users
         {
             if (Session["userright"].ToString() != "0")
             {
-                Server.Transfer("~/WrongPage.aspx", true);
+            //    Server.Transfer("~/WrongPage.aspx", true);
             }
 
         }

@@ -14,7 +14,7 @@ namespace treesafe.Users
             //显示数据从这里调
             if (Session["userright"].ToString() != "0")
             {
-                Server.Transfer("~/WrongPage.aspx", true);
+            //    Server.Transfer("~/WrongPage.aspx", true);
             }
         }
 
