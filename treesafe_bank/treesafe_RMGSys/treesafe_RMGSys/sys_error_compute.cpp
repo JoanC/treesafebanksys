@@ -10,6 +10,7 @@ void init_sys_err(sys_err* _err){
 void sys_err_search(sys_err* _err){
 	//通过数据库,填充err结构体
 	char err_info[10][MAX_ERR_INFO] ;
+
 	strcpy(err_info[0],"无错误") ;
 	strcpy(err_info[1],"用户名或密码不对") ;
 	strcpy(err_info[2],"验证码不匹配") ;
