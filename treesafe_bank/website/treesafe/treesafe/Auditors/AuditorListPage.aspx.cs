@@ -128,6 +128,8 @@ namespace treesafe.Auditors
         public static bool is_loan_appr;
         public static bool is_all_appr;
 
+        public int iCount = 1; 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //判断权限
@@ -138,10 +140,14 @@ namespace treesafe.Auditors
             //发送抽取app_id的指令,并收取信息
            // research_exact_info _rlt_result = exact_research("");
             //从服务器端读取农户的申请信息，并显示在对应页面控件上
-            research_exact_info _exact_info = exact_research("");
-            string _app_id = new string(_exact_info.app_id);
-            research_query_info _query_info = query_research(_app_id);
-            display_all_info(_query_info);
+            if (iCount == 1)
+            {
+                research_exact_info _exact_info = exact_research("");
+                string _app_id = new string(_exact_info.app_id);
+                research_query_info _query_info = query_research(_app_id);
+                display_all_info(_query_info);
+                ++iCount;
+            }
         }
 
         protected research_exact_info exact_research(string _work_id)
