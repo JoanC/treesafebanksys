@@ -1,5 +1,6 @@
 #pragma once
 #include "sys_admin_employee_info.h" 
+#include "sys_employee_query.h"
 //数据库总管理函数
 //为所有模块提供接口
 //以表(table)为基础设计struct的结构
@@ -107,3 +108,5 @@ bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
 	//for 18.3
 bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn, char *_outcome) ;
 //FOR 8.3	
+bool Get_emplo_info(_ConnectionPtr *_pConn,employee_query_data *_info) ;
+ //for 19.3

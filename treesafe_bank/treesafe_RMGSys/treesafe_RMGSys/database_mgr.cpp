@@ -1196,3 +1196,8 @@ bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn,char *_outcome)
 	rsp.Release() ;
 	return false ;
 }
+bool Get_emplo_info(_ConnectionPtr *_pConn,employee_query_data *_info) 
+{
+
+	return true ;
+}
