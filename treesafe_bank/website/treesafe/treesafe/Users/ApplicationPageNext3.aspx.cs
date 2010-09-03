@@ -89,7 +89,7 @@ namespace treesafe.Users
             char[] cust_work_position;//工作职位
 
             //-------------------------------------------------------
-            int _pad;//
+           // int _pad;//
             //-------------------------------------------------------
             public apply_cust_asset_info(int _pincome, int _fincome,
              int _dep_type, int _reg_dep, int _dem_dep,
@@ -97,7 +97,7 @@ namespace treesafe.Users
                    int _is_has_fixed, int _fixed_type, int _industry,
             string _unit, string _pos)
             {
-                this._pad = 0;
+                //this._pad = 0;
                 this.app_id = "".PadRight(11, '\0').ToCharArray();
                 this.cust_demand_deposit = _dem_dep;
                 this.cust_deposit_type = _dep_type;
