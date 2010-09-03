@@ -6,7 +6,7 @@
 //此模块高度独立，在数据库中，通过错误类型去检索错误信息
 //错误信息的最大容量为MAX_ERR_INFO
 
-#define MAX_ERR_INFO 128 //这个可再定
+#define MAX_ERR_INFO 128 //这个 可再定
 
 //模块4.1
 //错误类型编码
@@ -15,7 +15,7 @@
 //一个枚举类型
 enum sys_err_type{
 	err_no_err = 0,//无错误
-	err_unknow = -1,//不可解析错误
+	err_unknow = 9,//不可解析错误
 	//登陆过程中将会遇到的错误
 	err_login_user_or_pwd_err = 1,//用户名或密码不对
 	err_login_vry_uncmp = 2,//验证码不匹配

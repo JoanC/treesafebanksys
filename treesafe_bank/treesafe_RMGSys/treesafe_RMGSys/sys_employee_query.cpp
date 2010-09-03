@@ -2,7 +2,7 @@
 #include "sys_employee_query.h"
 
 //模块19的实现文件
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 
 //19.1
 //复制输入信息
@@ -63,7 +63,7 @@ employee_query_input_info* employee_query_get_cmd(const char* _cmd
 void employee_query_get_data(const char* _app_id
 	,employee_query_data* _info,bool* _rlt)
 {
-
+	*_rlt = Get_emplo_info(treesafe_db_connection,_info) ;
 }
 
 //19.4

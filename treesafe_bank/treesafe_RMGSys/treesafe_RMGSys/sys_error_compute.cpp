@@ -9,4 +9,5 @@ void init_sys_err(sys_err* _err){
 
 void sys_err_search(sys_err* _err){
 	//通过数据库,填充err结构体
+	char err_info[10][MAX_ERR_INFO] ;
 }
