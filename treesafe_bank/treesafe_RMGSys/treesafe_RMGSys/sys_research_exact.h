@@ -1,3 +1,5 @@
+#pragma once
+
 #include "database_mgr.h"//数据库处理
 #include "sys_error_compute.h"//错误处理
 
@@ -36,7 +38,7 @@ void init_research_exact_info(research_exact_info* _init);
 research_exact_modle* init_research_exact_modle();
 
 //释放模块
-void release_research_exact_info(research_exact_info* _release);
+void release_research_exact_info(research_exact_modle* _release);
 
 /*************************************/
 //模块8.2
@@ -71,8 +73,8 @@ void research_exact_app_id(char* _nre_app_id);
 //由Jiraiya完成
 
 void research_exact_convert_rlt(research_exact_info* _info,
-	char* _rlt , char* _rlt_info);
+	char* _rlt , int* _rlt_len);
 
 //模块8主函式
-void research_exact_frame(const char* _cmd 
+void research_exact_frame(const char* _cmd ,int _cmd_len
 	, char* _rlt , int* _rlt_len);
