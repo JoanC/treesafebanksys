@@ -712,10 +712,10 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 	strcat(sqlStr,_info->research_apply_id) ;
 	strcat(sqlStr, "'") ;
 	try{
-	_variant_t vt;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+		_variant_t vt;
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	}catch(...){
-	return false ;
+		return false ;
 	}
 
 	return true ;
@@ -743,7 +743,7 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 	const char col4[] = "apply_is_passed = '" ;
 	const char col5[] = "apply_researcher_work_id = '" ;
 	char sqlStr[300] = "update Table_App_Pass_And_Comment set " ;
-	
+
 	strcat(sqlStr,col0) ;
 	strcat(sqlStr,_info->asset_research_info_comment) ;
 	strcat(sqlStr,"',") ;
@@ -769,19 +769,19 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 	strcat(sqlStr,"',") ;
 
 	try{
-		 (*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+		(*_pConn)->Execute(sqlStr,&v,adCmdText) ;
 	}catch(...){
 		return false ;
 	}
 
-/*	char sqlStr0[150] = "delete from Table_App_Pass_And_Comment where apply_id =  " ;
+	/*	char sqlStr0[150] = "delete from Table_App_Pass_And_Comment where apply_id =  " ;
 	strcat(sqlStr0,_info->research_apply_id) ;
 
 	try{
-		_variant_t vt;
-		(*_pConn)->Execute(sqlStr0,&vt,adCmdText) ;
+	_variant_t vt;
+	(*_pConn)->Execute(sqlStr0,&vt,adCmdText) ;
 	}catch(...){
-		return false ;
+	return false ;
 	}
 
 	char sqlStr1[200] = "insert into Table_App_Pass_And_Comment values('" ;
@@ -801,10 +801,10 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 	strcat(sqlStr1,"')") ;
 
 	try{
-		_variant_t vt;
-		(*_pConn)->Execute(sqlStr1,&vt,adCmdText) ;
+	_variant_t vt;
+	(*_pConn)->Execute(sqlStr1,&vt,adCmdText) ;
 	}catch(...){
-		return false ;
+	return false ;
 	}
 	*/
 	return true ;
@@ -916,27 +916,6 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 		}
 		else
 		{
-			/*			switch(varEdu.intVal)
-			{
-			case edu_master_and_above :
-			_info->input_basic_info.cust_edu = edu_master_and_above ;
-			break ;
-			case edu_undergraduate :
-			_info->input_basic_info.cust_edu = edu_undergraduate ;
-			break ;
-			case edu_college :
-			_info->input_basic_info.cust_edu = edu_college ;
-			break ;
-			case edu_high_school :
-			_info->input_basic_info.cust_edu = edu_high_school ;
-			break ;
-			case edu_primary_and_below :
-			_info->input_basic_info.cust_edu = edu_primary_and_below ;
-			break ;
-			default :
-			_info->input_basic_info.cust_edu = edu_err ;
-			bRtnVal = false ; 
-			}*/
 			_info->input_basic_info.cust_edu = (APPLY_CUST_EDUCATION_DEGREE)varEdu.intVal ;
 		}
 
@@ -1295,14 +1274,14 @@ bool Get_emplo_info(_ConnectionPtr *_pConn,admin_employee_info *_info)
 	bool bRtnVal = true ;
 
 	bRtnVal = ConvertVar2CharStr(&varID,_info->employee_id) 
-				&& ConvertVar2CharStr(&varName,_info->employee_name) 
-				&& ConvertVar2Int(&varGend,(int*)&_info->employee_gender)
-				&& ConvertVar2Int(&varAge,&_info->employee_age) 
-				&& ConvertVar2CharStr(&varAddr,_info->employee_addr) 
-				&& ConvertVar2CharStr(&varEMail,_info->employee_email)
-				&& ConvertVar2Int(&varType,(int*)&_info->employee_type)
-				&& ConvertVar2CharStr(&varComment,_info->employee_comment)
-				&& ConvertVar2CharStr(&varComment,_info->employee_tel) ;
+		&& ConvertVar2CharStr(&varName,_info->employee_name) 
+		&& ConvertVar2Int(&varGend,(int*)&_info->employee_gender)
+		&& ConvertVar2Int(&varAge,&_info->employee_age) 
+		&& ConvertVar2CharStr(&varAddr,_info->employee_addr) 
+		&& ConvertVar2CharStr(&varEMail,_info->employee_email)
+		&& ConvertVar2Int(&varType,(int*)&_info->employee_type)
+		&& ConvertVar2CharStr(&varComment,_info->employee_comment)
+		&& ConvertVar2CharStr(&varComment,_info->employee_tel) ;
 
 	return bRtnVal ; 
 }
