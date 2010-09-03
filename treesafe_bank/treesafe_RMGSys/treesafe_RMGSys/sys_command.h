@@ -14,8 +14,8 @@
 #include "sys_research_exact.h"//抽取审核信息id
 
 typedef char* COMMAND_DATA;
-#define SYS_CMD_MAX_RLT_SIZE 256
-#define SYS_CMD_MAX_SIZE 3048
+#define SYS_CMD_MAX_RLT_SIZE 3072
+#define SYS_CMD_MAX_SIZE 3072
 
 enum{
 	//命令编号集合
