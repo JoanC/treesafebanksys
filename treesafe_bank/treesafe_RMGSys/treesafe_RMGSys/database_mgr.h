@@ -89,3 +89,9 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	//for 7.5
 bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_info) ;
 	//for 7.5
+bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id) ;
+	// for 7.5 new!!!
+bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id) ;
+	// for 7.5 new!!!
+bool Update_app_research_result(_ConnectionPtr *_pConn,research_commit_input_info *_info) ;
+	//for 9.3
