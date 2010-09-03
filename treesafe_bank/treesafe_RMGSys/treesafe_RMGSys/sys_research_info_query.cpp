@@ -95,10 +95,10 @@ void research_query_frame(const char* _cmd,int _cmd_len
 		_modle->input_info = *research_query_get_cmd(_cmd,_cmd_len);
 		//调用18.3
 		/*(模块18.3尚未完成)*/
-		/*
+		bool _get_data_corr;
 		research_query_get_data(_modle->input_info.app_id
-			,&_modle->rlt_info.query_info);
-			*/
+			,&_modle->rlt_info.query_info,&_get_data_corr);
+			
 		//调用18.4
 		//整理结果模块
 		research_query_convert_rlt(&_modle->rlt_info
