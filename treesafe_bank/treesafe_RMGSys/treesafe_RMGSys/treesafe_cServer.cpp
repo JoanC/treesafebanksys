@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "treesafe_cServer.h"
 //#include <winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
