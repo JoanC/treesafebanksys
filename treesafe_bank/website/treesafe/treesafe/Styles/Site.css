@@ -102,8 +102,12 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
     width: 100%;
+    background-image: url('Pictures/head.png');
+    height: 25px;
+    font-size: large;
+    font-family: 微软雅黑;
+    font-weight: bold;
 }
 .headertop
 {
@@ -251,6 +255,8 @@ div.accountInfo
     width: 42%;
 }
 
+
+
 /* MISC  
 ----------------------------------------------------------*/
 
@@ -318,4 +324,56 @@ div.accountInfo
 .button2
 {
     
+}
+
+
+/* TABLE 
+----------------------------------------------------------*/
+.css_Grid1
+{
+padding:3px;
+border:1px;
+border-width:1px;
+border-color:#ffee00;
+width:100%;
+border-collapse:collapse;
+}
+.css_Grid
+{
+color:Black;
+background-color:#ffffee;
+border-color:#5D7B9D;
+border-width:1px;
+border-style:solid;
+width:450px;
+}
+.css_GridTR
+{
+color:White;
+background-color:#5D7B9D;
+}
+td
+{
+font-size: 9pt;
+padding:3px;
+}
+.css_TR_c1
+{
+background-color:#ffffee ;
+color:#000000;
+}
+.css_TR_c2
+{
+background-color:#ffffaa ;
+color:#993300;
+}
+.css_TR_move
+{
+background-color:#eaa ;
+color:#123456;
+}
+.css_TR_CK
+{
+background-color:#ee0 ;
+color:#333333;
 }
