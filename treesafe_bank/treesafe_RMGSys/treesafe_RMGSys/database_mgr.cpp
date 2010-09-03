@@ -708,17 +708,17 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 	rsp->Close() ;
 	rsp.Release() ;
 
-	/*	char sqlStr[150] = "update Table_App_ID_Set set apply_is_verified = true where apply_id = " ;
+	char sqlStr[150] = "update Table_App_ID_Set set apply_is_verified = true from Table_App_ID_Set where apply_id = '" ;
 	strcat(sqlStr,_info->research_apply_id) ;
-
+	strcat(sqlStr, "'") ;
 	try{
 	_variant_t vt;
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	}catch(...){
 	return false ;
 	}
-	*/
-	char sqlStr0[150] = "delete from Table_App_ID_Set where apply_id =  " ;
+
+/*	char sqlStr0[150] = "delete from Table_App_ID_Set where apply_id =  " ;
 	strcat(sqlStr0,_info->research_apply_id) ;
 
 	try{
@@ -737,7 +737,7 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 		(*_pConn)->Execute(sqlStr1,&vt,adCmdText) ;
 	}catch(...){
 		return false ;
-	}
+	}*/
 
 	return true ;
 }
