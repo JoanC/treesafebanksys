@@ -76,7 +76,7 @@ bool apply_check_cust_info(apply_custmor_info* _input
 bool apply_save_generate_id(char *_outcome) ;
 
 //把这个申请存入待审核的表中
-bool apply_save_to_research_table(char* _new_id , apply_input_info* _info) ; 
+bool apply_save_to_research_table(apply_input_info* _info) ; 
 
 
 /*********************************************************/
