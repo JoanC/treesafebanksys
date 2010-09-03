@@ -65,7 +65,7 @@ employee_query_input_info* employee_query_get_cmd(const char* _cmd
 //sunni完成
 //通过工号,将雇员的信息从数据库中调出
 
-void employee_query_get_data(const char* _app_id
+void employee_query_get_data(const char* _work_id
 	,employee_query_data* _info,bool* _rlt);
 
 /********************************************/
