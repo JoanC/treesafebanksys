@@ -30,3 +30,10 @@ struct research_exact_modle{
 void init_research_exact_input_info(research_exact_input_info* _init);
 
 //初始化结果结构
+void init_research_exact_info(research_exact_info* _init);
+
+//初始化整体模块
+research_exact_info* init_research_exact_modle();
+
+//释放模块
+void release_research_exact_info(research_exact_info* _release);
