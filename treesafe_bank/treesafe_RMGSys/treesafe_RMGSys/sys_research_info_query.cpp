@@ -55,7 +55,7 @@ research_query_input_info* research_query_convert_cmd(char* _info){
 
 research_query_input_info* research_query_get_cmd(const char* _cmd,int _cmd_len){
 	//获取指令的主函式
-	char* _info = (char*)malloc(_cmd_len);
+	char _info[sizeof(research_query_input_info)];
 	//复制指令
 	research_query_copy_cmd(_cmd,_info,_cmd_len);
 	//转化指令
