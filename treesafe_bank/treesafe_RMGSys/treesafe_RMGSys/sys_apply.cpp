@@ -154,7 +154,9 @@ bool appy_check_input_data(apply_input_info* _input){
 			!= deposit_none_range) return false;
 	}
 	/*贷款信息*/
-	//if(_input->input_asset_info.)
+	if(_input->input_asset_info.does_cust_have_loan == true){
+		//如果有贷款,但是用户并的金额,时间
+	}
 }
 
 //申请处理的主函式
