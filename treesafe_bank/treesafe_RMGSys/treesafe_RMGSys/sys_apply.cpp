@@ -89,7 +89,7 @@ bool apply_save_generate_id(char *_outcome)
 {
 	if( FindMaxAppID(treesafe_db_connection,_outcome) ) 
 	{
-		return IncreaseCharStr(_outcome,APPLY_ID) ;
+		return IncreaseCharStr(_outcome,APPLY_ID-1) ;
 	}
 
 	return false ;
@@ -98,13 +98,19 @@ bool apply_save_to_research_table(apply_input_info* _info)
 {
 	char app_id[APPLY_ID] ;
 	bool bFlag0 = apply_save_generate_id(app_id) ;
+	/*copy the new app_id*/
+	strcpy(_info->input_asset_info.app_id,app_id);
+	strcpy(_info->input_basic_info.app_id,app_id);
+	strcpy(_info->input_fammily_info.app_id,app_id);
+	strcpy(_info->input_loan_info.app_id,app_id);
 	if ( bFlag0 )
 	{
+		bool bFlag5 = Insert_app_id_set(treesafe_db_connection,app_id) ;
 		bool bFlag1 = Insert_app_cust_info(treesafe_db_connection,&_info->input_basic_info) ;
 		bool	bFlag2 = Insert_app_asset_info(treesafe_db_connection,&_info->input_asset_info) ;
 		bool	bFlag3 = Insert_app_cust_fami_info(treesafe_db_connection,&_info->input_fammily_info) ;
 		bool bFlag4 = Insert_app_cust_loan_info(treesafe_db_connection,&_info->input_loan_info) ;
-		bool bFlag5 = Insert_app_id_set(treesafe_db_connection,app_id) ;
+		
 		bool bFlag6 = Insert_app_pass_and_comment(treesafe_db_connection,app_id) ;
 		return bFlag1 && bFlag2 && bFlag3 && bFlag4 && bFlag5 && bFlag6;
 	}
