@@ -17,7 +17,6 @@ bool GetConnStr(int index,char *outcome)
 		return false ;
 
 }
-
 bool ConnectDB(_ConnectionPtr *pConn) 
 {	
 	char connStr[connStrLen] ;
@@ -45,7 +44,6 @@ bool ConnectDB(_ConnectionPtr *pConn)
 
 	return true ; //return success or not
 }
-
 void DisconnectDB(_ConnectionPtr *pConn) 
 {
 	(*pConn)->Close();
@@ -55,7 +53,6 @@ void DisconnectDB(_ConnectionPtr *pConn)
 	char outputStr[] = "success to disconnect the database..." ;
 	printf("%s\r\n",outputStr) ;
 }
-
 bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 {
 	_variant_t vt ;
@@ -94,7 +91,6 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 	rsp->Close() ;
 	rsp.Release() ;
 }
-
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
 {
 	_variant_t vt ;
@@ -129,7 +125,6 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 	rsp->Close() ;
 	rsp.Release() ;
 }
-
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
 {
 	char sqlStrTest[200] = "select login_competence from Table_Login where login_id = " ;
@@ -167,7 +162,6 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	return true ;
 }
-
 bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 {
 	char sqlStrTest[200] = "select name from Table_Cust_Info where id = " ;
@@ -207,7 +201,6 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 
 	return true ;
 }
-
 bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char *_comment)
 {
 	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = " ;
@@ -253,7 +246,6 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	return true ;
 }
-
 bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) 
 {
 	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = " ;
@@ -277,7 +269,6 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 
 	return true ;
 }
-
 bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt)
 {
 	char sqlStrTest[200] = "select * from Table_Cust_Info where id = " ;
@@ -341,7 +332,6 @@ bool IsACharNumber(char ch)
 {
 	return ( ch >= 48 && ch <=  57 ) ;
 }
-
 bool IncreaseCharStr(char *_Dst,size_t _nLen) // '1' == 49 , nLen is not include '\0'
 {
 	for (unsigned int i = 0 ; i < _nLen ; ++i )
@@ -384,11 +374,11 @@ bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID)
 	rsp.Release() ;
 	return true ;
 }
-
 bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info) 
 {
-	char sqlStrTest[200] = "select cust_gend from Table_App_Cust_Info where apply_id = " ;
+	char sqlStrTest[200] = "select cust_gend from Table_App_Cust_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
@@ -439,8 +429,9 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 }
 bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_info) 
 {
-	char sqlStrTest[200] = "select cust_app_indus_type from Table_App_Cust_Asset_Info where apply_id = " ;
+	char sqlStrTest[200] = "select cust_app_indus_type from Table_App_Cust_Asset_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
@@ -500,11 +491,11 @@ bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_
 	rsp.Release() ;
 	return true ;
 }
-
 bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_info *_info)
 {
-	char sqlStrTest[200] = "select cust_app_marital_status from Table_App_Cust_Fami_Info where apply_id = " ;
+	char sqlStrTest[200] = "select cust_app_marital_status from Table_App_Cust_Fami_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
@@ -550,11 +541,11 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	rsp.Release() ;
 	return true ;
 }
-
 bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_info) 
 {
-	char sqlStrTest[200] = "select cust_loan_amount from Table_App_Loan_Info where apply_id = " ;
+	char sqlStrTest[200] = "select cust_loan_amount from Table_App_Loan_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
@@ -594,8 +585,9 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 }
 bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id)
 {
-	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = " ;
+	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = '" ;
 	strcat(sqlStrTest,_app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF ) //如果此id已存在...
@@ -623,8 +615,9 @@ bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id)
 }
 bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
 {
-	char sqlStrTest[200] = "select apply_asset_comment from Table_App_Pass_And_Comment where apply_id = " ;
+	char sqlStrTest[200] = "select apply_asset_comment from Table_App_Pass_And_Comment where apply_id = '" ;
 	strcat(sqlStrTest,_app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
@@ -661,7 +654,6 @@ bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
 	rsp.Release() ;
 	return true ;
 }
-
 bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *_info) 
 {
 	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = " ;
@@ -1115,7 +1107,6 @@ bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 	rsp.Release() ;
 	return false ;
 }
-
 bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) 
 {
 	char sqlStrTest[200] = "select * from Table_App_Loan_Info where apply_id = '" ;
