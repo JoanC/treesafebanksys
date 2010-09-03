@@ -93,5 +93,6 @@ bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id) ;
 	// for 7.5 new!!!
 bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id) ;
 	// for 7.5 new!!!
-bool Update_app_research_result(_ConnectionPtr *_pConn,research_commit_input_info *_info) ;
+bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *_info) ;
 	//for 9.3
+bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_input_info *_info) ;

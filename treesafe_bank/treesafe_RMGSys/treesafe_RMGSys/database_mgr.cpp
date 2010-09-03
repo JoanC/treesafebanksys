@@ -7,7 +7,7 @@ bool GetConnStr(int index,char *outcome)
 	FILE *pFile = NULL ;
 	if (fopen_s(&pFile,CSFileName,"rt") == S_OK ){
 		for(int i  = 0 ; i <= index ; ++i){
-	 		fgets(outcome,connStrLen,pFile) ;
+			fgets(outcome,connStrLen,pFile) ;
 
 		}
 		fclose(pFile) ; 
@@ -24,7 +24,7 @@ bool ConnectDB(_ConnectionPtr *pConn)
 	memset(connStr,0,connStrLen) ;
 
 	printf("please input the index of the database you want to connect:\r\n") ;
-	
+
 	int index = 0 ;
 	scanf("%d",&index) ;
 
@@ -62,7 +62,7 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 	char sqlStr[100] = "select login_pwd from Table_Login where login_id = " ;
 	strcat_s(sqlStr,user_name) ;
 	_RecordsetPtr rsp;
-	
+
 	try{
 		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	}
@@ -83,7 +83,7 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 	{
 		const char emptyStr[] = "null" ;
 		strcpy_s(pwd_rlt, PWD_LEN,emptyStr) ;
-	
+
 		return false ;
 	}
 	else
@@ -105,10 +105,10 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 
 	_variant_t varUserID ; 
 	_variant_t varCmpt ; 
-	 
+
 	varCmpt			=	rsp->Fields->GetItem(long(2))->Value ;
 	varUserID		=	rsp->Fields->GetItem(long(3))->Value ;
-	
+
 	if (varUserID.vt == VT_NULL)
 	{
 		strcpy_s(user_info_rlt->user_id , "null" ) ;
@@ -117,7 +117,7 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 	{
 		strcpy_s(user_info_rlt->user_id, (char *)(_bstr_t)varUserID)  ;
 	}
-	
+
 	if (varCmpt.vt == VT_NULL)
 	{
 		user_info_rlt->cmpt = compe_err ;
@@ -135,15 +135,15 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	char sqlStrTest[200] = "select login_competence from Table_Login where login_id = " ;
 	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
 	_variant_t v ;
-	
+
 	_RecordsetPtr rsp;
-	 try{
-		 rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
-	 }
-	 catch(...){
-		 return false;
-	 }
-	
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
+
 	if( ! rsp->rsEOF ) // 如果已存在...
 	{
 		rsp->Close() ;
@@ -190,7 +190,7 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,"','") ;
 	char temp[6] ;
 	strcpy(temp, _reg_info->basic_info.reg_gender == reg_info_male ? "true" : "false") ;
-	
+
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	char age[4] ;
@@ -347,7 +347,7 @@ bool IncreaseCharStr(char *_Dst,size_t _nLen) // '1' == 49 , nLen is not include
 	for (unsigned int i = 0 ; i < _nLen ; ++i )
 		if ( ! IsACharNumber(_Dst[i] ) )
 			return false ;
-	
+
 	for (unsigned int i = _nLen-1 ; i >= 0 ; --i )
 	{
 		if ( ! IsACharNumber( ++_Dst[i] ) )
@@ -370,7 +370,7 @@ bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID)
 		rsp.Release() ;
 		return false ;
 	}
-	
+
 	_variant_t varAppID = rsp->Fields->GetItem(long(0))->Value ;
 	if(VT_NULL == varAppID.vt)
 	{
@@ -602,13 +602,20 @@ bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id)
 		rsp.Release() ;
 		return false ;
 	}
-			rsp->Close() ;
-		rsp.Release() ;
+	rsp->Close() ;
+	rsp.Release() ;
 	char sqlStr[150] = "insert into Table_App_ID_Set values('" ;
 	strcat(sqlStr,_app_id) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,"false") ;
 	strcat(sqlStr,"')") ;
+
+	try{
+		_variant_t vt;
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
 
 	return true ;
 }
@@ -624,7 +631,7 @@ bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
 		rsp.Release() ;
 		return false ;
 	}
-	
+
 	char sqlStr[200] = "insert into Table_App_Pass_And_Comment values('" ;
 	strcat(sqlStr,_app_id) ;
 	strcat(sqlStr,"','") ;
@@ -642,10 +649,10 @@ bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
 	strcat(sqlStr,"')") ;
 
 	try{
-			_variant_t vt;
-			(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+		_variant_t vt;
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	}catch(...){
-			return false ;
+		return false ;
 	}
 
 	rsp->Close() ;
@@ -653,7 +660,7 @@ bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
 	return true ;
 }
 
-bool Update_app_research_result(_ConnectionPtr *_pConn,research_commit_input_info *_info) 
+bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *_info) 
 {
 	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = " ;
 	strcat(sqlStrTest,_info->research_apply_id) ;
@@ -668,6 +675,79 @@ bool Update_app_research_result(_ConnectionPtr *_pConn,research_commit_input_inf
 	rsp->Close() ;
 	rsp.Release() ;
 
-	char sqlStr[150] = "update Table_App_ID_Set set apply_is_verified = true" ;
+	/*	char sqlStr[150] = "update Table_App_ID_Set set apply_is_verified = true where apply_id = " ;
+	strcat(sqlStr,_info->research_apply_id) ;
+
+	try{
+	_variant_t vt;
+	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}catch(...){
+	return false ;
+	}
+	*/
+	char sqlStr0[150] = "delete from Table_App_ID_Set where apply_id =  " ;
+	strcat(sqlStr0,_info->research_apply_id) ;
+
+	try{
+		_variant_t vt;
+		(*_pConn)->Execute(sqlStr0,&vt,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
+	char sqlStr1[200] = "insert into Table_App_ID_Set values('" ;
+	strcat(sqlStr1,_info->research_apply_id) ;
+	strcat(sqlStr1,"','") ;
+
+	return true ;
+}
+bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_input_info *_info) 
+{
+	char sqlStrTest[200] = "select apply_is_verified from Table_App_Pass_And_Comment where apply_id = " ;
+	strcat(sqlStrTest,_info->research_apply_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( rsp->rsEOF ) //如果此id不存在...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+	rsp->Close() ;
+	rsp.Release() ;
+
+	char sqlStr0[150] = "delete from Table_App_Pass_And_Comment where apply_id =  " ;
+	strcat(sqlStr0,_info->research_apply_id) ;
+
+	try{
+		_variant_t vt;
+		(*_pConn)->Execute(sqlStr0,&vt,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
+	char sqlStr1[200] = "insert into Table_App_Pass_And_Comment values('" ;
+	strcat(sqlStr1,_info->research_apply_id) ;
+	strcat(sqlStr1,"','") ;
+	strcat(sqlStr1,_info->asset_research_info_comment) ;
+	strcat(sqlStr1,"','") ;
+	strcat(sqlStr1,_info->cust_research_info_comment) ;
+	strcat(sqlStr1,"','") ;
+	strcat(sqlStr1,_info->family_research_info_comment) ;
+	strcat(sqlStr1,"','") ;
+	strcat(sqlStr1,_info->loan_research_info_comment) ;
+	strcat(sqlStr1,"','") ;
+	strcat(sqlStr1,_info->is_research_approved ? "true" : "false" ) ;
+	strcat(sqlStr1,"','") ;
+	strcat(sqlStr1,_info->researcher_id) ;
+	strcat(sqlStr1,"')") ;
+
+	try{
+		_variant_t vt;
+		(*_pConn)->Execute(sqlStr1,&vt,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
 	return true ;
 }
