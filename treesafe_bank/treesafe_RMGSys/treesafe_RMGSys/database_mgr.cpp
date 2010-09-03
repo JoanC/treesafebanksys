@@ -364,7 +364,7 @@ bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID)
 	_variant_t vt ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	// execute sql... 
-	if( ! rsp->rsEOF )
+	if( rsp->rsEOF )
 	{
 		rsp->Close() ;
 		rsp.Release() ;
@@ -404,6 +404,7 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	strcat(sqlStr,"','") ;
 	char temp[6] ;
 	strcpy(temp, _info->cust_gender == apply_info_male ? "true" : "false") ;
+	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	memset(temp,0,6) ;
 	itoa(_info->cust_age,temp,10) ;
@@ -514,7 +515,7 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 		return false ;
 	}
 
-	char sqlStr[300] = "insert into Table_App_Cust_Asset_Info values('" ;
+	char sqlStr[300] = "insert into Table_App_Cust_Fami_Info values('" ;
 	strcat(sqlStr,_info->app_id) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_info->cust_marital_status == is_married ? "true" : "false" ) ;

@@ -93,6 +93,12 @@ void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len);
 //...
 void apply_err_compute(sys_err_type _type , apply_modle* _modle);
 
+/********************************************/
+//7.8
+//检测数据冲突
+//主要是贷款,存款的有无判断
+bool appy_check_input_data(apply_input_info* _input);
+
  
 /*********************************************************/
 //申请流程的主函式

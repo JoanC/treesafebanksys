@@ -134,6 +134,29 @@ void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len){
 	*_rlt_len = sizeof(apply_info);
 }
 
+//7.8
+//检测输入的逻辑冲突
+bool appy_check_input_data(apply_input_info* _input){
+	/*存款信息*/
+	if(_input->input_asset_info.cust_deposit_type
+		!= none_deposit){
+			//填写"有存款",但是后面两项都都填了"无"
+			if(_input->input_asset_info.cust_regular_deposit
+				== deposit_none_range && 
+				_input->input_asset_info.cust_demand_deposit
+				== deposit_none_range) return false;
+	}
+	if(_input->input_asset_info.cust_deposit_type == has_deposit){
+		//填了"无存款,但是后面有一个没填"无""
+		if(_input->input_asset_info.cust_demand_deposit
+			!= deposit_none_range ||
+			_input->input_asset_info.cust_regular_deposit
+			!= deposit_none_range) return false;
+	}
+	/*贷款信息*/
+	//if(_input->input_asset_info.)
+}
+
 //申请处理的主函式
 void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len){
 	//7.1

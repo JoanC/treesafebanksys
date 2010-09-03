@@ -77,6 +77,7 @@ void research_query_get_data(const char* _app_id,research_query_data* _data,bool
 void research_query_convert_rlt(research_query_info* _info
 	,char* _rlt , int* _rlt_len);
 
+
 /*******************************************/
 //模块18的主函式
 void research_query_frame(const char* _cmd,int _cmd_len
