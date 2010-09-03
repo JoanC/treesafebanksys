@@ -53,32 +53,32 @@ namespace treesafe.Auditors
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
         public char[] app_id;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public char[] research_id;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 129)]
         public char[] cust_research_info_comment;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 129)]
         public char[] family_research_info_comment;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 129)]
         public char[] asset_research_info_comment;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 129)]
         public char[] loan_research_info_comment;
         public bool is_research_approved;
 
-        public research_commit_input_info(string _research_id,bool _is_appr
+        public research_commit_input_info(string _app_id ,string _research_id,bool _is_appr
             ,string _cust_comm,string _family_comm,string _asset_comm,string _loan_comm)
         {
-            app_id = "".PadRight(11, '\0').ToCharArray();
-            research_id = _research_id.PadRight(19, '\0').ToCharArray();
+            app_id = _app_id.PadRight(11, '\0').ToCharArray();
+            research_id = _research_id.PadRight(8, '\0').ToCharArray();
             is_research_approved = _is_appr;
             cust_research_info_comment = 
-                _cust_comm.PadRight(128,'\0').ToCharArray();
+                _cust_comm.PadRight(129,'\0').ToCharArray();
             family_research_info_comment = 
-                _family_comm.PadRight(128,'\0').ToCharArray();
+                _family_comm.PadRight(129,'\0').ToCharArray();
             asset_research_info_comment = 
-                _asset_comm.PadRight(128,'\0').ToCharArray();
+                _asset_comm.PadRight(129,'\0').ToCharArray();
             loan_research_info_comment = 
-                _loan_comm.PadRight(128,'\0').ToCharArray();
+                _loan_comm.PadRight(129,'\0').ToCharArray();
         }
     }
 
@@ -117,7 +117,7 @@ namespace treesafe.Auditors
     public partial class AuditorListPage : System.Web.UI.Page
     {
         public static string research_id = "";
-        public static string app_id = "";
+        public static string app_id;
         public static string cust_comm;
         public static string family_comm;
         public static string asset_comm;
@@ -127,8 +127,6 @@ namespace treesafe.Auditors
         public static bool is_asset_appr;
         public static bool is_loan_appr;
         public static bool is_all_appr;
-
-        public int iCount = 1; 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -140,13 +138,12 @@ namespace treesafe.Auditors
             //发送抽取app_id的指令,并收取信息
            // research_exact_info _rlt_result = exact_research("");
             //从服务器端读取农户的申请信息，并显示在对应页面控件上
-            if (iCount == 1)
+            if (this.IsPostBack == false)
             {
                 research_exact_info _exact_info = exact_research("");
-                string _app_id = new string(_exact_info.app_id);
-                research_query_info _query_info = query_research(_app_id);
+                app_id = new string(_exact_info.app_id);
+                research_query_info _query_info = query_research(app_id);
                 display_all_info(_query_info);
-                ++iCount;
             }
         }
 
@@ -169,7 +166,6 @@ namespace treesafe.Auditors
             try
             {
                 _rlt = (research_exact_info)_exact_net.recevie_data(_rlt.GetType());
-                int i = 0;
             }
             catch (Exception)
             {
@@ -428,10 +424,10 @@ namespace treesafe.Auditors
         protected void CommitApplicationButton_Click(object sender, EventArgs e)
         {
             //读取审核结果
-            cust_comm = Chinese_Encode_Mgr.utf7_convert(Notes1.Text);
-            asset_comm = Chinese_Encode_Mgr.utf7_convert(Notes2.Text);
-            family_comm = Chinese_Encode_Mgr.utf7_convert(Notes3.Text);
-            loan_comm = Chinese_Encode_Mgr.utf7_convert(Notes4.Text);
+            cust_comm = (Notes1.Text != "") ? Chinese_Encode_Mgr.utf7_convert(Notes1.Text) : "null";
+            asset_comm = (Notes2.Text != "") ? Chinese_Encode_Mgr.utf7_convert(Notes2.Text) : "null";
+            family_comm = (Notes3.Text != "") ? Chinese_Encode_Mgr.utf7_convert(Notes3.Text) : "null";
+            loan_comm = (Notes4.Text != "") ? Chinese_Encode_Mgr.utf7_convert(Notes4.Text) : "null";
             is_all_appr =
                 is_asset_appr && is_family_appr && is_loan_appr && is_cust_appr;
            
@@ -440,7 +436,7 @@ namespace treesafe.Auditors
                 new web_net_client_mgr();
             //发送
             research_commit_input_info _send_commit_info
-                = new research_commit_input_info(research_id,is_all_appr
+                = new research_commit_input_info(app_id,research_id,is_all_appr
                     ,cust_comm,family_comm,asset_comm,loan_comm);
             _commit_send.send_command_data(5,_send_commit_info);
 
