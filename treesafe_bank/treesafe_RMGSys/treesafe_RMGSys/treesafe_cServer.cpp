@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "treesafe_cServer.h"
+#include "banksys_net.h"
 //#include <winsock2.h>
 #pragma comment(lib,"ws2_32.lib")
 
@@ -60,7 +60,7 @@ void net_wait_for_request(sys_Server *sServer)
 		WSACleanup();
 		return;
 	}
-//	CreateThread(NULL,0,iAccpet,&sServer,0,NULL);
+	
 	int addrClientlen = sizeof(sServer->sys_server.addrClient);
 	sServer->sys_server.sClient = accept(sServer->sys_server.sServer,(sockaddr FAR*)&sServer->sys_server.addrClient,&addrClientlen);
 	if(INVALID_SOCKET == sServer->sys_server.sClient)
@@ -78,16 +78,15 @@ void net_recieve_data(sys_Server* sServer)
 	printf("start to recevie data!\n");
 #endif
 	int reVal;
-	char cCount[] = "99";
-	reVal = recv(sServer->sys_server.sClient,cCount,strlen(cCount),0);
+    char cCount[] = "99";
+	reVal = recv(sServer->sys_server.sClient,cCount,sizeof(cCount)-1,0);
 	int iCount = atoi(cCount);
 	sServer->rec.cNetDataInfo = (char*)malloc(sizeof(char)*PackageSize*iCount);
 	sServer->rec.stNetDataLength = PackageSize*iCount;
 	memset(sServer->rec.cNetDataInfo,'\0',sServer->rec.stNetDataLength);
-	int i;
-	for(i = 0;i!=iCount;i++)
+	for(int i = 0;i!=iCount;i++)
 	{
-		char tempPack[PackageSize] = {'\0'};
+		char tempPack[PackageSize];
 		reVal = recv(sServer->sys_server.sClient,tempPack,PackageSize,0);
 		memcpy(sServer->rec.cNetDataInfo + i*PackageSize,tempPack,PackageSize);
 	}
@@ -101,7 +100,6 @@ void net_recieve_data(sys_Server* sServer)
 	}
 #ifdef DEBUG_NET_INFO
 	printf("end receive data!\n");
-	printf("rec:%s\n",sServer->rec.cNetDataInfo);
 #endif
 }
 
@@ -116,7 +114,7 @@ void net_send_data(sys_Server* sServer)
 	if(sServer->send.stNetDataLength <= PackageSize)
 	{
 		char temp[] = "01";
-		reVal = send(sServer->sys_server.sClient,temp,strlen(temp),0);
+		reVal = send(sServer->sys_server.sClient,temp,sizeof(temp),0);
 		reVal = send(sServer->sys_server.sClient,sServer->send.cNetDataInfo,sServer->send.stNetDataLength,0);	
 	}
 	else
@@ -125,11 +123,10 @@ void net_send_data(sys_Server* sServer)
 		int iCount = sServer->send.stNetDataLength / PackageSize + 1;
 		int iLastPackageSize = sServer->send.stNetDataLength - PackageSize * (iCount-1);
 		_itoa(iCount,temp,10);
-		int iLen = strlen(temp);
-		char temp2[] = "00"; 
-		iLen == 1?memcpy(&temp2[1],temp,strlen(temp)):memcpy(temp2,temp,sizeof(temp));
-		reVal = send(sServer->sys_server.sClient,temp2,strlen(temp2),0);
+		reVal = send(sServer->sys_server.sClient,temp,sizeof(temp),0);
+		
 		char* _temp_send_ptr = sServer->send.cNetDataInfo;
+
 		while(iCount--)
 		{
 			reVal = send(sServer->sys_server.sClient,_temp_send_ptr,PackageSize,0);
@@ -163,18 +160,4 @@ void net_send_frame(sys_Server* sServer)
 //	net_wait_for_request(sServer);
 	net_send_data(sServer);
 	net_release_connection(sServer);
-}
-
-DWORD WINAPI iAccpet(LPVOID p)
-{
-	AllocConsole();
-	printf("accept\n");
-	sys_Server* sServer;
-    MoveMemory(&sServer,p,sizeof(sServer));
-	int addrClientlen = sizeof(sServer->sys_server.addrClient);
-	sServer->sys_server.sClient = accept(sServer->sys_server.sServer,(sockaddr FAR*)&sServer->sys_server.addrClient,&addrClientlen);
-	net_recieve_data(sServer);
-	net_send_data(sServer);
-	printf("Another Rec:%s",sServer->rec.cNetDataInfo);
-	return 0;
 }
