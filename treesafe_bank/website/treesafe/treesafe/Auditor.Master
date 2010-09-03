@@ -12,7 +12,7 @@
 <body>
     <form id="Form2" runat="server">
     <div class="page">
-        <div class="header">
+        <div class="headertop">
             <div class="title">
                 <h1>
                     农民联保风险控制系统 审核员
