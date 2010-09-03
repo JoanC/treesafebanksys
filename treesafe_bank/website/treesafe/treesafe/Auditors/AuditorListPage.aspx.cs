@@ -22,23 +22,6 @@ using Chinese_Encode;
 
 namespace treesafe.Auditors
 {
-    /*
-    struct research_commit_input_info{
-	//被提交的申请的相关信息
-	char research_apply_id[RESEARCH_COMMIT_APPLY_ID_LEN];
-	//申请的相关信息
-	char researcher_id[RESEARCH_COMMIT_RESEARCHER_ID_LEN];
-	//有待亦可确定
-	bool is_research_approved;//审核是否通过
-	//个人信息审核注释
-	char cust_research_info_comment[RESEARCH_COMMIT_COMMENT];
-	//家庭信息审核过程
-	char family_research_info_comment[RESEARCH_COMMIT_COMMENT];
-	//资产信息审核过程
-	char asset_research_info_comment[RESEARCH_COMMIT_COMMENT];
-	//贷款信息
-	char loan_research_info_comment[RESEARCH_COMMIT_COMMENT];
-};*/
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
     struct research_commit_inoput_info
@@ -47,7 +30,6 @@ namespace treesafe.Auditors
         public char[] app_id;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
         public char[] research_id;
-        public int is_research_approved;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
         public char[] cust_research_info_comment;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
@@ -56,8 +38,9 @@ namespace treesafe.Auditors
         public char[] asset_research_info_comment;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
         public char[] loan_research_info_comment;
+        public bool is_research_approved;
 
-        public research_commit_inoput_info(string _research_id,int _is_appr
+        public research_commit_inoput_info(string _research_id,bool _is_appr
             ,string _cust_comm,string _family_comm,string _asset_comm,string _loan_comm)
         {
             app_id = "".PadRight(11, '\0').ToCharArray();
@@ -77,17 +60,17 @@ namespace treesafe.Auditors
 
     public partial class AuditorListPage : System.Web.UI.Page
     {
-        public static string research_id;
-        public static string app_id;
+        public static string research_id = "";
+        public static string app_id = "";
         public static string cust_comm;
         public static string family_comm;
         public static string asset_comm;
         public static string loan_comm;
-        public static int is_cust_appr;
-        public static int is_family_appr;
-        public static int is_asset_appr;
-        public static int is_loan_appr;
-        public static int is_loan
+        public static bool is_cust_appr;
+        public static bool is_family_appr;
+        public static bool is_asset_appr;
+        public static bool is_loan_appr;
+        public static bool is_all_appr;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -103,39 +86,49 @@ namespace treesafe.Auditors
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            is_cust_appr = int.Parse(CheckBox1.Text);
+            is_cust_appr = !is_cust_appr;
         }
 
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
-
+            is_asset_appr = !is_asset_appr;
         }
 
         protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
         {
-
+            is_family_appr = !is_family_appr;
         }
 
         protected void CheckBox4_CheckedChanged(object sender, EventArgs e)
         {
-
+            is_loan_appr = !is_loan_appr;
         }
 
         protected void CommitApplicationButton_Click(object sender, EventArgs e)
         {
             //读取审核结果
-
+            cust_comm = Chinese_Encode_Mgr.utf7_convert(Notes1.Text);
+            asset_comm = Chinese_Encode_Mgr.utf7_convert(Notes2.Text);
+            family_comm = Chinese_Encode_Mgr.utf7_convert(Notes3.Text);
+            loan_comm = Chinese_Encode_Mgr.utf7_convert(Notes4.Text);
+            is_all_appr =
+                is_asset_appr && is_family_appr && is_loan_appr && is_cust_appr;
            
+            //将审核结果发送到服务器
+            web_net_client_mgr _commit_send =
+                new web_net_client_mgr();
+            //发送
+            research_commit_inoput_info _send_commit_info
+                = new research_commit_inoput_info(research_id,is_all_appr
+                    ,cust_comm,family_comm,asset_comm,loan_comm);
+            _commit_send.send_command_data(5,_send_commit_info);
 
             //跳转到申请成功界面
-            if (CheckBox1.Checked && CheckBox2.Checked && CheckBox3.Checked && CheckBox4.Checked)
+            if (is_all_appr )
             { 
                 //申请通过
                 //跳转到打分界面
-                Response.Redirect("AuditorGradePage.aspx?id=" + ApplicationIDNumber.Text);
-
-
-                
+                Response.Redirect("AuditorGradePage.aspx?id=" + ApplicationIDNumber.Text);           
             }
             else
             {
