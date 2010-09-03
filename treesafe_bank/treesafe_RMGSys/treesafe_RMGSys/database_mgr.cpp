@@ -518,9 +518,10 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	char sqlStr[300] = "insert into Table_App_Cust_Fami_Info values('" ;
 	strcat(sqlStr,_info->app_id) ;
 	strcat(sqlStr,"','") ;
-	strcat(sqlStr,_info->cust_marital_status == is_married ? "true" : "false" ) ;
-	strcat(sqlStr,"','") ;
 	char temp[4] ;
+	itoa(_info->cust_marital_status,temp,10) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
 	memset(temp,0,4) ;
 	itoa(_info->cust_children_num,temp,10) ;
 	strcat(sqlStr,temp) ;
@@ -539,7 +540,7 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	itoa(_info->cust_spouse_edu_degree,temp,10) ;
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
-	strcat(sqlStr,_info->does_cust_spouse_has_loan == true ? "true" : "false") ;
+	strcat(sqlStr,_info->does_cust_spouse_has_loan ? "true" : "false") ;
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;
