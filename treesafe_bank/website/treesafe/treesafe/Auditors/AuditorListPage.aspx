@@ -337,7 +337,7 @@ CodeBehind="AuditorListPage.aspx.cs" Inherits="treesafe.Auditors.AuditorListPage
         您的工作至关重要！请慎重。
         </p>
            <p class="submitButton">
-              <asp:Button ID="CommitApplicationButton" runat="server" CommandName="MoveNext" Text="确定，提交审核" 
+              <asp:Button CssClass="button2" ID="CommitApplicationButton" runat="server" CommandName="MoveNext" Text="确定，提交审核" 
                           ValidationGroup="ApplicationValidationGroup" 
                    onclick="CommitApplicationButton_Click"/>
            </p>

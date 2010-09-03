@@ -157,6 +157,7 @@ div.hideSkiplink
 {
     width: 100%;
     background-image: url('Pictures/nav.png');
+    position: relative;
 }
 
 div.menu
@@ -260,6 +261,7 @@ div.accountInfo
     float: left;
     text-align: left;
     width: auto;
+    height: 165px;
 }
 
 .loginDisplay
