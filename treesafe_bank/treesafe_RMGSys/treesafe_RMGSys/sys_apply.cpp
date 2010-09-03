@@ -143,7 +143,7 @@ void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len){
 	
 	//7.3
 	//调出数据
-	//apply_query_cust_info(&_apply_frame->rlt_info);
+	apply_query_cust_info(&_apply_frame->rlt_info);
 
 	//7.4
 	//比对数据
@@ -154,8 +154,7 @@ void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len){
 	}
 
 	//7.5
-	//apply_save_to_research_table(apply_save_generate_id()
-	//,&_apply_frame->input_info);
+	apply_save_to_research_table(&_apply_frame->input_info);
 
 	//7.6
 	//整理结果
