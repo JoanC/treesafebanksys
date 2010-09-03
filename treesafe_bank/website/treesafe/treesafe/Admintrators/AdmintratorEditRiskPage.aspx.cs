@@ -13,19 +13,20 @@ namespace treesafe.Admintrators
         protected void Page_Load(object sender, EventArgs e)
         {
             //从显示权重页面读入数据
-
-            WeightIncome.Text = Request.QueryString["income"];
-            WeightDeposit.Text = Request.QueryString["deposit"];
-            WeightLoan.Text = Request.QueryString["loan"];
-            WeightMortagage.Text = Request.QueryString["mortagage"];
-            WeightID.Text = Request.QueryString["id"];
-            WeightEducation.Text = Request.QueryString["education"];
-            WeightHome.Text = Request.QueryString["home"];
-            WeightLoanRecord.Text = Request.QueryString["loanrecord"];
-            WeightSocietyRecord.Text = Request.QueryString["societyrecord"];
-            WeightWork.Text = Request.QueryString["work"];
-            
-
+            if (Session["riskpage"].ToString() == "0")
+            {
+                WeightIncome.Text = Request.QueryString["income"];
+                WeightDeposit.Text = Request.QueryString["deposit"];
+                WeightLoan.Text = Request.QueryString["loan"];
+                WeightMortagage.Text = Request.QueryString["mortagage"];
+                WeightID.Text = Request.QueryString["id"];
+                WeightEducation.Text = Request.QueryString["education"];
+                WeightHome.Text = Request.QueryString["home"];
+                WeightLoanRecord.Text = Request.QueryString["loanrecord"];
+                WeightSocietyRecord.Text = Request.QueryString["societyrecord"];
+                WeightWork.Text = Request.QueryString["work"];
+                Session["riskpage"] = "1";
+            }
         }
 
         protected void FinishEditWeightButton_Click(object sender, EventArgs e)
@@ -35,6 +36,7 @@ namespace treesafe.Admintrators
             
             
             //返回权重显示页面
+            Session["riskpage"] = "0";
             Response.Redirect("AdmintratorRiskManagementPage.aspx");
         }
 
@@ -633,4 +635,5 @@ namespace treesafe.Admintrators
 
         }
     }
+        
 }

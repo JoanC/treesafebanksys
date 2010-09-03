@@ -47,7 +47,7 @@ color:#993300;
 }
 .css_TR_move
 {
-background-color:#99CCFF ;
+background-color:#3366FF ;
 color:#123456;
 }
 .css_TR_CK
