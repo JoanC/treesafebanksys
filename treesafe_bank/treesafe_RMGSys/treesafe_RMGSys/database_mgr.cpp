@@ -1196,4 +1196,5 @@ bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn,char *_outcome)
 	}
 	rsp->Close() ;
 	rsp.Release() ;
+	return false ;
 }
