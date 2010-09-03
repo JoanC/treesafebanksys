@@ -141,7 +141,6 @@ namespace treesafe.Auditors
             research_exact_info _exact_info = exact_research("");
             string _app_id = new string(_exact_info.app_id);
             research_query_info _query_info = query_research(_app_id);
-            int i = 0;
         }
 
         protected research_exact_info exact_research(string _work_id)
