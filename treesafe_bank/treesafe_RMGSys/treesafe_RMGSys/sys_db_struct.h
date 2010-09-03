@@ -340,17 +340,17 @@ typedef apply_input_info apply_db_info;
 //以下有些是审核员填写的
 //而比如审核员id则是网页端自动生成的
 //审核员ID长度
-#define RESEARCH_COMMIT_RESEARCHER_ID_LEN 19
+#define RESEARCH_COMMIT_RESEARCHER_ID_LEN 8
 //审核员姓名长度
 #define RESEARCH_COMMIT_RESEARCHER_NAME_LEN 51
 //审核员的电话联系方式
-#define RESEARCH_COMMIT_RESEARCHER_TEL_LEN 19
+#define RESEARCH_COMMIT_RESEARCHER_TEL_LEN 12
 
 //被提交的审核申请的ID
 #define RESEARCH_COMMIT_APPLY_ID_LEN APPLY_ID
 
 //审核
-#define RESEARCH_COMMIT_COMMENT 128
+#define RESEARCH_COMMIT_COMMENT 129
 
 struct research_commit_input_info{
 	//被提交的申请的相关信息
