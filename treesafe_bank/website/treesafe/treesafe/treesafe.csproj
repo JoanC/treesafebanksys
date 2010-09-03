@@ -54,7 +54,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Users\UserChangePassword.aspx" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="Admintrators\AdmintratorEditRiskPage.aspx" />
     <Content Include="Admintrators\AdmintratorHelpPage.aspx" />
     <Content Include="Admintrators\AdmintratorLaborManagementPage.aspx" />
@@ -140,12 +140,12 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users\UserChangePassword.aspx.cs">
-      <DependentUpon>UserChangePassword.aspx</DependentUpon>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Users\UserChangePassword.aspx.designer.cs">
-      <DependentUpon>UserChangePassword.aspx</DependentUpon>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admintrator.Master.cs">
       <DependentUpon>Admintrator.Master</DependentUpon>

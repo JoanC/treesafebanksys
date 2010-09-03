@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace treesafe.Users {
+namespace treesafe {
     
     
-    public partial class UserChangePassword {
+    public partial class ChangePassword {
         
         /// <summary>
         /// ErrorMessage control.

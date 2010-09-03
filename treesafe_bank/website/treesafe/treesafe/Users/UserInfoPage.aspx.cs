@@ -34,7 +34,7 @@ namespace treesafe.Users
         {
             //打开更改用户登录密码页面
             //传参打开
-            Response.Redirect("UserChangePassword.aspx?name=" + UserName.Text
+            Response.Redirect("~/ChangePassword.aspx?name=" + UserName.Text
                               + "&password=" +UserPassword.Text);
         }
     }

@@ -1,9 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Welcome.Master" AutoEventWireup="true" 
-CodeBehind="UserChangePassword.aspx.cs" Inherits="treesafe.Users.UserChangePassword" %>
-
+CodeBehind="ChangePassword.aspx.cs" Inherits="treesafe.ChangePassword" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
         修改个人密码
@@ -61,8 +59,9 @@ CodeBehind="UserChangePassword.aspx.cs" Inherits="treesafe.Users.UserChangePassw
 
     </fieldset>
     <p class="submitButton">
-        <asp:Button ID="ChangeUserPasswordButton" runat="server" Text="修改密码" ValidationGroup="UserInfoValidationGroup"
-            onclick="ChangeUserPasswordButton_Click" />
+        <asp:Button ID="ChangeUserPasswordButton" runat="server" Text="修改密码" 
+            ValidationGroup="UserInfoValidationGroup" 
+            onclick="ChangeUserPasswordButton_Click"/>
     </p>
     </div>
 </asp:Content>
