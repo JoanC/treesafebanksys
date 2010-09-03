@@ -754,8 +754,9 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 }
 bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 {
-	char sqlStrTest[200] = "select * from Table_App_Cust_Info where apply_id = " ;
+	char sqlStrTest[200] = "select * from Table_App_Cust_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->input_basic_info.app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF ) //如果此id存在...
@@ -927,8 +928,9 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 }
 bool Get_app_asset_info(_ConnectionPtr *_pConn,apply_input_info *_info) 
 {
-	char sqlStrTest[200] = "select * from Table_App_Cust_Asset_Info where apply_id = " ;
+	char sqlStrTest[200] = "select * from Table_App_Cust_Asset_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->input_asset_info.app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF ) //如果此id存在...
@@ -1028,8 +1030,9 @@ bool Get_app_asset_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 }
 bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info) 
 {
-	char sqlStrTest[200] = "select * from Table_App_Cust_Fami_Info where apply_id = " ;
+	char sqlStrTest[200] = "select * from Table_App_Cust_Fami_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->input_fammily_info.app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 
@@ -1114,8 +1117,9 @@ bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 
 bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) 
 {
-	char sqlStrTest[200] = "select * from Table_App_Loan_Info where apply_id = " ;
+	char sqlStrTest[200] = "select * from Table_App_Loan_Info where apply_id = '" ;
 	strcat(sqlStrTest,_info->input_loan_info.app_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 
