@@ -144,7 +144,7 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 		 return false;
 	 }
 	
-	if( ! rsp->rsEOF )
+	if( ! rsp->rsEOF ) // 如果已存在...
 	{
 		rsp->Close() ;
 		rsp.Release() ;
@@ -260,7 +260,7 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 	strcat(sqlStrTest,employee_id) ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
-	if( ! rsp->rsEOF )
+	if( rsp->rsEOF ) //如果没这个人...
 	{
 		rsp->Close() ;
 		rsp.Release() ;
@@ -420,6 +420,14 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	memset(temp,0,6) ;
 	itoa(_info->cust_edu,temp,10) ;
 	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_addr) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_zip_code) ;
+	strcat(sqlStr,"','") ;
+	memset(temp,0,6) ;
+	itoa(_info->cust_house_type,temp,10) ;
+	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;
@@ -571,6 +579,8 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_info->loan_comment) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->is_want_msg ? "true" : "false" ) ;
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;
@@ -578,5 +588,86 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 
 	rsp->Close() ;
 	rsp.Release() ;
+	return true ;
+}
+bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id)
+{
+	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = " ;
+	strcat(sqlStrTest,_app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF ) //如果此id已存在...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+			rsp->Close() ;
+		rsp.Release() ;
+	char sqlStr[150] = "insert into Table_App_ID_Set values('" ;
+	strcat(sqlStr,_app_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"false") ;
+	strcat(sqlStr,"')") ;
+
+	return true ;
+}
+bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
+{
+	char sqlStrTest[200] = "select apply_asset_comment from Table_App_Pass_And_Comment where apply_id = " ;
+	strcat(sqlStrTest,_app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF )
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+	
+	char sqlStr[200] = "insert into Table_App_Pass_And_Comment values('" ;
+	strcat(sqlStr,_app_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"null") ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"null") ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"null") ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"null") ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"false") ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,"null") ;
+	strcat(sqlStr,"')") ;
+
+	try{
+			_variant_t vt;
+			(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}catch(...){
+			return false ;
+	}
+
+	rsp->Close() ;
+	rsp.Release() ;
+	return true ;
+}
+
+bool Update_app_research_result(_ConnectionPtr *_pConn,research_commit_input_info *_info) 
+{
+	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = " ;
+	strcat(sqlStrTest,_info->research_apply_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( rsp->rsEOF ) //如果此id不存在...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+	rsp->Close() ;
+	rsp.Release() ;
+
+	char sqlStr[150] = "update Table_App_ID_Set set apply_is_verified = true" ;
 	return true ;
 }
