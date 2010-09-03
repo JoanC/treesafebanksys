@@ -37,3 +37,21 @@ research_exact_info* init_research_exact_modle();
 
 //释放模块
 void release_research_exact_info(research_exact_info* _release);
+
+/*************************************/
+//模块8.2
+//得到指令
+
+//复制指令
+void research_copy_cmd_data(const char* _cmd,char* _dest,int _cmd_len);
+
+//转化指令
+//包括中文解码和类型的强制转换
+research_exact_input_info* research_convert_cmd(char* _info);
+
+//获取指令
+//8.2主函式
+research_exact_input_info research_get_cmd(const char* _cmd,
+	int _cmd_len);
+
+/**************************************/
