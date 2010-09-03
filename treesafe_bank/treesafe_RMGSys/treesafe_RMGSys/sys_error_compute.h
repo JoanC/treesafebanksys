@@ -25,8 +25,8 @@ enum sys_err_type{
 	err_reg_info_check_wrong = 5,//与银行中的数据比对时出错
 	err_reg_info_db_wrong=6,//数据库操作失败
 	//在申请处理时会遇到的错误
-	err_apply_info_chech_wrong//基础信息核对有错
-
+	err_apply_info_chech_wrong = 7,//基础信息核对有错
+	err_apply_info_no_user = 8//无此用户
 };
 
 //错误信息结构体
