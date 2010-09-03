@@ -766,7 +766,13 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 
 	strcat(sqlStr,col5) ;
 	strcat(sqlStr,_info->researcher_id) ;
-	strcat(sqlStr,"',") ;
+	strcat(sqlStr,"' ") ;
+
+	const char temp[] = "from Table_App_Pass_And_Comment where apply_id = '" ;
+
+	strcat(sqlStr,temp);
+	strcat(sqlStr,_info->research_apply_id) ;
+	strcat(sqlStr,"'") ;
 
 	try{
 		(*_pConn)->Execute(sqlStr,&v,adCmdText) ;
