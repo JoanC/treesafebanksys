@@ -11,6 +11,7 @@
 #include "sys_admin_delete_employee.h"//删除雇员
 #include "research_commit.h"//提交审核结果
 #include "sys_research_info_query.h"//查询审核申请信息
+#include "sys_research_exact.h"//抽取审核信息id
 
 typedef char* COMMAND_DATA;
 #define SYS_CMD_MAX_RLT_SIZE 256
@@ -25,6 +26,7 @@ enum{
 	sys_cmd_delete_employee = 4,//删除雇员
 	sys_cmd_commit_research = 5,//。提交审核信息
 	sys_cmd_query_research = 6,//查询审核申请信息
+	sys_cmd_exact_research = 7,//抽取一个新的(未被审核的)app_id
 	sys_cmd_unexpect = -1//未知命令(不可解析)
 };
 
@@ -87,6 +89,9 @@ void sys_command_commit_research(const sys_net_data* _cmd, char* _rlt,int* _rlt_
 
 //查询审核申请信息结果处理子函式2.4.7
 void sys_command_query_research(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
+
+//抽取审核信息处理子函式2.5.8
+void sys_command_exact_research(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
 //模块2.5
 //未知命令的处理函式
