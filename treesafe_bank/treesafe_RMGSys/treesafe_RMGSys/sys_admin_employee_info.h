@@ -2,10 +2,10 @@
 
 #define EMPLOYEE_ID_LEN 19
 #define EMPLOYEE_NAME_LEN 51
-#define EMPLOYEE_TEL_LEN 11
+#define EMPLOYEE_TEL_LEN 12
 #define EMPLOYEE_ADDR_LEN 51
 #define EMPLOYEE_PWD_LEN 18
-
+#define EMPLOYEE_COMM_LEN 257
 #define EMPLOYEE_WORK_ID_LEN 8 //雇员工号 
 #define EMPLOYEE_EMAIL_ADDR_LEN 51 //电子邮件地址的长度
 
@@ -30,6 +30,7 @@ struct admin_employee_info{
 	char employee_addr[EMPLOYEE_ADDR_LEN];//雇员的地址
 	char employee_email[EMPLOYEE_EMAIL_ADDR_LEN];//雇员电子邮件地址
 	char employee_tel[EMPLOYEE_TEL_LEN];//电话号码
+	char employee_comment[EMPLOYEE_COMM_LEN] ; //职员信息
 };
 
 //初始化函数

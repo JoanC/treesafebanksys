@@ -1,6 +1,6 @@
 #pragma once
-#include "sys_admin_employee_info.h" 
-#include "sys_employee_query.h"
+
+//#include "sys_employee_query.h"
 //数据库总管理函数
 //为所有模块提供接口
 //以表(table)为基础设计struct的结构
@@ -62,6 +62,12 @@ bool ConnectDB(_ConnectionPtr *pConn) ;
 
 void DisconnectDB(_ConnectionPtr *pConn) ;
 
+bool ConvertVar2CharStr(_variant_t *_Vt , char *_Dst) ;
+
+bool ConvertVar2Int(_variant_t *_Vt , int *_Dst) ;
+
+bool ConvertVar2Bool(_variant_t *_Vt , bool *_Dst) ;
+
 bool	Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt) ;
 
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info) ;
@@ -108,5 +114,5 @@ bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
 	//for 18.3
 bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn, char *_outcome) ;
 //FOR 8.3	
-bool Get_emplo_info(_ConnectionPtr *_pConn,employee_query_data *_info) ;
+bool Get_emplo_info(_ConnectionPtr *_pConn,admin_employee_info *_info) ;
  //for 19.3

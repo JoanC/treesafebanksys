@@ -60,7 +60,11 @@ employee_query_input_info* employee_query_get_cmd(const char* _cmd
 }
 
 //19.3
+void employee_query_get_data(const char* _app_id
+	,employee_query_data* _info,bool* _rlt)
+{
 
+}
 
 //19.4
 void employee_query_convert_rlt(employee_query_info* _info,

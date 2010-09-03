@@ -53,6 +53,39 @@ void DisconnectDB(_ConnectionPtr *pConn)
 	char outputStr[] = "success to disconnect the database..." ;
 	printf("%s\r\n",outputStr) ;
 }
+bool ConvertVar2CharStr(_variant_t *_Vt , char *_Dst) 
+{
+	if(VT_NULL == _Vt->vt){
+		strcpy(_Dst,"null") ;
+		return false ;
+	}
+	else {
+		strcpy(_Dst,(char*)(_bstr_t)(*_Vt) ) ;
+	}
+
+	return true ;
+}
+bool ConvertVar2Int(_variant_t *_Vt , int *_Dst) 
+{
+	if(VT_NULL == _Vt->vt){
+		*_Dst = -1 ; // err
+		return false ;
+	}
+	else {
+		*_Dst = _Vt->intVal ;
+	}
+	return true ;
+}
+bool ConvertVar2Bool(_variant_t *_Vt , bool *_Dst) 
+{
+	if(VT_NULL == _Vt->vt){
+		return false ;
+	}
+	else {
+		*_Dst = _Vt->boolVal ? true : false ;
+	}
+	return true ;
+}
 bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 {
 	_variant_t vt ;
@@ -203,8 +236,9 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 }
 bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char *_comment)
 {
-	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = " ;
-	strcat(sqlStrTest,emp_info->employee_id) ;
+	char sqlStrTest[200] = "select employee_id from Table_Employee where employee_work_id = '" ;
+	strcat(sqlStrTest,emp_info->employee_work_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF )
@@ -223,19 +257,21 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,emp_info->employee_name) ;
 	strcat(sqlStr,"','") ;
-	strcat(sqlStr, emp_info->employee_gender == employee_male ? "true" : "false" ) ;
+	char temp[4]  = {0,0,0,0} ;
+	itoa(emp_info->employee_gender,temp,10) ;
+	strcat(sqlStr, temp ) ;
 	strcat(sqlStr,"','") ;
-	char temp_age[4]  = {0,0,0,0} ;
-	itoa(emp_info->employee_age,temp_age,10) ;
-	strcat(sqlStr,temp_age) ;
+	memset(temp,0,4) ;
+	itoa(emp_info->employee_age,temp,10) ;
+	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,emp_info->employee_addr) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,emp_info->employee_email) ;
 	strcat(sqlStr,"','") ;
-	char temp_type[2] = {0,0} ;
-	itoa(emp_info->employee_type, temp_type , 10 ) ;
-	strcat(sqlStr,temp_type) ;
+	memset(temp,0,4) ;
+	itoa(emp_info->employee_type, temp, 10 ) ;
+	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_comment) ;
 	strcat(sqlStr,"','") ;
@@ -694,6 +730,13 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 	char sqlStr1[200] = "insert into Table_App_ID_Set values('" ;
 	strcat(sqlStr1,_info->research_apply_id) ;
 	strcat(sqlStr1,"','") ;
+
+	try{
+		_variant_t vt;
+		(*_pConn)->Execute(sqlStr1,&vt,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
 
 	return true ;
 }
@@ -1196,8 +1239,51 @@ bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn,char *_outcome)
 	rsp.Release() ;
 	return false ;
 }
-bool Get_emplo_info(_ConnectionPtr *_pConn,employee_query_data *_info) 
+bool Get_emplo_info(_ConnectionPtr *_pConn,admin_employee_info *_info) 
 {
+	char sqlStrTest[200] = "select * from Table_Employee where employee_work_id = '" ;
+	strcat(sqlStrTest,_info->employee_work_id) ;
+	strcat(sqlStrTest,"'") ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( rsp->rsEOF ) //如果此id不存在...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
 
-	return true ;
+	_variant_t varID ;
+	_variant_t varName ;
+	_variant_t varGend ;
+	_variant_t varAge ;
+	_variant_t varAddr ;
+	_variant_t varEMail ;
+	_variant_t varType ;
+	_variant_t varComment ;
+	_variant_t varPhoneNum ;
+
+	varID					= rsp->Fields->GetItem(long(1))->Value ;
+	varName				= rsp->Fields->GetItem(long(2))->Value ;
+	varGend				= rsp->Fields->GetItem(long(3))->Value ;
+	varAge				= rsp->Fields->GetItem(long(4))->Value ;
+	varAddr				= rsp->Fields->GetItem(long(5))->Value ;
+	varEMail				= rsp->Fields->GetItem(long(6))->Value ;
+	varType				= rsp->Fields->GetItem(long(7))->Value ;
+	varComment		= rsp->Fields->GetItem(long(8))->Value ;
+	varPhoneNum		= rsp->Fields->GetItem(long(9))->Value ;
+
+	bool bRtnVal = true ;
+
+	bRtnVal = ConvertVar2CharStr(&varID,_info->employee_id) 
+				&& ConvertVar2CharStr(&varName,_info->employee_name) 
+				&& ConvertVar2Int(&varGend,(int*)&_info->employee_gender)
+				&& ConvertVar2Int(&varAge,&_info->employee_age) 
+				&& ConvertVar2CharStr(&varAddr,_info->employee_addr) 
+				&& ConvertVar2CharStr(&varEMail,_info->employee_email)
+				&& ConvertVar2Int(&varType,(int*)&_info->employee_type)
+				&& ConvertVar2CharStr(&varComment,_info->employee_comment)
+				&& ConvertVar2CharStr(&varComment,_info->employee_tel) ;
+
+	return bRtnVal ; 
 }
