@@ -41,6 +41,7 @@ void release_research_exact_info(research_exact_info* _release);
 /*************************************/
 //模块8.2
 //得到指令
+//由Jiraiya完成
 
 //复制指令
 void research_copy_cmd_data(const char* _cmd,char* _dest,int _cmd_len);
@@ -54,4 +55,11 @@ research_exact_input_info* research_convert_cmd(char* _info);
 research_exact_input_info research_get_cmd(const char* _cmd,
 	int _cmd_len);
 
-/**************************************/
+/***************************************/
+//模块8.3
+//数据库访问
+//由sunni完成
+//从数据库中读取一个新的app_id
+//次app_id是没被审核过的,也就是对应值为false的
+
+void research_exact_app_id(char* _nre_app_id);
