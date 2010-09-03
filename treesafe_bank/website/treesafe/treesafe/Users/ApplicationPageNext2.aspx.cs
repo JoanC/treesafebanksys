@@ -24,9 +24,9 @@ namespace treesafe.Users
         public static int apply_cust_sps_card_type = 0;
         public static int apply_cust_sps_edu = 0;
         public static bool apply_cust_is_sps_has_loan = false;
-        public static string apply_cust_sps_name = "";
-        public static string apply_cust_sps_card_id = "";
-        public static string apply_cust_sps_work_unit ="";
+        public static string apply_cust_sps_name = "null";
+        public static string apply_cust_sps_card_id = "null";
+        public static string apply_cust_sps_work_unit ="null";
 
         protected void CreateApplicationButton_Click(object sender, EventArgs e)
         {
