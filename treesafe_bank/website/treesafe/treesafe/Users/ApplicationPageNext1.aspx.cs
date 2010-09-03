@@ -38,10 +38,10 @@ namespace treesafe.Users
         public static int apply_cust_dep_type;
         public static int apply_cust_reg_dep;
         public static int apply_cust_dem_dep;
-        public static int apply_cust_is_has_loan;
+        public static bool apply_cust_is_has_loan;
         public static int apply_cust_loan_sum;
         public static int apply_cust_loan_time;
-        public static int apply_cust_is_has_fixed;
+        public static bool apply_cust_is_has_fixed;
         public static int apply_cust_fixed_type;
         public static int apply_cust_industry;
         public static string apply_cust_work_unit;
@@ -58,10 +58,10 @@ namespace treesafe.Users
             apply_cust_dep_type = int.Parse(ApplicationIsHaveDeposit.Text);
             apply_cust_reg_dep = int.Parse(ApplicationDepositFixed.Text);
             apply_cust_dem_dep = int.Parse(ApplicationCurrentDeposit.Text);
-            apply_cust_is_has_loan = int.Parse(ApplicationIsHaveLoan.Text);
+            apply_cust_is_has_loan = int.Parse(ApplicationIsHaveLoan.Text) == 0 ? false : true;
             apply_cust_loan_sum = int.Parse(ApplicationLoanSum.Text);
             apply_cust_loan_time = int.Parse(ApplicationLoanDeadline.Text);
-            apply_cust_is_has_fixed = int.Parse(ApplicationIsMortgage.Text);
+            apply_cust_is_has_fixed = int.Parse(ApplicationIsMortgage.Text) == 0 ? false : true;
             apply_cust_fixed_type = int.Parse(ApplicationMortgage.Text);
             apply_cust_industry = int.Parse(ApplicationIndustry.Text);
             apply_cust_work_unit = 

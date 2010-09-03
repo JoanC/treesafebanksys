@@ -23,7 +23,7 @@ namespace treesafe.Users
         public static int apply_cust_chd_num = 0;
         public static int apply_cust_sps_card_type = 0;
         public static int apply_cust_sps_edu = 0;
-        public static int apply_cust_is_sps_has_loan = 0;
+        public static bool apply_cust_is_sps_has_loan = false;
         public static string apply_cust_sps_name = "";
         public static string apply_cust_sps_card_id = "";
         public static string apply_cust_sps_work_unit ="";
@@ -44,7 +44,7 @@ namespace treesafe.Users
                 apply_cust_sps_work_unit =
                     Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationMateWork.Text);
                 apply_cust_sps_edu = int.Parse(ApplicationMateEducation.Text);
-                apply_cust_is_sps_has_loan = int.Parse(ApplicationMateIsHaveDeposit.Text);
+                apply_cust_is_sps_has_loan = int.Parse(ApplicationMateIsHaveDeposit.Text) == 0 ? false : true;
             }
             //读取完成信息后，跳转到下一个页面继续申请表的填写
             Server.Transfer("~/Users/ApplicationPageNext3.aspx", true);

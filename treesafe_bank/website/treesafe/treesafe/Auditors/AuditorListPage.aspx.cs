@@ -107,8 +107,8 @@ namespace treesafe.Auditors
         {
             apply_loan_info _loan = new apply_loan_info(0,0,0,0,"");
             apply_custmor_info _cust = new apply_custmor_info(0,0,0,0,0,"","","","","","");
-            apply_cust_family_info _fami = new apply_cust_family_info(0,0,0,0,0,0,"","","");
-            apply_cust_asset_info _asset = new apply_cust_asset_info(0,0,0,0,0,0,0,0,0,0,0,"","");
+            apply_cust_family_info _fami = new apply_cust_family_info(0,0,0,0,false,0,"","","");
+            apply_cust_asset_info _asset = new apply_cust_asset_info(0,0,0,0,0,false,0,0,false,0,0,"","");
             query_info = new apply_input_info(_cust,_asset,_fami,_loan);
             err_info = new sys_err(err_type,"");
         }

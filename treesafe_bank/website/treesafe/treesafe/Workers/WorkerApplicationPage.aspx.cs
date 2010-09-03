@@ -54,10 +54,10 @@ namespace treesafe.Workers
             int apply_cust_dep_type = int.Parse(ApplicationIsHaveDeposit.Text);
             int apply_cust_reg_dep = int.Parse(ApplicationDepositFixed.Text);
             int apply_cust_dem_dep = int.Parse(ApplicationCurrentDeposit.Text); ;
-            int apply_cust_is_has_loan = int.Parse(ApplicationIsHaveLoan.Text);
+            bool apply_cust_is_has_loan = int.Parse(ApplicationIsHaveLoan.Text) == 0? false : true;
             int apply_cust_loan_sum = int.Parse(ApplicationLoanSum.Text);
             int apply_cust_loan_time = int.Parse(ApplicationLoanDeadline.Text);
-            int apply_cust_is_has_fixed = int.Parse(ApplicationIsMortgage.Text);
+            bool apply_cust_is_has_fixed = int.Parse(ApplicationIsMortgage.Text) == 0 ? false : true;
             int apply_cust_fixed_type = int.Parse(ApplicationMortgage.Text);
             int apply_cust_industry = int.Parse(ApplicationIndustry.Text);
             string apply_cust_work_unit = Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationWork.Text);
@@ -67,7 +67,7 @@ namespace treesafe.Workers
             int apply_cust_chd_num = int.Parse(ApplicationChildrenNumber.Text);
             int apply_cust_sps_card_type = int.Parse(ApplicationMateIDType.Text);
             int apply_cust_sps_edu = int.Parse(ApplicationMateEducation.Text);
-            int apply_cust_is_sps_has_loan = int.Parse(ApplicationMateIsHaveDeposit.Text);
+            bool apply_cust_is_sps_has_loan = int.Parse(ApplicationMateIsHaveDeposit.Text) == 0 ? false : true;
             string apply_cust_sps_name = Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationMateName.Text);
             string apply_cust_sps_card_id = Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationMateIDNumber.Text);
             string apply_cust_sps_work_unit = Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationMateWork.Text);

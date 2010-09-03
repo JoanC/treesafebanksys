@@ -77,10 +77,14 @@ namespace treesafe.Users
             int cust_deposit_type;//存款类型,0表示没有存款
             int cust_regular_deposit;//定期存款金额
             int cust_demand_deposit;//活期存款额
-            int cust_is_has_loan;//是否有贷款
+
+            bool cust_is_has_loan;//是否有贷款
+
             int cust_loan_sum;//贷款总金额
             int cust_loan_time;//多少时间返还
-            int cust_is_has_fixed_asset;//是否有固定资产
+
+            bool cust_is_has_fixed_asset;//是否有固定资产
+
             int cust_unsecured_fixed_asset;//固定资产类型
             int cust_industry;//从事行业
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
@@ -93,8 +97,8 @@ namespace treesafe.Users
             //-------------------------------------------------------
             public apply_cust_asset_info(int _pincome, int _fincome,
              int _dep_type, int _reg_dep, int _dem_dep,
-                int _is_has_loan, int _loan_sum, int _loan_time,
-                   int _is_has_fixed, int _fixed_type, int _industry,
+                bool _is_has_loan, int _loan_sum, int _loan_time,
+                   bool _is_has_fixed, int _fixed_type, int _industry,
             string _unit, string _pos)
             {
                 //this._pad = 0;
@@ -135,9 +139,11 @@ namespace treesafe.Users
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
             public char[] cust_spouse_work_unit;//配偶的工作单位
             public int cust_spouse_edu_degree;//配偶的受教育程度
-            public int cust_spouse_is_has_loan;//配偶是否有贷款
+
+            public bool cust_spouse_is_has_loan;//配偶是否有贷款
+
             public apply_cust_family_info(int _mar_stu, int _chd_num
-                , int _sps_card_type, int _sps_edu, int _is_sps_has_loan , int _spouse_card_type
+                , int _sps_card_type, int _sps_edu, bool _is_sps_has_loan , int _spouse_card_type
                 , string _sps_name, string _sps_card_id, string _sps_work_unit)
             {
                 this.cust_apouse_card_type = _spouse_card_type;
