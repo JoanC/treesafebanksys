@@ -573,7 +573,9 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_info->loan_comment) ;
 	strcat(sqlStr,"','") ;
-	strcat(sqlStr,_info->is_want_msg ? "true" : "false" ) ;
+	memset(temp,0,15) ;
+	itoa(_info->is_want_msg,temp,10) ;
+	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;

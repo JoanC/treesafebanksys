@@ -4,24 +4,24 @@
 
 void apply_init_apply_custmor_info(apply_custmor_info* _init){
 	//初始化用户信息
-	strcpy(_init->app_id,"");
+	memset(_init->app_id,'\0',APPLY_ID);
 	_init->cust_age = 0;
 	_init->cust_card_type = id_card;
 	_init->cust_gender = apply_info_male;
-	strcpy(_init->cust_id,"");
-	strcpy(_init->cust_name,"");
-	strcpy(_init->cust_other_tel_num,"");
-	strcpy(_init->cust_tel_num,"");
+	memset(_init->cust_id,'\0',APPLY_CUST_ID_LEN);
+	memset(_init->cust_name,'\0',APPLY_CUST_NAME_LEN);
+	memset(_init->cust_other_tel_num,'\0',APPLY_CUST_TEL_LEN);
+	memset(_init->cust_tel_num,'\0',APPLY_CUST_TEL_LEN);
 	_init->cust_edu = edu_primary_and_below;
 	//初始化邮政编码,家庭住址和住房权属
-	strcpy(_init->cust_zip_code,"");
-	strcpy(_init->cust_addr,"");
+	memset(_init->cust_zip_code,'\0',APPLY_CUST_ZIP_CODE_LEN);
+	memset(_init->cust_addr,'\0',APPLY_CUST_ADDR_LEN);
 	_init->cust_house_type = own;//初始值为自有房产
 }
 
 void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 	//初始化用户资产信息
-	strcpy(_init->app_id,"");
+	memset(_init->app_id,'\0',APPLY_ID);
 	_init->cust_deposit_type = none_deposit;
 	_init->cust_family_annual_income = fincome_down_2000;
 	_init->cust_industry = farm_industry_other;
@@ -30,28 +30,28 @@ void apply_init_apply_custmor_assets_info(apply_cust_asset_info* _init){
 	_init->cust_loan_time = apply_time_none;
 	_init->cust_personal_annual_income = pincome_down_2000;
 	_init->cust_unsecured_fixed_asset = asset_other;
-	strcpy(_init->cust_work_unit,"");
-	strcpy(_init->cust_work_pos,"");
+	memset(_init->cust_work_unit,'\0',APPLY_WORK_UINT_LEN);
+	memset(_init->cust_work_pos,'\0',APPLY_WORK_POSITION_LEN);
 	//-------------------------------------
 //	_init->cust_deposit_range = deposit_none_range;
 }
 
 void apply_init_apply_custmor_family_info(apply_cust_family_info* _init){
 	//初始化用户家庭信息
-	strcpy(_init->app_id,"");
+	memset(_init->app_id,'\0',APPLY_ID);
 	_init->cust_apouse_card_type = id_card;
 	_init->cust_children_num = 0;
 	_init->cust_marital_status = not_married;
 	_init->cust_spouse_edu_degree = edu_primary_and_below;
-	strcpy(_init->cust_spouse_card_id,"");
+	memset(_init->cust_spouse_card_id,'\0',APPLY_CARD_NUMBER_LEN);
 	_init->does_cust_spouse_has_loan = false;
-	strcpy(_init->cust_spouse_name,"");
-	strcpy(_init->cust_spouse_work_unit,"");
+	memset(_init->cust_spouse_name,'\0',APPLY_CUST_NAME_LEN);
+	memset(_init->cust_spouse_work_unit,'\0',APPLY_WORK_UINT_LEN);
 }
 
 void apply_init_apply_loan_info(apply_loan_info* _init){
 	//初始化申请信息
-	strcpy(_init->app_id,"");
+	memset(_init->app_id,'\0',APPLY_ID);
 	_init->loan_application_amount = loan_down_2000;
 	memset(_init->loan_comment,'\0',APPLY_LOAN_COMMENT);
 	_init->loan_dead_line = 0;
