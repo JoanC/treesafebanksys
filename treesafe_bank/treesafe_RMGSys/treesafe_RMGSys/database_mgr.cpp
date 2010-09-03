@@ -1176,8 +1176,8 @@ bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn,char *_outcome) 
 {
 	//select max(apply_id) from Table_App_ID_Set
-	char sqlStr[200] = "select min(apply_id) from " ;
-	char sqlTemp[100] = "(select apply_id from Table_App_ID_Set where apply_is_verified = false)" ;
+	char sqlStr[200] = "select min(apply_id) from Table_App_ID_Set where apply_id in" ;
+	char sqlTemp[100] = "(select apply_id from Table_App_ID_Set where apply_is_verified = False)" ;
 	strcat(sqlStr,sqlTemp) ;
 
 	_variant_t v ;
