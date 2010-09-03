@@ -86,6 +86,8 @@ void research_exact_frame(const char* _cmd ,int _cmd_len
 		//调用8.3...
 		//...
 
+		/*以下是模拟模块8.3的测试代码*/
+		strcpy(_frame->rlt_info.app_id,"10000000000");
 
 		//调用8.4
 		research_exact_convert_rlt(&_frame->rlt_info
