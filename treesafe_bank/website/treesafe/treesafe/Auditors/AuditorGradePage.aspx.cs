@@ -18,8 +18,6 @@ namespace treesafe.Auditors
         {
             //读取信息
 
-
-
             //结束评分，跳转到成功界面
             Response.Redirect("AuditorCommitPage.aspx");
         }
