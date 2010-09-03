@@ -18,7 +18,7 @@
                     </span>
                     <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification" 
                          ValidationGroup="RegisterUserValidationGroup"/>
-                    
+                    <div>
                         <fieldset class="register">
                             <legend>账户信息</legend>
                             <p>
@@ -87,5 +87,6 @@
                                  ValidationGroup="RegisterUserValidationGroup" 
                                 onclick="CreateUserButton_Click"/>
                         </p>
+                        </div>
                     
 </asp:Content>
