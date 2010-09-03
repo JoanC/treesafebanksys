@@ -169,6 +169,7 @@ namespace treesafe.Auditors
             try
             {
                 _rlt = (research_exact_info)_exact_net.recevie_data(_rlt.GetType());
+                int i = 0;
             }
             catch (Exception)
             {
