@@ -74,13 +74,13 @@ bool apply_check_cust_info(apply_custmor_info* _input
 		//用户的性别检测
 		if(_input->cust_gender != _db_query->cust_gender) return false;
 		//年龄检测
-		if(_input->cust_age != _db_query->cust_age) return false;
+	    if(_input->cust_age != _db_query->cust_age) return false;
 				//用户的卡号检测
-		if(strcmp(_input->cust_id,_db_query->cust_id) != 0) return false;
+//		if(strcmp(_input->cust_id,_db_query->cust_id) != 0) return false;
 		//客户省份卡的类型检测
-		if(_input->cust_card_type != _db_query->cust_card_type) return false;
+//		if(_input->cust_card_type != _db_query->cust_card_type) return false;
 		//客户的教育程度检测
-		if(_input->cust_edu != _db_query->cust_edu) return false;
+//		if(_input->cust_edu != _db_query->cust_edu) return false;
 		return true;
 }
 
@@ -141,19 +141,26 @@ void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len){
 	_apply_frame->input_info = 
 		*apply_get_input_info(_command,_len);
 	
+/*
 	//7.3
 	//调出数据
-	apply_query_cust_info(&_apply_frame->rlt_info);
-
+	bool _cust_exsit;
+	apply_query_cust_info(&_apply_frame->db_cust_info,&_cust_exsit);
+	if(_cust_exsit == true){
+		apply_err_compute(err_apply_info_no_user,_apply_frame);
+	}
 	//7.4
 	//比对数据
-	if(!apply_check_cust_info(&_apply_frame->input_info.input_basic_info,
-		&_apply_frame->db_cust_info)){
+	bool _cust_info_true = apply_check_cust_info(&_apply_frame->input_info.input_basic_info,
+		&_apply_frame->db_cust_info);
+	if(_cust_info_true == false){
 			apply_err_compute(err_apply_info_chech_wrong
 				, _apply_frame);
 	}
+*/
 
 	//7.5
+//	if(_cust_exsit&&_cust_info_true) 
 	apply_save_to_research_table(&_apply_frame->input_info);
 
 	//7.6
