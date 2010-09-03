@@ -106,9 +106,7 @@ void research_commit_frame(const char* _cmd , int _cmd_len
 			= *research_commit_get_cmd(_cmd,_cmd_len);
 		//9.3
 		//...
-
-		//9.4
-		//...
+		research_commit_save_apply(&_research_commit_frame->input_info);
 
 		//9.5
 		//生成结果信息
