@@ -155,8 +155,21 @@ bool appy_check_input_data(apply_input_info* _input){
 	}
 	/*贷款信息*/
 	if(_input->input_asset_info.does_cust_have_loan == true){
-		//如果有贷款,但是用户并的金额,时间
+		//如果有贷款,但是用户写的金额,还款时间有一项为0
+		if(_input->input_asset_info.cust_loan_time 
+			== apply_time_none ||
+			_input->input_asset_info.cust_loan_sum
+			== loan_none_range) return false;
 	}
+	if(_input->input_asset_info.does_cust_have_loan == false){
+		//如果没有贷款,用户却填写了金额或是时间项
+		if(_input->input_asset_info.cust_loan_time 
+			!= apply_time_none ||
+			_input->input_asset_info.cust_loan_sum
+			!= loan_none_range) return false;
+	}
+	//若都通过,返回true
+	return true;
 }
 
 //申请处理的主函式
