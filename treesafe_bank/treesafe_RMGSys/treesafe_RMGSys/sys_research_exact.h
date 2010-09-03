@@ -122,7 +122,7 @@ void research_exact_save_prop(char* _investigator_id
 //由sunni完成
 //通过数据库,
 //检索申请信息,并且填充research_exact_info的信息项
-void research_exact_generate_rlt(research_exact_info* _rlt_info);
+void research_exact_generate_rlt(resaearch_exact_info* _rlt_info);
 
 /**********************************************/
 //模块8.6
