@@ -2,7 +2,7 @@
 #include "sys_research_info_query.h"
 
 //模块18的实现文件
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 
 //18.1
 void init_research_query_input_info(research_query_input_info* _init){
@@ -63,7 +63,18 @@ research_query_input_info* research_query_get_cmd(const char* _cmd,int _cmd_len)
 }
 
 //模块18.3
+void research_query_get_data(const char* _app_id,research_query_data* _data,bool* _rlt)
+{
+	strcpy(_data->input_asset_info.app_id,_app_id) ;
+	strcpy(_data->input_basic_info.app_id,_app_id) ;
+	strcpy(_data->input_fammily_info.app_id,_app_id) ;
+	strcpy(_data->input_loan_info.app_id,_app_id) ;
 
+	*_rlt = Get_app_cust_info(treesafe_db_connection,_data) 
+				&& Get_app_asset_info(treesafe_db_connection,_data)
+				&& Get_app_cust_fami_info(treesafe_db_connection,_data) 
+				&& Get_app_cust_loan_info(treesafe_db_connection,_data) ;
+}
 
 //模块18.4
 void research_query_convert_rlt(research_query_info* _info

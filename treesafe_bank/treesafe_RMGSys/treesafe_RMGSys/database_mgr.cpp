@@ -752,10 +752,10 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 
 	return true ;
 }
-bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_info *_info)
+bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 {
 	char sqlStrTest[200] = "select * from Table_App_Cust_Info where apply_id = " ;
-	strcat(sqlStrTest,_app_id) ;
+	strcat(sqlStrTest,_info->input_basic_info.app_id) ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( ! rsp->rsEOF ) //如果此id存在...
@@ -788,14 +788,14 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_in
 		{
 			const char emptyStr[] = "null" ;
 			strcpy(_info->input_basic_info.cust_name,emptyStr) ;
-			
+
 			bRtnVal = false ;
 		}
 		else
 		{
 			strcpy(_info->input_basic_info.cust_name, (char *)(_bstr_t)varName)  ;
 		}
-		
+
 		if (varGend.vt == VT_NULL)
 		{
 			bRtnVal = false ;
@@ -832,19 +832,19 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_in
 		{
 			const char emptyStr[] = "null" ;
 			strcpy(_info->input_basic_info.cust_tel_num,emptyStr) ;
-			
+
 			bRtnVal = false ;
 		}
 		else
 		{
 			strcpy(_info->input_basic_info.cust_tel_num, (char *)(_bstr_t)varPhoneNum)  ;
 		}
-		
+
 		if (varOtherPhoneNum.vt == VT_NULL)
 		{
 			const char emptyStr[] = "null" ;
 			strcpy(_info->input_basic_info.cust_other_tel_num,emptyStr) ;
-			
+
 			bRtnVal = false ;
 		}
 		else
@@ -861,32 +861,32 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_in
 			/*			switch(varEdu.intVal)
 			{
 			case edu_master_and_above :
-				_info->input_basic_info.cust_edu = edu_master_and_above ;
-				break ;
+			_info->input_basic_info.cust_edu = edu_master_and_above ;
+			break ;
 			case edu_undergraduate :
-				_info->input_basic_info.cust_edu = edu_undergraduate ;
-				break ;
+			_info->input_basic_info.cust_edu = edu_undergraduate ;
+			break ;
 			case edu_college :
-				_info->input_basic_info.cust_edu = edu_college ;
-				break ;
+			_info->input_basic_info.cust_edu = edu_college ;
+			break ;
 			case edu_high_school :
-				_info->input_basic_info.cust_edu = edu_high_school ;
-				break ;
+			_info->input_basic_info.cust_edu = edu_high_school ;
+			break ;
 			case edu_primary_and_below :
-				_info->input_basic_info.cust_edu = edu_primary_and_below ;
-				break ;
+			_info->input_basic_info.cust_edu = edu_primary_and_below ;
+			break ;
 			default :
-				_info->input_basic_info.cust_edu = edu_err ;
-				bRtnVal = false ; 
+			_info->input_basic_info.cust_edu = edu_err ;
+			bRtnVal = false ; 
 			}*/
 			_info->input_basic_info.cust_edu = (APPLY_CUST_EDUCATION_DEGREE)varEdu.intVal ;
 		}
-		
+
 		if (varAddr.vt == VT_NULL)
 		{
 			const char emptyStr[] = "null" ;
 			strcpy(_info->input_basic_info.cust_addr,emptyStr) ;
-			
+
 			bRtnVal = false ;
 		}
 		else
@@ -898,14 +898,14 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_in
 		{
 			const char emptyStr[] = "null" ;
 			strcpy(_info->input_basic_info.cust_zip_code,emptyStr) ;
-			
+
 			bRtnVal = false ;
 		}
 		else
 		{
 			strcpy(_info->input_basic_info.cust_zip_code, (char *)(_bstr_t)varZipCode)  ;
 		}
-		
+
 		if (varHouseOwnership.vt == VT_NULL)
 		{
 			bRtnVal = false ;
@@ -917,10 +917,258 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_in
 
 		rsp->Close() ;
 		rsp.Release() ;
-		return true ;
+		return bRtnVal ;
 	}
 
 
+	rsp->Close() ;
+	rsp.Release() ;
+	return false ;
+}
+bool Get_app_asset_info(_ConnectionPtr *_pConn,apply_input_info *_info) 
+{
+	char sqlStrTest[200] = "select * from Table_App_Cust_Asset_Info where apply_id = " ;
+	strcat(sqlStrTest,_info->input_asset_info.app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF ) //如果此id存在...
+	{
+		_variant_t varPAI ;
+		_variant_t varDeposType ;
+		_variant_t varRegDeposRang ;
+		_variant_t varDemaDeposRang ;
+		_variant_t varHasLoan ;
+		_variant_t varLoanSum ;
+		_variant_t varLoanTime ;
+		_variant_t varUnsecFixedAssetType ;
+		_variant_t varIndusType ;
+		_variant_t varWorkUnit ;
+		_variant_t varWorkPos ;
+
+		varPAI									= rsp->Fields->GetItem(long(1))->Value ;
+		varDeposType						= rsp->Fields->GetItem(long(2))->Value ;
+		varRegDeposRang					= rsp->Fields->GetItem(long(3))->Value ;
+		varDemaDeposRang				= rsp->Fields->GetItem(long(4))->Value ;
+		varHasLoan							= rsp->Fields->GetItem(long(5))->Value ;
+		varLoanSum							= rsp->Fields->GetItem(long(6))->Value ;
+		varLoanTime							= rsp->Fields->GetItem(long(7))->Value ;
+		varUnsecFixedAssetType	= rsp->Fields->GetItem(long(8))->Value ;
+		varIndusType						= rsp->Fields->GetItem(long(9))->Value ;
+		varWorkUnit							= rsp->Fields->GetItem(long(10))->Value ;
+		varWorkPos							= rsp->Fields->GetItem(long(11))->Value ;
+
+		bool bRtnVal = true ;
+		if (varPAI.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_personal_annual_income = (APPLY_PERSON_INCOME_RANGE)varPAI.intVal ;
+		//////////////////////////////
+		if (varDeposType.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_deposit_type = (APPLY_DEPOSIT_TYPE)varDeposType.intVal ;
+		//////////////////////////////
+		if (varRegDeposRang.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_regular_deposit = (APPLY_DEPOSIT_RANGE)varRegDeposRang.intVal ;
+		//////////////////////////////
+		if (varDemaDeposRang.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_demand_deposit =  (APPLY_DEPOSIT_RANGE)varDemaDeposRang.intVal ;
+		//////////////////////////////
+		if (varHasLoan.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.does_cust_have_loan = varHasLoan.boolVal ? true : false ;
+		//////////////////////////////
+		if (varLoanSum.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_loan_sum = (APPLY_LOAN_RANGE)varLoanSum.intVal ;
+		//////////////////////////////
+		if (varLoanTime.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_loan_time = (APPLY_LOAN_TIME)varLoanTime.intVal ;
+		//////////////////////////////
+		if (varUnsecFixedAssetType.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_unsecured_fixed_asset = (APPLY_UNSECURED_FIXED_ASSETS)varUnsecFixedAssetType.intVal ;
+		//////////////////////////////
+		if (varIndusType.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_asset_info.cust_industry = (APPLY_INDUSTRY_TYPE)varIndusType.intVal ;
+		//////////////////////////////
+		if (varWorkUnit.vt == VT_NULL){
+			strcpy(_info->input_asset_info.cust_work_unit,"null") ;
+			bRtnVal = false ;
+		}
+		else
+			strcpy(_info->input_asset_info.cust_work_unit,(char*)(_bstr_t)varWorkUnit) ;
+		//////////////////////////////
+		if (varWorkPos.vt == VT_NULL){
+			strcpy(_info->input_asset_info.cust_work_pos,"null") ;
+			bRtnVal = false ;
+		}
+		else
+			strcpy(_info->input_asset_info.cust_work_pos,(char*)(_bstr_t)varWorkPos) ;
+		//////////////////////////////	
+		rsp->Close() ;
+		rsp.Release() ;
+
+		return bRtnVal ;
+	}
+	rsp->Close() ;
+	rsp.Release() ;
+	return false ;	
+}
+bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info) 
+{
+	char sqlStrTest[200] = "select * from Table_App_Cust_Fami_Info where apply_id = " ;
+	strcat(sqlStrTest,_info->input_fammily_info.app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+
+	if( ! rsp->rsEOF ) //如果此id存在...
+	{
+		_variant_t varMarital ;
+		_variant_t varChildrenNum ;
+		_variant_t varSpouName ;
+		_variant_t varSpouCardType ;
+		_variant_t varSpouCardID ;
+		_variant_t varSpouWorkUnit ;
+		_variant_t varSpouEdu ;
+		_variant_t varHasSpouLoan ;
+
+		varMarital					= rsp->Fields->GetItem(long(1))->Value ;
+		varChildrenNum			= rsp->Fields->GetItem(long(2))->Value ;
+		varSpouName				= rsp->Fields->GetItem(long(3))->Value ;
+		varSpouCardType		= rsp->Fields->GetItem(long(4))->Value ;
+		varSpouCardID			= rsp->Fields->GetItem(long(5))->Value ;
+		varSpouWorkUnit		= rsp->Fields->GetItem(long(6))->Value ;
+		varSpouEdu				= rsp->Fields->GetItem(long(7))->Value ;
+		varHasSpouLoan		= rsp->Fields->GetItem(long(8))->Value ;
+
+		bool bRtnVal = true ;
+
+		if (varMarital.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_fammily_info.cust_marital_status = (APPLY_CUST_MARITAL_STATUS)varMarital.intVal ;
+		///////////////////////////////////////
+		if (varChildrenNum.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_fammily_info.cust_children_num = varChildrenNum.intVal ;
+		///////////////////////////////////////
+		if (varSpouName.vt == VT_NULL){
+			strcpy(_info->input_fammily_info.cust_spouse_name,"null") ;
+			bRtnVal = false ;
+		}
+		else
+			strcpy(_info->input_fammily_info.cust_spouse_name,(char*)(_bstr_t)varSpouName) ;
+		///////////////////////////////////////
+		if (varSpouCardType.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_fammily_info.cust_apouse_card_type = (APPLY_CARD_TYPE)varSpouCardType.intVal ;
+		///////////////////////////////////////
+		if (varSpouCardID.vt == VT_NULL){
+			strcpy(_info->input_fammily_info.cust_spouse_card_id,"null") ;
+			bRtnVal = false ;
+		}
+		else
+			strcpy(_info->input_fammily_info.cust_spouse_card_id,(char*)(_bstr_t)varSpouCardID) ;
+		///////////////////////////////////////
+		if (varSpouWorkUnit.vt == VT_NULL){
+			strcpy(_info->input_fammily_info.cust_spouse_work_unit,"null") ;
+			bRtnVal = false ;
+		}
+		else
+			strcpy(_info->input_fammily_info.cust_spouse_work_unit,(char*)(_bstr_t)varSpouWorkUnit) ;
+		///////////////////////////////////////
+		if (varSpouEdu.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_fammily_info.cust_spouse_edu_degree = (APPLY_CUST_EDUCATION_DEGREE)varSpouEdu.intVal ;
+		///////////////////////////////////////
+		if (varHasSpouLoan.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_fammily_info.does_cust_spouse_has_loan  = varHasSpouLoan.boolVal ? true : false  ;
+		///////////////////////////////////////
+
+
+		rsp->Close() ;
+		rsp.Release() ;
+		return bRtnVal ;
+	}
+	rsp->Close() ;
+	rsp.Release() ;
+	return false ;
+}
+
+bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) 
+{
+	char sqlStrTest[200] = "select * from Table_App_Loan_Info where apply_id = " ;
+	strcat(sqlStrTest,_info->input_loan_info.app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+
+
+
+	if( ! rsp->rsEOF ) //如果此id存在...
+	{
+		_variant_t varLoanAmount ;
+		_variant_t varLoanDeadLine ;
+		_variant_t varLoanNum;
+		_variant_t varLoanComment ;
+		_variant_t varWantMSG ;
+
+		varLoanAmount			= rsp->Fields->GetItem(long(1))->Value ;
+		varLoanDeadLine		= rsp->Fields->GetItem(long(2))->Value ;
+		varLoanNum				= rsp->Fields->GetItem(long(3))->Value ;
+		varLoanComment		= rsp->Fields->GetItem(long(4))->Value ;
+		varWantMSG				= rsp->Fields->GetItem(long(5))->Value ;
+
+		bool bRtnVal = true ;
+
+		if (varLoanAmount.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_loan_info.loan_application_amount = (APPLY_LOAN_RANGE)varLoanAmount.intVal ;
+		///////////////////////////////////////////
+		if (varLoanDeadLine.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_loan_info.loan_dead_line = varLoanDeadLine.intVal ;
+		///////////////////////////////////////////
+		if (varLoanNum.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_loan_info.loan_times = (APPLY_LOAN_TIMES)varLoanNum.intVal ;
+		///////////////////////////////////////////
+		if (varLoanComment.vt == VT_NULL){
+			strcpy(_info->input_loan_info.loan_comment,"null") ;
+			bRtnVal = false ;
+		}
+		else
+			strcpy(_info->input_loan_info.loan_comment,(char*)(_bstr_t)varLoanComment) ;
+		///////////////////////////////////////////
+		if (varWantMSG.vt == VT_NULL)
+			bRtnVal = false ;
+		else
+			_info->input_loan_info.is_want_msg = (APPLY_MESSAGE)varWantMSG.intVal ;
+		///////////////////////////////////////////
+
+		rsp->Close() ;
+		rsp.Release() ;
+		return bRtnVal ;
+	}
 	rsp->Close() ;
 	rsp.Release() ;
 	return false ;

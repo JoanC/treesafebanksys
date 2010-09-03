@@ -97,6 +97,11 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 	//for 9.3
 bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_input_info *_info) ;
 	//for 9.3
-bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_info *_info) ;
+bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
 	//for 18.3
-bool Get_app_asset_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_info *_info) ;
+bool Get_app_asset_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
+	//for 18.3
+bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
+	//for 18.3
+bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
+	//for 18.3
