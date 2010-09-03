@@ -20,6 +20,7 @@
 ********************************************************************************************************/
 
 #include <winsock2.h>
+#include <stdio.h>
 #pragma comment(lib,"ws2_32.lib")
 
 struct net_Client
