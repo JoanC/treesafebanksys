@@ -85,7 +85,9 @@ void employee_query_frame(const char* _cmd , int _cmd_len
 		//19.2
 		_frame_modle->input_info = *employee_query_get_cmd(_cmd,_cmd_len);
 		//19.3...
-
+		bool _is_db_corr = false;
+		employee_query_get_data(_frame_modle->input_info.work_id,
+			&_frame_modle->rlt_info.query_data,&_is_db_corr);
 		//19.4
 		employee_query_convert_rlt(&_frame_modle->rlt_info,_rlt,_rlt_len);
 		//ÊÍ·ÅÄ£¿é
