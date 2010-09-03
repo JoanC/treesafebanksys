@@ -694,8 +694,9 @@ bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
 }
 bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *_info) 
 {
-	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = " ;
+	char sqlStrTest[200] = "select apply_is_verified from Table_App_ID_Set where apply_id = '" ;
 	strcat(sqlStrTest,_info->research_apply_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( rsp->rsEOF ) //如果此id不存在...
@@ -742,8 +743,9 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 }
 bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_input_info *_info) 
 {
-	char sqlStrTest[200] = "select apply_is_verified from Table_App_Pass_And_Comment where apply_id = " ;
+	char sqlStrTest[200] = "select apply_is_verified from Table_App_Pass_And_Comment where apply_id = '" ;
 	strcat(sqlStrTest,_info->research_apply_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
 	if( rsp->rsEOF ) //如果此id不存在...
