@@ -174,14 +174,12 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 //	strcpy(_login_frame->db_query.input_user_name,"haha");
 //	strcpy(_login_frame->db_query.input_user_pwd,"KOKO");
 	//
-/*
+
 	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
 		//用户名或密码不正确
 		//错误处理...
 		login_err_mgr(err_login_user_or_pwd_err,_login_frame);
-		return;
 	}
-*/
 	//进行高级数据查询
 	//调用模块3.5
 	//得到login_info,即rlt_info
