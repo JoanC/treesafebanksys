@@ -10,7 +10,25 @@
 namespace treesafe.Users {
     
     
-    public partial class UserInfoPage {
+    public partial class UserChangePassword {
+        
+        /// <summary>
+        /// ErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
+        
+        /// <summary>
+        /// UserInfoValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary UserInfoValidationSummary;
         
         /// <summary>
         /// UserNameLabel control.
@@ -31,22 +49,31 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.Label UserName;
         
         /// <summary>
-        /// UserIDLabel control.
+        /// UserOldPasswordLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserIDLabel;
+        protected global::System.Web.UI.WebControls.Label UserOldPasswordLabel;
         
         /// <summary>
-        /// UserID control.
+        /// UserOldPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserID;
+        protected global::System.Web.UI.WebControls.TextBox UserOldPassword;
+        
+        /// <summary>
+        /// UserOldPasswordRequire control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserOldPasswordRequire;
         
         /// <summary>
         /// UserPasswordLabel control.
@@ -64,78 +91,60 @@ namespace treesafe.Users {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserPassword;
+        protected global::System.Web.UI.WebControls.TextBox UserPassword;
         
         /// <summary>
-        /// UserAddressLabel control.
+        /// UserPasswordRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserAddressLabel;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserPasswordRequired;
         
         /// <summary>
-        /// UserAddress control.
+        /// ConfirmPasswordLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserAddress;
+        protected global::System.Web.UI.WebControls.Label ConfirmPasswordLabel;
         
         /// <summary>
-        /// UserPhoneLabel control.
+        /// ConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserPhoneLabel;
+        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
         
         /// <summary>
-        /// UserPhone control.
+        /// ConfirmPasswordRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserPhone;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmPasswordRequired;
         
         /// <summary>
-        /// UserEmailLabel control.
+        /// PasswordCompare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserEmailLabel;
+        protected global::System.Web.UI.WebControls.CompareValidator PasswordCompare;
         
         /// <summary>
-        /// UserEmail control.
+        /// ChangeUserPasswordButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserEmail;
-        
-        /// <summary>
-        /// ChangeUserInfoButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChangeUserInfoButton;
-        
-        /// <summary>
-        /// ChangePasswordButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChangePasswordButton;
+        protected global::System.Web.UI.WebControls.Button ChangeUserPasswordButton;
     }
 }

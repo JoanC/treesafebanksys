@@ -59,9 +59,12 @@ CodeBehind="UserInfoPage.aspx.cs" Inherits="treesafe.Users.UserInfoPage" %>
     </fieldset>
 
     <p class="submitButton">
-              <asp:Button ID="ChangeUserInfoButton" runat="server" Text="编辑，更改信息" 
+        <asp:Button ID="ChangeUserInfoButton" runat="server" Text="编辑，更改信息" 
                   onclick="ChangeUserInfoButton_Click"/>
-           </p>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="ChangePasswordButton" runat="server" Text="更改登录密码" 
+            onclick="ChangePasswordButton_Click" />
+    </p>
 
 
 </asp:Content>

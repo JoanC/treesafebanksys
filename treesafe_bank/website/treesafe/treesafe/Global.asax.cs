@@ -40,6 +40,10 @@ namespace treesafe
 
             //防止数据重复提交
             Session["riskpage"] = "0";
+
+
+            //用户更改密码保护
+            Session["changepassword"] = "0";
             
         }
 

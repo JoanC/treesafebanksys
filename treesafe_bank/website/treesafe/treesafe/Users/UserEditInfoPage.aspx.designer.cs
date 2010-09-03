@@ -10,7 +10,25 @@
 namespace treesafe.Users {
     
     
-    public partial class UserInfoPage {
+    public partial class UserEditInfoPage {
+        
+        /// <summary>
+        /// ErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
+        
+        /// <summary>
+        /// UserInfoValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary UserInfoValidationSummary;
         
         /// <summary>
         /// UserNameLabel control.
@@ -82,7 +100,16 @@ namespace treesafe.Users {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserAddress;
+        protected global::System.Web.UI.WebControls.TextBox UserAddress;
+        
+        /// <summary>
+        /// UserAddressRequire control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserAddressRequire;
         
         /// <summary>
         /// UserPhoneLabel control.
@@ -100,7 +127,16 @@ namespace treesafe.Users {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserPhone;
+        protected global::System.Web.UI.WebControls.TextBox UserPhone;
+        
+        /// <summary>
+        /// UserPhoneRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserPhoneRequired;
         
         /// <summary>
         /// UserEmailLabel control.
@@ -118,7 +154,7 @@ namespace treesafe.Users {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserEmail;
+        protected global::System.Web.UI.WebControls.TextBox UserEmail;
         
         /// <summary>
         /// ChangeUserInfoButton control.
@@ -128,14 +164,5 @@ namespace treesafe.Users {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ChangeUserInfoButton;
-        
-        /// <summary>
-        /// ChangePasswordButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChangePasswordButton;
     }
 }

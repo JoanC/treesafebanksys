@@ -20,7 +20,22 @@ namespace treesafe.Users
 
         protected void ChangeUserInfoButton_Click(object sender, EventArgs e)
         {
+            //打开更改用户联系信息页面
+            //传参打开
+            Response.Redirect("UserEditInfoPage.aspx?name=" + UserName.Text
+                             + "&password="+UserPassword.Text
+                             + "&id=" + UserID.Text
+                             + "&address=" + UserAddress.Text
+                             + "&phone=" + UserPhone.Text
+                             + "&email=" + UserEmail.Text);
+        }
 
+        protected void ChangePasswordButton_Click(object sender, EventArgs e)
+        {
+            //打开更改用户登录密码页面
+            //传参打开
+            Response.Redirect("UserChangePassword.aspx?name=" + UserName.Text
+                              + "&password=" +UserPassword.Text);
         }
     }
 }
