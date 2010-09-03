@@ -718,27 +718,6 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 	return false ;
 	}
 
-/*	char sqlStr0[150] = "delete from Table_App_ID_Set where apply_id =  " ;
-	strcat(sqlStr0,_info->research_apply_id) ;
-
-	try{
-		_variant_t vt;
-		(*_pConn)->Execute(sqlStr0,&vt,adCmdText) ;
-	}catch(...){
-		return false ;
-	}
-
-	char sqlStr1[200] = "insert into Table_App_ID_Set values('" ;
-	strcat(sqlStr1,_info->research_apply_id) ;
-	strcat(sqlStr1,"','") ;
-
-	try{
-		_variant_t vt;
-		(*_pConn)->Execute(sqlStr1,&vt,adCmdText) ;
-	}catch(...){
-		return false ;
-	}*/
-
 	return true ;
 }
 bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_input_info *_info) 
@@ -757,7 +736,45 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 	rsp->Close() ;
 	rsp.Release() ;
 
-	char sqlStr0[150] = "delete from Table_App_Pass_And_Comment where apply_id =  " ;
+	const char col0[] = "apply_asset_comment = '" ;
+	const char col1[] = "apply_cust_comment = '" ;
+	const char col2[] = "apply_fami_comment = '" ;
+	const char col3[] = "apply_loan_comment = '" ;
+	const char col4[] = "apply_is_passed = '" ;
+	const char col5[] = "apply_researcher_work_id = '" ;
+	char sqlStr[300] = "update Table_App_Pass_And_Comment set " ;
+	
+	strcat(sqlStr,col0) ;
+	strcat(sqlStr,_info->asset_research_info_comment) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col1) ;
+	strcat(sqlStr,_info->cust_research_info_comment) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col2) ;
+	strcat(sqlStr,_info->family_research_info_comment) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col3) ;
+	strcat(sqlStr,_info->loan_research_info_comment) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col4) ;
+	strcat(sqlStr,_info->is_research_approved ? "true" : "false" ) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col5) ;
+	strcat(sqlStr,_info->researcher_id) ;
+	strcat(sqlStr,"',") ;
+
+	try{
+		 (*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
+/*	char sqlStr0[150] = "delete from Table_App_Pass_And_Comment where apply_id =  " ;
 	strcat(sqlStr0,_info->research_apply_id) ;
 
 	try{
@@ -789,7 +806,7 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 	}catch(...){
 		return false ;
 	}
-
+	*/
 	return true ;
 }
 bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
