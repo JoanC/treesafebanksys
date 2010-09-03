@@ -76,10 +76,11 @@ struct sys_db_apply{
 #define APPLY_CUST_TEL_LEN 11 //联系电话长度
 
 enum APPLY_GENDER_TYPE {apply_info_male , apply_info_female};//性别值
-enum APPLY_CARD_TYPE{id_card/*身份证*/,ｍilitary_card/*军人证*/};//证件类型
+enum APPLY_CARD_TYPE{id_card/*身份证*/ = 0 ,ｍilitary_card = 1/*军人证*/};//证件类型
 enum APPLY_CUST_HOUSING_TENURE{own/*自有*/,lease/*租赁*/,other/*其他*/};//住房权属
 
 enum APPLY_CUST_EDUCATION_DEGREE{
+//	edu_err = -1 ,
 	edu_master_and_above = 1,/*硕士及以上*/
 	edu_undergraduate = 2 ,/*本科*/
 	edu_college = 3 ,/*大专*/

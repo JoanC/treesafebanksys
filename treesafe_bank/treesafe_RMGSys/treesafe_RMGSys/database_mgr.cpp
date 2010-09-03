@@ -752,3 +752,176 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 
 	return true ;
 }
+bool Get_app_cust_info(_ConnectionPtr *_pConn,const char *_app_id,apply_input_info *_info)
+{
+	char sqlStrTest[200] = "select * from Table_App_Cust_Info where apply_id = " ;
+	strcat(sqlStrTest,_app_id) ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF ) //如果此id存在...
+	{
+		_variant_t varName ;
+		_variant_t varGend ;
+		_variant_t varAge ;
+		_variant_t varCardType ;
+		_variant_t varPhoneNum ;
+		_variant_t varOtherPhoneNum ;
+		_variant_t varEdu ;
+		_variant_t varAddr ;
+		_variant_t varZipCode ;
+		_variant_t varHouseOwnership ;
+
+		varName						= rsp->Fields->GetItem(long(1))->Value ;
+		varGend						= rsp->Fields->GetItem(long(2))->Value ;
+		varAge						= rsp->Fields->GetItem(long(3))->Value ;
+		varCardType				= rsp->Fields->GetItem(long(4))->Value ;
+		varPhoneNum				= rsp->Fields->GetItem(long(5))->Value ;
+		varOtherPhoneNum	= rsp->Fields->GetItem(long(6))->Value ;
+		varEdu						= rsp->Fields->GetItem(long(7))->Value ;
+		varAddr						= rsp->Fields->GetItem(long(8))->Value ;
+		varZipCode					= rsp->Fields->GetItem(long(9))->Value ;
+		varHouseOwnership	= rsp->Fields->GetItem(long(10))->Value ;
+
+		bool bRtnVal = true ; 
+
+		if (varName.vt == VT_NULL)
+		{
+			const char emptyStr[] = "null" ;
+			strcpy(_info->input_basic_info.cust_name,emptyStr) ;
+			
+			bRtnVal = false ;
+		}
+		else
+		{
+			strcpy(_info->input_basic_info.cust_name, (char *)(_bstr_t)varName)  ;
+		}
+		
+		if (varGend.vt == VT_NULL)
+		{
+			bRtnVal = false ;
+		}
+		else
+		{
+			_info->input_basic_info.cust_gender  =  varGend.boolVal ? apply_info_male : apply_info_female ;
+		}
+
+		if (varAge.vt == VT_NULL)
+		{
+			bRtnVal = false ;
+		}
+		else
+		{
+			_info->input_basic_info.cust_age = varAge.intVal ;
+		}
+
+		if (varCardType.vt == VT_NULL)
+		{
+			bRtnVal = false ;
+		}
+		else
+		{
+			if ( id_card == varCardType.intVal )
+				_info->input_basic_info.cust_card_type = id_card ;
+			else if(ｍilitary_card == varCardType.intVal)
+				_info->input_basic_info.cust_card_type = ｍilitary_card ;
+			else 
+				bRtnVal = false ;
+		}
+
+		if (varPhoneNum.vt == VT_NULL)
+		{
+			const char emptyStr[] = "null" ;
+			strcpy(_info->input_basic_info.cust_tel_num,emptyStr) ;
+			
+			bRtnVal = false ;
+		}
+		else
+		{
+			strcpy(_info->input_basic_info.cust_tel_num, (char *)(_bstr_t)varPhoneNum)  ;
+		}
+		
+		if (varOtherPhoneNum.vt == VT_NULL)
+		{
+			const char emptyStr[] = "null" ;
+			strcpy(_info->input_basic_info.cust_other_tel_num,emptyStr) ;
+			
+			bRtnVal = false ;
+		}
+		else
+		{
+			strcpy(_info->input_basic_info.cust_other_tel_num, (char *)(_bstr_t)varOtherPhoneNum)  ;
+		}
+
+		if (varEdu.vt == VT_NULL)
+		{
+			bRtnVal = false ;
+		}
+		else
+		{
+			/*			switch(varEdu.intVal)
+			{
+			case edu_master_and_above :
+				_info->input_basic_info.cust_edu = edu_master_and_above ;
+				break ;
+			case edu_undergraduate :
+				_info->input_basic_info.cust_edu = edu_undergraduate ;
+				break ;
+			case edu_college :
+				_info->input_basic_info.cust_edu = edu_college ;
+				break ;
+			case edu_high_school :
+				_info->input_basic_info.cust_edu = edu_high_school ;
+				break ;
+			case edu_primary_and_below :
+				_info->input_basic_info.cust_edu = edu_primary_and_below ;
+				break ;
+			default :
+				_info->input_basic_info.cust_edu = edu_err ;
+				bRtnVal = false ; 
+			}*/
+			_info->input_basic_info.cust_edu = (APPLY_CUST_EDUCATION_DEGREE)varEdu.intVal ;
+		}
+		
+		if (varAddr.vt == VT_NULL)
+		{
+			const char emptyStr[] = "null" ;
+			strcpy(_info->input_basic_info.cust_addr,emptyStr) ;
+			
+			bRtnVal = false ;
+		}
+		else
+		{
+			strcpy(_info->input_basic_info.cust_addr, (char *)(_bstr_t)varAddr)  ;
+		}
+
+		if (varZipCode.vt == VT_NULL)
+		{
+			const char emptyStr[] = "null" ;
+			strcpy(_info->input_basic_info.cust_zip_code,emptyStr) ;
+			
+			bRtnVal = false ;
+		}
+		else
+		{
+			strcpy(_info->input_basic_info.cust_zip_code, (char *)(_bstr_t)varZipCode)  ;
+		}
+		
+		if (varHouseOwnership.vt == VT_NULL)
+		{
+			bRtnVal = false ;
+		}
+		else
+		{
+			_info->input_basic_info.cust_house_type = (APPLY_CUST_HOUSING_TENURE)varHouseOwnership.intVal ;
+		}
+
+		rsp->Close() ;
+		rsp.Release() ;
+		return true ;
+	}
+
+
+	rsp->Close() ;
+	rsp.Release() ;
+	return false ;
+}
