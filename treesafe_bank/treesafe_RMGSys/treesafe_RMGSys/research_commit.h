@@ -60,7 +60,7 @@ research_commit_input_info* research_commit_convert_input(char* _info);
 //完成一系列相应操作
 //操作1 : 将这个app_id的审核结果存入,一个bool四个comment
 //操作2 : 将这个app_id下的true/false改掉 ， 一个bool
-void research_commit_save_apply(research_commit_input_info* _apply_info);
+bool	research_commit_save_apply(research_commit_input_info* _apply_info);
 
 /**********************************************/
 //模块9.5

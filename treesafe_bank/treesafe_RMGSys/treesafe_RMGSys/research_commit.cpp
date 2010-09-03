@@ -2,7 +2,7 @@
 #include "research_commit.h"
 
 //模块9 -- 审核信息结果提交模块的实现代码
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 //9.1 初始化与释放模块
 
 void research_commit_init_research_commit_input_info(research_commit_input_info* _init){
@@ -76,7 +76,10 @@ research_commit_input_info* research_commit_convert_input(char* _info){
 
 //9.3
 //...待sunni完成
-
+bool research_commit_save_apply(research_commit_input_info* _apply_info)
+{
+	return Update_app_id_set(treesafe_db_connection,_apply_info) && Update_app_pass_and_comment(treesafe_db_connection,_apply_info) ;
+}
 
 //9.4
 //...待sunni完成
