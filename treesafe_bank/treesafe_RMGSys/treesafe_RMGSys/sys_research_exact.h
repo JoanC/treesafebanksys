@@ -63,3 +63,6 @@ research_exact_input_info research_get_cmd(const char* _cmd,
 //次app_id是没被审核过的,也就是对应值为false的
 
 void research_exact_app_id(char* _nre_app_id);
+
+
+/*********
