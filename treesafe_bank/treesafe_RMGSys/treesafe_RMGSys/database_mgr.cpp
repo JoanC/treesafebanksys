@@ -1173,3 +1173,27 @@ bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 	rsp.Release() ;
 	return false ;
 }
+bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn,char *_outcome) 
+{
+	//select max(apply_id) from Table_App_ID_Set
+	char sqlStr[200] = "select min(apply_id) from " ;
+	char sqlTemp[100] = "(select apply_id from Table_App_ID_Set where apply_is_verified = false)" ;
+	strcat(sqlStr,sqlTemp) ;
+
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+
+	if( ! rsp->rsEOF ) //如果此id存在...
+	{
+		_variant_t varAppID = rsp->Fields->GetItem(long(0))->Value ;
+
+		if ( VT_NULL != varAppID.vt )
+			strcpy(_outcome,(char*)(_bstr_t)varAppID ) ;
+
+		rsp->Close() ;
+		rsp.Release() ;
+		return true ;
+	}
+	rsp->Close() ;
+	rsp.Release() ;
+}

@@ -105,3 +105,5 @@ bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
 	//for 18.3
 bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
 	//for 18.3
+bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn, char *_outcome) ;
+//FOR 8.3	

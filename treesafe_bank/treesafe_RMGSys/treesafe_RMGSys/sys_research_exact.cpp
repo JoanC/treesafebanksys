@@ -2,7 +2,7 @@
 #include "sys_research_exact.h"
 
 //模块8的实现文件
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 //8.1
 void init_research_exact_input_info(research_exact_input_info* _init){
 	//初始化输入结构
@@ -61,7 +61,10 @@ research_exact_input_info* research_get_cmd(const char* _cmd,
 }
 
 //8.3
-
+void research_exact_app_id(char* _new_app_id)
+{
+	Find_app_id_be_not_verified(treesafe_db_connection,_new_app_id) ;
+}
 
 //8.4
 void research_exact_convert_rlt(research_exact_info* _info,
