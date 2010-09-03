@@ -73,6 +73,7 @@
     <Content Include="Chinese_Coding.asax" />
     <Content Include="Styles\Pictures\bg.png" />
     <Content Include="Styles\Pictures\button2.png" />
+    <Content Include="Styles\Pictures\foot.png" />
     <Content Include="Styles\Pictures\pagebg.png" />
     <Content Include="Styles\Pictures\nav.png" />
     <Content Include="Styles\Pictures\title.png" />
