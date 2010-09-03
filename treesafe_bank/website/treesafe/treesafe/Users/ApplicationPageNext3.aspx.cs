@@ -28,24 +28,24 @@ namespace treesafe.Users
         public struct apply_custmor_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
-            char[] app_id;//申请id,为空,其值在服务器段赋予
+            public char[] app_id;//申请id,为空,其值在服务器段赋予
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
-            char[] cust_name;//申请人姓名
-            int cust_gender;//性别
-            int cust_age;//年龄
-            int cust_card_type;//卡的类型
+            public char[] cust_name;//申请人姓名
+            public int cust_gender;//性别
+            public int cust_age;//年龄
+            public int cust_card_type;//卡的类型
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
-            char[] cust_card_id;//卡号
+            public char[] cust_card_id;//卡号
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
-            char[] cust_tel;//电话号码
+            public char[] cust_tel;//电话号码
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
-            char[] cust_other_tel;//其他联系电话
-            int cust_edu_degree;//受教育情况
+            public char[] cust_other_tel;//其他联系电话
+            public int cust_edu_degree;//受教育情况
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
-            char[] cust_addr;//家庭地址
+            public char[] cust_addr;//家庭地址
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]
-            char[] cust_zip;//邮政编码
-            int cust_house_type;//住宅权属
+            public char[] cust_zip;//邮政编码
+            public int cust_house_type;//住宅权属
             public apply_custmor_info(int _gender, int _age
                 , int _card_type, int _edu, int _house, string _name
                 , string _card_id, string _tel, string _other_tel, string _addr, string _zip)
@@ -71,26 +71,26 @@ namespace treesafe.Users
         public struct apply_cust_asset_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
-            char[] app_id;//申请id,为空,其值在服务器段赋予
-            int cust_personal_annual_income;//个人年收入
-            int cust_family_annual_income;//家庭年收入
-            int cust_deposit_type;//存款类型,0表示没有存款
-            int cust_regular_deposit;//定期存款金额
-            int cust_demand_deposit;//活期存款额
+            public char[] app_id;//申请id,为空,其值在服务器段赋予
+            public int cust_personal_annual_income;//个人年收入
+            public int cust_family_annual_income;//家庭年收入
+            public int cust_deposit_type;//存款类型,0表示没有存款
+            public int cust_regular_deposit;//定期存款金额
+            public int cust_demand_deposit;//活期存款额
 
-            bool cust_is_has_loan;//是否有贷款
+            public bool cust_is_has_loan;//是否有贷款
 
-            int cust_loan_sum;//贷款总金额
-            int cust_loan_time;//多少时间返还
+            public int cust_loan_sum;//贷款总金额
+            public int cust_loan_time;//多少时间返还
 
-            bool cust_is_has_fixed_asset;//是否有固定资产
+            public bool cust_is_has_fixed_asset;//是否有固定资产
 
-            int cust_unsecured_fixed_asset;//固定资产类型
-            int cust_industry;//从事行业
+            public int cust_unsecured_fixed_asset;//固定资产类型
+            public int cust_industry;//从事行业
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
-            char[] cust_work_unit;//工作单位
+            public char[] cust_work_unit;//工作单位
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
-            char[] cust_work_position;//工作职位
+            public char[] cust_work_position;//工作职位
 
             //-------------------------------------------------------
            // int _pad;//
@@ -165,12 +165,12 @@ namespace treesafe.Users
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
             public char[] app_id;//申请id,为空,其值在服务器赋予
-            int loan_application_amount;//贷款金额
-            int loan_dead_line;//还款期限(单位为月份)
-            int loan_times;//申请人的贷款次数;
+            public int loan_application_amount;//贷款金额
+            public int loan_dead_line;//还款期限(单位为月份)
+            public int loan_times;//申请人的贷款次数;
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
-            char[] loan_comment;//注释信息
-            int is_want_msg;//是否需要短信提示
+            public char[] loan_comment;//注释信息
+            public int is_want_msg;//是否需要短信提示
             public apply_loan_info(int _amount, int _deadline, int _loan_times
                 , int _is_want_msg, string _loan_comment)
             {
@@ -196,10 +196,10 @@ namespace treesafe.Users
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
         public struct apply_input_info
         {
-            apply_custmor_info cust_info;
-            apply_cust_asset_info asset_info;
-            apply_cust_family_info family_info;
-            apply_loan_info loan_info;
+            public apply_custmor_info cust_info;
+            public apply_cust_asset_info asset_info;
+            public apply_cust_family_info family_info;
+            public apply_loan_info loan_info;
             public apply_input_info(apply_custmor_info _cust,
                apply_cust_asset_info _asset,apply_cust_family_info _family,apply_loan_info _loan)
             {
