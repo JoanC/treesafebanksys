@@ -19,14 +19,14 @@ namespace treesafe.Users
         }
 
         /*定义与用户UI的交互数据*/
-        public static int apply_cust_mar_stu;
-        public static int apply_cust_chd_num;
-        public static int apply_cust_sps_card_type;
-        public static int apply_cust_sps_edu;
-        public static int apply_cust_is_sps_has_loan;
-        public static string apply_cust_sps_name;
-        public static string apply_cust_sps_card_id;
-        public static string apply_cust_sps_work_unit;
+        public static int apply_cust_mar_stu = 0;
+        public static int apply_cust_chd_num = 0;
+        public static int apply_cust_sps_card_type = 0;
+        public static int apply_cust_sps_edu = 0;
+        public static int apply_cust_is_sps_has_loan = 0;
+        public static string apply_cust_sps_name = "";
+        public static string apply_cust_sps_card_id = "";
+        public static string apply_cust_sps_work_unit ="";
 
         protected void CreateApplicationButton_Click(object sender, EventArgs e)
         {
@@ -34,6 +34,7 @@ namespace treesafe.Users
             //使用方法同Register
             //（此处所使用方法和控件基本一致）
             apply_cust_mar_stu = int.Parse(ApplicationMarrige.Text);
+            if (apply_cust_mar_stu == 0) Server.Transfer("~/Users/ApplicationPageNext3.aspx", true);
             apply_cust_chd_num = int.Parse(ApplicationChildrenNumber.Text);
             apply_cust_sps_name = 
                 Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationMateName.Text);

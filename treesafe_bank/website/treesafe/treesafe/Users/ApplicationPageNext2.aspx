@@ -34,7 +34,7 @@ CodeBehind="ApplicationPageNext2.aspx.cs" Inherits="treesafe.Users.ApplicationPa
            </p>
 
            <p>
-               如果您未婚，以下信息可略过不填。
+               如果您未婚，系统将会自动忽略以下内容。
            </p>
 
            <p>
