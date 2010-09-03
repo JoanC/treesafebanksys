@@ -25,7 +25,7 @@ namespace treesafe.Users
         //用户信息结构体
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
-        struct apply_custmor_info
+        public struct apply_custmor_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
             char[] app_id;//申请id,为空,其值在服务器段赋予
@@ -68,7 +68,7 @@ namespace treesafe.Users
         //用户资产情况信息
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
-        struct apply_cust_asset_info
+        public struct apply_cust_asset_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
             char[] app_id;//申请id,为空,其值在服务器段赋予
@@ -118,7 +118,7 @@ namespace treesafe.Users
         //申请人的家庭信息
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
-        struct apply_cust_family_info
+        public struct apply_cust_family_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
             public char[] app_id;//申请id,为空,其值在服务器赋予
@@ -155,7 +155,7 @@ namespace treesafe.Users
 
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
-        struct apply_loan_info
+        public struct apply_loan_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
             public char[] app_id;//申请id,为空,其值在服务器赋予
@@ -188,7 +188,7 @@ namespace treesafe.Users
 */
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
-        struct apply_input_info
+        public struct apply_input_info
         {
             apply_custmor_info cust_info;
             apply_cust_asset_info asset_info;
