@@ -336,7 +336,6 @@ struct apply_input_info{
 };
 
 typedef apply_input_info apply_db_info;
-
 //提交审核报告的审核员输入信息
 //以下有些是审核员填写的
 //而比如审核员id则是网页端自动生成的
@@ -359,7 +358,6 @@ struct research_commit_input_info{
 	//申请的相关信息
 	char researcher_id[RESEARCH_COMMIT_RESEARCHER_ID_LEN];
 	//有待亦可确定
-	bool is_research_approved;//审核是否通过
 	//个人信息审核注释
 	char cust_research_info_comment[RESEARCH_COMMIT_COMMENT];
 	//家庭信息审核过程
@@ -368,4 +366,5 @@ struct research_commit_input_info{
 	char asset_research_info_comment[RESEARCH_COMMIT_COMMENT];
 	//贷款信息
 	char loan_research_info_comment[RESEARCH_COMMIT_COMMENT];
+	bool is_research_approved;//审核是否通过
 };

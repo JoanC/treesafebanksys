@@ -64,7 +64,13 @@ void research_commit_copy_cmd(const char* _cmd,char* _dest,int _cmd_len){
 
 research_commit_input_info* research_commit_convert_input(char* _info){
 	//对字符串进行强制类型的转化(反序列化)的过程
-	return (research_commit_input_info*)_info;
+	/*中文解码*/
+	research_commit_input_info* _new_info = (research_commit_input_info*)_info;
+	DECODE_UTF7_TO_ASC(_new_info->asset_research_info_comment);
+	DECODE_UTF7_TO_ASC(_new_info->cust_research_info_comment);
+	DECODE_UTF7_TO_ASC(_new_info->family_research_info_comment);
+	DECODE_UTF7_TO_ASC(_new_info->loan_research_info_comment);
+	return _new_info;
 }
 
 
