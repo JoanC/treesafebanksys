@@ -53,7 +53,7 @@ void apply_init_apply_loan_info(apply_loan_info* _init){
 	//初始化申请信息
 	strcpy(_init->app_id,"");
 	_init->loan_application_amount = loan_down_2000;
-	strcpy(_init->loan_comment,"");
+	memset(_init->loan_comment,'\0',APPLY_LOAN_COMMENT);
 	_init->loan_dead_line = 0;
 	_init->loan_times = loan_times_first;
 	_init->is_want_msg = cust_want_msg;
