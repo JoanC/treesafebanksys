@@ -222,31 +222,9 @@ namespace ClientNet
                {
                     int iCount = 99;
                     byte[] cCount = System.BitConverter.GetBytes(iCount);
-                  //  try
-                   // {
-                        this.m_net_stream.Receive(cCount, 0, cCount.Length, SocketFlags.None);
-                   // }
-                   /* 
-                   catch (System.ArgumentNullException)
-                    {
-                        int i;
-                    }
-                    catch (System.ArgumentOutOfRangeException)
-                    {
-                        int i;
-                    }
-                    catch (System.Net.Sockets.SocketException)
-                    {
-                        int i;
-                    }
-                    catch (System.ObjectDisposedException)
-                    {
-                        int i;
-                    }
-                    catch (System.Security.SecurityException)
-                    {
-                        int i;
-                    }*/
+
+                   this.m_net_stream.Receive(cCount, 0, cCount.Length, SocketFlags.None);
+  
                    
                    char[] _temp_num = Encoding.ASCII.GetChars(cCount);
                    string _num_str = new string(_temp_num);
@@ -256,20 +234,8 @@ namespace ClientNet
                     int iRltLen = 0;
                     for(int i=0; i!=iCount; i++)
                     {
-                        try
-                        {
-                            this.m_net_stream.Receive(buffer, iRltLen, BufSize,SocketFlags.None);
-                        }
-                        catch (System.ArgumentNullException)
-                        { }
-                        catch (System.ArgumentOutOfRangeException)
-                        { }
-                        catch (System.IO.IOException)
-                        { }
-                        catch (System.ObjectDisposedException)
-                        { }
+                            iRltLen += this.m_net_stream.Receive(buffer, iRltLen, BufSize, SocketFlags.None);
 
-                            
 	                }
                     //关闭连接
                     this.m_net_stream.Close();

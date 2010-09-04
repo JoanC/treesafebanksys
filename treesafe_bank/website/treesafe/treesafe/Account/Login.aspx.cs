@@ -56,7 +56,7 @@ namespace treesafe.Account
             public int compe; //权限
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
             public char[] user_id;		//用户id
-            public sys_err login_err;		    //错误信息
+            public sys_err login_err;	//错误信息
             public login_info(int _compe , string _id , sys_err _err) {
                 this.compe = _compe;
                 this.user_id = _id.PadRight(19, '\0').ToCharArray();
@@ -67,40 +67,9 @@ namespace treesafe.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-
-            //在这里调用函数~判断用户权限~并决定用户进入的界面
-            //在此处传值
-            int destinationPage = login_rlt.compe;
-
-
-            //0: 进入用户界面（农民）
-            //1：进入操作员界面（前台工作人员）
-            //2: 进入审核员界面
-            //3：进入管理员权限（评定权值设定，人员调动）
-
-            switch (destinationPage)
-            {
-                case 0:
-                    LoginUser.DestinationPageUrl = String.Format("~/Users/UserRootPage.aspx?{0}", Request.QueryString.ToString());
-                    Session["userright"] = "0";
-                    break;
-                case 1:
-                    LoginUser.DestinationPageUrl = String.Format("~/Workers/WorkerRootPage.aspx?{0}", Request.QueryString.ToString());
-                    Session["userright"] = "1";
-                    break;
-                case 2:
-                    LoginUser.DestinationPageUrl = String.Format("~/Auditors/AuditorRootPage.aspx?{0}", Request.QueryString.ToString());
-                    Session["userright"] = "2";
-                    break;
-                case 3:
-                    LoginUser.DestinationPageUrl = String.Format("~/Admintrators/AdmintratorRootPage.aspx?{0}", Request.QueryString.ToString());
-                    Session["userright"] = "3";
-                    break;
-                default:
-                    Console.WriteLine("Default");
-                    break;
-            }
+    
             //一次登陆结束后，将结果信息还原
+            
             login_rlt.compe = -1;
             login_rlt.login_err.type = 0;
             login_rlt.login_err.info = "".ToCharArray();

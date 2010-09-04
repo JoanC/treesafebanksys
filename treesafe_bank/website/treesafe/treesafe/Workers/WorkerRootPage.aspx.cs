@@ -30,9 +30,12 @@ namespace treesafe.Workers
         protected void Page_Load(object sender, EventArgs e)
         {
           //读入操作员基本信息，直接可用如下方法赋值
-          //  WorkerPosition.Text = "dfsf";
-            string _query_id = new string(treesafe.Account.Login.login_rlt.user_id);
-            query_worker_info(_query_id);
+          //  WorkerPosition.Text = "dfsf";\
+            if (!this.IsPostBack)
+            {
+                string _query_id = new string(treesafe.Account.Login.login_rlt.user_id);
+                query_worker_info(_query_id);
+            }
         
             if (Session["userright"].ToString() != "1")
             {
@@ -40,14 +43,14 @@ namespace treesafe.Workers
             }
         }
         [Serializable] // 指示可序列化
-        [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
         public struct employee_query_input_info
         {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
             public char[] work_id;//输入的雇员的login号码
             public employee_query_input_info(string _work_id)
             {
-                work_id = _work_id.PadRight(8, '\0').ToCharArray();
+                work_id = _work_id.PadRight(19, '\0').ToCharArray();
             }
         };
 
