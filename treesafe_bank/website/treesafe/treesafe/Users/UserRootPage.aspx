@@ -10,7 +10,7 @@
     </h2>
     <fieldset>
     <p class="header" style="font-size: medium; color: #FFFFFF;">
-    1
+    简要系统介绍
     </p>
     <p class="leftpic">
         <asp:Image ID="Image1" runat="server" ImageUrl="~/Pictures/gesture1.png"/>   
@@ -23,7 +23,7 @@
     
     <fieldset>
     <p class="header" style="font-size: medium; color: #FFFFFF;">
-    2
+    关于在线申请
     </p>
     <p class="leftpic">
         <asp:Image ID="Image2" runat="server" ImageUrl="~/Pictures/gesture2.png"/>
@@ -37,7 +37,7 @@
     <fieldset>
     
     <p class="header" style="font-size: medium; color: #FFFFFF;">
-    3
+    查看联保小组信息
     </p>
 
     <p class="leftpic">
@@ -50,9 +50,8 @@
       
     <fieldset>
     <p class="header" style="font-size: medium; color: #FFFFFF;">
-    4
+    相关下载
     </p>
-
     <p class="leftpic">
         <asp:Image ID="Image4" runat="server" ImageUrl="~/Pictures/gesture4.png"/>
     </p>
