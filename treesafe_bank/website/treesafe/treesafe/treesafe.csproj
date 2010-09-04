@@ -115,6 +115,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WebForm1.aspx" />
     <Content Include="Workers\WorkerApplicationPage.aspx" />
     <Content Include="Workers\WorkerFinishApplicationPage.aspx" />
     <Content Include="Workers\WorkerHelpPage.aspx" />
@@ -409,6 +410,13 @@
     </Compile>
     <Compile Include="Users\UserTeamPage.aspx.designer.cs">
       <DependentUpon>UserTeamPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Welcome.Master.cs">
       <DependentUpon>Welcome.Master</DependentUpon>
