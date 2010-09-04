@@ -28,7 +28,7 @@ namespace treesafe.Workers
             // 获得农户列表的项数（即*成功*提交申请表并*通过审核*的总人数）
             int numrows = 5;
             //列表宽度，共8项内容
-            int numcells = 8;
+            int numcells = 6;
             for (int j = 0; j < numrows; j++)
             {
                 HtmlTableRow r = new HtmlTableRow();
