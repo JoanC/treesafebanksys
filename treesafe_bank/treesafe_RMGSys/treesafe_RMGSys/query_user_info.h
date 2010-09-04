@@ -29,3 +29,11 @@ struct user_query_array_info{
 	user_query_info* user_array;
 };
 
+/***********************************/
+//初始化函数
+
+//初始化用户基本信息
+void init_user_query_info(user_query_info* _init);
+
+//初始化用户的数组信息
+void init_user_query_array_info(int _size,user_query_array_info* _init);

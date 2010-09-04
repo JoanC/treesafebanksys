@@ -2,6 +2,7 @@
 #include "database_mgr.h"
 //20.1
 //jiraiya 完成
+//初始化结构体
 
 
 //20.3
@@ -10,7 +11,7 @@
 //结果保存在一个数字中
 void user_query_arr_count(int* _count);
 
-//20.3
+//20.4
 //sunni完成
 //得到一个数组
 //数组中存放这些农民的信息
