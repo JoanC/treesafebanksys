@@ -451,6 +451,8 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	itoa(_info->cust_card_type,temp,10) ;
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
+	strcat(sqlStr,_info->cust_id) ;
+	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_info->cust_tel_num) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_info->cust_other_tel_num) ;
@@ -469,7 +471,12 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+	
 	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
@@ -839,6 +846,7 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 		_variant_t varGend ;
 		_variant_t varAge ;
 		_variant_t varCardType ;
+		_variant_t varCardID ;
 		_variant_t varPhoneNum ;
 		_variant_t varOtherPhoneNum ;
 		_variant_t varEdu ;
@@ -850,12 +858,13 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 		varGend						= rsp->Fields->GetItem(long(2))->Value ;
 		varAge						= rsp->Fields->GetItem(long(3))->Value ;
 		varCardType				= rsp->Fields->GetItem(long(4))->Value ;
-		varPhoneNum				= rsp->Fields->GetItem(long(5))->Value ;
-		varOtherPhoneNum	= rsp->Fields->GetItem(long(6))->Value ;
-		varEdu						= rsp->Fields->GetItem(long(7))->Value ;
-		varAddr						= rsp->Fields->GetItem(long(8))->Value ;
-		varZipCode					= rsp->Fields->GetItem(long(9))->Value ;
-		varHouseOwnership	= rsp->Fields->GetItem(long(10))->Value ;
+		varCardID					= rsp->Fields->GetItem(long(5))->Value ;
+		varPhoneNum				= rsp->Fields->GetItem(long(6))->Value ;
+		varOtherPhoneNum	= rsp->Fields->GetItem(long(7))->Value ;
+		varEdu						= rsp->Fields->GetItem(long(8))->Value ;
+		varAddr						= rsp->Fields->GetItem(long(9))->Value ;
+		varZipCode					= rsp->Fields->GetItem(long(10))->Value ;
+		varHouseOwnership	= rsp->Fields->GetItem(long(11))->Value ;
 
 		bool bRtnVal = true ; 
 
@@ -902,6 +911,8 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 			else 
 				bRtnVal = false ;
 		}
+
+		bRtnVal = bRtnVal && ConvertVar2CharStr(&varCardID,_info->input_basic_info.cust_id) ;
 
 		if (varPhoneNum.vt == VT_NULL)
 		{
@@ -1366,10 +1377,10 @@ bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 		rsp.Release() ;
 		return false ;
 	}
-	
+
 
 	char sqlStr[200] = "Insert into Table_Score_Set values(" ;
-	
+
 	char temp[12] ;
 	memset(temp,0,12) ;
 	sprintf(temp,"'%.2f',",_Scores->score_income) ;
@@ -1457,22 +1468,22 @@ bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const ch
 	bool bRtnVal = true ;
 
 	bRtnVal = ConvertVar2Float(&varIncome,&_Scores->score_income) 
-				&& ConvertVar2Float(&varLoan,&_Scores->score_loan) 
-				&& ConvertVar2Float(&varFABP,&_Scores->score_fixed_assets_be_pledged) 
-				&& ConvertVar2Float(&varIDType,&_Scores->score_id_type) 
-				&& ConvertVar2Float(&varEdu,&_Scores->score_edu) 
-				&& ConvertVar2Float(&varMarriage,&_Scores->score_marriage) 
-				&& ConvertVar2Float(&varLoanRecrd,&_Scores->score_loan_record) 
-				&& ConvertVar2Float(&varSocialRecrd,&_Scores->score_bad_social_record) 
-				&& ConvertVar2Float(&varAuditorEdit,&_Scores->score_auditor_edit)  ;
-				
+		&& ConvertVar2Float(&varLoan,&_Scores->score_loan) 
+		&& ConvertVar2Float(&varFABP,&_Scores->score_fixed_assets_be_pledged) 
+		&& ConvertVar2Float(&varIDType,&_Scores->score_id_type) 
+		&& ConvertVar2Float(&varEdu,&_Scores->score_edu) 
+		&& ConvertVar2Float(&varMarriage,&_Scores->score_marriage) 
+		&& ConvertVar2Float(&varLoanRecrd,&_Scores->score_loan_record) 
+		&& ConvertVar2Float(&varSocialRecrd,&_Scores->score_bad_social_record) 
+		&& ConvertVar2Float(&varAuditorEdit,&_Scores->score_auditor_edit)  ;
+
 	rsp->Close() ;
 	rsp.Release() ;
 	return bRtnVal ;
 }
 bool Find_how_many_passed_user(_ConnectionPtr *_pConn,int *_Outcome) 
 {
-	const char sqlStr[] = "select apply_id from Table_App_ID_Set where apply_is_verified = 'true'" ;
+	const char sqlStr[] = "select apply_id from Table_App_Pass_And_Comment where apply_is_passed = 'true'" ;
 	_variant_t vt ;
 	_RecordsetPtr rsp ;
 	try{
@@ -1490,6 +1501,73 @@ bool Find_how_many_passed_user(_ConnectionPtr *_pConn,int *_Outcome)
 		rsp->MoveNext() ;
 		++(*_Outcome) ;
 	}
+	rsp->Close() ;
+	rsp.Release() ;
+	return true ;
+}
+bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,size_t _Size)
+{
+	const char sqlStr0[] = "select apply_id from Table_App_Pass_And_Comment where apply_is_passed = 'true'" ;
+	_variant_t vt ;
+	_RecordsetPtr rsp ;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr0,&vt,adCmdText) ;
+	}catch(...){
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+
+	for( size_t i = 0 ; i < _Size ; ++i )
+	{
+		_variant_t varAppID = rsp->Fields->GetItem(long(0))->Value ;
+		rsp->MoveNext() ;
+		///////////////////move to next...
+		char app_id[APPLY_ID] ;
+		memset(app_id,0,APPLY_ID) ;
+		ConvertVar2CharStr(&varAppID,app_id) ;
+		//convert to str
+		char sqlStr[200] = "select * from Table_App_Cust_Info where apply_id = '" ;
+		strcat(sqlStr,app_id) ;
+		strcat(sqlStr,"'") ;
+
+		_variant_t v ;
+		_RecordsetPtr r ;
+		try{
+			r =  (*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+		}catch(...){
+			return false ;
+		}
+
+		if( r->rsEOF )
+			return false ;
+
+		_variant_t varName ;
+		_variant_t varID ;
+		_variant_t varGend ;
+		_variant_t varAge ;
+		_variant_t varPhone ;
+		_variant_t varAddr;
+
+		varName		= r->Fields->GetItem(long(1))->Value ;
+		varGend		= r->Fields->GetItem(long(2))->Value ;
+		varAge		= r->Fields->GetItem(long(3))->Value ;
+		varID			= r->Fields->GetItem(long(5))->Value ;
+		varPhone		= r->Fields->GetItem(long(6))->Value ;
+		varAddr		= r->Fields->GetItem(long(9))->Value ;
+
+		bool bRtnVal = true ;
+		bRtnVal = ConvertVar2CharStr(&varName,_info->user_array[i].user_name)
+			&& ConvertVar2Int(&varGend,(int *)&_info->user_array[i].user_query) 
+			&& ConvertVar2Int(&varAge,&_info->user_array[i].user_age) 
+			&& ConvertVar2CharStr(&varID,_info->user_array[i].user_card_id)
+			&& ConvertVar2CharStr(&varPhone,_info->user_array[i].user_tel)
+			&& ConvertVar2CharStr(&varAddr,_info->user_array[i].user_addr) ;
+
+		r->Close() ;
+		r.Release() ;
+	}
+
 	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
