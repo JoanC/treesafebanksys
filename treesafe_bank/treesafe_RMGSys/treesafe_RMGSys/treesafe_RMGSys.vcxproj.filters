@@ -112,6 +112,9 @@
     <Filter Include="employee\info">
       <UniqueIdentifier>{5a1f7b4e-c4ff-48f3-bcbd-2f7038a53eef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="query_info\query_array">
+      <UniqueIdentifier>{97f0d7cd-e079-4902-859a-7a6e20ea2cf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -223,7 +226,7 @@
       <Filter>query_info</Filter>
     </ClInclude>
     <ClInclude Include="query_user_info_array.h">
-      <Filter>query_info</Filter>
+      <Filter>query_info\query_array</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -291,7 +294,7 @@
       <Filter>employee\query</Filter>
     </ClCompile>
     <ClCompile Include="query_user_info_array.cpp">
-      <Filter>query_info</Filter>
+      <Filter>query_info\query_array</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
