@@ -290,7 +290,7 @@
     <ClCompile Include="sys_employee_query.cpp">
       <Filter>employee\query</Filter>
     </ClCompile>
-    <ClCompile Include="query_user_info.cpp">
+    <ClCompile Include="query_user_info_array.cpp">
       <Filter>query_info</Filter>
     </ClCompile>
   </ItemGroup>
