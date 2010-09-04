@@ -19,6 +19,7 @@ using ClientNet;
 using Chinese_Encode;
 
 using treesafe.Admintrators;
+using treesafe.Account;
 
 namespace treesafe.Workers
 {
@@ -30,9 +31,9 @@ namespace treesafe.Workers
         {
           //读入操作员基本信息，直接可用如下方法赋值
           //  WorkerPosition.Text = "dfsf";
-
-
-
+            string _query_id = new string(treesafe.Account.Login.login_rlt.user_id);
+            query_worker_info(_query_id);
+        
             if (Session["userright"].ToString() != "1")
             {
          //       Server.Transfer("~/WrongPage.aspx", true);

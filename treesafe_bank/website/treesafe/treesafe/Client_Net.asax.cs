@@ -95,10 +95,11 @@ namespace ClientNet
             {
                // this.m_client = new TcpClient(this.m_config.m_server_ip, this.m_config.m_port_num);
                 this.m_net_stream = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                try
-                {
+                //try
+                //{
                     this.m_net_stream.Connect(m_config.m_server_ip, m_config.m_port_num);
-                }
+                //}
+                /*
                 catch (System.ArgumentNullException)
                 {
                     int i;
@@ -119,7 +120,7 @@ namespace ClientNet
                 {
                     int i;
                 }
-
+                */
             }
 
             private byte[] StructToBytes(object obj)
@@ -221,11 +222,12 @@ namespace ClientNet
                {
                     int iCount = 99;
                     byte[] cCount = System.BitConverter.GetBytes(iCount);
-                    try
-                    {
+                  //  try
+                   // {
                         this.m_net_stream.Receive(cCount, 0, cCount.Length, SocketFlags.None);
-                    }
-                    catch (System.ArgumentNullException)
+                   // }
+                   /* 
+                   catch (System.ArgumentNullException)
                     {
                         int i;
                     }
@@ -244,7 +246,7 @@ namespace ClientNet
                     catch (System.Security.SecurityException)
                     {
                         int i;
-                    }
+                    }*/
                    
                    char[] _temp_num = Encoding.ASCII.GetChars(cCount);
                    string _num_str = new string(_temp_num);

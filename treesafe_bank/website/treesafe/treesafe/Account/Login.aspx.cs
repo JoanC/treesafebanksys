@@ -26,6 +26,9 @@ namespace treesafe.Account
 
     public partial class Login : System.Web.UI.Page
     {
+        public static sys_err _err = new sys_err(0, "");
+        public static login_info login_rlt = new login_info(-1, "", _err);
+
         [Serializable] // 指示可序列化
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
         public struct login_check_info
@@ -60,9 +63,6 @@ namespace treesafe.Account
                 login_err = new sys_err(_err);
             }
         };
-
-       public  static sys_err _err = new sys_err(0, "");
-       public static login_info login_rlt = new login_info(-1, "",_err);
 
         protected void Page_Load(object sender, EventArgs e)
         {
