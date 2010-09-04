@@ -70,6 +70,11 @@
     <Content Include="Auditors\AuditoSystemIntro.aspx" />
     <Content Include="Client_Net.asax" />
     <Content Include="Chinese_Coding.asax" />
+    <Content Include="Pictures\gesture1.png" />
+    <Content Include="Pictures\gesture2.png" />
+    <Content Include="Pictures\gesture3.png" />
+    <Content Include="Pictures\gesture4.png" />
+    <Content Include="Pictures\gesture5.png" />
     <Content Include="Styles\Pictures\bg.png" />
     <Content Include="Styles\Pictures\button2.png" />
     <Content Include="Styles\Pictures\foot.png" />
