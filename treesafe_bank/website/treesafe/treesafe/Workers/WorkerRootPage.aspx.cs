@@ -34,9 +34,7 @@ namespace treesafe.Workers
             if (!this.IsPostBack)
             {
                 string _query_id = new string(treesafe.Account.Login.login_rlt.user_id);
-                //string _query_id = "111111111111111111";
-                query_worker_info(_query_id);
-                display_employee_info(_query_id);
+                display_employee_info( query_worker_info(_query_id));
             }
         
             if (Session["userright"].ToString() != "1")
