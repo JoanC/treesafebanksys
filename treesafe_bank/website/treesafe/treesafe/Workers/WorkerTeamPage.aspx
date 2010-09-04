@@ -69,12 +69,12 @@ color:#333333;
         <tr class="css_GridTR">
             <td>编号</td>
             <td>组长</td>
-            <td>性别</td>
-            <td>电话</td>
-            <td>地址</td>
-            <td>还贷能力评级</td>
-            <td>个人信誉评级</td>
-            <td>还贷风险评级</td>
+            <td>组员1</td>
+            <td>组员2</td>
+            <td>组员3</td>
+            <td>组员4</td>
+            <td>组员5</td>
+            <td>组员6</td>
         </tr>
 
     </tbody>
@@ -113,7 +113,7 @@ color:#333333;
                    clickClass = moveClass;
                }
                //alert("您选择的记录ID：" + dataID);
-               ShowDialog("WorkerOneUserDataPage.aspx?id=" + dataID);
+               ShowDialog("WorkerOneTeamPage.aspx?id=" + dataID);
                me.className = "css_TR_CK";
            }
            function ShowDialog(url) {

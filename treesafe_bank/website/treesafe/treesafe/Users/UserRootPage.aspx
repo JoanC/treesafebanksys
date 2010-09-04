@@ -6,9 +6,16 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Welcome to User Page!主页
+        欢迎使用XX农民联保贷款风险控制系统
     </h2>
     <p>
-        Add Codes Here
+        &nbsp;
     </p>
+
+    <p class="header" style="font-size: medium; color: #FFFFFF;">
+    </p>
+
+
+
+
 </asp:Content>
