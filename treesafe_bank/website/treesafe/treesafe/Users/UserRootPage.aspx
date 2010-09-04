@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        欢迎使用XX农民联保贷款风险控制系统
+        欢迎使用农民联保贷款风险控制系统！
     </h2>
     <fieldset>
     <p class="header" style="font-size: medium; color: #FFFFFF;">
