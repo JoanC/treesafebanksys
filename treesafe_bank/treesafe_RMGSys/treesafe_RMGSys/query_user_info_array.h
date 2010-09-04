@@ -1,3 +1,5 @@
+#pragma once
+
 #include "query_user_info.h"
 #include "database_mgr.h"
 
