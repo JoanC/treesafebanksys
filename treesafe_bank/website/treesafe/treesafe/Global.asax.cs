@@ -44,6 +44,10 @@ namespace treesafe
 
             //用户更改密码保护
             Session["changepassword"] = "0";
+
+
+            //更改密码时，传递现有密码
+            Session["currentpassword"] = "0";
             
         }
 

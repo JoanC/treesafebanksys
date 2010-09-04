@@ -13,11 +13,13 @@ namespace treesafe
         protected void Page_Load(object sender, EventArgs e)
         {
             UserName.Text = Request.QueryString["name"];
-            password = Request.QueryString["password"];
+            //password = Request.QueryString["password"];
+            password = Session["currentpassword"].ToString();
         }
 
         protected void ChangeUserPasswordButton_Click(object sender, EventArgs e)
         {
+            Session["currentpassword"] = "0";
             if(Session["changepassword"].ToString()=="3")
             {
                 Session["changepassword"] = "0";
@@ -39,8 +41,9 @@ namespace treesafe
                 //将数据读入数据库
 
 
-                //跳转页面至个人信息页面
-                Response.Redirect("UserInfoPage.aspx");
+                //跳转页面至登录页面
+                //这里感觉有问题。。。
+                Response.Redirect("~/Account/Login.aspx");
             }
         }
     }

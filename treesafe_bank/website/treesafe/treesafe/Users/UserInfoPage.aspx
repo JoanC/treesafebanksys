@@ -33,7 +33,7 @@ CodeBehind="UserInfoPage.aspx.cs" Inherits="treesafe.Users.UserInfoPage" %>
         <asp:Label ID="UserPasswordLabel" runat="server" AssociatedControlID="UserPassword">
         密码:
         </asp:Label>
-        <asp:Label ID="UserPassword" runat="server" Text="**********"></asp:Label> 
+        <asp:Label ID="UserPassword" runat="server" Text="3441223esfd"></asp:Label> 
     </p>
 
     <p>

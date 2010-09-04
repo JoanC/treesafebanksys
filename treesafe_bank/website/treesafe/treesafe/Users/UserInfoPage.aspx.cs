@@ -33,9 +33,10 @@ namespace treesafe.Users
         protected void ChangePasswordButton_Click(object sender, EventArgs e)
         {
             //打开更改用户登录密码页面
+            //
+            Session["currentpassword"] = UserPassword.Text.ToString();
             //传参打开
-            Response.Redirect("~/ChangePassword.aspx?name=" + UserName.Text
-                              + "&password=" +UserPassword.Text);
+            Response.Redirect("~/ChangePassword.aspx?name=" + UserName.Text);
         }
     }
 }
