@@ -25,6 +25,6 @@ void init_sys_err(sys_err* _err){
 void sys_err_search(sys_err* _err){
 	//通过数据库,填充err结构体
 
-	strcpy(_err->info,err_info[_err->type]) ;
+	strcpy(_err->info,&err_info[0][_err->type]) ;
 
 }
