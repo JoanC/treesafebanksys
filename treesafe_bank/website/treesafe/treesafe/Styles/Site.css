@@ -247,13 +247,19 @@ input.textEntry
 
 input.passwordEntry 
 {
-    width: 320px;
     border: 1px solid #ccc;
 }
 
 div.accountInfo
 {
     width: 42%;
+    float: left;
+}
+
+div.ad
+{
+    width: 300px;
+    float: right;
 }
 
 
@@ -308,6 +314,7 @@ div.accountInfo
 .bold
 {
     font-weight: bold;
+    font-size: large;
 }
 
 .submitButton

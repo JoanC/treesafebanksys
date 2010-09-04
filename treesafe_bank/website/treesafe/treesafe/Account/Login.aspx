@@ -28,7 +28,7 @@ private void OnAuthenticate(object sender, AuthenticateEventArgs e)
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        欢迎使用XX农民联保贷款风险控制系统
+        欢迎使用万德农民联保贷款风险控制系统
     </h2>
     <p>
         请在下面输入用户名和密码登录系统，如果您还没有账号请先
@@ -44,7 +44,9 @@ private void OnAuthenticate(object sender, AuthenticateEventArgs e)
                 CssClass="failureNotification"/>
             <div class="accountInfo">
                 <fieldset class="login">
-                    <legend>账户信息</legend>
+                <p class="header" style="font-size: medium; color: #FFFFFF;">
+                账户信息</p>
+                    
                     <p>
                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
                         <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
