@@ -23,7 +23,7 @@ namespace treesafe.Admintrators
     /*有关雇员信息的结构体*/
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
-    struct admin_employ_info
+    public struct admin_employ_info
     {
         public int empl_type;//雇员的类型
         public int empl_age;//年龄
@@ -62,7 +62,7 @@ namespace treesafe.Admintrators
 
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
-    struct admin_add_employee_input_info
+    public struct admin_add_employee_input_info
     {
         public admin_employ_info _info;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 201)]
