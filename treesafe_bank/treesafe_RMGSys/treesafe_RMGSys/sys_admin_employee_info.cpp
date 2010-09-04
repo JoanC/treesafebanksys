@@ -11,4 +11,5 @@ void init_admin_employee_info(admin_employee_info* _init){
 	memset(_init->employee_addr,'\0',EMPLOYEE_NAME_LEN);//初始化地址,为空
 	memset(_init->employee_tel,'\0',EMPLOYEE_TEL_LEN);//初始化电话号码
 	memset(_init->employee_comment,'\0',EMPLOYEE_COMM_LEN);
+	memset(_init->employee_email,'\0',EMPLOYEE_EMAIL_ADDR_LEN);
 }
