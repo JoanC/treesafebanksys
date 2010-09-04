@@ -369,3 +369,18 @@ struct research_commit_input_info{
 	char loan_research_info_comment[RESEARCH_COMMIT_COMMENT];
 	bool is_research_approved;//审核是否通过
 };
+
+struct credit_scores_db // 评分
+{
+	char card_id[APPLY_CARD_NUMBER_LEN]	;
+	float score_income ;
+	float score_loan ;
+	float score_repayment	 ;
+	float score_fixed_assets_be_pledged ;
+	float score_id_type ;
+	float score_edu	 ;
+	float score_marriage ;
+	float score_loan_record	;
+	float score_bad_social_record ;
+	float score_auditor_edit	;
+} ;

@@ -68,6 +68,8 @@ bool ConvertVar2Int(_variant_t *_Vt , int *_Dst) ;
 
 bool ConvertVar2Bool(_variant_t *_Vt , bool *_Dst) ;
 
+bool ConvertVar2Float(_variant_t *_Vt,float *_Dst) ;
+
 bool	Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt) ;
 
 void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info) ;
@@ -117,3 +119,7 @@ bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn, char *_outcome) ;
 bool Get_emplo_info_by_work_id(_ConnectionPtr *_pConn,admin_employee_info *_info) ;
  //for 19.3
 bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info) ;
+
+bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores,const char *_UserID) ;
+
+bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const char *_UserID) ;

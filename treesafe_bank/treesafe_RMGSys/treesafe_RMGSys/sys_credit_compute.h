@@ -11,8 +11,6 @@ struct card_type  //申请证件类型
 {
 	float 	personal_id ;		//身份证
 	float 	soldier_id ;		//军人证
-
-	float	wgt ;
 }	;
 struct edu_status			//受教育情况
 {
@@ -20,8 +18,6 @@ struct edu_status			//受教育情况
 	float bachelor_or_college ; //学士或大专
 	float high_sch_or_secondary ; //高中或中专
 	float bellow ;				//初中及以下
-
-	float wgt ;
 };
 ///////////////////////////////////////////
 ///////////////////////////////////////////income
@@ -34,8 +30,6 @@ struct per_ann_income_status //个人年收入
 	float betw5000and8000 ;
 	float betw2000and4999 ;
 	float bellow2000 ; 
-
-	float wgt ; //weight
 };
 struct fami_ann_income_status //家庭年收入
 {
@@ -46,8 +40,6 @@ struct fami_ann_income_status //家庭年收入
 	float betw5000and9999 ;
 	float betw2000and4999 ;
 	float bellow2000 ;
-
-	float wgt ; //weight
 };
 
 //////////////////////////////////////////
@@ -62,8 +54,6 @@ struct time_depos_status  //定期存款
 	float betw2000and4999 ;
 	float bellow2000 ;
 	float none ;
-
-	float wgt ;   // weight
 };
 struct demand_depos_status // 活期存款
 {
@@ -75,8 +65,6 @@ struct demand_depos_status // 活期存款
 	float betw2000and4999 ;
 	float bellow2000 ;
 	float none ;
-
-	float wgt ; //weight
 };
 ///////////////////////////////////////////
 ///////////////////////////////////////////loan
@@ -90,8 +78,6 @@ struct loan_amount_status  // 贷款总额
 	float betw10000and19999 ;
 	float betw20000and49999 ;
 	float above50000 ;
-
-	float wgt ;		//weight
 };
 struct remaining_repayment_months // 贷款剩余月数
 {
@@ -100,38 +86,35 @@ struct remaining_repayment_months // 贷款剩余月数
 	float betw6and11 ;
 	float betw12and23 ;
 	float above23 ;
-
-	float wgt ; //weight
 };
 struct fixed_assets_be_pledged  // 是否有已抵押的固定资产
 {
 	float yes ;
 	float no ;
-
-	float wgt ;
 };
 struct fixed_assets_not_be_pledged
 {
-	float yes ;
-	float no ;
-
-	float wgt ;
+	float weight ;
 };
+struct income_stability
+{
+	float weight ;
+} ;
+struct bad_social_record
+{
+	float weight ;
+} ;
 struct marital_status      //婚姻状况
 {
 	float married ;				//已婚
 	float unmarried ;			//未婚
 	float divorced ;			//离异
 	float widowed ;				//丧偶
-
-	float wgt ;
 };
 struct spouse_card_type    //配偶证件类型
 {
 	float personal_id ;		//身份证
 	float soldier_id ;		//军人证
-
-	float wgt ;
 } ;
 struct spouse_edu_status  //配偶受教育程度
 {
@@ -139,9 +122,13 @@ struct spouse_edu_status  //配偶受教育程度
 	float bachelor_or_college ; //学士或大专
 	float high_sch_or_secondary ; //高中或中专
 	float bellow ;				//初中及以下
-
-	float wgt ;
 } ;
+struct spouse_has_loan
+{
+	float yes ;
+	float no ;
+} ;
+
 struct credit_sum
 {
 	card_type										_card_type ;
@@ -157,10 +144,19 @@ struct credit_sum
 	marital_status								_marital_status ;
 	spouse_card_type							_spouse_card_type ;
 	spouse_edu_status						_spouse_edu_status ;
+	spouse_has_loan							_spouse_has_loan ;
+	income_stability							_income_stability ;
+	bad_social_record						_bad_social_record ;
 } ;
+
+typedef  credit_scores_db credit_scores ;
 
 const char filename[] = "ini.txt" ;
 
 bool ModifyParam(credit_sum *_tar) ;
 
 bool	ReadParam(credit_sum *_tar) ;
+
+bool SaveScores(credit_scores *_Scores,const char *_UserID) ;
+
+bool ReadScoresFromDB(const char *_UserID) ;

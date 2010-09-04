@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "sys_credit_compute.h"
+extern _ConnectionPtr *treesafe_db_connection ; 
 
 bool ModifyParam(credit_sum *_tar)
 {
@@ -8,7 +9,7 @@ bool ModifyParam(credit_sum *_tar)
 
 	if( ! pFile )
 	{
-		printf("can not open %s",filename) ;
+		printf("can not open %s\n",filename) ;
 		return false ;
 	}
 
@@ -25,6 +26,9 @@ bool ModifyParam(credit_sum *_tar)
 	fwrite(&_tar->_marital_status,sizeof(float),sizeof(marital_status)/sizeof(float),pFile) ;
 	fwrite(&_tar->_spouse_card_type,sizeof(float),sizeof(spouse_card_type)/sizeof(float),pFile) ;
 	fwrite(&_tar->_spouse_edu_status,sizeof(float),sizeof(spouse_edu_status)/sizeof(float),pFile) ;
+	fwrite(&_tar->_spouse_has_loan,sizeof(float),sizeof(spouse_has_loan)/sizeof(float),pFile) ;
+	fwrite(&_tar->_income_stability,sizeof(float),sizeof(income_stability)/sizeof(float),pFile) ;
+	fwrite(&_tar->_bad_social_record,sizeof(float),sizeof(bad_social_record)/sizeof(float),pFile) ;
 
 	fclose(pFile) ;
 
@@ -38,11 +42,10 @@ bool ReadParam(credit_sum *_tar)
 
 	if( ! pFile )
 	{
-		printf("can not open %s",filename) ;
+		printf("can not open %s\n",filename) ;
 		return false ;
 	}
 		
-
 	fread(&_tar->_card_type,sizeof(float),sizeof(card_type)/sizeof(float),pFile) ;
 	fread(&_tar->_edu_status,sizeof(float),sizeof(edu_status)/sizeof(float),pFile) ;
 	fread(&_tar->_per_ann_income_status,sizeof(float),sizeof(per_ann_income_status)/sizeof(float),pFile) ;
@@ -56,6 +59,19 @@ bool ReadParam(credit_sum *_tar)
 	fread(&_tar->_marital_status,sizeof(float),sizeof(marital_status)/sizeof(float),pFile) ;
 	fread(&_tar->_spouse_card_type,sizeof(float),sizeof(spouse_card_type)/sizeof(float),pFile) ;
 	fread(&_tar->_spouse_edu_status,sizeof(float),sizeof(spouse_edu_status)/sizeof(float),pFile) ;
-	
+	fread(&_tar->_spouse_has_loan,sizeof(float),sizeof(spouse_has_loan)/sizeof(float),pFile) ;
+	fread(&_tar->_income_stability,sizeof(float),sizeof(income_stability)/sizeof(float),pFile) ;
+	fread(&_tar->_bad_social_record,sizeof(float),sizeof(bad_social_record)/sizeof(float),pFile) ;
+
+	fclose(pFile) ;
+	return true ;
+}
+
+bool SaveScores(credit_scores *_Scores,const char *_UserID) 
+{
+	return Insert_credit_scores(treesafe_db_connection,_Scores,_UserID) ;
+}
+bool ReadScoresFromDB(credit_scores *_Scores,const char *_UserID)
+{
 	return true ;
 }

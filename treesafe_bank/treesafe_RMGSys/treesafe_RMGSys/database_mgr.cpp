@@ -86,6 +86,17 @@ bool ConvertVar2Bool(_variant_t *_Vt , bool *_Dst)
 	}
 	return true ;
 }
+bool ConvertVar2Float(_variant_t *_Vt,float *_Dst) 
+{
+	if(VT_NULL == _Vt->vt){
+		*_Dst = 0 ;
+		return false ;
+	}
+	else {
+		*_Dst = _Vt->fltVal ;
+	}
+	return true ;
+}
 bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 {
 	_variant_t vt ;
@@ -1338,4 +1349,121 @@ bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info
 		&& ConvertVar2CharStr(&varComment,_info->employee_tel) ;
 
 	return bRtnVal ; 
+}
+bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores,const char *_UserID) 
+{
+	char sqlStrTest[200] = "select score_income from Table_Score_Set where card_id = '" ;
+	strcat(sqlStrTest,_Scores->card_id) ;
+	strcat(sqlStrTest,"'") ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( ! rsp->rsEOF ) // 如果已存在...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+	
+
+	char sqlStr[200] = "Insert into Table_Score_Set values(" ;
+	
+	char temp[12] ;
+	memset(temp,0,12) ;
+	sprintf(temp,"'%.2f',",_Scores->score_income) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"'%.2f',",_Scores->score_loan) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f',",_Scores->score_repayment) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f',",_Scores->score_fixed_assets_be_pledged) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f',",_Scores->score_id_type) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f',",_Scores->score_edu) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f',",_Scores->score_marriage) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f',",_Scores->score_loan_record) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f',",_Scores->score_bad_social_record) ;
+	strcat(sqlStr,temp) ;
+
+	memset(temp,0,12) ;
+	sprintf(temp,"%.2f')",_Scores->score_auditor_edit) ;
+	strcat(sqlStr,temp) ;
+
+	try{
+		(*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
+	rsp->Close() ;
+	rsp.Release() ;
+	return true ;
+}
+bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const char *_UserID) 
+{
+	char sqlStrTest[200] = "select score_income from Table_Score_Set where card_id = '" ;
+	strcat(sqlStrTest,_UserID) ;
+	strcat(sqlStrTest,"'") ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( rsp->rsEOF ) //如果此id不存在...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+	_variant_t varIncome ;
+	_variant_t varLoan ;
+	_variant_t varFABP ;
+	_variant_t varIDType ;
+	_variant_t varEdu ;
+	_variant_t varMarriage;
+	_variant_t varLoanRecrd ;
+	_variant_t varSocialRecrd ;
+	_variant_t varAuditorEdit ;
+
+	varIncome			= rsp->Fields->GetItem(long(1))->Value ;
+	varLoan				= rsp->Fields->GetItem(long(2))->Value ;
+	varFABP				= rsp->Fields->GetItem(long(3))->Value ;
+	varIDType			= rsp->Fields->GetItem(long(4))->Value ;
+	varEdu				= rsp->Fields->GetItem(long(5))->Value ;
+	varMarriage		= rsp->Fields->GetItem(long(6))->Value ;
+	varLoanRecrd		= rsp->Fields->GetItem(long(7))->Value ;
+	varSocialRecrd	= rsp->Fields->GetItem(long(8))->Value ;
+	varAuditorEdit	= rsp->Fields->GetItem(long(9))->Value ;
+
+	bool bRtnVal = true ;
+
+	bRtnVal = ConvertVar2Float(&varIncome,&_Scores->score_income) 
+				&& ConvertVar2Float(&varLoan,&_Scores->score_loan) 
+				&& ConvertVar2Float(&varFABP,&_Scores->score_fixed_assets_be_pledged) 
+				&& ConvertVar2Float(&varIDType,&_Scores->score_id_type) 
+				&& ConvertVar2Float(&varEdu,&_Scores->score_edu) 
+				&& ConvertVar2Float(&varMarriage,&_Scores->score_marriage) 
+				&& ConvertVar2Float(&varLoanRecrd,&_Scores->score_loan_record) 
+				&& ConvertVar2Float(&varSocialRecrd,&_Scores->score_bad_social_record) 
+				&& ConvertVar2Float(&varAuditorEdit,&_Scores->score_auditor_edit)  ;
+				
+	rsp->Close() ;
+	rsp.Release() ;
+	return bRtnVal ;
 }
