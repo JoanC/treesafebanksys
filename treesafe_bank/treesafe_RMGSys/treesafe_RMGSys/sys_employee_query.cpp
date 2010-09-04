@@ -63,6 +63,8 @@ employee_query_input_info* employee_query_get_cmd(const char* _cmd
 void employee_query_get_data(const char* _work_id
 	,employee_query_data* _info,bool* _rlt)
 {
+	//×Ö·û´®µÄ¸´ÖÆ
+	strcpy(_info->employee_id,_work_id);
 	*_rlt = Get_emplo_info_by_card_id(treesafe_db_connection,_info) ;
 }
 
