@@ -113,6 +113,7 @@
     <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="query_user_info.cpp" />
     <ClCompile Include="query_user_info_array.cpp" />
     <ClCompile Include="research_commit.cpp" />
     <ClCompile Include="sys_admin_add_employee.cpp" />

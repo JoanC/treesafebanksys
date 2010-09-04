@@ -296,5 +296,8 @@
     <ClCompile Include="query_user_info_array.cpp">
       <Filter>query_info\query_array</Filter>
     </ClCompile>
+    <ClCompile Include="query_user_info.cpp">
+      <Filter>query_info</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
