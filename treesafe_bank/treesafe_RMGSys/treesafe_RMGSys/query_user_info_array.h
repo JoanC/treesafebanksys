@@ -1,5 +1,10 @@
 #include "query_user_info.h"
 #include "database_mgr.h"
+
+//模块20
+//查询所有拥有贷款的农民信息
+//条件 ：已经存在被审核通过的农民信息
+
 //20.1
 //jiraiya 完成
 //初始化结构体
