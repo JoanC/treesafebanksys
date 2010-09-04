@@ -13,12 +13,21 @@ namespace treesafe.Users {
     public partial class UserFinishApplicationPage {
         
         /// <summary>
-        /// ButtonFinishApplication control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonFinishApplication;
+        protected global::System.Web.UI.WebControls.Image Image1;
+        
+        /// <summary>
+        /// RegisterHyperLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
     }
 }

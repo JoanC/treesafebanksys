@@ -9,6 +9,11 @@ CodeBehind="UserFinishApplicationPage.aspx.cs" Inherits="treesafe.Users.UserFini
         成功！
     </h2>
 
+    <p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Pictures/ok.png" ImageAlign="Left"/>
+    </p>
+
     <p style="font-size: large">
         恭喜您，已经成功提交申请。
         <br/>
@@ -19,8 +24,9 @@ CodeBehind="UserFinishApplicationPage.aspx.cs" Inherits="treesafe.Users.UserFini
     </p>
     <p style="font-size: large">
         &nbsp;</p>
-    <p style="font-size: large" align="left">
-        <asp:Button ID="ButtonFinishApplication" runat="server" Text="确定，返回首页" 
-            onclick="ButtonFinishApplication_Click" />
-    </p>
+        <p>
+    返回首页请点击
+        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false" NavigateUrl="~/Users/UserRootPage.aspx">
+        这里</asp:HyperLink>
+        </p>
 </asp:Content>

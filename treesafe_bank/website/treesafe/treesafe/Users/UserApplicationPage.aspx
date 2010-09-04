@@ -10,7 +10,7 @@ CodeBehind="UserApplicationPage.aspx.cs" Inherits="treesafe.Users.UserApplicatio
      <p style="font-size: medium">
         欢迎使用农民联保贷款在线申请业务。
      </p>
-
+     <fieldset>
      <p>
      &nbsp;&nbsp;
      在您填写《网上贷款申请表》之前，请务必阅读此《声明》。本在线申请服务都应是按本声明的条款而为您提供的。您一旦使用本服务，即表示您同意接受本《声明》各项条款的约束。
@@ -62,10 +62,14 @@ CodeBehind="UserApplicationPage.aspx.cs" Inherits="treesafe.Users.UserApplicatio
 
      </p>
 
-
-     <p>
+     </fieldset>
+    <p class="submitButton">
+ 
          <asp:Button ID="BeginApplication" runat="server" Text="接受声明，开始申请" 
              onclick="BeginApplication_Click"/>
      </p>
+
+
+
 
 </asp:Content>

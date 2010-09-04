@@ -17,10 +17,5 @@ namespace treesafe.Users
             }
 
         }
-
-        protected void ButtonFinishApplication_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("~/Users/UserRootPage.aspx", true);
-        }
     }
 }

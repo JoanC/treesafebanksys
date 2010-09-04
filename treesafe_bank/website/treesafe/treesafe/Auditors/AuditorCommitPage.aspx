@@ -10,10 +10,11 @@ CodeBehind="AuditorCommitPage.aspx.cs" Inherits="treesafe.Auditors.AuditorCommit
     </h2>
 
     <p>
-    &nbsp;
-    </p>
-
-    <p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Pictures/ok.png" />
         继续审核下一个申请请点击
         <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false" NavigateUrl="~/Auditors/AuditorListPage.aspx">
         这里</asp:HyperLink>

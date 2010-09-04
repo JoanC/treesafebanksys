@@ -17,10 +17,5 @@ namespace treesafe.Workers
             }
 
         }
-
-        protected void ButtonFinishApplication_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("~/Workers/WorkerRootPage.aspx", true);
-        }
     }
 }
