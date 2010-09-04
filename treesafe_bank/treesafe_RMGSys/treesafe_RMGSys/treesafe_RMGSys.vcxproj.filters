@@ -222,6 +222,9 @@
     <ClInclude Include="sys_admin_employee_info.h">
       <Filter>employee\info</Filter>
     </ClInclude>
+    <ClInclude Include="query_user_info.h">
+      <Filter>query_info</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -286,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="sys_employee_query.cpp">
       <Filter>employee\query</Filter>
+    </ClCompile>
+    <ClCompile Include="query_user_info.cpp">
+      <Filter>query_info</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

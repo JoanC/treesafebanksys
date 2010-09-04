@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="net.h" />
+    <ClInclude Include="query_user_info.h" />
     <ClInclude Include="research_commit.h" />
     <ClInclude Include="sys_admin_add_employee.h" />
     <ClInclude Include="sys_admin_delete_employee.h" />
@@ -111,6 +112,7 @@
     <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="query_user_info.cpp" />
     <ClCompile Include="research_commit.cpp" />
     <ClCompile Include="sys_admin_add_employee.cpp" />
     <ClCompile Include="sys_admin_delete_employee.cpp" />
