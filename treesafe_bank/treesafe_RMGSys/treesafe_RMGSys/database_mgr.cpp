@@ -1316,6 +1316,7 @@ bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info
 		return false ;
 	}
 
+	_variant_t varWorkID;
 	_variant_t varID ;
 	_variant_t varName ;
 	_variant_t varGend ;
@@ -1326,6 +1327,7 @@ bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info
 	_variant_t varComment ;
 	_variant_t varPhoneNum ;
 
+	varWorkID           = rsp->Fields->GetItem(long(0))->Value;
 	varID					= rsp->Fields->GetItem(long(1))->Value ;
 	varName				= rsp->Fields->GetItem(long(2))->Value ;
 	varGend				= rsp->Fields->GetItem(long(3))->Value ;
@@ -1346,7 +1348,8 @@ bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info
 		&& ConvertVar2CharStr(&varEMail,_info->employee_email)
 		&& ConvertVar2Int(&varType,(int*)&_info->employee_type)
 		&& ConvertVar2CharStr(&varComment,_info->employee_comment)
-		&& ConvertVar2CharStr(&varComment,_info->employee_tel) ;
+		&& ConvertVar2CharStr(&varPhoneNum,_info->employee_tel) 
+		&& ConvertVar2CharStr(&varWorkID,_info->employee_work_id);
 
 	return bRtnVal ; 
 }
