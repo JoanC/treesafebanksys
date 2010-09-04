@@ -43,7 +43,7 @@ namespace treesafe.Workers
         public struct employee_query_input_info
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            public char[] work_id;//输入的雇员工号
+            public char[] work_id;//输入的雇员的login号码
             public employee_query_input_info(string _work_id)
             {
                 work_id = _work_id.PadRight(8, '\0').ToCharArray();
