@@ -14,8 +14,11 @@
     <div class ="page">
         <div class = "headertop">
             <div class="title">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/Pictures/logo1.png"/>
                 <h1>
+                    &nbsp;&nbsp;&nbsp; &nbsp;
                     万德 农民联保贷款风险控制系统
+                    &nbsp;&nbsp;&nbsp; &nbsp;
                 </h1>
             </div>
              <div class="clear hideSkiplink">
