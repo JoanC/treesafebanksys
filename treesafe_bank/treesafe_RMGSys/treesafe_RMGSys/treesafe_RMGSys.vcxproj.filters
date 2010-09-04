@@ -97,9 +97,6 @@
     <Filter Include="Account\login_regist\reg">
       <UniqueIdentifier>{6063543f-1d6e-4f56-988e-90bbae6deb53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Account\person_info_query">
-      <UniqueIdentifier>{6d183704-8439-40da-9987-98786dc747fa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="employee">
       <UniqueIdentifier>{17d05b37-fbdd-4584-b778-ec9d9b10ac2e}</UniqueIdentifier>
     </Filter>
