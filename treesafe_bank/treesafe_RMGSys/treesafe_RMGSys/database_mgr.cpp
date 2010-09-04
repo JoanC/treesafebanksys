@@ -1243,10 +1243,58 @@ bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn,char *_outcome)
 	rsp.Release() ;
 	return false ;
 }
-bool Get_emplo_info(_ConnectionPtr *_pConn,admin_employee_info *_info) 
+bool Get_emplo_info_by_work_id(_ConnectionPtr *_pConn,admin_employee_info *_info) 
 {
 	char sqlStrTest[200] = "select * from Table_Employee where employee_work_id = '" ;
 	strcat(sqlStrTest,_info->employee_work_id) ;
+	strcat(sqlStrTest,"'") ;
+	_variant_t v ;
+	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	if( rsp->rsEOF ) //如果此id不存在...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+
+	_variant_t varID ;
+	_variant_t varName ;
+	_variant_t varGend ;
+	_variant_t varAge ;
+	_variant_t varAddr ;
+	_variant_t varEMail ;
+	_variant_t varType ;
+	_variant_t varComment ;
+	_variant_t varPhoneNum ;
+
+	varID					= rsp->Fields->GetItem(long(1))->Value ;
+	varName				= rsp->Fields->GetItem(long(2))->Value ;
+	varGend				= rsp->Fields->GetItem(long(3))->Value ;
+	varAge				= rsp->Fields->GetItem(long(4))->Value ;
+	varAddr				= rsp->Fields->GetItem(long(5))->Value ;
+	varEMail				= rsp->Fields->GetItem(long(6))->Value ;
+	varType				= rsp->Fields->GetItem(long(7))->Value ;
+	varComment		= rsp->Fields->GetItem(long(8))->Value ;
+	varPhoneNum		= rsp->Fields->GetItem(long(9))->Value ;
+
+	bool bRtnVal = true ;
+
+	bRtnVal = ConvertVar2CharStr(&varID,_info->employee_id) 
+		&& ConvertVar2CharStr(&varName,_info->employee_name) 
+		&& ConvertVar2Int(&varGend,(int*)&_info->employee_gender)
+		&& ConvertVar2Int(&varAge,&_info->employee_age) 
+		&& ConvertVar2CharStr(&varAddr,_info->employee_addr) 
+		&& ConvertVar2CharStr(&varEMail,_info->employee_email)
+		&& ConvertVar2Int(&varType,(int*)&_info->employee_type)
+		&& ConvertVar2CharStr(&varComment,_info->employee_comment)
+		&& ConvertVar2CharStr(&varComment,_info->employee_tel) ;
+
+	return bRtnVal ; 
+}
+bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info) 
+{
+	char sqlStrTest[200] = "select * from Table_Employee where employee_id = '" ;
+	strcat(sqlStrTest,_info->employee_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
