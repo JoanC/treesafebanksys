@@ -136,9 +136,11 @@ void login_err_mgr(sys_err_type _err_type,login_modle* _mld){
 void login_convert_rlt(login_info* _info , char* _rlt , int* _rlt_len){
 	//将结果复制在rlt中传出
 	DEBUG_LOGIN_PRINT("convert the result (login_info) to the string\n");
-	memcpy(_rlt,_info,sizeof(login_info));
-	//长度就是login_info的长度
+	//为结果信息申请动态的内存
+    //长度就是login_info的长度
 	*_rlt_len = sizeof(login_info);
+	_rlt = (char*)malloc(*_rlt_len);
+	memcpy(_rlt,_info,sizeof(login_info));
 }
 
 /******************************************************/
