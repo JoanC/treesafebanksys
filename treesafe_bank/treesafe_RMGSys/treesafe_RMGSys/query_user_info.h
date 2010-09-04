@@ -29,7 +29,8 @@ struct user_query_array_info{
 	user_query_info* user_array;
 };
 
-
+//20.1
+//jiraiya 完成
 
 //20.3
 //sunni完成
