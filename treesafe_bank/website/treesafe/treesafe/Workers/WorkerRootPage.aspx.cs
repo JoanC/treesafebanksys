@@ -34,7 +34,9 @@ namespace treesafe.Workers
             if (!this.IsPostBack)
             {
                 string _query_id = new string(treesafe.Account.Login.login_rlt.user_id);
+                //string _query_id = "111111111111111111";
                 query_worker_info(_query_id);
+                display_employee_info(_query_id);
             }
         
             if (Session["userright"].ToString() != "1")
@@ -53,6 +55,16 @@ namespace treesafe.Workers
                 work_id = _work_id.PadRight(19, '\0').ToCharArray();
             }
         };
+        public void display_employee_info(admin_add_employee_input_info _info)
+        {
+            WorkerID.Text = new string(_info._info.empl_work_id);
+            WorkerName.Text = new string(_info._info.empl_name);
+            WorkerSex.Text = (_info._info.empl_gender == 0) ? "男"  : "女";
+            WorkerAge.Text = Convert.ToString(_info._info.empl_age);
+            WorkerPosition.Text 
+                = (_info._info.empl_type == 0) ? "操作员" : "审核员";
+            WorkerEmail.Text = new string(_info._info.empl_email);
+        }
 
         public admin_add_employee_input_info query_worker_info(string _work_id)
         {
@@ -65,7 +77,10 @@ namespace treesafe.Workers
             web_net_client_mgr _new_mgr =
                 new web_net_client_mgr();
             employee_query_input_info _input = new employee_query_input_info(_work_id);
+            /*发送消息*/
             _new_mgr.send_command_data(8,_input);
+            /*接受信息*/
+            _info = (admin_add_employee_input_info)_new_mgr.recevie_data(_info.GetType());
             return _info;
         }
     }
