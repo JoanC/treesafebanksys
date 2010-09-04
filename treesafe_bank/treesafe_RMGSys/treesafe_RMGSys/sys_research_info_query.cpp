@@ -2,7 +2,7 @@
 #include "sys_research_info_query.h"
 
 //模块18的实现文件
-extern _ConnectionPtr* treesafe_db_connection ; 
+extern _ConnectionPtr *treesafe_db_connection ; 
 
 //18.1
 void init_research_query_input_info(research_query_input_info* _init){

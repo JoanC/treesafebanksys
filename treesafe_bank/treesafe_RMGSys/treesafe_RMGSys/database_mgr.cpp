@@ -1558,7 +1558,7 @@ bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,si
 
 		bool bRtnVal = true ;
 		bRtnVal = ConvertVar2CharStr(&varName,_info->user_array[i].user_name)
-			&& ConvertVar2Int(&varGend,(int *)&_info->user_array[i].user_query) 
+			&& ConvertVar2Int(&varGend,(int *)&_info->user_array[i].user_gender) 
 			&& ConvertVar2Int(&varAge,&_info->user_array[i].user_age) 
 			&& ConvertVar2CharStr(&varID,_info->user_array[i].user_card_id)
 			&& ConvertVar2CharStr(&varPhone,_info->user_array[i].user_tel)
@@ -1566,6 +1566,9 @@ bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,si
 
 		r->Close() ;
 		r.Release() ;
+
+		if( ! bRtnVal )
+			return false ;
 	}
 
 	rsp->Close() ;

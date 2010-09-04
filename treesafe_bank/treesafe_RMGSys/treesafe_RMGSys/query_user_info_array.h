@@ -29,7 +29,7 @@ struct user_query_arr_modle{
 user_query_arr_modle* init_user_query_arr_modle();
 
 //释放模块
-void* release_user_query_arr_modle(user_query_arr_modle* _release);
+void release_user_query_arr_modle(user_query_arr_modle* _release);
 
 //20.2
 //获取指令
@@ -43,11 +43,11 @@ void user_query_convert_cmd();
 //sunni完成
 //得到所有农民的人数,这些人的条件是有被审核通过的申请
 //结果保存在一个数字中
-void user_query_arr_count(int* _count);
+bool user_query_arr_count(int* _count) ;
 
 //20.4
 //sunni完成
 //得到一个数组
 //数组中存放这些农民的信息
 //结果存入一个指针中
-void user_query_arr(user_query_info* user_array,int* _arr_size);
+bool user_query_arr(user_query_array_info* user_array,int* _arr_size) ;

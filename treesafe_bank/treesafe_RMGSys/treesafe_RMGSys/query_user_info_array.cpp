@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "query_user_info.h"
 #include "query_user_info_array.h"
-
+extern _ConnectionPtr *treesafe_db_connection ; 
 //20.1
 //user_query_arr_modle* init_user_query_arr_modle(){
 
@@ -26,4 +26,12 @@ void release_user_query_arr_modle(user_query_arr_modle* _release){
 	if(_release->rlt_info.query_arr_info.user_array == NULL) return;
 	//再释放整体模块
 	free(_release);
+}
+bool user_query_arr_count(int* _count) 
+{
+	return Find_how_many_passed_user(treesafe_db_connection,_count) ;
+}
+bool user_query_arr(user_query_array_info* user_array,int* _arr_size) 
+{
+	return Find_all_passed_user(treesafe_db_connection,user_array,*_arr_size) ;
 }
