@@ -121,7 +121,7 @@ namespace treesafe.Account
             catch (Exception)
             {
                 WrongPage.wrong_msg = "与服务器连接失败!向服务器发送登录信息时失败！请检查网路问题并请重新登陆";
-               // Server.Transfer("~/WrongPage.aspx", true);
+                Server.Transfer("~/WrongPage.aspx", true);
             }
             try
             {
@@ -130,13 +130,13 @@ namespace treesafe.Account
             catch (Exception)
             {
                 WrongPage.wrong_msg = "与服务器连接失败!从服务器接受信息时失败！请检查网路问题并请重新登陆";
-                //Server.Transfer("~/WrongPage.aspx", true);
+                Server.Transfer("~/WrongPage.aspx", true);
             }
             /*察看是否有错误信息*/
             if (login_rlt.login_err.type != 0)
             {
-                WrongPage.wrong_msg = "用户名或密码错误,请注册或是重新登陆";
-                //Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
+                WrongPage.wrong_msg = new string(login_rlt.login_err.info);
+                Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
             }
             login_jump();
         }

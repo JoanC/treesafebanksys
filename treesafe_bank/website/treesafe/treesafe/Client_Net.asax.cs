@@ -72,8 +72,8 @@ namespace ClientNet
                 }
             };
             net_config m_config;//网络配置数据结构
-            TcpClient m_client;//虚拟客户端
-            NetworkStream m_net_stream;//网络流
+           // TcpClient m_client;//虚拟客户端
+            Socket m_net_stream;//网络流
 
             public web_net_client_mgr(string _ip, int _server_port)
             {
@@ -93,8 +93,33 @@ namespace ClientNet
 
             private void connect_server()
             {
-                this.m_client = new TcpClient(this.m_config.m_server_ip, this.m_config.m_port_num);
-                this.m_net_stream = this.m_client.GetStream();
+               // this.m_client = new TcpClient(this.m_config.m_server_ip, this.m_config.m_port_num);
+                this.m_net_stream = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                try
+                {
+                    this.m_net_stream.Connect(m_config.m_server_ip, m_config.m_port_num);
+                }
+                catch (System.ArgumentNullException)
+                {
+                    int i;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    int i;
+                }
+                catch (System.Net.Sockets.SocketException)
+                {
+                    int i;
+                }
+                catch (System.ObjectDisposedException)
+                {
+                    int i;
+                }
+                catch (System.Security.SecurityException)
+                {
+                    int i;
+                }
+
             }
 
             private byte[] StructToBytes(object obj)
@@ -164,9 +189,9 @@ namespace ClientNet
 	            {
 		          byte[] dataLen = Encoding.UTF8.GetBytes("01");
                   //包个数
-                  this.m_net_stream.Write(dataLen, 0, dataLen.Length);
+                  this.m_net_stream.Send(dataLen, 0, dataLen.Length,SocketFlags.None );
                   //网络数据
-                  this.m_net_stream.Write(StructToBytes(_send), 0, Marshal.SizeOf(_send));
+                  this.m_net_stream.Send(StructToBytes(_send), 0, Marshal.SizeOf(_send),SocketFlags.None);
                   //关闭连接
 	            }
 	            else
@@ -181,13 +206,13 @@ namespace ClientNet
                   else _num = "0" + iCount;
                   dataLen = Encoding.UTF8.GetBytes(_num);
 
-		          this.m_net_stream.Write(dataLen,0,dataLen.Length);
+		          this.m_net_stream.Send(dataLen,0,dataLen.Length,SocketFlags.None);
 		          for(int i =0;i < iCount;i++)
 		          {
                       if (i == iCount - 1) {
-                          this.m_net_stream.Write(dataSend,i*BufSize,iLastPackageSize);
+                          this.m_net_stream.Send(dataSend,i*BufSize,iLastPackageSize,SocketFlags.None);
                       }
-                      else this.m_net_stream.Write(dataSend,i * BufSize,BufSize);
+                      else this.m_net_stream.Send(dataSend,i * BufSize,BufSize,SocketFlags.None);
       	          }
                      //关闭连接
 	            }  
@@ -196,19 +221,56 @@ namespace ClientNet
                {
                     int iCount = 99;
                     byte[] cCount = System.BitConverter.GetBytes(iCount);
-                    this.m_net_stream.Read(cCount,0,cCount.Length - 1);
+                    try
+                    {
+                        this.m_net_stream.Receive(cCount, 0, cCount.Length, SocketFlags.None);
+                    }
+                    catch (System.ArgumentNullException)
+                    {
+                        int i;
+                    }
+                    catch (System.ArgumentOutOfRangeException)
+                    {
+                        int i;
+                    }
+                    catch (System.Net.Sockets.SocketException)
+                    {
+                        int i;
+                    }
+                    catch (System.ObjectDisposedException)
+                    {
+                        int i;
+                    }
+                    catch (System.Security.SecurityException)
+                    {
+                        int i;
+                    }
                    
                    char[] _temp_num = Encoding.ASCII.GetChars(cCount);
                    string _num_str = new string(_temp_num);
                    iCount = Convert.ToInt32(_num_str);
 
                    	byte[] buffer = new byte[iCount * BufSize];
-                    for(int i = 0;i!=iCount;i++)
-	                {
-                        this.m_net_stream.Read(buffer,i * BufSize,BufSize);
+                    int iRltLen = 0;
+                    for(int i=0; i!=iCount; i++)
+                    {
+                        try
+                        {
+                            this.m_net_stream.Receive(buffer, iRltLen, BufSize,SocketFlags.None);
+                        }
+                        catch (System.ArgumentNullException)
+                        { }
+                        catch (System.ArgumentOutOfRangeException)
+                        { }
+                        catch (System.IO.IOException)
+                        { }
+                        catch (System.ObjectDisposedException)
+                        { }
+
+                            
 	                }
                     //关闭连接
-                  this.m_client.Close();
+                    this.m_net_stream.Close();
                   object _obj_data = BytesToStruct(buffer,_obj_type);
                   return _obj_data;
                }
