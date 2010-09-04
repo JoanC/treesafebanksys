@@ -19,7 +19,7 @@ void init_sys_err(sys_err* _err){
 	strcpy(&err_info[7][0],"在申请处理时会遇到的错误") ;
 	strcpy(&err_info[8][0],"基础信息核对有错") ;
 	strcpy(&err_info[9][0],"无此用户") ;
-	
+
 }
 
 void sys_err_search(sys_err* _err){
