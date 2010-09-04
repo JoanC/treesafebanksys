@@ -41,9 +41,8 @@ namespace treesafe
                 //将数据读入数据库
 
 
-                //跳转页面至登录页面
-                //这里感觉有问题。。。
-                Response.Redirect("~/Account/Login.aspx");
+                //跳转页面至修改密码成功页面
+                Response.Redirect("ChangePasswordSuccessPage.aspx");
             }
         }
     }

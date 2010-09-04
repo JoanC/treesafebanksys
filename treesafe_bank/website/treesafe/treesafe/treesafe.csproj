@@ -68,6 +68,7 @@
     <Content Include="Auditors\AuditorCommitPage.aspx" />
     <Content Include="Auditors\AuditorGradePage.aspx" />
     <Content Include="Auditors\AuditoSystemIntro.aspx" />
+    <Content Include="ChangePasswordSuccessPage.aspx" />
     <Content Include="Client_Net.asax" />
     <Content Include="Chinese_Coding.asax" />
     <Content Include="Pictures\gesture1.png" />
@@ -236,6 +237,13 @@
     </Compile>
     <Compile Include="Auditors\AuditoSystemIntro.aspx.designer.cs">
       <DependentUpon>AuditoSystemIntro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePasswordSuccessPage.aspx.cs">
+      <DependentUpon>ChangePasswordSuccessPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordSuccessPage.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccessPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Client_Net.asax.cs">
       <DependentUpon>Client_Net.asax</DependentUpon>
