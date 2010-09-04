@@ -81,7 +81,7 @@ namespace ClientNet
             }
 
             public web_net_client_mgr() {
-                m_config = new net_config("127.0.0.1",4999);
+                m_config = new net_config("10.60.37.202",4999);
             }
 
             public void config_client(string _server_ip, int _server_port)
