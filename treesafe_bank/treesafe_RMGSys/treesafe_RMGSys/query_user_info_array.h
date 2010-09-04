@@ -2,16 +2,42 @@
 
 #include "query_user_info.h"
 #include "database_mgr.h"
+#include "sys_error_compute.h"
 
 //模块20
 //查询所有拥有贷款的农民信息
 //条件 ：已经存在被审核通过的农民信息
 
+
+struct user_query_arr_input{};//空结构体
+
+struct user_querry_arr_info{
+	user_query_array_info query_arr_info;//数组信息
+	sys_err err_info;
+};//结果信息
+
+struct user_query_arr_modle{
+	user_query_arr_input input_info;
+	user_querry_arr_info rlt_info;
+};
+
 //20.1
 //jiraiya 完成
 //初始化结构体
+//初始化模块20的主模块
 
+user_query_arr_modle* init_user_query_arr_modle();
 
+//释放模块
+void* release_user_query_arr_modle(user_query_arr_modle* _release);
+
+//20.2
+//获取指令
+//复制指令
+void user_query_copy_cmd(const char* _cmd , char* _dest, int _cmd_len);
+
+//转化指令
+void user_query_convert_cmd();
 
 //20.3
 //sunni完成
