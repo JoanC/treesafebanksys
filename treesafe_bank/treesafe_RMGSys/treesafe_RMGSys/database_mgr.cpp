@@ -1470,3 +1470,27 @@ bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const ch
 	rsp.Release() ;
 	return bRtnVal ;
 }
+bool Find_how_many_passed_user(_ConnectionPtr *_pConn,int *_Outcome) 
+{
+	const char sqlStr[] = "select apply_id from Table_App_ID_Set where apply_is_verified = 'true'" ;
+	_variant_t vt ;
+	_RecordsetPtr rsp ;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}catch(...){
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+
+	*_Outcome = 0 ;
+
+	while( ! rsp->rsEOF  )
+	{
+		rsp->MoveNext() ;
+		++(*_Outcome) ;
+	}
+	rsp->Close() ;
+	rsp.Release() ;
+	return true ;
+}

@@ -123,3 +123,5 @@ bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info
 bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores,const char *_UserID) ;
 
 bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const char *_UserID) ;
+
+bool Find_how_many_passed_user(_ConnectionPtr *_pConn,int *_Outcome) ;
