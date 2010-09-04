@@ -34,7 +34,7 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Auditors/AuditorRootPage.aspx" Text="主页"/>
                         <asp:MenuItem NavigateUrl="~/Auditors/AuditorListPage.aspx" Text="审核申请人信息"/>
-                        <asp:MenuItem NavigateUrl="~/Auditors/AuditorTeamListPage.aspx" Text="审核联保贷款信息"/>
+                        
                         <asp:MenuItem NavigateUrl="~/Auditors/AuditorHelpPage.aspx" Text="帮助"/>
                     </Items>
                 </asp:Menu>

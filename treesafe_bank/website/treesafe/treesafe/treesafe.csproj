@@ -86,7 +86,6 @@
     <Content Include="Auditors\AuditorHelpPage.aspx" />
     <Content Include="Auditors\AuditorListPage.aspx" />
     <Content Include="Auditors\AuditorRootPage.aspx" />
-    <Content Include="Auditors\AuditorTeamListPage.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -278,13 +277,6 @@
     </Compile>
     <Compile Include="Auditors\AuditorRootPage.aspx.designer.cs">
       <DependentUpon>AuditorRootPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Auditors\AuditorTeamListPage.aspx.cs">
-      <DependentUpon>AuditorTeamListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Auditors\AuditorTeamListPage.aspx.designer.cs">
-      <DependentUpon>AuditorTeamListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

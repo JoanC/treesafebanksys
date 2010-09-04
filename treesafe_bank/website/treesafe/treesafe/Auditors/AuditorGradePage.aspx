@@ -97,6 +97,29 @@ CodeBehind="AuditorGradePage.aspx.cs" Inherits="treesafe.Auditors.AuditorGradePa
        <p>
        &nbsp;
        </p>
+       <p>3.请综合您获得的信息，为申请人打分，以评估其社会记录（记录良好以满分10分记，有不良社会记录则酌情扣分）：
+       <br/>
+            <asp:RadioButtonList ID="ApplicationSocietyRecord" runat="server" 
+                RepeatDirection="Horizontal">
+                <asp:ListItem Value="0"></asp:ListItem>
+                <asp:ListItem Value="1"></asp:ListItem>
+                <asp:ListItem Value="2"></asp:ListItem>
+                <asp:ListItem Value="3"></asp:ListItem>
+                <asp:ListItem Value="4"></asp:ListItem>
+                <asp:ListItem Value="5"></asp:ListItem>
+                <asp:ListItem Value="6"></asp:ListItem>
+                <asp:ListItem Value="7"></asp:ListItem>
+                <asp:ListItem Value="8"></asp:ListItem>
+                <asp:ListItem Value="9"></asp:ListItem>
+                <asp:ListItem Value="10"></asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:RequiredFieldValidator ID="ApplicationSocietyRecordRequired" runat="server" ControlToValidate="ApplicationSocietyRecord"
+                   CssClass="failureNotification" ErrorMessage="请为申请人不良社会记录打分" ToolTip="请为申请人不良社会记录打分"
+                    ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
+       </p>
+       <p>
+       &nbsp;
+       </p>
 
         <p class="header" style="font-size: medium; color: #FFFFFF;">
         预计申请贷款部分</p>
