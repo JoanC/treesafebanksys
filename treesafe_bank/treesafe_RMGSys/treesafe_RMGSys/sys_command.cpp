@@ -1,3 +1,6 @@
+
+
+
 #include "stdafx.h"
 #include "sys_command.h"
 
@@ -149,4 +152,5 @@ void sys_command_run_frame(net_recieved_info* _rev , net_send_info* _send){
 	}
 	// Õ∑≈
 	sys_command_release_sys_net_data(_cmd_info);
+
 }
