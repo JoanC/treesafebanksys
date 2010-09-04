@@ -15,7 +15,7 @@
 #include "sys_employee_query.h"//查询雇员的基本信息
 
 typedef char* COMMAND_DATA;
-#define SYS_CMD_MAX_RLT_SIZE 3072
+#define SYS_CMD_MAX_RLT_SIZE 4096
 #define SYS_CMD_MAX_SIZE 3072
 
 enum{

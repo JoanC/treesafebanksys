@@ -133,7 +133,7 @@ void sys_command_run_frame(net_recieved_info* _rev , net_send_info* _send){
 	sys_net_data* _cmd_info
 		= (sys_net_data*)malloc(sizeof(sys_net_data));
 	
-	char* rlt = NULL;
+	char rlt[SYS_CMD_MAX_RLT_SIZE];
 	
 	int _len = 0;
 	sys_command_init_sys_net_data(_cmd_info);
@@ -153,6 +153,6 @@ void sys_command_run_frame(net_recieved_info* _rev , net_send_info* _send){
 		memcpy(_send->cNetDataInfo,rlt,_len);
 	}
 	// Õ∑≈
-	if(rlt != NULL) free(rlt);
+//	if(rlt != NULL) free(rlt);
 	sys_command_release_sys_net_data(_cmd_info);
 }
