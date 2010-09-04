@@ -1,4 +1,5 @@
 #pragma once
+
 #include "string.h"
 //模块4 全局错误处理
 //此模块由sunni完成
@@ -34,7 +35,8 @@ struct sys_err{
 	sys_err_type type;
 	char info[MAX_ERR_INFO];
 };
-char err_info[10][MAX_ERR_INFO] ;
+
+
 
 //错误信息结构体的初始化函数
 void init_sys_err(sys_err* _err);

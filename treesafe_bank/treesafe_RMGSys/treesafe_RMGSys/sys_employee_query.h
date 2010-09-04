@@ -12,7 +12,7 @@ typedef admin_employee_info employee_query_data;
 
 //输入信息
 struct employee_query_input_info{
-	char work_id[EMPLOYEE_WORK_ID_LEN];//输入的雇员工号
+	char work_id[19];//输入的雇员工号
 };
 
 //待发送的结果信息 
