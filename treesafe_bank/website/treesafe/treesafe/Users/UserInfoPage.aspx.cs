@@ -26,12 +26,12 @@ namespace treesafe.Users
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
     public struct user_query_info
     {
+        public int user_gender;//0男,1女
+        public int user_age;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
         public char[] user_name;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
         public char[] user_card_id;
-        public int user_gender;//0男,1女
-        public int user_age;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public char[] user_tel;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
