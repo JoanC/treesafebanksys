@@ -1,5 +1,7 @@
+#pragma once
 #include "sys_credit_compute.h"//信用评级的工具函式
 #include "sys_apply_info.h"
+#include "database_mgr.h"
 
 typedef apply_input_info apply_score_prop;
 
@@ -54,8 +56,9 @@ void release_get_score_input_info(get_score_input_info* _modle);
 //获取申请人数据
  bool get_score_get_apply_info(char* _id , apply_score_prop* _info);
 
- //jis
-void get_score_calcu(credit_sum* _score,event_wgt* _wgt,credit_scores* _rlt);
+ //计算出数据结果
+void get_score_calcu(credit_sum* _score,apply_score_prop* _info
+	,event_wgt* _wgt,credit_scores* _rlt,get_score_input_info* _input);
 
 /************************************/
 //11.4
