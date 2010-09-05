@@ -71,7 +71,8 @@ bool SaveScores(credit_scores *_Scores,const char *_UserID)
 {
 	return Insert_credit_scores(treesafe_db_connection,_Scores,_UserID) ;
 }
+
 bool ReadScoresFromDB(credit_scores *_Scores,const char *_UserID)
 {
-	return true ;
+	return Get_credit_scores(treesafe_db_connection,_Scores,_UserID) ;
 }
