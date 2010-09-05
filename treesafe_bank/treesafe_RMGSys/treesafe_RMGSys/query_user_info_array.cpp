@@ -7,9 +7,9 @@ extern _ConnectionPtr *treesafe_db_connection ;
 
 //20.1
 void init_user_querry_arr_info(user_query_arr_info* _init){
-	//init_sys_err(&_init->err_info);
+	init_sys_err(&_init->err_info);
 	_init->query_arr_info.user_num = 0;
-	_init->query_arr_info.user_array = NULL;
+	//_init->query_arr_info.user_array = NULL;
 }
 
 user_query_arr_modle* init_user_query_arr_modle(){
@@ -58,9 +58,7 @@ bool user_query_arr(user_query_array_info* user_array,int* _arr_size)
 //20.5
 void user_query_arr_convert_rlt(user_query_arr_info* _info,char* _rlt,int* _rlt_len){
 	//先要去计算需要传输的数据的字节长度
-	*_rlt_len
-		= sizeof(user_query_arr_info) 
-		+ _info->query_arr_info.user_num * sizeof(user_query_info);
+	*_rlt_len = sizeof(user_query_arr_info);
 	//复制结果信息
 	memcpy(_rlt,_info,*_rlt_len);
 }
