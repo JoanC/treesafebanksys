@@ -34,4 +34,21 @@ struct admin_employee_info{
 };
 
 //³õÊ¼»¯º¯Êý
+ /*********************************************************************************************************
+** Function name:			Init_admin_employee_info
+**
+** Descriptions:			initilize employee info
+**
+** input parameters:	    admin_employee_info* _init
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiaraya
+** Created Date:			2010-8-20
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiaraya
+** Modified date:			2010-8-23
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 void init_admin_employee_info(admin_employee_info* _init);
