@@ -475,12 +475,12 @@ bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_
 bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_info *_info) ;
 	//for 7.5
  /*********************************************************************************************************
-** Function name:			Insert_app_cust_fami_info
+** Function name:			Insert_app_cust_loan_info
 **
 ** Descriptions:			insert apply cust family info
 **
 ** input parameters:	    _ConnectionPtr *_pConn
-**                          connst apply_cust_family_info *_info
+**                          connst apply_cust_loan_info* _info
 ** Returned value:		    bool
 ** Used global variables:	NULL
 ** Calling modules:			NULL
@@ -494,36 +494,352 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 ********************************************************************************************************/
 bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_info) ;
 	//for 7.5
+ /*********************************************************************************************************
+** Function name:			Insert_app_id_set
+**
+** Descriptions:			insert apply id set
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          connst char* _app_id
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id) ;
 	// for 7.5 new!!!
+ /*********************************************************************************************************
+** Function name:			Insert_app_pass_and_comment
+**
+** Descriptions:			insert apply pass & comment
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          connst char* _app_id
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id) ;
-	// for 7.5 new!!!
+
+// for 7.5 new!!!
+ /*********************************************************************************************************
+** Function name:			Update_app_id_set
+**
+** Descriptions:			update apply id set
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          const research_commit_input_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *_info) ;
 	//for 9.3
+
+ /*********************************************************************************************************
+** Function name:			Update_app_pass_and_comment
+**
+** Descriptions:			update apply pass & cmd
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          const research_commit_input_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_input_info *_info) ;
 	//for 9.3
+
+ /*********************************************************************************************************
+** Function name:			Get_app_cust_info
+**
+** Descriptions:			Get apply cust info
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          apply_input_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
+
+ /*********************************************************************************************************
+** Function name:			Get_app_asset_info
+**
+** Descriptions:			get apply asset info
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          apply_input_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 	//for 18.3
 bool Get_app_asset_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
+
+ /*********************************************************************************************************
+** Function name:			Get_app_cust_fami_info
+**
+** Descriptions:			get apply custiomer family info
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          apply_input_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 	//for 18.3
 bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
+
+ /*********************************************************************************************************
+** Function name:			Get_app_cust_loan_info
+**
+** Descriptions:			get apply customer loan info
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          apply_input_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 	//for 18.3
 bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info) ;
+
+ /*********************************************************************************************************
+** Function name:			Find_app_id_be_not_verified
+**
+** Descriptions:			find unpassed apply id
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          char* outcome
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 	//for 18.3
 bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn, char *_outcome) ;
+
+ /*********************************************************************************************************
+** Function name:			Get_emplo_info_by_work_id
+**
+** Descriptions:			get employ info by work id
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          admin_employee_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-17
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-8-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 //FOR 8.3	
 bool Get_emplo_info_by_work_id(_ConnectionPtr *_pConn,admin_employee_info *_info) ;
+
+ /*********************************************************************************************************
+** Function name:			Get_emplo_info_by_card_id
+**
+** Descriptions:			get employee info accroding to card id
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          admin_employee_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-17
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-8-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
  //for 19.3
 bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info) ;
 
+ /*********************************************************************************************************
+** Function name:			Insert_credit_scores
+**
+** Descriptions:			insert credit scores
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          const credit_scores_db *_Scores
+**							const char *_UserID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores,const char *_UserID) ;
 
+ /*********************************************************************************************************
+** Function name:			Update_credit_scores
+**
+** Descriptions:			updata credit scores
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          const credit_scores_db *_Scores
+**							const char *_UserID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Update_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores,const char *_UserID) ;
 
+ /*********************************************************************************************************
+** Function name:			Get_credit_scores
+**
+** Descriptions:			get credit scores
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          credit_scores_db *_Scores,const char *_UserID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-20
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-8-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const char *_UserID) ;
 
+ /*********************************************************************************************************
+** Function name:			Find_how_many_passed_user
+**
+** Descriptions:			find the numbers of passed user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                         int *_Outcome
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Find_how_many_passed_user(_ConnectionPtr *_pConn,int *_Outcome) ;
 
+ /*********************************************************************************************************
+** Function name:			 Find_all_passed_user
+**
+** Descriptions:			find all passed user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_array_info *_info,size_t _Size
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,size_t _Size) ;
-
+ /*********************************************************************************************************
+** Function name:			Find_specific_user
+**
+** Descriptions:			find a spaecific user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_info *_info,const char *_ID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char *_ID) ;
