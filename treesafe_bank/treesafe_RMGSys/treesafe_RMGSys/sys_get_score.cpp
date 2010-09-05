@@ -38,8 +38,13 @@ get_score_input_info* get_score_convert_cmd(char* _info){
 	return (get_score_input_info*)_info;
 }
 
-void release_get_score_input_info(get_score_input_info* _modle){
+get_score_input_info* get_score_get_cmd(const char* _cmd,int _cmd_len){
+	char* _new_info = (char*)malloc(_cmd_len);
+	get_score_copy_cmd(_cmd,_new_info,_cmd_len);
+	return get_score_convert_cmd(_new_info);
+}
 
+void release_get_score_input_info(get_score_input_info* _modle){
 }
 
 //11.3
@@ -203,7 +208,6 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 
 //11.4
 void get_score_save_score(credit_scores* _rlt){
-
 }
 
 //11.5
