@@ -239,8 +239,8 @@ namespace ClientNet
 	                }
                     //关闭连接
                     this.m_net_stream.Close();
-                  object _obj_data = BytesToStruct(buffer,_obj_type);
-                  return _obj_data;
+                    object _obj_data = BytesToStruct(buffer,_obj_type);
+                    return _obj_data;
                }
               
     }
