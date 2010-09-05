@@ -34,9 +34,14 @@ namespace treesafe.Users
             }
 
             //判断是否已经提交申请表，如果已经提交申请表，自动跳到申请结束界面。
+            //下面的代码只能判断该次访问
             if (Session["userapplication"].ToString() == "1")
             {
-                Server.Transfer("UserFinishApplicationPage.aspx",true);
+                Server.Transfer("UserFinishApplicationPage.aspx", true);
+            }
+            else
+            {
+                //此处判断当前用户是否提交申请。
             }
 
 
