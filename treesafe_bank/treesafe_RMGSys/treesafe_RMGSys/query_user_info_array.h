@@ -60,4 +60,4 @@ void user_query_arr_convert_rlt(user_query_arr_info* _info,char* _rlt,int* _rlt_
 
 
 //模块20的主函式
-void user_query_array_frame(const char* _cmd,int _cmd_len,char* _rlt,int _rlt_len);
+void user_query_array_frame(const char* _cmd,int _cmd_len,char* _rlt,int* _rlt_len);
