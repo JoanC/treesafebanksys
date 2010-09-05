@@ -39,6 +39,23 @@ struct sys_err{
 
 
 //错误信息结构体的初始化函数
+ /*********************************************************************************************************
+** Function name:			init_sys_err
+**
+** Descriptions:			initialize sys error
+**
+** input parameters:	    sys_err* _err
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiaraya
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiaraya
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 void init_sys_err(sys_err* _err);
 
 
@@ -47,4 +64,21 @@ void init_sys_err(sys_err* _err);
 //模块4.2
 //错误信息查找
 //根据错误编码号,查找错误信息
+ /*********************************************************************************************************
+** Function name:			sys_err_search
+**
+** Descriptions:			search system error in the database
+**
+** input parameters:	    sys_err* _err
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiaraya
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiaraya
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 void sys_err_search(sys_err* _err);
