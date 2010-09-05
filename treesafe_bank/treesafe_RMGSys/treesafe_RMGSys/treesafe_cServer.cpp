@@ -40,9 +40,16 @@ void net_release_connection(sys_Server *sServer)
 {
 #ifdef DEBUG_NET_INFO
 	printf("release server socket!\n");
-	Sleep(1500);
 #endif
-	closesocket(sServer->sys_server.sServer);
+	char temp[] = "OK";
+	int nError= 0;
+	//while(!nError)
+	//{
+	//	recv(sServer->sys_server.sClient,temp,strlen(temp),0);
+	//	nError = WSAGetLastError();
+	//}
+	Sleep(500);
+	//closesocket(sServer->sys_server.sServer);
 	closesocket(sServer->sys_server.sClient);
 	WSACleanup();
 }
@@ -54,7 +61,7 @@ void net_wait_for_request(sys_Server *sServer)
 #ifdef DEBUG_NET_INFO
 	printf("wait for client!\n");
 #endif
-	retVal = listen(sServer->sys_server.sServer,1);
+	retVal = listen(sServer->sys_server.sServer,0);
 	if (SOCKET_ERROR == retVal)
 	{
 		printf("listen failed!\n");
@@ -65,6 +72,7 @@ void net_wait_for_request(sys_Server *sServer)
 //	CreateThread(NULL,0,iAccpet,&sServer,0,NULL);
 	int addrClientlen = sizeof(sServer->sys_server.addrClient);
 	sServer->sys_server.sClient = accept(sServer->sys_server.sServer,(sockaddr FAR*)&sServer->sys_server.addrClient,&addrClientlen);
+	closesocket(sServer->sys_server.sServer);
 	if(INVALID_SOCKET == sServer->sys_server.sClient)
 	{
 		printf("accept failed!\n");
@@ -98,8 +106,7 @@ void net_recieve_data(sys_Server* sServer)
 		printf("recv failed!\n");
 		closesocket(sServer->sys_server.sServer);
 		closesocket(sServer->sys_server.sClient);
-		WSACleanup();
-		return;
+		WSACleanup();return;
 	}
 #ifdef DEBUG_NET_INFO
 	printf("end receive data!\n");
@@ -141,17 +148,6 @@ void net_send_data(sys_Server* sServer)
 			_temp_send_ptr += PackageSize;
 		}
 	}
-	printf("wait for OK1!\n");
-	//char cRev[] = "UN";
-	//int iRltLen = 0;
-	//while(iRltLen <=2)
-	//{
-	//	iRltLen += recv(sServer->sys_server.sClient,cRev,strlen(cRev),0);
-	//} 
-	//sys_Server _temp;
-	//_temp.rec.cNetDataInfo = (char*)malloc(10);
-	//net_recieve_data(&_temp);
-	printf("client is ok!\n");
 	if(SOCKET_ERROR == reVal)
 	{
 		printf("send failed!\n");
@@ -170,7 +166,6 @@ void net_recieve_frame(sys_Server* sServer)
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
 	net_recieve_data(sServer);
-	Sleep(2000);
 //	net_recieve_data(sServer);
 }
 
