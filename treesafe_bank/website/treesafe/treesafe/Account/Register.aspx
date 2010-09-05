@@ -18,9 +18,10 @@
                     </span>
                     <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification" 
                          ValidationGroup="RegisterUserValidationGroup"/>
-                    <div>
+                    <div class="accountInfo">
                         <fieldset class="register">
-                            <legend>账户信息</legend>
+                            <p class="header" style="font-size: medium; color: #FFFFFF;">
+                            账户信息</p>
                             <p>
                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">姓名:</asp:Label>
                                 <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -87,6 +88,12 @@
                                  ValidationGroup="RegisterUserValidationGroup" 
                                 onclick="CreateUserButton_Click"/>
                         </p>
+                        </div>
+                        <div class="accountAd">
+                        <br/>
+                        <br/>
+                        <br/>
+                        广告及帮助信息
                         </div>
                     
 </asp:Content>

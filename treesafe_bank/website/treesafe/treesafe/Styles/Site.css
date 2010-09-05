@@ -256,6 +256,12 @@ div.accountInfo
     float: left;
 }
 
+div.accountAd
+{
+    width: 400px;
+    float: right;
+}
+
 div.ad
 {
     width: 300px;
