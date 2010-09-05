@@ -76,7 +76,15 @@ namespace treesafe.Workers
                 new web_net_client_mgr();
             employee_query_input_info _input = new employee_query_input_info(_work_id);
             /*发送消息*/
-            _new_mgr.send_command_data(8,_input);
+            try
+            {
+                _new_mgr.send_command_data(8, _input);
+            }
+            catch
+            {
+                WrongPage.wrong_msg = "由于网络原因,从服务器读取该工作人员信息失败！请检查网络问题并重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
             /*接受信息*/
             _info = (admin_add_employee_input_info)_new_mgr.recevie_data(_info.GetType());
             return _info;
