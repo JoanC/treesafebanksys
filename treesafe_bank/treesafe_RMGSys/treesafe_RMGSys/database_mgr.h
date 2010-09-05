@@ -55,47 +55,443 @@ struct reg_input_info{
 
 const char CSFileName[] = "ConnStrs.txt" ;
 const size_t connStrLen = 241  ; // max 3 lines
+ /*********************************************************************************************************
+** Function name:			getIP
+**
+** Descriptions:			get server IP from file
+**
+** input parameters:	    NULL
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 char *	GetIP() ;
+
+ /*********************************************************************************************************
+** Function name:			GetConnStr
+**
+** Descriptions:			get connect string
+**
+** input parameters:	    int index = the index of file
+**                          char *outcome = outcome
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool GetConnStr(int index,char *outcome) ;
-//index means in which line of the connStr.txt.
+
+ /*********************************************************************************************************
+** Function name:			ConnectDB
+**
+** Descriptions:			connect to database
+**
+** input parameters:	    _ConnectionPtr *pConn
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool ConnectDB(_ConnectionPtr *pConn) ;
 
+ /*********************************************************************************************************
+** Function name:			DisConnectDB
+**
+** Descriptions:			disconnect to database
+**
+** input parameters:	    _ConnectionPtr *pConn
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 void DisconnectDB(_ConnectionPtr *pConn) ;
 
+ /*********************************************************************************************************
+** Function name:			ConvertVar2CharStr
+**
+** Descriptions:			convert variable to char
+**
+** input parameters:	    _variatnt_t *_Vt
+**                          char *_Dst
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool ConvertVar2CharStr(_variant_t *_Vt , char *_Dst) ;
 
+ /*********************************************************************************************************
+** Function name:			ConvertVar2Int
+**
+** Descriptions:			convert variable to int
+**
+** input parameters:	    _variatnt_t *_Vt
+**                          int* _Dst
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool ConvertVar2Int(_variant_t *_Vt , int *_Dst) ;
 
+ /*********************************************************************************************************
+** Function name:			ConvertVar2Bool
+**
+** Descriptions:			convert variable to bool
+**
+** input parameters:	    _variatnt_t *_Vt
+**                          bool* _Dst
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool ConvertVar2Bool(_variant_t *_Vt , bool *_Dst) ;
 
+ /*********************************************************************************************************
+** Function name:			ConvertVar2Float
+**
+** Descriptions:			convert variable to float
+**
+** input parameters:	    _variatnt_t *_Vt
+**                          float* _Dst
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-1
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-3
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool ConvertVar2Float(_variant_t *_Vt,float *_Dst) ;
 
+ /*********************************************************************************************************
+** Function name:			Password_inquiry
+**
+** Descriptions:			inquiry psw
+**
+** input parameters:	    _ConnectionPtr* _pConn
+**                          char *user_name
+**                          char *pwd_rlt
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-5
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-8
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt) ;
 
+ /*********************************************************************************************************
+** Function name:			Summery_inquiry
+**
+** Descriptions:			inquiry summery
+**
+** input parameters:	    _ConnectionPtr* _pConn
+**                          char *user_name
+**                          sys_db_login *user_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-5
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-8
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info) ;
 
+ /*********************************************************************************************************
+** Function name:			add_new_to_tab_login
+**
+** Descriptions:			add new row to table login
+**
+** input parameters:	    _ConnectionPtr* _pConn
+**                          reg_input_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-5
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-8
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) ;
 
+ /*********************************************************************************************************
+** Function name:			add_new_to_tab_Cust
+**
+** Descriptions:			add new row to table cust
+**
+** input parameters:	    _ConnectionPtr* _pConn
+**                          reg_input_info *_req_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-5
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-8
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info) ;
 
+ /*********************************************************************************************************
+** Function name:			add_new_employee
+**
+** Descriptions:			add new row to table employee
+**
+** input parameters:	    _ConnectionPtr* _pConn
+**                          admin_employee_info *emp_info
+**                          char *_comment
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-5
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-8
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char *_comment) ;
 
+ /*********************************************************************************************************
+** Function name:			delete_employee
+**
+** Descriptions:			delete row from table employee
+**
+** input parameters:	    _ConnectionPtr* _pConn
+**                          const char* employee_id
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-5
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-8
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) ;
 
+ /*********************************************************************************************************
+** Function name:			apply_cust_info_query
+**
+** Descriptions:			query cust info
+**
+** input parameters:	    _ConnectionPtr* _pConn
+**                          apply_customr_info* _rlt
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt) ;
 	//for 7.3
+ /*********************************************************************************************************
+** Function name:			IsACharNumber
+**
+** Descriptions:			is a char number
+**
+** input parameters:	    char ch
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool IsACharNumber(char ch) ;
 	// for 7.5
+ /*********************************************************************************************************
+** Function name:			IncreaseCharStr
+**
+** Descriptions:			increase char 
+**
+** input parameters:	    char *_Dst
+**                          size_t _nLen
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool IncreaseCharStr(char *_Dst,size_t _nLen) ; // '1' == 49 , nLen is not include '\0'
 	// for 7.5
+ /*********************************************************************************************************
+** Function name:			FindMaxAppID
+**
+** Descriptions:			find max apply ID
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          char * _appID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID) ;
 	// for 7.5
+ /*********************************************************************************************************
+** Function name:			FindMaxAppID
+**
+** Descriptions:			find max apply ID
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          char * _appID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info) ;
 	//for 7.5
+ /*********************************************************************************************************
+** Function name:			Insert_app_asset_info
+**
+** Descriptions:			insert apply asset ino
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          connst apply_cust_asset_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_info) ;
 	//for 7.5
+ /*********************************************************************************************************
+** Function name:			Insert_app_cust_fami_info
+**
+** Descriptions:			insert apply cust family info
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          connst apply_cust_family_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_info *_info) ;
 	//for 7.5
+ /*********************************************************************************************************
+** Function name:			Insert_app_cust_fami_info
+**
+** Descriptions:			insert apply cust family info
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          connst apply_cust_family_info *_info
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-7
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-7
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_info) ;
 	//for 7.5
 bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id) ;
