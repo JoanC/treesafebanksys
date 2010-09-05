@@ -123,6 +123,11 @@ void sys_command_query_employee(const sys_net_data* _cmd,char* _rlt,int* _rlt_le
 	employee_query_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
+//2.4.10
+void sys_command_query_user_array(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	user_query_array_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
+
 //Ä£¿é2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 
