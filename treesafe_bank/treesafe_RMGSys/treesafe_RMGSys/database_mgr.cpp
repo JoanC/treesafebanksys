@@ -1387,7 +1387,7 @@ bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"'%.2f',",_Scores->score_loan) ;
+	sprintf(temp,"'%.2f',",_Scores->score_depos) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
@@ -1468,7 +1468,7 @@ bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const ch
 	bool bRtnVal = true ;
 
 	bRtnVal = ConvertVar2Float(&varIncome,&_Scores->score_income) 
-		&& ConvertVar2Float(&varLoan,&_Scores->score_loan) 
+		&& ConvertVar2Float(&varLoan,&_Scores->score_depos) 
 		&& ConvertVar2Float(&varFABP,&_Scores->score_fixed_assets_be_pledged) 
 		&& ConvertVar2Float(&varIDType,&_Scores->score_id_type) 
 		&& ConvertVar2Float(&varEdu,&_Scores->score_edu) 

@@ -2,7 +2,7 @@
 #include "sys_credit_compute.h"
 extern _ConnectionPtr *treesafe_db_connection ; 
 
-bool ModifyParam(credit_sum *_tar)
+bool SaveEventScores(credit_sum *_tar)
 {
 	FILE *pFile = NULL ;
 	pFile = fopen(filename,"wt") ;
@@ -35,7 +35,7 @@ bool ModifyParam(credit_sum *_tar)
 	return true ; 
 }
 
-bool ReadParam(credit_sum *_tar)
+bool ReadEventScores(credit_sum *_tar)
 {
 	FILE *pFile = NULL ;
 	pFile = fopen(filename,"rt") ;
@@ -67,7 +67,41 @@ bool ReadParam(credit_sum *_tar)
 	return true ;
 }
 
-bool SaveScores(credit_scores *_Scores,const char *_UserID) 
+bool SaveEventWeight(event_wgt *_tar) 
+{
+	FILE *pFile = NULL ;
+	pFile = fopen(filename,"wt") ;
+
+	if( ! pFile )
+	{
+		printf("can not open %s\n",filename) ;
+		return false ;
+	}
+
+	fwrite(_tar,sizeof(float),sizeof(event_wgt)/sizeof(float),pFile) ;
+
+	fclose(pFile) ;
+	return true ;
+}
+
+bool ReadEventWeight(event_wgt *_tar) 
+{
+		FILE *pFile = NULL ;
+	pFile = fopen(filename,"rt") ;
+
+	if( ! pFile )
+	{
+		printf("can not open %s\n",filename) ;
+		return false ;
+	}
+
+	fread(_tar,sizeof(float),sizeof(event_wgt)/sizeof(float),pFile) ;
+
+	fclose(pFile) ;
+	return true ;
+}
+
+bool SaveScores2DB(credit_scores *_Scores,const char *_UserID) 
 {
 	return Insert_credit_scores(treesafe_db_connection,_Scores,_UserID) ;
 }

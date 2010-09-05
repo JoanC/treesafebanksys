@@ -375,7 +375,7 @@ struct credit_scores_db // 评分
 {
 	char card_id[APPLY_CARD_NUMBER_LEN]	;
 	float score_income ;
-	float score_loan ;
+	float score_depos ;
 	float score_repayment	 ;
 	float score_fixed_assets_be_pledged ;
 	float score_id_type ;

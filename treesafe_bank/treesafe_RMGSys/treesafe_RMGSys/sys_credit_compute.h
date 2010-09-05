@@ -149,14 +149,33 @@ struct credit_sum
 	bad_social_record						_bad_social_record ;
 } ;
 
+struct event_wgt
+{
+	float income ;
+	float depos ;
+	float repayment ;
+	float fixed_assets_be_pledged ;
+	float id_type ;
+	float edu ;
+	float marriage ;
+	float loan_record ;
+	float social_record ;
+	float auditor_edit ;
+} ;
+
 typedef  credit_scores_db credit_scores ;
 
 const char filename[] = "ini.txt" ;
+const char filename_wgt[] = "event_wgt.txt" ; 
 
-bool ModifyParam(credit_sum *_tar) ;
+bool SaveEventScores(credit_sum *_tar) ;
 
-bool	ReadParam(credit_sum *_tar) ;
+bool	ReadEventScores(credit_sum *_tar) ;
 
-bool SaveScores(credit_scores *_Scores,const char *_UserID) ;
+bool SaveEventWeight(event_wgt *_tar) ;
+
+bool ReadEventWeight(event_wgt *_tar) ;
+
+bool SaveScores2DB(credit_scores *_Scores,const char *_UserID) ;
 
 bool ReadScoresFromDB(const char *_UserID) ;
