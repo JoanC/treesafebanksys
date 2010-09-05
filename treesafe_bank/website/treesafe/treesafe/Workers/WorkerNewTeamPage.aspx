@@ -61,27 +61,18 @@ CodeBehind="WorkerNewTeamPage.aspx.cs" Inherits="treesafe.Workers.WorkerNewTeamP
               <asp:Label ID="TeamMember4Label" runat="server" AssociatedControlID="TeamMember4">
               5. 组员4证件号码：</asp:Label>
               <asp:TextBox ID="TeamMember4" runat="server" CssClass="textEntry"></asp:TextBox>
-              <asp:RequiredFieldValidator ID="TeamMember4Required" runat="server" ControlToValidate="TeamMember4"
-                   CssClass="failureNotification" ErrorMessage="请输入组员4证件号码" ToolTip="请输入组员4证件号码"
-                    ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
            </p>
 
            <p>
               <asp:Label ID="TeamMember5Label" runat="server" AssociatedControlID="TeamMember5">
               6. 组员5证件号码:</asp:Label>
                <asp:TextBox ID="TeamMember5" runat="server" CssClass="textEntry"></asp:TextBox>
-              <asp:RequiredFieldValidator ID="TeamMember5Required" runat="server" ControlToValidate="TeamMember5"
-                   CssClass="failureNotification" ErrorMessage="请输入组员5证件号码" ToolTip="请输入组员5证件号码"
-                    ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
            </p>
 
            <p>
                <asp:Label ID="TeamMember6Label" runat="server" AssociatedControlID="TeamMember6">
                7. 组员6证件号码：</asp:Label>
                <asp:TextBox ID="TeamMember6" runat="server" CssClass="textEntry"></asp:TextBox>
-               <asp:RequiredFieldValidator ID="TeamMember6Required" runat="server" ControlToValidate="TeamMember6"
-                   CssClass="failureNotification" ErrorMessage="请输入组员6证件号码" ToolTip="请输入组员6证件号码"
-                    ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
            </p>
 
            </fieldset>

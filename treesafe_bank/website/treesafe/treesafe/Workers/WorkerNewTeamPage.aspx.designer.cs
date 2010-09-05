@@ -157,15 +157,6 @@ namespace treesafe.Workers {
         protected global::System.Web.UI.WebControls.TextBox TeamMember4;
         
         /// <summary>
-        /// TeamMember4Required control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator TeamMember4Required;
-        
-        /// <summary>
         /// TeamMember5Label control.
         /// </summary>
         /// <remarks>
@@ -184,15 +175,6 @@ namespace treesafe.Workers {
         protected global::System.Web.UI.WebControls.TextBox TeamMember5;
         
         /// <summary>
-        /// TeamMember5Required control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator TeamMember5Required;
-        
-        /// <summary>
         /// TeamMember6Label control.
         /// </summary>
         /// <remarks>
@@ -209,15 +191,6 @@ namespace treesafe.Workers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TeamMember6;
-        
-        /// <summary>
-        /// TeamMember6Required control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator TeamMember6Required;
         
         /// <summary>
         /// NewTeamButton control.
