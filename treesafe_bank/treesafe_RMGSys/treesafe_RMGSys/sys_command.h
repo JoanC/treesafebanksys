@@ -16,7 +16,7 @@
 #include "query_user_info_array.h"//查询所有的用户信息
 
 typedef char* COMMAND_DATA;
-#define SYS_CMD_MAX_RLT_SIZE 4096
+#define SYS_CMD_MAX_RLT_SIZE 128*128
 #define SYS_CMD_MAX_SIZE 3072
 
 enum{
