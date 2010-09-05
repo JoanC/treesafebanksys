@@ -25,7 +25,7 @@ struct user_query_info{
 
 struct user_query_array_info{
 	int user_num;
-	user_query_info user_array[10];
+	user_query_info user_array[30];
 };
 
 /***********************************/
