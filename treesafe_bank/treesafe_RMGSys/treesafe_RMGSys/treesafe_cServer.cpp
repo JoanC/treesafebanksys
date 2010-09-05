@@ -111,7 +111,7 @@ void net_recieve_data(sys_Server* sServer)
 void net_send_data(sys_Server* sServer)
 {
 #ifdef DEBUG_NET_INFO
-	printf("start to send data!\n");
+	printf("start to setiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiind data!\n");
 #endif
 	int reVal;
 	if(sServer->send.stNetDataLength <= PackageSize)
@@ -140,6 +140,17 @@ void net_send_data(sys_Server* sServer)
 			_temp_send_ptr += PackageSize;
 		}
 	}
+	printf("wait for OK1!\n");
+	//char cRev[] = "UN";
+	//int iRltLen = 0;
+	//while(iRltLen <=2)
+	//{
+	//	iRltLen += recv(sServer->sys_server.sClient,cRev,strlen(cRev),0);
+	//} 
+	sys_Server _temp;
+	_temp.rec.cNetDataInfo = (char*)malloc(10);
+	//net_recieve_data(&_temp);
+	printf("client is ok!\n");
 	if(SOCKET_ERROR == reVal)
 	{
 		printf("recv failed!\n");
@@ -158,6 +169,7 @@ void net_recieve_frame(sys_Server* sServer)
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
 	net_recieve_data(sServer);
+
 }
 
 void net_send_frame(sys_Server* sServer)
@@ -165,6 +177,7 @@ void net_send_frame(sys_Server* sServer)
 //	net_add_connection(sServer);
 //	net_wait_for_request(sServer);
 	net_send_data(sServer);
+	Sleep(5000);
 	net_release_connection(sServer);
 }
 
