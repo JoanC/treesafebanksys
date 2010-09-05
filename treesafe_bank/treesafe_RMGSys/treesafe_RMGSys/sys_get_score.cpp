@@ -15,3 +15,8 @@ struct get_score_input_info{
 struct get_score_info{
 	sys_err err_info;
 };
+
+struct get_score_modle{
+	get_score_input_info input_info;
+	get_score_info rlt_info;
+};
