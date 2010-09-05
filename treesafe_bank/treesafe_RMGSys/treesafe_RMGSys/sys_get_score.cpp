@@ -25,7 +25,7 @@ get_score_modle* init_get_score_info(){
 	return _new_modle;
 }
 
-void release_get_score_modle(get_score_input_info* _modle){
+void release_get_score_modle(get_score_modle* _modle){
 	free(_modle);
 }
 
@@ -218,8 +218,26 @@ void get_score_convert_rlt(get_score_info* _info,char* _rlt,int* _rlt_len){
 //模块11主函式
 void get_score_frame(const char* _cmd , int _cmd_len, char* _rlt,int* _rlt_len){
 	//11.1
+	//初始化各个模块
 	get_score_modle* _frame
 		= (get_score_modle*)malloc(sizeof(get_score_modle));
 	//11.2
-//	_frame->
+	//获取指令
+	_frame->input_info = *get_score_get_cmd(_cmd,_cmd_len);
+	//11.3
+	//获取用户信息
+	get_score_get_apply_info(_frame->input_info.card_id,&_frame->prop);
+	//11.3
+	//计算分数
+	get_score_calcu(&_frame->basic_score,&_frame->prop,
+		&_frame->wgr,&_frame->rlt_score,&_frame->input_info);
+	//11.4
+	//存储分数
+	get_score_save_score(&_frame->rlt_score);
+	//11.5
+	//转化结果信息
+	get_score_convert_rlt(&_frame->rlt_info,_rlt,_rlt_len);
+	//11.1
+	//释放模块
+	release_get_score_modle(_frame);
 }

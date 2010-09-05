@@ -40,6 +40,7 @@ void init_get_score_info(get_score_info* _init);
 
 get_score_modle* init_get_score_info();
 
+void release_get_score_modle(get_score_modle* _modle);
 /***********************************/
 //11.2
 //获取指令信息
@@ -49,7 +50,6 @@ get_score_input_info* get_score_convert_cmd(char* _info);
 
 get_score_input_info* get_score_get_cmd(const char* _cmd,int _cmd_len);
 
-void release_get_score_input_info(get_score_input_info* _modle);
 /***********************************/
 //11.3
 //计算结果
@@ -66,8 +66,9 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 void get_score_save_score(credit_scores* _rlt);
 
 /*************************************/
+//11.5
 void get_score_convert_rlt(get_score_info* _info,char* _rlt,int* _rlt_len);
 
-//11.5
+//11.6
 //模块11主函式
 void get_score_frame(const char* _cmd , int _cmd_len, char* _rlt,int* _rlt_len);
