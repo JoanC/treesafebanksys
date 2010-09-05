@@ -48,7 +48,7 @@ void net_release_connection(sys_Server *sServer)
 	//	recv(sServer->sys_server.sClient,temp,strlen(temp),0);
 	//	nError = WSAGetLastError();
 	//}
-	Sleep(500);
+	Sleep(1000);
 	//closesocket(sServer->sys_server.sServer);
 	closesocket(sServer->sys_server.sClient);
 	WSACleanup();
