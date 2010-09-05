@@ -164,14 +164,123 @@ typedef  credit_scores_db credit_scores ;
 const char filename[] = "ini.txt" ;
 const char filename_wgt[] = "event_wgt.txt" ; 
 
+/*********************************************************************************************************
+** Function name:			SaveEventScores
+**
+** Descriptions:			save event scores
+**
+** input parameters:	    credit_sum* _tar -------------------- save info
+** Returned value:		    bool 
+**         
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiraiya
+** Created Date:			2010-7-11
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiraiya
+** Modified date:			2010-7-29
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool SaveEventScores(credit_sum *_tar) ;
 
+/*********************************************************************************************************
+** Function name:			ReadEventScores
+**
+** Descriptions:			read event scores
+**
+** input parameters:	    credit_sum* _tar -------------------- credit info
+** Returned value:		    bool
+**         
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiraiya
+** Created Date:			2010-7-11
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiraiya
+** Modified date:			2010-7-29
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool	ReadEventScores(credit_sum *_tar) ;
 
+/*********************************************************************************************************
+** Function name:			SaveEventWeight
+**
+** Descriptions:			save event weigths
+**
+** input parameters:	    event_wgt* _tar -------------------- event weight
+** Returned value:		    bool
+**         
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiraiya
+** Created Date:			2010-7-11
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiraiya
+** Modified date:			2010-7-29
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool SaveEventWeight(event_wgt *_tar) ;
 
+/*********************************************************************************************************
+** Function name:			ReadEventWeight
+**
+** Descriptions:			read event weigths
+**
+** input parameters:	    event_wgt* _tar -------------------- event weight
+** Returned value:		    bool
+**         
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiraiya
+** Created Date:			2010-7-11
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiraiya
+** Modified date:			2010-7-29
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool ReadEventWeight(event_wgt *_tar) ;
 
+/*********************************************************************************************************
+** Function name:			SaveScores2DB
+**
+** Descriptions:			save score to database
+**
+** input parameters:	    credit_scores* _Scores -------------------- event scores
+**                          const char* _UserID ----------------------- user ID
+** Returned value:		    bool
+**         
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiraiya
+** Created Date:			2010-7-11
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiraiya
+** Modified date:			2010-7-29
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool SaveScores2DB(credit_scores *_Scores,const char *_UserID) ;
 
+/*********************************************************************************************************
+** Function name:			ReadScoresFromsDB
+**
+** Descriptions:			read score from database
+**
+** input parameters:	    const char* _UserID -------------------- user ID
+** Returned value:		    bool
+**         
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiraiya
+** Created Date:			2010-7-11
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiraiya
+** Modified date:			2010-7-29
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 bool ReadScoresFromDB(const char *_UserID) ;
