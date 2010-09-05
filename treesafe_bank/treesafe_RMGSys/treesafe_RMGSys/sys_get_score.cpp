@@ -25,7 +25,7 @@ get_score_modle* init_get_score_info(){
 	return _new_modle;
 }
 
-void release_get_score_input_info(get_score_input_info* _modle){
+void release_get_score_modle(get_score_input_info* _modle){
 	free(_modle);
 }
 
@@ -42,9 +42,6 @@ get_score_input_info* get_score_get_cmd(const char* _cmd,int _cmd_len){
 	char* _new_info = (char*)malloc(_cmd_len);
 	get_score_copy_cmd(_cmd,_new_info,_cmd_len);
 	return get_score_convert_cmd(_new_info);
-}
-
-void release_get_score_input_info(get_score_input_info* _modle){
 }
 
 //11.3
@@ -223,5 +220,5 @@ void get_score_frame(const char* _cmd , int _cmd_len, char* _rlt,int* _rlt_len){
 	get_score_modle* _frame
 		= (get_score_modle*)malloc(sizeof(get_score_modle));
 	//11.2
-
+	_frame->
 }
