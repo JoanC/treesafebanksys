@@ -87,6 +87,7 @@
     <ClInclude Include="sys_apply_info.h" />
     <ClInclude Include="sys_credit_compute.h" />
     <ClInclude Include="sys_employee_query.h" />
+    <ClInclude Include="sys_get_score.h" />
     <ClInclude Include="sys_group_add_person.h" />
     <ClInclude Include="sys_group_info.h" />
     <ClInclude Include="sys_group_recommand.h" />
@@ -123,6 +124,7 @@
     <ClCompile Include="sys_credit_compute.cpp" />
     <ClCompile Include="sys_employee_query.cpp" />
     <ClCompile Include="sys_frame.cpp" />
+    <ClCompile Include="sys_get_score.cpp" />
     <ClCompile Include="sys_research_exact.cpp" />
     <ClCompile Include="sys_research_info_query.cpp" />
     <ClCompile Include="treesafe_cServer.cpp" />

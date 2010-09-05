@@ -115,6 +115,9 @@
     <Filter Include="query_info\query_array">
       <UniqueIdentifier>{97f0d7cd-e079-4902-859a-7a6e20ea2cf9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="credit_compute\Tool">
+      <UniqueIdentifier>{16940eeb-24d7-460f-bf13-d7cacaafb49b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -122,7 +125,7 @@
       <Filter>database</Filter>
     </None>
     <None Include="ini.txt">
-      <Filter>credit_compute</Filter>
+      <Filter>credit_compute\Tool</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -177,9 +180,6 @@
     <ClInclude Include="research_commit.h">
       <Filter>research\commit</Filter>
     </ClInclude>
-    <ClInclude Include="sys_credit_compute.h">
-      <Filter>credit_compute</Filter>
-    </ClInclude>
     <ClInclude Include="sys_risk_compute.h">
       <Filter>risk_compute</Filter>
     </ClInclude>
@@ -228,6 +228,12 @@
     <ClInclude Include="query_user_info_array.h">
       <Filter>query_info\query_array</Filter>
     </ClInclude>
+    <ClInclude Include="sys_credit_compute.h">
+      <Filter>credit_compute\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_get_score.h">
+      <Filter>credit_compute</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -269,9 +275,6 @@
     <ClCompile Include="research_commit.cpp">
       <Filter>research\commit</Filter>
     </ClCompile>
-    <ClCompile Include="sys_credit_compute.cpp">
-      <Filter>credit_compute</Filter>
-    </ClCompile>
     <ClCompile Include="sys_admin_add_employee.cpp">
       <Filter>employee\add</Filter>
     </ClCompile>
@@ -298,6 +301,12 @@
     </ClCompile>
     <ClCompile Include="query_user_info.cpp">
       <Filter>query_info</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_credit_compute.cpp">
+      <Filter>credit_compute\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_get_score.cpp">
+      <Filter>credit_compute</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
