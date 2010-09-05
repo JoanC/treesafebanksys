@@ -95,9 +95,9 @@
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Styles\Scripts\jquery-1.4.1.js" />
+    <Content Include="Styles\Scripts\jquery-1.4.1.min.js" />
     <Content Include="Users\ApplicationPageNext1.aspx" />
     <Content Include="Users\ApplicationPageNext2.aspx" />
     <Content Include="Users\ApplicationPageNext3.aspx" />
