@@ -32,7 +32,42 @@ struct user_query_array_info{
 //初始化函数
 
 //初始化用户基本信息
+ /*********************************************************************************************************
+** Function name:			init_user_query_info
+**
+** Descriptions:			query user info
+**
+** input parameters:	    user_query_info* _init<o>
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-8-23
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-8-23
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 void init_user_query_info(user_query_info* _init);
 
 //初始化用户的数组信息
+ /*********************************************************************************************************
+** Function name:			init_user_query_array_info
+**
+** Descriptions:			initialize user array info
+**
+** input parameters:	    int _size<i>
+**							user_query_array_info* _init<o>
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-8-23
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-8-23
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 void init_user_query_array_info(int _size,user_query_array_info* _init);
