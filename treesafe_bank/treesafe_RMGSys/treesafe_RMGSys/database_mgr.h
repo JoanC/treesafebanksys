@@ -72,7 +72,7 @@ bool ConvertVar2Float(_variant_t *_Vt,float *_Dst) ;
 
 bool	Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt) ;
 
-void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info) ;
+bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info) ;
 
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) ;
 

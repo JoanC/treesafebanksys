@@ -135,12 +135,18 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 	rsp->Close() ;
 	rsp.Release() ;
 }
-void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
+bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
 {
 	_variant_t vt ;
 	char sqlStr[200] = "select * from Table_Login where login_id = " ;
 	strcat_s(sqlStr,user_name) ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	// visit the db...
 
 	_variant_t varUserID ; 
@@ -168,6 +174,8 @@ void	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 	}
 	rsp->Close() ;
 	rsp.Release() ;
+
+	return true ;
 }
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
 {
@@ -203,7 +211,12 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt ;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	return true ;
 }
 bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
@@ -211,7 +224,13 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	char sqlStrTest[200] = "select name from Table_Cust_Info where id = " ;
 	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF )
 	{
 		rsp->Close() ;
@@ -241,7 +260,13 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt ;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	return true ;
 }
@@ -251,15 +276,21 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	strcat(sqlStrTest,emp_info->employee_work_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
-	if( ! rsp->rsEOF )
+	_RecordsetPtr r;
+	try{
+		r = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
+	if( ! r->rsEOF )
 	{
-		rsp->Close() ;
-		rsp.Release() ;
+		r->Close() ;
+		r.Release() ;
 		return false ;
 	}
-	rsp->Close() ;
-	rsp.Release() ;
+	r->Close() ;
+	r.Release() ;
 
 	char sqlStr[500] = "insert into Table_Employee values('" ;
 	strcat(sqlStr,emp_info->employee_id) ;
@@ -290,7 +321,12 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt ;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	return true ;
 }
 bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) 
@@ -298,7 +334,13 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = " ;
 	strcat(sqlStrTest,employee_id) ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( rsp->rsEOF ) //如果没这个人...
 	{
 		rsp->Close() ;
@@ -312,7 +354,13 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 	strcat(sqlStr,employee_id) ;
 
 	_variant_t vt ;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	return true ;
 }
@@ -321,7 +369,13 @@ bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt)
 	char sqlStrTest[200] = "select * from Table_Cust_Info where id = " ;
 	strcat(sqlStrTest,_rlt->cust_id) ;
 	_variant_t vt ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&vt,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF )
 	{
 		rsp->Close() ;
@@ -399,7 +453,13 @@ bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID)
 	char sqlStr[200] = "select max(apply_id) from Table_App_ID_Set" ;
 
 	_variant_t vt ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	// execute sql... 
 	if( rsp->rsEOF )
 	{
@@ -427,7 +487,13 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	strcat(sqlStrTest,_info->app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF )
 	{
 		rsp->Close() ;
@@ -477,7 +543,7 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	}catch(...){
 		return false ;
 	}
-	
+
 	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
@@ -540,7 +606,12 @@ bool	Insert_app_asset_info(_ConnectionPtr *_pConn,const apply_cust_asset_info *_
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	rsp->Close() ;
 	rsp.Release() ;
@@ -557,7 +628,6 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	{
 		rsp->Close() ;
 		rsp.Release() ;
-
 		return false ;
 	}
 
@@ -590,7 +660,13 @@ bool	Insert_app_cust_fami_info(_ConnectionPtr *_pConn,const apply_cust_family_in
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	rsp->Close() ;
 	rsp.Release() ;
@@ -602,7 +678,13 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 	strcat(sqlStrTest,_info->app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF )
 	{
 		rsp->Close() ;
@@ -634,7 +716,12 @@ bool Insert_app_cust_loan_info(_ConnectionPtr *_pConn,const apply_loan_info *_in
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt;
-	(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	rsp->Close() ;
 	rsp.Release() ;
@@ -646,7 +733,13 @@ bool Insert_app_id_set(_ConnectionPtr *_pConn,const char *_app_id)
 	strcat(sqlStrTest,_app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF ) //如果此id已存在...
 	{
 		rsp->Close() ;
@@ -676,7 +769,13 @@ bool Insert_app_pass_and_comment(_ConnectionPtr *_pConn,const char *_app_id)
 	strcat(sqlStrTest,_app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF )
 	{
 		rsp->Close() ;
@@ -717,7 +816,13 @@ bool Update_app_id_set(_ConnectionPtr *_pConn,const research_commit_input_info *
 	strcat(sqlStrTest,_info->research_apply_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( rsp->rsEOF ) //如果此id不存在...
 	{
 		rsp->Close() ;
@@ -745,7 +850,13 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 	strcat(sqlStrTest,_info->research_apply_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( rsp->rsEOF ) //如果此id不存在...
 	{
 		rsp->Close() ;
@@ -798,40 +909,6 @@ bool Update_app_pass_and_comment(_ConnectionPtr *_pConn,const research_commit_in
 	}catch(...){
 		return false ;
 	}
-
-	/*	char sqlStr0[150] = "delete from Table_App_Pass_And_Comment where apply_id =  " ;
-	strcat(sqlStr0,_info->research_apply_id) ;
-
-	try{
-	_variant_t vt;
-	(*_pConn)->Execute(sqlStr0,&vt,adCmdText) ;
-	}catch(...){
-	return false ;
-	}
-
-	char sqlStr1[200] = "insert into Table_App_Pass_And_Comment values('" ;
-	strcat(sqlStr1,_info->research_apply_id) ;
-	strcat(sqlStr1,"','") ;
-	strcat(sqlStr1,_info->asset_research_info_comment) ;
-	strcat(sqlStr1,"','") ;
-	strcat(sqlStr1,_info->cust_research_info_comment) ;
-	strcat(sqlStr1,"','") ;
-	strcat(sqlStr1,_info->family_research_info_comment) ;
-	strcat(sqlStr1,"','") ;
-	strcat(sqlStr1,_info->loan_research_info_comment) ;
-	strcat(sqlStr1,"','") ;
-	strcat(sqlStr1,_info->is_research_approved ? "true" : "false" ) ;
-	strcat(sqlStr1,"','") ;
-	strcat(sqlStr1,_info->researcher_id) ;
-	strcat(sqlStr1,"')") ;
-
-	try{
-	_variant_t vt;
-	(*_pConn)->Execute(sqlStr1,&vt,adCmdText) ;
-	}catch(...){
-	return false ;
-	}
-	*/
 	return true ;
 }
 bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
@@ -840,7 +917,13 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 	strcat(sqlStrTest,_info->input_basic_info.app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF ) //如果此id存在...
 	{
 		_variant_t varName ;
@@ -978,8 +1061,6 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 		rsp.Release() ;
 		return bRtnVal ;
 	}
-
-
 	rsp->Close() ;
 	rsp.Release() ;
 	return false ;
@@ -990,7 +1071,13 @@ bool Get_app_asset_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 	strcat(sqlStrTest,_info->input_asset_info.app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF ) //如果此id存在...
 	{
 		_variant_t varPAI ;
@@ -1092,7 +1179,13 @@ bool Get_app_cust_fami_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 	strcat(sqlStrTest,_info->input_fammily_info.app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	if( ! rsp->rsEOF ) //如果此id存在...
 	{
@@ -1178,9 +1271,13 @@ bool Get_app_cust_loan_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 	strcat(sqlStrTest,_info->input_loan_info.app_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
-
-
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	if( ! rsp->rsEOF ) //如果此id存在...
 	{
@@ -1242,7 +1339,13 @@ bool Find_app_id_be_not_verified(_ConnectionPtr *_pConn,char *_outcome)
 	strcat(sqlStr,sqlTemp) ;
 
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 
 	if( ! rsp->rsEOF ) //如果此id存在...
 	{
@@ -1265,7 +1368,13 @@ bool Get_emplo_info_by_work_id(_ConnectionPtr *_pConn,admin_employee_info *_info
 	strcat(sqlStrTest,_info->employee_work_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( rsp->rsEOF ) //如果此id不存在...
 	{
 		rsp->Close() ;
@@ -1313,7 +1422,13 @@ bool Get_emplo_info_by_card_id(_ConnectionPtr *_pConn,admin_employee_info *_info
 	strcat(sqlStrTest,_info->employee_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( rsp->rsEOF ) //如果此id不存在...
 	{
 		rsp->Close() ;
@@ -1364,7 +1479,13 @@ bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 	strcat(sqlStrTest,_Scores->card_id) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( ! rsp->rsEOF ) // 如果已存在...
 	{
 		rsp->Close() ;
@@ -1432,7 +1553,13 @@ bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const ch
 	strcat(sqlStrTest,_UserID) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
-	_RecordsetPtr rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStrTest,&v,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
 	if( rsp->rsEOF ) //如果此id不存在...
 	{
 		rsp->Close() ;
