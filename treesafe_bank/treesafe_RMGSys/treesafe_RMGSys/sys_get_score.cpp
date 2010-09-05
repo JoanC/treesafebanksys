@@ -29,6 +29,19 @@ void release_get_score_input_info(get_score_input_info* _modle){
 	free(_modle);
 }
 
+//11.2
+void get_score_copy_cmd(const char* _cmd,char* _dest,int _cmd_len){
+	memcpy(_dest,_cmd,_cmd_len);
+}
+
+get_score_input_info* get_score_convert_cmd(char* _info){
+	return (get_score_input_info*)_info;
+}
+
+void release_get_score_input_info(get_score_input_info* _modle){
+
+}
+
 //11.3
  bool get_score_get_apply_info(char* _id , apply_score_prop* _info)
  {
@@ -190,10 +203,21 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 
 //11.4
 void get_score_save_score(credit_scores* _rlt){
-	SaveScores2DB(_rlt,_rlt->card_id) ;
+
 }
 
 //11.5
+
+void get_score_convert_rlt(get_score_info* _info,char* _rlt,int* _rlt_len){
+	*_rlt_len = sizeof(get_score_info);
+	memcpy(_rlt,_info,*_rlt_len);
+}
+
+//Ä£¿é11Ö÷º¯Ê½
 void get_score_frame(const char* _cmd , int _cmd_len, char* _rlt,int* _rlt_len){
+	//11.1
+	get_score_modle* _frame
+		= (get_score_modle*)malloc(sizeof(get_score_modle));
+	//11.2
 
 }
