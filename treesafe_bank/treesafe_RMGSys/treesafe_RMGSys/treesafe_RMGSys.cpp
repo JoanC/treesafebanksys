@@ -32,9 +32,7 @@ _ConnectionPtr* treesafe_db_connection;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	event_wgt wt ;
-	wt.auditor_edit = wt.depos = wt.edu = wt.fixed_assets_be_pledged = wt.id_type = wt.income = wt.loan_record = wt.marriage = wt.repayment = wt.social_record = 0.1f ;
-	SaveEventWeight(&wt) ;
+	
 #ifdef TEST_BANK_SYS_CONNECTION
 	/*********************/
 	//银行子系统代码段
