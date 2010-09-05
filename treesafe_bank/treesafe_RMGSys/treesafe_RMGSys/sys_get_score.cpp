@@ -3,3 +3,6 @@
 
 //Ä£¿é11
 
+struct get_score_input_info{
+	int i;
+};
