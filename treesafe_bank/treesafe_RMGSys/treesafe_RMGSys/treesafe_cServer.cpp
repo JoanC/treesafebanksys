@@ -40,6 +40,7 @@ void net_release_connection(sys_Server *sServer)
 {
 #ifdef DEBUG_NET_INFO
 	printf("release server socket!\n");
+	Sleep(1500);
 #endif
 	closesocket(sServer->sys_server.sServer);
 	closesocket(sServer->sys_server.sClient);
@@ -147,13 +148,13 @@ void net_send_data(sys_Server* sServer)
 	//{
 	//	iRltLen += recv(sServer->sys_server.sClient,cRev,strlen(cRev),0);
 	//} 
-	sys_Server _temp;
-	_temp.rec.cNetDataInfo = (char*)malloc(10);
+	//sys_Server _temp;
+	//_temp.rec.cNetDataInfo = (char*)malloc(10);
 	//net_recieve_data(&_temp);
 	printf("client is ok!\n");
 	if(SOCKET_ERROR == reVal)
 	{
-		printf("recv failed!\n");
+		printf("send failed!\n");
 		closesocket(sServer->sys_server.sServer);
 		closesocket(sServer->sys_server.sClient);
 		WSACleanup();
@@ -169,7 +170,7 @@ void net_recieve_frame(sys_Server* sServer)
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
 	net_recieve_data(sServer);
-	Sleep(1500);
+	Sleep(2000);
 //	net_recieve_data(sServer);
 }
 
