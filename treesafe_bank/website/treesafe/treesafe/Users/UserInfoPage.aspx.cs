@@ -24,7 +24,7 @@ namespace treesafe.Users
 {
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
-    struct user_query_info
+    public struct user_query_info
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
         public char[] user_name;

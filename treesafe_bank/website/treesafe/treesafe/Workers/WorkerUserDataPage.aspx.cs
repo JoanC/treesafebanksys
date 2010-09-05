@@ -32,7 +32,7 @@ namespace treesafe.Workers
     public struct user_query_array_info
     {
         public int user_num;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
+        [MarshalAs(UnmanagedType.Struct.GetType(), SizeConst = 100)]
         public user_query_info[] user_array;
         public user_query_array_info(int _num)
         {
@@ -47,9 +47,9 @@ namespace treesafe.Workers
     {
         public user_query_array_info query_arr_info;//数组信息
         public sys_err err_info;
-        public user_query_arr_info()
+        public user_query_arr_info(int _num)
         {
-            query_arr_info = new user_query_array_info(0);
+            query_arr_info = new user_query_array_info(_num);
             err_info = new sys_err(0,"");
         }
     };//结果信息
@@ -69,13 +69,13 @@ namespace treesafe.Workers
 
             user_query_arr_info _rlt = GetUserInfoArr();
 
-            //读取农户数据
+            //读取农户数据3
             GetLaborInfo();
         }
 
         protected user_query_arr_info GetUserInfoArr()
         {
-            user_query_arr_info _info = new user_query_arr_info();
+            user_query_arr_info _info = new user_query_arr_info(0);
             /*发送指令*/
             web_net_client_mgr _net = new web_net_client_mgr();
             user_query_arr_input _input = new user_query_arr_input();
