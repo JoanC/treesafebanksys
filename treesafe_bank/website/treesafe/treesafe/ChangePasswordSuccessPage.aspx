@@ -11,7 +11,6 @@ CodeBehind="ChangePasswordSuccessPage.aspx.cs" Inherits="treesafe.ChangePassword
 <p>
 &nbsp;
 </p>
-
    <p>
         重新登录系统请点击
         <asp:HyperLink ID="ChangePasswordSuccessHyperLink" runat="server" EnableViewState="false" 
