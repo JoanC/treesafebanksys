@@ -56,5 +56,10 @@ namespace treesafe.Workers
                 LaborTable.Rows.Add(r);//添加行对
             }
         }
+
+        protected void AddTeamButton_Click(object sender, EventArgs e)
+        {
+            //增加联保小组界面
+        }
     }
 }
