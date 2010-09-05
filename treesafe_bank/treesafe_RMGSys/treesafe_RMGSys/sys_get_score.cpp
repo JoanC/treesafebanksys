@@ -205,7 +205,7 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 
 //11.4
 void get_score_save_score(credit_scores* _rlt){
-
+		SaveScores2DB(_rlt,_rlt->card_id) ;
 }
 
 //11.5
@@ -221,5 +221,5 @@ void get_score_frame(const char* _cmd , int _cmd_len, char* _rlt,int* _rlt_len){
 	get_score_modle* _frame
 		= (get_score_modle*)malloc(sizeof(get_score_modle));
 	//11.2
-	_frame->
+//	_frame->
 }

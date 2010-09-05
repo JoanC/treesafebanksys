@@ -113,8 +113,3 @@ bool ReadScoresFromDB(credit_scores *_Scores,const char *_UserID)
 {
 	return Get_credit_scores(treesafe_db_connection,_Scores,_UserID) ;
 }
-
-void score_compute(const credit_sum *_Js,const event_wgt *_Wgt,cust_score *_Outcome)
-{
-
-}
