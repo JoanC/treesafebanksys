@@ -169,15 +169,13 @@ void net_recieve_frame(sys_Server* sServer)
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
 	net_recieve_data(sServer);
-
+	Sleep(1500);
+//	net_recieve_data(sServer);
 }
 
 void net_send_frame(sys_Server* sServer)
 {
-//	net_add_connection(sServer);
-//	net_wait_for_request(sServer);
 	net_send_data(sServer);
-	Sleep(5000);
 	net_release_connection(sServer);
 }
 
