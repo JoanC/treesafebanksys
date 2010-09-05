@@ -2,7 +2,7 @@
 #include "sys_get_score.h"//·ÖÊý¼ÆËã
 
 
-
+extern _ConnectionPtr *treesafe_db_connection ; 
 //11.1
 void init_get_score_input_info(get_score_input_info* _init){
 	_init->add_on_asset_score = 0;
@@ -30,7 +30,13 @@ void release_get_score_input_info(get_score_input_info* _modle){
 }
 
 //11.3
-
+ bool get_score_get_apply_info(char* _id , apply_score_prop* _info)
+ {
+	 return Get_app_cust_info(treesafe_db_connection,_info) 
+			&& Get_app_asset_info(treesafe_db_connection,_info) 
+			&& Get_app_cust_fami_info(treesafe_db_connection,_info) 
+			&& Get_app_cust_loan_info(treesafe_db_connection,_info) ;
+ }
 
 void get_score_calcu(credit_sum* _score,event_wgt* _wgt,credit_scores* _rlt){
 		ReadEventScores(_score);

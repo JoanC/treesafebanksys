@@ -1547,6 +1547,87 @@ bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 	rsp.Release() ;
 	return true ;
 }
+bool Update_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores,const char *_UserID) 
+{
+	const char col0[] = "score_income = '" ;
+	const char col1[] = "score_depos = '" ;
+	const char col2[] = "score_repayment = '" ;
+	const char col3[] = "score_fixed_assets_be_pledged = '" ;
+	const char col4[] = "score_id_type = '" ;
+	const char col5[] = "score_edu = '" ;
+	const char col6[] = "score_marriage = '" ;
+	const char col7[] = "score_loan_record = '" ;
+	const char col8[] = "score_bad_social_record = '" ;
+	const char col9[] = "score_auditor_edit = '" ;
+
+	char sqlStr[300] = "update Table_Score_Set set " ;
+
+	char temp[6] ;
+	memset(temp,0,6) ;
+
+	strcat(sqlStr,col0) ;
+	sprintf(temp,"%.2f",_Scores->score_income) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col1) ;
+	sprintf(temp,"%.2f",_Scores->score_depos) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col2) ;
+	sprintf(temp,"%.2f",_Scores->score_repayment) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col3) ;
+	sprintf(temp,"%.2f",_Scores->score_fixed_assets_be_pledged) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col4) ;
+	sprintf(temp,"%.2f",_Scores->score_id_type) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col5) ;
+	sprintf(temp,"%.2f",_Scores->score_edu) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col6) ;
+	sprintf(temp,"%.2f",_Scores->score_marriage) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col7) ;
+	sprintf(temp,"%.2f",_Scores->score_loan_record) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col8) ;
+	sprintf(temp,"%.2f",_Scores->score_bad_social_record) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,col9) ;
+	sprintf(temp,"%.2f",_Scores->score_auditor_edit) ;
+	strcat(sqlStr,temp) ;
+	strcat(sqlStr,"',") ;
+
+	strcat(sqlStr,"from Table_Score_Set where card_id = '") ;
+	strcat(sqlStr,_UserID) ;
+	strcat(sqlStr,"'") ;
+
+	_variant_t vt ;
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
+	return true ;
+}
 bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const char *_UserID) 
 {
 	char sqlStrTest[200] = "select score_income from Table_Score_Set where card_id = '" ;
@@ -1696,7 +1777,7 @@ bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,si
 	rsp.Release() ;
 	return true ;
 }
-bool Find_specific_passed_user(_ConnectionPtr *_pConn,user_query_info *_info,const char *_ID) 
+bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char *_ID) 
 {
 	char sqlStr[200] = "select * from Table_App_Cust_Info where apply_id = '" ;
 	strcat(sqlStr,_ID) ;

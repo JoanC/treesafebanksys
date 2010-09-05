@@ -103,7 +103,10 @@ bool ReadEventWeight(event_wgt *_tar)
 
 bool SaveScores2DB(credit_scores *_Scores,const char *_UserID) 
 {
-	return Insert_credit_scores(treesafe_db_connection,_Scores,_UserID) ;
+	if( ! Insert_credit_scores(treesafe_db_connection,_Scores,_UserID) )
+		return Update_credit_scores(treesafe_db_connection,_Scores,_UserID) ;
+	else
+		return false ;
 }
 
 bool ReadScoresFromDB(credit_scores *_Scores,const char *_UserID)

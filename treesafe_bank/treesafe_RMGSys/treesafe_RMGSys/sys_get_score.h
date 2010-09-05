@@ -52,7 +52,7 @@ void release_get_score_input_info(get_score_input_info* _modle);
 //11.3
 //计算结果
 //获取申请人数据
- void get_score_get_apply_info(char* _id , apply_score_prop* _info);
+ bool get_score_get_apply_info(char* _id , apply_score_prop* _info);
 
  //jis
 void get_score_calcu(credit_sum* _score,event_wgt* _wgt,credit_scores* _rlt);
