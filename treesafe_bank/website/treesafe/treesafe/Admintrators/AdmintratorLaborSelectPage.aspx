@@ -10,7 +10,8 @@ CodeBehind="AdmintratorLaborSelectPage.aspx.cs" Inherits="treesafe.Admintrators.
     </h2>
 
      <p>
-    &nbsp;
+   
+         <asp:Label ID="LabelName" runat="server" Text="Label"></asp:Label>
     </p>
 
     <p class="header" style="font-size: medium; color: #FFFFFF;">
@@ -21,7 +22,7 @@ CodeBehind="AdmintratorLaborSelectPage.aspx.cs" Inherits="treesafe.Admintrators.
 
           <p>      
               如需删除此雇员资料，请点击：<asp:Button ID="Button1" runat="server" Text="删除雇员" 
-                  onclick="DeleteButton_Click" />
+                  onclick="DeleteButton_Click" onclientclick="return confirm('你确定要删除该雇员信息吗？')" />
     </p>
      <p class="header" style="font-size: medium; color: #FFFFFF;">
         修改雇员信息</p>

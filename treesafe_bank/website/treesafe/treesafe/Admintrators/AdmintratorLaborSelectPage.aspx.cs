@@ -13,6 +13,8 @@ namespace treesafe.Admintrators
         {
             //c=此处获得了该雇员的工号
             LaborID.Text = Request.QueryString["id"];
+            //在页面上方显示当前雇员id
+            LabelName.Text = "当前雇员ID：" + LaborID.Text;
 
             //在此调用改用户的其他信息资料
         }

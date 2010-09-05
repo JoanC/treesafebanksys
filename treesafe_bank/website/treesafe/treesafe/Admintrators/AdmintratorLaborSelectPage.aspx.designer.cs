@@ -13,6 +13,15 @@ namespace treesafe.Admintrators {
     public partial class AdmintratorLaborSelectPage {
         
         /// <summary>
+        /// LabelName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelName;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
