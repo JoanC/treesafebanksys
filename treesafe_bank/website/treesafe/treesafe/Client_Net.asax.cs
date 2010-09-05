@@ -93,7 +93,7 @@ namespace ClientNet
 
             private void connect_server()
             {
-                Thread.Sleep(1500);
+                //Thread.Sleep(1500);
                // this.m_client = new TcpClient(this.m_config.m_server_ip, this.m_config.m_port_num);
                 this.m_net_stream = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 while (!m_net_stream.Connected)
