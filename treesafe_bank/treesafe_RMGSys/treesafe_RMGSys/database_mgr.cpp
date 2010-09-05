@@ -1569,3 +1569,48 @@ bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,si
 	rsp.Release() ;
 	return true ;
 }
+bool Find_specific_passed_user(_ConnectionPtr *_pConn,user_query_info *_info,const char *_ID) 
+{
+	char sqlStr[200] = "select * from Table_App_Cust_Info where apply_id = '" ;
+	strcat(sqlStr,_ID) ;
+	strcat(sqlStr,"'") ;
+
+	_variant_t v ;
+	_RecordsetPtr r ;
+
+	try{
+		r =  (*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
+	if( r->rsEOF )
+		return false ;
+
+	_variant_t varName ;
+	_variant_t varID ;
+	_variant_t varGend ;
+	_variant_t varAge ;
+	_variant_t varPhone ;
+	_variant_t varAddr;
+
+	varName		= r->Fields->GetItem(long(1))->Value ;
+	varGend		= r->Fields->GetItem(long(2))->Value ;
+	varAge		= r->Fields->GetItem(long(3))->Value ;
+	varID			= r->Fields->GetItem(long(5))->Value ;
+	varPhone		= r->Fields->GetItem(long(6))->Value ;
+	varAddr		= r->Fields->GetItem(long(9))->Value ;
+
+	bool bRtnVal = true ;
+	bRtnVal = ConvertVar2CharStr(&varName,_info->user_name)
+		&& ConvertVar2Int(&varGend,(int *)&_info->user_gender) 
+		&& ConvertVar2Int(&varAge,&_info->user_age) 
+		&& ConvertVar2CharStr(&varID,_info->user_card_id)
+		&& ConvertVar2CharStr(&varPhone,_info->user_tel)
+		&& ConvertVar2CharStr(&varAddr,_info->user_addr) ;
+
+	r->Close() ;
+	r.Release() ;
+
+	return bRtnVal ;
+}

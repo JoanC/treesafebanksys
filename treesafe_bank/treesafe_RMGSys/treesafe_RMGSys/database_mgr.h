@@ -127,3 +127,5 @@ bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const ch
 bool Find_how_many_passed_user(_ConnectionPtr *_pConn,int *_Outcome) ;
 
 bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,size_t _Size) ;
+
+bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char *_ID) ;

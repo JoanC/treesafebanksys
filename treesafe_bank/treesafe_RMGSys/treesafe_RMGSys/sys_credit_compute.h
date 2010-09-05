@@ -157,7 +157,28 @@ struct event_wgt
 	float auditor_edit ;
 } ;
 
+
+struct credit_cust_info
+{
+	APPLY_CARD_TYPE ct ;
+	APPLY_CUST_EDUCATION_DEGREE edu ;
+	APPLY_PERSON_INCOME_RANGE pin ;
+	APPLY_FAMILY_INCOME_RANGE fin ;
+	APPLY_DEPOSIT_TYPE dt ;
+	APPLY_DEPOSIT_RANGE depos ;
+	APPLY_LOAN_RANGE lr ;
+	APPLY_LOAN_TIME lt ;
+	bool b_fixed_assets_be_pledged ;
+	APPLY_UNSECURED_FIXED_ASSETS ufa ;
+	APPLY_CUST_MARITAL_STATUS cms ;
+	APPLY_CARD_TYPE sct ;
+	APPLY_CUST_EDUCATION_DEGREE sedu ;
+	bool Sloan ;
+
+} ;
+
 typedef  credit_scores_db credit_scores ;
+typedef event_wgt cust_score ;
 
 const char filename[] = "ini.txt" ;
 const char filename_wgt[] = "event_wgt.txt" ; 
@@ -173,3 +194,5 @@ bool ReadEventWeight(event_wgt *_tar) ;
 bool SaveScores2DB(credit_scores *_Scores,const char *_UserID) ;
 
 bool ReadScoresFromDB(const char *_UserID) ;
+
+void score_compute(const credit_sum *_Js,const event_wgt *_Wgt,cust_score *_Outcome) ;

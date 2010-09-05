@@ -146,7 +146,7 @@ bool appy_check_input_data(apply_input_info* _input){
 				_input->input_asset_info.cust_demand_deposit
 				== deposit_none_range) return false;
 	}
-	if(_input->input_asset_info.cust_deposit_type == has_deposit){
+	if(_input->input_asset_info.cust_deposit_type != none_deposit){
 		//填了"无存款,但是后面有一个没填"无""
 		if(_input->input_asset_info.cust_demand_deposit
 			!= deposit_none_range ||

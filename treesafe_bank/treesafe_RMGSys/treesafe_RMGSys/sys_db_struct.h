@@ -107,7 +107,6 @@ struct apply_custmor_info{
 	char cust_zip_code[APPLY_CUST_ZIP_CODE_LEN];//邮政编码
 	APPLY_CUST_HOUSING_TENURE cust_house_type;//住宅权属
 	//////////////////////////////////////////////////////////
-
 };
 
 /*
@@ -132,7 +131,8 @@ struct apply_custmor_info{
 
 enum APPLY_DEPOSIT_TYPE{
 	none_deposit/*无存款*/,
-	has_deposit//有存款
+	demand_deposit ,//活期存款
+	time_deposit ,
 };
 
 enum APPLY_PERSON_INCOME_RANGE{
