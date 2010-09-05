@@ -47,7 +47,7 @@ namespace treesafe.Workers
     {
         //public char[] info;
         public int _num;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30)]
         public user_query_info[] _info;
         public user_query_arr_info(string _info)
         {
