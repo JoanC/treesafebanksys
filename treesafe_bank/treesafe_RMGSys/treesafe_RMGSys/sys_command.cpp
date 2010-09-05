@@ -67,6 +67,10 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	case(sys_cmd_query_employee):{
 		sys_command_query_employee(_command,_rlt,_rlt_len);
 								 }break;
+		//调用用户数组主函式
+	case(sys_cmd_query_user_array):{
+		sys_command_query_user_array(_command,_rlt,_rlt_len);
+								   }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;

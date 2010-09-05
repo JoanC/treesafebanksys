@@ -77,6 +77,9 @@ void user_query_array_frame(const char* _cmd,int _cmd_len,char* _rlt,int* _rlt_l
 	//20.3
 	bool _query_num_rlt = 
 		user_query_arr_count(&_frame->rlt_info.query_arr_info.user_num);
+	//为数组申请内存
+	init_user_query_array_info(_frame->rlt_info.query_arr_info.user_num
+		,&_frame->rlt_info.query_arr_info);
 	//20.4
 	if(_query_num_rlt) user_query_arr(&_frame->rlt_info.query_arr_info
 		,&_frame->rlt_info.query_arr_info.user_num);
