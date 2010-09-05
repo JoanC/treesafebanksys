@@ -205,6 +205,7 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 
 //11.4
 void get_score_save_score(credit_scores* _rlt){
+
 }
 
 //11.5
