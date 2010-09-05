@@ -1,12 +1,6 @@
 #pragma once
 #include "database_mgr.h"
 
-
-
-//模块11
-//信用评级
-//...待讨论
-
 struct card_type  //申请证件类型
 {
 	float 	personal_id ;		//身份证
