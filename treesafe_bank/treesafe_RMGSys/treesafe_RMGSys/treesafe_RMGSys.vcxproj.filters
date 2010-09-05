@@ -127,6 +127,9 @@
     <None Include="ini.txt">
       <Filter>credit_compute\Tool</Filter>
     </None>
+    <None Include="event_wgt.txt">
+      <Filter>credit_compute\Tool</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
