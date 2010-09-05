@@ -51,3 +51,11 @@ bool user_query_arr_count(int* _count) ;
 //数组中存放这些农民的信息
 //结果存入一个指针中
 bool user_query_arr(user_query_array_info* user_array,int* _arr_size) ;
+
+//20.5
+//转化结果数据
+void user_query_arr(user_query_array_info* _info,char* _rlt,int* _rlt_len);
+
+
+//模块20的主函式
+void user_query_array_frame(const char* _cmd,int _cmd_len,char* _rlt,int _rlt_len);

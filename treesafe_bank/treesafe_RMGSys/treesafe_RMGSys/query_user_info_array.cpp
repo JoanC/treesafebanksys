@@ -35,3 +35,21 @@ bool user_query_arr(user_query_array_info* user_array,int* _arr_size)
 {
 	return Find_all_passed_user(treesafe_db_connection,user_array,*_arr_size) ;
 }
+
+//20.5
+void user_query_arr(user_query_array_info* _info,char* _rlt,int* _rlt_len){
+	//先要去计算需要传输的数据的字节长度
+	*_rlt_len
+		= sizeof(user_query_array_info) 
+		+ _info->user_num * sizeof(user_query_info);
+	//复制结果信息
+	memcpy(_rlt,_info,*_rlt_len);
+}
+
+//20主函式
+void user_query_array_frame(const char* _cmd,int _cmd_len,char* _rlt,int _rlt_len){
+	//20.1
+	//初始化主模块
+	user_query_arr_modle* _frame = 
+		init_user_query_arr_modle();
+}
