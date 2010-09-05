@@ -139,7 +139,6 @@ void login_convert_rlt(login_info* _info , char* _rlt , int* _rlt_len){
 	//为结果信息申请动态的内存
     //长度就是login_info的长度
 	*_rlt_len = sizeof(login_info);
-	_rlt = (char*)malloc(*_rlt_len);
 	memcpy(_rlt,_info,sizeof(login_info));
 }
 
