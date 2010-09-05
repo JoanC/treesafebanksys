@@ -32,7 +32,7 @@ namespace treesafe.Workers
     public struct user_query_array_info
     {
         public int user_num;
-        [MarshalAs(UnmanagedType.Struct.GetType(), SizeConst = 100)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
         public user_query_info[] user_array;
         public user_query_array_info(int _num)
         {

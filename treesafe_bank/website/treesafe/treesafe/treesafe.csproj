@@ -102,6 +102,7 @@
     <Content Include="Users\ApplicationPageNext2.aspx" />
     <Content Include="Users\ApplicationPageNext3.aspx" />
     <Content Include="Users\UserApplicationPage.aspx" />
+    <Content Include="Users\UserDataListPage.aspx" />
     <Content Include="Users\UserEditInfoPage.aspx" />
     <Content Include="Users\UserFinishApplicationPage.aspx" />
     <Content Include="Users\UserHelpPage.aspx" />
@@ -343,6 +344,13 @@
     </Compile>
     <Compile Include="Users\UserApplicationPage.aspx.designer.cs">
       <DependentUpon>UserApplicationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserDataListPage.aspx.cs">
+      <DependentUpon>UserDataListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserDataListPage.aspx.designer.cs">
+      <DependentUpon>UserDataListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\UserEditInfoPage.aspx.cs">
       <DependentUpon>UserEditInfoPage.aspx</DependentUpon>
