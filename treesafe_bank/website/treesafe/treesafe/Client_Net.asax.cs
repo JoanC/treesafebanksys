@@ -15,7 +15,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
-
+using System.Threading;
 
 namespace ClientNet
 {
@@ -95,32 +95,11 @@ namespace ClientNet
             {
                // this.m_client = new TcpClient(this.m_config.m_server_ip, this.m_config.m_port_num);
                 this.m_net_stream = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                //try
-                //{
-                    this.m_net_stream.Connect(m_config.m_server_ip, m_config.m_port_num);
-                //}
-                /*
-                catch (System.ArgumentNullException)
-                {
-                    int i;
-                }
-                catch (System.ArgumentOutOfRangeException)
-                {
-                    int i;
-                }
-                catch (System.Net.Sockets.SocketException)
-                {
-                    int i;
-                }
-                catch (System.ObjectDisposedException)
-                {
-                    int i;
-                }
-                catch (System.Security.SecurityException)
-                {
-                    int i;
-                }
-                */
+                while (m_net_stream.Connected)
+                { 
+                     this.m_net_stream.Connect(m_config.m_server_ip, m_config.m_port_num);
+                     Thread.Sleep(1000);
+                }    
             }
 
             private byte[] StructToBytes(object obj)
@@ -174,7 +153,7 @@ namespace ClientNet
             public void send_command_data(int _cmd_type, object _obj_data)
             {
                 //连接服务器
-                this.connect_server();
+                 this.connect_server();
                 //数据
                 //将结构体(对象)数据序列化
                 byte[] _send_msg = this.StructToBytes(_obj_data);
@@ -215,14 +194,13 @@ namespace ClientNet
                       }
                       else this.m_net_stream.Send(dataSend,i * BufSize,BufSize,SocketFlags.None);
       	          }
-                     //关闭连接
 	            }  
             }
                public object recevie_data(Type _obj_type)
                {
                     int iCount = 99;
                     byte[] cCount = System.BitConverter.GetBytes(iCount);
-
+                   
                    this.m_net_stream.Receive(cCount, 0, cCount.Length, SocketFlags.None);
   
                    
