@@ -21,8 +21,8 @@ user_query_arr_modle* init_user_query_arr_modle(){
 
 void release_user_query_arr_modle(user_query_arr_modle* _release){
 	//先释放数组
-	if(_release->rlt_info.query_arr_info.user_num == 0) return;
-	if(_release->rlt_info.query_arr_info.user_array == NULL) return;
+	//if(_release->rlt_info.query_arr_info.user_num == 0) return;
+	//if(_release->rlt_info.query_arr_info.user_array == NULL) return;
 	//再释放整体模块
 	free(_release);
 }
@@ -82,4 +82,5 @@ void user_query_array_frame(const char* _cmd,int _cmd_len,char* _rlt,int* _rlt_l
 	if(_query_num_rlt) user_query_arr(&_frame->rlt_info.query_arr_info
 		,&_frame->rlt_info.query_arr_info.user_num);
 	user_query_arr_convert_rlt(&_frame->rlt_info,_rlt,_rlt_len);
+	release_user_query_arr_modle(_frame);
 }
