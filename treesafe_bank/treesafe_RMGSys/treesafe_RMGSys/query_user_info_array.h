@@ -12,8 +12,8 @@
 struct user_query_arr_input{};//空结构体
 
 struct user_query_arr_info{
+//	sys_err err_info;
 	user_query_array_info query_arr_info;//数组信息
-	sys_err err_info;
 };//结果信息
 
 struct user_query_arr_modle{

@@ -7,7 +7,7 @@ extern _ConnectionPtr *treesafe_db_connection ;
 
 //20.1
 void init_user_querry_arr_info(user_query_arr_info* _init){
-	init_sys_err(&_init->err_info);
+	//init_sys_err(&_init->err_info);
 	_init->query_arr_info.user_num = 0;
 	_init->query_arr_info.user_array = NULL;
 }

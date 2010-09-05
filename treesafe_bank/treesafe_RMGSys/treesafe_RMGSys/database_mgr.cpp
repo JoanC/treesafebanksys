@@ -440,7 +440,8 @@ bool Insert_app_cust_info(_ConnectionPtr *_pConn,const apply_custmor_info *_info
 	strcat(sqlStr,_info->cust_name) ;
 	strcat(sqlStr,"','") ;
 	char temp[6] ;
-	strcpy(temp, _info->cust_gender == apply_info_male ? "true" : "false") ;
+	memset(temp,0,6) ;
+	itoa(_info->cust_gender,temp,10) ;
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	memset(temp,0,6) ;
@@ -880,14 +881,7 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 			strcpy(_info->input_basic_info.cust_name, (char *)(_bstr_t)varName)  ;
 		}
 
-		if (varGend.vt == VT_NULL)
-		{
-			bRtnVal = false ;
-		}
-		else
-		{
-			_info->input_basic_info.cust_gender  =  varGend.boolVal ? apply_info_male : apply_info_female ;
-		}
+		ConvertVar2Int(&varGend,(int*)&_info->input_basic_info.cust_gender) ;
 
 		if (varAge.vt == VT_NULL)
 		{
