@@ -70,11 +70,11 @@ bool ReadEventScores(credit_sum *_tar)
 bool SaveEventWeight(event_wgt *_tar) 
 {
 	FILE *pFile = NULL ;
-	pFile = fopen(filename,"wt") ;
+	pFile = fopen(filename_wgt,"wt") ;
 
 	if( ! pFile )
 	{
-		printf("can not open %s\n",filename) ;
+		printf("can not open %s\n",filename_wgt) ;
 		return false ;
 	}
 
@@ -87,11 +87,11 @@ bool SaveEventWeight(event_wgt *_tar)
 bool ReadEventWeight(event_wgt *_tar) 
 {
 		FILE *pFile = NULL ;
-	pFile = fopen(filename,"rt") ;
+	pFile = fopen(filename_wgt,"rt") ;
 
 	if( ! pFile )
 	{
-		printf("can not open %s\n",filename) ;
+		printf("can not open %s\n",filename_wgt) ;
 		return false ;
 	}
 
