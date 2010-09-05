@@ -123,6 +123,7 @@
     <Content Include="Workers\WorkerApplicationPage.aspx" />
     <Content Include="Workers\WorkerFinishApplicationPage.aspx" />
     <Content Include="Workers\WorkerHelpPage.aspx" />
+    <Content Include="Workers\WorkerNewTeamPage.aspx" />
     <Content Include="Workers\WorkerOneTeamPage.aspx" />
     <Content Include="Workers\WorkerOneUserDataPage.aspx" />
     <Content Include="Workers\WorkerRootPage.aspx" />
@@ -456,6 +457,13 @@
     </Compile>
     <Compile Include="Workers\WorkerHelpPage.aspx.designer.cs">
       <DependentUpon>WorkerHelpPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workers\WorkerNewTeamPage.aspx.cs">
+      <DependentUpon>WorkerNewTeamPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Workers\WorkerNewTeamPage.aspx.designer.cs">
+      <DependentUpon>WorkerNewTeamPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Workers\WorkerOneTeamPage.aspx.cs">
       <DependentUpon>WorkerOneTeamPage.aspx</DependentUpon>

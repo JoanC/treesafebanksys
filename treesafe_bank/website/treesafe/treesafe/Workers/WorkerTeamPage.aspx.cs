@@ -60,6 +60,7 @@ namespace treesafe.Workers
         protected void AddTeamButton_Click(object sender, EventArgs e)
         {
             //增加联保小组界面
+            Response.Redirect("WorkerNewTeamPage.aspx");
         }
     }
 }

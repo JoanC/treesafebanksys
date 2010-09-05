@@ -2,10 +2,7 @@
 CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.AdmintratorNewLaborPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <style type="text/css">
-        .textEntry
-        {}
-    </style>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
