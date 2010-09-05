@@ -5,6 +5,9 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server"
+                   EnablePartialRendering="true" /> 
     <h2>
        修改风险评估权重
     </h2>
@@ -13,15 +16,16 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
     <br/>
     当您对其中一项作出修改时，系统会自动调整其下各项的百分比值。
     </p>
-     <div>
-          <fieldset>
+         
     <p class="header" style="font-size: medium; color: #FFFFFF;">
         还贷能力部分
         </p>
         <p>
         *此部分主要描述申请人的经济实力*
         </p>
-          <p> 
+          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+              <ContentTemplate>
+              <fieldset>
               <asp:ImageButton ID="WeightIncomeAdd" runat="server" 
                   ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightIncomeAdd_Click"/>
               <asp:ImageButton ID="WeightIncomeSub" runat="server" 
@@ -30,8 +34,13 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               1. 申请人收入:</asp:Label>
                <asp:Label ID="WeightIncome" runat="server" Text="10" ForeColor="Blue"></asp:Label>
              %
-           </p>
-            <p>
+            </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+              <ContentTemplate>
+              <fieldset>
+           
                 <asp:ImageButton ID="WeightDepositAdd" runat="server" 
                     ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightDepositAdd_Click"/>
                 <asp:ImageButton ID="WeightDepositSub" runat="server" 
@@ -40,8 +49,12 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               2. 申请人存款:</asp:Label>
                <asp:Label ID="WeightDeposit" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
-            <p>
+           </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+              <ContentTemplate>
+              <fieldset>
                 <asp:ImageButton ID="WeightLoanAdd" runat="server" 
                     ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightLoanAdd_Click"/>
                 <asp:ImageButton ID="WeightLoanSub" runat="server" 
@@ -50,8 +63,12 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               3. 申请人负债:</asp:Label>
                <asp:Label ID="WeightLoan" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
-           <p>
+          </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+             <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+              <ContentTemplate>
+              <fieldset>
                <asp:ImageButton ID="WeightMortagageAdd" runat="server" 
                    ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightMortagageAdd_Click"/>
                <asp:ImageButton ID="WeightMortagageSub" runat="server" 
@@ -60,7 +77,10 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               4. 申请人未抵押的主要固定资产:</asp:Label>
                <asp:Label ID="WeightMortagage" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
+          </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+
 
             <p class="header" style="font-size: medium; color: #FFFFFF;">
         个人信誉部分
@@ -68,7 +88,10 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
         <p>
         *此部分主要描述申请人的社会记录，包括个人社会地位，声誉等*
         </p>
-           <p>
+
+             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+              <ContentTemplate>
+              <fieldset>
                <asp:ImageButton ID="WeightIDAdd" runat="server" 
                    ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightIDAdd_Click"/>
                <asp:ImageButton ID="WeightIDSub" runat="server" 
@@ -77,8 +100,12 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               5. 申请人证件类型（系统自动给予现役军人更高的分值）:</asp:Label>
                <asp:Label ID="WeightID" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
-           <p>
+          </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+              <ContentTemplate>
+              <fieldset>
                <asp:ImageButton ID="WeightEducationAdd" runat="server" 
                    ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightEducationAdd_Click" />
                <asp:ImageButton ID="WeightEducationSub" runat="server" 
@@ -87,8 +114,12 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               6. 申请人受教育情况:</asp:Label>
                <asp:Label ID="WeightEducation" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
-           <p>
+          </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+             <asp:UpdatePanel ID="UpdatePanel7" runat="server">
+              <ContentTemplate>
+              <fieldset>
                <asp:ImageButton ID="WeightHomeAdd" runat="server" 
                    ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightHomeAdd_Click" />
                <asp:ImageButton ID="WeightHomeSub" runat="server" 
@@ -97,8 +128,12 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               7. 申请人家庭状况:</asp:Label>
                <asp:Label ID="WeightHome" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
-           <p>
+          </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+             <asp:UpdatePanel ID="UpdatePanel8" runat="server">
+              <ContentTemplate>
+              <fieldset>
                <asp:ImageButton ID="WeightLoanRecordAdd" runat="server" 
                    ImageUrl="~/Admintrators/Pictures/add.png" 
                    onclick="WeightLoanRecordAdd_Click" />
@@ -109,8 +144,12 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               8. 申请人以往贷款记录:</asp:Label>
                <asp:Label ID="WeightLoanRecord" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
-           <p>
+           </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+             <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+              <ContentTemplate>
+              <fieldset>
                <asp:ImageButton ID="WeightSocietyRecordAdd" runat="server" 
                    ImageUrl="~/Admintrators/Pictures/add.png" 
                    onclick="WeightSocietyRecordAdd_Click" />
@@ -121,7 +160,10 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               9. 申请人不良社会记录:</asp:Label>
                <asp:Label ID="WeightSocietyRecord" runat="server" Text="10" ForeColor="Blue"></asp:Label>
                %
-           </p>
+          </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+
 
            <p class="header" style="font-size: medium; color: #FFFFFF;">
         还贷风险部分
@@ -129,7 +171,9 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
         <p>
         *此部分主要描述申请人收入稳定程度*
         </p>
-          <p>
+             <asp:UpdatePanel ID="UpdatePanel10" runat="server">
+              <ContentTemplate>
+              <fieldset>
               <asp:ImageButton ID="WeightWorkAdd" runat="server" 
                   ImageUrl="~/Admintrators/Pictures/add.png" onclick="WeightWorkAdd_Click" />
               <asp:ImageButton ID="WeightWorkSub" runat="server" 
@@ -138,13 +182,13 @@ CodeBehind="AdmintratorEditRiskPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               10. 申请人行业风险:</asp:Label>
                <asp:Label ID="WeightWork" runat="server" Text="20" ForeColor="Blue"></asp:Label>
                %
-           </p>
-           </fieldset>
+            </fieldset>
+            </ContentTemplate>
+            </asp:UpdatePanel>
 
            <p class="submitButton">
               <asp:Button ID="FinishEditWeightButton" runat="server" CommandName="MoveNext" Text="完成权重设定" 
                           ValidationGroup="ApplicationValidationGroup" 
                    onclick="FinishEditWeightButton_Click"/>
            </p>
-        </div>
 </asp:Content>
