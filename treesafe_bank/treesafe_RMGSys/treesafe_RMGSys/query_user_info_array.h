@@ -11,14 +11,14 @@
 
 struct user_query_arr_input{};//空结构体
 
-struct user_querry_arr_info{
+struct user_query_arr_info{
 	user_query_array_info query_arr_info;//数组信息
 	sys_err err_info;
 };//结果信息
 
 struct user_query_arr_modle{
 	user_query_arr_input input_info;
-	user_querry_arr_info rlt_info;
+	user_query_arr_info rlt_info;
 };
 
 //20.1
@@ -37,7 +37,9 @@ void release_user_query_arr_modle(user_query_arr_modle* _release);
 void user_query_copy_cmd(const char* _cmd , char* _dest, int _cmd_len);
 
 //转化指令
-void user_query_convert_cmd();
+user_query_arr_input* user_query_convert_cmd(char* _info);
+
+user_query_arr_input* query_user_arr_get_cmd(const char* _cmd,int _cmd_len);
 
 //20.3
 //sunni完成
@@ -50,11 +52,11 @@ bool user_query_arr_count(int* _count) ;
 //得到一个数组
 //数组中存放这些农民的信息
 //结果存入一个指针中
-bool user_query_arr(user_query_array_info* user_array,int* _arr_size) ;
+bool user_query_arr(user_query_arr_info* user_array,int* _arr_size) ;
 
 //20.5
 //转化结果数据
-void user_query_arr(user_query_array_info* _info,char* _rlt,int* _rlt_len);
+void user_query_arr_convert_rlt(user_query_arr_info* _info,char* _rlt,int* _rlt_len);
 
 
 //模块20的主函式
