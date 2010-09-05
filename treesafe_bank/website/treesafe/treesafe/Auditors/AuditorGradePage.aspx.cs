@@ -17,7 +17,7 @@ namespace treesafe.Auditors
         protected void CommitApplicationGradeButton_Click(object sender, EventArgs e)
         {
             //读取信息
-
+            int i = int.Parse(ApplicationMortgageGrade.Text);
             //结束评分，跳转到成功界面
             Response.Redirect("AuditorCommitPage.aspx");
         }
