@@ -11,7 +11,8 @@ struct edu_status			//受教育情况
 	float master_or_above ; //硕士及以上
 	float bachelor_or_college ; //学士或大专
 	float high_sch_or_secondary ; //高中或中专
-	float bellow ;				//初中及以下
+	float senior_sch ; // 初中
+	float primary_or_bellow ;				//初中及以下
 };
 ///////////////////////////////////////////
 ///////////////////////////////////////////income
@@ -115,7 +116,8 @@ struct spouse_edu_status  //配偶受教育程度
 	float master_or_above ; //硕士及以上
 	float bachelor_or_college ; //学士或大专
 	float high_sch_or_secondary ; //高中或中专
-	float bellow ;				//初中及以下
+	float senior_sch ;
+	float primary_or_bellow ;				//初中
 } ;
 struct spouse_has_loan
 {
@@ -157,28 +159,7 @@ struct event_wgt
 	float auditor_edit ;
 } ;
 
-
-struct credit_cust_info
-{
-	APPLY_CARD_TYPE ct ;
-	APPLY_CUST_EDUCATION_DEGREE edu ;
-	APPLY_PERSON_INCOME_RANGE pin ;
-	APPLY_FAMILY_INCOME_RANGE fin ;
-	APPLY_DEPOSIT_TYPE dt ;
-	APPLY_DEPOSIT_RANGE depos ;
-	APPLY_LOAN_RANGE lr ;
-	APPLY_LOAN_TIME lt ;
-	bool b_fixed_assets_be_pledged ;
-	APPLY_UNSECURED_FIXED_ASSETS ufa ;
-	APPLY_CUST_MARITAL_STATUS cms ;
-	APPLY_CARD_TYPE sct ;
-	APPLY_CUST_EDUCATION_DEGREE sedu ;
-	bool Sloan ;
-
-} ;
-
 typedef  credit_scores_db credit_scores ;
-typedef event_wgt cust_score ;
 
 const char filename[] = "ini.txt" ;
 const char filename_wgt[] = "event_wgt.txt" ; 
@@ -194,5 +175,3 @@ bool ReadEventWeight(event_wgt *_tar) ;
 bool SaveScores2DB(credit_scores *_Scores,const char *_UserID) ;
 
 bool ReadScoresFromDB(const char *_UserID) ;
-
-void score_compute(const credit_sum *_Js,const event_wgt *_Wgt,cust_score *_Outcome) ;
