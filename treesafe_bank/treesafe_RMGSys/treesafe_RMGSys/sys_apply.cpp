@@ -205,7 +205,9 @@ void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len){
 
 	//7.5
 //	if(_cust_exsit&&_cust_info_true) 
-	apply_save_to_research_table(&_apply_frame->input_info);
+	if(!apply_save_to_research_table(&_apply_frame->input_info)){
+
+	}
 
 	//7.6
 	//整理结果
