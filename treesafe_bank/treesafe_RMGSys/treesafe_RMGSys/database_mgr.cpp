@@ -1007,8 +1007,6 @@ bool Get_app_cust_info(_ConnectionPtr *_pConn,apply_input_info *_info)
 		{
 			const char emptyStr[] = "null" ;
 			strcpy(_info->input_basic_info.cust_other_tel_num,emptyStr) ;
-
-			bRtnVal = false ;
 		}
 		else
 		{
