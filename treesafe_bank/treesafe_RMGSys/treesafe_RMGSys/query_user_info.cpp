@@ -14,8 +14,6 @@ void init_user_query_info(user_query_info* _init){
 void init_user_query_array_info(int _size,user_query_array_info* _init){
 	_init->user_num = _size;
 	//为数组申请内存
-	_init->user_array
-		= (user_query_info*)malloc(sizeof(user_query_info) * _size);
 	//为每个元素进行初始化设置
 	for(int i = 0 ; i < _size ; ++i)
 	{
