@@ -6,12 +6,14 @@ extern _ConnectionPtr *treesafe_db_connection ;
 
 //18.1
 void init_research_query_input_info(research_query_input_info* _init){
+DEBUG_RESEARCH_QUERY_PRINT("init_research_query_input_info\n");
     //初始化输入信息模块	
 	//字符串的初始化为空
 	strcpy(_init->app_id,"");
 }
 
 void init_research_query_info(research_query_info* _init){
+DEBUG_RESEARCH_QUERY_PRINT("init_research_query_info\n");
 	//初始化结果模块
 	//初始化申请信息
 	//初始化用户基本信息
@@ -27,6 +29,7 @@ void init_research_query_info(research_query_info* _init){
 }
 
 research_query_modle* init_research_query_modle(){
+DEBUG_RESEARCH_QUERY_PRINT("init_research_query_modle\n");
 	//初始并产生主模块
 	research_query_modle* _new_modle
 		= (research_query_modle*)malloc(sizeof(research_query_modle));
@@ -38,6 +41,7 @@ research_query_modle* init_research_query_modle(){
 }
 
 void release_research_query_modle(research_query_modle* _release){
+DEBUG_RESEARCH_QUERY_PRINT("release_research_query_modle\n");
 	//释放模块
 	free(_release);
 }
@@ -46,16 +50,19 @@ void release_research_query_modle(research_query_modle* _release){
 //18.2
 void research_query_copy_cmd(const char* _cmd
 	,char* _dest , int _cmd_len){
+DEBUG_RESEARCH_QUERY_PRINT("research_query_copy_cmd\n");
 		//命令信息的复制
 		memcpy(_dest,_cmd,_cmd_len);
 }
 
 research_query_input_info* research_query_convert_cmd(char* _info){
 	//转化并解码输入的信息
+DEBUG_RESEARCH_QUERY_PRINT("research_query_convert_cmd\n");
 	return (research_query_input_info*)_info;
 }
 
 research_query_input_info* research_query_get_cmd(const char* _cmd,int _cmd_len){
+DEBUG_RESEARCH_QUERY_PRINT("research_query_get_cmd\n");
 	//获取指令的主函式
 	char _info[sizeof(research_query_input_info)];
 	//复制指令
@@ -67,6 +74,7 @@ research_query_input_info* research_query_get_cmd(const char* _cmd,int _cmd_len)
 //模块18.3
 void research_query_get_data(const char* _app_id,research_query_data* _data,bool* _rlt)
 {
+	DEBUG_RESEARCH_QUERY_PRINT("research_query_get_data\n");
 	strcpy(_data->input_asset_info.app_id,_app_id) ;
 	strcpy(_data->input_basic_info.app_id,_app_id) ;
 	strcpy(_data->input_fammily_info.app_id,_app_id) ;
@@ -81,6 +89,7 @@ void research_query_get_data(const char* _app_id,research_query_data* _data,bool
 //模块18.4
 void research_query_convert_rlt(research_query_info* _info
 	,char* _rlt , int* _rlt_len){
+DEBUG_RESEARCH_QUERY_PRINT("init_research_query_info\n");
 	//将查询的数据整合到结果数据中
 	*_rlt_len = sizeof(research_query_info);
 	//复制指令
@@ -89,6 +98,7 @@ void research_query_convert_rlt(research_query_info* _info
 
 void research_query_frame(const char* _cmd,int _cmd_len
 	,char* _rlt,int* _rlt_len){
+DEBUG_RESEARCH_QUERY_PRINT("research_query_frame\n");
 		//模块18的主函式
 		//初始化模块
 		research_query_modle* _modle
