@@ -2,7 +2,7 @@
 #include "sys_admin_employee_info.h"
 
 
-#define MAX_EMPLOYEE_NUM 30
+#define MAX_EMPLOYEE_NUM 15
 
 //模块23
 //查询雇员列表
