@@ -55,5 +55,11 @@ namespace treesafe.Users
                 LaborTable.Rows.Add(r);//添加行对
             }
         }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Image1.Visible = true;
+            Image2.Visible = true;
+        }
     }
 }

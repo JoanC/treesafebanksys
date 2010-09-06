@@ -17,5 +17,11 @@ namespace treesafe.Users
             }
 
         }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Image3.Visible = true;
+            Image2.Visible = true;
+        }
     }
 }
