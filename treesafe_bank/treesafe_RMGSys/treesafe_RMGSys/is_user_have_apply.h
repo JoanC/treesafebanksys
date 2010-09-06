@@ -36,4 +36,27 @@ void release_user_has_app_modle(user_has_app_modle* _release);
 //27.2
 //指令接受
 
-void user_has_app_copy_cmd();
+void user_has_app_copy_cmd(const char* _cmd , char* _dest , int _cmd_len);
+
+//数据转化
+user_has_app_input* user_has_app_convert_cmd(char* _info);
+
+//获取指令主函式
+user_has_app_input* user_has_app_get_cmd(const char* _cmd
+	,int _cmd_len);
+
+//27.3
+//待sunni完成
+//数据库查询
+
+void user_has_app_get_data(char* _card_id , bool* _rlt);
+
+
+//27.4
+//结果信息的转化
+void user_has_app_convert_rlt(user_has_app_info* _info
+	,char* _rlt,int* _rlt_len);
+
+//模块27的主函式
+void user_has_app_frame(const char* _cmd,int _cmd_len,
+	);
