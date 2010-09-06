@@ -104,6 +104,9 @@
     <Content Include="Users\ApplicationPageNext1.aspx" />
     <Content Include="Users\ApplicationPageNext2.aspx" />
     <Content Include="Users\ApplicationPageNext3.aspx" />
+    <Content Include="Users\Pictures\send.png" />
+    <Content Include="Users\Pictures\send1.png" />
+    <Content Include="Users\Pictures\sending.png" />
     <Content Include="Users\UserApplicationPage.aspx" />
     <Content Include="Users\UserDataListPage.aspx" />
     <Content Include="Users\UserEditInfoPage.aspx" />

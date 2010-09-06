@@ -5,6 +5,8 @@ CodeBehind="UserRiskEvaluationPage.aspx.cs" Inherits="treesafe.Users.UserRiskEva
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager ID="ScriptManager2" runat="server"
+                   EnablePartialRendering="true" /> 
     <h2>
       您的风险评估结果
     </h2>     
@@ -83,4 +85,17 @@ CodeBehind="UserRiskEvaluationPage.aspx.cs" Inherits="treesafe.Users.UserRiskEva
            </p>
            </fieldset>
         </div>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+    <fieldset>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:ImageButton ID="ImageButton1" runat="server" 
+            ImageUrl="~/Users/Pictures/send.png" onclick="ImageButton1_Click" 
+            onclientclick="return confirm('您的最新评估消息已发送到您的手机上！')"/>
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Users/Pictures/sending.png" Visible="false"/>
+        <asp:Image ID="Image2" runat="server" ImageUrl="~/Users/Pictures/send1.png" Visible="false"/>
+        </fieldset>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+        
 </asp:Content>
