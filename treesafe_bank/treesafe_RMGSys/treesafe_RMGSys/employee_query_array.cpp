@@ -59,3 +59,16 @@ void query_employee_arr_convert_rlt(query_employee_array_info* _info,
 }
 
 
+void query_employee_arr_frame(const char* _cmd , int _cmd_len,
+	char* _rlt , int* _rlt_len){
+		query_employee_modle* _frame
+			= (query_employee_modle*)malloc(sizeof(query_employee_modle));
+		_frame->input = *query_employee_arr_get_cmd(_cmd,_cmd_len);
+		//µ÷ÓÃ23.3Ä£¿é
+
+		//23.4
+		query_employee_arr_convert_rlt(&_frame->rlt_info,
+			_rlt,_rlt_len);
+		release_query_employee_arr_modle(_frame);
+}
+
