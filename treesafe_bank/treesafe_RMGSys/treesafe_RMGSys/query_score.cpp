@@ -51,3 +51,22 @@ void query_score_rlt_convert(query_score_info* _info , char* _rlt , int* _rlt_le
 	*_rlt_len = sizeof(query_score_info);
 	memcpy(_rlt,_info,*_rlt_len);
 }
+
+//模块21主函式
+void query_score_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _rlt_len){
+	//初始化模块
+	query_score_modle* _modle
+		= init_query_score_modle();
+	//21.2
+	//输入信息的获取
+	_modle->input_info = *query_score_get_cmd(_cmd,_cmd_len);
+	//21.3
+	//数据库查询
+	//query_score_db();
+	//21.4
+	//转化结果
+	query_score_rlt_convert(&_modle->rlt_info,_rlt,_rlt_len);
+	//21.1
+	//释放模块
+	release_query_score_modle(_modle);
+}

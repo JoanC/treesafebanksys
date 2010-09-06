@@ -54,3 +54,4 @@ void query_score_db(char* _cust_id,credit_scores* _db_rlt);
 void query_score_rlt_convert(query_score_info* _info , char* _rlt , int* _rlt_len);
 
 //Ä£¿é21Ö÷º¯Ê½
+void query_score_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _rlt_len);
