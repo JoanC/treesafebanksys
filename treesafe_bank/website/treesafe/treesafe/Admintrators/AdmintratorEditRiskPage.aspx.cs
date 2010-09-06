@@ -4,12 +4,76 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using treesafe;
+
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using ClientNet;
+using Chinese_Encode;
 
 namespace treesafe.Admintrators
 {
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
+    public struct event_wgt
+    {
+        public int income;
+        public int depos;
+        public int repayment;
+        public int fixed_assets_be_pledged;
+        public int id_type;
+        public int edu;
+        public int marriage;
+        public int loan_record;
+        public int social_record;
+        public int auditor_edit;
+        public event_wgt(string _pad)
+        {
+            income = 0;
+            depos = 0;
+            repayment = 0;
+            fixed_assets_be_pledged = 0;
+            id_type = 0;
+            edu = 0;
+            marriage = 0;
+            loan_record = 0;
+            social_record = 0;
+            auditor_edit = 0;
+        }
+    } ;
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+    struct update_weight_input
+    {
+        public event_wgt new_wgt;//新的权重
+        public update_weight_input(string _pad)
+        {
+            new_wgt = new event_wgt("");
+        }
+    };
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+    struct update_weight_info
+    {
+        public sys_err err_info;
+        public update_weight_info(string _pad) 
+        {
+            err_info = new sys_err(0,_pad);
+        }
+    };
+
     public partial class AdmintratorEditRiskPage : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             //从显示权重页面读入数据
@@ -33,12 +97,34 @@ namespace treesafe.Admintrators
         {
             //读取页面数据
             //存储数据
-            
-            
-            
+            web_net_client_mgr _net = new web_net_client_mgr();
+           // _net.send_command_data(14,);
+            event_wgt _data = get_data();
+            update_weight_input _input = new update_weight_input("");
+            _input.new_wgt = _data;
+            _net.send_command_data(14,_input);
+            update_weight_info _rlt = new update_weight_info("");
+            _rlt = (update_weight_info)_net.recevie_data(_rlt.GetType());
             //返回权重显示页面
             Session["riskpage"] = "0";
             Response.Redirect("AdmintratorRiskManagementPage.aspx");
+        }
+
+        protected event_wgt get_data()
+        {
+            event_wgt _data = new event_wgt("");
+            _data.income = int.Parse(WeightIncome.Text);
+            _data.depos = int.Parse(WeightDeposit.Text);
+            _data.repayment = int.Parse(WeightLoan.Text);
+            _data.fixed_assets_be_pledged
+                = int.Parse(WeightMortagage.Text);
+            _data.id_type = int.Parse(WeightID.Text);
+            _data.edu = int.Parse(WeightEducation.Text);
+            _data.marriage = int.Parse(WeightHome.Text);
+            _data.loan_record = int.Parse(WeightLoanRecord.Text);
+            _data.social_record = int.Parse(WeightSocietyRecord.Text);
+            _data.auditor_edit = int.Parse(WeightWork.Text);
+            return _data;
         }
 
         protected void WeightIncomeAdd_Click(object sender, ImageClickEventArgs e)

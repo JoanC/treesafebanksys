@@ -26,7 +26,7 @@ namespace treesafe.Admintrotors
     /*权重查询流程的输入输出结构*/
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
-    struct query_weight_input_info { };//空
+    public struct query_weight_input_info { };//空
 
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
