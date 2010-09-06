@@ -6,8 +6,8 @@ extern _ConnectionPtr* treesafe_db_connection ;
 
 //6.1 初始化与释放 
 
-void reg_init_REG_basic_info(reg_basic_info* _init){
-DEBUG_REG_PRINT
+void reg_init_reg_basic_info(reg_basic_info* _init){
+DEBUG_REG_PRINT("initilize register basic info\n");
 	//初始化基本信息
 	//初始用户名
 	//初始化身份证号,十八位0
@@ -25,17 +25,17 @@ DEBUG_REG_PRINT
 	_init->reg_age = 18;
 }
 
-void reg_init_REG_input_info(reg_input_info* _init){
+void reg_init_reg_input_info(reg_input_info* _init){
 	//初始化输入信息
 	//设置基本信息块
-	reg_init_REG_basic_info(&_init->basic_info);
+	reg_init_reg_basic_info(&_init->basic_info);
 	//设置其它附加信息,这里以电子邮件为例
 	strcpy(_init->email_addr,"");
 	//设置密码双次验证的正确性,初始置为false
 	_init->is_pwd_vry_crr = false;
 }
 
-void reg_init_REG_info(reg_info* _init){
+void reg_init_reg_info(reg_info* _init){
 	//初始化注册过程信息
 	//初始化错误信息
 	init_sys_err(&_init->reg_err);
@@ -51,9 +51,9 @@ reg_modle* reg_init(){
 	//注册是否成功 
 	_new_modle->reg_succ = false;
 	//初始化各数据块
-	reg_init_REG_input_info(&_new_modle->input_info);
-	reg_init_REG_basic_info(&_new_modle->db_query_from_bank);
-	reg_init_REG_info(&_new_modle->info);
+	reg_init_reg_input_info(&_new_modle->input_info);
+	reg_init_reg_basic_info(&_new_modle->db_query_from_bank);
+	reg_init_reg_info(&_new_modle->info);
 	return _new_modle;
 }
 
@@ -199,12 +199,12 @@ void reg_summery_rlt_data(reg_modle* _mld){
 }
 
 //6.7
-void reg_error_compute(sys_REG_type _type , reg_modle* _modle){
+void reg_error_compute(sys_err_type _type , reg_modle* _modle){
 	DEBUG_REG_PRINT("regist error occured !\n");
 	_modle->reg_succ = false;
 	//查找错误信息
 	_modle->info.reg_err.type = _type;
-	sys_REG_search(&_modle->info.reg_err);
+	sys_err_search(&_modle->info.reg_err);
 }
 
 void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len){
