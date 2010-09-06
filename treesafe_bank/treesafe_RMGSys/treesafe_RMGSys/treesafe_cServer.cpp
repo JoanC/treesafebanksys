@@ -7,6 +7,7 @@
 //add connection
 void net_add_connection(sys_Server *sServer)
 {
+DEBUG_NET_PRINT("server:add connection!\n");
 	int retVal;
 	if(WSAStartup(MAKEWORD(2,2),&sServer->sys_server.wsd)!=0)
 	{
@@ -38,9 +39,7 @@ void net_add_connection(sys_Server *sServer)
 //release connection
 void net_release_connection(sys_Server *sServer)
 {
-#ifdef DEBUG_NET_INFO
-	printf("release server socket!\n");
-#endif
+DEBUG_NET_PRINT("server:release connect\n");
 	char temp[] = "OK";
 	int nError= 0;
 	//while(!nError)
@@ -57,10 +56,8 @@ void net_release_connection(sys_Server *sServer)
 //wait for request
 void net_wait_for_request(sys_Server *sServer)
 {
+DEBUG_NET_PRINT("server:wait for request\n");
 	int retVal;
-#ifdef DEBUG_NET_INFO
-	printf("wait for client!\n");
-#endif
 	retVal = listen(sServer->sys_server.sServer,0);
 	if (SOCKET_ERROR == retVal)
 	{
@@ -84,9 +81,7 @@ void net_wait_for_request(sys_Server *sServer)
 
 void net_recieve_data(sys_Server* sServer)
 {
-#ifdef DEBUG_NET_INFO
-	printf("start to recevie data!\n");
-#endif
+DEBUG_NET_PRINT("server:recieve data!\n");
 	int reVal;
 	char cCount[] = "99";
 	reVal = recv(sServer->sys_server.sClient,cCount,strlen(cCount),0);
@@ -108,19 +103,13 @@ void net_recieve_data(sys_Server* sServer)
 		closesocket(sServer->sys_server.sClient);
 		WSACleanup();return;
 	}
-#ifdef DEBUG_NET_INFO
-	printf("end receive data!\n");
-	printf("rec:%s\n",sServer->rec.cNetDataInfo);
-#endif
 }
 
 
 //send net data(the size of data is less than 80 bytes)
 void net_send_data(sys_Server* sServer)
 {
-#ifdef DEBUG_NET_INFO
-	printf("start to setiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiind data!\n");
-#endif
+DEBUG_NET_PRINT("server:send data\n");
 	int reVal;
 	if(sServer->send.stNetDataLength <= PackageSize)
 	{
@@ -156,13 +145,11 @@ void net_send_data(sys_Server* sServer)
 		WSACleanup();
 		return;
 	}
-#ifdef DEBUG_NET_INFO
-	printf("end send data!\n");
-#endif
 }
 
 void net_recieve_frame(sys_Server* sServer)
 {
+DEBUG_NET_PRINT("server:net recieve frame\n");
 	net_add_connection(sServer);
 	net_wait_for_request(sServer);
 	net_recieve_data(sServer);
@@ -171,20 +158,7 @@ void net_recieve_frame(sys_Server* sServer)
 
 void net_send_frame(sys_Server* sServer)
 {
+DEBUG_NET_PRINT("server:net send frame\n");
 	net_send_data(sServer);
 	net_release_connection(sServer);
-}
-
-DWORD WINAPI iAccpet(LPVOID p)
-{
-	AllocConsole();
-	printf("accept\n");
-	sys_Server* sServer;
-    MoveMemory(&sServer,p,sizeof(sServer));
-	int addrClientlen = sizeof(sServer->sys_server.addrClient);
-	sServer->sys_server.sClient = accept(sServer->sys_server.sServer,(sockaddr FAR*)&sServer->sys_server.addrClient,&addrClientlen);
-	net_recieve_data(sServer);
-	net_send_data(sServer);
-	printf("Another Rec:%s",sServer->rec.cNetDataInfo);
-	return 0;
 }
