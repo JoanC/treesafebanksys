@@ -218,7 +218,7 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 	_REG_frame_modle->input_info = *reg_get_info(_command,_arg_len);
 	if(!_REG_frame_modle->input_info.is_pwd_vry_crr){
 		//两次密码验证不正确
-		reg_error_compute(err_REG_vry_pwd_err,_REG_frame_modle);
+		reg_error_compute(err_reg_vry_pwd_err,_REG_frame_modle);
 	}
 
 
@@ -239,7 +239,7 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 	if(_REG_frame_modle->info.reg_err.type == err_no_err){
 		if(! reg_add_user_to_db(&_REG_frame_modle->input_info)){
 			//数据库操作失败
-			reg_error_compute(err_REG_info_db_wrong,_REG_frame_modle);
+			reg_error_compute(err_reg_info_db_wrong,_REG_frame_modle);
 		}
 	}
 
