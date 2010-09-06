@@ -136,6 +136,9 @@
     <Filter Include="credit_compute\update_weight">
       <UniqueIdentifier>{67dc17c5-55da-458c-9690-089c547c3a05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="credit_compute\query_weight">
+      <UniqueIdentifier>{5dbc979e-a53c-47bc-b255-3d3123cfc8bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -267,6 +270,9 @@
     <ClInclude Include="update_weight.h">
       <Filter>credit_compute\update_weight</Filter>
     </ClInclude>
+    <ClInclude Include="query_weight.h">
+      <Filter>credit_compute\query_weight</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -361,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="update_weight.cpp">
       <Filter>credit_compute\update_weight</Filter>
+    </ClCompile>
+    <ClCompile Include="query_weight.cpp">
+      <Filter>credit_compute\query_weight</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

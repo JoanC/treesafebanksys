@@ -84,6 +84,7 @@
     <ClInclude Include="query_score.h" />
     <ClInclude Include="query_user_info.h" />
     <ClInclude Include="query_user_info_array.h" />
+    <ClInclude Include="query_weight.h" />
     <ClInclude Include="research_commit.h" />
     <ClInclude Include="sys_add_group.h" />
     <ClInclude Include="sys_admin_add_employee.h" />
@@ -124,6 +125,7 @@
     <ClCompile Include="query_score.cpp" />
     <ClCompile Include="query_user_info.cpp" />
     <ClCompile Include="query_user_info_array.cpp" />
+    <ClCompile Include="query_weight.cpp" />
     <ClCompile Include="research_commit.cpp" />
     <ClCompile Include="sys_add_group.cpp" />
     <ClCompile Include="sys_admin_add_employee.cpp" />
