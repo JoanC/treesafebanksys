@@ -32,6 +32,7 @@ namespace treesafe.Admintrators
         protected void FinishEditWeightButton_Click(object sender, EventArgs e)
         {
             //读取页面数据
+            //存储数据
             
             
             
