@@ -25,7 +25,7 @@ struct update_pwd_modle{
 
 void init_update_pwd_input(update_pwd_input* _init);
 
-void init_update_pwd_input(update_pwd_input* _init);
+void init_update_pwd_info(update_pwd_info* _init);
 
 update_pwd_modle* init_update_pwd_modle();
 
@@ -43,4 +43,14 @@ update_pwd_input* update_pwd_get_cmd(const char* _cmd , int _cmd_len);
 //数据库操作
 //待sunni完成
 
-void update_pwd_set_
+void update_pwd_set_data(char* _id , char* _pwd);
+
+
+//29.4
+//结果转化
+void update_pwd_convert_rlt(update_pwd_info* _info,
+	char* _rlt , int* _rlt_len);
+
+//模块29主函式
+void update_pwd_frame(const char* _cmd , int _cmd_len ,
+	char* _rlt , int* _rlt_len);
