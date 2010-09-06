@@ -17,3 +17,16 @@ update_pwd_modle* init_update_pwd_modle(){
 	init_update_pwd_info(&_new_modle->rlt_info);
 	return _new_modle;
 }
+
+void release_update_pwd_modle(update_pwd_modle* _init){
+	free(_init);
+}
+
+//29.2
+void update_pwd_copy_cmd(const char* _cmd , char* _dest ,int _cmd_len){
+	memcpy(_dest,_cmd,_cmd_len);
+}
+
+update_pwd_input* update_pwd_convert_cmd(char* _info){
+	return (update_pwd_input*)_info;
+}
