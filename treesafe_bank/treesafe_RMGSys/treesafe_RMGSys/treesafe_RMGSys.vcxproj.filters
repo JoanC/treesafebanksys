@@ -139,6 +139,9 @@
     <Filter Include="credit_compute\query_weight">
       <UniqueIdentifier>{5dbc979e-a53c-47bc-b255-3d3123cfc8bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="apply\query">
+      <UniqueIdentifier>{b391b925-7012-475f-bc6d-e53def6b168c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -273,6 +276,9 @@
     <ClInclude Include="query_weight.h">
       <Filter>credit_compute\query_weight</Filter>
     </ClInclude>
+    <ClInclude Include="is_user_have_apply.h">
+      <Filter>apply\query</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -370,6 +376,9 @@
     </ClCompile>
     <ClCompile Include="query_weight.cpp">
       <Filter>credit_compute\query_weight</Filter>
+    </ClCompile>
+    <ClCompile Include="is_user_has_apply.cpp">
+      <Filter>apply\query</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
