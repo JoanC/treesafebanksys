@@ -121,6 +121,15 @@
 #define DEBUG_EMPLOYEE_QUERY(x){};
 #endif
 
+//模块20：查找用户信息数组
+#define DEBUG_USER_QUERY
+#if defined DEBUG_USER_QUERY
+#define DEBUG_USER_QUERY_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_USER_QUERY(x){};
+#endif
+
+
 //utf-7的编码转换
 //将一个adsc读入,将其解码
 #define DECODE_UTF7_TO_ASC(__src_code)\
