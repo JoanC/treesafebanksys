@@ -85,6 +85,7 @@
     <ClInclude Include="query_user_info.h" />
     <ClInclude Include="query_user_info_array.h" />
     <ClInclude Include="research_commit.h" />
+    <ClInclude Include="sys_add_group.h" />
     <ClInclude Include="sys_admin_add_employee.h" />
     <ClInclude Include="sys_admin_delete_employee.h" />
     <ClInclude Include="sys_admin_employee_info.h" />
@@ -125,6 +126,7 @@
     <ClCompile Include="query_user_info.cpp" />
     <ClCompile Include="query_user_info_array.cpp" />
     <ClCompile Include="research_commit.cpp" />
+    <ClCompile Include="sys_add_group.cpp" />
     <ClCompile Include="sys_admin_add_employee.cpp" />
     <ClCompile Include="sys_admin_delete_employee.cpp" />
     <ClCompile Include="sys_admin_employee_info.cpp" />
@@ -133,6 +135,7 @@
     <ClCompile Include="sys_employee_query.cpp" />
     <ClCompile Include="sys_frame.cpp" />
     <ClCompile Include="sys_get_score.cpp" />
+    <ClCompile Include="sys_group_info.cpp" />
     <ClCompile Include="sys_research_exact.cpp" />
     <ClCompile Include="sys_research_info_query.cpp" />
     <ClCompile Include="treesafe_cServer.cpp" />
