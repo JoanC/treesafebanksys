@@ -102,7 +102,7 @@ color:#333333;
                    me.className = moveClass;
                }
            }
-           function Ck(me, dataID) {
+           function Ck(me,dataID) {
                if (clickTR != me) {
                    if (clickTR) {
                        clickTR.className = clickClass;
@@ -111,7 +111,8 @@ color:#333333;
                    clickClass = moveClass;
                }
                //alert("您选择的记录ID：" + dataID);
-               ShowDialog("WorkerOneUserDataPage.aspx?id=" + dataID);
+               
+               ShowDialog("WorkerOneUserDataPage.aspx?id="+dataID);
                me.className = "css_TR_CK";
            }
            function ShowDialog(url) {
