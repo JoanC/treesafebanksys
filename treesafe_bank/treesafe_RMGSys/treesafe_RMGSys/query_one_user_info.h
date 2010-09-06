@@ -30,6 +30,7 @@ void init_query_user_one_info_info(query_user_one_info_info* _init);
 
 query_user_one_info_modle* init_query_user_one_info_modle();
 
+void release_query_user_one_info_modle(query_user_one_info_modle* _release);
 //22.2
 //Ω” ‹÷∏¡Ó
 

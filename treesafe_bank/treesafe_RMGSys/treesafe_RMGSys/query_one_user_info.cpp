@@ -21,6 +21,10 @@ query_user_one_info_modle* init_query_user_one_info_modle(){
 	return _new_modle;
 }
 
+void release_query_user_one_info_modle(query_user_one_info_modle* _release){
+	free(_release);
+}
+
 
 //22.2
 void query_user_one_copy_cmd(const char* _cmd , char* _dest , int _cmd_len){
@@ -39,3 +43,23 @@ query_user_one_info_input* query_user_one_get_cmd(const char* _cmd,int _cmd_len)
 
 //22.3
 //sunni完成
+
+
+//22.4
+void query_user_one_convert_rlt_info(query_user_one_info_info* _info
+	, char* _rlt,int* _rlt_len){
+		*_rlt_len = sizeof(query_user_one_info_info);
+		memcpy(_rlt,_info,*_rlt_len);
+}
+
+//主函式
+void query_user_one_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _rlt_len){
+	query_user_one_info_modle* _frame = init_query_user_one_info_modle();
+	_frame->input = *query_user_one_get_cmd(_cmd,_cmd_len);
+
+	//22.3
+
+	//22.4
+	query_user_one_convert_rlt_info(&_frame->rlt_info,_rlt,_rlt_len);
+	//释放模块
+}
