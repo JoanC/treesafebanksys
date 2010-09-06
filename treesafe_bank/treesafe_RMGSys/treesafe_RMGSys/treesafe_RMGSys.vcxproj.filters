@@ -58,9 +58,6 @@
     <Filter Include="group">
       <UniqueIdentifier>{208a4729-8b51-4403-b48e-68b1343f50c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="group\group_recommand">
-      <UniqueIdentifier>{31acf35f-91f6-4f73-95a1-86b28db60f8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="group\group_setup">
       <UniqueIdentifier>{0cf4c334-51e0-41d4-8f07-50c526072dd3}</UniqueIdentifier>
     </Filter>
@@ -75,9 +72,6 @@
     </Filter>
     <Filter Include="apply\apply">
       <UniqueIdentifier>{7de135a7-ce2c-4b43-9bf0-e8637023a658}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="group\group_add_to_group">
-      <UniqueIdentifier>{85ba01d3-6f7c-472e-b679-e05885f8fab1}</UniqueIdentifier>
     </Filter>
     <Filter Include="group\group_start">
       <UniqueIdentifier>{90bc2da2-74e1-419c-a368-9f8e83f1bab3}</UniqueIdentifier>
@@ -210,9 +204,6 @@
     <ClInclude Include="sys_risk_compute.h">
       <Filter>risk_compute</Filter>
     </ClInclude>
-    <ClInclude Include="sys_group_recommand.h">
-      <Filter>group\group_recommand</Filter>
-    </ClInclude>
     <ClInclude Include="sys_group_setup.h">
       <Filter>group\group_setup</Filter>
     </ClInclude>
@@ -230,9 +221,6 @@
     </ClInclude>
     <ClInclude Include="sys_apply.h">
       <Filter>apply\apply</Filter>
-    </ClInclude>
-    <ClInclude Include="sys_group_add_person.h">
-      <Filter>group\group_add_to_group</Filter>
     </ClInclude>
     <ClInclude Include="sys_group_start.h">
       <Filter>group\group_start</Filter>

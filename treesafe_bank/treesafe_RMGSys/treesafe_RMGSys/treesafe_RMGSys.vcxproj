@@ -93,9 +93,7 @@
     <ClInclude Include="sys_credit_compute.h" />
     <ClInclude Include="sys_employee_query.h" />
     <ClInclude Include="sys_get_score.h" />
-    <ClInclude Include="sys_group_add_person.h" />
     <ClInclude Include="sys_group_info.h" />
-    <ClInclude Include="sys_group_recommand.h" />
     <ClInclude Include="sys_group_setup.h" />
     <ClInclude Include="sys_group_start.h" />
     <ClInclude Include="sys_research_exact.h" />
