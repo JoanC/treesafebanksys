@@ -97,6 +97,13 @@
 #define DEBUG_ADMIN_ADD_EMLOYEE(x){};
 #endif
 
+//模块16：删除雇员信息模块
+#define DEBUG_ADMIN_DEL_EMLOYEE
+#if defined DEBUG_ADMIN_DEL_EMLOYEE
+#define DEBUG_ADMIN_DEL_EMLOYEE_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_ADMIN_DEL_EMLOYEE(x){};
+#endif
 
 //utf-7的编码转换
 //将一个adsc读入,将其解码
