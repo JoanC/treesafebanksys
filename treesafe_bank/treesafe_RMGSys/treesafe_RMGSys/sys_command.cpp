@@ -1,6 +1,3 @@
-
-
-
 #include "stdafx.h"
 #include "sys_command.h"
 
@@ -79,12 +76,19 @@ void sys_command(const sys_net_data* _command,char* _rlt , int* _rlt_len){
 	case(sys_cmd_query_user_score):{
 		sys_command_query_user_score(_command,_rlt,_rlt_len);
 								   }break;
+		
+		//调用添加分组函数
+	case sys_cmd_add_group :
+		sys_comman_add_group(_command,_rlt,_rlt_len) ;
+		break ;
+
 	case(sys_cmd_query_one_user_info):{
 		sys_command_query_one_user_info(_command,_rlt,_rlt_len);
 									  }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
+
 	default:
 		sys_command_err(_command,_rlt,_rlt_len);
 	}
@@ -152,10 +156,15 @@ void sys_command_get_score(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 void sys_command_query_user_score(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	query_score_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
+//2.4.13
+void sys_comman_add_group(const sys_net_data* _cmd,char* _rlt,int* _rlt_len) 
+{
+}
 
 void sys_command_query_one_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
-	query_user_one_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+	//query_user_one_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
+
 
 //模块2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
