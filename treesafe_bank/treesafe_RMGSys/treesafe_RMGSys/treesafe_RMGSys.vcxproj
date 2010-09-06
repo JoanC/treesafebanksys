@@ -120,6 +120,7 @@
     <ClInclude Include="treesate_cClient.h" />
     <ClInclude Include="update_employee_info.h" />
     <ClInclude Include="update_pwd.h" />
+    <ClInclude Include="update_user_info.h" />
     <ClInclude Include="update_weight.h" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,7 @@
     <ClCompile Include="treesafe_RMGSys.cpp" />
     <ClCompile Include="update_employee_info.cpp" />
     <ClCompile Include="update_pwd.cpp" />
+    <ClCompile Include="update_user_info.cpp" />
     <ClCompile Include="update_weight.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

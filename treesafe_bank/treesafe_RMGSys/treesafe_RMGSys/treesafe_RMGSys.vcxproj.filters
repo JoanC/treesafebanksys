@@ -148,6 +148,9 @@
     <Filter Include="query_user_info\query_one">
       <UniqueIdentifier>{699e1f5c-bdc6-47c9-afd2-c6d207cb022a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="query_user_info\update_user">
+      <UniqueIdentifier>{f6332ba2-b3fc-4ac2-8511-61f0a28066be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -291,6 +294,9 @@
     <ClInclude Include="update_pwd.h">
       <Filter>Account\login_regist\update_pwd</Filter>
     </ClInclude>
+    <ClInclude Include="update_user_info.h">
+      <Filter>query_user_info\update_user</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -397,6 +403,9 @@
     </ClCompile>
     <ClCompile Include="update_pwd.cpp">
       <Filter>Account\login_regist\update_pwd</Filter>
+    </ClCompile>
+    <ClCompile Include="update_user_info.cpp">
+      <Filter>query_user_info\update_user</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
