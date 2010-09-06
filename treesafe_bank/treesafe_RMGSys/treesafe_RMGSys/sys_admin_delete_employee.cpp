@@ -8,10 +8,12 @@
 void init_delete_employee_input(delete_employee_input* _init){
 	//初始化输入的信息
 	//初始化身份证号为空
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("initialize delete employee input!\n");
 	strcpy(_init->employee_id,"");
 }
 
 void init_delete_employee_info(delete_employee_info* _init){
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("initialize delete employee info!\n");
 	//初始化结果记录信息
 	_init->is_succ = true;
 	//初始化错误信息
@@ -19,6 +21,7 @@ void init_delete_employee_info(delete_employee_info* _init){
 }
 
 delete_employee_modle* init_delete_employee_modle(){ 
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("initialize delete emloyee modle!\n");
 	//初始化模块16的整体
 	//分配内存
 	delete_employee_modle* _new_modle
@@ -31,6 +34,7 @@ delete_employee_modle* init_delete_employee_modle(){
 
 
 void release_delete_modle_employee(delete_employee_modle* _release){
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete modle employee!\n");
 	free(_release);
 }
 
@@ -38,6 +42,7 @@ void release_delete_modle_employee(delete_employee_modle* _release){
 
 delete_employee_input* delete_employee_get_cmd(const char* _cmd,int _cmd_len){
 	//删除雇员的接受命令主函式
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete employee : get command!\n");
 	char* _info = (char*)malloc(_cmd_len);
 	delete_employee_copy_cmd(_cmd,_info,_cmd_len);
 	return delete_employee_convert_cmd(_info);
@@ -47,12 +52,14 @@ delete_employee_input* delete_employee_get_cmd(const char* _cmd,int _cmd_len){
 void delete_employee_copy_cmd(const char* _cmd , char* _dest 
 	, int _cmd_len){
 	//复制命令
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete employee : copy command!\n");
 	memcpy(_dest,_cmd,_cmd_len);
 }
 
 
 delete_employee_input* delete_employee_convert_cmd(char* _info){
 	//强制转化指令
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete employee : convert command!\n");
 	return (delete_employee_input*)_info;
 }
 
@@ -60,6 +67,7 @@ delete_employee_input* delete_employee_convert_cmd(char* _info){
 //...
 void delete_employee_from_database(const char* _id , bool* _rlt)
 {
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete employee : frome database!\n");
 	*_rlt = delete_employee(treesafe_db_connection,_id) ;
 }
 
@@ -67,11 +75,12 @@ void delete_employee_from_database(const char* _id , bool* _rlt)
 //16.4
 //...
 void delete_employee_convert_rlt(delete_employee_info* _info , char* _rlt , int* _rlt_len){
-	
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete employee : convert result!\n");
 }
 
 
 void delete_employee_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _rlt_len){
+DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete frame!\n");
     //16.1
 	//初始化模块
 	delete_employee_modle* _frame
