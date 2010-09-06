@@ -65,6 +65,14 @@
 #define DEBUG_APPLY_PRINT(x){};
 #endif
 
+//模块8 ：审核模块
+#define DEBUG_RESEARCH
+#if defined DEBUG_RESEARCH
+#define DEBUG_RESEARCH_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_APPLY_PRINT(x){};
+#endif
+
 //utf-7的编码转换
 //将一个adsc读入,将其解码
 #define DECODE_UTF7_TO_ASC(__src_code)\
