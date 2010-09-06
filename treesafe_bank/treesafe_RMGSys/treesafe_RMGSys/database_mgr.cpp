@@ -1808,7 +1808,7 @@ bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char
 		r.Release() ;
 		return false ;
 	}
-		
+
 
 	_variant_t varName ;
 	_variant_t varID ;
@@ -1908,7 +1908,7 @@ bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info)
 		rsp.Release() ;
 		return false ;
 	}
-	
+
 	_variant_t varName		= rsp->Fields->GetItem(long(1))->Value ;
 	_variant_t varGend		= rsp->Fields->GetItem(long(2))->Value ;
 	_variant_t varAge			= rsp->Fields->GetItem(long(3))->Value ;
@@ -1918,10 +1918,10 @@ bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info)
 	bool bRtnVal = true ;
 
 	bRtnVal = ConvertVar2CharStr(&varName,_Info->user_name) 
-				&& ConvertVar2Int(&varGend,(int *)&_Info->user_gender)	
-				&& ConvertVar2Int(&varAge,&_Info->user_age) 
-				&& ConvertVar2CharStr(&varPhone,_Info->user_tel)
-				&& ConvertVar2CharStr(&varAddr,_Info->user_addr) ;
+		&& ConvertVar2Int(&varGend,(int *)&_Info->user_gender)	
+		&& ConvertVar2Int(&varAge,&_Info->user_age) 
+		&& ConvertVar2CharStr(&varPhone,_Info->user_tel)
+		&& ConvertVar2CharStr(&varAddr,_Info->user_addr) ;
 
 	rsp->Close() ;
 	rsp.Release() ;
@@ -1976,19 +1976,26 @@ bool Get_all_emplo_info(_ConnectionPtr *_pConn,admin_employee_info* _Arr,int _Co
 		bool bRtnVal = true ;
 
 		bRtnVal = ConvertVar2CharStr(&varWkID,_Arr[lp].employee_work_id) 
-					&& ConvertVar2CharStr(&varCDID,_Arr[lp].employee_id) 
-					&& ConvertVar2CharStr(&varName,_Arr[lp].employee_name) 
-					&& ConvertVar2Int(&varGend,(int *)&_Arr[lp].employee_gender)	
-					&& ConvertVar2Int(&varAge,&_Arr[lp].employee_age) 
-					&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_addr) 
-					&& ConvertVar2CharStr(&varEmail,_Arr[lp].employee_email) 
-					&& ConvertVar2Int(&varType,(int *)_Arr[lp].employee_type) 
-					&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_comment) 
-					&& ConvertVar2CharStr(&varPhone,_Arr[lp].employee_tel) ;
+			&& ConvertVar2CharStr(&varCDID,_Arr[lp].employee_id) 
+			&& ConvertVar2CharStr(&varName,_Arr[lp].employee_name) 
+			&& ConvertVar2Int(&varGend,(int *)&_Arr[lp].employee_gender)	
+			&& ConvertVar2Int(&varAge,&_Arr[lp].employee_age) 
+			&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_addr) 
+			&& ConvertVar2CharStr(&varEmail,_Arr[lp].employee_email) 
+			&& ConvertVar2Int(&varType,(int *)_Arr[lp].employee_type) 
+			&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_comment) 
+			&& ConvertVar2CharStr(&varPhone,_Arr[lp].employee_tel) ;
 
 		if( ! bRtnVal )
+		{
+			rsp->Close() ;
+			rsp.Release() ;
 			return false ;
+		}
+
 	}
+	rsp->Close() ;
+	rsp.Release() ;
 	return true ;
 }
 bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info* _Info) 
@@ -2007,16 +2014,16 @@ bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info*
 	char sqlStr[300]  ;
 	memset(sqlStr,0,300) ;
 	sprintf(sqlStr,"update Table_Employee set %s = '%s',%s = '%s',%s = '%s',%s = '%d',%s = '%d',%s = '%s',%s = '%s',%s = '%d',%s = '%s',%s = '%s' from Table_Employee where %s = '%s'", 
-					col0,_Info->employee_work_id,
-					col1,_Info->employee_id,
-					col2,_Info->employee_name,
-					col3,_Info->employee_gender,
-					col4,_Info->employee_age,
-					col5,_Info->employee_addr,
-					col6,_Info->employee_email,
-					col7,_Info->employee_type,
-					col8,_Info->employee_comment,
-					col9,_Info->employee_tel) ;
+		col0,_Info->employee_work_id,
+		col1,_Info->employee_id,
+		col2,_Info->employee_name,
+		col3,_Info->employee_gender,
+		col4,_Info->employee_age,
+		col5,_Info->employee_addr,
+		col6,_Info->employee_email,
+		col7,_Info->employee_type,
+		col8,_Info->employee_comment,
+		col9,_Info->employee_tel) ;
 
 	_variant_t vt ;
 	try{
@@ -2034,17 +2041,46 @@ bool has_user_app(_ConnectionPtr *_pConn,const char *_ID)
 	strcat(sqlStr,"'") ;
 
 	_variant_t vt ;
-	_RecordsetPtr rsp;
+	_RecordsetPtr rsp ;
 	try{
 		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	}
 	catch(...){
-		return false;
+		return false ;
 	}
 
 	if ( rsp->rsEOF )
 	{
+		rsp->Close() ;
+		rsp.Release() ;
 		return false ;
 	}
+	rsp->Close() ;
+	rsp.Release() ;
+	return true ;
+}
+bool has_user_score(_ConnectionPtr *_pConn,const char *_ID) 
+{
+	char sqlStr[100] = "select cust_gend from Table_Score_Set where card_id = '" ;
+	strcat(sqlStr,_ID) ;
+	strcat(sqlStr,"'") ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp ; 
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false ;
+	}
+
+	if ( rsp->rsEOF )
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+	rsp->Close() ;
+	rsp.Release() ;
 	return true ;
 }

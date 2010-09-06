@@ -983,3 +983,23 @@ bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info*
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 bool has_user_app(_ConnectionPtr *_pConn,const char *_ID) ;
+
+/*********************************************************************************************************
+** Function name:			has_user_score
+**
+** Descriptions:			find a spaecific user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_info *_info,const char *_ID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool has_user_score(_ConnectionPtr *_pConn,const char *_ID) ;

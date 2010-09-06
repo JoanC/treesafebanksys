@@ -45,6 +45,10 @@ is_user_has_score_input* is_user_has_score_get_cmd(const char* _cmd,int _cmd_len
 
 //模块28.3
 //待sunni完成
+void is_user_has_score_get_data(char* _id , bool* _rlt)
+{
+
+}
 
 
 //模块28.4
