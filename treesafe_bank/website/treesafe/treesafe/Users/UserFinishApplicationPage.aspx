@@ -41,6 +41,9 @@ CodeBehind="UserFinishApplicationPage.aspx.cs" Inherits="treesafe.Users.UserFini
             onclientclick="return confirm('您的申请表已经成功提交，并将此消息发送至您手机！')"/>
         <asp:Image ID="Image2" runat="server" ImageUrl="~/Users/Pictures/sending.png" Visible="false"/>
         <asp:Image ID="Image3" runat="server" ImageUrl="~/Users/Pictures/send1.png" Visible="false"/>
+        <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="Label1" runat="server" Text="点击图标，将此消息发送至您的手机"></asp:Label>
         </fieldset>
     </ContentTemplate>
     </asp:UpdatePanel>
