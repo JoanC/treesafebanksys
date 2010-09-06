@@ -75,13 +75,20 @@ namespace ClientNet
            // TcpClient m_client;//虚拟客户端
             Socket m_net_stream;//网络流
 
+
+
             public web_net_client_mgr(string _ip, int _server_port)
             {
                 m_config = new net_config(_ip, _server_port);
             }
 
             public web_net_client_mgr() {
-                m_config = new net_config("10.60.37.203",4999);
+                StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "\\Ipconfig.txt");
+                string IpConfigxt = sr.ReadLine();
+                string[] IpConfig = IpConfigxt.Split(':');
+                int ip_port = Convert.ToInt32(IpConfig[1]);
+                m_config = new net_config(IpConfig[0],ip_port);
+                sr.Close();
             }
 
             public void config_client(string _server_ip, int _server_port)
@@ -95,8 +102,9 @@ namespace ClientNet
             {
                 //Thread.Sleep(1500);
                // this.m_client = new TcpClient(this.m_config.m_server_ip, this.m_config.m_port_num);
+                int i =0;
                 this.m_net_stream = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                while (!m_net_stream.Connected)
+                while ((!m_net_stream.Connected))
                 {
                     try
                     {
@@ -104,9 +112,12 @@ namespace ClientNet
                     }
                     catch(Exception)
                     { 
-                        
+                                    
                     }
-                     Thread.Sleep(1000);
+                    i++;
+                    if (i == 3)
+                        break;
+                    Thread.Sleep(1000);
                 }    
             }
 
