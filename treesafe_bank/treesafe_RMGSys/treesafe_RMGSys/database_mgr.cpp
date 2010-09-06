@@ -223,8 +223,9 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 }
 bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 {
-	char sqlStrTest[200] = "select name from Table_Cust_Info where id = " ;
+	char sqlStrTest[200] = "select name from Table_Cust_Info where id = '" ;
 	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp;
 	try{
@@ -248,7 +249,9 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,_reg_info->basic_info.reg_basic_user_name) ;
 	strcat(sqlStr,"','") ;
 	char temp[6] ;
-	strcpy(temp, _reg_info->basic_info.reg_gender == reg_info_male ? "true" : "false") ;
+	memset(temp,0,6) ;
+	itoa(_reg_info->basic_info.reg_gender,temp,10) ;
+	strcat(sqlStr,temp) ;
 
 	strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
@@ -1800,7 +1803,12 @@ bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char
 	}
 
 	if( r->rsEOF )
+	{
+		r->Close() ;
+		r.Release() ;
 		return false ;
+	}
+		
 
 	_variant_t varName ;
 	_variant_t varID ;
@@ -1876,5 +1884,110 @@ bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_m
 		return false ;
 	}
 
+	return true ;
+}
+
+bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info) 
+{
+	char sqlStr[200] = "select * from Table_Cust_Info where id = '" ; 
+	strcat(sqlStr,_Info->user_card_id) ;
+	strcat(sqlStr,"'") ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
+
+	if ( rsp->rsEOF )// 如果没查到...
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+	
+	_variant_t varName		= rsp->Fields->GetItem(long(1))->Value ;
+	_variant_t varGend		= rsp->Fields->GetItem(long(2))->Value ;
+	_variant_t varAge			= rsp->Fields->GetItem(long(3))->Value ;
+	_variant_t varPhone		= rsp->Fields->GetItem(long(4))->Value ;
+	_variant_t varAddr		= rsp->Fields->GetItem(long(5))->Value ;
+
+	bool bRtnVal = true ;
+
+	bRtnVal = ConvertVar2CharStr(&varName,_Info->user_name) 
+				&& ConvertVar2Int(&varGend,(int *)&_Info->user_gender)	
+				&& ConvertVar2Int(&varAge,&_Info->user_age) 
+				&& ConvertVar2CharStr(&varPhone,_Info->user_tel)
+				&& ConvertVar2CharStr(&varAddr,_Info->user_addr) ;
+
+	rsp->Close() ;
+	rsp.Release() ;
+	return bRtnVal ;
+}
+
+bool Find_how_many_employee(_ConnectionPtr *_pConn,int *_Num)
+{
+	char sqlStr[100] = "select employee_gender from Table_Employee" ;
+	_variant_t vt ;
+	_RecordsetPtr rsp ;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
+
+	while( ! rsp->rsEOF )
+	{
+		++(*_Num) ;
+	}
+	return true ;
+}
+
+bool Get_all_emplo_info(_ConnectionPtr *_pConn,admin_employee_info* _Arr,int _Count) 
+{
+	char sqlStr[100] = "select * from Table_Employee" ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp ;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false ;
+	}
+
+	for (int lp = 0 ; lp < _Count ; ++lp)
+	{
+		_variant_t varWkID		= rsp->Fields->GetItem(long(0))->Value ;
+		_variant_t varCDID		= rsp->Fields->GetItem(long(1))->Value ;
+		_variant_t varName		= rsp->Fields->GetItem(long(2))->Value ;
+		_variant_t varGend		= rsp->Fields->GetItem(long(3))->Value ;
+		_variant_t varAge			= rsp->Fields->GetItem(long(4))->Value ;
+		_variant_t varAddr		= rsp->Fields->GetItem(long(5))->Value ;
+		_variant_t varEmail		= rsp->Fields->GetItem(long(6))->Value ;
+		_variant_t varType		= rsp->Fields->GetItem(long(7))->Value ;
+		_variant_t varCmmt		= rsp->Fields->GetItem(long(8))->Value ;
+		_variant_t varPhone		= rsp->Fields->GetItem(long(9))->Value ;
+
+		bool bRtnVal = true ;
+
+		bRtnVal = ConvertVar2CharStr(&varWkID,_Arr[lp].employee_work_id) 
+					&& ConvertVar2CharStr(&varCDID,_Arr[lp].employee_id) 
+					&& ConvertVar2CharStr(&varName,_Arr[lp].employee_name) 
+					&& ConvertVar2Int(&varGend,(int *)&_Arr[lp].employee_gender)	
+					&& ConvertVar2Int(&varAge,&_Arr[lp].employee_age) 
+					&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_addr) 
+					&& ConvertVar2CharStr(&varEmail,_Arr[lp].employee_email) 
+					&& ConvertVar2Int(&varType,(int *)_Arr[lp].employee_type) 
+					&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_comment) 
+					&& ConvertVar2CharStr(&varPhone,_Arr[lp].employee_tel) ;
+
+		if( ! bRtnVal )
+			return false ;
+	}
 	return true ;
 }

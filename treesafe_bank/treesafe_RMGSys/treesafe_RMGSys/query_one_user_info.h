@@ -43,7 +43,7 @@ query_user_one_info_input* query_user_one_get_cmd(const char* _cmd,int _cmd_len)
 //22.3
 //运行数据库
 
-void query_user_one_get_data(char* _cust_id , user_query_info* _rlt);
+bool query_user_one_get_data(char* _cust_id , user_query_info* _rlt);
 
 //22.4
 //整合结果数据

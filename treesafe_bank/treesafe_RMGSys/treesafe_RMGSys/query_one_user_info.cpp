@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "query_one_user_info.h"
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 
 //22.1
 void init_query_user_one_info_input(query_user_one_info_input* _init){
@@ -43,7 +43,11 @@ query_user_one_info_input* query_user_one_get_cmd(const char* _cmd,int _cmd_len)
 
 //22.3
 //sunniÍê³É
-
+bool query_user_one_get_data(char* _cust_id , user_query_info* _rlt)
+{
+	strcpy(_rlt->user_card_id,_cust_id) ;
+	return Get_cust_basic_info(treesafe_db_connection,_rlt) ;
+}
 
 //22.4
 void query_user_one_convert_rlt_info(query_user_one_info_info* _info

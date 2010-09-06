@@ -2,7 +2,7 @@
 #include "employee_query_array.h"
 
 //模块23实现文件
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 
 //23.1
 void init_query_employee_array_input(query_employee_array_input* _init){
@@ -46,9 +46,15 @@ query_employee_array_input* query_employee_arr_get_cmd(const char* _cmd
 }
 
 //23.3
-
+bool query_employee_arr_get_num(int* _count)
+{
+	return  Find_how_many_employee(treesafe_db_connection,_count) ;
+}
 //待sunni完成
-
+bool query_employee_arr_get_data(admin_employee_info* _arr,int _Count)
+{
+	return Get_all_emplo_info(treesafe_db_connection,_arr,_Count) ;
+}
 
 //23.4
 

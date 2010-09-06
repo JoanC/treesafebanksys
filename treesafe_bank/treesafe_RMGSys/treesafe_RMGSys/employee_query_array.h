@@ -52,9 +52,9 @@ query_employee_array_input* query_employee_arr_get_cmd(const char* _cmd
 /******************************************/
 //23.3
 //Êý¾Ý¿â²Ù×÷
-void query_employee_arr_get_num(int* _count);
+bool query_employee_arr_get_num(int* _count);
 
-void query_employee_arr_get_data(admin_employee_info* _arr);
+bool query_employee_arr_get_data(admin_employee_info* _arr,int _Count);
 
 /*******************************************/
 //23.4
