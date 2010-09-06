@@ -142,8 +142,17 @@
 #if defined DEBUG_ONE_USER_INFO
 #define DEBUG_ONE_USER_INFO_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_ONE_USER_INFO_QUERY(x){};
+#define DEBUG_ONE_USER_INFO(x){};
 #endif
+
+//模块23：查询雇员数组信息
+#define DEBUG_QUERY_ARRAY
+#if defined DEBUG_QUERY_ARRAY
+#define DEBUG_QUERY_ARRAY_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_QUERY_ARRAY(x){};
+#endif
+
 
 
 //utf-7的编码转换
