@@ -139,6 +139,9 @@
     <Filter Include="group\add_group">
       <UniqueIdentifier>{e3875d9e-4b76-476d-be28-640f0d88291e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="credit_compute\update_weight">
+      <UniqueIdentifier>{67dc17c5-55da-458c-9690-089c547c3a05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -273,6 +276,9 @@
     <ClInclude Include="sys_add_group.h">
       <Filter>group\add_group</Filter>
     </ClInclude>
+    <ClInclude Include="update_weight.h">
+      <Filter>credit_compute\update_weight</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -364,6 +370,9 @@
     </ClCompile>
     <ClCompile Include="sys_add_group.cpp">
       <Filter>group\add_group</Filter>
+    </ClCompile>
+    <ClCompile Include="update_weight.cpp">
+      <Filter>credit_compute\update_weight</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
