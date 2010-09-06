@@ -128,6 +128,7 @@ namespace treesafe.Auditors
         public static bool is_loan_appr;
         public static bool is_all_appr;
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //判断权限
@@ -232,6 +233,7 @@ namespace treesafe.Auditors
             ApplicationSex.Text = _info.query_info.cust_info.cust_gender == 1 ? "男" : "女";
             ApplicationIDType.Text = _info.query_info.cust_info.cust_card_type == 0 ? "身份证" : "军人证";
             ApplicationIDNumber.Text = new string(_info.query_info.cust_info.cust_card_id);
+            
             ApplicationAddress.Text = new string(_info.query_info.cust_info.cust_addr);
             ApplicationPostCode.Text = new string(_info.query_info.cust_info.cust_zip);
             ApplicationPhoneNumber.Text = new string(_info.query_info.cust_info.cust_tel);
