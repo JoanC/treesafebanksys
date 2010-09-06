@@ -29,9 +29,9 @@ struct update_user_modle{
 
 //初始化各个数据
 
-void init_update_user_input(update_user_input* _input);
+void init_update_user_input(update_user_input* _init);
 
-void init_update_user_info(update_user_info* _info);
+void init_update_user_info(update_user_info* _init);
 
 update_user_modle* init_update_user_modle();
 
@@ -42,4 +42,20 @@ void release_update_user_modle(update_user_modle* _release);
 
 void update_user_copy_cmd(const char* _cmd,char* _dest
 	,int _cmd_len);
+
+update_user_modle* update_user_convert_cmd(char* _info);
+
+update_user_modle* update_user_get_cmd(const char* _cmd
+	,int _cmd_len);
+
+//30.3
+//sunni完成
+
+void update_user_set_data(char* _card_id , update_user_input* _input);
+
+//30.4
+void update_user_convert_rlt(update_user_info* _info,char* _rlt,int* _rlt_len);
+
+//模块30主函式
+void update_user_frame(const char* _cmd , int _cmd_len , char* _rlt,int* _rlt_len);
 
