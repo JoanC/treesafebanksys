@@ -71,6 +71,7 @@
     <Content Include="ChangePasswordSuccessPage.aspx" />
     <Content Include="Client_Net.asax" />
     <Content Include="Chinese_Coding.asax" />
+    <Content Include="Ipconfig.txt" />
     <Content Include="Pictures\gesture1.png" />
     <Content Include="Pictures\gesture2.png" />
     <Content Include="Pictures\gesture3.png" />
