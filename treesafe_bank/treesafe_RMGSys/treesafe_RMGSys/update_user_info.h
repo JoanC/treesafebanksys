@@ -40,5 +40,6 @@ void release_update_user_modle(update_user_modle* _release);
 //30.2
 //获取输入信息
 
-void update_user_copy_cmd(const char* _cmd
-	,int _cmd_len,char* _rlt,int* _rlt_len);
+void update_user_copy_cmd(const char* _cmd,char* _dest
+	,int _cmd_len);
+
