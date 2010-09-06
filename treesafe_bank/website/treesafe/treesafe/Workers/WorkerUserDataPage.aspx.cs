@@ -99,7 +99,7 @@ namespace treesafe.Workers
             {
                 HtmlTableRow r = new HtmlTableRow();
 
-                // if (row % 2 == 1)// 设置行的背景色
+                // if (row % 2 == 1)// 设置行的背景色11
                 //     r.BgColor = "Gainsboro";
                 user_query_info _person = _rlt._info[j];
 
@@ -124,9 +124,9 @@ namespace treesafe.Workers
                 }
 
 
-                r.Attributes.Add("onclick", "Ck(this," + j + ")");
+                r.Attributes.Add("onclick", "Ck(this,"+j+")");
                 r.Attributes.Add("onmousemove", "Move(this)");
-                r.Attributes.Add("ondblclick", "DbCK(me)");
+                r.Attributes.Add("ondblclick", "DbCK(me);");
                 r.Attributes.Add("onmouseout", "Out(this)");
 
 
