@@ -102,23 +102,22 @@ namespace ClientNet
             {
                 //Thread.Sleep(1500);
                // this.m_client = new TcpClient(this.m_config.m_server_ip, this.m_config.m_port_num);
-                int i =0;
                 this.m_net_stream = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                while ((!m_net_stream.Connected))
+                 for (int i = 0; i != 3; i++)
                 {
                     try
                     {
                         this.m_net_stream.Connect(m_config.m_server_ip, m_config.m_port_num);
                     }
-                    catch(Exception)
-                    { 
-                                    
+                    catch (Exception)
+                    {
+
                     }
-                    i++;
-                    if (i == 3)
+                    if (m_net_stream.Connected)
                         break;
                     Thread.Sleep(1000);
-                }    
+                }
+
             }
 
             private byte[] StructToBytes(object obj)
