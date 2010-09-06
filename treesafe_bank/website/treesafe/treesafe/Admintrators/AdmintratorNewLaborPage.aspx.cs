@@ -22,7 +22,7 @@ namespace treesafe.Admintrators
 {
     /*有关雇员信息的结构体*/
     [Serializable] // 指示可序列化
-    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
     public struct admin_employ_info
     {
         public int empl_type;//雇员的类型
