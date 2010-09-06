@@ -1650,7 +1650,8 @@ bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const ch
 		return false ;
 	}
 	_variant_t varIncome ;
-	_variant_t varLoan ;
+	_variant_t varDepos ;
+	_variant_t varRpy ;
 	_variant_t varFABP ;
 	_variant_t varIDType ;
 	_variant_t varEdu ;
@@ -1660,19 +1661,21 @@ bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const ch
 	_variant_t varAuditorEdit ;
 
 	varIncome			= rsp->Fields->GetItem(long(1))->Value ;
-	varLoan				= rsp->Fields->GetItem(long(2))->Value ;
-	varFABP				= rsp->Fields->GetItem(long(3))->Value ;
-	varIDType			= rsp->Fields->GetItem(long(4))->Value ;
-	varEdu				= rsp->Fields->GetItem(long(5))->Value ;
-	varMarriage		= rsp->Fields->GetItem(long(6))->Value ;
-	varLoanRecrd		= rsp->Fields->GetItem(long(7))->Value ;
-	varSocialRecrd	= rsp->Fields->GetItem(long(8))->Value ;
-	varAuditorEdit	= rsp->Fields->GetItem(long(9))->Value ;
+	varDepos			= rsp->Fields->GetItem(long(2))->Value ;
+	varRpy					= rsp->Fields->GetItem(long(3))->Value ;
+	varFABP				= rsp->Fields->GetItem(long(4))->Value ;
+	varIDType			= rsp->Fields->GetItem(long(5))->Value ;
+	varEdu				= rsp->Fields->GetItem(long(6))->Value ;
+	varMarriage		= rsp->Fields->GetItem(long(7))->Value ;
+	varLoanRecrd		= rsp->Fields->GetItem(long(8))->Value ;
+	varSocialRecrd	= rsp->Fields->GetItem(long(9))->Value ;
+	varAuditorEdit	= rsp->Fields->GetItem(long(10))->Value ;
 
 	bool bRtnVal = true ;
 
 	bRtnVal = ConvertVar2Float(&varIncome,&_Scores->score_income) 
-		&& ConvertVar2Float(&varLoan,&_Scores->score_depos) 
+		&& ConvertVar2Float(&varDepos,&_Scores->score_depos) 
+		&& ConvertVar2Float(&varRpy,&_Scores->score_repayment) 
 		&& ConvertVar2Float(&varFABP,&_Scores->score_fixed_assets_be_pledged) 
 		&& ConvertVar2Float(&varIDType,&_Scores->score_id_type) 
 		&& ConvertVar2Float(&varEdu,&_Scores->score_edu) 
