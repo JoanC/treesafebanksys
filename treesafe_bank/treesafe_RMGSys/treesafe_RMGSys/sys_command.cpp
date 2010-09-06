@@ -85,7 +85,7 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 		//调用添加分组函数
 	case sys_cmd_add_group :
 		sys_comman_add_group(_command,_rlt,_rlt_len) ;
-		break ;
+	break ;
 
 	case(sys_cmd_query_one_user_info):{
 		sys_command_query_one_user_info(_command,_rlt,_rlt_len);
