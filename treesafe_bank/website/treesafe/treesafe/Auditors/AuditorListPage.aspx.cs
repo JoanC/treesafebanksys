@@ -345,6 +345,8 @@ namespace treesafe.Auditors
                 case 5: { _fixed_ass = "其他"; } break;
             }
             ApplicationMortgage.Text = _fixed_ass;
+            AuditorGradePage._asset_type = _fixed_ass;
+
             string _industry = "";
             switch (_info.query_info.asset_info.cust_industry)
             {
@@ -364,10 +366,16 @@ namespace treesafe.Auditors
                 case 13: { _industry = "其他"; } break;
             }
             ApplicationIndustry.Text = _industry;
+            //在下一页显示
+            AuditorGradePage._industry = _industry;
+
             ApplicationWork.Text =
                 new string(_info.query_info.asset_info.cust_work_unit);
             ApplicationPosition.Text =
                 new string(_info.query_info.asset_info.cust_work_position);
+            AuditorGradePage._work_unit = new string(_info.query_info.asset_info.cust_work_unit);
+            AuditorGradePage._work_pos = new string(_info.query_info.asset_info.cust_work_position);
+
             /*申请人家庭情况*/
             string _mer_stu = "";
             switch (_info.query_info.family_info.cust_marital_status)
@@ -413,12 +421,16 @@ namespace treesafe.Auditors
                 case 7: { _loan_rag = "5万元以上"; } break;
             }
             ApplicationExpectLoanSum.Text = _loan_rag;
+            AuditorGradePage.loan_sum = _loan_rag;
             ApplicationLoanTime.Text =
                 Convert.ToString(_info.query_info.loan_info.loan_dead_line) + " 月";
+            AuditorGradePage.loan_deadline = Convert.ToString(_info.query_info.loan_info.loan_dead_line) + " 月";
             ApplicationLoanNumber.Text
                 = (_info.query_info.loan_info.loan_times == 0) ? "首次贷款" : "非首次贷款";
+            AuditorGradePage.loan_time = (_info.query_info.loan_info.loan_times == 0) ? "首次贷款" : "非首次贷款";
             ApplicationLoanNote.Text
                 = new string(_info.query_info.loan_info.loan_comment);
+            AuditorGradePage.loan_time = new string(_info.query_info.loan_info.loan_comment);
             ApplicationIsMessage.Text
                 = (_info.query_info.loan_info.is_want_msg == 1) ? "是" : "否";
         }

@@ -43,6 +43,16 @@ namespace treesafe.Auditors
 
     public partial class AuditorGradePage : System.Web.UI.Page
     {
+        /*要显示的内容*/
+        public static string _asset_type = "";
+        public static string _industry = "";
+        public static string _work_unit = "";
+        public static string _work_pos = "";
+        public static string loan_sum = "";
+        public static string loan_deadline = "";
+        public static string loan_time = "";
+        public static string loan_note = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             UserID.Text = Request.QueryString["id"];
