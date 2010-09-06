@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "sys_admin_employee_info.h"
 #include "query_user_info.h"
+#include "sys_group_info.h"
 //登陆模块的信息查询
 //登陆权限
 //管理员,一般用户...

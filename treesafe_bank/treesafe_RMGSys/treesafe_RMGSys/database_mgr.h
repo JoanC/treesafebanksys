@@ -843,3 +843,43 @@ bool Find_all_passed_user(_ConnectionPtr *_pConn,user_query_array_info *_info,si
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char *_ID) ;
+
+ /*********************************************************************************************************
+** Function name:			Insert_group_info
+**
+** Descriptions:			
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_info *_info,const char *_ID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_member_info *_Info) ;
+
+ /*********************************************************************************************************
+** Function name:			Find_specific_user
+**
+** Descriptions:			find a spaecific user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_info *_info,const char *_ID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome) ;

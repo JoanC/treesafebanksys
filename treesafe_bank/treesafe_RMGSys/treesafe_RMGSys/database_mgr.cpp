@@ -95,7 +95,7 @@ bool ConvertVar2Float(_variant_t *_Vt,float *_Dst)
 		return false ;
 	}
 	else {
-		*_Dst = _Vt->dblVal ;
+		*_Dst = (float)_Vt->dblVal ;
 	}
 	return true ;
 }
@@ -1828,4 +1828,53 @@ bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char
 	r.Release() ;
 
 	return bRtnVal ;
+}
+bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome) 
+{
+	char sqlStr[200] = "select max(group_id) from Table_Guaranteed_Group" ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
+	// execute sql... 
+	if( rsp->rsEOF )
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+
+	_variant_t varGPID = rsp->Fields->GetItem(long(0))->Value ; 
+
+	ConvertVar2CharStr(&varGPID,_Outcome) ;
+
+	rsp->Close() ;
+	rsp.Release() ;
+	return true ;
+}
+bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_member_info *_Info) 
+{
+	char sqlStr[200] ;
+	sprintf(sqlStr,"insert into Table_Guaranteed_Group values('%s','%s','%s','%s','%s','%s','%s')",
+		group_id,
+		_Info->cust_id[0][0] ,
+		_Info->cust_id[1][0] ,
+		_Info->cust_id[2][0] ,
+		_Info->cust_id[3][0] ,
+		_Info->cust_id[4][0] ,
+		_Info->cust_id[5][0]  ) ;
+
+	try{
+		_variant_t v ;
+		(*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
+
+	return true ;
 }
