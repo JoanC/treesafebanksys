@@ -40,4 +40,7 @@ update_pwd_input* update_pwd_convert_cmd(char* _info);
 update_pwd_input* update_pwd_get_cmd(const char* _cmd , int _cmd_len);
 
 //29.3
-//数据库为
+//数据库操作
+//待sunni完成
+
+void update_pwd_set_
