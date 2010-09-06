@@ -89,6 +89,10 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 	case(sys_cmd_query_weight):{
 		sys_command_query_weight(_command,_rlt,_rlt_len);
 							   }break;
+		//调用更改权重主函式
+	case(sys_cmd_update_weight):{
+		sys_command_update_weight(_command,_rlt,_rlt_len);
+								}break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -185,7 +189,11 @@ void sys_command_query_weight(const sys_net_data* _cmd,char* _rlt,int* _rlt_len)
 	query_weight_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
-
+//2.4.15
+void sys_command_update_weight(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	DEBUG_COMMAND_PRINT("command:update the weight\n");
+	update_weight_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
 //模块2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 DEBUG_COMMAND_PRINT("command:error command\n");
