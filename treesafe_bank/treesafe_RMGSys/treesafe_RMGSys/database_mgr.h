@@ -1023,3 +1023,43 @@ bool has_user_score(_ConnectionPtr *_pConn,const char *_ID) ;
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 bool Update_login_pwd(_ConnectionPtr *_pConn,const char *_ID,const char *_new_pwd) ;
+
+/*********************************************************************************************************
+** Function name:			Cust_or_emplo 
+**
+** Descriptions:			find a spaecific user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_info *_info,const char *_ID
+** Returned value:		    bool true for cust
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool Cust_or_emplo(_ConnectionPtr *_pConn,const char *_ID,bool *_IsCust) ;
+
+/*********************************************************************************************************
+** Function name:			Update_user_info
+**
+** Descriptions:			find a spaecific user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_info *_info,const char *_ID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool Update_user_info(_ConnectionPtr *_pConn,const char *_ID,const char *_New_Addr,const char *_New_Email,const char *_New_Phone) ;

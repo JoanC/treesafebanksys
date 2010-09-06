@@ -265,7 +265,6 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,"')") ;
 
 	_variant_t vt ;
-
 	try{
 		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	}
@@ -2097,4 +2096,98 @@ bool Update_login_pwd(_ConnectionPtr *_pConn,const char *_ID,const char *_new_pw
 		return false ;
 	}
 	return true ;
+}
+bool Cust_or_emplo(_ConnectionPtr *_pConn,const char *_ID,bool *_IsCust) 
+{
+	char sqlStr[200] = "select login_competence from Table_Login where login_id = '" ;
+	strcat(sqlStr,_ID) ;
+	strcat(sqlStr,"'" ) ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp ;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false ;
+	}
+
+	if ( rsp->rsEOF )
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
+
+	_variant_t varCMP = rsp->Fields->GetItem(long(0))->Value ;
+	int cmp = compe_err ;
+
+	ConvertVar2Int(&varCMP,&cmp) ;
+	rsp->Close() ;
+	rsp.Release() ;
+
+	if ( compe_cust == cmp)
+	{
+		*_IsCust = true ;
+		return true ;
+	}
+	else if(compe_operater == cmp || compe_audi == cmp || compe_admin == cmp)
+	{
+		*_IsCust = false ;
+		return true ;
+	}
+	else
+	{
+		return false ;
+	}
+}
+bool Update_user_info(_ConnectionPtr *_pConn,const char *_ID,const char *_New_Addr,const char *_New_Email,const char *_New_Phone) 
+{
+	bool bIsCust ;
+	if ( ! Cust_or_emplo(_pConn,_ID,&bIsCust) )
+	{
+		if (bIsCust)
+		{
+			char sqlStr[200] = "update Table_Cust_Info set home_adress = '" ;
+			strcat(sqlStr,_New_Addr) ;
+			strcat(sqlStr,"',phone_num = '") ;
+			strcat(sqlStr,_New_Phone) ;
+			strcat(sqlStr,"' from Table_Cust_Info where id = '") ;
+			strcat(sqlStr,_ID) ;
+			strcat(sqlStr,"'") ;
+
+			_variant_t vt ;
+			try{
+				(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+			}
+			catch(...){
+				return false ;
+			}
+		}
+		else
+		{
+			char sqlStr[200] = "update Table_Employee set employee_addr = '" ;
+			strcat(sqlStr,_New_Addr) ;
+			strcat(sqlStr,"',employee_email = '") ;
+			strcat(sqlStr,_New_Email) ;
+			strcat(sqlStr,"',employee_phone_num = '") ;
+			strcat(sqlStr,_New_Phone) ;
+			strcat(sqlStr,"' from Table_Employee where employee_id = '") ;
+			strcat(sqlStr,_ID) ;
+			strcat(sqlStr,"'") ;
+			
+			_variant_t vt ;
+			try{
+				(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+			}
+			catch(...){
+				return false ;
+			}
+		}
+		return false ;
+	}
+	else
+	{
+		return true  ;
+	}
 }

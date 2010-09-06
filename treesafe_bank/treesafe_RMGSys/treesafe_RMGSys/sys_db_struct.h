@@ -9,6 +9,7 @@ enum login_competence{
 	compe_err	= -1 ,	
 	compe_cust = 0 ,
 	compe_operater = 1 ,
+	compe_audi = 2 ,
 	compe_admin = 3,
 	//...other competence
 };

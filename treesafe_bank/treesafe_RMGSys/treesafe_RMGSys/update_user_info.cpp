@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "update_user_info.h"
 
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 //30.1
 void init_update_user_input(update_user_input* _init){
 	memset(_init->new_addr,'\0',UPDATE_USER_ADDR_LEN);
@@ -49,6 +49,10 @@ update_user_input* update_user_get_cmd(const char* _cmd
 
 //30.3
 //...sunni完成
+void update_user_set_data(char* _card_id , update_user_input* _input)
+{
+	Update_user_info(treesafe_db_connection,_card_id,_input->new_addr,_input->new_email,_input->new_tel) ;
+}
 
 //30.4
 // 转化数据
