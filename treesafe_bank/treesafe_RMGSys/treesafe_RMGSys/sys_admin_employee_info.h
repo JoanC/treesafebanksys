@@ -20,7 +20,7 @@ enum admin_employee_type{
 };
 
 //雇员信息
-struct admin_employee_info{
+struct admin_employee_info{ 
 	admin_employee_type employee_type;//雇员类型
 	int employee_age;//雇员的年龄
     admin_mgr_gender employee_gender;//雇员性别

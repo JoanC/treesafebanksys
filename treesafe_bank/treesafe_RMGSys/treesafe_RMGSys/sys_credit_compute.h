@@ -12,7 +12,7 @@ struct edu_status			//受教育情况
 	float bachelor_or_college ; //学士或大专
 	float high_sch_or_secondary ; //高中或中专
 	float senior_sch ; // 初中
-	float primary_or_bellow ;				//初中及以下
+	float primary_or_bellow ;				//初中及以下 
 };
 ///////////////////////////////////////////
 ///////////////////////////////////////////income

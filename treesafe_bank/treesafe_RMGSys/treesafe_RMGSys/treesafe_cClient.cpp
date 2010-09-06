@@ -18,7 +18,7 @@ void CreateSocket(sys_Client* client)
 {
 	client->sys_net.sHost = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
 	if (INVALID_SOCKET == client->sys_net.sHost)
-	{
+	{ 
 		printf("socket failed!\n");
 		WSACleanup();
 		return;

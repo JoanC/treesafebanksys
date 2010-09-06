@@ -6,7 +6,7 @@ extern _ConnectionPtr* treesafe_db_connection ;
 void apply_init_apply_info(apply_info* _init){
 	//初始化结果信息
 	//初始化错误信息
-	_init->is_succ = true;
+	_init->is_succ = true; 
 	init_sys_err(&_init->errInfo);
 	//初始化其他信息...
 }

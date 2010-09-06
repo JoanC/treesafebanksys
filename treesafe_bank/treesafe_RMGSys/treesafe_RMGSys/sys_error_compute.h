@@ -16,7 +16,7 @@
 //一个枚举类型
 enum sys_err_type{
 	err_no_err = 0,//无错误
-	err_unknow = 9,//不可解析错误
+	err_unknow = 9,//不可解析错误 
 	//登陆过程中将会遇到的错误
 	err_login_user_or_pwd_err = 1,//用户名或密码不对
 	err_login_vry_uncmp = 2,//验证码不匹配

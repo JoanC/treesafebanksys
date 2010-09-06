@@ -21,7 +21,7 @@ void sys_connc_bank_query(bankDB_request_info* _req , bankDB_result_info* _rlt){
 	client_of_bank.rec.cNetDataInfo = (char*)malloc(sizeof(bankDB_result_info));
 	client_of_bank.send.stNetDataLength = sizeof(bankDB_request_info);
 	//
-	//
+	// 
 	memcpy(client_of_bank.send.cNetDataInfo,_req,sizeof(bankDB_request_info));
 	
 	InitClient(&client_of_bank);

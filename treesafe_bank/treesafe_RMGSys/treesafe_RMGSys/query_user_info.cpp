@@ -17,6 +17,6 @@ void init_user_query_array_info(int _size,user_query_array_info* _init){
 	//为每个元素进行初始化设置
 	for(int i = 0 ; i < _size ; ++i)
 	{
-		init_user_query_info(&_init->user_array[i]);
+		init_user_query_info(&_init->user_array[i]); 
 	}
 }

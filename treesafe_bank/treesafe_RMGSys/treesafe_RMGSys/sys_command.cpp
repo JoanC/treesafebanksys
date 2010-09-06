@@ -15,7 +15,7 @@ void sys_command_convert(net_recieved_info* _rev , sys_net_data* _cmd){
 
 void sys_command_init_sys_net_data(sys_net_data* _init){
 	//_init->data = NULL;
-	_init->len = 0;
+	_init->len = 0; 
 	_init->type = sys_cmd_unexpect;
 	strcpy(_init->data,"");
 }

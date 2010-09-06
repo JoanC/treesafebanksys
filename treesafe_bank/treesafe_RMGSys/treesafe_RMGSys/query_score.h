@@ -13,7 +13,7 @@ struct query_score_info{
 	credit_scores rlt_score;
 	sys_err err_info;
 };
-
+ 
 struct query_score_modle{
 	query_score_input_info input_info;
 	query_score_info rlt_info;

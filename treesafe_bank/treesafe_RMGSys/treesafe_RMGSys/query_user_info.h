@@ -19,7 +19,7 @@ struct user_query_info{
 	int user_age;//用户年龄
 	char user_name[USER_NAME_LEN];//用户名
 	char user_card_id[USER_CARD_ID];//身份证id
-	char user_tel[USER_TEL_LEN];//用户电话联系方式
+	char user_tel[USER_TEL_LEN];//用户电话联系方式 
 	char user_addr[USER_ADDR_LEN];//用户地址
 };
 

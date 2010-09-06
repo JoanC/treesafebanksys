@@ -15,7 +15,7 @@ struct employee_query_input_info{
 	char work_id[19];//输入的雇员工号
 };
 
-//待发送的结果信息 
+//待发送的结果信息  
 struct employee_query_info{
 	employee_query_data query_data;//数据库查询结果
 	//系统错误

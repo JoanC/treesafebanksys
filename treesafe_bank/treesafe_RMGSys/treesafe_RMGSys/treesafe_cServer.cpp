@@ -16,7 +16,7 @@ void net_add_connection(sys_Server *sServer)
 
 	sServer->sys_server.sServer = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
 	if(INVALID_SOCKET == sServer->sys_server.sServer)
-	{
+	{ 
 		printf("socket failed!\n");
 		WSACleanup();
 		return;

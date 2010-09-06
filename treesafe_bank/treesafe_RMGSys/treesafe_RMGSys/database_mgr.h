@@ -13,7 +13,7 @@
 #define PWD_LEN 16
 #define REG_MAX_USER_NAME 19
 #define REG_MAX_REAL_USER_NAME 51
-#define REG_MAX_USER_PWD 16
+#define REG_MAX_USER_PWD 16 
 #define REG_MAX_USER_BANK_ID 19//十八位身份证号,加'\0'19
 #define REG_MAX_ADDR 64//联系地址
 #define REG_MAX_OTHER_STR_LEN 256

@@ -20,7 +20,7 @@ struct research_query_input_info{
 
 struct research_query_info{
 	//申请查询的结果信息
-	research_query_data query_info;//结果信息
+	research_query_data query_info;//结果信息 
 	sys_err err_info;//错误信息
 };
 

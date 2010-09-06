@@ -12,7 +12,7 @@ typedef apply_input_info apply_score_prop;
 struct get_score_input_info{
 	int add_on_asset_score;
 	int add_on_work_score;
-	int add_on_society_score;
+	int add_on_society_score; 
 	int add_on_loan_score;
 	char card_id[GET_SCORE_ID_LEN];
 };

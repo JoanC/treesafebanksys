@@ -37,7 +37,7 @@ bool ConnectDB(_ConnectionPtr *pConn)
 		(*pConn) ->Open("","","",-1) ;
 	}catch(...){
 		return false ;
-	}
+	} 
 	//open it 
 
 	//delete connStr that was newed in GetIP()

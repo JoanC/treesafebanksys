@@ -19,7 +19,7 @@ void research_commit_init_research_commit_input_info(research_commit_input_info*
 	strcpy(_init->asset_research_info_comment,"");
 	strcpy(_init->loan_research_info_comment,"");
 }
-
+ 
 void research_commit_init_research_commit_info(research_commit_info* _init){
 	//初始化结果记录信息
 	//初始化错误信息

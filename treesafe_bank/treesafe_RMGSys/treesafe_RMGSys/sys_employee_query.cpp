@@ -18,7 +18,7 @@ void init_employee_query_info(employee_query_info* _init){
 	init_sys_err(&_init->err_info);
 }
 
-employee_query_modle* init_employee_query_modle(){
+employee_query_modle* init_employee_query_modle(){ 
 	//开辟并初始化模块
 	employee_query_modle* _new_modle
 		= (employee_query_modle*)malloc(sizeof(employee_query_modle));

@@ -17,7 +17,7 @@ struct delete_employee_input{
 
 //结果信息
 //其实就是一个是否删除成功的标记
-struct delete_employee_info{
+struct delete_employee_info{ 
 	bool is_succ;//是否删除成功
 	sys_err err_info;//错误信息
 };

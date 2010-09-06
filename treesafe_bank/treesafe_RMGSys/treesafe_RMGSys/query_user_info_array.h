@@ -21,7 +21,7 @@ struct user_query_arr_modle{
 	user_query_arr_info rlt_info;
 };
 
-//20.1
+//20.1 
 //jiraiya 完成
 //初始化结构体
 //初始化模块20的主模块

@@ -6,7 +6,7 @@ void apply_init_apply_custmor_info(apply_custmor_info* _init){
 	//初始化用户信息
 	memset(_init->app_id,'\0',APPLY_ID);
 	_init->cust_age = 0;
-	_init->cust_card_type = id_card;
+	_init->cust_card_type = id_card; 
 	_init->cust_gender = apply_info_male;
 	memset(_init->cust_id,'\0',APPLY_CUST_ID_LEN);
 	memset(_init->cust_name,'\0',APPLY_CUST_NAME_LEN);

@@ -18,7 +18,7 @@ void init_delete_employee_info(delete_employee_info* _init){
 	init_sys_err(&_init->err_info);
 }
 
-delete_employee_modle* init_delete_employee_modle(){
+delete_employee_modle* init_delete_employee_modle(){ 
 	//初始化模块16的整体
 	//分配内存
 	delete_employee_modle* _new_modle

@@ -21,7 +21,7 @@ struct research_exact_modle{
 	research_exact_info rlt_info;
 };
 
-/*************************************/
+/*************************************/ 
 //模块8.1
 //由Jiraiya完成
 //初始化各结构体

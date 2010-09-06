@@ -4,7 +4,7 @@
 //而雇员的增加与减少则是在管理员的(管理雇员)模块功能中实现
 #pragma once
 
-#include "sys_error_compute.h"
+#include "sys_error_compute.h" 
 #include "database_mgr.h"
 //#include "sys_connc_banksys_db.h"
 #include "sys_bank_query.h"

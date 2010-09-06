@@ -16,7 +16,7 @@ void init_add_employee_input(add_employee_input* _init){
 
 void init_add_employee_info(add_employee_info* _init){
 	//初始化添加雇员的结果记录信息
-	//初始化已成功
+	//初始化已成功 
 	//遇到错误时才会将这个值变为true
 	_init->is_succ = true;
 	//初始化错误信息

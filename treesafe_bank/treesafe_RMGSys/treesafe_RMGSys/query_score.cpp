@@ -14,7 +14,7 @@ void init_query_score_info(query_score_info* _init){
 }
 
 query_score_modle* init_query_score_modle(){
-	//分配内存
+	//分配内存 
 	query_score_modle* _new_modle = 
 		(query_score_modle*)malloc(sizeof(query_score_modle));
 	//初始化数据

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "sys_login.h"
 
-extern _ConnectionPtr* treesafe_db_connection ; 
+extern _ConnectionPtr* treesafe_db_connection ;  
 
 /////////////////////////////////////////////////
 /*3.1*/

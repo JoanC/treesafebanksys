@@ -18,7 +18,7 @@ struct group_start_info{
 	//建组人信息
 	char goup_maker_id[GROUP_MAKER_ID_LEN];//建组人id长度
 	char group_maker_name[GROUP_MAKER_NAME];//建组人姓名
-	//建组人为建组而申请的申请号
+	//建组人为建组而申请的申请号 
 	char group_maker_apply[GROUP_MAKER_APPLY_ID];
 	//一个分组的基本信息
 };

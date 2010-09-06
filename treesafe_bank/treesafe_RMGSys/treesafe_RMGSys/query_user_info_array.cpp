@@ -17,7 +17,7 @@ user_query_arr_modle* init_user_query_arr_modle(){
 		= (user_query_arr_modle*)malloc(sizeof(user_query_arr_modle));
 	init_user_querry_arr_info(&_new_modle->rlt_info);
 	return _new_modle;
-}
+} 
 
 void release_user_query_arr_modle(user_query_arr_modle* _release){
 	//先释放数组

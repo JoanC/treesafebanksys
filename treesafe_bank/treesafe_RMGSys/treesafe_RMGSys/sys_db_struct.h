@@ -17,7 +17,7 @@ const size_t idLen			= 19 ;
 const size_t pwdLen		= 16 ;
 struct sys_db_login{
 	char								user_id[idLen] ;
-	char								login_pwd[pwdLen] ;
+	char								login_pwd[pwdLen] ; 
 	login_competence		cmpt ;
 };
 

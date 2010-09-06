@@ -4,7 +4,7 @@ extern _ConnectionPtr* treesafe_db_connection ;
 /**********************************/
 //模块6的实现文件
 
-//6.1 初始化与释放
+//6.1 初始化与释放 
 
 void reg_init_reg_basic_info(reg_basic_info* _init){
 	//初始化基本信息

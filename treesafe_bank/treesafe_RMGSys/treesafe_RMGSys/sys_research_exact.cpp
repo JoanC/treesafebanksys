@@ -20,7 +20,7 @@ void init_research_exact_info(research_exact_info* _init){
 
 research_exact_modle* init_research_exact_modle(){
 	//初始化整体模块
-	//内存分配
+	//内存分配 
 	research_exact_modle* _new_modle
 		= (research_exact_modle*)malloc(sizeof(research_exact_modle));
 	//初始化各个数据块

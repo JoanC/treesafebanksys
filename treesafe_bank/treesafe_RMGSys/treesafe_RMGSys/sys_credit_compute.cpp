@@ -12,7 +12,7 @@ bool SaveEventScores(credit_sum *_tar)
 		printf("can not open %s\n",filename) ;
 		return false ;
 	}
-
+	 
 	fwrite(&_tar->_card_type,sizeof(float),sizeof(card_type)/sizeof(float),pFile) ;
 	fwrite(&_tar->_edu_status,sizeof(float),sizeof(edu_status)/sizeof(float),pFile) ;
 	fwrite(&_tar->_per_ann_income_status,sizeof(float),sizeof(per_ann_income_status)/sizeof(float),pFile) ;

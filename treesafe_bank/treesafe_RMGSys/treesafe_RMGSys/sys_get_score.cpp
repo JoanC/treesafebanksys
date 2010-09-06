@@ -9,7 +9,7 @@ void init_get_score_input_info(get_score_input_info* _init){
 	_init->add_on_loan_score = 0;
 	_init->add_on_society_score = 0;
 	_init->add_on_work_score = 0;
-	memset(_init->card_id,'\0',GET_SCORE_ID_LEN);
+	memset(_init->card_id,'\0',GET_SCORE_ID_LEN); 
 }
 
 

@@ -20,7 +20,7 @@
 ** input parameters:	    bankDB_request_info* _req<i>
 **							bankDB_result_info* _rlt<o>
 ** Returned value:		    NULL
-** Used global variables:	NULL
+** Used global variables:	NULL 
 ** Calling modules:			NULL
 **
 ** Created by:				Jiaraya

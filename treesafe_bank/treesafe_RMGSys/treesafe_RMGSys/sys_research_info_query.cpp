@@ -21,7 +21,7 @@ void init_research_query_info(research_query_info* _init){
 	//初始化用户家庭信息
 	apply_init_apply_custmor_family_info(&_init->query_info.input_fammily_info);
 	//初始化贷款信息
-	apply_init_apply_loan_info(&_init->query_info.input_loan_info);
+	apply_init_apply_loan_info(&_init->query_info.input_loan_info); 
 	//初始化错误信息
 	init_sys_err(&_init->err_info);
 }
