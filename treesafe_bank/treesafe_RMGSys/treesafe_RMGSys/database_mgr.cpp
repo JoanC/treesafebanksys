@@ -93,7 +93,7 @@ bool ConvertVar2Float(_variant_t *_Vt,float *_Dst)
 		return false ;
 	}
 	else {
-		*_Dst = _Vt->fltVal ;
+		*_Dst = _Vt->dblVal ;
 	}
 	return true ;
 }
@@ -1632,7 +1632,7 @@ bool Update_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 }
 bool Get_credit_scores(_ConnectionPtr *_pConn,credit_scores_db *_Scores,const char *_UserID) 
 {
-	char sqlStrTest[200] = "select score_income from Table_Score_Set where card_id = '" ;
+	char sqlStrTest[200] = "select * from Table_Score_Set where card_id = '" ;
 	strcat(sqlStrTest,_UserID) ;
 	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
