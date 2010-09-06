@@ -70,7 +70,7 @@
 #if defined DEBUG_RESEARCH
 #define DEBUG_RESEARCH_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_APPLY_PRINT(x){};
+#define DEBUG_RESEARCH_PRINT(x){};
 #endif
 
 //模块9：审核信息结果提交模块
@@ -78,7 +78,7 @@
 #if defined DEBUG_RESEARCH_COMMIT
 #define DEBUG_RESEARCH_COMMIT_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_APPLY_PRINT(x){};
+#define DEBUG_RESEARCH_COMMITs_PRINT(x){};
 #endif
 
 //模块11：打分模块
@@ -86,8 +86,17 @@
 #if defined DEBUG_GET_SCORE
 #define DEBUG_GET_SCORE_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_APPLY_PRINT(x){};
+#define DEBUG_GET_SOCRE_PRINT(x){};
 #endif
+
+//模块15：管理员添加雇员模块
+#define DEBUG_ADMIN_ADD_EMLOYEE
+#if defined DEBUG_ADMIN_ADD_EMLOYEE
+#define DEBUG_ADMIN_ADD_EMLOYEE_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_ADMIN_ADD_EMLOYEE(x){};
+#endif
+
 
 //utf-7的编码转换
 //将一个adsc读入,将其解码
