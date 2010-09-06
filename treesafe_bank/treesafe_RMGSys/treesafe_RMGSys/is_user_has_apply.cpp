@@ -4,7 +4,7 @@
 //模块27的实现文件
 extern _ConnectionPtr *treesafe_db_connection ; 
 //27.1
-void (user_has_app_input* _init){
+void init_user_has_app_input(user_has_app_input* _init){
 DEBUG_IS_APPLY("init_user_has_app_input\n");
 	memset(_init->card_id,'\0',USER_HAS_APP_ID_LEN);
 }
