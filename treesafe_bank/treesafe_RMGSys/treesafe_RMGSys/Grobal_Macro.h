@@ -105,6 +105,14 @@
 #define DEBUG_ADMIN_DEL_EMLOYEE(x){};
 #endif
 
+//模块18 ：调查结果查询模块
+#define DEBUG_RESEARCH_QUERY
+#if defined DEBUG_RESEARCH_QUERY
+#define DEBUG_RESEARCH_QUERY_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_RESEARCH_QUERY(x){};
+#endif
+
 //utf-7的编码转换
 //将一个adsc读入,将其解码
 #define DECODE_UTF7_TO_ASC(__src_code)\
