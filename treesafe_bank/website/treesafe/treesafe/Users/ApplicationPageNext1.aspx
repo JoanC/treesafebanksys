@@ -195,7 +195,7 @@
             <p> 
               <asp:Label ID="ApplicationWorkLabel" runat="server" AssociatedControlID="ApplicationWork">
               12. 工作单位或经营内容：</asp:Label>
-              <asp:TextBox ID="ApplicationWork" runat="server" CssClass="textEntry"></asp:TextBox>  
+              <asp:TextBox ID="ApplicationWork" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>  
               <asp:RequiredFieldValidator ID="ApplicationWorkRequired" runat="server" ControlToValidate="ApplicationWork"
                    CssClass="failureNotification" ErrorMessage="请输入工作单位或经营内容" ToolTip="请输入工作单位或经营内容"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>          
@@ -204,7 +204,7 @@
            <p> 
               <asp:Label ID="ApplicationPositionLabel" runat="server" AssociatedControlID="ApplicationPosition">
               13. 职位：</asp:Label>
-              <asp:TextBox ID="ApplicationPosition" runat="server" CssClass="textEntry"></asp:TextBox>  
+              <asp:TextBox ID="ApplicationPosition" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>  
               <asp:RequiredFieldValidator ID="ApplicationPositionRequired" runat="server" ControlToValidate="ApplicationPosition"
                    CssClass="failureNotification" ErrorMessage="请输入您的职位" ToolTip="请输入您的职位"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>          

@@ -24,7 +24,7 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
            <p>
               <asp:Label ID="ApplicationNameLabel" runat="server" AssociatedControlID="ApplicationName">
               1. 申请人姓名:</asp:Label>
-              <asp:TextBox ID="ApplicationName" runat="server" CssClass="textEntry"></asp:TextBox>
+              <asp:TextBox ID="ApplicationName" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
               <asp:RequiredFieldValidator ID="ApplicationNameRequired" runat="server" ControlToValidate="ApplicationName"
                    CssClass="failureNotification" ErrorMessage="请输入申请人姓名" ToolTip="请输入申请人姓名"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
@@ -33,7 +33,7 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
            <p>
               <asp:Label ID="ApplicationAgeLabel" runat="server" AssociatedControlID="ApplicationAge">
               2. 申请人年龄:</asp:Label>
-              <asp:TextBox ID="ApplicationAge" runat="server" CssClass="textEntry"></asp:TextBox>
+              <asp:TextBox ID="ApplicationAge" runat="server" CssClass="textEntry" MaxLength="3"></asp:TextBox>
               <asp:RequiredFieldValidator ID="ApplicationAgeRequired" runat="server" ControlToValidate="ApplicationAge"
                    CssClass="failureNotification" ErrorMessage="请输入申请人年龄" ToolTip="请输入申请人年龄"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
@@ -75,7 +75,7 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
            <p>
               <asp:Label ID="ApplicationAddressLabel" runat="server" AssociatedControlID="ApplicationAddress">
               6. 家庭住址：</asp:Label>
-              <asp:TextBox ID="ApplicationAddress" runat="server" Width="300px" CssClass="textEntry"></asp:TextBox>
+              <asp:TextBox ID="ApplicationAddress" runat="server" Width="300px" CssClass="textEntry" MaxLength="50"></asp:TextBox>
               <asp:RequiredFieldValidator ID="ApplicationAddressRequired" runat="server" ControlToValidate="ApplicationAddress"
                    CssClass="failureNotification" ErrorMessage="请输入家庭住址" ToolTip="请输入家庭住址"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
@@ -84,10 +84,14 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
            <p>
               <asp:Label ID="ApplicationPostCodeLabel" runat="server" AssociatedControlID="ApplicationPostCode">
               7. 邮政编码：</asp:Label>
-              <asp:TextBox ID="ApplicationPostCode" runat="server" Width="300px" CssClass="textEntry"></asp:TextBox>
+              <asp:TextBox ID="ApplicationPostCode" runat="server" CssClass="textEntry" MaxLength="6"></asp:TextBox>
               <asp:RequiredFieldValidator ID="ApplicationPostCodeRequired" runat="server" ControlToValidate="ApplicationPostCode"
                    CssClass="failureNotification" ErrorMessage="请输入邮政编码" ToolTip="请输入邮政编码"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
+              <asp:RegularExpressionValidator ID="ApplicationPostCodeRange" ControlToValidate="ApplicationPostCode" 
+                    Display="Dynamic" ValidationExpression="d{6}" runat="server" ForeColor="Blue"
+                    ErrorMessage="邮政编码位数为6，请检查后重新输入。">
+              </asp:RegularExpressionValidator>
            </p>
 
            <p>
@@ -110,12 +114,20 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
                <asp:RequiredFieldValidator ID="ApplicationPhoneNumberRequired1" runat="server" ControlToValidate="ApplicationPhoneNumber"
                    CssClass="failureNotification" ErrorMessage="请至少输入1个联系电话" ToolTip="请至少输入1个联系电话"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="ApplicationPhoneNumberRange" ControlToValidate="ApplicationPhoneNumber" Display="Dynamic" 
+                                     ValidationExpression="([\d\D]{7,11})" runat="server" ForeColor="Blue"
+                                     ErrorMessage="请注意，电话号码最少7位，最高11位。">
+                                </asp:RegularExpressionValidator>
            </p>
 
            <p> 
               <asp:Label ID="ApplicationPhoneNumberLabel1" runat="server" AssociatedControlID="ApplicationPhoneNumber1">
               10. 其他联系电话：</asp:Label>
-              <asp:TextBox ID="ApplicationPhoneNumber1" runat="server" CssClass="textEntry"></asp:TextBox>            
+              <asp:TextBox ID="ApplicationPhoneNumber1" runat="server" CssClass="textEntry"></asp:TextBox>   
+              <asp:RegularExpressionValidator ID="ApplicationPhoneNumber1Range" ControlToValidate="ApplicationPhoneNumber1" Display="Dynamic" 
+                                     ValidationExpression="([\d\D]{7,11})" runat="server" ForeColor="Blue"
+                                     ErrorMessage="请注意，电话号码最少7位，最高11位。">
+                                </asp:RegularExpressionValidator>         
            </p>
 
            <p>

@@ -76,6 +76,15 @@ namespace treesafe {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator UserOldPasswordRequire;
         
         /// <summary>
+        /// UserOldPasswordRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator UserOldPasswordRange;
+        
+        /// <summary>
         /// UserPasswordLabel control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace treesafe {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator UserPasswordRequired;
+        
+        /// <summary>
+        /// UserPasswordRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator UserPasswordRange;
         
         /// <summary>
         /// ConfirmPasswordLabel control.

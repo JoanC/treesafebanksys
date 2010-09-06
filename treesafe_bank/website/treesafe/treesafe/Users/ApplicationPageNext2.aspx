@@ -41,28 +41,32 @@ CodeBehind="ApplicationPageNext2.aspx.cs" Inherits="treesafe.Users.ApplicationPa
                 <asp:Label ID="ApplicationChildrenNumberLabel" runat="server" AssociatedControlID="ApplicationChildrenNumber">
                 2. 您的子女人数：
                 </asp:Label>
-                <asp:TextBox ID="ApplicationChildrenNumber" runat="server" CssClass="textEntry" Text="0"></asp:TextBox>
+                <asp:TextBox ID="ApplicationChildrenNumber" runat="server" CssClass="textEntry" Text="0" MaxLength="2"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="ApplicationChildrenNumberRange" ControlToValidate="ApplicationChildrenNumber" Display="Dynamic" 
+                     ValidationExpression="([\d\D]{0,2})" runat="server" ForeColor="Blue"
+                     ErrorMessage="信息不真实，请确认后认真填写">
+                 </asp:RegularExpressionValidator>
            </p>
 
            <p>
                 <asp:Label ID="ApplicationMateNameLabel" runat="server" AssociatedControlID="ApplicationMateName">
                 3. 您的配偶姓名：
                 </asp:Label>
-                <asp:TextBox ID="ApplicationMateName" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="ApplicationMateName" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
            </p>
 
            <p>
                 <asp:Label ID="ApplicationMateIDNumberLabel" runat="server" AssociatedControlID="ApplicationMateIDNumber">
                 4. 您的配偶身份证号：
                 </asp:Label>
-                <asp:TextBox ID="ApplicationMateIDNumber" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="ApplicationMateIDNumber" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
            </p>
 
            <p>
                 <asp:Label ID="ApplicationMateWorkLabel" runat="server" AssociatedControlID="ApplicationMateWork">
                 5. 您的配偶工作单位（工作情况）：
                 </asp:Label>
-                <asp:TextBox ID="ApplicationMateWork" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="ApplicationMateWork" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
            </p>
 
            <p>

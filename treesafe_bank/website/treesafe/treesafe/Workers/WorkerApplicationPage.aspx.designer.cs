@@ -211,6 +211,15 @@ namespace treesafe.Workers {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationPostCodeRequired;
         
         /// <summary>
+        /// ApplicationPostCodeRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ApplicationPostCodeRange;
+        
+        /// <summary>
         /// ApplicationHouseTypeLabel control.
         /// </summary>
         /// <remarks>
@@ -265,6 +274,15 @@ namespace treesafe.Workers {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ApplicationPhoneNumberRequired1;
         
         /// <summary>
+        /// ApplicationPhoneNumberRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ApplicationPhoneNumberRange;
+        
+        /// <summary>
         /// ApplicationPhoneNumberLabel1 control.
         /// </summary>
         /// <remarks>
@@ -281,6 +299,15 @@ namespace treesafe.Workers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ApplicationPhoneNumber1;
+        
+        /// <summary>
+        /// ApplicationPhoneNumber1Range control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ApplicationPhoneNumber1Range;
         
         /// <summary>
         /// ApplicationEducationLabel control.
@@ -623,6 +650,15 @@ namespace treesafe.Workers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ApplicationChildrenNumber;
+        
+        /// <summary>
+        /// ApplicationChildrenNumberRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ApplicationChildrenNumberRange;
         
         /// <summary>
         /// ApplicationMateNameLabel control.

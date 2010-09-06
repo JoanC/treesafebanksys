@@ -51,7 +51,7 @@ CodeBehind="UserEditInfoPage.aspx.cs" Inherits="treesafe.Users.UserEditInfoPage"
         <asp:Label ID="UserAddressLabel" runat="server" AssociatedControlID="UserAddress">
         家庭住址:
         </asp:Label>
-        <asp:TextBox ID="UserAddress" runat="server" CssClass="textEntry"></asp:TextBox>
+        <asp:TextBox ID="UserAddress" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
         <asp:RequiredFieldValidator ID="UserAddressRequire" runat="server" ControlToValidate="UserAddress" 
              CssClass="failureNotification" ErrorMessage="请输入您的家庭住址" ToolTip="请输入您的家庭住址" 
              ValidationGroup="UserInfoValidationGroup">*</asp:RequiredFieldValidator>
@@ -66,6 +66,10 @@ CodeBehind="UserEditInfoPage.aspx.cs" Inherits="treesafe.Users.UserEditInfoPage"
         <asp:RequiredFieldValidator ID="UserPhoneRequired" runat="server" ControlToValidate="UserPhone" 
              CssClass="failureNotification" ErrorMessage="请输入您的电话号码" ToolTip="请输入您的电话号码" 
              ValidationGroup="UserInfoValidationGroup">*</asp:RequiredFieldValidator>
+             <asp:RegularExpressionValidator ID="UserPhoneRange" ControlToValidate="UserPhone" Display="Dynamic" 
+                                     ValidationExpression="([\d\D]{7,11})" runat="server" ForeColor="Blue"
+                                     ErrorMessage="请注意，电话号码最少7位，最高11位。">
+                                </asp:RegularExpressionValidator>
              <br/>
     </p>
 
@@ -73,7 +77,7 @@ CodeBehind="UserEditInfoPage.aspx.cs" Inherits="treesafe.Users.UserEditInfoPage"
         <asp:Label ID="UserEmailLabel" runat="server" AssociatedControlID="UserEmail">
         电子邮件:
         </asp:Label>
-        <asp:TextBox ID="UserEmail" runat="server" CssClass="textEntry"></asp:TextBox>
+        <asp:TextBox ID="UserEmail" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
     </p>
     </fieldset>
 

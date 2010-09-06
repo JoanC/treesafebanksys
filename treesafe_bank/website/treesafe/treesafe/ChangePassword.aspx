@@ -33,6 +33,9 @@ CodeBehind="ChangePassword.aspx.cs" Inherits="treesafe.ChangePassword" %>
         <asp:RequiredFieldValidator ID="UserOldPasswordRequire" runat="server" ControlToValidate="UserOldPassword" 
              CssClass="failureNotification" ErrorMessage="请输入您现在的密码" ToolTip="请输入您现在的密码" 
              ValidationGroup="UserInfoValidationGroup">*</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="UserOldPasswordRange" runat="server" ControlToValidate="UserOldPassword" 
+             ErrorMessage="请将密码长度控制在6~15个字符之间" ValidationExpression="([\s\S]{6,15})" ForeColor="Blue">
+        </asp:RegularExpressionValidator>
     </p>
 
     <p>
@@ -43,6 +46,9 @@ CodeBehind="ChangePassword.aspx.cs" Inherits="treesafe.ChangePassword" %>
         <asp:RequiredFieldValidator ID="UserPasswordRequired" runat="server" ControlToValidate="UserPassword" 
              CssClass="failureNotification" ErrorMessage="请输入您的新密码" ToolTip="请输入您的新密码" 
              ValidationGroup="UserInfoValidationGroup">*</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="UserPasswordRange" runat="server" ControlToValidate="UserPassword" 
+             ErrorMessage="请将密码长度控制在6~15个字符之间" ValidationExpression="([\s\S]{6,15})" ForeColor="Blue">
+        </asp:RegularExpressionValidator>
     </p>
 
    <p>
