@@ -29,7 +29,7 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
               <asp:RegularExpressionValidator ID="LaborIDRange" ControlToValidate="LaborID" Display="Dynamic" 
                     ValidationExpression="d{7}" runat="server" ForeColor="Blue"
-                     ErrorMessage="请注意，雇员工号固定为7位">
+                     ErrorMessage="请注意，雇员工号固定为7位数字">
               </asp:RegularExpressionValidator>
            </p>
 
