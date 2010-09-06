@@ -65,15 +65,14 @@ namespace treesafe.Admintrotors
 
 
             ////////////////////////////////////////
-            //error!! 数据库崩溃
             /////////////
-            /*
+            
             web_net_client_mgr _net = new web_net_client_mgr();
             query_employee_array_input _input = new query_employee_array_input();
             _net.send_command_data(15,_input);
             _rlt = (query_employee_array_info)_net.recevie_data(_rlt.GetType());
 
-            */
+            
             //读取雇员数据
             GetLaborInfo();
 
