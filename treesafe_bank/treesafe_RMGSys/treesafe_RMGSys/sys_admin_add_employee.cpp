@@ -10,11 +10,13 @@
 
 void init_add_employee_input(add_employee_input* _init){
 	//初始化输入信息
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("init_add_employee_input\n");
 	init_admin_employee_info(&_init->employ_basic_info);
 	strcpy(_init->comment,"");//初始化注释信息
 }
 
 void init_add_employee_info(add_employee_info* _init){
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("init_add_employee_info\n");
 	//初始化添加雇员的结果记录信息
 	//初始化已成功 
 	//遇到错误时才会将这个值变为true
@@ -24,6 +26,7 @@ void init_add_employee_info(add_employee_info* _init){
 }
 
 add_employee_modle* init_add_employee_modle(){
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("init_add_employee_modle\n");
 	//初始化添加雇员的总模块
 	//分配内存..
 	add_employee_modle* _new_modle = 
@@ -37,16 +40,19 @@ add_employee_modle* init_add_employee_modle(){
 }
 
 void release_add_employee_modle(add_employee_modle* _release){
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("release_add_employee_modle\n");
 	free(_release);
 }
 //15.2
 
 void add_employee_copy_cmd(const char* _cmd , char* _dest , int _cmd_len){
 	//复制命令信息
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_copy_cmd\n");
 	memcpy(_dest,_cmd,_cmd_len);
 }
 
 add_employee_input* add_employee_convert_cmd(char* _info){
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_convert_cmd\n");
 	//转化命令成为输入数据
 	add_employee_input* _new_info = (add_employee_input*)_info;
 
@@ -62,6 +68,7 @@ add_employee_input* add_employee_convert_cmd(char* _info){
 }
 
 add_employee_input* add_employee_get_cmd(const char* _cmd,int _cmd_len){
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("init_add_employee_info\n");
 	//转化并且复制指令
 	char* _info = (char*)malloc(_cmd_len);
 	//复制命令
@@ -73,6 +80,7 @@ add_employee_input* add_employee_get_cmd(const char* _cmd,int _cmd_len){
 //15.3
 void add_employee_to_db(add_employee_input* _input_info, bool *_rlt)
 {
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_to_db\n");
 	*_rlt = add_new_employee(treesafe_db_connection,&(_input_info->employ_basic_info),_input_info->comment) ;
 //	reg_basic_info _info_add_to_login ;
 //	_info_add_to_login.reg_id = _input_info->employ_basic_info.employee_id ;
@@ -82,6 +90,7 @@ void add_employee_to_db(add_employee_input* _input_info, bool *_rlt)
 //15.4
 void add_employee_covert_result(add_employee_info* _info
 	,char* _rlt , int* _rlt_len){
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_covert_result\n");
 	memcpy(_rlt,_info,sizeof(add_employee_info));
 	*_rlt_len = sizeof(add_employee_info);
 }
@@ -90,6 +99,7 @@ void add_employee_covert_result(add_employee_info* _info
 //模块15的主函式
 void add_employee_frame(const char* _cmd , int _cmd_len
 	,char* _rlt , int* _rlt_len){
+DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_frame\n");
 	//15.1
 	//初始化模块
 	add_employee_modle* _new_frame = init_add_employee_modle();
