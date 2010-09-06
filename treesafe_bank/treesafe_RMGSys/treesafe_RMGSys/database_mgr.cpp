@@ -8,7 +8,6 @@ bool GetConnStr(int index,char *outcome)
 	if (fopen_s(&pFile,CSFileName,"rt") == S_OK ){
 		for(int i  = 0 ; i <= index ; ++i){
 			fgets(outcome,connStrLen,pFile) ;
-
 		}
 		fclose(pFile) ; 
 		return true ;
