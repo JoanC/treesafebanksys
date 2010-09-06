@@ -18,3 +18,39 @@ struct query_score_modle{
 	query_score_input_info input_info;
 	query_score_info rlt_info;
 };
+
+/*********************************************/
+//21.1
+//初始化21.1模块
+//初始化与释放模块
+
+void init_query_score_input_info(query_score_input_info* _init);
+
+void init_query_score_info(query_score_info* _init);
+
+query_score_modle* init_query_score_modle();
+
+void release_query_score_modle(query_score_modle* _release);
+
+/*********************************************/
+//21.2
+//获取指令
+//并将21模块的输入指令转化成可读的数据
+void query_score_copy_cmd(const char* _cmd,char* _dest,int _cmd_len);
+
+query_score_input_info* query_score_convert_cmd(char* _info);
+
+query_score_input_info* query_score_get_cmd(const char* _cmd,int _cmd_len);
+
+/*********************************************/
+//21.3
+//数据库计算
+void query_score_db(char* _cust_id,credit_scores* _db_rlt);
+
+/*********************************************/
+//21.4
+//结果信息转化
+
+void query_score_rlt_convert(query_score_info* _info , char* _rlt , int* _rlt_len);
+
+//模块21主函式
