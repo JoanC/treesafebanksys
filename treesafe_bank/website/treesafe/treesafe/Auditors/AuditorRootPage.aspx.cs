@@ -5,18 +5,88 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using ClientNet;
+using Chinese_Encode;
+
+using treesafe.Admintrators;
+using treesafe.Account;
+
+
 namespace treesafe.Auditors
 {
     public partial class AuditorRootPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userright"].ToString() != "2")
+            //读入操作员基本信息，直接可用如下方法赋值
+            //  WorkerPosition.Text = "dfsf";\
+            if (!this.IsPostBack)
             {
-            //    Server.Transfer("~/WrongPage.aspx", true);
+                string _query_id = new string(treesafe.Account.Login.login_rlt.user_id);
+                display_employee_info(query_worker_info(_query_id));
             }
 
-            //从此处读取该审核员的工号
+            if (Session["userright"].ToString() != "2")
+            {
+                //       Server.Transfer("~/WrongPage.aspx", true);
+            }
+        }
+        [Serializable] // 指示可序列化
+        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
+        public struct employee_query_input_info
+        {
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+            public char[] work_id;//输入的雇员的login号码
+            public employee_query_input_info(string _work_id)
+            {
+                work_id = _work_id.PadRight(19, '\0').ToCharArray();
+            }
+        };
+        public void display_employee_info(admin_add_employee_input_info _info)
+        {
+            WorkerID.Text = new string(_info._info.empl_work_id);
+            WorkerName.Text = new string(_info._info.empl_name);
+            WorkerSex.Text = (_info._info.empl_gender == 0) ? "男" : "女";
+            WorkerAge.Text = Convert.ToString(_info._info.empl_age);
+            WorkerPosition.Text
+                = (_info._info.empl_type == 0) ? "操作员" : "审核员";
+            WorkerEmail.Text = new string(_info._info.empl_email);
+        }
+
+        public admin_add_employee_input_info query_worker_info(string _work_id)
+        {
+            admin_employ_info _query_info
+                = new admin_employ_info(0, 0, 0, "", "", "", "", "", "");
+            /*最终的查询信息*/
+            admin_add_employee_input_info _info
+                = new admin_add_employee_input_info("", _query_info);
+            //发送请求数据
+            web_net_client_mgr _new_mgr =
+                new web_net_client_mgr();
+            employee_query_input_info _input = new employee_query_input_info(_work_id);
+            /*发送消息*/
+            try
+            {
+                _new_mgr.send_command_data(8, _input);
+            }
+            catch
+            {
+                WrongPage.wrong_msg = "由于网络原因,从服务器读取该工作人员信息失败！请检查网络问题并重新登陆";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+            /*接受信息*/
+            _info = (admin_add_employee_input_info)_new_mgr.recevie_data(_info.GetType());
+            return _info;
         }
     }
 }
