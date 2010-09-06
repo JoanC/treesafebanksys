@@ -142,6 +142,9 @@
     <Filter Include="apply\query">
       <UniqueIdentifier>{b391b925-7012-475f-bc6d-e53def6b168c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="credit_compute\is_user_has_score">
+      <UniqueIdentifier>{85b70552-6d26-42b5-90ad-a9394c50fd69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -279,6 +282,9 @@
     <ClInclude Include="is_user_have_apply.h">
       <Filter>apply\query</Filter>
     </ClInclude>
+    <ClInclude Include="is_user_has_score.h">
+      <Filter>credit_compute\is_user_has_score</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -379,6 +385,9 @@
     </ClCompile>
     <ClCompile Include="is_user_has_apply.cpp">
       <Filter>apply\query</Filter>
+    </ClCompile>
+    <ClCompile Include="is_user_has_score.cpp">
+      <Filter>credit_compute\is_user_has_score</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

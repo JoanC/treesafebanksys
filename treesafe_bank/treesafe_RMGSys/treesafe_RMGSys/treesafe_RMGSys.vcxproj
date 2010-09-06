@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="employee_query_array.h" />
+    <ClInclude Include="is_user_has_score.h" />
     <ClInclude Include="is_user_have_apply.h" />
     <ClInclude Include="net.h" />
     <ClInclude Include="query_one_user_info.h" />
@@ -123,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="employee_query_array.cpp" />
     <ClCompile Include="is_user_has_apply.cpp" />
+    <ClCompile Include="is_user_has_score.cpp" />
     <ClCompile Include="query_one_user_info.cpp" />
     <ClCompile Include="query_score.cpp" />
     <ClCompile Include="query_user_info.cpp" />
