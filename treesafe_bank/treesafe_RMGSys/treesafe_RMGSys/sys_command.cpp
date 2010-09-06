@@ -97,6 +97,10 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 	case(sys_cmd_query_employee_arr):{
 		sys_command_query_employee_arr(_command,_rlt,_rlt_len);
 									 }break;
+		//调用更改雇员主函式
+	case(sys_cmd_update_employee_info):{
+		sys_command_update_emplyee_info(_command,_rlt,_rlt_len);
+									   }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -203,6 +207,12 @@ void sys_command_update_weight(const sys_net_data* _cmd,char* _rlt,int* _rlt_len
 void sys_command_query_employee_arr(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	DEBUG_COMMAND_PRINT("command:query an employee array\n");
 	query_employee_arr_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
+
+//2.4.17
+void sys_command_update_emplyee_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	DEBUG_COMMAND_PRINT("command:update an employee's information\n");
+	update_employee_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
 //模块2.5

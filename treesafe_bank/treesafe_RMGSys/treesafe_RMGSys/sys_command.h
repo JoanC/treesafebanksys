@@ -20,6 +20,7 @@
 #include "query_weight.h"//查询权重
 #include "update_weight.h"//更改权重
 #include "employee_query_array.h"//查找一个雇员列表
+#include "update_employee_info.h"//更新一个雇员的信息
 
 
 
@@ -45,6 +46,7 @@ enum{
 	sys_cmd_query_weight = 13,//查询权重信息
 	sys_cmd_update_weight = 14,//更改权重信息
 	sys_cmd_query_employee_arr = 15,//查询一个雇员列表
+	sys_cmd_update_employee_info = 16,//更新一个雇员的信息
 	sys_cmd_unexpect = -1//未知命令(不可解析)
 };  
 
@@ -399,6 +401,8 @@ void sys_command_update_weight(const sys_net_data* _cmd,char* _rlt,int* _rlt_len
 //2.5.16
 void sys_command_query_employee_arr(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
+//2.5.17
+void sys_command_update_emplyee_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 //模块2.5
 //未知命令的处理函式
  /*********************************************************************************************************
