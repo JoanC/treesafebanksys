@@ -6,6 +6,7 @@
 //init client
 void InitClient(sys_Client* client)
 {
+DEBUG_NET_PRINT("Init CLient\n");
 	if (WSAStartup(MAKEWORD(2,2),&client->sys_net.wsd) !=0)
 	{
 		printf("WSAStartup failed!\n");
@@ -16,6 +17,7 @@ void InitClient(sys_Client* client)
 //create socket 
 void CreateSocket(sys_Client* client)
 {
+DEBUG_NET_PRINT("Client:create socket\n");
 	client->sys_net.sHost = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
 	if (INVALID_SOCKET == client->sys_net.sHost)
 	{ 
@@ -29,6 +31,7 @@ void CreateSocket(sys_Client* client)
 //connect to server
 void Connect2Server(sys_Client* client,char* ConnectIP,short port)
 {
+DEBUG_NET_PRINT("Connect to server\n");
 	int retVal;
 	client->sys_net.servAddr.sin_family = AF_INET;
 	client->sys_net.servAddr.sin_addr.s_addr = inet_addr(BANKIP);
@@ -42,13 +45,12 @@ void Connect2Server(sys_Client* client,char* ConnectIP,short port)
 		WSACleanup();
 		return;
 	}
-	printf("connect OK\n");
 }
 
 //send data
 void SendData(sys_Client* client)
 {
-	printf("senddata\n");
+DEBUG_NET_PRINT("Client:send data\n");
 	int reVal;
 	if(client->send.stNetDataLength <= PackageSize)
 	{
@@ -87,6 +89,7 @@ void SendData(sys_Client* client)
 //rec data
 void RecData(sys_Client* client)
 {
+DEBUG_NET_PRINT("Client:recevie data\n");
 	char cCount[] = "99";
 	int reVal = recv(client->sys_net.sHost,cCount,strlen(cCount),0);
 	int iCount = atoi(cCount);
@@ -113,6 +116,7 @@ void RecData(sys_Client* client)
 //exit client
 void ExitClient(sys_Client* client)
 {
+DEBUG_NET_PRINT("Client:Exit client!\n");
 	closesocket(client->sys_net.sHost);
 	WSACleanup();
 	return;
