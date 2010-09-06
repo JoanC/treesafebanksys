@@ -41,4 +41,15 @@ update_employee_input* update_employee_get_cmd(const char* _cmd , int _cmd_len);
 //24.3
 //数据库计算
 //sunni完成
-void 
+void update_employee_set_date(char* _card_id_old
+	,admin_employee_info* _new);
+
+//24.4
+//结果转化计算
+
+void update_employee_convert_rlt(update_employee_info* _info 
+	, char* _rlt , int* _rlt_len);
+
+//模块24的总模块计算
+void update_employee_frame(const char* _cmd,int _cmd_len
+	,char* _rlt , int* _rlt_len);
