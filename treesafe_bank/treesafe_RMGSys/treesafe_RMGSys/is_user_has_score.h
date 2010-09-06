@@ -34,5 +34,21 @@ void release_is_user_has_score_modle(is_user_has_score_modle* _release);
 //模块28.2
 //获取指令
 
+void is_user_has_score_copy_cmd(const char* _cmd,char* _dest,int _cmd_len);
+
+is_user_has_score_input* is_user_has_score_convert_cmd(char* _info);
+
+is_user_has_score_input* is_user_has_score_get_cmp(const char* _cmd,int _cmd_len);
+
+
+//模块28.3
+//sunni完成
+void is_user_has_score_get_data(char* _id , bool* _rlt);
+
+
+//模块28.4
+//结果数据转换
+void is_user_has_score_convert_rlt(is_user_has_score_info* _info
+	,char* _rlt,int* _rlt_len);
 
 
