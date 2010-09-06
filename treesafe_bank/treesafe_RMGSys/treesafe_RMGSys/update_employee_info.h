@@ -8,7 +8,7 @@
 //修改雇员信息
 
 struct update_employee_input{
-	char* card_id[UPDATE_EMPLOYEE_CARD_ID_LEN];//原号码信息
+	char card_id[UPDATE_EMPLOYEE_CARD_ID_LEN];//原号码信息
 	admin_employee_info new_info;//新输入的信息
 };
 

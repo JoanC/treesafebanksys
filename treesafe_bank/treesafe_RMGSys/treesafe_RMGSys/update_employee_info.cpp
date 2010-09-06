@@ -82,7 +82,8 @@ DEBUG_UPDATE_EMPLOYEE_INFO_PRINT("update_employee_frame\n");
 		_frame->input_info = *update_employee_get_cmd(_cmd,_cmd_len);
 		//24.3
 		//ÓÉsunniÍê³É
-
+		update_employee_set_data(_frame->input_info.card_id
+			,&_frame->input_info.new_info);
 		//24.4
 		update_employee_convert_rlt(&_frame->rlt_info,
 			_rlt,_rlt_len);
