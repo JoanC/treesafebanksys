@@ -43,7 +43,10 @@ query_weight_input_info* query_weight_get_cmd(const char* _cmd ,
 
 //26.3
 //sunni待完成
-
+void query_weight_get_data(event_wgt* _data)
+{
+	ReadEventWeight(_data) ;
+}
 
 //26.4
 //转化结果信息

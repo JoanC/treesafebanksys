@@ -44,7 +44,7 @@ update_weight_input* update_weight_get_cmd(const char* _cmd , int _cmd_len);
 //sunni完成
 //数据库的更新
 
-void update_weight_set_data(event_wgt* _new_data);
+void update_weight_set_data(event_wgt* _new_data) ;
 
 //模块25.4
 //结果数据转化

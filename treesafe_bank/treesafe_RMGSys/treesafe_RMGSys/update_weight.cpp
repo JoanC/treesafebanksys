@@ -42,6 +42,10 @@ update_weight_input* update_weight_get_cmd(const char* _cmd , int _cmd_len){
 
 //25.3
 //´ıÊµÏÖ
+void update_weight_set_data(event_wgt* _new_data) 
+{
+	SaveEventWeight(_new_data) ;
+}
 
 void update_weight_convert_rlt(update_weight_info* _info,
 	char* _rlt , int* _rlt_len){

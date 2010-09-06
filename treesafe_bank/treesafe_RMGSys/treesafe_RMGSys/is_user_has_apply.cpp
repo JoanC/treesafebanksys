@@ -2,7 +2,7 @@
 #include "is_user_have_apply.h"
 
 //模块27的实现文件
-
+extern _ConnectionPtr *treesafe_db_connection ; 
 //27.1
 void init_user_has_app_input(user_has_app_input* _init){
 	memset(_init->card_id,'\0',USER_HAS_APP_ID_LEN);
@@ -42,7 +42,10 @@ user_has_app_input* user_has_app_get_cmd(const char* _cmd  , int _cmd_len){
 
 //27.3
 //待sunni去完成
-
+void user_has_app_get_data(char* _card_id , bool* _rlt)
+{
+	*_rlt = has_user_app(treesafe_db_connection,_card_id) ;
+}
 
 //27.4
 void user_has_app_convert_rlt(user_has_app_info* _info

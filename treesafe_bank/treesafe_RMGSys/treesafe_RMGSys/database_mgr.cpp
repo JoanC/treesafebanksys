@@ -2027,3 +2027,24 @@ bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info*
 	}
 	return true ;
 }
+bool has_user_app(_ConnectionPtr *_pConn,const char *_ID) 
+{
+	char sqlStr[150] = "select cust_gend from Table_Cust_Info where cust_id = '" ;
+	strcat(sqlStr,_ID) ;
+	strcat(sqlStr,"'") ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
+
+	if ( rsp->rsEOF )
+	{
+		return false ;
+	}
+	return true ;
+}
