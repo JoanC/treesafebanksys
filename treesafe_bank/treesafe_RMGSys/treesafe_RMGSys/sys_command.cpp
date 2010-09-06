@@ -15,7 +15,7 @@ void sys_command_convert(net_recieved_info* _rev , sys_net_data* _cmd){
 
 void sys_command_init_sys_net_data(sys_net_data* _init){
 	//_init->data = NULL;
-	_init->len = 0; 
+	_init->len = 0;
 	_init->type = sys_cmd_unexpect;
 	strcpy(_init->data,"");
 }
@@ -129,7 +129,7 @@ void sys_command_query_research(const sys_net_data* _cmd,char* _rlt,int* _rlt_le
 void sys_command_exact_research(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	research_exact_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
-
+  
 //2.4.9
 void sys_command_query_employee(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 	employee_query_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
