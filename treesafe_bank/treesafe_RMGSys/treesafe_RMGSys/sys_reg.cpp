@@ -6,7 +6,8 @@ extern _ConnectionPtr* treesafe_db_connection ;
 
 //6.1 初始化与释放 
 
-void reg_init_reg_basic_info(reg_basic_info* _init){
+void reg_init_REG_basic_info(reg_basic_info* _init){
+DEBUG_REG_PRINT
 	//初始化基本信息
 	//初始用户名
 	//初始化身份证号,十八位0
@@ -24,17 +25,17 @@ void reg_init_reg_basic_info(reg_basic_info* _init){
 	_init->reg_age = 18;
 }
 
-void reg_init_reg_input_info(reg_input_info* _init){
+void reg_init_REG_input_info(reg_input_info* _init){
 	//初始化输入信息
 	//设置基本信息块
-	reg_init_reg_basic_info(&_init->basic_info);
+	reg_init_REG_basic_info(&_init->basic_info);
 	//设置其它附加信息,这里以电子邮件为例
 	strcpy(_init->email_addr,"");
 	//设置密码双次验证的正确性,初始置为false
 	_init->is_pwd_vry_crr = false;
 }
 
-void reg_init_reg_info(reg_info* _init){
+void reg_init_REG_info(reg_info* _init){
 	//初始化注册过程信息
 	//初始化错误信息
 	init_sys_err(&_init->reg_err);
@@ -50,9 +51,9 @@ reg_modle* reg_init(){
 	//注册是否成功 
 	_new_modle->reg_succ = false;
 	//初始化各数据块
-	reg_init_reg_input_info(&_new_modle->input_info);
-	reg_init_reg_basic_info(&_new_modle->db_query_from_bank);
-	reg_init_reg_info(&_new_modle->info);
+	reg_init_REG_input_info(&_new_modle->input_info);
+	reg_init_REG_basic_info(&_new_modle->db_query_from_bank);
+	reg_init_REG_info(&_new_modle->info);
 	return _new_modle;
 }
 
@@ -198,12 +199,12 @@ void reg_summery_rlt_data(reg_modle* _mld){
 }
 
 //6.7
-void reg_error_compute(sys_err_type _type , reg_modle* _modle){
+void reg_error_compute(sys_REG_type _type , reg_modle* _modle){
 	DEBUG_REG_PRINT("regist error occured !\n");
 	_modle->reg_succ = false;
 	//查找错误信息
 	_modle->info.reg_err.type = _type;
-	sys_err_search(&_modle->info.reg_err);
+	sys_REG_search(&_modle->info.reg_err);
 }
 
 void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len){
@@ -211,42 +212,42 @@ void reg_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_len)
 	
 	//6.1
 	//初始化注册模块
-	reg_modle* _reg_frame_modle = reg_init();
+	reg_modle* _REG_frame_modle = reg_init();
 	
 	//6.2 获取输入信息
-	_reg_frame_modle->input_info = *reg_get_info(_command,_arg_len);
-	if(!_reg_frame_modle->input_info.is_pwd_vry_crr){
+	_REG_frame_modle->input_info = *reg_get_info(_command,_arg_len);
+	if(!_REG_frame_modle->input_info.is_pwd_vry_crr){
 		//两次密码验证不正确
-		reg_error_compute(err_reg_vry_pwd_err,_reg_frame_modle);
+		reg_error_compute(err_REG_vry_pwd_err,_REG_frame_modle);
 	}
 
 
 	//6.3 银行子系统的查询
 /*
-	reg_query_user(_reg_frame_modle->input_info.basic_info.reg_id,
-		&_reg_frame_modle->db_query_from_bank);
+	reg_query_user(_REG_frame_modle->input_info.basic_info.reg_id,
+		&_REG_frame_modle->db_query_from_bank);
 	//6.4 对比
-	if(!reg_info_cmp(&_reg_frame_modle->input_info.basic_info
-		,&_reg_frame_modle->db_query_from_bank)){
+	if(!reg_info_cmp(&_REG_frame_modle->input_info.basic_info
+		,&_REG_frame_modle->db_query_from_bank)){
 		//信息对比有错误
-		reg_error_compute(err_reg_info_check_wrong,_reg_frame_modle);
+		reg_error_compute(err_REG_info_check_wrong,_REG_frame_modle);
 	}
 	*/
 
 
 	//6.5 如果没有错误,则将信息添加到数据库
-	if(_reg_frame_modle->info.reg_err.type == err_no_err){
-		if(! reg_add_user_to_db(&_reg_frame_modle->input_info)){
+	if(_REG_frame_modle->info.reg_err.type == err_no_err){
+		if(! reg_add_user_to_db(&_REG_frame_modle->input_info)){
 			//数据库操作失败
-			reg_error_compute(err_reg_info_db_wrong,_reg_frame_modle);
+			reg_error_compute(err_REG_info_db_wrong,_REG_frame_modle);
 		}
 	}
 
 	//6.6转化信息,输出结果
-	reg_generate_result(_reg_frame_modle,_rlt,_rlt_len);
+	reg_generate_result(_REG_frame_modle,_rlt,_rlt_len);
 	
 	//释放模块
-	reg_release(_reg_frame_modle);
+	reg_release(_REG_frame_modle);
 	DEBUG_REG_PRINT("regist done!\n");
 }
 
