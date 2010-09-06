@@ -7,11 +7,13 @@ extern _ConnectionPtr* treesafe_db_connection ;
 //19.1
 //复制输入信息
 void init_employee_query_input_info(employee_query_input_info* _init){
+DEBUG_EMPLOYEE_QUERY_PRINT("init_employee_query_input_info\n");
 	strcpy(_init->work_id,"");
 }
 
 
 void init_employee_query_info(employee_query_info* _init){
+DEBUG_EMPLOYEE_QUERY_PRINT("init_employee_query_info\n");
 	//初始化雇员信息
 	init_admin_employee_info(&_init->query_data);
 	//初始化错误信息
@@ -19,6 +21,7 @@ void init_employee_query_info(employee_query_info* _init){
 }
 
 employee_query_modle* init_employee_query_modle(){ 
+DEBUG_EMPLOYEE_QUERY_PRINT("init_employee_query_modle\n");
 	//开辟并初始化模块
 	employee_query_modle* _new_modle
 		= (employee_query_modle*)malloc(sizeof(employee_query_modle));
@@ -32,23 +35,27 @@ employee_query_modle* init_employee_query_modle(){
 }
 
 void release_employee_query_modle(employee_query_modle* _release){
+DEBUG_EMPLOYEE_QUERY_PRINT("release_employee_query_modle\n");
 	free(_release);
 }
 
 //19.2
 
 void employee_query_copy_cmd(const char* _cmd , char* _dest , int _cmd_len){
+DEBUG_EMPLOYEE_QUERY_PRINT("employee_query_copy_cmd\n");
 		//复制命令
 		memcpy(_dest,_cmd,_cmd_len);
 }
 
 employee_query_input_info* employee_query_convert_cmd(char* _info){
+DEBUG_EMPLOYEE_QUERY_PRINT("employee_query_convert_cmd\n");
 	//将命令转化为输入信息
 	return (employee_query_input_info*)_info;
 }
 
 employee_query_input_info* employee_query_get_cmd(const char* _cmd
 	,int _cmd_len){
+DEBUG_EMPLOYEE_QUERY_PRINT("employee_query_get_cmd\n");
 		//19.2主函式
 		//开辟空间
 		char* _new_info = 
@@ -63,6 +70,7 @@ employee_query_input_info* employee_query_get_cmd(const char* _cmd
 void employee_query_get_data(const char* _work_id
 	,employee_query_data* _info,bool* _rlt)
 {
+DEBUG_EMPLOYEE_QUERY_PRINT("employee_query_get_data\n");
 	//字符串的复制
 	strcpy(_info->employee_id,_work_id);
 	*_rlt = Get_emplo_info_by_card_id(treesafe_db_connection,_info) ;
@@ -71,6 +79,7 @@ void employee_query_get_data(const char* _work_id
 //19.4
 void employee_query_convert_rlt(employee_query_info* _info,
 	char* _rlt , int* _rlt_len){
+DEBUG_EMPLOYEE_QUERY_PRINT("employee_query_convert_rlt\n");
 	   //转化结果
 	   *_rlt_len = sizeof(employee_query_info);
 	   //复制结果信息
@@ -80,6 +89,7 @@ void employee_query_convert_rlt(employee_query_info* _info,
 //模块19的主函式
 void employee_query_frame(const char* _cmd , int _cmd_len
 	,char* _rlt,int* _rlt_len){
+DEBUG_EMPLOYEE_QUERY_PRINT("employee_query_frame\n");
 		//新建并初始化模块
 		//19.1
 		employee_query_modle* _frame_modle
