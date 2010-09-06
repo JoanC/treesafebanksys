@@ -1886,7 +1886,6 @@ bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_m
 
 	return true ;
 }
-
 bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info) 
 {
 	char sqlStr[200] = "select * from Table_Cust_Info where id = '" ; 
@@ -1927,7 +1926,6 @@ bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info)
 	rsp.Release() ;
 	return bRtnVal ;
 }
-
 bool Find_how_many_employee(_ConnectionPtr *_pConn,int *_Num)
 {
 	char sqlStr[100] = "select employee_gender from Table_Employee" ;
@@ -1946,7 +1944,6 @@ bool Find_how_many_employee(_ConnectionPtr *_pConn,int *_Num)
 	}
 	return true ;
 }
-
 bool Get_all_emplo_info(_ConnectionPtr *_pConn,admin_employee_info* _Arr,int _Count) 
 {
 	char sqlStr[100] = "select * from Table_Employee" ;
@@ -2082,5 +2079,22 @@ bool has_user_score(_ConnectionPtr *_pConn,const char *_ID)
 	}
 	rsp->Close() ;
 	rsp.Release() ;
+	return true ;
+}
+bool Update_login_pwd(_ConnectionPtr *_pConn,const char *_ID,const char *_new_pwd) 
+{
+	char sqlStr[150] = "update Table_Login set login_pwd = '" ;
+	strcat(sqlStr,_new_pwd) ;
+	strcat(sqlStr,"'") ;
+	strcat(sqlStr," from Table_Login where login_id = '") ;
+	strcat(sqlStr,_ID) ;
+	strcat(sqlStr,"'") ;
+
+	_variant_t v ;
+	try{
+		(*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+	}catch(...){
+		return false ;
+	}
 	return true ;
 }
