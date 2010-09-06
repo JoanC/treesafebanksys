@@ -77,8 +77,7 @@ DEBUG_QUERY_WEIGHT_PRINT("query_weight_frame\n");
 		//读取输入信息
 		_frame->input_info = *query_weight_get_cmd(_cmd,_cmd_len);
 		//调用26.3模块
-		//有待sunni去玩陈
-
+		query_weight_get_data(&_frame->rlt_info.wgt_info);
 		//调用26.4模块
 		query_weight_convert_rlt(&_frame->rlt_info,_rlt,_rlt_len);
 		release_query_weight_modle(_frame);

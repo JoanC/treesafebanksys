@@ -76,6 +76,8 @@ DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete employee : frome database!\n");
 //...
 void delete_employee_convert_rlt(delete_employee_info* _info , char* _rlt , int* _rlt_len){
 DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete employee : convert result!\n");
+     *_rlt_len = sizeof(delete_employee_info);
+	 memcpy(_rlt,_info,*_rlt_len);
 }
 
 
