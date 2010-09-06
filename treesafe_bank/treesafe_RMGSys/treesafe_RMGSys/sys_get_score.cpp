@@ -5,6 +5,7 @@
 extern _ConnectionPtr *treesafe_db_connection ; 
 //11.1
 void init_get_score_input_info(get_score_input_info* _init){
+DEBUG_GET_SCORE_PRINT("initilize get score input info\n");
 	_init->add_on_asset_score = 0;
 	_init->add_on_loan_score = 0;
 	_init->add_on_society_score = 0;
@@ -14,10 +15,12 @@ void init_get_score_input_info(get_score_input_info* _init){
 
 
 void init_get_score_info(get_score_info* _init){
+DEBUG_GET_SCORE_PRINT("initilize get score info\n");
 	init_sys_err(&_init->err_info);
 }
 
 get_score_modle* init_get_score_info(){
+DEBUG_GET_SCORE_PRINT("initilize get score info\n");
 	get_score_modle* _new_modle
 		= (get_score_modle*)malloc(sizeof(get_score_modle));
 	init_get_score_input_info(&_new_modle->input_info);
@@ -26,19 +29,23 @@ get_score_modle* init_get_score_info(){
 }
 
 void release_get_score_modle(get_score_modle* _modle){
+DEBUG_GET_SCORE_PRINT("release get score info\n");
 	free(_modle);
 }
 
 //11.2
 void get_score_copy_cmd(const char* _cmd,char* _dest,int _cmd_len){
+DEBUG_GET_SCORE_PRINT("get score copinfo\n");
 	memcpy(_dest,_cmd,_cmd_len);
 }
 
 get_score_input_info* get_score_convert_cmd(char* _info){
+DEBUG_GET_SCORE_PRINT("get score convert command\n");
 	return (get_score_input_info*)_info;
 }
 
 get_score_input_info* get_score_get_cmd(const char* _cmd,int _cmd_len){
+DEBUG_GET_SCORE_PRINT("get score get command\n");
 	char* _new_info = (char*)malloc(_cmd_len);
 	get_score_copy_cmd(_cmd,_new_info,_cmd_len);
 	return get_score_convert_cmd(_new_info);
@@ -47,6 +54,7 @@ get_score_input_info* get_score_get_cmd(const char* _cmd,int _cmd_len){
 //11.3
  bool get_score_get_apply_info(char* _id , apply_score_prop* _info)
  {
+DEBUG_GET_SCORE_PRINT("get score : get apply info\n");
 	 strcpy(_info->input_basic_info.app_id,_id);
 	 strcpy(_info->input_asset_info.app_id,_id);
 	 strcpy(_info->input_fammily_info.app_id,_id);
@@ -59,6 +67,7 @@ get_score_input_info* get_score_get_cmd(const char* _cmd,int _cmd_len){
 
 void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 	,event_wgt* _wgt,credit_scores* _rlt,get_score_input_info* _input){
+DEBUG_GET_SCORE_PRINT("get score calcu\n");
 		ReadEventScores(_score);
 		ReadEventWeight(_wgt);
 
@@ -218,18 +227,21 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 
 //11.4
 void get_score_save_score(credit_scores* _rlt){
+DEBUG_GET_SCORE_PRINT("get score : save score\n");
 		SaveScores2DB(_rlt,_rlt->card_id) ;
 }
 
 //11.5
 
 void get_score_convert_rlt(get_score_info* _info,char* _rlt,int* _rlt_len){
+DEBUG_GET_SCORE_PRINT("get score : convert result\n");
 	*_rlt_len = sizeof(get_score_info);
 	memcpy(_rlt,_info,*_rlt_len);
 }
 
 //模块11主函式
 void get_score_frame(const char* _cmd , int _cmd_len, char* _rlt,int* _rlt_len){
+DEBUG_GET_SCORE_PRINT("get score frame\n");
 	//11.1
 	//初始化各个模块
 	get_score_modle* _frame
