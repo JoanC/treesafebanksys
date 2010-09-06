@@ -6,6 +6,7 @@ extern _ConnectionPtr* treesafe_db_connection ;
 void apply_init_apply_info(apply_info* _init){
 	//初始化结果信息
 	//初始化错误信息
+DEBUG_APPLY_PRINT("initialize apply info\n");
 	_init->is_succ = true; 
 	init_sys_err(&_init->errInfo);
 	//初始化其他信息...
@@ -13,12 +14,14 @@ void apply_init_apply_info(apply_info* _init){
 
 void apply_init_apply_modle(apply_modle* _init){
 	//初始化各个指针
+DEBUG_APPLY_PRINT("initialize apply modle\n");
 	apply_init_apply_input_info(&_init->input_info);
 	apply_init_apply_custmor_info(&_init->db_cust_info);
 	apply_init_apply_info(&_init->rlt_info);
 }
 
 void apply_release(apply_modle* _mld){
+DEBUG_APPLY_PRINT("release apply\n");
 	free(_mld);
 }
 
@@ -26,10 +29,12 @@ void apply_release(apply_modle* _mld){
 //获取输入信息
 void apply_get_copy_command(char* _dest , const char* _command,int _len){
 	//信息复制
+DEBUG_APPLY_PRINT("get command\n");
 	memcpy(_dest,_command,_len);
 }
 
 apply_input_info* apply_get_convert_input(char* _data){
+DEBUG_APPLY_PRINT("apply : get convert input\n");
 	apply_input_info* _new_data =  (apply_input_info*)_data;
 	/*中文解码*/
 	/*仅针对字符串*/
@@ -54,6 +59,7 @@ apply_input_info* apply_get_convert_input(char* _data){
 
 apply_input_info* apply_get_input_info(const char* _command , int _len){
 	//信息复制
+DEBUG_APPLY_PRINT("apply : get input info\n");
 	char _info[sizeof(apply_input_info)];
 	apply_get_copy_command(_info,_command,_len);
 	return apply_get_convert_input(_info);
@@ -62,12 +68,14 @@ apply_input_info* apply_get_input_info(const char* _command , int _len){
 //7.3
 void apply_query_cust_info(apply_custmor_info* _rlt,bool *_isSucceeded)
 {
+DEBUG_APPLY_PRINT("initialize apply modle\n");
 	*_isSucceeded = Apply_cust_info_query(treesafe_db_connection,_rlt) ;
 }
 
 //7.4
 bool apply_check_cust_info(apply_custmor_info* _input 
 	, apply_custmor_info* _db_query){
+DEBUG_APPLY_PRINT("apply：check cust info!\n");
 		//基础数据的检测
 		//用户的姓名检测
 		if(strcmp(_input->cust_name,_db_query->cust_name) != 0) return false;
@@ -87,6 +95,7 @@ bool apply_check_cust_info(apply_custmor_info* _input
 //7.5
 bool apply_save_generate_id(char *_outcome) 
 {
+DEBUG_APPLY_PRINT("apply : save generate id\n");
 	if( FindMaxAppID(treesafe_db_connection,_outcome) ) 
 	{
 		return IncreaseCharStr(_outcome,APPLY_ID-1) ;
@@ -96,6 +105,7 @@ bool apply_save_generate_id(char *_outcome)
 }
 bool apply_save_to_research_table(apply_input_info* _info)
 {
+DEBUG_APPLY_PRINT("apply : save to research table\n");
 	char app_id[APPLY_ID] ;
 	bool bFlag0 = apply_save_generate_id(app_id) ;
 	/*copy the new app_id*/
@@ -122,6 +132,7 @@ bool apply_save_to_research_table(apply_input_info* _info)
 
 //7.7
 void apply_err_compute(sys_err_type _type , apply_modle* _modle){
+DEBUG_APPLY_PRINT("apply error compute\n");
 	_modle->rlt_info.errInfo.type = _type;
 	//从数据库中调出这个错误的相关信息
 	sys_err_search(&_modle->rlt_info.errInfo);
@@ -130,6 +141,7 @@ void apply_err_compute(sys_err_type _type , apply_modle* _modle){
 void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len){
 	//数据复制
 	//将数据复制到结果信息
+DEBUG_APPLY_PRINT("apply : convert rlt\n");
 	memcpy(_rlt,_info,sizeof(apply_info));
 	*_rlt_len = sizeof(apply_info);
 }
@@ -138,6 +150,7 @@ void apply_convert_rlt(apply_info* _info , char* _rlt , int* _rlt_len){
 //检测输入的逻辑冲突
 bool appy_check_input_data(apply_input_info* _input){
 	/*存款信息*/
+DEBUG_APPLY_PRINT("apply : check input data!\n");
 	if(_input->input_asset_info.cust_deposit_type
 		!= none_deposit){
 			//填写"有存款",但是后面两项都都填了"无"
@@ -174,6 +187,7 @@ bool appy_check_input_data(apply_input_info* _input){
 
 //申请处理的主函式
 void apply_frame(const char* _command , int _len , char* _rlt , int* _rlt_len){
+DEBUG_APPLY_PRINT("apply frame\n");
 	//7.1
 	//初始化模块
 	apply_modle* _apply_frame = 
