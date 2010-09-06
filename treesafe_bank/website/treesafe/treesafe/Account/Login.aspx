@@ -23,13 +23,46 @@ private void OnAuthenticate(object sender, AuthenticateEventArgs e)
 
 </SCRIPT>
 
-
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
+<body>
+  <SCRIPT FOR=window EVENT=onload LANGUAGE="javascript">
+initAd();//载入页面后，调用函数initAd()
+</SCRIPT>
+<script language="javascript">
+<!--
+    function initAd() {
+        document.all.AdLayer.style.posTop = -200;
+        //设置onLoad事件激发以后，广告层相对于固定后的y方向位置
+        document.all.AdLayer.style.visibility = 'visible'//设置层为可见
+        MoveLayer('AdLayer'); //调用函数MoveLayer()
+    }
+    function MoveLayer(layerName) {
+        var x = 0; //浮动层固定于浏览器的x方向位置
+        var y = 200; //浮动层固定于浏览器的y方向位置
+        var diff = (document.body.scrollTop + y - document.all.AdLayer.style.posTop) * .40;
+        var y = document.body.scrollTop + y - diff;
+        eval("document.all." + layerName + ".style.posTop = y");
+        eval("document.all." + layerName + ".style.posright = x"); //移动广告层
+        setTimeout("MoveLayer('AdLayer');", 0); //设置20毫秒后再调用函数MoveLayer()
+    }
+//-->
+</script>
+
+<div id=AdLayer 
+        style='position:absolute; width:157px; height:215px; z-index:20; visibility:hidden;; right: 10px; top: 108px' 
+        align="left">
+<image src = "Pictures\divbg.png"></image>
+<a target=blank href=tencent://message/?uin= ""744257360"" Site=QQ:744257360 &Menu=Yes>QQ:在线帮助</a>
+</div>
+
+</body>
+
+     <h2>
         欢迎使用万德农民联保贷款风险控制系统
     </h2>
+
     <p>
         请在下面输入用户名和密码登录系统，如果您还没有账号请先
         <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">注册</asp:HyperLink>。
