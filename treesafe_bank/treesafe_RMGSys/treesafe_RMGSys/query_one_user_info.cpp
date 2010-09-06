@@ -52,6 +52,7 @@ DEBUG_ONE_USER_INFO_PRINT("query_user_one_get_cmd\n");
 //sunniÍê³É
 bool query_user_one_get_data(char* _cust_id , user_query_info* _rlt)
 {
+DEBUG_ONE_USER_INFO_PRINT("query_user_one_get_data\n");
 	strcpy(_rlt->user_card_id,_cust_id) ;
 	return Get_cust_basic_info(treesafe_db_connection,_rlt) ;
 }
