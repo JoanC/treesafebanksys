@@ -46,7 +46,7 @@
 #if defined DEBUG_ERR_INFO
 #define DEBUG_ERR_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_ERR_PRINT(x){};
+#define DEBUG_ERR_INFO(x){};
 #endif
 
 //模块6：注册模块
@@ -54,7 +54,7 @@
 #if defined DEBUG_REG_INFO
 #define DEBUG_REG_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_ERR_PRINT(x){};
+#define DEBUG_ERR_INFO(x){};
 #endif
 
 //模块7：申请模块
@@ -62,7 +62,7 @@
 #if defined DEBUG_APPLY
 #define DEBUG_APPLY_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_APPLY_PRINT(x){};
+#define DEBUG_APPLY(x){};
 #endif
 
 //模块8 ：审核模块
@@ -70,7 +70,7 @@
 #if defined DEBUG_RESEARCH
 #define DEBUG_RESEARCH_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_RESEARCH_PRINT(x){};
+#define DEBUG_RESEARCH(x){};
 #endif
 
 //模块9：审核信息结果提交模块
@@ -78,7 +78,7 @@
 #if defined DEBUG_RESEARCH_COMMIT
 #define DEBUG_RESEARCH_COMMIT_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_RESEARCH_COMMITs_PRINT(x){};
+#define DEBUG_RESEARCH_COMMIT(x){};
 #endif
 
 //模块11：打分模块
@@ -86,7 +86,7 @@
 #if defined DEBUG_GET_SCORE
 #define DEBUG_GET_SCORE_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_GET_SOCRE_PRINT(x){};
+#define DEBUG_GET_SOCRE(x){};
 #endif
 
 //模块15：管理员添加雇员模块
@@ -153,6 +153,13 @@
 #define DEBUG_QUERY_ARRAY(x){};
 #endif
 
+//模块24：更新雇员信息
+#define DEBUG_UPDATE_EMPLOYEE_INFO
+#if defined DEBUG_UPDATE_EMPLOYEE_INFO
+#define DEBUG_UPDATE_EMPLOYEE_INFO_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_UPDATE_EMPLOYEE_INFO(x){};
+#endif
 
 
 //utf-7的编码转换
