@@ -102,8 +102,9 @@ bool ConvertVar2Float(_variant_t *_Vt,float *_Dst)
 bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 {
 	_variant_t vt ;
-	char sqlStr[100] = "select login_pwd from Table_Login where login_id = " ;
-	strcat_s(sqlStr,user_name) ;
+	char sqlStr[100] = "select login_pwd from Table_Login where login_id = '" ;
+	strcat(sqlStr,user_name) ;
+	strcat(sqlStr,"'") ;
 	_RecordsetPtr rsp;
 
 	try{
@@ -181,8 +182,9 @@ bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 }
 bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
 {
-	char sqlStrTest[200] = "select login_competence from Table_Login where login_id = " ;
+	char sqlStrTest[200] = "select login_competence from Table_Login where login_id = '" ;
 	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 
 	_RecordsetPtr rsp;
@@ -335,8 +337,9 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 }
 bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id) 
 {
-	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = " ;
+	char sqlStrTest[200] = "select employee_work_id from Table_Employee where employee_id = '" ;
 	strcat(sqlStrTest,employee_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t v ;
 	_RecordsetPtr rsp;
 	try{
@@ -370,8 +373,9 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 }
 bool	Apply_cust_info_query(_ConnectionPtr *_pConn,apply_custmor_info* _rlt)
 {
-	char sqlStrTest[200] = "select * from Table_Cust_Info where id = " ;
+	char sqlStrTest[200] = "select * from Table_Cust_Info where id = '" ;
 	strcat(sqlStrTest,_rlt->cust_id) ;
+	strcat(sqlStrTest,"'") ;
 	_variant_t vt ;
 	_RecordsetPtr rsp;
 	try{
