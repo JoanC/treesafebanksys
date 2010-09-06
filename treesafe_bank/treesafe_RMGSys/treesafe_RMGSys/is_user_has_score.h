@@ -38,7 +38,7 @@ void is_user_has_score_copy_cmd(const char* _cmd,char* _dest,int _cmd_len);
 
 is_user_has_score_input* is_user_has_score_convert_cmd(char* _info);
 
-is_user_has_score_input* is_user_has_score_get_cmp(const char* _cmd,int _cmd_len);
+is_user_has_score_input* is_user_has_score_get_cmd(const char* _cmd,int _cmd_len);
 
 
 //模块28.3
@@ -49,6 +49,10 @@ void is_user_has_score_get_data(char* _id , bool* _rlt);
 //模块28.4
 //结果数据转换
 void is_user_has_score_convert_rlt(is_user_has_score_info* _info
+	,char* _rlt,int* _rlt_len);
+
+//模块28主函式
+void is_user_has_score_frame(const char* _cmd , int _cmd_len
 	,char* _rlt,int* _rlt_len);
 
 
