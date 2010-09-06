@@ -134,8 +134,17 @@
 #if defined DEBUG_SCORE_QUERY
 #define DEBUG_SCORE_QUERY_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_USER_QUERY(x){};
+#define DEBUG_SCORE_QUERY(x){};
 #endif
+
+//模块22：查询单个用户信息
+#define DEBUG_ONE_USER_INFO
+#if defined DEBUG_ONE_USER_INFO
+#define DEBUG_ONE_USER_INFO_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_ONE_USER_INFO_QUERY(x){};
+#endif
+
 
 //utf-7的编码转换
 //将一个adsc读入,将其解码
