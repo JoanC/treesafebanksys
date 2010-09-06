@@ -4,16 +4,19 @@
 //模块27的实现文件
 extern _ConnectionPtr *treesafe_db_connection ; 
 //27.1
-void init_user_has_app_input(user_has_app_input* _init){
+void (user_has_app_input* _init){
+DEBUG_IS_APPLY("init_user_has_app_input\n");
 	memset(_init->card_id,'\0',USER_HAS_APP_ID_LEN);
 }
 
 void init_user_has_app_info(user_has_app_info* _init){
+DEBUG_IS_APPLY("init_user_has_app_info\n");
 	init_sys_err(&_init->err_info);
 	_init->user_has_app = false;
 }
 
 user_has_app_modle* init_user_has_app_modle(){
+DEBUG_IS_APPLY("init_user_has_app_modle\n");
 	user_has_app_modle* _new_modle
 		= (user_has_app_modle*)malloc(sizeof(user_has_app_modle));
 	init_user_has_app_input(&_new_modle->input_info);
@@ -22,19 +25,23 @@ user_has_app_modle* init_user_has_app_modle(){
 }
 
 void release_user_has_app_modle(user_has_app_modle* _release){
+DEBUG_IS_APPLY("release_user_has_app_modle\n");
 	free(_release);
 }
 
 //27.2
 void user_has_app_copy_cmd(const char* _cmd , char* _dest , int _cmd_len){
+DEBUG_IS_APPLY("user_has_app_copy_cmd\n");
 	memcpy(_dest,_cmd,_cmd_len);
 }
 
 user_has_app_input* user_has_app_convert_cmd(char* _info){
+DEBUG_IS_APPLY(" user_has_app_convert_cmd\n");
 	return (user_has_app_input*)_info;
 }
 
 user_has_app_input* user_has_app_get_cmd(const char* _cmd  , int _cmd_len){
+DEBUG_IS_APPLY("user_has_app_get_cmd\n");
 		char* _info = (char*)malloc(_cmd_len);
 		user_has_app_copy_cmd(_cmd,_info,_cmd_len);
 		return user_has_app_convert_cmd(_info);
@@ -44,18 +51,21 @@ user_has_app_input* user_has_app_get_cmd(const char* _cmd  , int _cmd_len){
 //待sunni去完成
 void user_has_app_get_data(char* _card_id , bool* _rlt)
 {
+DEBUG_IS_APPLY("user_has_app_get_data\n");
 	*_rlt = has_user_app(treesafe_db_connection,_card_id) ;
 }
 
 //27.4
 void user_has_app_convert_rlt(user_has_app_info* _info
 	,char* _rlt,int* _rlt_len){
+DEBUG_IS_APPLY("user_has_app_convert_rlt\n");
 		*_rlt_len = sizeof(user_has_app_info);
 		memcpy(_rlt,_info,*_rlt_len);
 }
 
 void user_has_app_frame(const char* _cmd,int _cmd_len,
 	char* _rlt , int* _rlt_len){
+DEBUG_IS_APPLY("user_has_app_frame\n");
 		//初始化模块信息
 		user_has_app_modle* _frame
 			= (user_has_app_modle*)malloc(sizeof(user_has_app_modle));

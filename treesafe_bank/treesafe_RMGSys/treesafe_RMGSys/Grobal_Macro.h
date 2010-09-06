@@ -169,12 +169,20 @@
 #define DEBUG_UPDATE_WEIGHT(x){};
 #endif
 
-//模块26：
+//模块26：查询权重信息
 #define DEBUG_QUERY_WEIGHT
 #if defined DEBUG_QUERY_WEIGHT
 #define DEBUG_QUERY_WEIGHT_PRINT(__debug_info) printf(__debug_info);
 #else
 #define DEBUG_QUERY_WEIGHT(x){};
+#endif
+
+//模块27：判断用户是否申请模块
+#define DEBUG_IS_APPLY
+#if defined DEBUG_IS_APPLY
+#define DEBUG_IS_APPLY_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_IS_APPLY(x){};
 #endif
 
 //utf-7的编码转换
