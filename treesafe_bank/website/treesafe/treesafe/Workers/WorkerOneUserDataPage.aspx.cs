@@ -33,7 +33,7 @@ namespace treesafe.Workers
             public char[] card_id;
             public credit_scores_input(string _id)
             {
-                card_id = _id.PadRight(19,'\0').ToCharArray();
+                card_id = _id.PadRight(19, '\0').ToCharArray();
             }
         }
 
@@ -71,18 +71,20 @@ namespace treesafe.Workers
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           string _cust_id= Request.QueryString["id"];
-           int _index = int.Parse(_cust_id);
-           _cust_id = new string(WorkerUserDataPage._rlt._info[_index].user_card_id);
-           credit_scores_input _input = new credit_scores_input(_cust_id);
-           web_net_client_mgr _net = new web_net_client_mgr();
-           credit_scores_rlt _rlt = new credit_scores_rlt("");
-            _net.send_command_data(11,_input);
+            string _cust_id = Request.QueryString["id"];
+            int _index = int.Parse(_cust_id);
+            _cust_id = new string(WorkerUserDataPage._rlt._info[_index].user_card_id);
+            credit_scores_input _input = new credit_scores_input(_cust_id);
+            web_net_client_mgr _net = new web_net_client_mgr();
+            credit_scores_rlt _rlt = new credit_scores_rlt("");
+            _net.send_command_data(11, _input);
             _rlt = (credit_scores_rlt)_net.recevie_data(_rlt.GetType());
+            display_score(_rlt);
             return;
         }
 
-        protected void display_score(credit_scores_rlt _info) {
+        protected void display_score(credit_scores_rlt _info)
+        {
             WeightIncome.Text = "" + _info.score_income;
             WeightDeposit.Text = "" + _info.score_depos;
             WeightLoan.Text = "" + _info.score_repayment;
@@ -92,6 +94,7 @@ namespace treesafe.Workers
             WeightHome.Text = "" + _info.score_marriage;
             WeightLoanRecord.Text = "" + _info.score_loan_record;
             WeightSocietyRecord.Text = "" + _info.score_bad_social_record;
+            WeightWork.Text = "" + _info.score_auditor_edit;
         }
     }
 }
