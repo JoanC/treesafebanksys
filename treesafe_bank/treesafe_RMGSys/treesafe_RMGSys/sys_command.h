@@ -16,6 +16,7 @@
 #include "query_user_info_array.h"//查询所有的用户信息
 #include "sys_get_score.h"//存储,计算数据
 #include "query_score.h"//查询分数
+#include "query_one_user_info.h"//查询单人的基础信息
 
 
 typedef char* COMMAND_DATA;
@@ -36,6 +37,7 @@ enum{
 	sys_cmd_query_user_array = 9,//查询所有的用户信息
 	sys_cmd_get_user_score = 10,//存储并计算分数
 	sys_cmd_query_user_score = 11,//获取用户的分数
+	sys_cmd_query_one_user_info = 12,//查询一个用户的信息
 	sys_cmd_unexpect = -1//未知命令(不可解析)
 };  
 
@@ -339,6 +341,28 @@ void sys_command_get_score(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 ********************************************************************************************************/
 //2.5.12
 void sys_command_query_user_score(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
+
+/*********************************************************************************************************
+** Function name:			sys_command_get_score
+**
+** Descriptions:			get and calcu the user score command
+**
+** input parameters:	    const sys_net_data* _cmd
+							char* _rlt
+							int* _rlt_len
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiaraya
+** Created Date:			2010-8-21
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiaraya
+** Modified date:			2010-8-23
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+//2.5.13
+void sys_command_query_one_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
 
 //模块2.5
