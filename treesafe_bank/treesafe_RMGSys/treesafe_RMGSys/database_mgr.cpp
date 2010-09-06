@@ -1495,6 +1495,10 @@ bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 	char sqlStr[200] = "Insert into Table_Score_Set values(" ;
 
 	char temp[12] ;
+	strcat(sqlStr,"'") ;
+	strcat(sqlStr,_UserID) ;
+	strcat(sqlStr,"',") ;
+
 	memset(temp,0,12) ;
 	sprintf(temp,"'%.2f',",_Scores->score_income) ;
 	strcat(sqlStr,temp) ;
@@ -1504,35 +1508,35 @@ bool Insert_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f',",_Scores->score_repayment) ;
+	sprintf(temp,"'%.2f',",_Scores->score_repayment) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f',",_Scores->score_fixed_assets_be_pledged) ;
+	sprintf(temp,"'%.2f',",_Scores->score_fixed_assets_be_pledged) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f',",_Scores->score_id_type) ;
+	sprintf(temp,"'%.2f',",_Scores->score_id_type) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f',",_Scores->score_edu) ;
+	sprintf(temp,"'%.2f',",_Scores->score_edu) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f',",_Scores->score_marriage) ;
+	sprintf(temp,"'%.2f',",_Scores->score_marriage) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f',",_Scores->score_loan_record) ;
+	sprintf(temp,"'%.2f',",_Scores->score_loan_record) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f',",_Scores->score_bad_social_record) ;
+	sprintf(temp,"'%.2f',",_Scores->score_bad_social_record) ;
 	strcat(sqlStr,temp) ;
 
 	memset(temp,0,12) ;
-	sprintf(temp,"%.2f')",_Scores->score_auditor_edit) ;
+	sprintf(temp,"'%.2f')",_Scores->score_auditor_edit) ;
 	strcat(sqlStr,temp) ;
 
 	try{
@@ -1558,7 +1562,7 @@ bool Update_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 	const char col8[] = "score_bad_social_record = '" ;
 	const char col9[] = "score_auditor_edit = '" ;
 
-	char sqlStr[300] = "update Table_Score_Set set " ;
+	char sqlStr[400] = "update Table_Score_Set set " ;
 
 	char temp[6] ;
 	memset(temp,0,6) ;
@@ -1611,7 +1615,7 @@ bool Update_credit_scores(_ConnectionPtr *_pConn,const credit_scores_db *_Scores
 	strcat(sqlStr,col9) ;
 	sprintf(temp,"%.2f",_Scores->score_auditor_edit) ;
 	strcat(sqlStr,temp) ;
-	strcat(sqlStr,"',") ;
+	strcat(sqlStr,"' ") ;
 
 	strcat(sqlStr,"from Table_Score_Set where card_id = '") ;
 	strcat(sqlStr,_UserID) ;

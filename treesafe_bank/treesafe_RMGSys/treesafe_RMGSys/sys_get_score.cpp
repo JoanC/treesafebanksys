@@ -63,6 +63,9 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 		ReadEventWeight(_wgt);
 
 		
+		//存储用户的card_id
+		strcpy(_rlt->card_id,_info->input_basic_info.cust_id);
+
 		//计算
 		//收入情况分值
 		//数值5
@@ -90,6 +93,8 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 		case deposit_up_5w:{}break;
 		default:{}//..
 		};
+
+
 		float _dem_dep = 0;
 		switch(_info->input_asset_info.cust_demand_deposit){
 		case deposit_none_range:{_dem_dep = _score->_demand_depos_status.none;}break;
@@ -195,6 +200,7 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 			case false:{_mar_loan = _score->_spouse_has_loan.no;}break;
 			};
 			_mar = (_mar_stu + _mar_type + _mar_edu + _mar_loan) * _wgt->marriage;
+			_rlt->score_marriage = _mar;
 		}
 		
 		//分数10
@@ -205,6 +211,9 @@ void get_score_calcu(credit_sum* _score,apply_score_prop* _info
 		
 		//分数9
 		_rlt->score_bad_social_record = _wgt->social_record * _input->add_on_society_score;
+
+		//附加性分数
+		_rlt->score_repayment = 0.50;
 }
 
 //11.4

@@ -116,7 +116,7 @@ struct spouse_edu_status  //配偶受教育程度
 	float master_or_above ; //硕士及以上
 	float bachelor_or_college ; //学士或大专
 	float high_sch_or_secondary ; //高中或中专
-	float senior_sch ;
+	float senior_sch  ;
 	float primary_or_bellow ;				//初中
 } ;
 struct spouse_has_loan
