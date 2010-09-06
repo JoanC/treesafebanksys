@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "query_score.h"
 
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 //21.1
 
 //初始化输入信息
