@@ -5,6 +5,7 @@ char err_info[10] [MAX_ERR_INFO];
 
 void init_sys_err(sys_err* _err){
 	//初始化结构体
+DEBUG_ERR_PRINT("initialize system error!\n");
 	_err->type = err_no_err;
 	memset(_err->info,'\0',MAX_ERR_INFO);
 
@@ -24,7 +25,7 @@ void init_sys_err(sys_err* _err){
 
 void sys_err_search(sys_err* _err){
 	//通过数据库,填充err结构体
-
+DEBUG_ERR_PRINT("search error!\n");
 	strcpy(_err->info,&err_info[_err->type][0]) ;
 
 }
