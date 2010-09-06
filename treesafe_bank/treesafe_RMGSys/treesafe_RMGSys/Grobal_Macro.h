@@ -129,6 +129,13 @@
 #define DEBUG_USER_QUERY(x){};
 #endif
 
+//模块21：风险评估结果查询
+#define DEBUG_SCORE_QUERY
+#if defined DEBUG_SCORE_QUERY
+#define DEBUG_SCORE_QUERY_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_USER_QUERY(x){};
+#endif
 
 //utf-7的编码转换
 //将一个adsc读入,将其解码
