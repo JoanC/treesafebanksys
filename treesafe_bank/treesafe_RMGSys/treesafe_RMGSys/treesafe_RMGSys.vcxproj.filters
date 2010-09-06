@@ -133,6 +133,9 @@
     <Filter Include="employee\query\array">
       <UniqueIdentifier>{5c108ed4-6b68-4a06-ab94-513d550f9494}</UniqueIdentifier>
     </Filter>
+    <Filter Include="employee\update">
+      <UniqueIdentifier>{71ed44f8-881e-4182-aad3-dccce79c0202}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -261,6 +264,9 @@
     <ClInclude Include="employee_query_array.h">
       <Filter>employee\query\array</Filter>
     </ClInclude>
+    <ClInclude Include="update_employee_info.h">
+      <Filter>employee\update</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -343,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="employee_query_array.cpp">
       <Filter>employee\query\array</Filter>
+    </ClCompile>
+    <ClCompile Include="update_employee_info.cpp">
+      <Filter>employee\update</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
