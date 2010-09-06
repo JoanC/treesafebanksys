@@ -207,6 +207,14 @@
 #define DEBUG_UPDATE_PWD(x){};
 #endif
 
+//模块30
+#define DEBUG_UPDATE_USER_INFO
+#if defined DEBUG_UPDATE_USER_INFO
+#define DEBUG_UPDATE_USER_INFO_PRINT(__debug_info) printf(__debug_info);WRITEFILE(__debug_info);
+#else
+#define DEBUG_UPDATE_USER_INFO(x){};
+#endif
+
 //utf-7的编码转换
 //将一个adsc读入,将其解码
 #define DECODE_UTF7_TO_ASC(__src_code)\
