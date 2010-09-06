@@ -43,9 +43,9 @@ void release_update_user_modle(update_user_modle* _release);
 void update_user_copy_cmd(const char* _cmd,char* _dest
 	,int _cmd_len);
 
-update_user_modle* update_user_convert_cmd(char* _info);
+update_user_input* update_user_convert_cmd(char* _info);
 
-update_user_modle* update_user_get_cmd(const char* _cmd
+update_user_input* update_user_get_cmd(const char* _cmd
 	,int _cmd_len);
 
 //30.3
