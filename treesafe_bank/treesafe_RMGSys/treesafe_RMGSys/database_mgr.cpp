@@ -12,7 +12,7 @@ bool GetConnStr(int index,char *outcome)
 		fclose(pFile) ; 
 		return true ;
 	}
-	else
+	else 
 		return false ;
 }
 bool ConnectDB(_ConnectionPtr *pConn) 
