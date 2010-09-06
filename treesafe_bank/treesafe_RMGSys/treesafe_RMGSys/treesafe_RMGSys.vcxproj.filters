@@ -145,6 +145,9 @@
     <Filter Include="credit_compute\is_user_has_score">
       <UniqueIdentifier>{85b70552-6d26-42b5-90ad-a9394c50fd69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Account\login_regist\update_pwd">
+      <UniqueIdentifier>{68ce3d2f-dc33-42a6-9ad4-6086f9f81126}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -285,6 +288,9 @@
     <ClInclude Include="is_user_has_score.h">
       <Filter>credit_compute\is_user_has_score</Filter>
     </ClInclude>
+    <ClInclude Include="update_pwd.h">
+      <Filter>Account\login_regist\update_pwd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -388,6 +394,9 @@
     </ClCompile>
     <ClCompile Include="is_user_has_score.cpp">
       <Filter>credit_compute\is_user_has_score</Filter>
+    </ClCompile>
+    <ClCompile Include="update_pwd.cpp">
+      <Filter>Account\login_regist\update_pwd</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
