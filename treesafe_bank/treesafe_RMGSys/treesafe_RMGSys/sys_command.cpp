@@ -215,6 +215,11 @@ void sys_command_update_emplyee_info(const sys_net_data* _cmd,char* _rlt,int* _r
 	update_employee_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
+void sys_command_update_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	DEBUG_COMMAND_PRINT("command:update an user's constract information\n");
+	update_user_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
+
 //Ä£¿é2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 DEBUG_COMMAND_PRINT("command:error command\n");
