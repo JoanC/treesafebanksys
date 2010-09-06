@@ -75,4 +75,19 @@ CodeBehind="UserTeamPage.aspx.cs" Inherits="treesafe.Users.UserTeamPage" %>
     </script>
     </p>
 
+    <asp:ScriptManager ID="ScriptManager1" runat="server"
+                   EnablePartialRendering="true" />
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+    <fieldset>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:ImageButton ID="ImageButton1" runat="server" 
+            ImageUrl="~/Users/Pictures/send.png" onclick="ImageButton1_Click" 
+            onclientclick="return confirm('您小组的最新还贷情况已发送至您的手机！')"/>
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Users/Pictures/sending.png" Visible="false"/>
+        <asp:Image ID="Image2" runat="server" ImageUrl="~/Users/Pictures/send1.png" Visible="false"/>
+        </fieldset>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+
 </asp:Content>
