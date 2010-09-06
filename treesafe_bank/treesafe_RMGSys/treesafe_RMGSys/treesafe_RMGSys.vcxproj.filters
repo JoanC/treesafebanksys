@@ -124,6 +124,15 @@
     <Filter Include="credit_compute\query_score">
       <UniqueIdentifier>{e6704f4f-b0d8-4a9d-af61-650facfa441e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="query_info\query_one">
+      <UniqueIdentifier>{699e1f5c-bdc6-47c9-afd2-c6d207cb022a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="employee\query\one_employee">
+      <UniqueIdentifier>{c0d4aa8f-de2d-487e-9f25-2d2da1adb484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="employee\query\array">
+      <UniqueIdentifier>{5c108ed4-6b68-4a06-ab94-513d550f9494}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -225,9 +234,6 @@
     <ClInclude Include="sys_research_info_query.h">
       <Filter>research\research_info_query</Filter>
     </ClInclude>
-    <ClInclude Include="sys_employee_query.h">
-      <Filter>employee\query</Filter>
-    </ClInclude>
     <ClInclude Include="sys_admin_employee_info.h">
       <Filter>employee\info</Filter>
     </ClInclude>
@@ -245,6 +251,15 @@
     </ClInclude>
     <ClInclude Include="query_score.h">
       <Filter>credit_compute\query_score</Filter>
+    </ClInclude>
+    <ClInclude Include="query_one_user_info.h">
+      <Filter>query_info\query_one</Filter>
+    </ClInclude>
+    <ClInclude Include="sys_employee_query.h">
+      <Filter>employee\query\one_employee</Filter>
+    </ClInclude>
+    <ClInclude Include="employee_query_array.h">
+      <Filter>employee\query\array</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -305,9 +320,6 @@
     <ClCompile Include="sys_admin_employee_info.cpp">
       <Filter>employee\info</Filter>
     </ClCompile>
-    <ClCompile Include="sys_employee_query.cpp">
-      <Filter>employee\query</Filter>
-    </ClCompile>
     <ClCompile Include="query_user_info_array.cpp">
       <Filter>query_info\query_array</Filter>
     </ClCompile>
@@ -322,6 +334,15 @@
     </ClCompile>
     <ClCompile Include="query_score.cpp">
       <Filter>credit_compute\query_score</Filter>
+    </ClCompile>
+    <ClCompile Include="query_one_user_info.cpp">
+      <Filter>query_info\query_one</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_employee_query.cpp">
+      <Filter>employee\query\one_employee</Filter>
+    </ClCompile>
+    <ClCompile Include="employee_query_array.cpp">
+      <Filter>employee\query\array</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

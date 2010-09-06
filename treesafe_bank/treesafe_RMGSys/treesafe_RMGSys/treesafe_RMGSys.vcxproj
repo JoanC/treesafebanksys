@@ -78,7 +78,9 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="employee_query_array.h" />
     <ClInclude Include="net.h" />
+    <ClInclude Include="query_one_user_info.h" />
     <ClInclude Include="query_score.h" />
     <ClInclude Include="query_user_info.h" />
     <ClInclude Include="query_user_info_array.h" />
@@ -116,6 +118,8 @@
     <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="employee_query_array.cpp" />
+    <ClCompile Include="query_one_user_info.cpp" />
     <ClCompile Include="query_score.cpp" />
     <ClCompile Include="query_user_info.cpp" />
     <ClCompile Include="query_user_info_array.cpp" />
