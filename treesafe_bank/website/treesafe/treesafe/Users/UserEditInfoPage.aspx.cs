@@ -30,7 +30,7 @@ namespace treesafe.Users
         protected void ChangeUserInfoButton_Click(object sender, EventArgs e)
         {
             //读取更改信息
-
+            user_query_info _new_info = new user_query_info("","",0,0,"","");
 
 
 
