@@ -199,6 +199,13 @@
 #define DEBUG_IS_HAS_SCORE(x){};
 #endif
 
+//模块29：
+#define DEBUG_UPDATE_PWD
+#if defined DEBUG_UPDATE_PWD
+#define DEBUG_UPDATE_PWD_PRINT(__debug_info) printf(__debug_info);WRITEFILE(__debug_info);
+#else
+#define DEBUG_UPDATE_PWD(x){};
+#endif
 
 //utf-7的编码转换
 //将一个adsc读入,将其解码

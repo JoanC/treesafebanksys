@@ -2,15 +2,18 @@
 #include "update_pwd.h"
 
 void init_update_pwd_input(update_pwd_input* _init){
+DEBUG_UPDATE_PWD_PRINT("init_update_pwd_input\n");
 	memset(_init->user_id,'\0',UPDATE_PWD_USER_NAME_ID);
 	memset(_init->new_user_pwd,'\0',UPDATE_PWD_LEN);
 }
 
 void init_update_pwd_info(update_pwd_info* _init){
+DEBUG_UPDATE_PWD_PRINT("init_update_pwd_info\n");
 	init_sys_err(&_init->err_info);
 }
 
 update_pwd_modle* init_update_pwd_modle(){
+DEBUG_UPDATE_PWD_PRINT("init_update_pwd_modle\n");
 	update_pwd_modle* _new_modle
 		= (update_pwd_modle*)malloc(sizeof(update_pwd_modle));
 	init_update_pwd_input(&_new_modle->input_info);
@@ -19,19 +22,23 @@ update_pwd_modle* init_update_pwd_modle(){
 }
 
 void release_update_pwd_modle(update_pwd_modle* _init){
+DEBUG_UPDATE_PWD_PRINT("release_update_pwd_modle\n");
 	free(_init);
 }
 
 //29.2
 void update_pwd_copy_cmd(const char* _cmd , char* _dest ,int _cmd_len){
+DEBUG_UPDATE_PWD_PRINT("update_pwd_copy_cmd\n");
 	memcpy(_dest,_cmd,_cmd_len);
 }
 
 update_pwd_input* update_pwd_convert_cmd(char* _info){
+DEBUG_UPDATE_PWD_PRINT("update_pwd_convert_cmd\n");
 	return (update_pwd_input*)_info;
 }
 
 update_pwd_input* update_pwd_get_cmd(const char* _cmd , int _cmd_len){
+DEBUG_UPDATE_PWD_PRINT("update_pwd_get_cmd\n");
 	char* _info = (char*)malloc(_cmd_len);
 	update_pwd_copy_cmd(_cmd,_info,_cmd_len);
 	return (update_pwd_input*)_info;
@@ -44,6 +51,7 @@ update_pwd_input* update_pwd_get_cmd(const char* _cmd , int _cmd_len){
 //29.4
 void update_pwd_convert_rlt(update_pwd_info* _info,
 	char* _rlt , int* _rlt_len){
+DEBUG_UPDATE_PWD_PRINT("update_pwd_convert_rlt\n");
 		*_rlt_len = sizeof(update_pwd_info);
 		memcpy(_rlt,_info,*_rlt_len);
 }
@@ -51,6 +59,7 @@ void update_pwd_convert_rlt(update_pwd_info* _info,
 //Ä£¿é29
 void update_pwd_frame(const char* _cmd , int _cmd_len ,
 	char* _rlt , int* _rlt_len){
+DEBUG_UPDATE_PWD_PRINT("update_pwd_frame\n");
 		update_pwd_modle* _frame
 			= (update_pwd_modle*)malloc(sizeof(update_pwd_modle));
 		_frame->input_info = *update_pwd_get_cmd(_cmd,_cmd_len);
