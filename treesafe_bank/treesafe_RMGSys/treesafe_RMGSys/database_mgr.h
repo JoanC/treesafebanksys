@@ -925,7 +925,7 @@ bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info) ;
 bool Find_how_many_employee(_ConnectionPtr *_pConn,int *_Num) ;
 
  /*********************************************************************************************************
-** Function name:			Find_how_many_employee
+** Function name:			Get_all_emplo_info
 **
 ** Descriptions:			find a spaecific user
 **
@@ -943,3 +943,23 @@ bool Find_how_many_employee(_ConnectionPtr *_pConn,int *_Num) ;
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 bool Get_all_emplo_info(_ConnectionPtr *_pConn,admin_employee_info* _Arr,int _Count) ;
+
+ /*********************************************************************************************************
+** Function name:			Update_emplo_info
+**
+** Descriptions:			find a spaecific user
+**
+** input parameters:	    _ConnectionPtr *_pConn
+**                          user_query_info *_info,const char *_ID
+** Returned value:		    bool
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				sunni
+** Created Date:			2010-7-15
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Sunni
+** Modified date:			2010-7-16
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
+bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info* _Info) ;

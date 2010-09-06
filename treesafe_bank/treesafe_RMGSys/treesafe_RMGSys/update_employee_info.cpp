@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "update_employee_info.h"
 
-
+extern _ConnectionPtr* treesafe_db_connection ; 
 //24.1
 void init_update_employee_input(update_employee_input* _init){
 	memset(_init->card_id,'\0'
@@ -51,7 +51,11 @@ update_employee_input* update_employee_get_cmd(const char* _cmd , int _cmd_len){
 
 //24.3
 //由sunni完成
-
+bool update_employee_set_data(char* _card_id_old
+	,admin_employee_info* _new) 
+{
+	return Update_emplo_info(treesafe_db_connection,_card_id_old,_new) ;
+}
 //24.4
 void update_employee_convert_rlt(update_employee_info* _info 
 	, char* _rlt , int* _rlt_len){
@@ -73,5 +77,5 @@ void update_employee_frame(const char* _cmd,int _cmd_len
 		update_employee_convert_rlt(&_frame->rlt_info,
 			_rlt,_rlt_len);
 		//释放模块
-		release_update_employee_modle(_frame);
+		release_update_employee_modle(_frame) ;
 }

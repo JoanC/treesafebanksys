@@ -1991,3 +1991,39 @@ bool Get_all_emplo_info(_ConnectionPtr *_pConn,admin_employee_info* _Arr,int _Co
 	}
 	return true ;
 }
+bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info* _Info) 
+{
+	const char col0[] = "employee_work_id" ;
+	const char col1[] = "employee_id" ;
+	const char col2[] = "employee_name" ;
+	const char col3[] = "employee_gender" ;
+	const char col4[] = "employee_age" ;
+	const char col5[] = "employee_addr" ;
+	const char col6[] = "employee_email" ;
+	const char col7[] = "employee_type" ;
+	const char col8[] = "employee_comment" ;
+	const char col9[] = "employee_phone_num" ;
+
+	char sqlStr[300]  ;
+	memset(sqlStr,0,300) ;
+	sprintf(sqlStr,"update Table_Employee set %s = '%s',%s = '%s',%s = '%s',%s = '%d',%s = '%d',%s = '%s',%s = '%s',%s = '%d',%s = '%s',%s = '%s' from Table_Employee where %s = '%s'", 
+					col0,_Info->employee_work_id,
+					col1,_Info->employee_id,
+					col2,_Info->employee_name,
+					col3,_Info->employee_gender,
+					col4,_Info->employee_age,
+					col5,_Info->employee_addr,
+					col6,_Info->employee_email,
+					col7,_Info->employee_type,
+					col8,_Info->employee_comment,
+					col9,_Info->employee_tel) ;
+
+	_variant_t vt ;
+	try{
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false ;
+	}
+	return true ;
+}

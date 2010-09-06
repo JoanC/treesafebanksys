@@ -43,7 +43,7 @@ update_employee_input* update_employee_get_cmd(const char* _cmd , int _cmd_len);
 //24.3
 //数据库计算
 //sunni完成
-void update_employee_set_date(char* _card_id_old
+bool update_employee_set_data(char* _card_id_old
 	,admin_employee_info* _new);
 
 //24.4
