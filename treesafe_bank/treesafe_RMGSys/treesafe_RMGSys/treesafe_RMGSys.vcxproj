@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="net.h" />
+    <ClInclude Include="query_score.h" />
     <ClInclude Include="query_user_info.h" />
     <ClInclude Include="query_user_info_array.h" />
     <ClInclude Include="research_commit.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="treesate_cClient.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="query_score.cpp" />
     <ClCompile Include="query_user_info.cpp" />
     <ClCompile Include="query_user_info_array.cpp" />
     <ClCompile Include="research_commit.cpp" />

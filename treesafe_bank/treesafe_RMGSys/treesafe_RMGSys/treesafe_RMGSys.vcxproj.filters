@@ -118,6 +118,12 @@
     <Filter Include="credit_compute\Tool">
       <UniqueIdentifier>{16940eeb-24d7-460f-bf13-d7cacaafb49b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="credit_compute\get_score">
+      <UniqueIdentifier>{9288378b-85d7-4376-9b92-4da8b07a7878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="credit_compute\query_score">
+      <UniqueIdentifier>{e6704f4f-b0d8-4a9d-af61-650facfa441e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -235,7 +241,10 @@
       <Filter>credit_compute\Tool</Filter>
     </ClInclude>
     <ClInclude Include="sys_get_score.h">
-      <Filter>credit_compute</Filter>
+      <Filter>credit_compute\get_score</Filter>
+    </ClInclude>
+    <ClInclude Include="query_score.h">
+      <Filter>credit_compute\query_score</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -309,7 +318,10 @@
       <Filter>credit_compute\Tool</Filter>
     </ClCompile>
     <ClCompile Include="sys_get_score.cpp">
-      <Filter>credit_compute</Filter>
+      <Filter>credit_compute\get_score</Filter>
+    </ClCompile>
+    <ClCompile Include="query_score.cpp">
+      <Filter>credit_compute\query_score</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
