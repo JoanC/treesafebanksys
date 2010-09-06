@@ -113,6 +113,14 @@
 #define DEBUG_RESEARCH_QUERY(x){};
 #endif
 
+//模块19：雇员信息查询
+#define DEBUG_EMPLOYEE_QUERY
+#if defined DEBUG_EMPLOYEE_QUERY
+#define DEBUG_EMPLOYEE_QUERY_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_EMPLOYEE_QUERY(x){};
+#endif
+
 //utf-7的编码转换
 //将一个adsc读入,将其解码
 #define DECODE_UTF7_TO_ASC(__src_code)\
