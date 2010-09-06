@@ -185,6 +185,15 @@
 #define DEBUG_IS_APPLY(x){};
 #endif
 
+//模块28：查询用户是否风险评估
+#define DEBUG_IS_HAS_SCORE
+#if defined DEBUG_IS_HAS_SCORE
+#define DEBUG_IS_HAS_SCORE_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_IS_HAS_SCORE(x){};
+#endif
+
+
 //utf-7的编码转换
 //将一个adsc读入,将其解码
 #define DECODE_UTF7_TO_ASC(__src_code)\
