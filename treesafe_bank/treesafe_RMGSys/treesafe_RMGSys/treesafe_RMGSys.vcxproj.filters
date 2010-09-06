@@ -64,9 +64,6 @@
     <Filter Include="group\group_query">
       <UniqueIdentifier>{b5c3fd42-c2aa-48b8-b81a-b7477bf81f93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="query_info">
-      <UniqueIdentifier>{fd0347b6-76ae-4fb1-b415-3abc594161e9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="apply\Info">
       <UniqueIdentifier>{409b97da-603e-4754-aacd-6eac85010e2f}</UniqueIdentifier>
     </Filter>
@@ -106,9 +103,6 @@
     <Filter Include="employee\info">
       <UniqueIdentifier>{5a1f7b4e-c4ff-48f3-bcbd-2f7038a53eef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="query_info\query_array">
-      <UniqueIdentifier>{97f0d7cd-e079-4902-859a-7a6e20ea2cf9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="credit_compute\Tool">
       <UniqueIdentifier>{16940eeb-24d7-460f-bf13-d7cacaafb49b}</UniqueIdentifier>
     </Filter>
@@ -117,9 +111,6 @@
     </Filter>
     <Filter Include="credit_compute\query_score">
       <UniqueIdentifier>{e6704f4f-b0d8-4a9d-af61-650facfa441e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="query_info\query_one">
-      <UniqueIdentifier>{699e1f5c-bdc6-47c9-afd2-c6d207cb022a}</UniqueIdentifier>
     </Filter>
     <Filter Include="employee\query\one_employee">
       <UniqueIdentifier>{c0d4aa8f-de2d-487e-9f25-2d2da1adb484}</UniqueIdentifier>
@@ -147,6 +138,15 @@
     </Filter>
     <Filter Include="Account\login_regist\update_pwd">
       <UniqueIdentifier>{68ce3d2f-dc33-42a6-9ad4-6086f9f81126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="query_user_info">
+      <UniqueIdentifier>{fd0347b6-76ae-4fb1-b415-3abc594161e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="query_user_info\query_array">
+      <UniqueIdentifier>{97f0d7cd-e079-4902-859a-7a6e20ea2cf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="query_user_info\query_one">
+      <UniqueIdentifier>{699e1f5c-bdc6-47c9-afd2-c6d207cb022a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -247,10 +247,10 @@
       <Filter>employee\info</Filter>
     </ClInclude>
     <ClInclude Include="query_user_info.h">
-      <Filter>query_info</Filter>
+      <Filter>query_user_info</Filter>
     </ClInclude>
     <ClInclude Include="query_user_info_array.h">
-      <Filter>query_info\query_array</Filter>
+      <Filter>query_user_info\query_array</Filter>
     </ClInclude>
     <ClInclude Include="sys_credit_compute.h">
       <Filter>credit_compute\Tool</Filter>
@@ -262,7 +262,7 @@
       <Filter>credit_compute\query_score</Filter>
     </ClInclude>
     <ClInclude Include="query_one_user_info.h">
-      <Filter>query_info\query_one</Filter>
+      <Filter>query_user_info\query_one</Filter>
     </ClInclude>
     <ClInclude Include="sys_employee_query.h">
       <Filter>employee\query\one_employee</Filter>
@@ -351,10 +351,10 @@
       <Filter>employee\info</Filter>
     </ClCompile>
     <ClCompile Include="query_user_info_array.cpp">
-      <Filter>query_info\query_array</Filter>
+      <Filter>query_user_info\query_array</Filter>
     </ClCompile>
     <ClCompile Include="query_user_info.cpp">
-      <Filter>query_info</Filter>
+      <Filter>query_user_info</Filter>
     </ClCompile>
     <ClCompile Include="sys_credit_compute.cpp">
       <Filter>credit_compute\Tool</Filter>
@@ -366,7 +366,7 @@
       <Filter>credit_compute\query_score</Filter>
     </ClCompile>
     <ClCompile Include="query_one_user_info.cpp">
-      <Filter>query_info\query_one</Filter>
+      <Filter>query_user_info\query_one</Filter>
     </ClCompile>
     <ClCompile Include="sys_employee_query.cpp">
       <Filter>employee\query\one_employee</Filter>
