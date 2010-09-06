@@ -6,7 +6,7 @@ extern _ConnectionPtr* treesafe_db_connection ;
 
 //初始化输入信息
 void init_query_score_input_info(query_score_input_info* _init){
-	memcpy(_init->card_id,'\0',QUERY_SCORE_CARD_ID_LEN);
+	memset(_init->card_id,'\0',QUERY_SCORE_CARD_ID_LEN);
 }
 
 void init_query_score_info(query_score_info* _init){
@@ -65,7 +65,7 @@ void query_score_frame(const char* _cmd , int _cmd_len , char* _rlt , int* _rlt_
 	_modle->input_info = *query_score_get_cmd(_cmd,_cmd_len);
 	//21.3
 	//数据库查询
-	//query_score_db();
+	query_score_db(_modle->input_info.card_id,&_modle->rlt_info.rlt_score);
 	//21.4
 	//转化结果
 	query_score_rlt_convert(&_modle->rlt_info,_rlt,_rlt_len);
