@@ -34,8 +34,7 @@ user_has_app_input* user_has_app_convert_cmd(char* _info){
 	return (user_has_app_input*)_info;
 }
 
-user_has_app_input* user_has_app_get_cmd(const char* _cmd 
-	, char* _dest , int _cmd_len){
+user_has_app_input* user_has_app_get_cmd(const char* _cmd  , int _cmd_len){
 		char* _info = (char*)malloc(_cmd_len);
 		user_has_app_copy_cmd(_cmd,_info,_cmd_len);
 		return user_has_app_convert_cmd(_info);
@@ -54,5 +53,15 @@ void user_has_app_convert_rlt(user_has_app_info* _info
 
 void user_has_app_frame(const char* _cmd,int _cmd_len,
 	char* _rlt , int* _rlt_len){
+		//初始化模块信息
+		user_has_app_modle* _frame
+			= (user_has_app_modle*)malloc(sizeof(user_has_app_modle));
+		_frame->input_info = *user_has_app_get_cmd(_cmd,_cmd_len);
+		//27.3
+		//有待sunni完成
 
+		//27.4
+		user_has_app_convert_rlt(&_frame->rlt_info,_rlt,_rlt_len);
+		//释放
+		release_user_has_app_modle(_frame);
 }
