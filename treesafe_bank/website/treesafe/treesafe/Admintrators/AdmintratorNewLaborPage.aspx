@@ -27,6 +27,10 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
               <asp:RequiredFieldValidator ID="LaborIDRequired" runat="server" ControlToValidate="LaborID"
                    CssClass="failureNotification" ErrorMessage="请输入雇员工号" ToolTip="请输入雇员工号"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
+              <asp:RegularExpressionValidator ID="LaborIDRange" ControlToValidate="LaborID" Display="Dynamic" 
+                    ValidationExpression="d{7}" runat="server" ForeColor="Blue"
+                     ErrorMessage="请注意，雇员工号固定为7位">
+              </asp:RegularExpressionValidator>
            </p>
 
            <p>
@@ -44,7 +48,7 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
            <p>
               <asp:Label ID="LaborNameLabel" runat="server" AssociatedControlID="LaborName">
               3. 雇员姓名:</asp:Label>
-               <asp:TextBox ID="LaborName" runat="server" CssClass="textEntry"></asp:TextBox>
+               <asp:TextBox ID="LaborName" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
               <asp:RequiredFieldValidator ID="LaborNameRequired" runat="server" ControlToValidate="LaborName"
                    CssClass="failureNotification" ErrorMessage="请输入雇员姓名" ToolTip="请输入雇员姓名"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
@@ -74,7 +78,7 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
            <p>
               <asp:Label ID="LaborAgeLabel" runat="server" AssociatedControlID="LaborAge">
               6. 雇员年龄：</asp:Label>
-              <asp:TextBox ID="LaborAge" runat="server" Width="300px" CssClass="textEntry"></asp:TextBox>
+              <asp:TextBox ID="LaborAge" runat="server" Width="300px" CssClass="textEntry" MaxLength="3"></asp:TextBox>
               <asp:RequiredFieldValidator ID="LaborAgeRequired" runat="server" ControlToValidate="LaborAge"
                    CssClass="failureNotification" ErrorMessage="请输入雇员年龄" ToolTip="请输入雇员年龄"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
@@ -83,16 +87,16 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
            <p>
               <asp:Label ID="LaborAddressLabel" runat="server" AssociatedControlID="LaborAddress">
               7. 雇员地址：</asp:Label>
-              <asp:TextBox ID="LaborAddress" runat="server" Width="300px" CssClass="textEntry"></asp:TextBox>
+              <asp:TextBox ID="LaborAddress" runat="server" Width="300px" CssClass="textEntry" ForeColor="Blue"></asp:TextBox>
               <asp:RequiredFieldValidator ID="LaborAddressRequired" runat="server" ControlToValidate="LaborAddress"
                    CssClass="failureNotification" ErrorMessage="请输入雇员地址" ToolTip="请输入雇员地址"
-                    ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
+                    ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>            
            </p>
 
            <p>
               <asp:Label ID="LaborEmailLabel" runat="server" AssociatedControlID="LaborEmail">
               8. 雇员电子邮件:</asp:Label>
-               <asp:TextBox ID="LaborEmail" runat="server" CssClass="textEntry"></asp:TextBox>
+               <asp:TextBox ID="LaborEmail" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
               <asp:RequiredFieldValidator ID="LaborEmailRequired" runat="server" ControlToValidate="LaborEmail"
                    CssClass="failureNotification" ErrorMessage="请输入雇员的电子邮件" ToolTip="请输入雇员的电子邮件"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
@@ -105,6 +109,10 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
                <asp:RequiredFieldValidator ID="LaborPhoneNumberRequired" runat="server" ControlToValidate="LaborPhoneNumber"
                    CssClass="failureNotification" ErrorMessage="请输入雇员联系电话" ToolTip="请输入雇员联系电话"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="PhoneNumberRange" ControlToValidate="LaborPhoneNumber" Display="Dynamic" 
+                                     ValidationExpression="([\d\D]{7,11})" runat="server" ForeColor="Blue"
+                                     ErrorMessage="请注意，电话号码最少7位，最高11位。">
+                                </asp:RegularExpressionValidator>
            </p>
            <p>
                <asp:Label ID="LaborNotesLabel" runat="server" AssociatedControlID="LaborNotes">

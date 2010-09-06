@@ -76,7 +76,8 @@
                                      CssClass="failureNotification" ErrorMessage="请输入您的联系电话" ToolTip="请输入您的联系电话" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                                      <asp:RegularExpressionValidator ID="PhoneNumberRange" ControlToValidate="PhoneNumber" Display="Dynamic" 
-                                     ValidationExpression="([\d\D]{7,11})" runat="server" ErrorMessage="请注意，电话号码最少7位，最高11位。">
+                                     ValidationExpression="([\d\D]{7,11})" runat="server" ForeColor="Blue"
+                                     ErrorMessage="请注意，电话号码最少7位，最高11位。">
                                 </asp:RegularExpressionValidator>
                             </p>
                              <p>

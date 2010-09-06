@@ -76,6 +76,15 @@ namespace treesafe.Admintrators {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborIDRequired;
         
         /// <summary>
+        /// LaborIDRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator LaborIDRange;
+        
+        /// <summary>
         /// LaborTypeLabel control.
         /// </summary>
         /// <remarks>
@@ -290,6 +299,15 @@ namespace treesafe.Admintrators {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LaborPhoneNumberRequired;
+        
+        /// <summary>
+        /// PhoneNumberRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneNumberRange;
         
         /// <summary>
         /// LaborNotesLabel control.
