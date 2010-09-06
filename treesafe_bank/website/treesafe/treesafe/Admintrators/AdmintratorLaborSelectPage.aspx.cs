@@ -115,6 +115,31 @@ namespace treesafe.Admintrators
             /////////////////////////////////////
             //以下代码尚未测试
             //更新信息
+            /*整理UI的交互信息*/
+            /*工号*/
+            string _work_id = Chinese_Encode_Mgr.utf7_convert(LaborID.Text);
+            /*雇员类型*/
+            int _type = int.Parse(LaborType.Text);
+            /*雇员姓名*/
+            string _name = Chinese_Encode_Mgr.utf7_convert(LaborName.Text);
+            /*雇员证件号码*/
+            string _card_id = Chinese_Encode_Mgr.utf7_convert(LaborIDNumber.Text);
+            /*雇员性别*/
+            int _gender = int.Parse(LaborSex.Text);
+            //雇员年龄
+            int _age = int.Parse(LaborAge.Text);
+            //雇员地址
+            string _addr = Chinese_Encode_Mgr.utf7_convert(LaborAddress.Text);
+            //雇员电子邮件
+            string _emial = Chinese_Encode_Mgr.utf7_convert(LaborEmail.Text);
+            //电话号码
+            string _tel = Chinese_Encode_Mgr.utf7_convert(LaborPhoneNumber.Text);
+            //注释信息
+            string _comment = Chinese_Encode_Mgr.utf7_convert(LaborNotes.Text);
+
+            _input_update.new_info = new admin_employ_info(_type,_gender,_age
+                ,_card_id,_work_id,_name,_addr,_emial,_tel);
+
             web_net_client_mgr _net = new web_net_client_mgr();
             _net.send_command_data(16,_input_update);
 
