@@ -53,5 +53,10 @@ void update_weight_frame(const char* _cmd , int _cmd_len
 	, char* _rlt , int* _rlt_len){
 		update_weight_modle* _frame
 			= init_update_weight_info();
-
+		_frame->input_info = *update_weight_get_cmd(_cmd,_cmd_len);
+		//25.3
+		//´ýsunniÍê³É
+		update_weight_convert_rlt(&_frame->rlt_info,
+			_rlt,_rlt_len);
+		release_update_weight_modle(_frame);
 }
