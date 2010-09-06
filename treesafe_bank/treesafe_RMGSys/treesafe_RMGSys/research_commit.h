@@ -25,6 +25,24 @@ struct research_commit_modle{
 //由Jiraiya完成
 
 //初始化审核提交的输入信息
+/*********************************************************************************************************
+** Function name:			research_commit_init_research_commit_input_info
+**
+** Descriptions:		 init the input information of the research commit modle
+**
+** input parameters:	    bankDB_request_info* _req<i>
+**							bankDB_result_info* _rlt<o>
+** Returned value:		    NULL
+** Used global variables:	NULL
+** Calling modules:			NULL
+**
+** Created by:				Jiaraya
+** Created Date:			2010-8-21
+**-------------------------------------------------------------------------------------------------------
+** Modified by:				Jiaraya
+** Modified date:			2010-8-23
+**------------------------------------------------------------------------------------------------------
+********************************************************************************************************/
 void research_commit_init_research_commit_input_info(research_commit_input_info* _init);
 
 //初始化结果记录信息
