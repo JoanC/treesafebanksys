@@ -19,7 +19,7 @@ CodeBehind="UserInfoPage.aspx.cs" Inherits="treesafe.Users.UserInfoPage" %>
           <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">
           姓名:
           </asp:Label>
-          <asp:Label ID="UserName" runat="server" Text="姓名"></asp:Label>
+          <asp:Label ID="UserName" runat="server" Text="张军"></asp:Label>
     </p>
 
     <p>

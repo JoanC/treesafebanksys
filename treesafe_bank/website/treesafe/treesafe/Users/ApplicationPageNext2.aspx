@@ -41,7 +41,7 @@ CodeBehind="ApplicationPageNext2.aspx.cs" Inherits="treesafe.Users.ApplicationPa
                 <asp:Label ID="ApplicationChildrenNumberLabel" runat="server" AssociatedControlID="ApplicationChildrenNumber">
                 2. 您的子女人数：
                 </asp:Label>
-                <asp:TextBox ID="ApplicationChildrenNumber" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="ApplicationChildrenNumber" runat="server" CssClass="textEntry" Text="0"></asp:TextBox>
            </p>
 
            <p>
