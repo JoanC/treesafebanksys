@@ -30,18 +30,18 @@ namespace treesafe.Admintrotors
 
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
-    struct event_wgt
+    public struct event_wgt
     {
-        float income;
-        float depos;
-        float repayment;
-        float fixed_assets_be_pledged;
-        float id_type;
-        float edu;
-        float marriage;
-        float loan_record;
-        float social_record;
-        float auditor_edit;
+        public float income;
+        public float depos;
+        public float repayment;
+        public float fixed_assets_be_pledged;
+        public float id_type;
+        public float edu;
+        public float marriage;
+        public float loan_record;
+        public float social_record;
+        public float auditor_edit;
         public event_wgt(string _pad)
         {
             income = 0;
@@ -59,10 +59,15 @@ namespace treesafe.Admintrotors
 
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
-    struct query_weight_info
+    public struct query_weight_info
     {
-        sys_err err_info;//错误信息
-        event_wgt wgt_info;//权重信息 
+        public sys_err err_info;//错误信息
+        public event_wgt wgt_info;//权重信息 
+        public query_weight_info(string _pad) 
+        {
+            err_info = new sys_err(0,"");
+            wgt_info = new event_wgt("");
+        }
     };
 
 
@@ -74,7 +79,31 @@ namespace treesafe.Admintrotors
             {
             //    Server.Transfer("~/WrongPage.aspx", true);
             }
+            query_weight_info _query_rlt = query_weight();
+            diplay_wgt(_query_rlt.wgt_info);
+        }
 
+        public query_weight_info query_weight() 
+        {
+            query_weight_info _rlt = new query_weight_info("");
+            web_net_client_mgr _net = new web_net_client_mgr();
+            _net.send_command_data(13,(new query_weight_input_info()));
+            _rlt = (query_weight_info)_net.recevie_data(_rlt.GetType());
+            return _rlt;
+        }
+
+        public void diplay_wgt(event_wgt _info) 
+        {
+            WeightIncome.Text = "" + _info.income * 100;
+            WeightDeposit.Text = "" + _info.depos * 100;
+            WeightLoan.Text = "" + _info.repayment * 100;
+            WeightMortagage.Text = "" + _info.fixed_assets_be_pledged * 100;
+            WeightID.Text = "" + _info.id_type * 100;
+            WeightEducation.Text = "" + _info.edu * 100;
+            WeightHome.Text = "" + _info.marriage * 100;
+            WeightLoanRecord.Text = "" + _info.loan_record * 100;
+            WeightSocietyRecord.Text = "" + _info.social_record * 100;
+            WeightWork.Text = "" + _info.auditor_edit * 100;
         }
 
         protected void EditWeightButton_Click(object sender, EventArgs e)

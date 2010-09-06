@@ -22,52 +22,53 @@ using Chinese_Encode;
 
 namespace treesafe.Workers
 {
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+    public struct credit_scores_input
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+        public char[] card_id;
+        public credit_scores_input(string _id)
+        {
+            card_id = _id.PadRight(19, '\0').ToCharArray();
+        }
+    }
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+    public struct credit_scores_rlt // 查询结果
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+        public char[] card_id;
+        public float score_income;
+        public float score_depos;
+        public float score_repayment;
+        public float score_fixed_assets_be_pledged;
+        public float score_id_type;
+        public float score_edu;
+        public float score_marriage;
+        public float score_loan_record;
+        public float score_bad_social_record;
+        public float score_auditor_edit;
+        public credit_scores_rlt(string _id)
+        {
+            this.card_id = _id.PadRight(19, '\0').ToCharArray();
+            score_income = 0;
+            score_depos = 0;
+            score_repayment = 0;
+            score_fixed_assets_be_pledged = 0;
+            score_id_type = 0;
+            score_edu = 0;
+            score_marriage = 0;
+            score_loan_record = 0;
+            score_bad_social_record = 0;
+            score_auditor_edit = 0;
+        }
+    } ;
     public partial class WorkerOneUserDataPage : System.Web.UI.Page
     {
 
-        [Serializable] // 指示可序列化
-        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
-        public struct credit_scores_input
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
-            public char[] card_id;
-            public credit_scores_input(string _id)
-            {
-                card_id = _id.PadRight(19, '\0').ToCharArray();
-            }
-        }
-
-        [Serializable] // 指示可序列化
-        [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
-        public struct credit_scores_rlt // 查询结果
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
-            public char[] card_id;
-            public float score_income;
-            public float score_depos;
-            public float score_repayment;
-            public float score_fixed_assets_be_pledged;
-            public float score_id_type;
-            public float score_edu;
-            public float score_marriage;
-            public float score_loan_record;
-            public float score_bad_social_record;
-            public float score_auditor_edit;
-            public credit_scores_rlt(string _id)
-            {
-                this.card_id = _id.PadRight(19, '\0').ToCharArray();
-                score_income = 0;
-                score_depos = 0;
-                score_repayment = 0;
-                score_fixed_assets_be_pledged = 0;
-                score_id_type = 0;
-                score_edu = 0;
-                score_marriage = 0;
-                score_loan_record = 0;
-                score_bad_social_record = 0;
-                score_auditor_edit = 0;
-            }
-        } ;
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,7 +84,7 @@ namespace treesafe.Workers
             return;
         }
 
-        protected void display_score(credit_scores_rlt _info)
+        public void display_score(credit_scores_rlt _info)
         {
             WeightIncome.Text = "" + _info.score_income;
             WeightDeposit.Text = "" + _info.score_depos;
