@@ -16,6 +16,8 @@
 #include "query_user_info_array.h"//查询所有的用户信息
 #include "sys_get_score.h"//存储,计算数据
 #include "query_score.h"//查询分数
+#include "query_one_user_info.h"//查询一个人的信息
+#include "query_weight.h"//设置权重
 
 
 
@@ -37,8 +39,8 @@ enum{
 	sys_cmd_query_user_array = 9,//查询所有的用户信息
 	sys_cmd_get_user_score = 10,//存储并计算分数
 	sys_cmd_query_user_score = 11,//获取用户的分数
-	sys_cmd_add_group = 12 ,
-	sys_cmd_query_one_user_info = 13,//查询一个用户的信息
+	sys_cmd_query_one_user_info = 12,//查询一个用户的信息
+	sys_cmd_query_weight = 13,//查询权重信息
 	sys_cmd_unexpect = -1//未知命令(不可解析)
 };  
 
@@ -384,7 +386,8 @@ void sys_command_query_one_user_info(const sys_net_data* _cmd,char* _rlt,int* _r
 ** Modified date:			2010-8-23
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-void sys_comman_add_group(const sys_net_data* _cmd,char* _rlt,int* _rlt_len) ;
+//2.5.14
+void sys_command_query_weight(const sys_net_data* _cmd,char* _rlt,int* _rlt_len);
 
 //模块2.5
 //未知命令的处理函式

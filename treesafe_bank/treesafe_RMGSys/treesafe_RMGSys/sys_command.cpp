@@ -81,15 +81,14 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 	case(sys_cmd_query_user_score):{
 		sys_command_query_user_score(_command,_rlt,_rlt_len);
 								   }break;
-		
-		//调用添加分组函数
-	case sys_cmd_add_group :
-		sys_comman_add_group(_command,_rlt,_rlt_len) ;
-	break ;
-
+		//调用单人查询主函式
 	case(sys_cmd_query_one_user_info):{
 		sys_command_query_one_user_info(_command,_rlt,_rlt_len);
 									  }break;
+		//调用权重查询主函式
+	case(sys_cmd_query_weight):{
+		sys_command_query_weight(_command,_rlt,_rlt_len);
+							   }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -173,15 +172,17 @@ void sys_command_query_user_score(const sys_net_data* _cmd,char* _rlt,int* _rlt_
 DEBUG_COMMAND_PRINT("command:query user score command\n");
 	query_score_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
-//2.4.13
-void sys_comman_add_group(const sys_net_data* _cmd,char* _rlt,int* _rlt_len) 
-{
-DEBUG_COMMAND_PRINT("command:add group command\n");
-}
 
+//2.4.13
 void sys_command_query_one_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
 DEBUG_COMMAND_PRINT("command:query one user info command\n");
-	//query_user_one_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+	 query_user_one_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
+
+//2.4.14
+void sys_command_query_weight(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	DEBUG_COMMAND_PRINT("command:query the weight\n");
+	query_weight_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
 
