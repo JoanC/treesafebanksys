@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "is_user_has_score.h"
 
-
+extern _ConnectionPtr* treesafe_db_connection ;  
 //模块28的实现文件
 
 void init_is_user_has_score_input(is_user_has_score_input* _init){
@@ -47,7 +47,7 @@ is_user_has_score_input* is_user_has_score_get_cmd(const char* _cmd,int _cmd_len
 //待sunni完成
 void is_user_has_score_get_data(char* _id , bool* _rlt)
 {
-
+	*_rlt = has_user_score(treesafe_db_connection,_id) ;
 }
 
 

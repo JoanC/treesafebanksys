@@ -177,8 +177,6 @@
 #define DEBUG_QUERY_WEIGHT(x){};
 #endif
 
-
-
 //utf-7的编码转换
 //将一个adsc读入,将其解码
 #define DECODE_UTF7_TO_ASC(__src_code)\
