@@ -161,6 +161,23 @@
 #define DEBUG_UPDATE_EMPLOYEE_INFO(x){};
 #endif
 
+//模块25：更新权重信息
+#define DEBUG_UPDATE_WEIGHT
+#if defined DEBUG_UPDATE_WEIGHT
+#define DEBUG_UPDATE_WEIGHT_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_UPDATE_WEIGHT(x){};
+#endif
+
+//模块26：
+#define DEBUG_QUERY_WEIGHT
+#if defined DEBUG_QUERY_WEIGHT
+#define DEBUG_QUERY_WEIGHT_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_QUERY_WEIGHT(x){};
+#endif
+
+
 
 //utf-7的编码转换
 //将一个adsc读入,将其解码
