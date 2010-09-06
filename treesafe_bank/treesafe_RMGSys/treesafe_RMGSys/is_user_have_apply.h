@@ -57,6 +57,7 @@ void user_has_app_get_data(char* _card_id , bool* _rlt);
 void user_has_app_convert_rlt(user_has_app_info* _info
 	,char* _rlt,int* _rlt_len);
 
+
 //模块27的主函式
 void user_has_app_frame(const char* _cmd,int _cmd_len,
-	);
+	char* _rlt , int* _rlt_len);
