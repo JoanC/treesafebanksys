@@ -45,7 +45,7 @@ query_score_input_info* query_score_get_cmd(const char* _cmd,int _cmd_len);
 /*********************************************/
 //21.3
 //Êý¾Ý¿â¼ÆËã
-void query_score_db(char* _cust_id,credit_scores* _db_rlt);
+bool query_score_db(char* _cust_id,credit_scores* _db_rlt) ;
 
 /*********************************************/
 //21.4

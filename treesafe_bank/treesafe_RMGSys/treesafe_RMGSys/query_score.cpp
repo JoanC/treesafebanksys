@@ -44,7 +44,10 @@ query_score_input_info* query_score_get_cmd(const char* _cmd,int _cmd_len){
 }
 
 //21.3
-
+bool query_score_db(char* _cust_id,credit_scores* _db_rlt)
+{
+	return  Get_credit_scores(treesafe_db_connection,_db_rlt,_cust_id) ;
+}
 
 //21.4
 void query_score_rlt_convert(query_score_info* _info , char* _rlt , int* _rlt_len){
