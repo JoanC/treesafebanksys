@@ -4,7 +4,7 @@
 **                                
 ** 
 **--------------File Info-------------------------------------------------------------------------------
-** File name:			sus_login			
+** File name:			sys_login			
 ** Last modified Date:	2010-7-1
 ** Last Version:		0.4		
 ** Descriptions:		the login frame		

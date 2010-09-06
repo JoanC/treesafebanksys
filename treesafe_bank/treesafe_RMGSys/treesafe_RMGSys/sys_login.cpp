@@ -171,10 +171,6 @@ void login_frame(const char* _command , int _arg_len , char* _rlt , int* _rlt_le
 		login_err_mgr(err_login_db_err,_login_frame);
 		//return;
 	}
-	//以下是为了测试
-//	strcpy(_login_frame->db_query.input_user_name,"haha");
-//	strcpy(_login_frame->db_query.input_user_pwd,"KOKO");
-	//
 
 	if(!login_check(&_login_frame->check_info,&_login_frame->db_query)){
 		//用户名或密码不正确
