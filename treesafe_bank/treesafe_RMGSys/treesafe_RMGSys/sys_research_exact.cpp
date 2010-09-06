@@ -6,11 +6,13 @@ extern _ConnectionPtr* treesafe_db_connection ;
 //8.1
 void init_research_exact_input_info(research_exact_input_info* _init){
 	//初始化输入结构
+DEBUG_RESEARCH_PRINT("initialize research exact input info\n");
 	strcpy(_init->research_work_id,"");
 }
 
 
 void init_research_exact_info(research_exact_info* _init){
+DEBUG_RESEARCH_PRINT("init_research_exact_info\n");
 	//初始化结果结构
 	strcpy(_init->app_id,"");
 	//初始化错误信息
@@ -19,6 +21,7 @@ void init_research_exact_info(research_exact_info* _init){
 
 
 research_exact_modle* init_research_exact_modle(){
+DEBUG_RESEARCH_PRINT("init_research_exact_modle\n");
 	//初始化整体模块
 	//内存分配 
 	research_exact_modle* _new_modle
@@ -31,6 +34,7 @@ research_exact_modle* init_research_exact_modle(){
 
 //释放模块
 void release_research_exact_info(research_exact_modle* _release){
+DEBUG_RESEARCH_PRINT("release research exact info\n");
 	free(_release);
 }
 
@@ -38,11 +42,13 @@ void release_research_exact_info(research_exact_modle* _release){
 //8.2
 
 void research_copy_cmd_data(const char* _cmd,char* _dest,int _cmd_len){
+DEBUG_RESEARCH_PRINT("reasearch copy cmd data\n");
 	//复制命令
 	memcpy(_dest,_cmd,_cmd_len);
 }
 
 research_exact_input_info* research_convert_cmd(char* _info){
+DEBUG_RESEARCH_PRINT("research convert cmd\n");
 	//转化指令
 	return (research_exact_input_info*)_info;
 }
@@ -50,6 +56,7 @@ research_exact_input_info* research_convert_cmd(char* _info){
 
 research_exact_input_info* research_get_cmd(const char* _cmd,
 	int _cmd_len){
+DEBUG_RESEARCH_PRINT("init_research_get_cmd\n");
 		//8.2主函式
 		//分配新的内存
 		char* _new_info = 
@@ -63,12 +70,14 @@ research_exact_input_info* research_get_cmd(const char* _cmd,
 //8.3
 void research_exact_app_id(char* _new_app_id)
 {
+DEBUG_RESEARCH_PRINT("research_exact_app_id\n");
 	Find_app_id_be_not_verified(treesafe_db_connection,_new_app_id) ;
 }
 
 //8.4
 void research_exact_convert_rlt(research_exact_info* _info,
 	char* _rlt , int* _rlt_len){
+DEBUG_RESEARCH_PRINT("research_exact_app_id\n");
 		//整合结果信息
 		*_rlt_len = sizeof(research_exact_info);
 		memcpy(_rlt,_info,*_rlt_len);
@@ -77,6 +86,7 @@ void research_exact_convert_rlt(research_exact_info* _info,
 //模块8的主函式
 void research_exact_frame(const char* _cmd ,int _cmd_len
 	, char* _rlt , int* _rlt_len){
+DEBUG_RESEARCH_PRINT("research_exact_frame\n");
 		//调用模块8.1
 		//初始化函式
 		research_exact_modle* _frame
