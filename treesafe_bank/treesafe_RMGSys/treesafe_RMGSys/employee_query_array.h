@@ -27,7 +27,7 @@ struct query_employee_modle{
 void init_query_employee_array_input(query_employee_array_input* _init);
 
 //初始化结果模块
-void init_query_employee_array_info(query_employee_array_info* _arr);
+void init_query_employee_array_info(query_employee_array_info* _init);
 
 //初始化模块23的主模块
 query_employee_modle* init_query_employee_modle();
@@ -64,7 +64,7 @@ void query_employee_arr_convert_rlt(query_employee_array_info* _info,
 
 
 //模块23主函式
-void query_employee_arr_frame(const char* _cmd , int _cmd_len
+void query_employee_arr_frame(const char* _cmd , int _cmd_len,
 	char* _rlt , int* _rlt_len);
 
 
