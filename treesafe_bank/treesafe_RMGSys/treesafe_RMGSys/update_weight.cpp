@@ -37,7 +37,18 @@ DEBUG_UPDATE_WEIGHT("update_weight_copy_cmd\n");
 
 update_weight_input* update_weight_convert_cmd(char* _info){
 DEBUG_UPDATE_WEIGHT("update_weight_convert_cmd\n");
-	return (update_weight_input*)_info;
+    update_weight_input* _new_info = (update_weight_input*)_info;
+	_new_info->new_wgt.auditor_edit /= (float)100;
+	_new_info->new_wgt.depos /= (float)100;
+	_new_info->new_wgt.edu /= (float)100;
+	_new_info->new_wgt.fixed_assets_be_pledged /= (float)100;
+	_new_info->new_wgt.id_type /= (float)100;
+	_new_info->new_wgt.income /= (float)100;
+	_new_info->new_wgt.loan_record /= (float)100;
+	_new_info->new_wgt.marriage  /= (float)100;
+	_new_info->new_wgt.repayment /= (float)100;
+	_new_info->new_wgt.social_record /= (float)100;
+	return _new_info;
 }
 
 update_weight_input* update_weight_get_cmd(const char* _cmd , int _cmd_len){
@@ -68,7 +79,8 @@ DEBUG_UPDATE_WEIGHT("update_weight_frame\n");
 			= init_update_weight_info();
 		_frame->input_info = *update_weight_get_cmd(_cmd,_cmd_len);
 		//25.3
-		//´ýsunniÍê³É
+		update_weight_set_data(&_frame->input_info.new_wgt);
+
 		update_weight_convert_rlt(&_frame->rlt_info,
 			_rlt,_rlt_len);
 		release_update_weight_modle(_frame);
