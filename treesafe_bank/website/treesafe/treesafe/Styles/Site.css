@@ -258,8 +258,11 @@ div.accountInfo
 
 div.accountAd
 {
-    width: 400px;
+    width: 300px;
     float: right;
+    min-height:200px;
+    background-image: url('Pictures/qqbk.png');
+    background-repeat: no-repeat;
 }
 
 div.ad

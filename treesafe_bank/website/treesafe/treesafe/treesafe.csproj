@@ -87,6 +87,8 @@
     <Content Include="Styles\Pictures\head.png" />
     <Content Include="Styles\Pictures\pagebg.png" />
     <Content Include="Styles\Pictures\nav.png" />
+    <Content Include="Styles\Pictures\qqback.png" />
+    <Content Include="Styles\Pictures\qqbk.png" />
     <Content Include="Styles\Pictures\title.png" />
     <Content Include="Users\ApplicationPage.aspx" />
     <Content Include="Auditors\AuditorHelpPage.aspx" />
