@@ -14,7 +14,6 @@ bool GetConnStr(int index,char *outcome)
 	}
 	else
 		return false ;
-
 }
 bool ConnectDB(_ConnectionPtr *pConn) 
 {	
@@ -34,7 +33,11 @@ bool ConnectDB(_ConnectionPtr *pConn)
 	(*pConn) ->ConnectionTimeout = 10 ;
 	(*pConn) ->CursorLocation = adUseServer;
 	//setting param...
-	(*pConn) ->Open("","","",-1) ;
+	try{
+		(*pConn) ->Open("","","",-1) ;
+	}catch(...){
+		return false ;
+	}
 	//open it 
 
 	//delete connStr that was newed in GetIP()
