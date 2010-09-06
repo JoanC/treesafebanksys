@@ -24,7 +24,7 @@
                             账户信息</p>
                             <p>
                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">姓名:</asp:Label>
-                                <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:TextBox ID="UserName" runat="server" CssClass="textEntry" MaxLength="15"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
                                      CssClass="failureNotification" ErrorMessage="请输入您的姓名" ToolTip="请输入您的姓名" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
@@ -45,6 +45,9 @@
                                 <asp:RequiredFieldValidator ID="UserIDRequired" runat="server" ControlToValidate="UserID" 
                                      CssClass="failureNotification" ErrorMessage="请输入您的身份证号" ToolTip="请输入您的身份证号" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="UserIdRange" runat="server" ControlToValidate="UserId" 
+                                ErrorMessage="您输入的身份证号码不正确!" ValidationExpression="\d{17}[\d|X|x]" ForeColor="Blue">
+                                </asp:RegularExpressionValidator>
                             </p>
                             <p>
                                 <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密码:</asp:Label>
@@ -52,6 +55,9 @@
                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
                                      CssClass="failureNotification" ErrorMessage="请输入您的密码" ToolTip="请输入您的密码" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="PasswordRange" runat="server" ControlToValidate="Password" 
+                                ErrorMessage="请将密码长度控制在6~12个字符之间" ValidationExpression="([\s\S]{6,15})" ForeColor="Blue">
+                                </asp:RegularExpressionValidator>
                             </p>
                             <p>
                                 <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">确认密码:</asp:Label>
@@ -69,17 +75,21 @@
                                 <asp:RequiredFieldValidator ID="PhoneNumberRequire" runat="server" ControlToValidate="PhoneNumber" 
                                      CssClass="failureNotification" ErrorMessage="请输入您的联系电话" ToolTip="请输入您的联系电话" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                     <asp:RegularExpressionValidator ID="PhoneNumberRange" ControlToValidate="PhoneNumber" Display="Dynamic" 
+                                     ValidationExpression="([\d\D]{7,11})" runat="server" ErrorMessage="请注意，电话号码最少7位，最高11位。">
+                                </asp:RegularExpressionValidator>
                             </p>
                              <p>
                                 <asp:Label ID="HomeAddressLabel" runat="server" AssociatedControlID="HomeAddress">家庭住址:</asp:Label>
-                                <asp:TextBox ID="HomeAddress" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:TextBox ID="HomeAddress" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="HomeAddressRequire" runat="server" ControlToValidate="HomeAddress"  
                                      CssClass="failureNotification" ErrorMessage="请输入您的家庭住址" ToolTip="请输入您的家庭住址" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+
                             </p>
                              <p>
                                 <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">电子邮件（选填）:</asp:Label>
-                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry" MaxLength="50"></asp:TextBox>
                  
                             </p>
                         </fieldset>

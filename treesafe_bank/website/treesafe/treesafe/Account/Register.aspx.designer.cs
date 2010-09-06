@@ -112,6 +112,15 @@ namespace treesafe.Account {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator UserIDRequired;
         
         /// <summary>
+        /// UserIdRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator UserIdRange;
+        
+        /// <summary>
         /// PasswordLabel control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,15 @@ namespace treesafe.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
+        
+        /// <summary>
+        /// PasswordRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordRange;
         
         /// <summary>
         /// ConfirmPasswordLabel control.
@@ -200,6 +218,15 @@ namespace treesafe.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PhoneNumberRequire;
+        
+        /// <summary>
+        /// PhoneNumberRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneNumberRange;
         
         /// <summary>
         /// HomeAddressLabel control.
