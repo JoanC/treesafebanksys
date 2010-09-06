@@ -81,7 +81,7 @@ private void OnAuthenticate(object sender, AuthenticateEventArgs e)
             <br/>
             <br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a target=blank href=tencent://message/?uin= ""744257360"" Site=QQ:744257360 &Menu=Yes>QQ:在线帮助</a>
+            <a target=blank href=tencent://message/?uin=438187074&Site=QQ:438187074&Menu=yes>QQ:"在线帮助"</a>
             </div>
         </LayoutTemplate>
     </asp:Login>

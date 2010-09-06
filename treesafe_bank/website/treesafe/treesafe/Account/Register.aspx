@@ -91,9 +91,15 @@
                         </div>
                         <div class="accountAd">
                         <br/>
-                        <br/>
-                        <br/>
-                        广告及帮助信息
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a target=blank href=tencent://message/?uin=438187074&Site=QQ:438187074&Menu=yes>QQ:"在线帮助"</a>
                         </div>
                     
 </asp:Content>
