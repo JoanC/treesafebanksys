@@ -41,13 +41,11 @@
                             </p>
                             <p>
                                 <asp:Label ID="UserIDLabel" runat="server" AssociatedControlID="UserID">身份证号:</asp:Label>
-                                <asp:TextBox ID="UserId" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:TextBox ID="UserId" runat="server" CssClass="textEntry" MaxLength="18"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserIDRequired" runat="server" ControlToValidate="UserID" 
                                      CssClass="failureNotification" ErrorMessage="请输入您的身份证号" ToolTip="请输入您的身份证号" 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="UserIdRange" runat="server" ControlToValidate="UserId" 
-                                ErrorMessage="您输入的身份证号码不正确!" ValidationExpression="\d{17}[\d|X|x]" ForeColor="Blue">
-                                </asp:RegularExpressionValidator>
+                                
                             </p>
                             <p>
                                 <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密码:</asp:Label>

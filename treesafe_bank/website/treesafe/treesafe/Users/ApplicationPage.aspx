@@ -64,7 +64,7 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
            <p>
               <asp:Label ID="ApplicationIDNumberLabel" runat="server" AssociatedControlID="ApplicationIDNumber">
               5. 证件号码:</asp:Label>
-              <asp:TextBox ID="ApplicationIDNumber" runat="server" CssClass="textEntry"></asp:TextBox>
+              <asp:TextBox ID="ApplicationIDNumber" runat="server" CssClass="textEntry" MaxLength="18"></asp:TextBox>
               <asp:RequiredFieldValidator ID="ApplicationIDNumberRequired" runat="server" ControlToValidate="ApplicationIDNumber"
                    CssClass="failureNotification" ErrorMessage="请输入证件号码" ToolTip="请输入证件号码"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>

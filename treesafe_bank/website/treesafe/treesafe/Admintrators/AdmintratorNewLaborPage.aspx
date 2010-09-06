@@ -57,7 +57,7 @@ CodeBehind="AdmintratorNewLaborPage.aspx.cs" Inherits="treesafe.Admintrators.Adm
            <p>
               <asp:Label ID="LaborIDNumberLabel" runat="server" AssociatedControlID="LaborIDNumber">
               4. 雇员证件号码:</asp:Label>
-               <asp:TextBox ID="LaborIDNumber" runat="server" CssClass="textEntry"></asp:TextBox>
+               <asp:TextBox ID="LaborIDNumber" runat="server" CssClass="textEntry" MaxLength="18"></asp:TextBox>
               <asp:RequiredFieldValidator ID="LaborIDNumberRequired" runat="server" ControlToValidate="LaborIDNumber"
                    CssClass="failureNotification" ErrorMessage="请输入雇员证件号码" ToolTip="请输入雇员证件号码"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
