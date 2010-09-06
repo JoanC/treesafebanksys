@@ -15,28 +15,54 @@
 //#define TEST_RESEARCH_EXACT_MODLE
 
 
-//login的输出信息
- 
-#define DEBUG_LOGIN_INFO
 
+//模块1：网络模块
+#define DEBUG_NET
+#if defined DEBUG_NET
+#define DEBUG_NET_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_NET(x) {};
+#endif
+
+//模块2: 命令模块
+#define DEBUG_COMMAND
+#if defined DEBUG_COMMAND
+#define DEBUG_COMMAND_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_COMMAND(x) {};
+#endif
+
+
+//模块3：登录模块
+#define DEBUG_LOGIN_INFO
 #if defined DEBUG_LOGIN_INFO
 #define DEBUG_LOGIN_PRINT(__debug_info) printf(__debug_info);
 #else
 #define DEBUG_LOGIN_INFO(x) {};
 #endif
 
-
-#ifndef DEBUG_NET_INFO
-#define DEBUG_NET_INFO
+//模块4: 错误模块
+#define DEBUG_ERR_INFO
+#if defined DEBUG_ERR_INFO
+#define DEBUG_ERR_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_ERR_PRINT(x){};
 #endif
 
-//注册模块的注释信息
+//模块6：注册模块
 #define DEBUG_REG_INFO
-
 #if defined DEBUG_REG_INFO
 #define DEBUG_REG_PRINT(__debug_info) printf(__debug_info);
 #else
-#define DEBUG_REG_PRINT(x){};
+#define DEBUG_ERR_PRINT(x){};
+#endif
+
+//模块7：申请模块
+#define DEBUG_APPLY
+#if defined DEBUG_APPLY
+#define DEBUG_APPLY_PRINT(__debug_info) printf(__debug_info);
+#else
+#define DEBUG_APPLY_PRINT(x){};
 #endif
 
 //utf-7的编码转换
