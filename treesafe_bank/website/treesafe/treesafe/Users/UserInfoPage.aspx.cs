@@ -38,11 +38,11 @@ namespace treesafe.Users
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
     struct query_user_one_info_info
     {
-        user_query_info user_info;
-        sys_err err_info;//错误信息
-        public query_user_one_info_info(user_query_info _info)
+        public user_query_info user_info;
+        public sys_err err_info;//错误信息
+        public query_user_one_info_info(sys_err _info)
         {
-            err_info = new sys_err(0,"");
+            err_info = _info;
             user_info = new user_query_info("","",0,0,"","");
         }
     };
@@ -81,8 +81,21 @@ namespace treesafe.Users
             {
             //    Server.Transfer("~/WrongPage.aspx", true);
             }
+            query_user_one_info_input _input = new query_user_one_info_input(
+                new string(Account.Login.login_rlt.user_id));
+            web_net_client_mgr _net = new web_net_client_mgr();
+            query_user_one_info_info _rlt = new query_user_one_info_info( ( new sys_err(0,"") ) );
+            _net.send_command_data(12, _input);
+            _rlt = (query_user_one_info_info)_net.recevie_data(_rlt.GetType());
 
-
+            /*diplay*/
+            UserName.Text = new string(_rlt.user_info.user_name);
+            UserID.Text = new string(_rlt.user_info.user_card_id);
+            UserPassword.Text = "隐私内容不可显示";
+            UserAddress.Text = new string(_rlt.user_info.user_addr);
+            UserPhone.Text = new string(_rlt.user_info.user_tel);
+            UserEmail.Text = "无";
+            return;
         }
 
         protected void ChangeUserInfoButton_Click(object sender, EventArgs e)
