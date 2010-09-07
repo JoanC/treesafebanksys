@@ -76,4 +76,5 @@ DEBUG_ONE_USER_INFO_PRINT("query_user_one_frame\n");
 	//22.4
 	query_user_one_convert_rlt_info(&_frame->rlt_info,_rlt,_rlt_len);
 	//ÊÍ·ÅÄ£¿é
+	release_query_user_one_info_modle(_frame);
 }
