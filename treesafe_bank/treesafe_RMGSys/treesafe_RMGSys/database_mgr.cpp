@@ -114,29 +114,22 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 		return false;
 	}
 	//inquiry...
-	_variant_t  varPwd ;
 
 	if( ! rsp->rsEOF )
 	{
+		_variant_t varPwd ;
 		varPwd = rsp->Fields->GetItem(long(0))->Value ;
-	}
-	else
-		return false ;
-
-	if (varPwd.vt == VT_NULL)
-	{
-		const char emptyStr[] = "null" ;
-		strcpy_s(pwd_rlt, PWD_LEN,emptyStr) ;
-
-		return false ;
-	}
-	else
-	{
-		strcpy_s(pwd_rlt, PWD_LEN, (char *)(_bstr_t)varPwd)  ;
+		ConvertVar2CharStr(&varPwd,pwd_rlt) ;
+		rsp->Close() ;
+		rsp.Release() ;
 		return true ;
 	}
-	rsp->Close() ;
-	rsp.Release() ;
+	else
+	{
+		rsp->Close() ;
+		rsp.Release() ;
+		return false ;
+	}
 }
 bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
 {
