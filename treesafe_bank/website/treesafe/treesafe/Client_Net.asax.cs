@@ -174,6 +174,8 @@ namespace ClientNet
                  this.connect_server();
                 //数据
                 //将结构体(对象)数据序列化
+                 if (!m_net_stream.Connected)
+                     return;
                 byte[] _send_msg = this.StructToBytes(_obj_data);
                 //将byte转化为char[]
                 char[] _send_temp_string = Encoding.ASCII.GetChars(_send_msg);
