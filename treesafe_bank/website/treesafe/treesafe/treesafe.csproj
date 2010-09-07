@@ -55,6 +55,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Auditors\AuditorNoListPage.aspx" />
+    <Content Include="Auditors\Pictures\lure.png" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Admintrators\AdmintratorEditRiskPage.aspx" />
     <Content Include="Admintrators\AdmintratorHelpPage.aspx" />
