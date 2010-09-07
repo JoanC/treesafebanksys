@@ -72,7 +72,7 @@ DEBUG_ONE_USER_INFO_PRINT("query_user_one_frame\n");
 	_frame->input = *query_user_one_get_cmd(_cmd,_cmd_len);
 
 	//22.3
-
+	query_user_one_get_data(_frame->input.user_id,&_frame->rlt_info.user_info);
 	//22.4
 	query_user_one_convert_rlt_info(&_frame->rlt_info,_rlt,_rlt_len);
 	//ÊÍ·ÅÄ£¿é

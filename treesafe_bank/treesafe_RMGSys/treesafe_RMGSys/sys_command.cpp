@@ -224,6 +224,11 @@ void sys_command_update_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_
 	update_user_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 
+//2.4.19
+void sys_command_query_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	DEBUG_COMMAND_PRINT("command : query user info");
+
+}
 //Ä£¿é2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 DEBUG_COMMAND_PRINT("command:error command\n");
