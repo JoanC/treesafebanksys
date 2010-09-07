@@ -8,6 +8,7 @@ DEBUG_UPDATE_USER_INFO_PRINT("init_update_user_input\n");
 	memset(_init->new_addr,'\0',UPDATE_USER_ADDR_LEN);
 	memset(_init->new_email,'\0',UPDATE_USER_EMAIL_LEN);
 	memset(_init->new_tel,'\0',UPDATE_USER_TEL_LEN);
+	memset(_init->user_id,'\0',UPDATE_USER_ID_LEN);
 }
 
 void init_update_user_info(update_user_info* _init){
@@ -77,6 +78,8 @@ DEBUG_UPDATE_USER_INFO_PRINT("update_user_frame\n");
 	_frame->input_info = *update_user_get_cmd(_cmd,_cmd_len);
 	//30.3
 	//sunni Íê³É
+	update_user_set_data(_frame->input_info.user_id
+		,&_frame->input_info);
 
 	//30.4
 	update_user_convert_rlt(&_frame->rlt_info,_rlt,_rlt_len);
