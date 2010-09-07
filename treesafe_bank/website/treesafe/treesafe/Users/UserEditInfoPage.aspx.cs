@@ -56,22 +56,30 @@ namespace treesafe.Users
                              + "&phone=" + UserPhone.Text
                              + "&email=" + UserEmail.Text);
              * */
-            UserName.Text = Request.QueryString["name"];
-            UserID.Text = Request.QueryString["id"];
-            UserAddress.Text = Request.QueryString["address"];
-            UserPhone.Text = Request.QueryString["phone"];
-            UserEmail.Text = Request.QueryString["email"];
-            UserPassword.Text=Request.QueryString["password"];
+            if (!this.IsPostBack)
+            {
+                UserName.Text = Request.QueryString["name"];
+                UserID.Text = Request.QueryString["id"];
+                UserAddress.Text = Request.QueryString["address"];
+                UserPhone.Text = Request.QueryString["phone"];
+                UserEmail.Text = Request.QueryString["email"];
+                UserPassword.Text = Request.QueryString["password"];
+            }
 
         }
 
         protected void ChangeUserInfoButton_Click(object sender, EventArgs e)
         {
             //读取更改信息
-            user_query_info _new_info = new user_query_info(UserName.Text
-                ,UserID.Text,0,0,UserPhone.Text,UserAddress.Text);
+            string _new_addr = Chinese_Encode_Mgr.utf7_convert(UserAddress.Text);
+            string _new_phone = Chinese_Encode_Mgr.utf7_convert(UserPhone.Text);
+            string _new_email = Chinese_Encode_Mgr.utf7_convert(UserEmail.Text);
+            string _new_id = new string(Account.Login.login_rlt.user_id);
+            update_user_input _input
+                = new update_user_input(_new_id
+                    ,_new_addr,_new_email,_new_phone);
             web_net_client_mgr _net = new web_net_client_mgr();
-            _net.send_command_data(17, _new_info);
+            _net.send_command_data(17, _input);
 
             //返回用户信息页面
             Response.Redirect("UserInfoPage.aspx");
