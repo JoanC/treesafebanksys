@@ -88,18 +88,18 @@ namespace treesafe.Admintrators
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //c=此处获得了该雇员的工号
-            LaborID.Text = Request.QueryString["id"];
-
-       
-
-            int _index = int.Parse(LaborID.Text);
-            admin_employ_info _person = Admintrotors.AdmintratorLaborManagementPage._rlt.employee_arr[_index]._info;
-            //在页面上方显示当前雇员id
-            LabelName.Text = "当前雇员ID：" + (new string(_person.empl_id));
-            _input_delete = new delete_employee_input(new string(_person.empl_id));
-            _input_update = new update_employee_input(new string(_person.empl_id));
-            //在此调用改用户的其他信息资料
+            if (!this.IsPostBack)
+            {
+                //c=此处获得了该雇员的工号
+                LaborID.Text = Request.QueryString["id"];
+                int _index = int.Parse(LaborID.Text);
+                admin_employ_info _person = Admintrotors.AdmintratorLaborManagementPage._rlt.employee_arr[_index]._info;
+                //在页面上方显示当前雇员id
+                LabelName.Text = "当前雇员ID：" + (new string(_person.empl_id));
+                _input_delete = new delete_employee_input(new string(_person.empl_id));
+                _input_update = new update_employee_input(new string(_person.empl_id));
+                //在此调用改用户的其他信息资料
+            }
 
         }
 

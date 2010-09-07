@@ -47,10 +47,6 @@ CodeBehind="AdmintratorLaborSelectPage.aspx.cs" Inherits="treesafe.Admintrators.
               <asp:RequiredFieldValidator ID="LaborIDRequired" runat="server" ControlToValidate="LaborID"
                    CssClass="failureNotification" ErrorMessage="请输入雇员工号" ToolTip="请输入雇员工号"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="LaborIDRange" ControlToValidate="LaborID" Display="Dynamic" 
-                    ValidationExpression="d{7}" runat="server" ForeColor="Blue"
-                     ErrorMessage="请注意，雇员工号固定为7位">
-              </asp:RegularExpressionValidator>
            </p>
 
            <p>
