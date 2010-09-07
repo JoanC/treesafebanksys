@@ -12,7 +12,7 @@ void init_add_employee_input(add_employee_input* _init){
 	//初始化输入信息
 DEBUG_ADMIN_ADD_EMLOYEE_PRINT("init_add_employee_input\n");
 	init_admin_employee_info(&_init->employ_basic_info);
-	strcpy(_init->comment,"");//初始化注释信息
+	strcpy(_init->employ_basic_info.employee_comment,"");//初始化注释信息
 }
 
 void init_add_employee_info(add_employee_info* _init){
@@ -57,7 +57,7 @@ DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_convert_cmd\n");
 	add_employee_input* _new_info = (add_employee_input*)_info;
 
 	//进行中文解码utf7解码
-	DECODE_UTF7_TO_ASC(_new_info->comment);
+	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_comment);
 	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_addr);
 	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_email);
 	DECODE_UTF7_TO_ASC(_new_info->employ_basic_info.employee_id);
@@ -81,7 +81,7 @@ DEBUG_ADMIN_ADD_EMLOYEE_PRINT("init_add_employee_info\n");
 void add_employee_to_db(add_employee_input* _input_info, bool *_rlt)
 {
 DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_to_db\n");
-	*_rlt = add_new_employee(treesafe_db_connection,&(_input_info->employ_basic_info),_input_info->comment) ;
+*_rlt = add_new_employee(treesafe_db_connection,&(_input_info->employ_basic_info),_input_info->employ_basic_info.employee_comment) ;
 //	reg_basic_info _info_add_to_login ;
 //	_info_add_to_login.reg_id = _input_info->employ_basic_info.employee_id ;
 
