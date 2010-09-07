@@ -70,6 +70,8 @@ namespace treesafe.Users
             //读取更改信息
             user_query_info _new_info = new user_query_info(UserName.Text
                 ,UserID.Text,0,0,UserPhone.Text,UserAddress.Text);
+            web_net_client_mgr _net = new web_net_client_mgr();
+            _net.send_command_data(17, _new_info);
 
             //返回用户信息页面
             Response.Redirect("UserInfoPage.aspx");
