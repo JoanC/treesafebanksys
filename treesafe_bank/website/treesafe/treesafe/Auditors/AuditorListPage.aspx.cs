@@ -188,7 +188,7 @@ namespace treesafe.Auditors
             }
             catch (Exception)
             {
-                WrongPage.wrong_msg = "与服务器连接失败!\n向服务器发送research_query请求失败\n,请检查网路问题并请重新登录";
+                WrongPage.wrong_msg = "已经没有待审核的申请了!";
                 Server.Transfer("~/WrongPage.aspx", true);
             }
             //接受资料
