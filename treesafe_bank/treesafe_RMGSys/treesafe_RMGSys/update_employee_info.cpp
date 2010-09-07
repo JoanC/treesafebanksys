@@ -44,6 +44,8 @@ DEBUG_UPDATE_EMPLOYEE_INFO_PRINT("update_employee_convet_cmd\n");
 	DECODE_UTF7_TO_ASC(_input->new_info.employee_email);
 	DECODE_UTF7_TO_ASC(_input->new_info.employee_name);
 	DECODE_UTF7_TO_ASC(_input->new_info.employee_tel);
+	DECODE_UTF7_TO_ASC(_input->new_info.employee_work_id);
+	DECODE_UTF7_TO_ASC(_input->new_info.employee_id);
 	return _input;
 }
 
