@@ -32,14 +32,28 @@ namespace treesafe.Admintrotors
 
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
+    public struct admin_employee_element
+    {
+        public admin_employ_info _info;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 257)]
+        public char[] _comment;
+        public admin_employee_element(string _com) 
+        {
+            _info = new admin_employ_info(0,0,0,"","","","","","");
+            _comment = _com.PadRight(257, '\0').ToCharArray();
+        }
+    }
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
     public struct query_employee_array_info{
 	public int num;//个数
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 15)]
-	public admin_employ_info[] employee_arr;
+    public admin_employee_element[] employee_arr;
     public query_employee_array_info(int _num) 
     {
         num = _num;
-        employee_arr = new admin_employ_info[15];
+        employee_arr = new admin_employee_element[15];
     }
 };
 
@@ -94,18 +108,18 @@ namespace treesafe.Admintrotors
                 {
                     HtmlTableCell c = new HtmlTableCell(); //创建单元格对象
                   //  c.Controls.Add(new LiteralControl("行： " + (j + 1).ToString() + ", 单元格： " + (i + 1).ToString()));
-                    string _work_type = _rlt.employee_arr[j].empl_type == 0 ? "操作员" : "审核员";
-                    string _work_gender = _rlt.employee_arr[j].empl_gender == 0 ? "男" : "女";
+                    string _work_type = _rlt.employee_arr[j]._info.empl_type == 0 ? "操作员" : "审核员";
+                    string _work_gender = _rlt.employee_arr[j]._info.empl_gender == 0 ? "男" : "女";
                     switch (i)
                     {
-                        case 0: c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j].empl_work_id))); break;
+                        case 0: c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j]._info.empl_work_id))); break;
                         case 1: c.Controls.Add(new LiteralControl(_work_type)); break;
-                        case 2:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j].empl_name))); break;
-                        case 3:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j].empl_id) )); break;
+                        case 2:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j]._info.empl_name))); break;
+                        case 3:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j]._info.empl_id) )); break;
                         case 4: c.Controls.Add(new LiteralControl(_work_gender)); break;
-                        case 5:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j].empl_tel) )); break;
-                        case 6:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j].empl_addr) )); break;
-                        case 7: c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j].empl_email))); break;
+                        case 5:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j]._info.empl_tel) )); break;
+                        case 6:  c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j]._info.empl_addr) )); break;
+                        case 7: c.Controls.Add(new LiteralControl(new string(_rlt.employee_arr[j]._info.empl_email))); break;
                     }
                     r.Cells.Add(c); //添加该单元格对象
                 }

@@ -91,7 +91,7 @@ namespace treesafe.Admintrators
        
 
             int _index = int.Parse(LaborID.Text);
-            admin_employ_info _person = Admintrotors.AdmintratorLaborManagementPage._rlt.employee_arr[_index];
+            admin_employ_info _person = Admintrotors.AdmintratorLaborManagementPage._rlt.employee_arr[_index]._info;
             //在页面上方显示当前雇员id
             LabelName.Text = "当前雇员ID：" + (new string(_person.empl_id));
             _input_delete = new delete_employee_input(new string(_person.empl_id));
