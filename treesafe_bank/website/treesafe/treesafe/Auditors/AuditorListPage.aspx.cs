@@ -189,7 +189,8 @@ namespace treesafe.Auditors
             catch (Exception)
             {
                 WrongPage.wrong_msg = "已经没有待审核的申请了!";
-                Server.Transfer("~/WrongPage.aspx", true);
+                //Server.Transfer("~/WrongPage.aspx", true);
+                Response.Redirect("AuditorNoListPage.aspx");
             }
             //接受资料
             try

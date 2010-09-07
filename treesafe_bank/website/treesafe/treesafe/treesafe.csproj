@@ -54,6 +54,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Auditors\AuditorNoListPage.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Admintrators\AdmintratorEditRiskPage.aspx" />
     <Content Include="Admintrators\AdmintratorHelpPage.aspx" />
@@ -160,6 +161,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditors\AuditorNoListPage.aspx.cs">
+      <DependentUpon>AuditorNoListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditors\AuditorNoListPage.aspx.designer.cs">
+      <DependentUpon>AuditorNoListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>

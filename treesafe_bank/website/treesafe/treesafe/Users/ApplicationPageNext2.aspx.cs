@@ -44,7 +44,7 @@ namespace treesafe.Users
                 apply_cust_sps_work_unit =
                     Chinese_Encode.Chinese_Encode_Mgr.utf7_convert(ApplicationMateWork.Text);
                 apply_cust_sps_edu = int.Parse(ApplicationMateEducation.Text);
-                apply_cust_is_sps_has_loan = int.Parse(ApplicationMateIsHaveDeposit.Text) == 0 ? false : true;
+                if (ApplicationMateIsHaveDeposit.Text != null) apply_cust_is_sps_has_loan = int.Parse(ApplicationMateIsHaveDeposit.Text) == 0 ? false : true;
             //}
             //读取完成信息后，跳转到下一个页面继续申请表的填写
             Server.Transfer("~/Users/ApplicationPageNext3.aspx", true);

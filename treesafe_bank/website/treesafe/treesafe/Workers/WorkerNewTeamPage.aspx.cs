@@ -13,5 +13,19 @@ namespace treesafe.Workers
         {
 
         }
+
+        protected void NewTeamButton_Click(object sender, EventArgs e)
+        {
+            //读取数据
+
+
+
+
+
+
+
+            //跳转到联保小组界面
+            Response.Redirect("WorkerTeamPage.aspx");
+        }
     }
 }

@@ -78,7 +78,8 @@ CodeBehind="WorkerNewTeamPage.aspx.cs" Inherits="treesafe.Workers.WorkerNewTeamP
            </fieldset>
            <p class="submitButton">
               <asp:Button ID="NewTeamButton" runat="server" CommandName="MoveNext" Text="确定，创建联保小组" 
-                          ValidationGroup="ApplicationValidationGroup"/>
+                          ValidationGroup="ApplicationValidationGroup" 
+                   onclick="NewTeamButton_Click"/>
            </p>
         </div>
 </asp:Content>
