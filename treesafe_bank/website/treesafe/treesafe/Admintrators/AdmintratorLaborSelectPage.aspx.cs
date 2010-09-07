@@ -58,12 +58,15 @@ namespace treesafe.Admintrators
     [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
     public struct update_employee_input{
 	public admin_employ_info new_info;//新输入的信息
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 257)]
+    char[] _pad;
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
     char[] card_id;//原号码信息
     public update_employee_input(string _id)
     {
         card_id = _id.PadRight(19,'\0').ToCharArray();
         new_info = new admin_employ_info(0,0,0,"","","","","","");
+        _pad = "".PadRight(257,'\0').ToCharArray();
     }
 };
 
