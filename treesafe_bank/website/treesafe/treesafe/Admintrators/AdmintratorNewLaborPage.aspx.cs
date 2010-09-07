@@ -42,8 +42,11 @@ namespace treesafe.Admintrators
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 51)]
         public char[] empl_email;
         //电话号码
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public char[] empl_tel;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 257)]
+        public char[] empl_com;
 
         public admin_employ_info(int _type,int _gender,int _age
             ,string _id,string _work_id,string _name,string _addr,string _email,string _tel) 
@@ -56,12 +59,13 @@ namespace treesafe.Admintrators
             this.empl_age = _age;
             this.empl_addr = _addr.PadRight(51, '\0').ToCharArray();
             this.empl_email = _email.PadRight(51, '\0').ToCharArray();
-            this.empl_tel = _tel.PadRight(11, '\0').ToCharArray();
+            this.empl_tel = _tel.PadRight(12, '\0').ToCharArray();
+            this.empl_com = "".PadRight(257,'\0').ToCharArray();
         }
     };
 
     [Serializable] // 指示可序列化
-    [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
     public struct admin_add_employee_input_info
     {
         public admin_employ_info _info;
