@@ -33,6 +33,7 @@ struct admin_employee_info{
 	char employee_comment[EMPLOYEE_COMM_LEN] ; //职员信息
 };
 
+
 //初始化函数
  /*********************************************************************************************************
 ** Function name:			Init_admin_employee_info
