@@ -6,12 +6,12 @@ extern _ConnectionPtr* treesafe_db_connection ;
 
 //23.1
 void init_query_employee_array_input(query_employee_array_input* _init){
-DEBUG_QUERY_ARRAY_PRINT("init_query_employee_array_input");
+DEBUG_QUERY_ARRAY_PRINT("init_query_employee_array_input\n");
 	//no member now
 }
 
 void init_query_employee_array_info(query_employee_array_info* _init){
-DEBUG_QUERY_ARRAY_PRINT("init_query_employee_array_info");
+DEBUG_QUERY_ARRAY_PRINT("init_query_employee_array_info\n");
 	_init->num = 0;
 	for(int i = 0 ; i < MAX_EMPLOYEE_NUM ; ++i){
 		init_admin_employee_info(&_init->employee_arr[i]);
@@ -19,7 +19,7 @@ DEBUG_QUERY_ARRAY_PRINT("init_query_employee_array_info");
 }
 
 query_employee_modle* init_query_employee_modle(){
-DEBUG_QUERY_ARRAY_PRINT("init_query_employee_modle");
+DEBUG_QUERY_ARRAY_PRINT("init_query_employee_modle\n");
 	query_employee_modle* _new_modle
 		= (query_employee_modle*)malloc(sizeof(query_employee_modle));
 	init_query_employee_array_input(&_new_modle->input);
@@ -28,25 +28,25 @@ DEBUG_QUERY_ARRAY_PRINT("init_query_employee_modle");
 }
 
 void release_query_employee_arr_modle(query_employee_modle* _release){
-DEBUG_QUERY_ARRAY_PRINT("release_query_employee_arr_modle");
+DEBUG_QUERY_ARRAY_PRINT("release_query_employee_arr_modle\n");
 	free(_release);
 }
 
 //23.2
 void query_employee_arr_copy_cmd(const char* _cmd,
 	char* _dest , int _cmd_len){
-DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_copy_cmd");
+DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_copy_cmd\n");
 		memcpy(_dest,_cmd,_cmd_len);
 }
 
 query_employee_array_input* query_employee_arr_convert_cmd(char* _info){
-DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_convert_cmd");
+DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_convert_cmd\n");
 	return (query_employee_array_input*)_info;
 }
 
 query_employee_array_input* query_employee_arr_get_cmd(const char* _cmd
 	,int _cmd_len){
-DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_get_cmd");
+DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_get_cmd\n");
 		char* _new_info = (char*)malloc(_cmd_len);
 		query_employee_arr_copy_cmd(_cmd,_new_info,_cmd_len);
 		return query_employee_arr_convert_cmd(_new_info);
@@ -55,13 +55,13 @@ DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_get_cmd");
 //23.3
 bool query_employee_arr_get_num(int* _count)
 {
-	DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_get_num");
+	DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_get_num\n");
 	return  Find_how_many_employee(treesafe_db_connection,_count) ;
 }
 //´ýsunniÍê³É
 bool query_employee_arr_get_data(admin_employee_info* _arr,int _Count)
 {
-	DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_get_data");
+	DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_get_data\n");
 	return Get_all_emplo_info(treesafe_db_connection,_arr,_Count) ;
 }
 
@@ -69,7 +69,7 @@ bool query_employee_arr_get_data(admin_employee_info* _arr,int _Count)
 
 void query_employee_arr_convert_rlt(query_employee_array_info* _info,
 	char* _rlt , int* _rlt_len){
-DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_convert_rlt");
+DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_convert_rlt\n");
 		*_rlt_len = sizeof(query_employee_array_info);
 		memcpy(_rlt,_info,*_rlt_len);
 }
@@ -77,7 +77,7 @@ DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_convert_rlt");
 
 void query_employee_arr_frame(const char* _cmd , int _cmd_len,
 	char* _rlt , int* _rlt_len){
-DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_frame");
+DEBUG_QUERY_ARRAY_PRINT("query_employee_arr_frame\n");
 		query_employee_modle* _frame
 			= init_query_employee_modle();
 		_frame->input = *query_employee_arr_get_cmd(_cmd,_cmd_len);
