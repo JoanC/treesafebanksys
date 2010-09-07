@@ -141,7 +141,7 @@ namespace treesafe.Auditors
             //从服务器端读取农户的申请信息，并显示在对应页面控件上
             if (this.IsPostBack == false)
             {
-                research_exact_info _exact_info = exact_research("");
+                research_exact_info _exact_info = exact_research(new string(Account.Login.login_rlt.user_id));
                 app_id = new string(_exact_info.app_id);
                 research_query_info _query_info = query_research(app_id);
                 display_all_info(_query_info);
