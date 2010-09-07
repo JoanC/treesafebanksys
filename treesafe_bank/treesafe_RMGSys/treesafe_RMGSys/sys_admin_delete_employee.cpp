@@ -92,6 +92,8 @@ DEBUG_ADMIN_DEL_EMLOYEE_PRINT("release delete frame!\n");
 	_frame->input_info = *delete_employee_get_cmd(_cmd,_cmd_len);
 	//16.3
 	//...
+	bool is_db_corr = false;
+	delete_employee_from_database(_frame->input_info.employee_id,&is_db_corr);
 
 	//16.4
 	delete_employee_convert_rlt(&_frame->rlt_info,_rlt,_rlt_len);
