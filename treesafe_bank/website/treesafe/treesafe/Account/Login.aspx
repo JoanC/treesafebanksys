@@ -47,6 +47,9 @@ private void OnAuthenticate(object sender, AuthenticateEventArgs e)
                 <fieldset class="login">
                 <p class="header" style="font-size: medium; color: #FFFFFF;">
                 账户信息</p>
+                <p>
+                *注意：登录用户名为您的证件号码（身份证号或军人证号）*
+                </p>
                     
                     <p>
                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
