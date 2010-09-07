@@ -357,9 +357,9 @@ bool delete_employee(_ConnectionPtr *_pConn,const char *employee_id)
 	rsp->Close() ;
 	rsp.Release() ;
 
-	char sqlStr[200] = "delete from Table_Employee where employee_id = " ;
+	char sqlStr[200] = "delete from Table_Employee where employee_id = '" ;
 	strcat(sqlStr,employee_id) ;
-
+	strcat(sqlStr,"'") ;
 	_variant_t vt ;
 
 	try{
@@ -1944,6 +1944,7 @@ bool Find_how_many_employee(_ConnectionPtr *_pConn,int *_Num)
 	while( ! rsp->rsEOF )
 	{
 		++(*_Num) ;
+		rsp->MoveNext() ;
 	}
 	return true ;
 }
@@ -1982,7 +1983,7 @@ bool Get_all_emplo_info(_ConnectionPtr *_pConn,admin_employee_info* _Arr,int _Co
 			&& ConvertVar2Int(&varAge,&_Arr[lp].employee_age) 
 			&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_addr) 
 			&& ConvertVar2CharStr(&varEmail,_Arr[lp].employee_email) 
-			&& ConvertVar2Int(&varType,(int *)_Arr[lp].employee_type) 
+			&& ConvertVar2Int(&varType,(int *)&_Arr[lp].employee_type) 
 			&& ConvertVar2CharStr(&varAddr,_Arr[lp].employee_comment) 
 			&& ConvertVar2CharStr(&varPhone,_Arr[lp].employee_tel) ;
 
@@ -1992,7 +1993,7 @@ bool Get_all_emplo_info(_ConnectionPtr *_pConn,admin_employee_info* _Arr,int _Co
 			rsp.Release() ;
 			return false ;
 		}
-
+		rsp->MoveNext() ;
 	}
 	rsp->Close() ;
 	rsp.Release() ;
@@ -2011,9 +2012,9 @@ bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info*
 	const char col8[] = "employee_comment" ;
 	const char col9[] = "employee_phone_num" ;
 
-	char sqlStr[300]  ;
-	memset(sqlStr,0,300) ;
-	sprintf(sqlStr,"update Table_Employee set %s = '%s',%s = '%s',%s = '%s',%s = '%d',%s = '%d',%s = '%s',%s = '%s',%s = '%d',%s = '%s',%s = '%s' from Table_Employee where %s = '%s'", 
+	char sqlStr[400]  ;
+	memset(sqlStr,0,400) ;
+	sprintf(sqlStr,"update Table_Employee set %s = '%s',%s = '%s',%s = '%s',%s = %d,%s = %d,%s = '%s',%s = '%s',%s = %d,%s = '%s',%s = '%s' from Table_Employee where %s = '%s'", 
 		col0,_Info->employee_work_id,
 		col1,_Info->employee_id,
 		col2,_Info->employee_name,
@@ -2023,7 +2024,8 @@ bool Update_emplo_info(_ConnectionPtr *_pConn,char *_Old_ID,admin_employee_info*
 		col6,_Info->employee_email,
 		col7,_Info->employee_type,
 		col8,_Info->employee_comment,
-		col9,_Info->employee_tel) ;
+		col9,_Info->employee_tel,
+		col1,_Old_ID) ;
 
 	_variant_t vt ;
 	try{
