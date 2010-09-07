@@ -143,7 +143,7 @@ namespace treesafe.Auditors
             if (this.IsPostBack == false)
             {
                 research_exact_info _exact_info = exact_research(new string(Account.Login.login_rlt.user_id));
-                if (_exact_info.err_info.type != 0)
+                if (_exact_info.err_info.type != 205)
                 {
                     Response.Redirect("AuditorNoListPage.aspx");
                     return;
