@@ -88,7 +88,17 @@ namespace treesafe.Admintrotors
             query_weight_info _rlt = new query_weight_info("");
             web_net_client_mgr _net = new web_net_client_mgr();
             _net.send_command_data(13,(new query_weight_input_info()));
-            _rlt = (query_weight_info)_net.recevie_data(_rlt.GetType());
+            try
+            {
+                _rlt = (query_weight_info)_net.recevie_data(_rlt.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!请检查网路问题并请重新登录";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+
+            
             return _rlt;
         }
 

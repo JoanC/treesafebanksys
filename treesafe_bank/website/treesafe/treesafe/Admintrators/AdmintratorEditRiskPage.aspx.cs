@@ -104,7 +104,16 @@ namespace treesafe.Admintrators
             _input.new_wgt = _data;
             _net.send_command_data(14,_input);
             update_weight_info _rlt = new update_weight_info("");
-            _rlt = (update_weight_info)_net.recevie_data(_rlt.GetType());
+            try
+            {
+                   _rlt = (update_weight_info)_net.recevie_data(_rlt.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!\n请检查网路问题并请重新登录";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+            
             //返回权重显示页面
             Session["riskpage"] = "0";
             Response.Redirect("AdmintratorRiskManagementPage.aspx");

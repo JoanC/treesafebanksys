@@ -220,9 +220,9 @@ namespace ClientNet
                {
                     int iCount = 99;
                     byte[] cCount = System.BitConverter.GetBytes(iCount);
+
+                    this.m_net_stream.Receive(cCount, 0, cCount.Length, SocketFlags.None);
                    
-                   this.m_net_stream.Receive(cCount, 0, cCount.Length, SocketFlags.None);
-  
                    
                    char[] _temp_num = Encoding.ASCII.GetChars(cCount);
                    string _num_str = new string(_temp_num);

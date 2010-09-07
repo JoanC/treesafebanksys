@@ -79,7 +79,16 @@ namespace treesafe.Workers
             web_net_client_mgr _net = new web_net_client_mgr();
             credit_scores_rlt _rlt = new credit_scores_rlt("");
             _net.send_command_data(11, _input);
-            _rlt = (credit_scores_rlt)_net.recevie_data(_rlt.GetType());
+            try
+            {
+                  _rlt = (credit_scores_rlt)_net.recevie_data(_rlt.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!\n请检查网路问题并请重新登录";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+            
             display_score(_rlt);
             return;
         }

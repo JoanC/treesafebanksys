@@ -37,7 +37,16 @@ namespace treesafe.Users
             credit_scores_input _input = new credit_scores_input(_cust_id);
             web_net_client_mgr _net = new web_net_client_mgr();
             _net.send_command_data(11,_input);
-            _info = (credit_scores_rlt)_net.recevie_data(_info.GetType());
+            try
+            {
+                _info = (credit_scores_rlt)_net.recevie_data(_info.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!\n请检查网路问题并请重新登录";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+            
             WeightIncome.Text = "" + _info.score_income;
             WeightDeposit.Text = "" + _info.score_depos;
             WeightLoan.Text = "" + _info.score_repayment;

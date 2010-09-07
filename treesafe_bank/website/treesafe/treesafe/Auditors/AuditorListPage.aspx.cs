@@ -170,7 +170,7 @@ namespace treesafe.Auditors
             }
             catch (Exception)
             {
-                WrongPage.wrong_msg = "与服务器连接失败!\n在抽取新的待审核信息时发生网络错误,请检查网路问题并请重新登录";
+                WrongPage.wrong_msg = "与服务器连接失败!\n请检查网路问题并请重新登录";
                 Server.Transfer("~/WrongPage.aspx", true);
             }
             return _rlt;

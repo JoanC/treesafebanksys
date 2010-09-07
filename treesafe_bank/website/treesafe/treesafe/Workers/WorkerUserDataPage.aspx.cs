@@ -84,7 +84,16 @@ namespace treesafe.Workers
             user_query_arr_input _input = new user_query_arr_input();
             _net.send_command_data(9, _input);
             user_query_arr_info _info = new user_query_arr_info("");
-            _info = (user_query_arr_info)_net.recevie_data(_info.GetType());
+            try
+            {
+                _info = (user_query_arr_info)_net.recevie_data(_info.GetType());
+            }
+            catch(Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!\n请检查网路问题并请重新登录";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+            
             return _info;
         }
 

@@ -80,7 +80,16 @@ namespace treesafe.Admintrotors
             web_net_client_mgr _net = new web_net_client_mgr();
             query_employee_array_input _input = new query_employee_array_input();
             _net.send_command_data(15,_input);
-            _rlt = (query_employee_array_info)_net.recevie_data(_rlt.GetType());
+            try
+            {
+                _rlt = (query_employee_array_info)_net.recevie_data(_rlt.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!\n在抽取新的待审核信息时发生网络错误,请检查网路问题并请重新登录";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+           
 
             
             //读取雇员数据

@@ -86,7 +86,16 @@ namespace treesafe.Workers
                 Server.Transfer("~/WrongPage.aspx", true);
             }
             /*接受信息*/
-            _info = (admin_add_employee_input_info)_new_mgr.recevie_data(_info.GetType());
+            try
+            {
+                _info = (admin_add_employee_input_info)_new_mgr.recevie_data(_info.GetType());
+            }
+            catch (Exception)
+            {
+                WrongPage.wrong_msg = "与服务器连接失败!\n请检查网路问题并请重新登录";
+                Server.Transfer("~/WrongPage.aspx", true);
+            }
+            
             return _info;
         }
     }
