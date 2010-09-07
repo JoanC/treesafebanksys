@@ -20,6 +20,8 @@ using System.Runtime.Serialization;
 using ClientNet;
 using Chinese_Encode;
 
+using treesafe.Admintrators;
+
 
 namespace treesafe.Admintrators
 {
@@ -55,9 +57,9 @@ namespace treesafe.Admintrators
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 1)] // 按1字节对齐
     public struct update_employee_input{
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
-	char[] card_id;//原号码信息
 	public admin_employ_info new_info;//新输入的信息
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+    char[] card_id;//原号码信息
     public update_employee_input(string _id)
     {
         card_id = _id.PadRight(19,'\0').ToCharArray();
@@ -85,11 +87,15 @@ namespace treesafe.Admintrators
         {
             //c=此处获得了该雇员的工号
             LaborID.Text = Request.QueryString["id"];
-            //在页面上方显示当前雇员id
-            LabelName.Text = "当前雇员ID：" + LaborID.Text;
 
-            _input_delete = new delete_employee_input(LaborID.Text);
-            _input_update = new update_employee_input(LaborID.Text);
+       
+
+            int _index = int.Parse(LaborID.Text);
+            admin_employ_info _person = Admintrotors.AdmintratorLaborManagementPage._rlt.employee_arr[_index];
+            //在页面上方显示当前雇员id
+            LabelName.Text = "当前雇员ID：" + (new string(_person.empl_id));
+            _input_delete = new delete_employee_input(new string(_person.empl_id));
+            _input_update = new update_employee_input(new string(_person.empl_id));
             //在此调用改用户的其他信息资料
 
         }
