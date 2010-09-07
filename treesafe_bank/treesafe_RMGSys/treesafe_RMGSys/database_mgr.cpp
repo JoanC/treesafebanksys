@@ -141,8 +141,9 @@ bool Password_inquiry(_ConnectionPtr *_pConn,char *user_name , char *pwd_rlt)
 bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_info_rlt) 
 {
 	_variant_t vt ;
-	char sqlStr[200] = "select * from Table_Login where login_id = " ;
-	strcat_s(sqlStr,user_name) ;
+	char sqlStr[200] = "select * from Table_Login where login_id = '" ;
+	strcat(sqlStr,user_name) ;
+	strcat(sqlStr,"'") ;
 	_RecordsetPtr rsp;
 	try{
 		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
