@@ -24,6 +24,31 @@ namespace treesafe.Users
 {
     [Serializable] // 指示可序列化
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+    struct query_user_one_info_input
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19)]
+        char[] user_id;//用户的证件号码
+        public query_user_one_info_input(string _id)
+        {
+            user_id = _id.PadRight(19, '\0').ToCharArray();
+        }
+    };
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+    struct query_user_one_info_info
+    {
+        user_query_info user_info;
+        sys_err err_info;//错误信息
+        public query_user_one_info_info(user_query_info _info)
+        {
+            err_info = new sys_err(0,"");
+            user_info = new user_query_info("","",0,0,"","");
+        }
+    };
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
     public struct user_query_info
     {
         public int user_gender;//0男,1女
@@ -56,6 +81,8 @@ namespace treesafe.Users
             {
             //    Server.Transfer("~/WrongPage.aspx", true);
             }
+
+
         }
 
         protected void ChangeUserInfoButton_Click(object sender, EventArgs e)
