@@ -29,7 +29,7 @@ CodeBehind="ChangePassword.aspx.cs" Inherits="treesafe.ChangePassword" %>
         <asp:Label ID="UserOldPasswordLabel" runat="server" AssociatedControlID="UserOldPassword">
         您的旧密码:
         </asp:Label>
-        <asp:TextBox ID="UserOldPassword" runat="server" CssClass="textEntry"></asp:TextBox>
+        <asp:TextBox ID="UserOldPassword" runat="server" CssClass="passwordEntry"></asp:TextBox>
         <asp:RequiredFieldValidator ID="UserOldPasswordRequire" runat="server" ControlToValidate="UserOldPassword" 
              CssClass="failureNotification" ErrorMessage="请输入您现在的密码" ToolTip="请输入您现在的密码" 
              ValidationGroup="UserInfoValidationGroup">*</asp:RequiredFieldValidator>
