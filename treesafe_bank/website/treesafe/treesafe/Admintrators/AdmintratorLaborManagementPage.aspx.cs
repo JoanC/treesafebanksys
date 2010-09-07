@@ -34,16 +34,12 @@ namespace treesafe.Admintrotors
     [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按0字节对齐
     public struct query_employee_array_info{
 	public int num;//个数
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30)]
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 15)]
 	public admin_employ_info[] employee_arr;
     public query_employee_array_info(int _num) 
     {
         num = _num;
-         employee_arr = new admin_employ_info[30];
-        for (int i = 0; i < 30; ++i) 
-        {
-            employee_arr[i] = new admin_employ_info(0, 0, 0, "", "", "", "", "", "");
-        }
+        employee_arr = new admin_employ_info[15];
     }
 };
 
