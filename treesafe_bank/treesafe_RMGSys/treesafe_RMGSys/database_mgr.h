@@ -862,7 +862,7 @@ bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char
 ** Modified date:			2010-7-16
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_member_info *_Info) ;
+//bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_member_info *_Info) ;
 
  /*********************************************************************************************************
 ** Function name:			Find_specific_user

@@ -97,6 +97,9 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 	case(sys_cmd_query_employee_arr):{
 		sys_command_query_employee_arr(_command,_rlt,_rlt_len);
 									 }break;
+	case(sys_cmd_update_user_info):{
+		sys_command_update_user_info(_command,_rlt,_rlt_len);
+								   }break;
 		//调用更改雇员主函式
 	case(sys_cmd_update_employee_info):{
 		sys_command_update_emplyee_info(_command,_rlt,_rlt_len);

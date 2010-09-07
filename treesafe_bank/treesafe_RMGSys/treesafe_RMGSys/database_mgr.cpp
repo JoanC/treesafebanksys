@@ -1868,6 +1868,7 @@ bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome)
 	rsp.Release() ;
 	return true ;
 }
+/*
 bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_member_info *_Info) 
 {
 	char sqlStr[200] ;
@@ -1888,7 +1889,7 @@ bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_m
 	}
 
 	return true ;
-}
+}*/
 bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info) 
 {
 	char sqlStr[200] = "select * from Table_Cust_Info where id = '" ; 
