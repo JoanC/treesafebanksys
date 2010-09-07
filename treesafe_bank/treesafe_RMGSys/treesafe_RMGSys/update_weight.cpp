@@ -38,16 +38,6 @@ DEBUG_UPDATE_WEIGHT("update_weight_copy_cmd\n");
 update_weight_input* update_weight_convert_cmd(char* _info){
 DEBUG_UPDATE_WEIGHT("update_weight_convert_cmd\n");
     update_weight_input* _new_info = (update_weight_input*)_info;
-	_new_info->new_wgt.auditor_edit /= (float)100;
-	_new_info->new_wgt.depos /= (float)100;
-	_new_info->new_wgt.edu /= (float)100;
-	_new_info->new_wgt.fixed_assets_be_pledged /= (float)100;
-	_new_info->new_wgt.id_type /= (float)100;
-	_new_info->new_wgt.income /= (float)100;
-	_new_info->new_wgt.loan_record /= (float)100;
-	_new_info->new_wgt.marriage  /= (float)100;
-	_new_info->new_wgt.repayment /= (float)100;
-	_new_info->new_wgt.social_record /= (float)100;
 	return _new_info;
 }
 
@@ -72,14 +62,29 @@ DEBUG_UPDATE_WEIGHT("update_weight_convert_rlt\n");
 		memcpy(_rlt,_info,*_rlt_len);
 }
 
+void convet_from_int_to_float(wgt_int* _int ,event_wgt* _float){
+	_float->auditor_edit = (float)_int->auditor_edit / (float)100;
+	_float->depos = (float)_int->depos / (float)100;
+	_float->edu = (float)_int->edu / (float)100;
+	_float->fixed_assets_be_pledged = (float)_int->fixed_assets_be_pledged / (float)100;
+	_float->id_type = (float)_int->id_type / (float)100;
+	_float->income = (float)_int->income / (float)100;
+	_float->loan_record = (float)_int->loan_record / (float)100;
+	_float->marriage = (float)_int->marriage / (float)100;
+	_float->repayment = (float)_int->repayment / (float)100;
+	_float->social_record = (float)_int->social_record / (float)100;
+}
+
 void update_weight_frame(const char* _cmd , int _cmd_len 
 	, char* _rlt , int* _rlt_len){
 DEBUG_UPDATE_WEIGHT("update_weight_frame\n");
 		update_weight_modle* _frame
 			= init_update_weight_info();
 		_frame->input_info = *update_weight_get_cmd(_cmd,_cmd_len);
+		
+		convet_from_int_to_float(&_frame->input_info.new_wgt,&_frame->new_wgt);
 		//25.3
-		update_weight_set_data(&_frame->input_info.new_wgt);
+		update_weight_set_data(&_frame->new_wgt);
 
 		update_weight_convert_rlt(&_frame->rlt_info,
 			_rlt,_rlt_len);

@@ -7,8 +7,21 @@
 //模块25
 //修改权重
 
+struct wgt_int{
+	int income ;
+	int depos ;
+	int repayment ;
+	int fixed_assets_be_pledged ;
+	int id_type ;
+	int edu ;
+	int marriage ;
+	int loan_record ;
+	int social_record ;
+	int auditor_edit ;
+};
+
 struct update_weight_input{
-	event_wgt new_wgt;//新的权重
+	wgt_int new_wgt;//新的权重
 };
 
 struct update_weight_info{
@@ -18,6 +31,7 @@ struct update_weight_info{
 struct update_weight_modle{
 	update_weight_input input_info;
 	update_weight_info rlt_info;
+	event_wgt new_wgt;
 };
 
 //25.1
@@ -50,6 +64,8 @@ void update_weight_set_data(event_wgt* _new_data) ;
 //结果数据转化
 void update_weight_convert_rlt(update_weight_info* _info,
 	char* _rlt , int* _rlt_len);
+
+void convet_from_int_to_float(wgt_int* _int ,event_wgt* _float);
 
 //模块25的主函式
 void update_weight_frame(const char* _cmd , int _cmd_len 
