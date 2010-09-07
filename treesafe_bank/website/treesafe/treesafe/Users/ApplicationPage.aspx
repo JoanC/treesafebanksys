@@ -88,10 +88,6 @@ CodeBehind="ApplicationPage.aspx.cs" Inherits="treesafe.Users.ApplicationPage" %
               <asp:RequiredFieldValidator ID="ApplicationPostCodeRequired" runat="server" ControlToValidate="ApplicationPostCode"
                    CssClass="failureNotification" ErrorMessage="请输入邮政编码" ToolTip="请输入邮政编码"
                     ValidationGroup="ApplicationValidationGroup">*</asp:RequiredFieldValidator>
-              <asp:RegularExpressionValidator ID="ApplicationPostCodeRange" ControlToValidate="ApplicationPostCode" 
-                    Display="Dynamic" ValidationExpression="d{6}" runat="server" ForeColor="Blue"
-                    ErrorMessage="邮政编码位数为6，请检查后重新输入。">
-              </asp:RegularExpressionValidator>
            </p>
 
            <p>

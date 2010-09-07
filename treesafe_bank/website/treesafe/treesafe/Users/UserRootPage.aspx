@@ -46,7 +46,24 @@
         <asp:Image ID="Image2" runat="server" ImageUrl="~/Pictures/gesture2.png"/>
     </p>
     <p class="rightinfo">
-    2
+    <br/>
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    当您成为我们的注册会员之后，您就可以在线填写贷款申请表了。
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    请仔细填写您的个人信息。同时您必须对申请表内填写资料的真实性负责。本社将对您填写的一切信息保密，请放心填写。
+    <br/>
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    当您顺利填写完在线贷款申请表后，您就可以静心等待，我们会有专门的审核人员对您填写的信息进行实地考察探访。
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    若您的信息真实有效，那么您的申请将通过审核，我们将以短信形式通知您，您就可以继续进行联保贷款的下一步了。
+    若您的信息与实际情况存在出入，那么您的申请将不能通过审核，我们同样将以短信形式通知您。
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    届时您可以再行登陆本系统，自行修改，重新提交；或者前往本社柜台，由柜台操作员为您进行修改。
     </p>
     </fieldset>
     
@@ -61,7 +78,20 @@
         <asp:Image ID="Image3" runat="server" ImageUrl="~/Pictures/gesture3.png"/>
     </p>
     <p class="rightinfo">
-    3
+    <br/>
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    当您已经加入联保贷款小组后，柜台操作员将会您所在小组的信息录入本系统，并与您个人的信息相关联。
+    
+    <br/>
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    届时您就可以自行登陆本系统查看您所在联保小组的信息。
+    <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    您可以查看您所在联保小组内其他成员的编号、姓名等基本信息，可以查看其他成员的个人信用评级，
+    更关键的是您还可以关注其他成员的还贷情况，一旦其他成员还贷情况出现问题，您也会收到本社的短信通知。
+
     </p>
     </fieldset>
 
