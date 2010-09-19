@@ -1,2 +1,2 @@
-Provider=SQLOLEDB.1;Password=123;Persist Security Info=True;User ID=ts_login;Initial Catalog=treesafe_sys;Data Source=10.60.37.201
-Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Init1al Catalog=bank_data;Data Source=10.60.37.200
+Provider=SQLOLEDB.1;Password=123;Persist Security Info=True;User ID=ts_login;Initial Catalog=treesafe_sys;Data Source=192.168.0.103
+Provider=SQLOLEDB.1;Password=111;Persist Security Info=True;User ID=bank_sys;Init1al Catalog=bank_data;Data Source=192.168.0.103
