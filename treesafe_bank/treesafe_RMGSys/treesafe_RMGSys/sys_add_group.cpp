@@ -1,1 +1,49 @@
 #include "stdafx.h"
+#include "sys_add_group.h"
+
+//31.1
+void init_add_group_input(add_group_input* _init){
+	init_group_info(&_init->group);
+}
+
+void init_add_group_info(add_group_info* _init){
+	init_sys_err(&_init->err_info);
+	_init->is_add_group_succ = true;
+}
+
+add_group_modle* init_add_group_modle(){
+	//分配内存
+	add_group_modle* _new
+		= (add_group_modle*)malloc(sizeof(add_group_modle));
+	//初始化信息
+	init_add_group_input(&_new->input_info);
+	init_add_group_info(&_new->rlt_info);
+	return _new;
+}
+
+//31.2
+void add_group_copy_cmd(const char* _cmd,char* _info,int _cmd_len){
+	memcpy(_info,_cmd,_cmd_len);
+}
+
+add_group_info* add_group_convert_cmd(char* _info){
+	return (add_group_info*)_info;
+}
+
+add_group_info* add_group_get_cmd(const char* _cmd,int _cmd_len){
+	char* _info = (char*)malloc(_cmd_len);
+	add_group_copy_cmd(_cmd,_info,_cmd_len);
+	return add_group_convert_cmd(_info);
+}
+
+
+//31.3
+
+
+//31.4
+void add_group_generate_rlt(add_group_info* _info
+	,char* _rlt,int* _rlt_len){
+	*_rlt_len = sizeof(add_group_info);//获取长度
+	memcpy(_rlt,_info,*_rlt_len);//复制信息
+}
+

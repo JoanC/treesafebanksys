@@ -34,7 +34,7 @@ add_group_modle* init_add_group_modle();
 //获取指令
 
 //复制指令
-void add_group_copy_cmd(const char* _cmd,int _cmd_len);
+void add_group_copy_cmd(const char* _cmd,char* _info,int _cmd_len);
 
 add_group_info* add_group_convert_cmd(char* _info);
 
@@ -52,10 +52,10 @@ bool add_group_db(group_info* _info);
 /**********************************************/
 //31.4
 //整合数据信息
-bool add_group_generate_rlt(add_group_info* _rlt);
+void add_group_generate_rlt(add_group_info* _info,char* _rlt,int* _rlt_len);
 
 /**********************************************/
 //31.5
-void add_group_frame();
+void add_group_frame(const char* _cmd,char* _rlt,int* _rlt_len);
 
 
