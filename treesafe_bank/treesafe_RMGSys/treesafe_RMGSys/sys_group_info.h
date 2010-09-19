@@ -12,6 +12,7 @@ struct group_mem_info{
 
 struct group_info{
 	//组信息
+	//组的信息由系统自动生成
 	char group_id[GROUP_ID_LEN];
 	int length;
     group_mem_info mem[MAX_GROUP_SIZE];
