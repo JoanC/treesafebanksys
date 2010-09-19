@@ -29,6 +29,7 @@ void init_add_group_info(add_group_info* _init);
 
 add_group_modle* init_add_group_modle();
 
+void add_group_release(add_group_modle* _release);
 /******************************************/
 //31.2
 //获取指令
@@ -36,9 +37,9 @@ add_group_modle* init_add_group_modle();
 //复制指令
 void add_group_copy_cmd(const char* _cmd,char* _info,int _cmd_len);
 
-add_group_info* add_group_convert_cmd(char* _info);
+add_group_input* add_group_convert_cmd(char* _info);
 
-add_group_info* add_group_get_cmd(const char* _cmd,int _cmd_len);
+add_group_input* add_group_get_cmd(const char* _cmd,int _cmd_len);
 
 /********************************************/
 //31.3
@@ -55,7 +56,7 @@ bool add_group_db(group_info* _info);
 void add_group_generate_rlt(add_group_info* _info,char* _rlt,int* _rlt_len);
 
 /**********************************************/
-//31.5
-void add_group_frame(const char* _cmd,char* _rlt,int* _rlt_len);
+//模块31主函式
+void add_group_frame(const char* _cmd,int _cmd_len,char* _rlt,int* _rlt_len);
 
 
