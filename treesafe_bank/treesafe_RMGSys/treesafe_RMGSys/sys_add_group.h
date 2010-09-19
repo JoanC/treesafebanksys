@@ -1,6 +1,7 @@
 #pragma once 
 #include "sys_group_info.h"
 
+
 //添加分组信息
 
 struct add_group_input{

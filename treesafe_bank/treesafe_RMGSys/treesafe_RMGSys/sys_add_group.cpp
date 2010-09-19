@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "sys_add_group.h"
 
+/*
 //31.1
 void init_add_group_input(add_group_input* _init){
 	init_group_info(&_init->group);
@@ -67,3 +68,4 @@ void add_group_frame(const char* _cmd,int _cmd_len
 	//ÊÍ·ÅÄ£¿é
 	add_group_release(_frame);
 }
+*/
