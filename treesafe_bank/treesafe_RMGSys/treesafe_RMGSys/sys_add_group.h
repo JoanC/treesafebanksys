@@ -1,6 +1,4 @@
 #pragma once 
-#include "database_mgr.h"
-
 #include "sys_group_info.h"
 
 //添加分组信息
