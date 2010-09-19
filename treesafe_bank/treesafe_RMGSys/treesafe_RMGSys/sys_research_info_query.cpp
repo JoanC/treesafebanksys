@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "sys_research_info_query.h"
 
