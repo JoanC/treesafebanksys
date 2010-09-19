@@ -66,7 +66,7 @@ namespace treesafe.Admintrators
     {
         card_id = _id.PadRight(19,'\0').ToCharArray();
         new_info = new admin_employ_info(0,0,0,"","","","","","");
-        _pad = "".PadRight(257,'\0').ToCharArray();
+        _pad = "null".PadRight(257,'\0').ToCharArray();
     }
 };
 
