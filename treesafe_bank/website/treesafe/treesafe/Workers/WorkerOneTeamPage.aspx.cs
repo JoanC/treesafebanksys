@@ -4,6 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+using treesafe;
+
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using ClientNet;
+using Chinese_Encode;
+
+using treesafe.Users;
+using treesafe.Workers;
+
 using System.Web.UI.HtmlControls;
 
 namespace treesafe.Workers
@@ -14,7 +33,8 @@ namespace treesafe.Workers
         {
 
 
-
+            //一个个地读取数据
+            int _chose = int.Parse(Request.QueryString["id"]);
 
             //读取农户数据3
             GetLaborInfo();
