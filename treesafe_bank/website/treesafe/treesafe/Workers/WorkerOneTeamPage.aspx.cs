@@ -29,6 +29,7 @@ namespace treesafe.Workers
 {
     public partial class WorkerOneTeamPage : System.Web.UI.Page
     {
+        public user_query_info[] _info = new user_query_info[6];
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -36,8 +37,21 @@ namespace treesafe.Workers
             //一个个地读取数据
             int _chose = int.Parse(Request.QueryString["id"]);
 
-            //读取农户数据3
-            GetLaborInfo();
+
+            for (int i = 0; i < WorkerTeamPage.m_groups.group[i].length; ++i)
+            {
+                //提取信息
+                query_user_one_info_input _input = new query_user_one_info_input(
+                    new string(WorkerTeamPage.m_groups.group[_chose].mem[i]._id));
+                web_net_client_mgr _net = new web_net_client_mgr();
+                query_user_one_info_info _rlt = new query_user_one_info_info((new sys_err(0, "")));
+                _net.send_command_data(12, _input);
+                _rlt = (query_user_one_info_info)_net.recevie_data(_rlt.GetType());
+                _info[i] = _rlt.user_info;
+            }
+
+                //读取农户数据3
+                GetLaborInfo();
         }
 
         protected void GetLaborInfo()

@@ -46,6 +46,7 @@ namespace treesafe.Workers
     {
 
         static public query_group_info m_groups;
+        static public int m_chosen;
 
         protected void Page_Load(object sender, EventArgs e)
         {
