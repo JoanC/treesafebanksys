@@ -1063,3 +1063,5 @@ bool Cust_or_emplo(_ConnectionPtr *_pConn,const char *_ID,bool *_IsCust) ;
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
 bool Update_user_info(_ConnectionPtr *_pConn,const char *_ID,const char *_New_Addr,const char *_New_Email,const char *_New_Phone) ;
+
+bool Insert_group_info(_ConnectionPtr *_pConn,group_info *_Info,char *_Group_Id) ;

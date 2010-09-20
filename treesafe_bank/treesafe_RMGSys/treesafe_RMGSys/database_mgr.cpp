@@ -1839,7 +1839,7 @@ bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome)
 	char sqlStr[200] = "select max(group_id) from Table_Guaranteed_Group" ;
 
 	_variant_t vt ;
-	_RecordsetPtr rsp;
+	_RecordsetPtr rsp ;
 	try{
 		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
 	}
@@ -1851,6 +1851,7 @@ bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome)
 	{
 		rsp->Close() ;
 		rsp.Release() ;
+		memset(_Outcome,0,GROUP_ID_LEN * sizeof(char)) ;
 		return false ;
 	}
 
@@ -2191,4 +2192,27 @@ bool Update_user_info(_ConnectionPtr *_pConn,const char *_ID,const char *_New_Ad
 	{
 		return true  ;
 	}
+}
+bool Insert_group_info(_ConnectionPtr *_pConn,group_info *_Info,char *_Group_Id) 
+{
+	char sqlStr[200] = "insert into Table_Guaranteed_Group values('" ;
+	strcat(sqlStr,_Group_Id) ;
+	strcat(sqlStr,"','") ;
+
+	for(int i = 0 ; i < _Info->length - 1 ; ++i)
+	{
+		strcat(sqlStr,_Info->mem[i]._id) ;
+		strcat(sqlStr,"','") ;
+	}
+	strcat(sqlStr,_Info->mem[_Info->length - 1]._id ) ;
+	strcat(sqlStr,"')") ;
+
+	try{
+		_variant_t vt ;
+		(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false ;
+	}
+	return true ;
 }
