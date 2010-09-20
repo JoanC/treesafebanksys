@@ -26,14 +26,8 @@ query_group_modle* init_query_group_modle(){
     return _new;
 }
 
-
-bool query_group_db(int *_rlt_num,group_info* _query_data)
-{
-	return Find_how_many_group(treesafe_db_connection,_rlt_num) 
-		  && Get_all_group_info( treesafe_db_connection,_query_data,_rlt_num) ;
-}
 void release_query_group_modle(query_group_modle* _release){
-
+	free(_release);
 }
 
 //32.2
@@ -53,6 +47,13 @@ query_group_input* query_get_cmd(const char* _cmd,int _cmd_len){
 	return query_convert_cmd(_info);
 }
 
+//32.3
+
+bool query_group_db(int *_rlt_num,group_info* _query_data)
+{
+	return Find_how_many_group(treesafe_db_connection,_rlt_num) 
+		  && Get_all_group_info( treesafe_db_connection,_query_data,_rlt_num) ;
+}
 
 //32.4
 void query_group_generate_rlt(query_group_info* _info
