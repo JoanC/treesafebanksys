@@ -21,7 +21,7 @@ struct query_group_info{
 struct query_group_modle{
 	query_group_input input_info;
 	query_group_info rlt_info;
-}:
+};
 
 //32.1
 //初始化模块
@@ -30,6 +30,8 @@ void init_query_group_input(query_group_input* _init);
 void init_query_group_info(query_group_info* _init);
 
 query_group_modle* init_query_group_modle();
+
+void release_query_group_modle(query_group_modle* _release);
 
 //32.2
 //接受指令
