@@ -1858,6 +1858,11 @@ bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome)
 
 	ConvertVar2CharStr(&varGPID,_Outcome) ;
 
+	if ( ! strcmp(_Outcome,"null") )
+	{
+		memset(_Outcome,0,GROUP_ID_LEN * sizeof(char)) ;
+	}
+
 	rsp->Close() ;
 	rsp.Release() ;
 	return true ;
