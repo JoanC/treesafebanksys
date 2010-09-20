@@ -69,4 +69,5 @@ void query_group_frame(const char* _cmd,int _cmd_len,
 		//32.4
 		query_group_generate_rlt(&_frame->rlt_info,_rlt,_rlt_len);
 		//ÊÍ·ÅÄ£¿é
+		release_query_group_modle(_frame);
 }
