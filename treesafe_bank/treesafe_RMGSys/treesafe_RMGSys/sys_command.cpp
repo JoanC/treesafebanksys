@@ -97,6 +97,7 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 	case(sys_cmd_query_employee_arr):{
 		sys_command_query_employee_arr(_command,_rlt,_rlt_len);
 									 }break;
+		//更改用户信息
 	case(sys_cmd_update_user_info):{
 		sys_command_update_user_info(_command,_rlt,_rlt_len);
 								   }break;
@@ -104,10 +105,13 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 	case(sys_cmd_update_employee_info):{
 		sys_command_update_emplyee_info(_command,_rlt,_rlt_len);
 									   }break;
+		//增加一个分组信息
+	case(sys_cmd_add_group):{
+		sys_command_add_group(_command,_rlt,_rlt_len);
+							}break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
-
 	default:
 		sys_command_err(_command,_rlt,_rlt_len);
 	}
@@ -225,9 +229,14 @@ void sys_command_update_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_
 }
 
 //2.4.19
-void sys_command_query_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
-	DEBUG_COMMAND_PRINT("command : query user info");
+//void sys_command_query_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+//	DEBUG_COMMAND_PRINT("command : query user info");
+//}
 
+//2.4.19
+void sys_command_add_group(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	DEBUG_COMMAND_PRINT("command:add a group");
+	add_group_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
 //模块2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
