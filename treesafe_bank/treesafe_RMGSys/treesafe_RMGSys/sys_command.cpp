@@ -109,6 +109,9 @@ DEBUG_COMMAND_PRINT("command:analyze command!\n");
 	case(sys_cmd_add_group):{
 		sys_command_add_group(_command,_rlt,_rlt_len);
 							}break;
+	case(sys_cmd_query_group):{
+		sys_command_query_group(_command,_rlt,_rlt_len);
+							  }break;
 	case(sys_cmd_unexpect):{
 		sys_command_err(_command,_rlt,_rlt_len);
 						   }break;
@@ -235,9 +238,16 @@ void sys_command_update_user_info(const sys_net_data* _cmd,char* _rlt,int* _rlt_
 
 //2.4.19
 void sys_command_add_group(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
-	DEBUG_COMMAND_PRINT("command:add a group");
+	DEBUG_COMMAND_PRINT("command:add a group\n");
 	add_group_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
 }
+
+//2.4.20
+void sys_command_query_group(const sys_net_data* _cmd,char* _rlt,int* _rlt_len){
+	DEBUG_COMMAND_PRINT("command:query a group\n");
+	query_group_frame(_cmd->data,_cmd->len,_rlt,_rlt_len);
+}
+
 //Ä£¿é2.5
 void sys_command_err(const sys_net_data* _command,char* _rlt,int* _rlt_len){
 DEBUG_COMMAND_PRINT("command:error command\n");

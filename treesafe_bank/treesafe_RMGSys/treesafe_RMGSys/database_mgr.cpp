@@ -2256,23 +2256,23 @@ bool Get_all_group_info(_ConnectionPtr *_pConn,group_info *_Info,int *_Num)
 
 	for (int i = 0 ; i < *_Num ; ++i)
 	{
-		_variant_t varGID		= rsp->Fields->GetItem(long(1))->Value ;
-		_variant_t varLeID		= rsp->Fields->GetItem(long(2))->Value ;
-		_variant_t varMem1		= rsp->Fields->GetItem(long(3))->Value ;
-		_variant_t varMem2		= rsp->Fields->GetItem(long(4))->Value ;
-		_variant_t varMem3		= rsp->Fields->GetItem(long(5))->Value ;
-		_variant_t varMem4		= rsp->Fields->GetItem(long(6))->Value ;
-		_variant_t varMem5		= rsp->Fields->GetItem(long(7))->Value ;
+		_variant_t varGID		= rsp->Fields->GetItem(long(0))->Value ;
+		_variant_t varLeID		= rsp->Fields->GetItem(long(1))->Value ;
+		_variant_t varMem1		= rsp->Fields->GetItem(long(2))->Value ;
+		_variant_t varMem2		= rsp->Fields->GetItem(long(3))->Value ;
+		_variant_t varMem3		= rsp->Fields->GetItem(long(4))->Value ;
+		_variant_t varMem4		= rsp->Fields->GetItem(long(5))->Value ;
+		_variant_t varMem5		= rsp->Fields->GetItem(long(6))->Value ;
 
 		bool bRtnVal = true ;
 
 		bRtnVal = ConvertVar2CharStr(&varGID,_Info[i].group_id) 
 					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[0]._id)
-					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[1]._id)
-					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[2]._id)
-					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[3]._id)
-					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[4]._id)
-					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[5]._id) ;
+					&& ConvertVar2CharStr(&varMem1,_Info[i].mem[1]._id)
+					&& ConvertVar2CharStr(&varMem2,_Info[i].mem[2]._id)
+					&& ConvertVar2CharStr(&varMem3,_Info[i].mem[3]._id)
+					&& ConvertVar2CharStr(&varMem4,_Info[i].mem[4]._id)
+					&& ConvertVar2CharStr(&varMem5,_Info[i].mem[5]._id) ;
 
 		rsp->MoveNext() ;
 		
