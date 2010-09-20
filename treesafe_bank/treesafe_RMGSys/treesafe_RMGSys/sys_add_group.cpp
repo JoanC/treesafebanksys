@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "sys_add_group.h"
 extern _ConnectionPtr* treesafe_db_connection ; 
-/*
+
 //31.1
 void init_add_group_input(add_group_input* _init){
 	init_group_info(&_init->group);
@@ -41,7 +41,7 @@ add_group_input* add_group_get_cmd(const char* _cmd,int _cmd_len){
 	return add_group_convert_cmd(_info);
 }
 
-*/
+
 //31.3
 bool add_group_db(group_info* _info)
 {
@@ -51,7 +51,6 @@ bool add_group_db(group_info* _info)
            && IncreaseCharStr(buff_gid,GROUP_ID_LEN - 1) 
 		   && Insert_group_info(treesafe_db_connection,_info,buff_gid) ;
 }
-	/*
 //31.4
 void add_group_generate_rlt(add_group_info* _info
 	,char* _rlt,int* _rlt_len){
@@ -68,11 +67,10 @@ void add_group_frame(const char* _cmd,int _cmd_len
 	//31.2
 	_frame->input_info = *add_group_get_cmd(_cmd,_cmd_len);
 	//31.3
-	//...
-
+	//将组加入数据库中
+	add_group_db(&_frame->input_info.group);
 	//31.4
 	add_group_generate_rlt(&_frame->rlt_info,_rlt,_rlt_len);
 	//释放模块
 	add_group_release(_frame);
 }
-*/
