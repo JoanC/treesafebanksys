@@ -82,9 +82,18 @@ namespace treesafe.Workers
                 for (int i = 0; i < numcells; i++)
                 {
                     HtmlTableCell c = new HtmlTableCell(); //创建单元格对象
-                    c.Controls.Add(new LiteralControl("行： " + (j + 1).ToString() + ", 单元格： " + (i + 1).ToString()));
-                    
-                    
+
+                    switch (i)
+                    {
+                        case 0: c.Controls.Add(new LiteralControl(new string(m_groups.group[j].group_id))); break;
+                        case 1: c.Controls.Add(new LiteralControl(new string(m_groups.group[j].mem[0]._id))); break;
+                        case 2: c.Controls.Add(new LiteralControl(new string(m_groups.group[j].mem[1]._id))); break;
+                        case 3: c.Controls.Add(new LiteralControl(new string(m_groups.group[j].mem[2]._id))); break;
+                        case 4: c.Controls.Add(new LiteralControl(new string(m_groups.group[j].mem[3]._id))); break;
+                        case 5: c.Controls.Add(new LiteralControl(new string(m_groups.group[j].mem[4]._id))); break;
+                        case 6: c.Controls.Add(new LiteralControl(new string(m_groups.group[j].mem[5]._id))); break;
+                        case 7: c.Controls.Add(new LiteralControl("暂不支持")); break;
+                    }
                     r.Cells.Add(c); //添加该单元格对象
                 }
 
