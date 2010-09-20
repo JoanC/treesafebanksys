@@ -175,24 +175,6 @@ namespace treesafe.Workers {
         protected global::System.Web.UI.WebControls.TextBox TeamMember5;
         
         /// <summary>
-        /// TeamMember6Label control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TeamMember6Label;
-        
-        /// <summary>
-        /// TeamMember6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TeamMember6;
-        
-        /// <summary>
         /// NewTeamButton control.
         /// </summary>
         /// <remarks>

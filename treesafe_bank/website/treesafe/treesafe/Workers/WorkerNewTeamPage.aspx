@@ -69,12 +69,6 @@ CodeBehind="WorkerNewTeamPage.aspx.cs" Inherits="treesafe.Workers.WorkerNewTeamP
                <asp:TextBox ID="TeamMember5" runat="server" CssClass="textEntry" MaxLength="18"></asp:TextBox>
            </p>
 
-           <p>
-               <asp:Label ID="TeamMember6Label" runat="server" AssociatedControlID="TeamMember6">
-               7. 组员6证件号码：</asp:Label>
-               <asp:TextBox ID="TeamMember6" runat="server" CssClass="textEntry" MaxLength="18"></asp:TextBox>
-           </p>
-
            </fieldset>
            <p class="submitButton">
               <asp:Button ID="NewTeamButton" runat="server" CommandName="MoveNext" Text="确定，创建联保小组" 
