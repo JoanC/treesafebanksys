@@ -285,6 +285,9 @@
     <ClInclude Include="update_user_info.h">
       <Filter>query_user_info\update_user</Filter>
     </ClInclude>
+    <ClInclude Include="sys_query_group.h">
+      <Filter>group\group_query</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -394,6 +397,9 @@
     </ClCompile>
     <ClCompile Include="update_user_info.cpp">
       <Filter>query_user_info\update_user</Filter>
+    </ClCompile>
+    <ClCompile Include="sys_query_group.cpp">
+      <Filter>group\group_query</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

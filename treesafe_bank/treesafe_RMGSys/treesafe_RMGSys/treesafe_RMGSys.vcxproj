@@ -98,6 +98,7 @@
     <ClInclude Include="sys_employee_query.h" />
     <ClInclude Include="sys_get_score.h" />
     <ClInclude Include="sys_group_info.h" />
+    <ClInclude Include="sys_query_group.h" />
     <ClInclude Include="sys_research_exact.h" />
     <ClInclude Include="sys_research_info_query.h" />
     <ClInclude Include="sys_risk_compute.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="sys_frame.cpp" />
     <ClCompile Include="sys_get_score.cpp" />
     <ClCompile Include="sys_group_info.cpp" />
+    <ClCompile Include="sys_query_group.cpp" />
     <ClCompile Include="sys_research_exact.cpp" />
     <ClCompile Include="sys_research_info_query.cpp" />
     <ClCompile Include="treesafe_cServer.cpp" />

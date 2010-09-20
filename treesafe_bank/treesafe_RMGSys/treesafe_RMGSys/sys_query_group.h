@@ -47,7 +47,7 @@ query_group_input* query_get_cmd(const char* _cmd,int _cmd_len);
 //3.所有的分组信息则以数组的形式存于指针中
 
 
-
+void query_group_db(int* _rlt_num,group_info* _query_data);
 
 
 
