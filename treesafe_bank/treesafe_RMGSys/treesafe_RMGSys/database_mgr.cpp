@@ -452,7 +452,7 @@ bool IncreaseCharStr(char *_Dst,size_t _nLen) // '1' == 49 , nLen is not include
 }
 bool	FindMaxAppID(_ConnectionPtr *_pConn,char * _appID) 
 {
-	char sqlStr[200] = "select max(apply_id) from Table_App_ID_Set" ;
+	char sqlStr[] = "select max(apply_id) from Table_App_ID_Set" ;
 
 	_variant_t vt ;
 	_RecordsetPtr rsp;
@@ -1836,8 +1836,7 @@ bool Find_specific_user(_ConnectionPtr *_pConn,user_query_info *_info,const char
 }
 bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome) 
 {
-	char sqlStr[200] = "select max(group_id) from Table_Guaranteed_Group" ;
-
+	char sqlStr[200] = "select max(guaranteed_group_id) from Table_Guaranteed_Group" ;
 	_variant_t vt ;
 	_RecordsetPtr rsp ;
 	try{
