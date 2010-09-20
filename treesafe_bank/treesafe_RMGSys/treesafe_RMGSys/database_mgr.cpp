@@ -2204,12 +2204,12 @@ bool Insert_group_info(_ConnectionPtr *_pConn,group_info *_Info,char *_Group_Id)
 	strcat(sqlStr,_Group_Id) ;
 	strcat(sqlStr,"','") ;
 
-	for(int i = 0 ; i < _Info->length - 1 ; ++i)
+	for(int i = 0 ; i < MAX_GROUP_SIZE - 1 ; ++i)
 	{
 		strcat(sqlStr,_Info->mem[i]._id) ;
 		strcat(sqlStr,"','") ;
 	}
-	strcat(sqlStr,_Info->mem[_Info->length - 1]._id ) ;
+	strcat(sqlStr,_Info->mem[ MAX_GROUP_SIZE - 1]._id ) ;
 	strcat(sqlStr,"')") ;
 
 	try{
