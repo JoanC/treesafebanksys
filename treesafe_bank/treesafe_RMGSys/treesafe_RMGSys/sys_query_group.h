@@ -49,6 +49,15 @@ query_group_input* query_get_cmd(const char* _cmd,int _cmd_len);
 
 void query_group_db(int* _rlt_num,group_info* _query_data);
 
+//32.4
+//生成结果信息
+void query_group_generate_rlt(query_group_info* _info
+	,char* _rlt,int* _rlt_len);
+
+//模块32的主函式
+void query_group_frame(const char* _cmd,int _cmd_len,
+	char* _rlt,int* _rlt_len);
+
 
 
 
