@@ -4,12 +4,49 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+using treesafe;
+
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using ClientNet;
+using Chinese_Encode;
+
 using System.Web.UI.HtmlControls;
 
 namespace treesafe.Workers
 {
+    /*所有分组的信息集合*/
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+    public struct query_group_input
+    {
+        //空
+    };
+
+    [Serializable] // 指示可序列化
+    [StructLayout(LayoutKind.Sequential, Pack = 0)] // 按1字节对齐
+    public struct query_group_info
+    {
+        public int group_num;
+        sys_err err_info;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
+        public group_info[] group;//分组的信息
+    };
+
     public partial class WorkerTeamPage : System.Web.UI.Page
     {
+
+        static public query_group_info m_groups;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userright"].ToString() != "1")
@@ -17,6 +54,11 @@ namespace treesafe.Workers
            //     Server.Transfer("~/WrongPage.aspx", true);
             }
 
+            //读取分组数据
+            query_group_input _input = new query_group_input();
+            web_net_client_mgr _net = new web_net_client_mgr();
+            _net.send_command_data(20,_input);
+            m_groups = (query_group_info)_net.recevie_data(m_groups.GetType());
 
             //读取联保小组数据
             GetLaborInfo();
@@ -25,7 +67,7 @@ namespace treesafe.Workers
         {
             int row = 0;
             // 获得联保小组列表的项数（即现有联保小组数量）
-            int numrows = 5;
+            int numrows = m_groups.group_num;
             //列表宽度，共8项内容
             int numcells = 8;
             for (int j = 0; j < numrows; j++)
@@ -41,6 +83,8 @@ namespace treesafe.Workers
                 {
                     HtmlTableCell c = new HtmlTableCell(); //创建单元格对象
                     c.Controls.Add(new LiteralControl("行： " + (j + 1).ToString() + ", 单元格： " + (i + 1).ToString()));
+                    
+                    
                     r.Cells.Add(c); //添加该单元格对象
                 }
 
