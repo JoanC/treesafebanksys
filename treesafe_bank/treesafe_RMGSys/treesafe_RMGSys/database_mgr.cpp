@@ -1866,24 +1866,24 @@ bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome)
 /*
 bool Insert_group_info(_ConnectionPtr *_pConn,const char *group_id,const group_member_info *_Info) 
 {
-	char sqlStr[200] ;
-	sprintf(sqlStr,"insert into Table_Guaranteed_Group values('%s','%s','%s','%s','%s','%s','%s')",
-		group_id,
-		_Info->cust_id[0][0] ,
-		_Info->cust_id[1][0] ,
-		_Info->cust_id[2][0] ,
-		_Info->cust_id[3][0] ,
-		_Info->cust_id[4][0] ,
-		_Info->cust_id[5][0]  ) ;
+char sqlStr[200] ;
+sprintf(sqlStr,"insert into Table_Guaranteed_Group values('%s','%s','%s','%s','%s','%s','%s')",
+group_id,
+_Info->cust_id[0][0] ,
+_Info->cust_id[1][0] ,
+_Info->cust_id[2][0] ,
+_Info->cust_id[3][0] ,
+_Info->cust_id[4][0] ,
+_Info->cust_id[5][0]  ) ;
 
-	try{
-		_variant_t v ;
-		(*_pConn)->Execute(sqlStr,&v,adCmdText) ;
-	}catch(...){
-		return false ;
-	}
+try{
+_variant_t v ;
+(*_pConn)->Execute(sqlStr,&v,adCmdText) ;
+}catch(...){
+return false ;
+}
 
-	return true ;
+return true ;
 }*/
 bool Get_cust_basic_info(_ConnectionPtr *_pConn,user_query_info *_Info) 
 {
@@ -2177,7 +2177,7 @@ bool Update_user_info(_ConnectionPtr *_pConn,const char *_ID,const char *_New_Ad
 			strcat(sqlStr,"' from Table_Employee where employee_id = '") ;
 			strcat(sqlStr,_ID) ;
 			strcat(sqlStr,"'") ;
-			
+
 			_variant_t vt ;
 			try{
 				(*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
@@ -2215,4 +2215,71 @@ bool Insert_group_info(_ConnectionPtr *_pConn,group_info *_Info,char *_Group_Id)
 		return false ;
 	}
 	return true ;
+}
+bool Find_how_many_group(_ConnectionPtr *_pConn,int *_Outcome) 
+{
+	char sqlStr[] = "select group_leader_id from Table_Guaranteed_Group" ;
+
+	_variant_t vt ;
+	_RecordsetPtr rsp ;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false;
+	}
+
+	*_Outcome = 0 ;
+	while( ! rsp->rsEOF )
+	{
+		++(*_Outcome) ;
+		rsp->MoveNext() ;
+	}
+	return true ;
+}
+bool Get_all_group_info(_ConnectionPtr *_pConn,group_info *_Info,int *_Num) 
+{
+	char sqlStr[] = "select * from Table_Guaranteed_Group" ;
+	_variant_t vt ;
+	_RecordsetPtr rsp ;
+	try{
+		rsp = (*_pConn)->Execute(sqlStr,&vt,adCmdText) ;
+	}
+	catch(...){
+		return false ;
+	}
+
+	for (int i = 0 ; i < *_Num ; ++i)
+	{
+		_variant_t varGID		= rsp->Fields->GetItem(long(1))->Value ;
+		_variant_t varLeID		= rsp->Fields->GetItem(long(2))->Value ;
+		_variant_t varMem1		= rsp->Fields->GetItem(long(3))->Value ;
+		_variant_t varMem2		= rsp->Fields->GetItem(long(4))->Value ;
+		_variant_t varMem3		= rsp->Fields->GetItem(long(5))->Value ;
+		_variant_t varMem4		= rsp->Fields->GetItem(long(6))->Value ;
+		_variant_t varMem5		= rsp->Fields->GetItem(long(7))->Value ;
+
+		bool bRtnVal = true ;
+
+		bRtnVal = ConvertVar2CharStr(&varGID,_Info[i].group_id) 
+					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[0]._id)
+					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[1]._id)
+					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[2]._id)
+					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[3]._id)
+					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[4]._id)
+					&& ConvertVar2CharStr(&varLeID,_Info[i].mem[5]._id) ;
+
+		rsp->MoveNext() ;
+		
+		if( ! bRtnVal )
+		{
+			rsp->Close() ;
+			rsp.Release() ;
+			return  false ;
+		}
+	}
+	rsp->Close() ;
+	rsp.Release() ;
+	return  true ;
+
 }
