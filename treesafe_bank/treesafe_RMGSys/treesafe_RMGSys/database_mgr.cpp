@@ -1860,7 +1860,8 @@ bool Get_max_group_id(_ConnectionPtr *_pConn,char *_Outcome)
 
 	if ( ! strcmp(_Outcome,"null") )
 	{
-		memset(_Outcome,0,GROUP_ID_LEN * sizeof(char)) ;
+		memset(_Outcome,0,(GROUP_ID_LEN - 1 ) * sizeof(char)) ;
+		_Outcome[GROUP_ID_LEN - 1] = 0 ;
 	}
 
 	rsp->Close() ;
