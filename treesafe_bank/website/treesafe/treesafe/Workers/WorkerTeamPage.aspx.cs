@@ -20,7 +20,6 @@ namespace treesafe.Workers
 
             //读取联保小组数据
             GetLaborInfo();
-
         }
         protected void GetLaborInfo()
         {
@@ -62,5 +61,8 @@ namespace treesafe.Workers
             //增加联保小组界面
             Response.Redirect("WorkerNewTeamPage.aspx");
         }
+        
+        //查询分组的信息
+
     }
 }
