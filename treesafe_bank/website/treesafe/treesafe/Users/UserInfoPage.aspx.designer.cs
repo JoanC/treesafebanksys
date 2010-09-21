@@ -103,24 +103,6 @@ namespace treesafe.Users {
         protected global::System.Web.UI.WebControls.Label UserPhone;
         
         /// <summary>
-        /// UserEmailLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserEmailLabel;
-        
-        /// <summary>
-        /// UserEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserEmail;
-        
-        /// <summary>
         /// ChangeUserInfoButton control.
         /// </summary>
         /// <remarks>

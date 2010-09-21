@@ -85,7 +85,7 @@ namespace treesafe.Admintrators
     {
         public static delete_employee_input _input_delete;
         public static update_employee_input _input_update;
-
+        public static admin_employ_info _person;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -93,7 +93,7 @@ namespace treesafe.Admintrators
                 //c=此处获得了该雇员的工号
                 LaborID.Text = Request.QueryString["id"];
                 int _index = int.Parse(LaborID.Text);
-                admin_employ_info _person = Admintrotors.AdmintratorLaborManagementPage._rlt.employee_arr[_index]._info;
+                _person = Admintrotors.AdmintratorLaborManagementPage._rlt.employee_arr[_index]._info;
                 //在页面上方显示当前雇员id
                 LabelName.Text = "当前雇员ID：" + (new string(_person.empl_id));
                 _input_delete = new delete_employee_input(new string(_person.empl_id));
@@ -106,8 +106,10 @@ namespace treesafe.Admintrators
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
             //在此调用从数据库删除该雇员信息的函数
-            /////////////////////////////////
-            //以下代码尚未测试
+            if (_person.empl_type == 3) {
+                WrongPage.wrong_msg = "错误!管理员无法删除!";
+                Server.Transfer("~/WrongPage.aspx", true);//跳转到错误页面
+            }
             web_net_client_mgr _net = new web_net_client_mgr();
             _net.send_command_data(4, _input_delete);
             /////////////////////////////////

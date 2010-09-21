@@ -50,12 +50,6 @@ CodeBehind="UserInfoPage.aspx.cs" Inherits="treesafe.Users.UserInfoPage" %>
         <asp:Label ID="UserPhone" runat="server" Text="1334xxxxxxx"></asp:Label>
     </p>
 
-    <p>
-        <asp:Label ID="UserEmailLabel" runat="server" AssociatedControlID="UserEmail">
-        电子邮件:
-        </asp:Label>
-        <asp:Label ID="UserEmail" runat="server" Text="xxx#@SFDF.COM"></asp:Label>
-    </p>
     </fieldset>
 
     <p class="submitButton">

@@ -30,17 +30,23 @@ namespace treesafe.Workers
     public partial class WorkerOneTeamPage : System.Web.UI.Page
     {
         public user_query_info[] _info = new user_query_info[6];
+        int m_len;
         protected void Page_Load(object sender, EventArgs e)
         {
 
 
             //一个个地读取数据
             int _chose = int.Parse(Request.QueryString["id"]);
+            m_len = 0;
 
-
-            for (int i = 0; i < WorkerTeamPage.m_groups.group[i].length; ++i)
+            for (int i = 0; i < 6; ++i)
             {
                 //提取信息
+                if (new string(WorkerTeamPage.m_groups.group[_chose].mem[i]._id) == "null".PadRight(19, '\0'))
+                    continue;
+                else {
+                    ++m_len;
+                }
                 query_user_one_info_input _input = new query_user_one_info_input(
                     new string(WorkerTeamPage.m_groups.group[_chose].mem[i]._id));
                 web_net_client_mgr _net = new web_net_client_mgr();
@@ -58,7 +64,7 @@ namespace treesafe.Workers
         {
             int row = 0;
             // 获得农户列表的项数（即*成功*提交申请表并*通过审核*的总人数）
-            int numrows = 10;
+            int numrows = m_len;
             //列表宽度，共7项内容
             int numcells = 7;
             for (int j = 0; j < numrows; j++)
@@ -73,7 +79,24 @@ namespace treesafe.Workers
                 for (int i = 0; i < numcells; i++)
                 {
                     HtmlTableCell c = new HtmlTableCell(); //创建单元格对象
-                    c.Controls.Add(new LiteralControl("行： " + (j + 1).ToString() + ", 单元格： " + (i + 1).ToString()));
+                    switch (i) {
+                        case 0: c.Controls.Add(new LiteralControl(("" + j))); break;
+                        case 1: c.Controls.Add(new LiteralControl(new string(_info[j].user_name))); break;
+                        case 2: c.Controls.Add(new LiteralControl(new string(_info[j].user_card_id))); break;
+                        case 3: {
+                            string _gender = _info[j].user_gender == 0 ? "男" : "女";
+                            c.Controls.Add(new LiteralControl(_gender));
+                        }break;
+                        case 4: {
+                            c.Controls.Add(new LiteralControl("" + _info[j].user_age));
+                        }break;
+                        case 5: {
+                            c.Controls.Add(new LiteralControl(new string(_info[j].user_tel)));
+                        } break;
+                        case 6: {
+                            c.Controls.Add(new LiteralControl(new string(_info[j].user_addr)));
+                        }break;
+                    };
                     r.Cells.Add(c); //添加该单元格对象
                 }
 

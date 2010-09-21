@@ -94,7 +94,6 @@ namespace treesafe.Users
             UserPassword.Text = "隐私内容不可显示";
             UserAddress.Text = new string(_rlt.user_info.user_addr);
             UserPhone.Text = new string(_rlt.user_info.user_tel);
-            UserEmail.Text = "无";
             return;
         }
 
@@ -106,8 +105,7 @@ namespace treesafe.Users
                              + "&password="+UserPassword.Text
                              + "&id=" + UserID.Text
                              + "&address=" + UserAddress.Text
-                             + "&phone=" + UserPhone.Text
-                             + "&email=" + UserEmail.Text);
+                             + "&phone=" + UserPhone.Text);
         }
 
         protected void ChangePasswordButton_Click(object sender, EventArgs e)
