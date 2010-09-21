@@ -6,6 +6,7 @@ void init_admin_employee_info(admin_employee_info* _init){
 	_init->employee_type = employ_type_operator;
 	memset(_init->employee_id,'\0',EMPLOYEE_ID_LEN);//身份证号初始为空
 	memset(_init->employee_name,'\0',EMPLOYEE_NAME_LEN);//雇员姓名初始为空
+	memset(_init->employee_work_id,'\0',EMPLOYEE_WORK_ID_LEN);//work_id
 	_init->employee_gender = employee_male;//性别初始化男性
 	_init->employee_age = 0;//初始化年龄
 	memset(_init->employee_addr,'\0',EMPLOYEE_NAME_LEN);//初始化地址,为空

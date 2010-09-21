@@ -13,6 +13,16 @@ DEBUG_SCORE_QUERY_PRINT("init_query_score_input_info\n")
 void init_query_score_info(query_score_info* _init){
 DEBUG_SCORE_QUERY_PRINT("init_query_score_info\n");
 	init_sys_err(&_init->err_info);
+	_init->rlt_score.score_auditor_edit = 0;
+	_init->rlt_score.score_bad_social_record = 0;
+	_init->rlt_score.score_depos = 0;
+	_init->rlt_score.score_edu = 0;
+	_init->rlt_score.score_fixed_assets_be_pledged = 0;
+	_init->rlt_score.score_id_type = 0;
+	_init->rlt_score.score_income = 0;
+	_init->rlt_score.score_loan_record = 0;
+	_init->rlt_score.score_marriage = 0;
+	_init->rlt_score.score_repayment = 0;
 }
 
 query_score_modle* init_query_score_modle(){

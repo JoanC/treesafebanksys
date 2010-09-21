@@ -249,7 +249,7 @@ bool	add_new_to_Tab_Cust(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	itoa(_reg_info->basic_info.reg_gender,temp,10) ;
 	strcat(sqlStr,temp) ;
 
-	strcat(sqlStr,temp) ;
+	//strcat(sqlStr,temp) ;
 	strcat(sqlStr,"','") ;
 	char age[4] ;
 	itoa(_reg_info->basic_info.reg_age,age,10) ;
@@ -293,9 +293,9 @@ bool	add_new_employee(_ConnectionPtr *_pConn,admin_employee_info *emp_info,char 
 	r.Release() ;
 
 	char sqlStr[500] = "insert into Table_Employee values('" ;
-	strcat(sqlStr,emp_info->employee_id) ;
-	strcat(sqlStr,"','") ;
 	strcat(sqlStr,emp_info->employee_work_id) ;
+	strcat(sqlStr,"','") ;
+	strcat(sqlStr,emp_info->employee_id) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,emp_info->employee_name) ;
 	strcat(sqlStr,"','") ;

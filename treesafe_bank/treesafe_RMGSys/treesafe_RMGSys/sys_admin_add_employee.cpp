@@ -80,11 +80,14 @@ DEBUG_ADMIN_ADD_EMLOYEE_PRINT("init_add_employee_info\n");
 //15.3
 void add_employee_to_db(add_employee_input* _input_info, bool *_rlt)
 {
-DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_to_db\n");
-*_rlt = add_new_employee(treesafe_db_connection,&(_input_info->employ_basic_info),_input_info->employ_basic_info.employee_comment) ;
-//	reg_basic_info _info_add_to_login ;
-//	_info_add_to_login.reg_id = _input_info->employ_basic_info.employee_id ;
-
+	DEBUG_ADMIN_ADD_EMLOYEE_PRINT("add_employee_to_db\n");
+	*_rlt = add_new_employee(treesafe_db_connection,&(_input_info->employ_basic_info),_input_info->employ_basic_info.employee_comment) ;
+	//	reg_basic_info _info_add_to_login ;
+	//	_info_add_to_login.reg_id = _input_info->employ_basic_info.employee_id ;
+	reg_input_info _tmp;
+	strcpy(_tmp.basic_info.reg_id,_input_info->employ_basic_info.employee_id);
+	strcpy(_tmp.basic_info.reg_pwd,"000000");
+	add_new_to_Tab_Login(treesafe_db_connection,&_tmp);
 }
 
 //15.4

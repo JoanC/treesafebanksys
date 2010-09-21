@@ -51,7 +51,7 @@ query_group_input* query_get_cmd(const char* _cmd,int _cmd_len){
 
 bool query_group_db(int *_rlt_num,group_info* _query_data)
 {
-	return Find_how_many_group(treesafe_db_connection,_rlt_num) 
+	return Find_how_many_group(treesafe_db_connection,_rlt_num)
 		  && Get_all_group_info( treesafe_db_connection,_query_data,_rlt_num) ;
 }
 
