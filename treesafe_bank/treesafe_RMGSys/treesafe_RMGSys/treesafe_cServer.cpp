@@ -79,6 +79,7 @@ DEBUG_NET_PRINT("server:wait for request\n");
 	}
 }
 
+//net recieve 
 void net_recieve_data(sys_Server* sServer)
 {
 DEBUG_NET_PRINT("server:recieve data!\n");
@@ -106,17 +107,19 @@ DEBUG_NET_PRINT("server:recieve data!\n");
 }
 
 
-//send net data(the size of data is less than 80 bytes)
+//send net data
 void net_send_data(sys_Server* sServer)
 {
 DEBUG_NET_PRINT("server:send data\n");
 	int reVal;
+	//if the length of net info <=80
 	if(sServer->send.stNetDataLength <= PackageSize)
 	{
 		char temp[] = "01";
 		reVal = send(sServer->sys_server.sClient,temp,strlen(temp),0);
 		reVal = send(sServer->sys_server.sClient,sServer->send.cNetDataInfo,sServer->send.stNetDataLength,0);	
 	}
+	//if the length of net inf > 80
 	else
 	{
 		char temp[] =  "99";
