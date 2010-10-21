@@ -176,7 +176,7 @@ bool reg_add_user_to_db(reg_input_info* _info){
 	//根据basic信息,把该用户加入数据库中
 	DEBUG_REG_PRINT("add the user to login table and cust table...\n");
 	return 
-		(add_new_to_Tab_Login(treesafe_db_connection,_info)
+		(add_new_to_Tab_Login(treesafe_db_connection,_info,0)
 		&& add_new_to_Tab_Cust(treesafe_db_connection,_info));
 }
 
