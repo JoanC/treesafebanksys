@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "treesate_cClient.h"
 
-
-
 //init client
 void InitClient(sys_Client* client)
 {
@@ -82,7 +80,6 @@ DEBUG_NET_PRINT("Client:send data\n");
 		WSACleanup();
 		return;
 	}
-
 }
 
 
