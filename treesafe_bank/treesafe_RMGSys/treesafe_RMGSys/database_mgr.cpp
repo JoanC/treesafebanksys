@@ -174,7 +174,7 @@ bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 
 	return true ;
 }
-bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) 
+bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info,int _cpm) 
 {
 	char sqlStrTest[200] = "select login_competence from Table_Login where login_id = '" ;
 	strcat(sqlStrTest,_reg_info->basic_info.reg_id) ;
@@ -203,7 +203,9 @@ bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info)
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_reg_info->basic_info.reg_pwd) ;
 	strcat(sqlStr,"','") ;
-	strcat(sqlStr,"0") ;
+	char _buf[4];
+	sprintf(_buf,"%d",_cpm);
+	strcat(sqlStr,_buf) ;
 	strcat(sqlStr,"','") ;
 	strcat(sqlStr,_reg_info->basic_info.reg_id) ;
 	strcat(sqlStr,"')") ;

@@ -272,7 +272,7 @@ bool	Summery_inquiry(_ConnectionPtr *_pConn,char *user_name,sys_db_login *user_i
 ** Modified date:			2010-7-8
 **------------------------------------------------------------------------------------------------------
 ********************************************************************************************************/
-bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info) ;
+bool	add_new_to_Tab_Login(_ConnectionPtr *_pConn,reg_input_info *_reg_info,int _cpm) ;
 
  /*********************************************************************************************************
 ** Function name:			add_new_to_tab_Cust

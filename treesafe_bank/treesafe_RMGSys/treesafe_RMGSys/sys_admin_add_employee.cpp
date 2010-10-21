@@ -87,7 +87,7 @@ void add_employee_to_db(add_employee_input* _input_info, bool *_rlt)
 	reg_input_info _tmp;
 	strcpy(_tmp.basic_info.reg_id,_input_info->employ_basic_info.employee_id);
 	strcpy(_tmp.basic_info.reg_pwd,"000000");
-	add_new_to_Tab_Login(treesafe_db_connection,&_tmp);
+	add_new_to_Tab_Login(treesafe_db_connection,&_tmp,_input_info->employ_basic_info.employee_type + 1);
 }
 
 //15.4
