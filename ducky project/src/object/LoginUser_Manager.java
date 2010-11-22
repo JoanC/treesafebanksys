@@ -29,6 +29,11 @@ public class LoginUser_Manager {
 			queryInfo.setU_pwd(lu.getU_pwd());
 			queryInfo.setU_id(user.getU_id());
 			queryInfo.setU_isLogin(lu.isU_isLogin());
+			queryInfo.setU_type(user.getU_type());
+			DebugClass.debug_info("Login modle", "user id : " + lu.getU_id());
+			DebugClass.debug_info("Login modle", "user password : " + lu.getU_pwd());
+			DebugClass.debug_info("Login modle", "user is : " + (lu.isU_isLogin() ? "online" : "offline") + " now");
+			DebugClass.debug_info("Login modle","user type is : " + user.getU_type());
 /*
 			if(lu.getU_pwd() == pwd){
 				queryInfo.setU_isLogin(true);
@@ -36,12 +41,11 @@ public class LoginUser_Manager {
 				queryInfo.setU_isLogin(false);
 			}
 	*/		
-			queryInfo.setU_type(user.getU_type());
 		}
 		else{
 			//id not exist!!!
 			//queryInfo.setU_isLogin(false);
-			DebugClass.debug_info("Login modle", "no user");
+			//DebugClass.debug_info("Login modle", "user_id " + user.getU_id() + " can not find!");
 			queryInfo.setU_type(0);//0 stands for the null
 			queryInfo.setU_id(null);
 		}
