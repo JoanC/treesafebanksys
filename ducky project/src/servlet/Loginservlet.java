@@ -101,16 +101,19 @@ public class Loginservlet extends HttpServlet {
 	 * */
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
-		String username = (String)req.getParameter("UserName").trim();
-		String userpassword = (String)req.getParameter("UserPassword").trim();
+		String username = (String)req.getParameter("username").trim();
+		String userpassword = (String)req.getParameter("userpassword").trim();
 		DebugClass.debug_info("Login servlet", ("get the user id : " + username 
 				+ "the user password: " + userpassword));
 		//zhou
         LoginRltInfo _rlt = this.loginFrame(username, userpassword);
-        if(_rlt.isIs_succ() == false) System.out.println("login error!");
+        if(_rlt.isIs_succ() == false) {
+        	DebugClass.debug_info("Login servlet", "login fail!");
+        }
         else{
           System.out.println(_rlt.getU_type());
           System.out.println(_rlt.getU_id());
+          DebugClass.debug_info("Login servlet", "login success!");
 		  req.getRequestDispatcher("/StuIndex.html").forward(req,response);
         }
 	}
