@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>同济大学选课系统</title>
+<style type="text/css">
+#apDiv1 {
+	position:fixed;
+	width:297px;
+	height:67px;
+	z-index:1;
+	top: 200px;
+	left: 454px;
+}
+#apDiv2 {
+	position:absolute;
+	width:372px;
+	height:68px;
+	z-index:1;
+	left: 491px;
+	top: 202px;
+}
+</style>
+</head>
+
+<body>
+<table width="800" border="0" height="600" background="images/LogBck.gif" align="center">
+  <tr>
+    <td><div id="apDiv2">
+    <form id="form1" name="form1" method="post" action="/TJSelCrsSys/servlet/Loginservlet">
+      <table width="341" border="0">
+        <tr>
+          <td width="63" height="32">用户名</td>
+          <td width="168">
+            <label for="UserName"></label>
+            <input name="UserName" type="text" id="UserName" maxlength="15" />
+          </td>
+          <td width="96" rowspan="2">
+            <input type="image" name="LoginCommit" id="LoginCommit" value="提交" src="images/Button_Login.gif" />
+          </td>
+        </tr>
+        <tr>
+          <td>密码</td>
+          <td><label for="UserPasword"></label>
+            <input name="UserPassword" type="password" id="UserPassword" maxlength="15" />
+          </td>
+          </tr>
+      </table>
+      </form>
+    </div></td>
+  </tr>
+</table>
+
+</body>
+</html>

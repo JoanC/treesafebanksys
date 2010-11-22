@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="TJSelCrsSys"
+  id="myeclipse.1289995492812"
+  context-root="/TJSelCrsSys"
+  j2ee-spec="1.4"
+  archive="TJSelCrsSys.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
