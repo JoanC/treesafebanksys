@@ -45,7 +45,7 @@ public class LoginUser_Manager {
 		else{
 			//id not exist!!!
 			//queryInfo.setU_isLogin(false);
-			//DebugClass.debug_info("Login modle", "user_id " + user.getU_id() + " can not find!");
+			DebugClass.debug_info("Login modle", "user_id " + reqDb.getU_id() + " can not find!");
 			queryInfo.setU_type(0);//0 stands for the null
 			queryInfo.setU_id(null);
 		}
@@ -61,14 +61,17 @@ public class LoginUser_Manager {
 		if(_query.getU_id() == null){
 			//用户不存在的处理函式..
 			//_rlt.setExp("用户不存在!");
+			DebugClass.debug_info("Login modle", "user not exist!");
 			_rlt.setIs_succ(false);
 		}
-		else if(_query.getU_pwd() != _input.getU_pwd()){
+		else if(!_query.getU_pwd().equals(_input.getU_pwd())){
 			//密码错误处理函式
+			DebugClass.debug_info("Login modle", "password not correct!");
 			_rlt.setIs_succ(false);
 		}
 		else{
 			//登陆正确
+			DebugClass.debug_info("Login modle", "login data check done!");
 			_rlt.setIs_succ(true);
 		}
 		return _rlt;
@@ -102,6 +105,7 @@ public class LoginUser_Manager {
 	
 	public static LoginRltInfo login(LoginInputInfo inputInfo){
 		LoginReqDB reqDb = new LoginReqDB();
+		DebugClass.debug_info("Login modle", "user input id is : " + inputInfo.getU_id() + " user input password is : " + inputInfo.getU_pwd());
 		reqDb.setU_id(inputInfo.getU_id());
 		LoginQueryInfo queryInfo = sendLoginInfoToDB(reqDb);
 		LoginRltInfo rltInfo = LoginCheck(inputInfo,queryInfo);
