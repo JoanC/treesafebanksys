@@ -120,10 +120,12 @@ public class LoginUser_Manager {
 		
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(driverName, url, userName, dbPwd) ;
+		/*
 		if(rltInfo.isIs_succ()){
 			dbo.doUpdateIsLogin(rltInfo.getU_id(), true);
 		}
 		dbo.disconnectDB();
+		*/
 		return rltInfo;
 	}
 	
