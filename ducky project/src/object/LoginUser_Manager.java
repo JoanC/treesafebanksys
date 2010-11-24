@@ -12,7 +12,7 @@ public class LoginUser_Manager {
 		//连接数据库的参数
 		//要么存在一个全局数据集中,要么放在连接函数中
 		String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
-		String url = "jdbc:sqlserver://192.168.0.101:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
+		String url = "jdbc:sqlserver://192.168.0.150:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
 		String userName = "j2eeServletUser" ;
 		String dbPwd = "321" ;
 		
@@ -84,7 +84,7 @@ public class LoginUser_Manager {
 		LogoutQueryInfo tmpInfo = new LogoutQueryInfo();
 		
 		String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
-		String url = "jdbc:sqlserver://192.168.0.101:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
+		String url = "jdbc:sqlserver://192.168.0.150:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
 		String userName = "j2eeServletUser" ;
 		String pwd = "321" ;
 		
