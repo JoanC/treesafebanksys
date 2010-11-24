@@ -118,9 +118,10 @@ public class LoginUser_Manager {
 		String userName = "j2eeServletUser" ;
 		String dbPwd = "321" ;
 		
+		/*
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(driverName, url, userName, dbPwd) ;
-		/*
+		
 		if(rltInfo.isIs_succ()){
 			dbo.doUpdateIsLogin(rltInfo.getU_id(), true);
 		}
