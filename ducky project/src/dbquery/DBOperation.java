@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import object.LoginUser;
 import object.User;
 
+import object.DebugClass;
+
 public class DBOperation
 {
 	/************* member variables ***************/
@@ -35,7 +37,8 @@ public class DBOperation
 			return true;
 		} catch (Exception e)
 		{
-			System.out.println("error : " + e);
+			//System.out.println("error : " + e);
+			DebugClass.debug_info("DB","error : " + e);
 			return false;
 		}
 	}
@@ -48,7 +51,8 @@ public class DBOperation
 			return true ;
 		}catch(Exception e)
 		{
-			System.err.println("error"+e) ;
+			//System.err.println("error"+e) ;
+			DebugClass.debug_info("DB","error : " + e);
 			return false ;
 		}
 	}
@@ -78,7 +82,8 @@ public class DBOperation
 			
 		}catch(Exception e)
 		{
-			System.err.println("error : " + e);
+			//System.err.println("error : " + e);
+			DebugClass.debug_info("DB","error : " + e);
 			return null;
 		}
 		return null;
@@ -112,7 +117,8 @@ public class DBOperation
 			}
 		}catch(Exception e)
 		{
-			System.err.println("error : " + e);
+			//System.err.println("error : " + e);
+			DebugClass.debug_info("DB","error : " + e);
 			return null;
 		}
 		return null ;
@@ -136,7 +142,8 @@ public class DBOperation
 		
 		}catch(Exception e)
 		{
-			System.err.println("error : " + e);
+			//System.err.println("error : " + e);
+			DebugClass.debug_info("DB","error : " + e);
 		}
 	}
 	
