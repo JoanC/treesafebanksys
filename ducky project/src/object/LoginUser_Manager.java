@@ -113,12 +113,13 @@ public class LoginUser_Manager {
 		LoginQueryInfo queryInfo = sendLoginInfoToDB(reqDb);
 		LoginRltInfo rltInfo = LoginCheck(inputInfo,queryInfo);
 		//如果登陆成功,则将当前的用户在线状态改为online
-		String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
-		String url = "jdbc:sqlserver://192.168.0.150:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
-		String userName = "j2eeServletUser" ;
-		String dbPwd = "321" ;
+	//	String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
+	//	String url = "jdbc:sqlserver://192.168.0.150:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
+	//	String userName = "j2eeServletUser" ;
+	//	String dbPwd = "321" ;
 		
 		/*
+		 * 此处注释用!
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(driverName, url, userName, dbPwd) ;
 		
