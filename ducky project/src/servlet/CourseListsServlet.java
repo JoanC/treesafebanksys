@@ -103,17 +103,4 @@ public class CourseListsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		req.getRequestDispatcher("/CourseLists.html").forward(req,response);
 	}
-	
-	/*
-	 * 2010_11_18
-	 * by Jiraiya
-	 * 对从网页中传回的用户名和密码进行处理分析
-	 * 返回一个login_rlt_info
-	 */
-	public LoginRltInfo loginFrame(String _name,String _pwd){
-		LoginInputInfo _input = new LoginInputInfo();
-		_input.setU_id(_name);
-		_input.setU_pwd(_pwd);
-		return LoginUser_Manager.login(_input);
-	}
 }
