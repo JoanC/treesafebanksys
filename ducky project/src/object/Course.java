@@ -1,6 +1,5 @@
 package object;
 
-
 public class Course {
 	String course_id;					//课程标识号
 	String course_name;					//课程名称
@@ -12,7 +11,18 @@ public class Course {
 	int course_volume;					//课程容量
 	int course_current_seleted_num;		//已选人数
 	int course_exam_type;				//课程的考试类型
+	int course_point ;          //课程学分
 	
+	public int getCourse_point()
+	{
+		return course_point;
+	}
+
+	public void setCourse_point(int coursePoint)
+	{
+		course_point = coursePoint;
+	}
+
 	public String getCourse_id() {
 		return course_id;
 	}
