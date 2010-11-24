@@ -1,6 +1,6 @@
 package object;
 
-
+import dbquery.* ;
 import object.*;
 import dbquery.DBOperation;
 
@@ -9,15 +9,8 @@ public class LoginUser_Manager {
 	private static LoginQueryInfo sendLoginInfoToDB(LoginReqDB reqDb){
 		LoginQueryInfo queryInfo = new LoginQueryInfo();
 		
-		//连接数据库的参数
-		//要么存在一个全局数据集中,要么放在连接函数中
-		String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
-		String url = "jdbc:sqlserver://192.168.0.150:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
-		String userName = "j2eeServletUser" ;
-		String dbPwd = "321" ;
-		
 		DBOperation dbo = new DBOperation() ;
-		dbo.connectDB(driverName, url, userName, dbPwd) ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		
 		LoginUser lu = dbo.doLoginQuery(reqDb.getU_id()) ;
 		User user = dbo.doUserQuery(reqDb.getU_id()) ;
@@ -82,14 +75,10 @@ public class LoginUser_Manager {
 	
 	private static LogoutQueryInfo sendLogoutInfoToDB(LogoutReqDB reqDb){
 		LogoutQueryInfo tmpInfo = new LogoutQueryInfo();
-		
-		String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
-		String url = "jdbc:sqlserver://192.168.0.150:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
-		String userName = "j2eeServletUser" ;
-		String pwd = "321" ;
+
 		
 		DBOperation dbo = new DBOperation() ;
-		dbo.connectDB(driverName, url, userName, pwd) ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		
 		LoginUser lu = dbo.doLoginQuery(reqDb.getU_id()) ;
 		
@@ -113,14 +102,11 @@ public class LoginUser_Manager {
 		LoginQueryInfo queryInfo = sendLoginInfoToDB(reqDb);
 		LoginRltInfo rltInfo = LoginCheck(inputInfo,queryInfo);
 		//如果登陆成功,则将当前的用户在线状态改为online
-	//	String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver" ;
-	//	String url = "jdbc:sqlserver://192.168.0.150:1433; DatabaseName=J2EE_Course_Selecting_Sys" ;
-	//	String userName = "j2eeServletUser" ;
-	//	String dbPwd = "321" ;
+
 		
 		/*
 		 * 此处注释用!
-		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		dbo.connectDB(driverName, url, userName, dbPwd) ;
 		
 		if(rltInfo.isIs_succ()){
