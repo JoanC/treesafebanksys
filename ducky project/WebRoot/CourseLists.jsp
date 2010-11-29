@@ -20,9 +20,7 @@
 	<body>
 		<%
     Vector<Course> course = Course_Manager.getAllCourseList();
-    out.print(course.size());
-    Iterator iter_course = course.iterator();
-    Course tempcourse = (Course)iter_course.next();
+    Course tempcourse = course.elementAt(0);
     int type = tempcourse.getCourse_type();
     int cols_num = 5;
     int cursor = 0;
@@ -32,8 +30,9 @@
     out.print(type);
     out.print("</td>");
   	out.print("</tr>");
-    while(iter_course.hasNext())
+    for(int idx=1;idx!=course.size();idx++)
     {
+        tempcourse = course.elementAt(idx);
     	if(tempcourse.getCourse_type() != type)
     	{
     	   type = tempcourse.getCourse_type();
@@ -55,7 +54,6 @@
     	{
     		out.print("</tr>");
     	}
-    	Course tempcourse = (Course)iter_course.next();
     }  
 	out.print("abc");
 	out.print("</table>");
