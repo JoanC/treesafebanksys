@@ -188,9 +188,8 @@ public class DBOperation {
 		
 		try {
 			String query_course = "SELECT * " +
-									 "FROM TB_COURSE " +
-									 "ORDER BY COURSE_TYPE " +
-									 "WHERE COURSE_ID=?" ;
+								  "FROM TB_COURSE " +
+								  "WHERE COURSE_ID=?" ;
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
 			ps.setString(1, course_id) ;
 			ResultSet results = ps.executeQuery();
