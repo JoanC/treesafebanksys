@@ -43,7 +43,7 @@ public class PreCourseTable extends CourseTable {
 	//将一门课程从选课初始的大列表选入到预选课程表中
 	public Exp addCourse(Course _new){
 		Exp exp = null;
-		altoSave();
+		//altoSave();
 		//...
 		return exp;
 	}
@@ -51,7 +51,7 @@ public class PreCourseTable extends CourseTable {
 	//将一门课程从预选课程表中删除
 	public Exp deleteCourse(Course _old){
 		Exp exp = null;
-		altoSave();
+		//altoSave();
 		//...
 		return exp;
 	}
