@@ -18,45 +18,48 @@
 	</head>
 
 	<body>
-		<%
-    Vector<Course> course = Course_Manager.getAllCourseList();
-    Course tempcourse = course.elementAt(0);
-    int type = tempcourse.getCourse_type();
-    int cols_num = 5;
-    int cursor = 0;
-    out.print("<table width=\"100%\" border=\"1\">");
-	out.print("<tr>");
-    out.print("<td colspan=\"" + cols_num + "\">");
-    out.print(type);
-    out.print("</td>");
-  	out.print("</tr>");
-    for(int idx=1;idx!=course.size();idx++)
-    {
-        tempcourse = course.elementAt(idx);
-    	if(tempcourse.getCourse_type() != type)
-    	{
-    	   type = tempcourse.getCourse_type();
-    		out.print("<tr>");
-   			out.print("<td colspan=\"" + cols_num + "\">");
-    		out.print(type);
-    		out.print("</td>");
-  			out.print("</tr>");
-    	}
-    	if(cursor == 0)
-    	{
-    		out.print("<tr>");
-    	}
-       	out.print("<td>");
-    	out.print(tempcourse.getCourse_name());
-    	out.print("</td>");
-    	cursor = (cursor + 1) % cols_num;
-    	if(cursor == 0)
-    	{
-    		out.print("</tr>");
-    	}
-    }  
-	out.print("abc");
-	out.print("</table>");
-	%>
+		<form id="CourseSel" name="CourseSel" method="post"
+			action="/TJSelCrsSys/servlet/CourseListsServlet">
+			<%
+				Vector<Course> course = Course_Manager.getAllCourseList();
+				Course tempcourse = course.elementAt(0);
+				int type = tempcourse.getCourse_type();
+				int cols_num = 5;
+				int cursor = 0;
+				out.print("<table width=\"100%\" border=\"1\">");
+				out.print("<tr>");
+				out.print("<td colspan=\"" + cols_num + "\">");
+				out.print(type);
+				out.print("</td>");
+				out.print("</tr>");
+				for (int idx = 1; idx != course.size(); idx++) {
+					tempcourse = course.elementAt(idx);
+					if (tempcourse.getCourse_type() != type) {
+						type = tempcourse.getCourse_type();
+						out.print("<tr>");
+						out.print("<td colspan=\"" + cols_num + "\">");
+						out.print(type);
+						out.print("</td>");
+						out.print("</tr>");
+					}
+					if (cursor == 0) {
+						out.print("<tr>");
+					}
+					out.print("<td width=\"20%\">");
+					out
+							.print("<input type=\"checkbox\" name=\"checkbox1\" id=\"course"
+									+ idx + "\">");
+					out.print(tempcourse.getCourse_name());
+					out.print("</td>");
+					cursor = (cursor + 1) % cols_num;
+					if (cursor == 0) {
+						out.print("</tr>");
+					}
+				}
+				out.print("</table>");
+			%>
+			<input type="image" name="CoursePreSelCommit" id="CoursePreSelCommit"
+				value="Ìá½»" src="images/Button_Login.gif" />
+		</form>
 	</body>
 </html>

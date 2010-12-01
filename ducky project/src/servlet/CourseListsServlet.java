@@ -101,6 +101,15 @@ public class CourseListsServlet extends HttpServlet {
 	 * */
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
-		req.getRequestDispatcher("/CourseLists.html").forward(req,response);
+
+
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
