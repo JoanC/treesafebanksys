@@ -127,7 +127,7 @@ public class DBOperation {
 	public Vector<Course> doQueryAllDistinctCourseName() {
 		Vector<Course> rtn = new Vector<Course>();
 		try {
-			String query_course = "SELECT COURSE_TYPE,DISTINCT COURSE_NAME" +
+			String query_course = "SELECT DISTINCT COURSE_NAME,COURSE_TYPE " +
 								  "FROM TB_COURSE " +
 								  "ORDER BY COURSE_TYPE";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
