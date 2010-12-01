@@ -14,7 +14,7 @@ public class Course_Manager {
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		
-		allCourseList = dbo.doAllCourseQuery() ;
+		allCourseList = dbo.doQueryAllDistinctCourseName() ;
 		/*do query*/
 		dbo.disconnectDB() ;
 		

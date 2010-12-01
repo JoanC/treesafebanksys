@@ -1,8 +1,7 @@
 package object;
 
-import dbquery.* ;
-import object.*;
 import dbquery.DBOperation;
+import dbquery.dbConnectParam;
 
 //用于在登录和注销的用例中进行数据库的查询和写入操作.
 public class LoginUser_Manager {
@@ -12,8 +11,8 @@ public class LoginUser_Manager {
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		
-		LoginUser lu = dbo.doLoginQuery(reqDb.getU_id()) ;
-		User user = dbo.doUserQuery(reqDb.getU_id()) ;
+		LoginUser lu = dbo.doQueryLogin(reqDb.getU_id()) ;
+		User user = dbo.doQueryUser(reqDb.getU_id()) ;
 		if(lu != null){
 			//get the data from database to the query information
 			DebugClass.debug_info("Login modle", "connect the DB success!");
@@ -80,7 +79,7 @@ public class LoginUser_Manager {
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		
-		LoginUser lu = dbo.doLoginQuery(reqDb.getU_id()) ;
+		LoginUser lu = dbo.doQueryLogin(reqDb.getU_id()) ;
 		
 		if(lu != null){
 			dbo.doUpdateIsLogin(reqDb.getU_id(), false) ; // set the flag of login to be true
