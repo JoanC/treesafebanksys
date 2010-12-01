@@ -40,23 +40,10 @@ public class PreCourseTable extends CourseTable {
 		return exp;
 	}
 	
-	/*//将课程信息从预选课表中移出
-	public Exp moveCourseFromPreTable(Course _move){
-		Exp exp = null;
-		//...
-		return exp;
-	}
-	
-	//将课程信息移入预选课表中
-	public Exp moveCourseToPreTable(Course _move){
-		Exp exp = null;
-		//...
-		return exp;
-	}*/
-	
-	//将一门课程从选课初始的大列表选入到课程表中
+	//将一门课程从选课初始的大列表选入到预选课程表中
 	public Exp addCourse(Course _new){
 		Exp exp = null;
+		altoSave();
 		//...
 		return exp;
 	}
@@ -64,6 +51,7 @@ public class PreCourseTable extends CourseTable {
 	//将一门课程从预选课程表中删除
 	public Exp deleteCourse(Course _old){
 		Exp exp = null;
+		altoSave();
 		//...
 		return exp;
 	}
