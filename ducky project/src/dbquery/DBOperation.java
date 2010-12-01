@@ -137,20 +137,20 @@ public class DBOperation {
 			while (results.next()) {
 				Course temp = new Course();
 
-				temp.setCourse_id(results.getString("COURSE_ID"));
+				//temp.setCourse_id(results.getString("COURSE_ID"));
 				temp.setCourse_name(results.getString("COURSE_NAME"));
 				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-				temp.setU_id(results.getString("U_ID"));
-				temp.setCourse_point(results.getInt("COURSE_POINT"));
-				temp.setCourse_time(results.getInt("COURSE_TIME"));
-				temp.setCourse_place(results.getString("COURSE_PLACE"));
-				temp.setCourse_comment(results.getString("COURSE_COMMENT"));
-				temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
-				temp.setCourse_current_seleted_num(results
-						.getInt("COURSE_CURRENT_SELECTED_NUM"));
-				temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
+				//temp.setU_id(results.getString("U_ID"));
+				//temp.setCourse_point(results.getInt("COURSE_POINT"));
+				//temp.setCourse_time(results.getInt("COURSE_TIME"));
+				//temp.setCourse_place(results.getString("COURSE_PLACE"));
+				//temp.setCourse_comment(results.getString("COURSE_COMMENT"));
+				//temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
+				//temp.setCourse_current_seleted_num(results
+				//		.getInt("COURSE_CURRENT_SELECTED_NUM"));
+				//temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
 
-				rtn.add(temp);
+				rtn.addElement(temp);
 				/* write to rtn */
 			}
 			results.close();
