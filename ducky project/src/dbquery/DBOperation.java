@@ -45,7 +45,7 @@ public class DBOperation {
 		}
 	}
 
-	public LoginUser doLoginQuery(String uid) {
+	public LoginUser doQueryLogin(String uid) {
 		LoginUser rtn = new LoginUser();
 
 		try {
@@ -73,7 +73,7 @@ public class DBOperation {
 		}
 	}
 
-	public User doUserQuery(String uid) {
+	public User doQueryUser(String uid) {
 		User rtn = new User();
 		/* return value */
 
@@ -124,10 +124,12 @@ public class DBOperation {
 		}
 	}
 
-	public Vector<Course> doAllCourseQuery() {
+	public Vector<Course> doQueryAllDistinctCourseName() {
 		Vector<Course> rtn = new Vector<Course>();
 		try {
-			String query_course = "SELECT * FROM TB_COURSE ORDER BY COURSE_TYPE";
+			String query_course = "SELECT DISTINCT COURSE_NAME,COURSE_TYPE " +
+								  "FROM TB_COURSE " +
+								  "ORDER BY COURSE_TYPE";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
 			/* some preparing work... */
 
@@ -232,5 +234,4 @@ public class DBOperation {
 		
 		return rtn ;
 	}
-
 }

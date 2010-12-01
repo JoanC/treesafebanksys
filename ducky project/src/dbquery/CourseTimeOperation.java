@@ -1,5 +1,9 @@
 package dbquery;
 
+import java.util.ArrayList;
+
+
+
 public class CourseTimeOperation
 {
 	private static final int MAX_NUM_OF_COURSES_PER_DAY = 11 ;
@@ -33,5 +37,14 @@ public class CourseTimeOperation
 			com >>= 1 ;
 		}
 		return false ;
+	}
+	static public ArrayList CourseTimeOperation() 
+	{
+		ArrayList rtn = new ArrayList() ;
+		for ( int i = MAX_NUM_OF_COURSES_PER_DAY ; i > 0 ; --i )
+		{
+			
+		}
+		return rtn ;
 	}
 }
