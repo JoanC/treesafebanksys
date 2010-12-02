@@ -1,11 +1,24 @@
 package dbquery;
 
+import data_structure.* ;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
-import object.*;
+import object.Course;
+import object.LoginUser;
+import object.User;
+
+/*
+ * created by Sun 2010-11-?
+ * modified by Sun 2010-11-?
+ * modified by Sun 2010-11-?
+ * modified by Sun 2010-11-?
+ * modified by Sun 2010-12-1
+ * modified by Sun 2010-12-2
+ * ...
+ */
 
 public class DBOperation {
 	/************* member variables ***************/
@@ -233,5 +246,36 @@ public class DBOperation {
 		}
 		
 		return rtn ;
+	}
+	public void doInsert2PreSelTab(PreCourseSelectInfo pcsi)
+	{
+		try {
+			String query_course = "INSERT INTO " +
+								  "TB_PRE_COURSE_SELECT " +
+								  "VALUES(?,?) " ;
+			PreparedStatement ps = m_conn.prepareStatement(query_course);
+			ps.setString(1, pcsi.getUid()) ;
+			ps.setString(2, pcsi.getCourse_name()) ;
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
+	public void doDeleteFromPreSelTab(PreCourseSelectInfo pcsi)
+	{
+		try {
+			String sql_delete = "DELETE FROM " +
+								"TB_PRE_COURSE_SELECT " +
+								"WHERE UID=? AND COURSE_NAME=?";
+			PreparedStatement ps = m_conn.prepareStatement(sql_delete) ;
+			
+			ps.setString(1, pcsi.getUid()) ;
+			ps.setString(2, pcsi.getCourse_name()) ;
+			/*prepare sql string*/
+			ps.executeUpdate() ;
+		}catch(Exception e)	{
+			System.err.println("error : " + e) ;
+		}
 	}
 }
