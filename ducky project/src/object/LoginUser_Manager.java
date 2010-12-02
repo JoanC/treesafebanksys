@@ -1,5 +1,9 @@
 package object;
 
+import db_data_structure.LoginInputInfo;
+import db_data_structure.LoginQueryInfo;
+import db_data_structure.LoginUser;
+import db_data_structure.User;
 import dbquery.DBOperation;
 import dbquery.dbConnectParam;
 

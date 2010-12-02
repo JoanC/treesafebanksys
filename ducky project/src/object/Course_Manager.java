@@ -1,9 +1,9 @@
 package object;
 
+import db_data_structure.Course;
 import dbquery.* ;
 
 import java.util.Vector;
-import object.Course;
 
 
 public class Course_Manager {

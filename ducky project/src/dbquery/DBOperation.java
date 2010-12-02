@@ -1,14 +1,12 @@
 package dbquery;
 
-import data_structure.* ;
+import db_data_structure.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
-import object.Course;
-import object.LoginUser;
-import object.User;
 
 /*
  * created by Sun 2010-11-?

@@ -5,7 +5,7 @@ public class LogoutQueryInfo {
 	private String u_id;
 	private boolean is_succ;
 	private String exp;
-	
+	 
 	public String getU_id() {
 		return u_id;
 	}

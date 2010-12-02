@@ -1,4 +1,4 @@
-package object;
+package db_data_structure;
 
 public class Course {
 	String course_id;					//¿Î³Ì±êÊ¶ºÅ

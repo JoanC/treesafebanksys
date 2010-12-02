@@ -3,6 +3,8 @@ package object;
 
 import java.util.Vector;
 
+import db_data_structure.Course;
+
 
 public abstract class CourseTable {
 	//学生或者老师的用户id的记录

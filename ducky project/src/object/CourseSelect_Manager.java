@@ -2,6 +2,8 @@ package object;
 
 
 import java.util.Vector;
+
+import db_data_structure.Course;
 import object.CourseTable;
 import object.Exp;
 

@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db_data_structure.LoginInputInfo;
+
 import object.*;
-import object.DebugClass;
 
 public class Loginservlet extends HttpServlet {
 

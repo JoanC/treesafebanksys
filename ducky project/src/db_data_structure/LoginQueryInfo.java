@@ -1,4 +1,4 @@
-package object;
+package db_data_structure;
 
 public class LoginQueryInfo {
 	private String u_id;
