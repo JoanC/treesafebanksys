@@ -250,14 +250,16 @@ public class DBOperation {
 	public void doInsert2PreSelTab(PreCourseSelectInfo pcsi)
 	{
 		try {
-			String query_course = "INSERT INTO " +
-								  "TB_PRE_COURSE_SELECT " +
-								  "VALUES(?,?) " ;
-			PreparedStatement ps = m_conn.prepareStatement(query_course);
+			String sql_insert = "INSERT INTO " +
+											   "TB_PRE_COURSE_SELECT " +
+											    "VALUES ( ? , ? )" ;
+			PreparedStatement ps = m_conn.prepareStatement(sql_insert);
 			ps.setString(1, pcsi.getUid()) ;
 			ps.setString(2, pcsi.getCourse_name()) ;
+			
 			ps.executeUpdate();
 
+			m_conn.commit() ; /*commit it if there is no exception*/
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
@@ -267,13 +269,15 @@ public class DBOperation {
 		try {
 			String sql_delete = "DELETE FROM " +
 								"TB_PRE_COURSE_SELECT " +
-								"WHERE UID=? AND COURSE_NAME=?";
+								"WHERE U_ID=? AND COURSE_NAME=?";
 			PreparedStatement ps = m_conn.prepareStatement(sql_delete) ;
 			
 			ps.setString(1, pcsi.getUid()) ;
 			ps.setString(2, pcsi.getCourse_name()) ;
 			/*prepare sql string*/
 			ps.executeUpdate() ;
+			
+			m_conn.commit() ;/*commit it if there is no exception*/
 		}catch(Exception e)	{
 			System.err.println("error : " + e) ;
 		}
