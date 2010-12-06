@@ -2,7 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -101,15 +103,7 @@ public class CourseListsServlet extends HttpServlet {
 	 * */
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
-
-
-		
-		
-		
-		
-		
-		
-		
-		
+		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
+        rd.forward(req,response); 
 	}
 }

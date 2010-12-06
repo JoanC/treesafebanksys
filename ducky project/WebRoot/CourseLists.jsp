@@ -35,6 +35,10 @@
 				for (int idx = 1; idx != course.size(); idx++) {
 					tempcourse = course.elementAt(idx);
 					if (tempcourse.getCourse_type() != type) {
+						for (; cursor != 5; cursor++) {
+							out.print("<td width=\"20%\">  ");
+							out.print("</td>");
+						}
 						type = tempcourse.getCourse_type();
 						out.print("<tr>");
 						out.print("<td colspan=\"" + cols_num + "\">");
@@ -46,8 +50,7 @@
 						out.print("<tr>");
 					}
 					out.print("<td width=\"20%\">");
-					out
-							.print("<input type=\"checkbox\" name=\"checkbox1\" id=\"course"
+					out.print("<input type=\"checkbox\" name=\"checkbox\" value=" + idx +  " id=\"course"
 									+ idx + "\">");
 					out.print(tempcourse.getCourse_name());
 					out.print("</td>");
@@ -55,6 +58,10 @@
 					if (cursor == 0) {
 						out.print("</tr>");
 					}
+				}
+				for (; cursor != 5; cursor++) {
+					out.print("<td width=\"20%\">");
+					out.print("</td>");
 				}
 				out.print("</table>");
 			%>
