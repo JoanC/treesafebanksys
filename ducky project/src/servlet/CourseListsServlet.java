@@ -105,5 +105,6 @@ public class CourseListsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
         rd.forward(req,response); 
+        
 	}
 }
