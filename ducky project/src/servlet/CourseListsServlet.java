@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.Vector;
 
@@ -19,8 +20,11 @@ public class CourseListsServlet extends HttpServlet {
 	/**
 	 * Constructor of the object.
 	 */
+	private CourseSelect_Manager courseselmgr;
 	public CourseListsServlet() {
 		super();
+		courseselmgr = new CourseSelect_Manager();
+		courseselmgr.setU_id("082901");
 	}
 
 	/**
@@ -104,7 +108,7 @@ public class CourseListsServlet extends HttpServlet {
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
-        rd.forward(req,response); 
+        rd.forward(req,response);       
         
 	}
 }

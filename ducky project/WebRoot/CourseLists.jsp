@@ -1,6 +1,6 @@
 <%@ page language="java" import="object.Course_Manager"
 	contentType="text/html; charset=gb2312"%>
-<%@ page language="java" import="object.Course"
+<%@ page language="java" import="db_data_structure.Course"
 	contentType="text/html; charset=gb2312"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=gb2312"%>
