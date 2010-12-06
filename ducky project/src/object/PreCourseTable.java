@@ -4,9 +4,10 @@ package object;
 import java.util.Vector;
 
 import db_data_structure.Course;
+import db_data_structure.PreCourseSelectInfo;
 import object.CourseTable;
 import object.Exp;
-
+import dbquery.* ;
 
 public class PreCourseTable extends CourseTable {
 	String u_id; 				//学生的id
@@ -43,18 +44,28 @@ public class PreCourseTable extends CourseTable {
 	}
 	
 	//将一门课程从选课初始的大列表选入到预选课程表中
-	public Exp addCourse(Course _new){
+	public Exp addCourse(PreCourseSelectInfo info){
 		Exp exp = null;
 		//altoSave();
-		//...
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		
+		dbo.doInsert2PreSelTab(info) ;
+		
+		dbo.disconnectDB() ;
 		return exp;
 	}
 	
 	//将一门课程从预选课程表中删除
-	public Exp deleteCourse(Course _old){
+	public Exp deleteCourse(PreCourseSelectInfo info){
 		Exp exp = null;
 		//altoSave();
-		//...
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		
+		dbo.doDeleteFromPreSelTab(info) ;
+		
+		dbo.disconnectDB() ;
 		return exp;
 	}
 }

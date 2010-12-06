@@ -6,7 +6,7 @@ import java.util.Vector;
 import db_data_structure.Course;
 import object.CourseTable;
 import object.Exp;
-
+import db_data_structure.*;
 
 public class CourseSelect_Manager {
 	String u_id; 				//登录的学生编号
@@ -38,11 +38,11 @@ public class CourseSelect_Manager {
 	}
 	
 	//把一门或者多门课程选入预选课表
-	public Exp SelectCourseToPreTab(Vector<Course> _new){
+	public Exp SelectCourseToPreTab(Vector<PreCourseSelectInfo> _new){
 		Exp exp = null;
 		
 		int i;
-		Course tmpCourse;
+		PreCourseSelectInfo tmpCourse;
 		for(i = 0; i < _new.size(); i++){
 			tmpCourse = _new.get(i);
 			pre_tab.addCourse(tmpCourse);
@@ -66,11 +66,11 @@ public class CourseSelect_Manager {
 	}
 	
 	//把一门或者多门课程从预选课表中移出
-	public Exp RemoveCourseFromPreTab(Vector<Course> _rmv){
+	public Exp RemoveCourseFromPreTab(Vector<PreCourseSelectInfo> _rmv){
 		Exp exp = null;
 		
 		int i;
-		Course tmpCourse;
+		PreCourseSelectInfo tmpCourse;
 		for(i = 0; i < _rmv.size(); i++){
 			tmpCourse = _rmv.get(i);
 			pre_tab.deleteCourse(tmpCourse);
