@@ -17,6 +17,7 @@ public class CourseSelect_Manager {
 	public CourseSelect_Manager(String uId) {
 		super();
 		// TODO Auto-generated constructor stub
+		DebugClass.debug_info("CourseSelectManager",	"the init uId is :" + uId);
 		pre_tab = new PreCourseTable();
 		pre_tab.set_u_id(uId);
 		//formal table

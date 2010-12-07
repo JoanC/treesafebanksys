@@ -43,7 +43,7 @@ public class PreCourseTable extends CourseTable {
 		//底层数据的调试信息
 		DebugClass.debug_info("PreTable", "get all course list from id :" + u_id);
 		for(int i = 0; i< course_list.size();++i){
-			DebugClass.debug_info("PreTable get list:", course_list.elementAt(i).getCourse_name());
+			DebugClass.debug_info("PreTable get list", course_list.elementAt(i).getCourse_name());
 		}
 		//断开数据库
 		dbo.disconnectDB();
