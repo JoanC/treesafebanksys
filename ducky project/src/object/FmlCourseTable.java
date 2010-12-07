@@ -23,7 +23,7 @@ public class FmlCourseTable extends CourseTable {
 	}
 	
 	//这个课表中的所有课程信息列表的记录
-	public Vector<Course> get_course_list(){
+	public Vector get_course_list(){
 		Vector<Course> course_list = null;
 		//...
 		return course_list;

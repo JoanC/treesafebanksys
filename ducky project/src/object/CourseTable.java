@@ -14,7 +14,7 @@ public abstract class CourseTable {
 	public abstract String get_u_id();
 	
 	//这个课表中的所有课程信息列表的记录
-	public abstract Vector<Course> get_course_list();
+	public abstract Vector get_course_list();
 	
 	//在初始化时获取这个u_id下的课表中的所有课程列表
 	protected abstract void searchCourseList();
