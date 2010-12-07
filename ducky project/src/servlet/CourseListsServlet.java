@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db_data_structure.Course;
+
 
 import object.*;
 
@@ -108,7 +110,16 @@ public class CourseListsServlet extends HttpServlet {
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
-        rd.forward(req,response);       
+        rd.forward(req,response);
+        Vector<PreCourseTable> preCourseTables;
+        Vector<Course> preCourses = Course_Manager.getAllCourseList();
+        String[] checkv=(String[])req.getParameterValues("checkbox");
+    	for (int idx = 0; idx < checkv.length; idx++) {
+    		int courseid = Integer.parseInt(checkv[idx]);
+    		preCourses.elementAt(courseid).getCourse_name();
+    		//courseselmgr.SelectCourseToPreTab()
+    	}
+        
         
 	}
 }
