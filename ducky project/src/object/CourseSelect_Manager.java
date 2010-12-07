@@ -41,14 +41,14 @@ public class CourseSelect_Manager {
 	public Exp SelectCourseToPreTab(Vector<PreCourseSelectInfo> _new){
 		Exp exp = null;
 		
-		PreCourseSelectInfo tmpCourse;
 		DebugClass.debug_info("CourseSelectManger:", "start to add new courses to preTable....");
 		DebugClass.debug_info("CourseSelectManger:", "the total course number : " + _new.size());
 		for(int i = 0; i < _new.size(); i++){
+			PreCourseSelectInfo tmpCourse = new PreCourseSelectInfo();
 			tmpCourse = _new.elementAt(i);
-			pre_tab.addCourse(tmpCourse);
 			DebugClass.debug_info("CourseSelectManger:", "add course name: " 
 					+ tmpCourse.getCourse_name());
+			pre_tab.addCourse(tmpCourse);
 		}
 		
 		return exp;
