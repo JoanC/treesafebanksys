@@ -9,9 +9,20 @@ import object.Exp;
 import db_data_structure.*;
 
 public class CourseSelect_Manager {
+
 	String u_id; 				//登录的学生编号
 	PreCourseTable pre_tab;		//预选课表信息
 	FmlCourseTable fml_tab;		//正式课表信息
+	
+	public CourseSelect_Manager(String uId) {
+		super();
+		// TODO Auto-generated constructor stub
+		pre_tab = new PreCourseTable();
+		pre_tab.set_u_id(uId);
+		//formal table
+		fml_tab = new FmlCourseTable();
+		fml_tab.set_u_id(uId);
+	}
 	
 	public String getU_id() {
 		return u_id;
