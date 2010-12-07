@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
+
 import db_data_structure.Course;
+import db_data_structure.PreCourseSelectInfo;
 
 
 import object.*;
@@ -119,7 +122,15 @@ public class CourseListsServlet extends HttpServlet {
     		preCourses.elementAt(courseid).getCourse_name();
     		//courseselmgr.SelectCourseToPreTab()
     	}
-        
-        
 	}
+	
+	private Vector PreCourseData(Vector<PreCourseTable> _new_select){
+		//首先从mgr中读取当前预选课表的初始信息
+		Vector<PreCourseSelectInfo> _result = null;
+		Vector<PreCourseSelectInfo> _init = courseselmgr.getPre_tab().get_course_list();
+		//在将新的输入和初始数据相连,自动监测重复并排除重复
+		_result = _new_select + _init;
+		//返回新的列表数据
+		return _result;
+	} 
 }

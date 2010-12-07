@@ -25,16 +25,23 @@ public class PreCourseTable extends CourseTable {
 	}
 	
 	//这个课表中的所有课程信息列表的记录
+	//从数据库中读取列表数据
 	public Vector get_course_list(){
-		Vector<PreCourseSelectInfo> course_list = null;
-		//...
-		return course_list;
-	}
+		return this.searchCourseList();
+     }
 	
 	//在初始化时获取这个u_id下的课表中的所有课程列表
-	protected void searchCourseList(){
+	protected Vector searchCourseList(){
 		//...
 		//course_list = null;	//给course_list赋值
+		Vector<PreCourseSelectInfo> course_list = null;
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, 
+				dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		//读取列表代码
+		course_list = dbo.doQueryPreTabByID(u_id);
+		dbo.disconnectDB();
+		return course_list;
 	}
 	
 	//预选数据的自动保存,这个在实现预选课表的add和delete方法时调用

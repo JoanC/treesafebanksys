@@ -30,9 +30,10 @@ public class FmlCourseTable extends CourseTable {
 	}
 	
 	//在初始化时获取这个u_id下的课表中的所有课程列表
-	protected void searchCourseList(){
+	protected Vector searchCourseList(){
 		//...
 		course_list = null;	//给course_list赋值
+		return course_list;
 	}
 	
 	//将一门的课程加入到正式课表中
