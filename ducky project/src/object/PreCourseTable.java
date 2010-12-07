@@ -40,6 +40,12 @@ public class PreCourseTable extends CourseTable {
 				dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		//读取列表代码
 		course_list = dbo.doQueryPreTabByID(u_id);
+		//底层数据的调试信息
+		DebugClass.debug_info("PreTable", "get all course list from id :" + u_id);
+		for(int i = 0; i< course_list.size();++i){
+			DebugClass.debug_info("PreTable get list:", course_list.elementAt(i).getCourse_name());
+		}
+		//断开数据库
 		dbo.disconnectDB();
 		return course_list;
 	}
@@ -56,10 +62,10 @@ public class PreCourseTable extends CourseTable {
 		Exp exp = null;
 		//altoSave();
 		DBOperation dbo = new DBOperation() ;
-		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
-		
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, 
+				dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		dbo.doInsert2PreSelTab(info) ;
-		
+		DebugClass.debug_info("PreTable", "add class info : " + info.getCourse_name());
 		dbo.disconnectDB() ;
 		return exp;
 	}
