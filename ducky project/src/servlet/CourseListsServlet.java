@@ -110,27 +110,38 @@ public class CourseListsServlet extends HttpServlet {
 	/*
 	 * doprocess
 	 * */
+	private Vector PreCourseData(Vector<PreCourseSelectInfo> _new_select){
+		//首先从mgr中读取当前预选课表的初始信息
+		Vector<PreCourseSelectInfo> _init = courseselmgr.getPre_tab().get_course_list();
+		Vector<PreCourseSelectInfo> _result = new Vector<PreCourseSelectInfo>();
+		//在将新的输入和初始数据相连,自动监测重复并排除重复
+        for (int i = 0; i < _result.size(); i++) {
+			_init.add(_result.elementAt(i));
+		}
+		//返回新的列表数据
+		return _result;
+	} 
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
         rd.forward(req,response);
-        Vector<PreCourseTable> preCourseTables;
+        Vector<PreCourseSelectInfo> preCourseInfos = new Vector<PreCourseSelectInfo>();
         Vector<Course> preCourses = Course_Manager.getAllCourseList();
         String[] checkv=(String[])req.getParameterValues("checkbox");
     	for (int idx = 0; idx < checkv.length; idx++) {
     		int courseid = Integer.parseInt(checkv[idx]);
-    		preCourses.elementAt(courseid).getCourse_name();
+    		//preCourses.elementAt(courseid).getCourse_name())
+    		PreCourseSelectInfo _info = new PreCourseSelectInfo();
+    		_info.setUid(courseselmgr.getU_id());
+    		_info.setCourse_name(preCourses.elementAt(courseid).getCourse_name());
+    		preCourseInfos.add(_info);
     		//courseselmgr.SelectCourseToPreTab()
     	}
-	}
-	
-	private Vector PreCourseData(Vector<PreCourseTable> _new_select){
-		//首先从mgr中读取当前预选课表的初始信息
-		Vector<PreCourseSelectInfo> _result = null;
-		Vector<PreCourseSelectInfo> _init = courseselmgr.getPre_tab().get_course_list();
-		//在将新的输入和初始数据相连,自动监测重复并排除重复
-		_result = _new_select + _init;
-		//返回新的列表数据
-		return _result;
-	} 
+    	
+    	courseselmgr.SelectCourseToPreTab(preCourseInfos);
+    	
+    	this.PreCourseData(preCourseInfos);
+    	
+	}	
+
 }
