@@ -18,11 +18,12 @@ public class CourseSelect_Manager {
 		super();
 		// TODO Auto-generated constructor stub
 		DebugClass.debug_info("CourseSelectManager",	"the init uId is :" + uId);
+		u_id = uId;
 		pre_tab = new PreCourseTable();
-		pre_tab.set_u_id(uId);
+		pre_tab.set_u_id(u_id);
 		//formal table
 		fml_tab = new FmlCourseTable();
-		fml_tab.set_u_id(uId);
+		fml_tab.set_u_id(u_id);
 	}
 	
 	public String getU_id() {
@@ -58,6 +59,7 @@ public class CourseSelect_Manager {
 		for(int i = 0; i < _new.size(); i++){
 			PreCourseSelectInfo tmpCourse = new PreCourseSelectInfo();
 			tmpCourse = _new.elementAt(i);
+			tmpCourse.setUid(u_id);
 			DebugClass.debug_info("CourseSelectManger:", "add course name: " 
 					+ tmpCourse.getCourse_name());
 			pre_tab.addCourse(tmpCourse);
