@@ -112,15 +112,19 @@ public class CourseListsServlet extends HttpServlet {
 	 * */
 	private Vector PreCourseData(Vector<PreCourseSelectInfo> _new_select){
 		//首先从mgr中读取当前预选课表的初始信息
+		DebugClass.debug_info("CouseSelectModle", "start to add two info...");
 		Vector<PreCourseSelectInfo> _init = courseselmgr.getPre_tab().get_course_list();
 		Vector<PreCourseSelectInfo> _result = new Vector<PreCourseSelectInfo>();
 		//在将新的输入和初始数据相连,自动监测重复并排除重复
         for (int i = 0; i < _result.size(); i++) {
-			_init.add(_result.elementAt(i));
+			_result.add(_init.elementAt(i));
 		}
 		//返回新的列表数据
+        DebugClass.debug_info("CouseSelectModle", "add end...");
+        DebugClass.debug_info("CouseSelectModle", "add course : " + _result.size());
 		return _result;
 	} 
+	
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
