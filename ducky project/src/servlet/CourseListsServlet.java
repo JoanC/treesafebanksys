@@ -19,6 +19,7 @@ import db_data_structure.PreCourseSelectInfo;
 
 
 import object.*;
+import sun.io.Converters;
 
 public class CourseListsServlet extends HttpServlet {
 
@@ -28,8 +29,8 @@ public class CourseListsServlet extends HttpServlet {
 	private CourseSelect_Manager courseselmgr;
 	public CourseListsServlet() {
 		super();
-		courseselmgr = new CourseSelect_Manager();
-		courseselmgr.setU_id("082901");
+		courseselmgr = new CourseSelect_Manager("082901");
+		//courseselmgr.setU_id();
 	}
 
 	/**
@@ -141,6 +142,7 @@ public class CourseListsServlet extends HttpServlet {
     		_info.setCourse_name(preCourses.elementAt(courseid).getCourse_name());
     		preCourseInfos.add(_info);
     		//courseselmgr.SelectCourseToPreTab()
+    		System.out.println(preCourses.elementAt(idx).getCourse_name());
     	}
     	DebugClass.debug_info("CouseSelectModle", "convert end....");
     	courseselmgr.SelectCourseToPreTab(preCourseInfos);
