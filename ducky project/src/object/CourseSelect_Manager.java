@@ -45,7 +45,7 @@ public class CourseSelect_Manager {
 		DebugClass.debug_info("CourseSelectManger:", "start to add new courses to preTable....");
 		DebugClass.debug_info("CourseSelectManger:", "the total course number : " + _new.size());
 		for(int i = 0; i < _new.size(); i++){
-			tmpCourse = _new.get(i);
+			tmpCourse = _new.elementAt(i);
 			pre_tab.addCourse(tmpCourse);
 			DebugClass.debug_info("CourseSelectManger:", "add course name: " 
 					+ tmpCourse.getCourse_name());
