@@ -59,12 +59,14 @@ public class PreCourseTable extends CourseTable {
 	
 	//将一门课程从选课初始的大列表选入到预选课程表中
 	public Exp addCourse(PreCourseSelectInfo info){
-		DebugClass.debug_info("PreTable", "add class info : " + info.getCourse_name());
+
 		Exp exp = null;
 		//altoSave();
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, 
 				dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		DebugClass.debug_info("PreTable", "add class info : " + info.getCourse_name()
+				+ "user id : " + info.getUid());
 		dbo.doInsert2PreSelTab(info) ;
 		dbo.disconnectDB() ;
 		return exp;
