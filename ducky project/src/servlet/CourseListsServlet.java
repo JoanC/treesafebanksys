@@ -142,7 +142,7 @@ public class CourseListsServlet extends HttpServlet {
     		preCourseInfos.add(_info);
     		//courseselmgr.SelectCourseToPreTab()
     	}
-    	
+    	DebugClass.debug_info("CouseSelectModle", "convert end....");
     	courseselmgr.SelectCourseToPreTab(preCourseInfos);
     	
     	Vector<PreCourseSelectInfo>_result =  this.PreCourseData(preCourseInfos);
