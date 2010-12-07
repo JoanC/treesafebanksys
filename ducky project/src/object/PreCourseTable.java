@@ -62,10 +62,10 @@ public class PreCourseTable extends CourseTable {
 		Exp exp = null;
 		//altoSave();
 		DBOperation dbo = new DBOperation() ;
+		DebugClass.debug_info("PreTable", "add class info : " + info.getCourse_name());
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, 
 				dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		dbo.doInsert2PreSelTab(info) ;
-		DebugClass.debug_info("PreTable", "add class info : " + info.getCourse_name());
 		dbo.disconnectDB() ;
 		return exp;
 	}
