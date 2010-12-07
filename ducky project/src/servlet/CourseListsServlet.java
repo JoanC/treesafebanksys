@@ -127,15 +127,16 @@ public class CourseListsServlet extends HttpServlet {
 	
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
-        rd.forward(req,response);
         Vector<PreCourseSelectInfo> preCourseInfos = new Vector<PreCourseSelectInfo>();
         Vector<Course> preCourses = Course_Manager.getAllCourseList();
         String[] checkv=(String[])req.getParameterValues("checkbox");
+        
+		DebugClass.debug_info("CouseSelectModle", "start to convert from course to preCourseInfo..");
     	for (int idx = 0; idx < checkv.length; idx++) {
     		int courseid = Integer.parseInt(checkv[idx]);
     		//preCourses.elementAt(courseid).getCourse_name())
     		PreCourseSelectInfo _info = new PreCourseSelectInfo();
+
     		_info.setUid(courseselmgr.getU_id());
     		_info.setCourse_name(preCourses.elementAt(courseid).getCourse_name());
     		preCourseInfos.add(_info);
@@ -144,8 +145,11 @@ public class CourseListsServlet extends HttpServlet {
     	
     	courseselmgr.SelectCourseToPreTab(preCourseInfos);
     	
-    	this.PreCourseData(preCourseInfos);
+    	Vector<PreCourseSelectInfo>_result =  this.PreCourseData(preCourseInfos);
     	
+		DebugClass.debug_info("CouseSelectModle", "the final result size : " + _result.size());
+		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
+        rd.forward(req,response);
 	}	
 
 }
