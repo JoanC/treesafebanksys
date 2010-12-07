@@ -16,6 +16,7 @@ import java.util.Vector;
  * modified by Sun 2010-12-1 
  * modified by Sun 2010-12-2
  * modified by Sun 2010-12-6
+ * modified by Sun 2010-12-7
  */
 
 public class DBOperation {
@@ -279,5 +280,34 @@ public class DBOperation {
 		}catch(Exception e)	{
 			System.err.println("error : " + e) ;
 		}
+	}
+	public Vector<PreCourseSelectInfo> doQueryPreTabByID(String uid)
+	{
+		Vector<PreCourseSelectInfo> rtn = new Vector<PreCourseSelectInfo>() ;
+		
+		try {
+			String query_course = "SELECT COURSE_NAME " +
+								  "FROM TB_PRE_COURSE_SELECT " +
+								  "WHERE U_ID=?" ;
+			PreparedStatement ps = m_conn.prepareStatement(query_course);
+			ps.setString(1, uid) ;
+			ResultSet results = ps.executeQuery();
+			
+			while(results.next())
+			{
+				PreCourseSelectInfo buff = new PreCourseSelectInfo() ;
+				buff.setUid(uid) ;
+				buff.setCourse_name(results.getString("COURSE_NAME")) ;
+				
+				rtn.addElement(buff) ;
+				/* write to rtn */
+			}
+			results.close();
+			/* close the resultset */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		
+		return rtn ;
 	}
 }
