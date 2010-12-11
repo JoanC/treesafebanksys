@@ -153,5 +153,4 @@ public class CourseListsServlet extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
         rd.forward(req,response);
 	}	
-
 }
