@@ -15,43 +15,6 @@ public class CourseSelect_Manager {
 	PreCourseTable pre_tab;		//预选课表信息
 	FmlCourseTable fml_tab;		//正式课表信息
 	
-	/*
-	 * 用于在显示大列表时取得大列表的数据
-	 * 作者:万君亚
-	 * 日期: 2010/12/9
-	 */
-	public Vector<Course> getListData(){
-		Vector<Course> _data = new Vector<Course>();//结果数据
-		//取得数据库中所有的课程数据
-		Vector<Course> _all = Course_Manager.getAllCourseList();
-		//根据这个学生的id取得所有预选数据
-		Vector<PreCourseSelectInfo> _pre_tab = this.getPre_tab().get_course_list();
-		//取得这个学生的正选课表
-		//...尚未实现
-		
-		//删选信息,将预选信息和正选信息与大列表中的重复信息排除
-		//排除依据为课程的名称
-		for (int _index = 0; _index < _all.size(); _index++) {
-			//逐一判断
-			//先从预选信息中开始查找..由于是课程名,不得不写一个循环逐个查找
-			Course _temp_data = _all.elementAt(_index);
-			boolean _is_corr = true;//是否应该加入,初始为真
-			for(int _index_pre = 0 ; _index_pre < _pre_tab.size() ; ++_index_pre){
-				if(_temp_data.getCourse_name().equals(_pre_tab.elementAt(_index_pre).getCourse_name())){
-					//名字相同
-					_is_corr = false;
-					break;
-				}
-			}
-			//做正式选课中的信息判定..
-			//**未完成**
-			if(_is_corr){
-				_data.add(_temp_data);
-			}
-		}
-		return _data;
-	}
-	
 	public CourseSelect_Manager(String uId) {
 		super();
 		// TODO Auto-generated constructor stub
@@ -86,6 +49,46 @@ public class CourseSelect_Manager {
 	
 	public void setFml_tab(FmlCourseTable fmlTab) {
 		fml_tab = fmlTab;
+	}
+	
+	/*
+	 * 用于在显示大列表时取得大列表的数据
+	 * 作者:万君亚
+	 * 日期: 2010/12/9
+	 */
+	public Vector<Course> getListData(){
+		DebugClass.debug_info(this.toString(), "generate all the course list...");
+		Vector<Course> _data = new Vector<Course>();//结果数据
+		//取得数据库中所有的课程数据
+		Vector<Course> _all = Course_Manager.getAllCourseList();
+		//根据这个学生的id取得所有预选数据
+		Vector<PreCourseSelectInfo> _pre_tab = this.getPre_tab().get_course_list();
+		//取得这个学生的正选课表
+		//...尚未实现
+		
+		//删选信息,将预选信息和正选信息与大列表中的重复信息排除
+		//排除依据为课程的名称
+		for (int _index = 0; _index < _all.size(); _index++) {
+			//逐一判断
+			//先从预选信息中开始查找..由于是课程名,不得不写一个循环逐个查找
+			Course _temp_data = _all.elementAt(_index);
+			boolean _is_corr = true;//是否应该加入,初始为真
+			for(int _index_pre = 0 ; _index_pre < _pre_tab.size() ; ++_index_pre){
+				if(_temp_data.getCourse_name().equals(_pre_tab.elementAt(_index_pre).getCourse_name())){
+					//名字相同
+					DebugClass.debug_info(this.toString(), "the course " + "'" + _temp_data.getCourse_name()
+							+ "'" + " has already existed in the pre_select_table of user : " + u_id);
+					_is_corr = false;
+					break;
+				}
+			}
+			//做正式选课中的信息判定..
+			//**未完成**
+			if(_is_corr){
+				_data.add(_temp_data);
+			}
+		}
+		return _data;
 	}
 	
 	//把一门或者多门课程选入预选课表
