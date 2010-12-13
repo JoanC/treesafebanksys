@@ -128,6 +128,7 @@ public class CourseListsServlet extends HttpServlet {
         DebugClass.debug_info("CouseSelectModle", "add course : " + _result.size());
 		return _result;
 	} 
+	
 	private void Request_PreSelCrs() throws ServletException, IOException{
 		Vector<PreCourseSelectInfo> preCourseInfos = new Vector<PreCourseSelectInfo>();
         Vector<Course> preCourses = courseselmgr.getListData();
