@@ -17,6 +17,7 @@ import java.util.Vector;
  * modified by Sun 2010-12-2
  * modified by Sun 2010-12-6
  * modified by Sun 2010-12-7
+ * modified by Sun 2010-12-13
  */
 
 public class DBOperation {
@@ -186,7 +187,7 @@ public class DBOperation {
 			
 			while(results.next())
 			{
-				rtn.add( results.getString("COURSE_ID") ) ;
+				rtn.addElement( results.getString("COURSE_ID") ) ;
 				/* write to rtn */
 			}
 			results.close();
@@ -308,6 +309,43 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 		
+		return rtn ;
+	}
+	public Vector<Course> doQuerybyCourseName(String course_name)
+	{
+		Vector<Course> rtn = new Vector<Course>() ;
+		try {
+			String query_course_id = "SELECT * FROM TB_COURSE_SELECT WHERE COURSE_NAME=?";
+			PreparedStatement ps = m_conn.prepareStatement(query_course_id);
+			ps.setString(1, course_name) ;
+			ResultSet results = ps.executeQuery();
+			
+			while(results.next())
+			{
+				Course temp = new Course();
+				
+				temp.setCourse_id(results.getString("COURSE_ID"));
+				temp.setCourse_name(results.getString("COURSE_NAME"));
+				temp.setCourse_type(results.getInt("COURSE_TYPE"));
+				temp.setU_id(results.getString("U_ID"));
+				temp.setCourse_point(results.getInt("COURSE_POINT"));
+				temp.setCourse_time(results.getInt("COURSE_TIME"));
+				temp.setCourse_place(results.getString("COURSE_PLACE"));
+				temp.setCourse_comment(results.getString("COURSE_COMMENT"));
+				temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
+				temp.setCourse_current_seleted_num(results
+						.getInt("COURSE_CURRENT_SELECTED_NUM"));
+				temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
+				
+				rtn.addElement( temp ) ;
+				/* write to rtn */
+			}
+			results.close();
+			/* close the resultset */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+
 		return rtn ;
 	}
 }
