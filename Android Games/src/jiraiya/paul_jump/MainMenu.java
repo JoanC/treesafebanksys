@@ -1,7 +1,6 @@
 package jiraiya.paul_jump;
 
 
-import jiraiya.tatoo.R;
 
 import com.wiyun.engine.nodes.Director;
 import com.wiyun.engine.nodes.Layer;
