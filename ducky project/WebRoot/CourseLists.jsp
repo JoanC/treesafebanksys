@@ -24,6 +24,10 @@
 				//Vector<Course> course = Course_Manager.getAllCourseList();
 				//调用sevelet中的取得列表函数
 				Vector<Course> course = new Vector<Course>();
+				//
+				//............
+				//
+				
 				Course tempcourse = course.elementAt(0);
 				int type = tempcourse.getCourse_type();
 				int cols_num = 5;
