@@ -69,7 +69,7 @@
 				out.print("</table>");
 			%>
 			<input type="image" name="SelectCrsCommit" id="PreSelCrs"
-				value="PreSelCrs" src="images/Button_Login.gif" />
+			value="PreSelCrs" src="images/Button_Login.gif" />¿ªÊ¼Ñ¡¿Î
 		</form>
 	</body>
 </html>

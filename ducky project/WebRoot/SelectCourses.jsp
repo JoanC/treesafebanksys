@@ -22,7 +22,7 @@
 	<%
 	Vector<PreCourseSelectInfo> pcourses = (Vector<PreCourseSelectInfo>)request.getAttribute("PreCrsList");
 	DebugClass.debug_info("selecting courses module", "the final result size : " + pcourses.size());
-	out.print("<table width = \"1000\"borer = \"1\">");
+	out.print("<table width = \"1000\"border = \"1\">");
 	for(int i =0 ;i!=pcourses.size();i++)
 	{
 		String name = pcourses.elementAt(i).getCourse_name();
@@ -30,7 +30,7 @@
 		out.print("<td>");
 		out.print(name);
 		out.print("<td>");
-		out.print("<input type=\"image\" name=\"CourseClear " + i + " id=\"CourseClear\" value=\"Ìá½»\" src=\"images/Button_Login.gif\" />");
+		out.print("<input type=\"image\" name=\"CourseClear " + i + " id=\"CourseClear\" value=\"Del\" src=\"images/Button_Login.gif\" />");
 		out.print("</td>");
 		out.print("</tr>");
 	}

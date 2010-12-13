@@ -120,7 +120,7 @@ public class CourseListsServlet extends HttpServlet {
 		Vector<PreCourseSelectInfo> _init = courseselmgr.getPre_tab().get_course_list();
 		Vector<PreCourseSelectInfo> _result = new Vector<PreCourseSelectInfo>();
 		//在将新的输入和初始数据相连,自动监测重复并排除重复
-        for (int i = 0; i < _result.size(); i++) {
+        for (int i = 0; i < _init.size(); i++) {
 			_result.add(_init.elementAt(i));
 		}
 		//返回新的列表数据
@@ -130,7 +130,7 @@ public class CourseListsServlet extends HttpServlet {
 	} 
 	private void Request_PreSelCrs() throws ServletException, IOException{
 		Vector<PreCourseSelectInfo> preCourseInfos = new Vector<PreCourseSelectInfo>();
-        Vector<Course> preCourses = Course_Manager.getAllCourseList();
+        Vector<Course> preCourses = courseselmgr.getListData();
         DebugClass.debug_info(this.toString(), "所有课表" + preCourses.size());
         for (int i = 0; i < preCourses.size(); i++) {
 			DebugClass.debug_info("processRequet.for", preCourses.elementAt(i).getCourse_name());
@@ -161,6 +161,7 @@ public class CourseListsServlet extends HttpServlet {
 	private void Request_StartSelCrs() throws ServletException, IOException{
 		DebugClass.debug_info(this.toString(), "get the course list...");
 		Vector<Course> courses = courseselmgr.getListData();
+		//Vector<Course> courses = Course_Manager.getAllCourseList();
 		DebugClass.debug_info(this.toString(), "size: "  + courses.size());
 		RequestDispatcher rd = iRequest.getRequestDispatcher("/CourseLists.jsp");
 		iRequest.setAttribute("CoursesList", courses);
