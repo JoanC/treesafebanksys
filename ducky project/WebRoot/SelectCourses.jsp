@@ -1,9 +1,10 @@
 <%@ page language="java" import="object.Course_Manager"
 	contentType="text/html; charset=gb2312"%>
-<%@ page language="java" import="db_data_structure.Course"
+<%@ page language="java" import="db_data_structure.*"
 	contentType="text/html; charset=gb2312"%> 
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=gb2312"%>
+<%@page import="object.DebugClass"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,16 +20,19 @@
 
 	<body>		
 	<%
-	out.print("<table width=\"1000\" border=\"1\">");
-	Vector<Course> preCourses = Course_Manager.getAllCourseList();
-	String[] checkv=(String[])request.getParameterValues("checkbox");
-	for (int idx = 0; idx < checkv.length; idx++) {
-		int courseid = Integer.parseInt(checkv[idx]);
+	Vector<PreCourseSelectInfo> pcourses = (Vector<PreCourseSelectInfo>)request.getAttribute("PreCrsList");
+	DebugClass.debug_info("selecting courses module", "the final result size : " + pcourses.size());
+	out.print("<table width = \"1000\"borer = \"1\">");
+	for(int i =0 ;i!=pcourses.size();i++)
+	{
+		String name = pcourses.elementAt(i).getCourse_name();
 		out.print("<tr>");
-    	out.print("<td>");
-    	out.print(preCourses.elementAt(courseid).getCourse_name());
-    	out.print("</td>");
-   		out.print("</tr>");		
+		out.print("<td>");
+		out.print(name);
+		out.print("<td>");
+		out.print("<input type=\"image\" name=\"CourseClear " + i + " id=\"CourseClear\" value=\"Ìá½»\" src=\"images/Button_Login.gif\" />");
+		out.print("</td>");
+		out.print("</tr>");
 	}
     out.print("</table>");
 	 %>

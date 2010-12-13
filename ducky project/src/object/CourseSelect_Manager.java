@@ -56,7 +56,7 @@ public class CourseSelect_Manager {
 	 * 作者:万君亚
 	 * 日期: 2010/12/9
 	 */
-	public Vector<Course> getListData(){
+	 public Vector<Course> getListData(){
 		DebugClass.debug_info(this.toString(), "generate all the course list...");
 		Vector<Course> _data = new Vector<Course>();//结果数据
 		//取得数据库中所有的课程数据

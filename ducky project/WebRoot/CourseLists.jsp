@@ -1,9 +1,10 @@
-<%@ page language="java" import="object.Course_Manager"
+<%@ page language="java" import="object.*"
 	contentType="text/html; charset=gb2312"%>
 <%@ page language="java" import="db_data_structure.Course"
 	contentType="text/html; charset=gb2312"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=gb2312"%>
+<%@page import="object.CourseSelect_Manager"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,11 +24,7 @@
 			<%
 				//Vector<Course> course = Course_Manager.getAllCourseList();
 				//调用sevelet中的取得列表函数
-				Vector<Course> course = new Vector<Course>();
-				//
-				//............
-				//
-				
+				Vector<Course> course = (Vector<Course>)request.getAttribute("CoursesList");
 				Course tempcourse = course.elementAt(0);
 				int type = tempcourse.getCourse_type();
 				int cols_num = 5;
@@ -38,7 +35,7 @@
 				out.print(type);
 				out.print("</td>");
 				out.print("</tr>");
-				for (int idx = 1; idx != course.size(); idx++) {
+				for (int idx = 0; idx != course.size(); idx++) {
 					tempcourse = course.elementAt(idx);
 					if (tempcourse.getCourse_type() != type) {
 						for (; cursor != 5; cursor++) {
@@ -71,8 +68,8 @@
 				}
 				out.print("</table>");
 			%>
-			<input type="image" name="CoursePreSelCommit" id="CoursePreSelCommit"
-				value="提交" src="images/Button_Login.gif" />
+			<input type="image" name="SelectCrsCommit" id="PreSelCrs"
+				value="PreSelCrs" src="images/Button_Login.gif" />
 		</form>
 	</body>
 </html>

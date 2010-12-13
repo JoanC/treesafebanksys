@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 
+
 import db_data_structure.Course;
 import db_data_structure.PreCourseSelectInfo;
 
@@ -27,6 +28,8 @@ public class CourseListsServlet extends HttpServlet {
 	 * Constructor of the object.
 	 */
 	private CourseSelect_Manager courseselmgr;
+	private HttpServletRequest iRequest;
+	private HttpServletResponse iResponse;
 	public CourseListsServlet() {
 		super();
 		courseselmgr = new CourseSelect_Manager("082901");
@@ -125,12 +128,14 @@ public class CourseListsServlet extends HttpServlet {
         DebugClass.debug_info("CouseSelectModle", "add course : " + _result.size());
 		return _result;
 	} 
-	
-	public void processRequest(HttpServletRequest req,
-			HttpServletResponse response) throws ServletException, IOException {
-        Vector<PreCourseSelectInfo> preCourseInfos = new Vector<PreCourseSelectInfo>();
+	private void Request_PreSelCrs() throws ServletException, IOException{
+		Vector<PreCourseSelectInfo> preCourseInfos = new Vector<PreCourseSelectInfo>();
         Vector<Course> preCourses = Course_Manager.getAllCourseList();
-        String[] checkv=(String[])req.getParameterValues("checkbox");
+        DebugClass.debug_info(this.toString(), "ËùÓÐ¿Î±í" + preCourses.size());
+        for (int i = 0; i < preCourses.size(); i++) {
+			DebugClass.debug_info("processRequet.for", preCourses.elementAt(i).getCourse_name());
+		}
+        String[] checkv=(String[])iRequest.getParameterValues("checkbox");
         
 		DebugClass.debug_info("CouseSelectModle", "start to convert from course to preCourseInfo..");
     	for (int idx = 0; idx < checkv.length; idx++) {
@@ -142,7 +147,6 @@ public class CourseListsServlet extends HttpServlet {
     		_info.setCourse_name(preCourses.elementAt(courseid).getCourse_name());
     		preCourseInfos.add(_info);
     		//courseselmgr.SelectCourseToPreTab()
-    		System.out.println(preCourses.elementAt(idx).getCourse_name());
     	}
     	DebugClass.debug_info("CouseSelectModle", "convert end....");
     	courseselmgr.SelectCourseToPreTab(preCourseInfos);
@@ -150,7 +154,31 @@ public class CourseListsServlet extends HttpServlet {
     	Vector<PreCourseSelectInfo>_result =  this.PreCourseData(preCourseInfos);
     	
 		DebugClass.debug_info("CouseSelectModle", "the final result size : " + _result.size());
-		RequestDispatcher rd = req.getRequestDispatcher("/SelectCourses.jsp");
-        rd.forward(req,response);
+		RequestDispatcher rd = iRequest.getRequestDispatcher("/SelectCourses.jsp");
+		iRequest.setAttribute("PreCrsList", _result);
+        rd.forward(iRequest,iResponse);
+	}
+	private void Request_StartSelCrs() throws ServletException, IOException{
+		DebugClass.debug_info(this.toString(), "get the course list...");
+		Vector<Course> courses = courseselmgr.getListData();
+		DebugClass.debug_info(this.toString(), "size: "  + courses.size());
+		RequestDispatcher rd = iRequest.getRequestDispatcher("/CourseLists.jsp");
+		iRequest.setAttribute("CoursesList", courses);
+		rd.forward(iRequest, iResponse);
+	}
+	public void processRequest(HttpServletRequest req,
+			HttpServletResponse response) throws ServletException, IOException {
+		iRequest = req;
+		iResponse = response;
+		String value = (String)req.getParameter("SelectCrsCommit");
+		DebugClass.debug_info(this.toString(), "value" + value);
+		if(value.equals("StartSelCrs"))
+		{
+			Request_StartSelCrs();
+		}
+		else if(value.equals("PreSelCrs"))
+		{
+			Request_PreSelCrs();
+		}        
 	}	
 }
