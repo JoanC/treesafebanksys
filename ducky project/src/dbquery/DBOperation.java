@@ -315,7 +315,7 @@ public class DBOperation {
 	{
 		Vector<Course> rtn = new Vector<Course>() ;
 		try {
-			String query_course_id = "SELECT * FROM TB_COURSE_SELECT WHERE COURSE_NAME=?";
+			String query_course_id = "SELECT * FROM TB_COURSE WHERE COURSE_NAME=?";
 			PreparedStatement ps = m_conn.prepareStatement(query_course_id);
 			ps.setString(1, course_name) ;
 			ResultSet results = ps.executeQuery();
