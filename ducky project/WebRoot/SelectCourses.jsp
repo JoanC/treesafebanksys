@@ -30,7 +30,7 @@
 		out.print("<td>");
 		out.print(name);
 		out.print("<td>");
-		out.print("<input type=\"image\" name=\"CourseClear " + i + " id=\"CourseClear\" value=\"Del\" src=\"images/Button_Login.gif\" />");
+		out.print("<input type=\"image\" name=\"SelectCrsCommit " + i + " id=\"CourseClear\" value=\"DelPrsCrs" + i + " \" src=\"images/Button_Login.gif\" />");
 		out.print("</td>");
 		out.print("</tr>");
 	}

@@ -173,14 +173,24 @@ public class CourseListsServlet extends HttpServlet {
 		iRequest = req;
 		iResponse = response;
 		String value = (String)req.getParameter("SelectCrsCommit");
+		String para = value.substring(0,"DelPrsCrs".length());
 		DebugClass.debug_info(this.toString(), "value" + value);
-		if(value.equals("StartSelCrs"))
+		if(para.equals("SttSelCrs"))
 		{
 			Request_StartSelCrs();
 		}
-		else if(value.equals("PreSelCrs"))
+		else if(para.equals("PreSelCrs"))
 		{
 			Request_PreSelCrs();
-		}        
+		} 
+		else if(para.equals("DelPrsCrs"))
+		{
+			DebugClass.debug_info(this.toString(), "del start...");
+			int id = Integer.parseInt(value.substring("DelPrsCrs".length()));
+			Vector<PreCourseSelectInfo> predel = new Vector<PreCourseSelectInfo>();
+			predel.add((PreCourseSelectInfo)courseselmgr.getPre_tab().get_course_list().elementAt(id));
+			courseselmgr.RemoveCourseFromPreTab(predel);
+			DebugClass.debug_info(this.toString(), "Del finish");
+		}
 	}	
 }
