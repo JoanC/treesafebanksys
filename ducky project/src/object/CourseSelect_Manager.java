@@ -90,8 +90,6 @@ public class CourseSelect_Manager {
 		}
 		return _data;
 	}
-	
-	 //通过预选中的课程信息,查询相关的匹配数据列表
 	 
 	//把一门或者多门课程选入预选课表
 	public Exp SelectCourseToPreTab(Vector<PreCourseSelectInfo> _new){
@@ -130,11 +128,14 @@ public class CourseSelect_Manager {
 		Exp exp = null;
 		int i;
 		PreCourseSelectInfo tmpCourse;
+		DebugClass.debug_info("CourseSelectManger:", "start to delete new courses to preTable....");
 		for(i = 0; i < _rmv.size(); i++){
 			tmpCourse = _rmv.get(i);
+			tmpCourse.setUid(u_id);
 			pre_tab.deleteCourse(tmpCourse);
+			DebugClass.debug_info("CourseSelectManger:", "delete course name: " 
+					+ tmpCourse.getCourse_name());
 		}
-		
 		return exp;
 	}
 	
