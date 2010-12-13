@@ -91,6 +91,8 @@ public class CourseSelect_Manager {
 		return _data;
 	}
 	
+	 //通过预选中的课程信息,查询相关的匹配数据列表
+	 
 	//把一门或者多门课程选入预选课表
 	public Exp SelectCourseToPreTab(Vector<PreCourseSelectInfo> _new){
 		Exp exp = null;
@@ -126,7 +128,6 @@ public class CourseSelect_Manager {
 	//把一门或者多门课程从预选课表中移出
 	public Exp RemoveCourseFromPreTab(Vector<PreCourseSelectInfo> _rmv){
 		Exp exp = null;
-		
 		int i;
 		PreCourseSelectInfo tmpCourse;
 		for(i = 0; i < _rmv.size(); i++){

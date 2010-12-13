@@ -78,9 +78,9 @@ public class PreCourseTable extends CourseTable {
 		//altoSave();
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
-		
+		DebugClass.debug_info("PreTable", "delete class info : " + info.getCourse_name()
+				+ "user id : " + info.getUid());
 		dbo.doDeleteFromPreSelTab(info) ;
-		
 		dbo.disconnectDB() ;
 		return exp;
 	}
