@@ -23,7 +23,7 @@ public class CourseSelect_Manager {
 		pre_tab = new PreCourseTable();
 		pre_tab.set_u_id(u_id);
 		//formal table
-		fml_tab = new FmlCourseTable();
+		fml_tab = new FmlCourseTable(u_id);
 		fml_tab.set_u_id(u_id);
 	}
 	
