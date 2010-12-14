@@ -11,8 +11,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
+
+import com.sun.mail.iap.Response;
 
 import db_data_structure.Course;
 import db_data_structure.PreCourseSelectInfo;
@@ -168,10 +171,9 @@ public class CourseListsServlet extends HttpServlet {
 
 		DebugClass.debug_info("CouseSelectModle", "the final result size : "
 				+ _result.size());
-		RequestDispatcher rd = iRequest
-				.getRequestDispatcher("/SelectCourses.jsp");
-		iRequest.setAttribute("PreCrsList", _result);
-		rd.forward(iRequest, iResponse);
+		HttpSession session = iRequest.getSession();
+	    session.setAttribute("precrslist", _result);
+	    iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
 
 	private void Request_StartSelCrs() throws ServletException, IOException {
@@ -179,10 +181,9 @@ public class CourseListsServlet extends HttpServlet {
 		Vector<Course> courses = courseselmgr.getListData();
 		// Vector<Course> courses = Course_Manager.getAllCourseList();
 		DebugClass.debug_info(this.toString(), "size: " + courses.size());
-		RequestDispatcher rd = iRequest
-				.getRequestDispatcher("/CourseLists.jsp");
-		iRequest.setAttribute("CoursesList", courses);
-		rd.forward(iRequest, iResponse);
+		HttpSession session = iRequest.getSession();
+		session.setAttribute("CourseList",courses);
+		iResponse.sendRedirect("/TJSelCrsSys/CourseLists.jsp?userid=" + session.getAttribute("userid"));
 	}
 	private void Request_DelPrsCrs()throws ServletException, IOException 
 	{
@@ -197,9 +198,9 @@ public class CourseListsServlet extends HttpServlet {
 		DebugClass.debug_info(this.toString(), "Select Course Name : "
 				+ predel.elementAt(0).getCourse_name());
 	    Vector<PreCourseSelectInfo> course = courseselmgr.getPre_tab().get_course_list();
-	    RequestDispatcher rd = iRequest.getRequestDispatcher("/SelectCourses.jsp");
-	    iRequest.setAttribute("PreCrsList", course);
-	    rd.forward(iRequest, iResponse);
+	    HttpSession session = iRequest.getSession();
+	    session.setAttribute("precrslist", course);
+	    iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	    
 	}
 	public void processRequest(HttpServletRequest req,

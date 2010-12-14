@@ -3,11 +3,13 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db_data_structure.LoginInputInfo;
 
@@ -108,6 +110,8 @@ public class Loginservlet extends HttpServlet {
 				+ "the user password: " + userpassword));
 		//zhou
         LoginRltInfo _rlt = this.loginFrame(username, userpassword);
+        HttpSession session = req.getSession();
+        session.setAttribute("userid", username);
         if(_rlt.isIs_succ() == false) {
         	DebugClass.debug_info("Login servlet", "login fail!");
         }
@@ -115,7 +119,7 @@ public class Loginservlet extends HttpServlet {
           System.out.println(_rlt.getU_type());
           System.out.println(_rlt.getU_id());
           DebugClass.debug_info("Login servlet", "login success!");
-		  req.getRequestDispatcher("/StuIndex.html").forward(req,response);
+		  response.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + username);
         }
 	}
 	
