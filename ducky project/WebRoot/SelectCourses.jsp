@@ -18,7 +18,9 @@
 
 	</head>
 
-	<body>		
+	<body>	
+	<form id="SelectCourse" name="SelectCourse" method="post"
+			action="/TJSelCrsSys/servlet/CourseListsServlet">	
 	<%
 	Vector<PreCourseSelectInfo> pcourses = (Vector<PreCourseSelectInfo>)request.getAttribute("PreCrsList");
 	DebugClass.debug_info("selecting courses module", "the final result size : " + pcourses.size());
@@ -30,11 +32,12 @@
 		out.print("<td>");
 		out.print(name);
 		out.print("<td>");
-		out.print("<input type=\"image\" name=\"SelectCrsCommit " + i + " id=\"CourseClear\" value=\"DelPrsCrs" + i + " \" src=\"images/Button_Login.gif\" />");
+		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelPrsCrs" + i + "\" src=\"images/Button_Login.gif\" >");
 		out.print("</td>");
 		out.print("</tr>");
 	}
     out.print("</table>");
 	 %>
+	 </form>>
 	</body>
 </html>
