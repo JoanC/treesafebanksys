@@ -3,13 +3,19 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import javax.swing.filechooser.FileSystemView;
 
-import sun.misc.OSEnvironment;
-
 import java.io.*;
 
 
 
 public class DebugClass {
+	
+	static public void debug_start(){
+		debug_info("new debug start", "*-------------------------------------------------------------*");
+	}
+	
+	static public void debug_end(){
+		debug_info("debug end", "*-------------------------------------------------------------*");
+	}
 	
 	static public void debug_info(String _modle_name,String _info){
 		Calendar rightNow = Calendar.getInstance();
