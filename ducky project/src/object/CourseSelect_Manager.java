@@ -105,7 +105,6 @@ public class CourseSelect_Manager {
 					+ tmpCourse.getCourse_name());
 			pre_tab.addCourse(tmpCourse);
 		}
-		
 		return exp;
 	}
 	
