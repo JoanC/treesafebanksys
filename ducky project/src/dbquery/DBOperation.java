@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import object.DebugClass;
+
 /*
  * created by Sun 2010-11-?
  * modified by Sun 2010-11-?
@@ -119,6 +121,8 @@ public class DBOperation {
 	}
 
 	public void doUpdateIsLogin(String uid, boolean isLogin) {
+		DebugClass.debug_info(this.toString(), "update the isLogin...");
+		DebugClass.debug_info(this.toString(), "the new data is : " + (isLogin ? "is login" : "is not login"));
 		try {
 			String query_login = "UPDATE TB_LOGIN SET U_IS_LOGIN=? WHERE U_ID=?";
 
