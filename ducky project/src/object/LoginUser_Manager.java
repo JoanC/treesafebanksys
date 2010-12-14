@@ -64,11 +64,11 @@ public class LoginUser_Manager {
 			DebugClass.debug_info("Login modle", "password not correct!");
 			_rlt.setIs_succ(false);
 		}
-		/*else if(_query.isU_isLogin()){
+		else if(_query.isU_isLogin()){
 			DebugClass.debug_info("Login modle", "the user is online now , login request reject!");
 			_rlt.setIs_succ(false);
-		}*/
-		else{
+		}
+		else{ 
 			//µÇÂ½ÕýÈ·
 			DebugClass.debug_info("Login modle", "login data check done!");
 			_rlt.setIs_succ(true);
