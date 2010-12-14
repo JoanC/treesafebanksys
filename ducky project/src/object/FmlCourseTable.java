@@ -16,13 +16,14 @@ public class FmlCourseTable extends CourseTable {
 	private Vector<Course> course_list_org; //课程表中的课程数据容器的原始数据列表
 	private Vector<Course> course_list_fixedCourses;//正在被修改的课程数据列表
 	
+	@SuppressWarnings("unchecked")
 	public FmlCourseTable(String _u_id) {
 		super();
 		// TODO Auto-generated constructor stub
 		u_id = _u_id;
 		//填充原始数据
 		course_list_org = this.searchCourseList();
-		course_list_fixedCourses = course_list_org.clone();
+		course_list_fixedCourses = (Vector<Course>) course_list_org.clone();
 	}
 
 	//学生或者老师的用户id的记录
