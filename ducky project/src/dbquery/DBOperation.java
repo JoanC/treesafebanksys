@@ -140,9 +140,8 @@ public class DBOperation {
 	public Vector<Course> doQueryAllDistinctCourseName() {
 		Vector<Course> rtn = new Vector<Course>();
 		try {
-			String query_course = "SELECT DISTINCT COURSE_NAME,COURSE_TYPE " +
-								  "FROM TB_COURSE " +
-								  "ORDER BY COURSE_TYPE";
+			String query_course = "SELECT DISTINCT COURSE_NAME,COURSE_TYPE "
+					+ "FROM TB_COURSE " + "ORDER BY COURSE_TYPE";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
 			/* some preparing work... */
 
@@ -150,18 +149,18 @@ public class DBOperation {
 			while (results.next()) {
 				Course temp = new Course();
 
-				//temp.setCourse_id(results.getString("COURSE_ID"));
+				// temp.setCourse_id(results.getString("COURSE_ID"));
 				temp.setCourse_name(results.getString("COURSE_NAME"));
 				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-				//temp.setU_id(results.getString("U_ID"));
-				//temp.setCourse_point(results.getInt("COURSE_POINT"));
-				//temp.setCourse_time(results.getInt("COURSE_TIME"));
-				//temp.setCourse_place(results.getString("COURSE_PLACE"));
-				//temp.setCourse_comment(results.getString("COURSE_COMMENT"));
-				//temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
-				//temp.setCourse_current_seleted_num(results
-				//		.getInt("COURSE_CURRENT_SELECTED_NUM"));
-				//temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
+				// temp.setU_id(results.getString("U_ID"));
+				// temp.setCourse_point(results.getInt("COURSE_POINT"));
+				// temp.setCourse_time(results.getInt("COURSE_TIME"));
+				// temp.setCourse_place(results.getString("COURSE_PLACE"));
+				// temp.setCourse_comment(results.getString("COURSE_COMMENT"));
+				// temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
+				// temp.setCourse_current_seleted_num(results
+				// .getInt("COURSE_CURRENT_SELECTED_NUM"));
+				// temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
 
 				rtn.addElement(temp);
 				/* write to rtn */
@@ -182,12 +181,11 @@ public class DBOperation {
 		try {
 			String query_course_id = "SELECT COURSE_ID FROM TB_COURSE_SELECT WHERE U_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(query_course_id);
-			ps.setString(1, uid) ;
+			ps.setString(1, uid);
 			ResultSet results = ps.executeQuery();
-			
-			while(results.next())
-			{
-				rtn.addElement( results.getString("COURSE_ID") ) ;
+
+			while (results.next()) {
+				rtn.addElement(results.getString("COURSE_ID"));
 				/* write to rtn */
 			}
 			results.close();
@@ -198,19 +196,18 @@ public class DBOperation {
 
 		return rtn;
 	}
-	private Course doQueryCertainCourse(String course_id){
-		Course rtn = new Course() ;
-		
+
+	private Course doQueryCertainCourse(String course_id) {
+		Course rtn = new Course();
+
 		try {
-			String query_course = "SELECT * " +
-								  "FROM TB_COURSE " +
-								  "WHERE COURSE_ID=?" ;
+			String query_course = "SELECT * " + "FROM TB_COURSE "
+					+ "WHERE COURSE_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
-			ps.setString(1, course_id) ;
+			ps.setString(1, course_id);
 			ResultSet results = ps.executeQuery();
-			
-			while(results.next())
-			{
+
+			while (results.next()) {
 				rtn.setCourse_id(results.getString("COURSE_ID"));
 				rtn.setCourse_name(results.getString("COURSE_NAME"));
 				rtn.setCourse_type(results.getInt("COURSE_TYPE"));
@@ -234,73 +231,69 @@ public class DBOperation {
 
 		return rtn;
 	}
+
 	public Vector<Course> doQueryPersonalCourse(String uid) {
-		Vector<Course> rtn = new Vector<Course>() ;
-		
-		Vector<String> course_id = doQueryCourseID(uid) ;
-		/*get all course id referred to this guy*/
-		
-		for ( int i = 0 ; i < course_id.size() ; ++i )
-		{
-			rtn.add(doQueryCertainCourse(course_id.elementAt(i))) ;
+		Vector<Course> rtn = new Vector<Course>();
+
+		Vector<String> course_id = doQueryCourseID(uid);
+		/* get all course id referred to this guy */
+
+		for (int i = 0; i < course_id.size(); ++i) {
+			rtn.add(doQueryCertainCourse(course_id.elementAt(i)));
 		}
-		
-		return rtn ;
+
+		return rtn;
 	}
-	public void doInsert2PreSelTab(PreCourseSelectInfo pcsi)
-	{
+
+	public void doInsert2PreSelTab(PreCourseSelectInfo pcsi) {
 		try {
-			String sql_insert = "INSERT INTO " +
-											   "TB_PRE_COURSE_SELECT " +
-											    "VALUES ( ? , ? )" ;
+			String sql_insert = "INSERT INTO " + "TB_PRE_COURSE_SELECT "
+					+ "VALUES ( ? , ? )";
 			PreparedStatement ps = m_conn.prepareStatement(sql_insert);
-			ps.setString(1, pcsi.getUid()) ;
-			ps.setString(2, pcsi.getCourse_name()) ;
-			
+			ps.setString(1, pcsi.getUid());
+			ps.setString(2, pcsi.getCourse_name());
+
 			ps.executeUpdate();
 
-			m_conn.commit() ; /*commit it if there is no exception*/
+			m_conn.commit(); /* commit it if there is no exception */
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
 	}
-	public void doDeleteFromPreSelTab(PreCourseSelectInfo pcsi)
-	{
+
+	public void doDeleteFromPreSelTab(PreCourseSelectInfo pcsi) {
 		try {
-			String sql_delete = "DELETE FROM " +
-								"TB_PRE_COURSE_SELECT " +
-								"WHERE U_ID=? AND COURSE_NAME=?";
-			PreparedStatement ps = m_conn.prepareStatement(sql_delete) ;
-			
-			ps.setString(1, pcsi.getUid()) ;
-			ps.setString(2, pcsi.getCourse_name()) ;
-			/*prepare sql string*/
-			ps.executeUpdate() ;
-			
-			m_conn.commit() ;/*commit it if there is no exception*/
-		}catch(Exception e)	{
-			System.err.println("error : " + e) ;
+			String sql_delete = "DELETE FROM " + "TB_PRE_COURSE_SELECT "
+					+ "WHERE U_ID=? AND COURSE_NAME=?";
+			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
+
+			ps.setString(1, pcsi.getUid());
+			ps.setString(2, pcsi.getCourse_name());
+			/* prepare sql string */
+			ps.executeUpdate();
+
+			m_conn.commit();/* commit it if there is no exception */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
 		}
 	}
-	public Vector<PreCourseSelectInfo> doQueryPreTabByID(String uid)
-	{
-		Vector<PreCourseSelectInfo> rtn = new Vector<PreCourseSelectInfo>() ;
-		
+
+	public Vector<PreCourseSelectInfo> doQueryPreCourseInfoFromTabPreCourseSelectByID(String uid) {
+		Vector<PreCourseSelectInfo> rtn = new Vector<PreCourseSelectInfo>();
+
 		try {
-			String query_course = "SELECT COURSE_NAME " +
-								  "FROM TB_PRE_COURSE_SELECT " +
-								  "WHERE U_ID=?" ;
+			String query_course = "SELECT COURSE_NAME "
+					+ "FROM TB_PRE_COURSE_SELECT " + "WHERE U_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
-			ps.setString(1, uid) ;
+			ps.setString(1, uid);
 			ResultSet results = ps.executeQuery();
-			
-			while(results.next())
-			{
-				PreCourseSelectInfo buff = new PreCourseSelectInfo() ;
-				buff.setUid(uid) ;
-				buff.setCourse_name(results.getString("COURSE_NAME")) ;
-				
-				rtn.addElement(buff) ;
+
+			while (results.next()) {
+				PreCourseSelectInfo buff = new PreCourseSelectInfo();
+				buff.setUid(uid);
+				buff.setCourse_name(results.getString("COURSE_NAME"));
+
+				rtn.addElement(buff);
 				/* write to rtn */
 			}
 			results.close();
@@ -308,22 +301,21 @@ public class DBOperation {
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
-		
-		return rtn ;
+
+		return rtn;
 	}
-	public Vector<Course> doQuerybyCourseName(String course_name)
-	{
-		Vector<Course> rtn = new Vector<Course>() ;
+
+	public Vector<Course> doQuerybyCourseName(String course_name) {
+		Vector<Course> rtn = new Vector<Course>();
 		try {
 			String query_course_id = "SELECT * FROM TB_COURSE WHERE COURSE_NAME=?";
 			PreparedStatement ps = m_conn.prepareStatement(query_course_id);
-			ps.setString(1, course_name) ;
+			ps.setString(1, course_name);
 			ResultSet results = ps.executeQuery();
-			
-			while(results.next())
-			{
+
+			while (results.next()) {
 				Course temp = new Course();
-				
+
 				temp.setCourse_id(results.getString("COURSE_ID"));
 				temp.setCourse_name(results.getString("COURSE_NAME"));
 				temp.setCourse_type(results.getInt("COURSE_TYPE"));
@@ -336,8 +328,8 @@ public class DBOperation {
 				temp.setCourse_current_seleted_num(results
 						.getInt("COURSE_CURRENT_SELECTED_NUM"));
 				temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
-				
-				rtn.addElement( temp ) ;
+
+				rtn.addElement(temp);
 				/* write to rtn */
 			}
 			results.close();
@@ -345,7 +337,102 @@ public class DBOperation {
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
+		return rtn;
+	}
 
+	public void doInsert2TabCourseSelect(String uid, String courseid) {
+		try {
+			String sql_insert = "INSERT INTO " + "TB_COURSE_SELECT "
+					+ "VALUES ( ? , ? )";
+			PreparedStatement ps = m_conn.prepareStatement(sql_insert);
+			ps.setString(1, uid);
+			ps.setString(2, courseid);
+
+			ps.executeUpdate();
+
+			m_conn.commit(); /* commit it if there is no exception */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
+
+	public void doDeleteFromTabCourseSelect(String uid, String courseid) {
+		try {
+			String sql_delete = "DELETE FROM " 
+										+ "TB_COURSE_SELECT "
+										+ "WHERE U_ID=? AND COURSE_ID=?";
+			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
+			ps.setString(1, uid);
+			ps.setString(2, courseid);
+			/* prepare sql string */
+			ps.executeUpdate();
+
+			m_conn.commit();/* commit it if there is no exception */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
+
+	private Vector<String> doQueryCertainCourseIDFromTabCourseSelectByUid(
+			String uid) {
+		Vector<String> rtn = new Vector<String>();
+
+		try {
+			String query_str = "SELECT COURSE_ID " 
+							+ "FROM TB_COURSE_SELECT "
+						 	+ "WHERE U_ID=?";
+			PreparedStatement ps = m_conn.prepareStatement(query_str);
+			ps.setString(1, uid);
+
+			ResultSet results = ps.executeQuery();
+
+			while (results.next()) {
+				rtn.addElement(results.getString("COURSE_ID"));
+			}
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn;
+
+	}
+
+	public Vector<Course> doQueryAllCourseTabCourseSelectByUid(String uid) {
+		Vector<Course> rtn = new Vector<Course>();
+		Vector<String> courseid = doQueryCertainCourseIDFromTabCourseSelectByUid(uid) ;
+		
+		for ( int i = 0 ; i != courseid.size() ; ++i )
+		{
+			try{
+				String query_str = "SELECT * "
+								+  "FROM TB_COURSE "
+								+  "WHERE COURSE_ID=?" ;
+				PreparedStatement ps = m_conn.prepareStatement(query_str) ;
+				ps.setString(1,courseid.elementAt(i)) ;
+				ResultSet results = ps.executeQuery() ;
+				
+				while ( results.next() )
+				{
+					Course temp = new Course();
+
+					temp.setCourse_id(results.getString("COURSE_ID"));
+					temp.setCourse_name(results.getString("COURSE_NAME"));
+					temp.setCourse_type(results.getInt("COURSE_TYPE"));
+					temp.setU_id(results.getString("U_ID"));
+					temp.setCourse_point(results.getInt("COURSE_POINT"));
+					temp.setCourse_time(results.getInt("COURSE_TIME"));
+					temp.setCourse_place(results.getString("COURSE_PLACE"));
+					temp.setCourse_comment(results.getString("COURSE_COMMENT"));
+					temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
+					temp.setCourse_current_seleted_num(results
+							.getInt("COURSE_CURRENT_SELECTED_NUM"));
+					temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
+
+					rtn.addElement(temp);
+				}
+			}catch(Exception e){
+				System.err.println("error : " + e);
+			}
+		}
 		return rtn ;
 	}
 }

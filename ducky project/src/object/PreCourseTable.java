@@ -39,7 +39,7 @@ public class PreCourseTable extends CourseTable {
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, 
 				dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		//读取列表代码
-		course_list = dbo.doQueryPreTabByID(u_id);
+		course_list = dbo.doQueryPreCourseInfoFromTabPreCourseSelectByID(u_id);
 		//底层数据的调试信息
 		DebugClass.debug_info("PreTable", "get all course list from id :" + u_id);
 		for(int i = 0; i< course_list.size();++i){
