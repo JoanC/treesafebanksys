@@ -20,6 +20,7 @@ import object.DebugClass;
  * modified by Sun 2010-12-6
  * modified by Sun 2010-12-7
  * modified by Sun 2010-12-13
+ * modified by Sun 2010-12-14
  */
 
 public class DBOperation {
@@ -438,5 +439,21 @@ public class DBOperation {
 			}
 		}
 		return rtn ;
+	}
+	public void doDeleteAllInTabCourseSelectByUID(String uid)
+	{
+		try {
+			String sql_delete = "DELETE FROM " 
+								+ "TB_COURSE_SELECT "
+								+ "WHERE U_ID=?";
+			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
+			ps.setString(1, uid);
+			/* prepare sql string */
+			ps.executeUpdate();
+
+			m_conn.commit();/* commit it if there is no exception */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
 	}
 }

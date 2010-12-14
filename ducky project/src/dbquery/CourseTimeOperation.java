@@ -2,6 +2,12 @@ package dbquery;
 
 import java.util.Vector;
 
+/*
+ * created by Sun 2010-12-1 
+ * modified by Sun 2010-12-14
+ * */
+
+
 public class CourseTimeOperation
 {
 	private static final int MAX_NUM_OF_COURSES_PER_DAY = 11;
