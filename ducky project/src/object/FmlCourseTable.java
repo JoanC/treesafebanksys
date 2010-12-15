@@ -58,7 +58,12 @@ public class FmlCourseTable extends CourseTable {
 	protected Vector<Course> searchCourseList(){
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		DebugClass.debug_info(this.toString(), "search the formal table of u_id : " + u_id);
 		Vector<Course> _result =  dbo.doQueryAllCourseTabCourseSelectByUid(u_id);
+		for (int i = 0; i < _result.size(); i++) {
+			DebugClass.debug_info(this.toString(), "find course :  " + _result.elementAt(i).getCourse_id());
+		}
+		DebugClass.debug_info(this.toString(), "search done!");
 		dbo.disconnectDB();
 		return _result;
 	}
