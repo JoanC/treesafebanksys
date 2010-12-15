@@ -23,12 +23,13 @@ public class FmlCourseTable extends CourseTable {
 		super();
 		// TODO Auto-generated constructor stub
 		u_id = _u_id;
+		course_list_fixedCourses = new Vector<Course>();
+		course_addedCourses = new Vector<Course>();
+		course_deletedCourses = new Vector<Course>();
 		//填充原始数据
 		course_list_org = this.searchCourseList();
 		course_list_fixedCourses.addAll(course_list_org);
 		
-		course_addedCourses = new Vector<Course>();
-		course_deletedCourses = new Vector<Course>();
 	}
 
 	//学生或者老师的用户id的记录
