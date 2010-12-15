@@ -93,7 +93,7 @@ public class FmlCourseTable extends CourseTable {
 	//检测课表中的冲突
 	@SuppressWarnings("unchecked")
 	public Vector<Exp_CourseConfict> checkException(){
-		Vector<Exp_CourseConfict> vec_exp = null;
+		Vector<Exp_CourseConfict> vec_exp = new Vector<Exp_CourseConfict>();
 		//检测fixed之后课表本身的冲突
 		//复制两个列表进行比较
 		Vector<Course> _temp_1 = new Vector<Course>();
@@ -102,6 +102,7 @@ public class FmlCourseTable extends CourseTable {
 		_temp_2.addAll(course_list_fixedCourses);
 		//判定冲突
 		//两两判定
+		/*
 		for(int _index_time = 0 ; _index_time <  _temp_1.size() ; ++ _index_time){
 			for(int _j = _index_time ; _j < _temp_2.size() ; _j++){
 				Course _course_1 = _temp_1.elementAt(_index_time);
@@ -118,7 +119,7 @@ public class FmlCourseTable extends CourseTable {
 					_new_exp.setmConflicTime(_course_1.getCourse_time());
 				}
 			}
-		}
+		}*/
 		return vec_exp;
 	}
 	
@@ -137,6 +138,8 @@ public class FmlCourseTable extends CourseTable {
 		//首先删除所有旧课表
 		dbo.doDeleteAllInTabCourseSelectByUID(u_id);
 		//再通过循环添加新的修改过的课表
+		
+		
 		for(int i = 0 ; i < course_list_fixedCourses.size() ; ++i){
 			DebugClass.debug_info(this.toString(), "save the course : ");
 			dbo.doInsert2TabCourseSelect(u_id, course_list_fixedCourses.elementAt(i).getCourse_id());
