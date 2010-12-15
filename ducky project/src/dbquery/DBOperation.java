@@ -1,7 +1,5 @@
 package dbquery;
 
-import db_data_structure.*;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.Vector;
 
 import object.DebugClass;
+import db_data_structure.*;
 
 /*
  * created by Sun 2010-11-?
@@ -123,7 +122,8 @@ public class DBOperation {
 
 	public void doUpdateIsLogin(String uid, boolean isLogin) {
 		DebugClass.debug_info(this.toString(), "update the isLogin...");
-		DebugClass.debug_info(this.toString(), "the new data is : " + (isLogin ? "is login" : "is not login"));
+		DebugClass.debug_info(this.toString(), "the new data is : "
+				+ (isLogin ? "is login" : "is not login"));
 		try {
 			String query_login = "UPDATE TB_LOGIN SET U_IS_LOGIN=? WHERE U_ID=?";
 
@@ -202,8 +202,47 @@ public class DBOperation {
 		return rtn;
 	}
 
-	private Course doQueryCertainCourse(String course_id) {
+	private Course doMappingCourse(ResultSet results) {
 		Course rtn = new Course();
+		Week buff = new Week() ;
+		try {
+			rtn.setCourse_id(results.getString("COURSE_ID"));
+			rtn.setCourse_name(results.getString("COURSE_NAME"));
+			rtn.setCourse_type(results.getInt("COURSE_TYPE"));
+			rtn.setU_id(results.getString("U_ID"));
+			rtn.setCourse_point(results.getInt("COURSE_POINT"));
+			rtn.setCourse_place(results.getString("COURSE_PLACE"));
+			rtn.setCourse_comment(results.getString("COURSE_COMMENT"));
+			rtn.setCourse_volume(results.getInt("COURSE_VOLUME"));
+			rtn.setCourse_current_seleted_num(results
+					.getInt("COURSE_CURRENT_SELECTED_NUM"));
+			rtn.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
+			
+			buff.setCourse_time_mon(results.getInt("COURSE_TIME_MON"));
+			buff.setCourse_time_tues(results.getInt("COURSE_TIME_TUES"));
+			buff.setCourse_time_wed(results.getInt("COURSE_TIME_WED"));
+			buff.setCourse_time_thur(results.getInt("COURSE_TIME_THUR"));
+			buff.setCourse_time_fri(results.getInt("COURSE_TIME_FRI"));
+			buff.setCourse_time_sat(results.getInt("COURSE_TIME_SAT"));
+			buff.setCourse_time_sun(results.getInt("COURSE_TIME_SUN"));
+			
+			buff.setCourse_mon_freq(results.getInt("COURSE_MON_FREQ")) ;
+			buff.setCourse_tues_freq(results.getInt("COURSE_TUES_FREQ")) ;
+			buff.setCourse_wed_freq(results.getInt("COURSE_WED_FREQ")) ;
+			buff.setCourse_thur_freq(results.getInt("COURSE_THUR_FREQ")) ;
+			buff.setCourse_fri_freq(results.getInt("COURSE_FRI_FREQ")) ;
+			buff.setCourse_sat_freq(results.getInt("COURSE_SAT_FREQ")) ;
+			buff.setCourse_sun_freq(results.getInt("COURSE_SUN_FREQ")) ;
+			
+			rtn.setCourse_time_week(buff) ;
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn;
+	}
+
+	private Course doQueryCertainCourse(String course_id) {
+		Course rtn = null;
 
 		try {
 			String query_course = "SELECT * " + "FROM TB_COURSE "
@@ -213,19 +252,7 @@ public class DBOperation {
 			ResultSet results = ps.executeQuery();
 
 			while (results.next()) {
-				rtn.setCourse_id(results.getString("COURSE_ID"));
-				rtn.setCourse_name(results.getString("COURSE_NAME"));
-				rtn.setCourse_type(results.getInt("COURSE_TYPE"));
-				rtn.setU_id(results.getString("U_ID"));
-				rtn.setCourse_point(results.getInt("COURSE_POINT"));
-				rtn.setCourse_time(results.getInt("COURSE_TIME"));
-				rtn.setCourse_place(results.getString("COURSE_PLACE"));
-				rtn.setCourse_comment(results.getString("COURSE_COMMENT"));
-				rtn.setCourse_volume(results.getInt("COURSE_VOLUME"));
-				rtn.setCourse_current_seleted_num(results
-						.getInt("COURSE_CURRENT_SELECTED_NUM"));
-				rtn.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
-
+				rtn = doMappingCourse(results);
 				/* write to rtn */
 			}
 			results.close();
@@ -283,7 +310,8 @@ public class DBOperation {
 		}
 	}
 
-	public Vector<PreCourseSelectInfo> doQueryPreCourseInfoFromTabPreCourseSelectByID(String uid) {
+	public Vector<PreCourseSelectInfo> doQueryPreCourseInfoFromTabPreCourseSelectByID(
+			String uid) {
 		Vector<PreCourseSelectInfo> rtn = new Vector<PreCourseSelectInfo>();
 
 		try {
@@ -319,20 +347,7 @@ public class DBOperation {
 			ResultSet results = ps.executeQuery();
 
 			while (results.next()) {
-				Course temp = new Course();
-
-				temp.setCourse_id(results.getString("COURSE_ID"));
-				temp.setCourse_name(results.getString("COURSE_NAME"));
-				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-				temp.setU_id(results.getString("U_ID"));
-				temp.setCourse_point(results.getInt("COURSE_POINT"));
-				temp.setCourse_time(results.getInt("COURSE_TIME"));
-				temp.setCourse_place(results.getString("COURSE_PLACE"));
-				temp.setCourse_comment(results.getString("COURSE_COMMENT"));
-				temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
-				temp.setCourse_current_seleted_num(results
-						.getInt("COURSE_CURRENT_SELECTED_NUM"));
-				temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
+				Course temp = doMappingCourse(results);
 
 				rtn.addElement(temp);
 				/* write to rtn */
@@ -363,9 +378,8 @@ public class DBOperation {
 
 	public void doDeleteFromTabCourseSelect(String uid, String courseid) {
 		try {
-			String sql_delete = "DELETE FROM " 
-										+ "TB_COURSE_SELECT "
-										+ "WHERE U_ID=? AND COURSE_ID=?";
+			String sql_delete = "DELETE FROM " + "TB_COURSE_SELECT "
+					+ "WHERE U_ID=? AND COURSE_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
 			ps.setString(1, uid);
 			ps.setString(2, courseid);
@@ -383,9 +397,8 @@ public class DBOperation {
 		Vector<String> rtn = new Vector<String>();
 
 		try {
-			String query_str = "SELECT COURSE_ID " 
-							+ "FROM TB_COURSE_SELECT "
-						 	+ "WHERE U_ID=?";
+			String query_str = "SELECT COURSE_ID " + "FROM TB_COURSE_SELECT "
+					+ "WHERE U_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 			ps.setString(1, uid);
 
@@ -394,6 +407,7 @@ public class DBOperation {
 			while (results.next()) {
 				rtn.addElement(results.getString("COURSE_ID"));
 			}
+			results.close();
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
@@ -403,49 +417,33 @@ public class DBOperation {
 
 	public Vector<Course> doQueryAllCourseTabCourseSelectByUid(String uid) {
 		Vector<Course> rtn = new Vector<Course>();
-		Vector<String> courseid = doQueryCertainCourseIDFromTabCourseSelectByUid(uid) ;
-		
-		for ( int i = 0 ; i != courseid.size() ; ++i )
-		{
-			try{
-				String query_str = "SELECT * "
-								+  "FROM TB_COURSE "
-								+  "WHERE COURSE_ID=?" ;
-				PreparedStatement ps = m_conn.prepareStatement(query_str) ;
-				ps.setString(1,courseid.elementAt(i)) ;
-				ResultSet results = ps.executeQuery() ;
-				
-				while ( results.next() )
-				{
-					Course temp = new Course();
+		Vector<String> courseid = doQueryCertainCourseIDFromTabCourseSelectByUid(uid);
 
-					temp.setCourse_id(results.getString("COURSE_ID"));
-					temp.setCourse_name(results.getString("COURSE_NAME"));
-					temp.setCourse_type(results.getInt("COURSE_TYPE"));
-					temp.setU_id(results.getString("U_ID"));
-					temp.setCourse_point(results.getInt("COURSE_POINT"));
-					temp.setCourse_time(results.getInt("COURSE_TIME"));
-					temp.setCourse_place(results.getString("COURSE_PLACE"));
-					temp.setCourse_comment(results.getString("COURSE_COMMENT"));
-					temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
-					temp.setCourse_current_seleted_num(results
-							.getInt("COURSE_CURRENT_SELECTED_NUM"));
-					temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
+		for (int i = 0; i != courseid.size(); ++i) {
+			try {
+				String query_str = "SELECT * " + "FROM TB_COURSE "
+						+ "WHERE COURSE_ID=?";
+				PreparedStatement ps = m_conn.prepareStatement(query_str);
+				ps.setString(1, courseid.elementAt(i));
+				ResultSet results = ps.executeQuery();
+
+				while (results.next()) {
+					Course temp = doMappingCourse(results);
 
 					rtn.addElement(temp);
 				}
-			}catch(Exception e){
+				results.close();
+			} catch (Exception e) {
 				System.err.println("error : " + e);
 			}
 		}
-		return rtn ;
+		return rtn;
 	}
-	public void doDeleteAllInTabCourseSelectByUID(String uid)
-	{
+
+	public void doDeleteAllInTabCourseSelectByUID(String uid) {
 		try {
-			String sql_delete = "DELETE FROM " 
-								+ "TB_COURSE_SELECT "
-								+ "WHERE U_ID=?";
+			String sql_delete = "DELETE FROM " + "TB_COURSE_SELECT "
+					+ "WHERE U_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
 			ps.setString(1, uid);
 			/* prepare sql string */
