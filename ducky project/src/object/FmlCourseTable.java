@@ -38,9 +38,14 @@ public class FmlCourseTable extends CourseTable {
 	
 	
 	@Override
-	public Vector get_course_list() {
+	public Vector<Course> get_course_list() {
 		// TODO Auto-generated method stub
 		//读取数据库中的课表数据
+		return course_list_fixedCourses;
+	}
+	
+	public Vector<Course> get_org_data(){
+		//获取最近一次保存前的原始数据
 		return course_list_org;
 	}
 
@@ -121,4 +126,8 @@ public class FmlCourseTable extends CourseTable {
 		dbo.disconnectDB();
 		return exp;
 	}
+	
+	//作者:万君亚
+	//时间:2010/12/15
+	
 }
