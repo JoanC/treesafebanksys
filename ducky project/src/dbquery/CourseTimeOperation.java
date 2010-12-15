@@ -6,10 +6,6 @@ import java.util.Vector;
 
 import javax.annotation.Generated;
 
-
-import com.sun.org.apache.bcel.internal.generic.INVOKEVIRTUAL;
-import com.sun.org.apache.xpath.internal.axes.OneStepIterator;
-
 import db_data_structure.Week;
 import db_data_structure.enCourseFreq;
 
@@ -45,7 +41,7 @@ public class CourseTimeOperation {
 		    for(int _j = 0 ; _j <  _day_times.size() ; ++_j){
 		    	if(_day_times.elementAt(_j) == true){
 		    		//表示此时有课
-		    		_one_day_time_str += _j + " ";
+		    		_one_day_time_str += (_j+1) + " ";
 		    	}
 		    }
 		    _one_day_time_str += " 节";
@@ -56,9 +52,9 @@ public class CourseTimeOperation {
 	}
 	
 	private static String generate_week_string(int _week_day,Week _oneWeek){
-		String _week_day_string = "周" + _week_day;
+		String _week_day_string = "周" + (_week_day+1);
 		//判断单双周
-		int _feq = _oneWeek.getCourse_freq(_week_day);
+		int _feq = _oneWeek.getCourse_freq(_week_day+1);
 		if(_feq == enCourseFreq.NONE){
 			_week_day_string += "<" + "次时间段暂停" + ">";
 		}
@@ -139,7 +135,7 @@ public class CourseTimeOperation {
 						vecbuff.addElement(boobuff);
 						sample <<= 1; // 左移一位
 					}
-					rtn.put(new Integer(i), vecbuff);
+					rtn.put(new Integer(i+1), vecbuff);
 				}
 			}
 		}
