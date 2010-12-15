@@ -28,8 +28,9 @@ public class FmlCourseTable extends CourseTable {
 		course_deletedCourses = new Vector<Course>();
 		//填充原始数据
 		course_list_org = this.searchCourseList();
+		DebugClass.debug_info(this.toString(), "copy data... from org data to fixed data...");
 		course_list_fixedCourses.addAll(course_list_org);
-		
+		DebugClass.debug_info(this.toString(), "copy done!");
 	}
 
 	//学生或者老师的用户id的记录
