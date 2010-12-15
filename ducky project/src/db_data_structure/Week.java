@@ -16,6 +16,8 @@ public class Week {
 	private int course_time_sun; // ..日..
 	private int course_sun_freq ;
 	
+
+	
 	public int getCourse_mon_freq() {
 		return course_mon_freq;
 	}
@@ -72,14 +74,60 @@ public class Week {
 		course_sun_freq = courseSunFreq;
 	}
 
-	private int course_freq ; //上课的频率
+	public int getCourse_freq(int index) {
+		switch(index){
+		case 1:
+			return course_mon_freq;
 
-	public int getCourse_freq() {
-		return course_freq;
+		case 2:
+			return course_tues_freq;
+
+		case 3:
+			return course_wed_freq;
+	
+		case 4:
+			return course_thur_freq;
+	
+		case 5:
+			return course_fri_freq;
+	
+		case 6:
+			return course_sat_freq;
+
+		case 7 : 
+			return course_sun_freq;
+
+		default:
+			return 0 ;
+		}
 	}
 
-	public void setCourse_freq(int courseFreq) {
-		course_freq = courseFreq;
+	public void setCourse_freq(int index,int value) {
+		switch(index){
+		case 1:
+			course_mon_freq = value;
+			break ;
+		case 2:
+			course_tues_freq = value;
+			break ;
+		case 3:
+			course_wed_freq = value ;
+			break ;
+		case 4:
+			course_thur_freq = value ;
+			break ;
+		case 5:
+			course_fri_freq = value;
+			break ;
+		case 6:
+			course_sat_freq = value;
+			break ;
+		case 7 : 
+			course_sun_freq = value;
+			break ;
+		default:
+			break ;
+		}
 	}
 	
 	public int getCourse_time_mon() {
