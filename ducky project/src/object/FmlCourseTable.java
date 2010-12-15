@@ -164,8 +164,6 @@ public class FmlCourseTable extends CourseTable {
 		 * 以七个位单位,第一个七个分别表示礼拜一~七的第一节课..依次类推
 		 */
 		Vector<String> _rlt = new Vector<String>();
-		
-		
 		return _rlt;
 	}
 }
