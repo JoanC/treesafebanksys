@@ -112,14 +112,12 @@ public class CourseSelect_Manager {
 	//把一门或者多门课程选入正式课表
 	public Exp SelectCourseToFmlTab(Vector<Course> _new){
 		Exp exp = null;
-		
-		int i;
-		Course tmpCourse;
-		for(i = 0; i < _new.size(); i++){
+		for(int i = 0; i < _new.size(); i++){
+			Course tmpCourse = new Course();
 			tmpCourse = _new.get(i);
+			DebugClass.debug_info(this.toString(), "add course : " + tmpCourse.getCourse_id() + " to fml table...");
 			fml_tab.addCourse(tmpCourse);
 		}
-		
 		return exp;
 	}
 	
