@@ -15,6 +15,8 @@ public class FmlCourseTable extends CourseTable {
 	private String u_id; 				//学生的id
 	private Vector<Course> course_list_org; //课程表中的课程数据容器的原始数据列表
 	private Vector<Course> course_list_fixedCourses;//正在被修改的课程数据列表
+	private Vector<Course> course_addedCourses;//选课过程中添加的课程...为人数统计用
+	private Vector<Course> course_deletedCourses;//选课过程中删除的课程...为人数统计用
 	
 	@SuppressWarnings("unchecked")
 	public FmlCourseTable(String _u_id) {
@@ -24,6 +26,9 @@ public class FmlCourseTable extends CourseTable {
 		//填充原始数据
 		course_list_org = this.searchCourseList();
 		course_list_fixedCourses.addAll(course_list_org);
+		
+		course_addedCourses = new Vector<Course>();
+		course_deletedCourses = new Vector<Course>();
 	}
 
 	//学生或者老师的用户id的记录
@@ -62,6 +67,7 @@ public class FmlCourseTable extends CourseTable {
 	public Exp addCourse(Course _new){
 		Exp exp = new Exp();
 		course_list_fixedCourses.add(_new);
+		course_addedCourses.add(_new);
 		return exp;
 	}
 	
@@ -69,6 +75,7 @@ public class FmlCourseTable extends CourseTable {
 	public Exp deleteCourse(Course _old){
 		Exp exp = new Exp();
 		course_list_fixedCourses.remove(_old);
+		course_deletedCourses.add(_old);
 		return exp;
 	}
 	
@@ -123,11 +130,31 @@ public class FmlCourseTable extends CourseTable {
 			DebugClass.debug_info(this.toString(), "save the course : ");
 			dbo.doInsert2TabCourseSelect(u_id, course_list_fixedCourses.elementAt(i).getCourse_id());
 		}
+		
+		//下面更新选课人数信息
+		
+		//更新辅助列表信息
+		course_addedCourses.clear();
+		course_deletedCourses.clear();
+		
+		//关闭数据库
 		dbo.disconnectDB();
 		return exp;
 	}
 	
 	//作者:万君亚
 	//时间:2010/12/15
-	
+	//将课程表转化为sevelet与网页端可识别的数据格式
+	public Vector<String> convertFmlTabFormat(Vector<Course> _fml_tab){
+		/*
+		 * 返回一个存放课程列表信息的一维数组
+		 * 存放单元为course_id
+		 * 格式如下
+		 * 以七个位单位,第一个七个分别表示礼拜一~七的第一节课..依次类推
+		 */
+		Vector<String> _rlt = new Vector<String>();
+		
+		
+		return _rlt;
+	}
 }
