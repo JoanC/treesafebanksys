@@ -29,8 +29,11 @@ public class FmlCourseTable extends CourseTable {
 		course_list_org = new Vector<Course>();
 		//填充原始数据
 		DebugClass.debug_info(this.toString(), "copy data... from org data to fixed data...");
-		//course_list_fixedCourses.addAll(course_list_org);
 		course_list_org =  this.searchCourseList();
+		course_list_fixedCourses.addAll(course_list_org);
+		for (int i = 0; i < course_list_org.size(); i++) {
+			DebugClass.debug_info(this.toString(), "the copied course is :" + course_list_org.elementAt(i).getCourse_id());
+		}
 		DebugClass.debug_info(this.toString(), "copy done!");
 	}
 
