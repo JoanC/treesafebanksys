@@ -1,10 +1,11 @@
-<%@ page language="java" import="object.Course_Manager"
+<%@ page language="java" import="object.*"
 	contentType="text/html; charset=gb2312"%>
 <%@ page language="java" import="db_data_structure.*"
 	contentType="text/html; charset=gb2312"%> 
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=gb2312"%>
 <%@page import="object.DebugClass"%>
+<%@page import="java.io.IOException"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,7 +40,34 @@
 	}
     out.print("</table>");
 	 %>
-	 
+	  <table width="1000" border="1">
+	 <%
+	 	Vector<Course> _current;
+	 	_current = (Vector<Course>)session.getAttribute("coursestea");
+	 	if(_current != null)
+	 	{
+		for(int i = 0;i!=_current.size();i++)
+		{
+		  DebugClass.debug_info(this.toString(),"_current size:" + _current.size());
+		  DebugClass.debug_info(this.toString(),"_current size:" + _current.elementAt(0).getCourse_name());
+		  out.print("<tr>");
+		  DebugClass.debug_info(this.toString(),"teachername:" + User_Manager.queryUserInfo(_current.elementAt(i).getU_id()).getU_name());
+		  out.print("<td>" + User_Manager.queryUserInfo(_current.elementAt(i).getU_id()).getU_name());
+  		  out.print("<td>" + _current.elementAt(i).getCourse_place());
+  		  //out.print("<td>" + _current.elementAt(i).getCourse_time());
+  		  out.print("<td>" + _current.elementAt(i).getCourse_current_seleted_num() + "/"
+  		                   + _current.elementAt(i).getCourse_current_seleted_num());
+  		  out.print("<td>" + _current.elementAt(i).getCourse_exam_type());
+  		  out.print("<td>" + _current.elementAt(i).getCourse_point());
+		  out.print("</tr><tr>");
+  		  out.print(" <td colspan=\"7\">");
+ 		  out.print(_current.elementAt(i).getCourse_comment());
+ 		  out.print("</td></tr>");
+  		}	
+  		session.removeAttribute("coursestea");
+  		} 
+	  %>
+	  </table>
 	<table width="555" border="1">
   <tr>
     <td width="16">&nbsp;</td>

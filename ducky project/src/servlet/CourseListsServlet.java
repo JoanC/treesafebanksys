@@ -202,14 +202,15 @@ public class CourseListsServlet extends HttpServlet {
 		String value = (String)iRequest.getParameter("SelectCrsCommit");
 		int id = Integer.parseInt(value.substring("SelCrsTea".length()));
 		Vector<Course> _detail = Course_Manager.getCourseListByName(precrs.elementAt(id).getCourse_name());	 
-		Vector<String> _teacher_name = new Vector<String>();
+		/*Vector<String> _teacher_name = new Vector<String>();
 		DebugClass.debug_start();
 		for(int _index = 0 ; _index  < _detail.size() ; ++ _index){
 			//增加老师的姓名
 			_teacher_name.add((User_Manager.queryUserInfo(_detail.elementAt(_index).getU_id()).getU_name()));
 		    DebugClass.debug_info(this.toString(), "name:" + _teacher_name.elementAt(_index));
-		}
-		
+		}*/
+		session.setAttribute("coursestea", _detail);
+		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
