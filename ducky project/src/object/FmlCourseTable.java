@@ -18,7 +18,7 @@ public class FmlCourseTable extends CourseTable {
 	private Vector<Course> course_addedCourses;//选课过程中添加的课程...为人数统计用
 	private Vector<Course> course_deletedCourses;//选课过程中删除的课程...为人数统计用
 	
-	@SuppressWarnings("unchecked")
+
 	public FmlCourseTable(String _u_id) {
 		super();
 		// TODO Auto-generated constructor stub
@@ -55,7 +55,7 @@ public class FmlCourseTable extends CourseTable {
 	}
 
 	//在初始化时获取这个u_id下的课表中的所有课程列表
-	protected Vector searchCourseList(){
+	protected Vector<Course> searchCourseList(){
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		Vector<Course> _result =  dbo.doQueryAllCourseTabCourseSelectByUid(u_id);
