@@ -26,6 +26,7 @@ public class FmlCourseTable extends CourseTable {
 		course_list_fixedCourses = new Vector<Course>();
 		course_addedCourses = new Vector<Course>();
 		course_deletedCourses = new Vector<Course>();
+		 this.searchCourseList();
 		//填充原始数据
 		//course_list_org.addAll( this.searchCourseList());
 		DebugClass.debug_info(this.toString(), "copy data... from org data to fixed data...");
