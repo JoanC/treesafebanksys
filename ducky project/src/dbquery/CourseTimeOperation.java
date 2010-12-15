@@ -51,6 +51,7 @@ public class CourseTimeOperation {
 		    _one_day_time_str += " ½Ú";
 		    _rlt += _one_day_time_str;
 		}
+		System.out.println(_rlt);
 		return _rlt;
 	}
 	
