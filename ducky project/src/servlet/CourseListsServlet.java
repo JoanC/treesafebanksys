@@ -34,7 +34,7 @@ public class CourseListsServlet extends HttpServlet {
 
 	public CourseListsServlet() {
 		super();
-		courseselmgr = new CourseSelect_Manager("082901");
+		//courseselmgr = new CourseSelect_Manager("");
 		// courseselmgr.setU_id();
 	}
 
@@ -62,18 +62,12 @@ public class CourseListsServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		/*
-		 * response.setContentType("text/html"); PrintWriter out =
-		 * response.getWriter(); out.println(
-		 * "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		 * out.println("<HTML>");
-		 * out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		 * out.println("  <BODY>"); out.print("    This is ");
-		 * out.print(this.getClass()); out.println(", using the GET method");
-		 * out.println("  </BODY>"); out.println("</HTML>"); out.flush();
-		 * out.close();
-		 */
+		DebugClass.debug_start();
+		DebugClass.debug_info(this.toString(), "doGet");
+		if(courseselmgr == null)
+		{
+			courseselmgr = new CourseSelect_Manager((String)request.getSession().getAttribute("userid"));
+		}		
 		processRequest(request, response);
 	}
 
@@ -94,18 +88,16 @@ public class CourseListsServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		DebugClass.debug_start();
+		DebugClass.debug_info(this.toString(), "doPost");
+		if(courseselmgr == null)
+		{
+			DebugClass.debug_info(this.toString(), "ID: " + (String)request.getSession().getAttribute("userid"));
+			courseselmgr = new CourseSelect_Manager((String)request.getSession().getAttribute("userid"));
+			DebugClass.debug_info(this.toString(), "new finish!");
+		}
+		
 		processRequest(request, response);
-		/*
-		 * response.setContentType("text/html"); PrintWriter out =
-		 * response.getWriter(); out.println(
-		 * "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		 * out.println("<HTML>");
-		 * out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		 * out.println("  <BODY>"); out.print("    This is ");
-		 * out.print(this.getClass()); out.println(", using the POST method");
-		 * out.println("  </BODY>"); out.println("</HTML>"); out.flush();
-		 * out.close();
-		 */
 	}
 
 	/**
@@ -203,6 +195,22 @@ public class CourseListsServlet extends HttpServlet {
 	    iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	    
 	}
+	private void Request_SelCrsTea()throws ServletException, IOException 
+	{
+		HttpSession session = iRequest.getSession();
+		Vector<PreCourseSelectInfo> precrs = (Vector<PreCourseSelectInfo>)session.getAttribute("precrslist");
+		String value = (String)iRequest.getParameter("SelectCrsCommit");
+		int id = Integer.parseInt(value.substring("SelCrsTea".length()));
+		Vector<Course> _detail = Course_Manager.getCourseListByName(precrs.elementAt(id).getCourse_name());	 
+		Vector<String> _teacher_name = new Vector<String>();
+		DebugClass.debug_start();
+		for(int _index = 0 ; _index  < _detail.size() ; ++ _index){
+			//增加老师的姓名
+			_teacher_name.add((User_Manager.queryUserInfo(_detail.elementAt(_index).getU_id()).getU_name()));
+		    DebugClass.debug_info(this.toString(), "name:" + _teacher_name.elementAt(_index));
+		}
+		
+	}
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		DebugClass.debug_info(this.toString(), "get request!");
@@ -217,6 +225,9 @@ public class CourseListsServlet extends HttpServlet {
 			Request_PreSelCrs();
 		} else if (para.equals("DelPrsCrs")) {
 			Request_DelPrsCrs();
+		} else if(para.equals("SelCrsTea"))
+		{
+			Request_SelCrsTea();
 		}
 	}
 }
