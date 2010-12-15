@@ -15,7 +15,7 @@ import db_data_structure.enCourseFreq;
 public class CourseTimeOperation {
 	private static final int MAX_NUM_OF_COURSES_PER_DAY = 11;
 
-	public Map<Integer, Vector<Boolean>> convert2Detail(Week oneWeek) {
+	static public Map<Integer, Vector<Boolean>> convert2Detail(Week oneWeek) {
 		Map<Integer, Vector<Boolean>> rtn = new HashMap<Integer, Vector<Boolean>>();
 		int[] time = { oneWeek.getCourse_time_mon(),
 				oneWeek.getCourse_time_tues(), oneWeek.getCourse_time_wed(),
@@ -41,7 +41,7 @@ public class CourseTimeOperation {
 		return rtn;
 	}
 
-	public Map<Integer, Vector<Boolean>> isConflict(Week lhs, Week rhs) // 输入参数为两节课的时间表
+	static public Map<Integer, Vector<Boolean>> isConflict(Week lhs, Week rhs) // 输入参数为两节课的时间表
 	{
 		Map<Integer, Vector<Boolean>> rtn = new HashMap<Integer, Vector<Boolean>>();
 		int[] ltime = { lhs.getCourse_time_mon(), lhs.getCourse_time_tues(),
@@ -81,7 +81,7 @@ public class CourseTimeOperation {
 						vecbuff.addElement(boobuff);
 						sample <<= 1; // 左移一位
 					}
-					rtn.put(new Integer(1), vecbuff);
+					rtn.put(new Integer(i), vecbuff);
 				}
 			}
 		}

@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-import object.DebugClass;
 import db_data_structure.*;
 
 /*
@@ -121,9 +120,7 @@ public class DBOperation {
 	}
 
 	public void doUpdateIsLogin(String uid, boolean isLogin) {
-		DebugClass.debug_info(this.toString(), "update the isLogin...");
-		DebugClass.debug_info(this.toString(), "the new data is : "
-				+ (isLogin ? "is login" : "is not login"));
+
 		try {
 			String query_login = "UPDATE TB_LOGIN SET U_IS_LOGIN=? WHERE U_ID=?";
 
@@ -154,19 +151,9 @@ public class DBOperation {
 			while (results.next()) {
 				Course temp = new Course();
 
-				// temp.setCourse_id(results.getString("COURSE_ID"));
 				temp.setCourse_name(results.getString("COURSE_NAME"));
 				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-				// temp.setU_id(results.getString("U_ID"));
-				// temp.setCourse_point(results.getInt("COURSE_POINT"));
-				// temp.setCourse_time(results.getInt("COURSE_TIME"));
-				// temp.setCourse_place(results.getString("COURSE_PLACE"));
-				// temp.setCourse_comment(results.getString("COURSE_COMMENT"));
-				// temp.setCourse_volume(results.getInt("COURSE_VOLUME"));
-				// temp.setCourse_current_seleted_num(results
-				// .getInt("COURSE_CURRENT_SELECTED_NUM"));
-				// temp.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
-
+				
 				rtn.addElement(temp);
 				/* write to rtn */
 			}
@@ -241,7 +228,7 @@ public class DBOperation {
 		return rtn;
 	}
 
-	private Course doQueryCertainCourse(String course_id) {
+	public Course doQueryCertainCourse(String course_id) {
 		Course rtn = null;
 
 		try {
