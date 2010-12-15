@@ -23,7 +23,7 @@ public class FmlCourseTable extends CourseTable {
 		u_id = _u_id;
 		//填充原始数据
 		course_list_org = this.searchCourseList();
-		course_list_fixedCourses = (Vector<Course>) course_list_org.clone();
+		course_list_fixedCourses.addAll(course_list_org);
 	}
 
 	//学生或者老师的用户id的记录
@@ -49,6 +49,7 @@ public class FmlCourseTable extends CourseTable {
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		Vector<Course> _result =  dbo.doQueryAllCourseTabCourseSelectByUid(u_id);
+		dbo.disconnectDB();
 		return _result;
 	}
 	
@@ -72,8 +73,12 @@ public class FmlCourseTable extends CourseTable {
 		Vector<Exp_CourseConfict> vec_exp = null;
 		//检测fixed之后课表本身的冲突
 		//复制两个列表进行比较
-		Vector<Course> _temp_1 = (Vector<Course>)course_list_fixedCourses.clone();
-		Vector<Course> _temp_2 = (Vector<Course>)course_list_fixedCourses.clone();
+		Vector<Course> _temp_1 = new Vector<Course>();
+		Vector<Course> _temp_2 = new Vector<Course>();
+		_temp_1.addAll(course_list_fixedCourses);
+		_temp_2.addAll(course_list_fixedCourses);
+		//判定冲突
+		//两两判定
 		for(int _index_time = 0 ; _index_time <  _temp_1.size() ; ++ _index_time){
 			for(int _j = _index_time ; _j < _temp_2.size() ; _j++){
 				Course _course_1 = _temp_1.elementAt(_index_time);
@@ -95,9 +100,25 @@ public class FmlCourseTable extends CourseTable {
 	}
 	
 	//保存正式课表
+	@SuppressWarnings("unchecked")
 	public Exp save(){
+		DebugClass.debug_info(this.toString(), "start to save the course...");
 		Exp exp = new Exp();
-		//...
+		//更新数据库列表数据
+		course_list_org.clear();
+		course_list_org = (Vector<Course>) course_list_fixedCourses.clone();//更新course_list_org中的数据
+		//更新所有列表
+		//首先删除所有课程
+		DBOperation dbo = new DBOperation();
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		//首先删除所有旧课表
+		dbo.doDeleteAllInTabCourseSelectByUID(u_id);
+		//再通过循环添加新的修改过的课表
+		for(int i = 0 ; i < course_list_fixedCourses.size() ; ++i){
+			DebugClass.debug_info(this.toString(), "save the course : ");
+			dbo.doInsert2TabCourseSelect(u_id, course_list_fixedCourses.elementAt(i).getCourse_id());
+		}
+		dbo.disconnectDB();
 		return exp;
 	}
 }
