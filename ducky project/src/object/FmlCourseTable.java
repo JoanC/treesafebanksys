@@ -98,7 +98,6 @@ public class FmlCourseTable extends CourseTable {
 	}
 
 	// 检测课表中的冲突
-	@SuppressWarnings("unchecked")
 	public Vector<Exp_CourseConfict> checkException() {
 		Vector<Exp_CourseConfict> vec_exp = new Vector<Exp_CourseConfict>();
 		// 检测fixed之后课表本身的冲突
@@ -202,6 +201,8 @@ public class FmlCourseTable extends CourseTable {
 			}
 			// 步骤3:取得了当前坐标的课程列表,再通过数目,单双周,判断显示出什么信息,即在_rlt中加入怎样的字符串
 			_rlt.add(this.generateSubStrForFmlTab(_temp_list, _week));
+			DebugClass.debug_info(this.toString(),"time -- week : " + (_week+1) + " seq: " 
+					+ (_seq + 1) + this.generateSubStrForFmlTab(_temp_list, _week));
 		}
 		return _rlt;
 	}
