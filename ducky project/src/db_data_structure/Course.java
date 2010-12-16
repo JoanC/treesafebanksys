@@ -1,5 +1,7 @@
 package db_data_structure;
 
+import dbquery.CourseTimeOperation;
+
 
 public class Course {
 	private String course_id; // 课程标识号
@@ -101,5 +103,10 @@ public class Course {
 
 	public void setCourse_exam_type(int courseExamType) {
 		course_exam_type = courseExamType;
+	}
+	
+	public String getCourseTimeDetail(){
+		//返回课程的时间描述
+		return CourseTimeOperation.dateToString(this.getCourse_time_week());
 	}
 }
