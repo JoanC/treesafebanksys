@@ -35,11 +35,11 @@ public class FmlCourseTable extends CourseTable {
 				"copy data... from org data to fixed data...");
 		course_list_org = this.searchCourseList();
 		course_list_fixedCourses.addAll(course_list_org);
-		for (int i = 0; i < course_list_org.size(); i++) {
-			DebugClass.debug_info(this.toString(), "the copied course is :"
-					+ course_list_org.elementAt(i).getCourse_id());
+		//test the function "ToString"
+		Vector<String>_test  = this.convertFmlTabFormat(course_list_org);
+		for(int i = 0 ; i < _test.size() ; ++i){
+			DebugClass.debug_info(this.toString(), _test.elementAt(i));
 		}
-		DebugClass.debug_info(this.toString(), "copy done!");
 	}
 
 	// 学生或者老师的用户id的记录
@@ -182,9 +182,10 @@ public class FmlCourseTable extends CourseTable {
 			// 查找对应的坐标
 			int _week = _index % WEEK_DAYS;
 			int _seq = _index / WEEK_DAYS;
+			DebugClass.debug_info(this.toString(), "the course position is (" + _week + "," + _seq + ");");
 			Vector<Course> _temp_list = new Vector<Course>();// 存储一个格子中的课程列表,最多两个
 			for (int _index_all_list = 0; _index_all_list < course_list_fixedCourses
-					.size(); ++_index) {
+					.size(); ++_index_all_list) {
 				// 取得课程信息与坐标信息
 				Course _course = course_list_fixedCourses
 						.elementAt(_index_all_list);
@@ -208,6 +209,10 @@ public class FmlCourseTable extends CourseTable {
 	}
 
 	private String generateSubStrForFmlTab(Vector<Course> _list, int _week_day) {
+		DebugClass.debug_info(this.toString(), "course in the list : ");
+		for(int i = 0 ; i < _list.size() ; ++i){
+			DebugClass.debug_info(this.toString(), " " + _list.elementAt(i) + " ");
+		}
 		String _generate_str = "";
 		if (_list.size() == 0) {
 			// 没有课程
@@ -220,10 +225,9 @@ public class FmlCourseTable extends CourseTable {
 			Course _tmp_1 = _list.elementAt(0);
 			Course _tmp_2 = _list.elementAt(1);
 			// 判断单双周序列是否一致,若有一致则冲突
-			if (_tmp_1.getCourse_time_week().getCourse_freq(_week_day) == _tmp_2
-					.getCourse_time_week().getCourse_freq(_week_day)) {
+			if (!CourseTimeOperation.isConflict(_tmp_1.getCourse_time_week(), _tmp_2.getCourse_time_week()).isEmpty()) {
 				// 如果序列相同,则冲突
-				_generate_str += "课程冲突!";
+				_generate_str += "课程 " + _tmp_1.getCourse_name() + " " + _tmp_2.getCourse_name() + "存在冲突!";
 			} else {
 				// 单双周不冲突
 				_generate_str += _tmp_1.getCourse_name()
@@ -253,6 +257,7 @@ public class FmlCourseTable extends CourseTable {
 		} else {
 			// 每周
 			// 不显示
+			_sub += "<每周>";
 		}
 		return _sub;
 	}
