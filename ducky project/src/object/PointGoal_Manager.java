@@ -1,7 +1,7 @@
 package object;
 
 
-import object.PointGoal;
+import db_data_structure.PointGoal;
 import object.Exp;
 
 

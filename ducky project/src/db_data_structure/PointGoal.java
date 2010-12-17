@@ -1,4 +1,4 @@
-package object;
+package db_data_structure;
 
 
 //这个类对一个学院的培养计划做了一个数据的记录和读取
