@@ -38,7 +38,9 @@ public class FmlCourseTable extends CourseTable {
 		//test the function "ToString"
 		Vector<String>_test  = this.convertFmlTabFormat(course_list_org);
 		for(int i = 0 ; i < _test.size() ; ++i){
-			DebugClass.debug_info(this.toString(), _test.elementAt(i));
+			int _week = i % WEEK_DAYS;
+			int _seq = i / WEEK_DAYS;
+			if(_test.elementAt(i) != "") DebugClass.debug_info(this.toString(),"ÐÇÆÚ"+ (_week+1) + "µÚ"+ (_seq+1) + "½Ú: " + _test.elementAt(i));
 		}
 	}
 
