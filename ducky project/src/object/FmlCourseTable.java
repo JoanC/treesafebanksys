@@ -33,14 +33,14 @@ public class FmlCourseTable extends CourseTable {
 		course_list_org = this.searchCourseList();
 		course_list_fixedCourses.addAll(course_list_org);
 		//test the function "ToString"
-		/*
+		
 		Vector<String>_test  = this.convertFmlTabFormat(course_list_org);
 		for(int i = 0 ; i < _test.size() ; ++i){
-			int _week = i % WEEK_DAYS;
-			int _seq = i / WEEK_DAYS;
+			int _week = i % 7;
+			int _seq = i / 7;
 			DebugClass.debug_info(this.toString(),"Index : " + i + "_" + "(" + (_week+1) + "," + (_seq + 1) + ")  :" + _test.elementAt(i));
 		}
-		*/
+		
 	}
 
 	// 学生或者老师的用户id的记录
