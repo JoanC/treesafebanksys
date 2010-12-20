@@ -84,7 +84,8 @@ public abstract class CourseTable {
 			// 恰好一门课程,不存在冲突
 			// 判断单双周问题
 			Course _tmp = _list.elementAt(0);
-			_generate_str += _tmp.getCourse_name();
+			_generate_str += _tmp.getCourse_name()
+					+ " " + generateSubStrByFeq(_tmp.getCourse_time_week().getCourse_freq(_week_day));
 		} else if (_list.size() == 2) {
 			Course _tmp_1 = _list.elementAt(0);
 			Course _tmp_2 = _list.elementAt(1);
@@ -96,13 +97,16 @@ public abstract class CourseTable {
 				// 单双周不冲突
 				_generate_str += _tmp_1.getCourse_name()
 						+ " " + generateSubStrByFeq(_tmp_1.getCourse_time_week().getCourse_freq(_week_day));
-				_generate_str += "\n";//换行符
 				_generate_str += _tmp_2.getCourse_name() 
 						+ " " + generateSubStrByFeq(_tmp_2.getCourse_time_week().getCourse_freq(_week_day));
 			}
 		}else{
 			//课程冲突
-			_generate_str += "课程冲突!";
+			_generate_str += "课程 ";
+			for(int _index = 0 ; _index < _list.size() ; ++_index){
+				_generate_str += _list.elementAt(_index) + " ";
+			}
+			_generate_str += "存在冲突!";
 		}
 		if(_generate_str == "") _generate_str += "--";
 		return _generate_str;
@@ -122,7 +126,7 @@ public abstract class CourseTable {
 		} else {
 			// 每周
 			// 不显示
-			_sub += "<每周>";
+			//_sub += "<每周>";
 		}
 		return _sub;
 	}
