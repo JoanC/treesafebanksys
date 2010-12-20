@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.annotation.Generated;
-
 import db_data_structure.Week;
 import db_data_structure.enCourseFreq;
 
@@ -16,7 +14,7 @@ import db_data_structure.enCourseFreq;
  * */
 public class CourseTimeOperation {
 	private static final int MAX_NUM_OF_COURSES_PER_DAY = 11;
-	private static final int WEEK_DAYS = 7;
+	private static final int WEEK_DAYS = 7 ;
 
 	static public String dateToString(Week _oneWeek){
 		String _rlt = "";
