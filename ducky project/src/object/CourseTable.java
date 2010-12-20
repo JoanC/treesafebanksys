@@ -104,6 +104,7 @@ public abstract class CourseTable {
 			//¿Î³Ì³åÍ»
 			_generate_str += "¿Î³Ì³åÍ»!";
 		}
+		if(_generate_str == "") _generate_str += "--";
 		return _generate_str;
 	}
 
