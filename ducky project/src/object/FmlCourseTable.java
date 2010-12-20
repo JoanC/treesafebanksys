@@ -112,23 +112,22 @@ public class FmlCourseTable extends CourseTable {
 		_temp_2.addAll(course_list_fixedCourses);
 		// 判定冲突
 		// 两两判定
-		/*
-		 * for(int _index_time = 0 ; _index_time < _temp_1.size() ; ++
-		 * _index_time){ for(int _j = _index_time ; _j < _temp_2.size() ; _j++){
-		 * Course _course_1 = _temp_1.elementAt(_index_time); Course _couese_2 =
-		 * _temp_2.elementAt(_j);
-		 * if(CourseTimeOperation.isConflict(_course_1.getCourse_time(),
-		 * _couese_2.getCourse_time())){ //发现冲突
-		 * DebugClass.debug_info(this.toString(),
-		 * "find conflict,the two couse is : " + _course_1.getCourse_name() +
-		 * " and  " + _couese_2.getCourse_name());
-		 * DebugClass.debug_info(this.toString(),"the conflict time is : " +
-		 * _course_1.getCourse_time()); Exp_CourseConfict _new_exp = new
-		 * Exp_CourseConfict();
-		 * _new_exp.setmCourse_id_1(_course_1.getCourse_id());
-		 * _new_exp.setmCourse_id_2(_couese_2.getCourse_id());
-		 * _new_exp.setmConflicTime(_course_1.getCourse_time()); } } }
-		 */
+		
+		for (int _index_time = 0; _index_time < _temp_1.size(); ++_index_time) {
+			for (int _j = _index_time; _j < _temp_2.size(); _j++) {
+				Course _course_1 = _temp_1.elementAt(_index_time);
+				Course _couese_2 = _temp_2.elementAt(_j);
+				if (CourseTimeOperation.isConflict(_course_1.getCourse_time_week(),
+						_couese_2.getCourse_time_week()).size() != 0) { // 发现冲突
+					Exp_CourseConfict _new_exp = new Exp_CourseConfict();
+					_new_exp.setmCourse_id_1(_course_1.getCourse_id());
+					_new_exp.setmCourse_id_2(_couese_2.getCourse_id());
+					//_new_exp.getmConflicTime(CourseTimeOperation.isConflict(_course_1.getCourse_time_week(),
+					//		_couese_2.getCourse_time_week()));
+				}
+			}
+		}
+		 
 		return vec_exp;
 	}
 
