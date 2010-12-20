@@ -212,6 +212,11 @@ public class CourseListsServlet extends HttpServlet {
 		session.setAttribute("coursestea", _detail);
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
+	public void getCourseTables()
+	{
+		HttpSession session = iRequest.getSession();
+		//Vector<String> crstable = 
+	}
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		DebugClass.debug_info(this.toString(), "get request!");
