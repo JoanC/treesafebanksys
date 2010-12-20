@@ -32,14 +32,19 @@ public class FmlCourseTable extends CourseTable {
 				"copy data... from org data to fixed data...");
 		course_list_org = this.searchCourseList();
 		course_list_fixedCourses.addAll(course_list_org);
-		//test the function "ToString"
 		
+		for(int _index = 0; _index < course_list_fixedCourses.size() ; ++ _index){
+			DebugClass.debug_info(this.toString(),"formal table:" + course_list_fixedCourses.elementAt(_index).getCourse_name());
+		}
+		//test the function "ToString"
+		/*
 		Vector<String>_test  = this.convertFmlTabFormat(course_list_org);
 		for(int i = 0 ; i < _test.size() ; ++i){
 			int _week = i % 7;
 			int _seq = i / 7;
 			DebugClass.debug_info(this.toString(),"Index : " + i + "_" + "(" + (_week+1) + "," + (_seq + 1) + ")  :" + _test.elementAt(i));
 		}
+		*/
 		
 	}
 
