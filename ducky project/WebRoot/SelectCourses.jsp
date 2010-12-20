@@ -48,10 +48,10 @@
 	 	{
 		for(int i = 0;i!=_current.size();i++)
 		{
-		  DebugClass.debug_info(this.toString(),"_current size:" + _current.size());
-		  DebugClass.debug_info(this.toString(),"_current size:" + _current.elementAt(0).getCourse_name());
+		  //DebugClass.debug_info(this.toString(),"_current size:" + _current.size());
+		  //DebugClass.debug_info(this.toString(),"_current size:" + _current.elementAt(0).getCourse_name());
 		  out.print("<tr>");
-		  DebugClass.debug_info(this.toString(),"teachername:" + User_Manager.queryUserInfo(_current.elementAt(i).getU_id()).getU_name());
+		 // DebugClass.debug_info(this.toString(),"teachername:" + User_Manager.queryUserInfo(_current.elementAt(i).getU_id()).getU_name());
 		  out.print("<td>" + User_Manager.queryUserInfo(_current.elementAt(i).getU_id()).getU_name());
   		  out.print("<td>" + _current.elementAt(i).getCourse_place());
   		  //out.print("<td>" + _current.elementAt(i).getCourse_time());
@@ -62,7 +62,9 @@
 		  out.print("</tr><tr>");
   		  out.print(" <td colspan=\"7\">");
  		  out.print(_current.elementAt(i).getCourse_comment());
- 		  out.print("</td></tr>");
+ 		  out.print("</td>");
+ 		  out.print("<td><input type=\"image\" name=\"SelectCrsCommit\" id=\"selcourse\" value=\"SelFmlCrs" + i + "\" src=\"images/Button_Login.gif\"</td>");
+ 		  out.print("</tr>");
   		}	
   		session.removeAttribute("coursestea");
   		} 
