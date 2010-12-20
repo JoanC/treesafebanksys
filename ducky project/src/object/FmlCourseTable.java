@@ -91,6 +91,7 @@ public class FmlCourseTable extends CourseTable {
 	public Exp addCourse(Course _new) {
 		Exp exp = new Exp();
 		if(course_list_fixedCourses.contains(_new)){
+			DebugClass.debug_info(this.toString(), "contain the class! return ...");
 			return exp;
 		}
 		course_list_fixedCourses.add(_new);
