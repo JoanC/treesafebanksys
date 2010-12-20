@@ -198,9 +198,7 @@ public class CourseListsServlet extends HttpServlet {
 	private void Request_SelFmlCrs()throws ServletException, IOException 
 	{
 		HttpSession session = iRequest.getSession();
-		DebugClass.debug_info(this.toString(), "得到一门课的所有老师");
 		Vector<Course> _old = (Vector<Course>)session.getAttribute("coursestea");
-		DebugClass.debug_info(this.toString(), "得到了吗？");
 		String value = (String)iRequest.getParameter("SelectCrsCommit");
 		int id = Integer.parseInt(value.substring("SelFmlCrs".length()));
 		Vector<Course> _new = new Vector<Course>();
@@ -209,6 +207,7 @@ public class CourseListsServlet extends HttpServlet {
 		DebugClass.debug_info(this.toString(), "课表格式转化");
 		getCourseTables();
 		DebugClass.debug_info(this.toString(),"转化完成了吗？");
+		session.removeAttribute("coursestea");
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));				
 	}
 	private void Request_SelCrsTea()throws ServletException, IOException 

@@ -66,7 +66,7 @@
  		  out.print("<td><input type=\"image\" name=\"SelectCrsCommit\" id=\"selcourse\" value=\"SelFmlCrs" + i + "\" src=\"images/Button_Login.gif\"</td>");
  		  out.print("</tr>");
   		}	
-  		session.removeAttribute("coursestea");
+  		//session.removeAttribute("coursestea");
   		} 
 	  %>
 	  </table>
