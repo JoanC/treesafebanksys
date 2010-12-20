@@ -92,6 +92,10 @@ public class FmlCourseTable extends CourseTable {
 		Exp exp = new Exp();
 		course_list_fixedCourses.add(_new);
 		course_addedCourses.add(_new);
+		DebugClass.debug_info(this.toString(), "now the fixed fml_table list is : ");
+		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
+			DebugClass.debug_info(this.toString(), "course_name:" + course_list_fixedCourses.elementAt(_index).getCourse_name());
+		}
 		return exp;
 	}
 

@@ -109,6 +109,7 @@ public class CourseSelect_Manager {
 		return exp;
 	}
 	
+	
 	//把一门或者多门课程选入正式课表
 	public Exp SelectCourseToFmlTab(Vector<Course> _new){
 		Exp exp = null;
