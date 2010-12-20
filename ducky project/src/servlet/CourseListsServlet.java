@@ -212,10 +212,15 @@ public class CourseListsServlet extends HttpServlet {
 		session.setAttribute("coursestea", _detail);
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
-	public void getCourseTables()
+	public void getCourseTables() throws ServletException, IOException 
 	{
+		DebugClass.debug_info(this.toString(), "getCourseTables");
 		HttpSession session = iRequest.getSession();
-		//Vector<String> crstable = 
+		Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
+		session.setAttribute("coursetable", crstable);
+		DebugClass.debug_info(this.toString(), "¿Î±í´óÐ¡" + crstable.size());
+		//iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
+		
 	}
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -225,6 +230,7 @@ public class CourseListsServlet extends HttpServlet {
 		String value = (String) req.getParameter("SelectCrsCommit");
 		String para = value.substring(0, "DelPrsCrs".length());
 		DebugClass.debug_info(this.toString(), "value" + value);
+		getCourseTables();
 		if (para.equals("SttSelCrs")) {
 			Request_StartSelCrs();
 		} else if (para.equals("PreSelCrs")) {

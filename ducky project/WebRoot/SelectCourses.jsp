@@ -79,136 +79,23 @@
     <td width="75">星期六</td>
     <td width="75">星期日</td>
   </tr>
-  <tr>
-    <td>1</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>6</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>7</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>8</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>9</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>10</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>11</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-    <td width="75">&nbsp;</td>
-  </tr>
+  <%
+  	DebugClass.debug_start();
+    Vector<String> crstable = (Vector<String>)session.getAttribute("coursetable");
+    int weekdays = 7;
+    DebugClass.debug_info(this.toString(),"课表大小" + crstable.size());
+  	for(int i=0;i < crstable.size()/weekdays;i++)
+  	{
+  		out.println("<tr>");
+  		out.println("<td>" + (i+1) + "</td>");
+  		for(int j=0;j!=weekdays;j++)
+  		{
+  			  DebugClass.debug_info(this.toString(),"i,j" + i + "," + j + crstable.elementAt(i * weekdays + j));
+  			  out.println("<td width=\"75\">" + crstable.elementAt(i * weekdays + j) + "</td>");  			  		 
+  		}
+  		out.println("</tr>");
+  	}
+  %>
 </table>
 	 </form>
 	</body>
