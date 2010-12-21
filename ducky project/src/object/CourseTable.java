@@ -107,7 +107,7 @@ public abstract class CourseTable {
 			//¿Î³Ì³åÍ»
 			_generate_str += "¿Î³Ì ";
 			for(int _index = 0 ; _index < _list.size() ; ++_index){
-				_generate_str += _list.elementAt(_index) + " ";
+				_generate_str += _list.elementAt(_index).getCourse_name() + " ";
 			}
 			_generate_str += "´æÔÚ³åÍ»!";
 		}
