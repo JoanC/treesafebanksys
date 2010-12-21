@@ -35,6 +35,7 @@
 		out.print("<td>");
 		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelPrsCrs" + i + "\" src=\"images/Button_Login.gif\" >");
 		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"SelCrsTea" + i + "\" src=\"images/Button_Login.gif\" >");
+		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelFmlCrs" + i + "\" src=\"images/Button_Login.gif\" >");
 		out.print("</td>");
 		out.print("</tr>");
 	}

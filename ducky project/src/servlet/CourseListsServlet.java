@@ -227,6 +227,19 @@ public class CourseListsServlet extends HttpServlet {
 		session.setAttribute("coursestea", _detail);
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
+	private void Request_DelFmlCrs()throws ServletException, IOException 
+	{
+		HttpSession session = iRequest.getSession();
+		Vector<Course> old = (Vector<Course>) session.getAttribute("precrslist");
+		String value = (String)iRequest.getParameter("SelectCrsCommit");
+		int id = Integer.parseInt(value.substring("DelFmlCrs".length()));
+		Vector<Course> remove = new Vector<Course>();
+		remove.add(old.elementAt(id));
+		courseselmgr.RemoveCourseFromFmlTab(remove);
+		Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
+		session.setAttribute("coursetable", crstable);
+		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
+	}
 	public void getCourseTables() throws ServletException, IOException 
 	{
 		DebugClass.debug_info(this.toString(), "getCourseTables");
@@ -254,10 +267,10 @@ public class CourseListsServlet extends HttpServlet {
 			Request_DelPrsCrs();
 		} else if(para.equals("SelCrsTea")) {
 			Request_SelCrsTea();
-		} else if(para.equals("SelFmlCrs"))
-		{
-			DebugClass.debug_info(this.toString(), "选老师到正式课表");
+		} else if(para.equals("SelFmlCrs"))	{
 			Request_SelFmlCrs();
+		} else if(para.equals("DelFmlCrs")){
+			Request_DelFmlCrs();
 		}
 	}
 }
