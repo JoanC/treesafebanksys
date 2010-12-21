@@ -102,7 +102,6 @@ public abstract class CourseTable {
 				// µ¥Ë«ÖÜ²»³åÍ»
 				_generate_str += _tmp_1.getCourse_name()
 						+ " " + generateSubStrByFeq(_tmp_1.getCourse_time_week().getCourse_freq(_week_day));
-				_generate_str += "\n";
 				_generate_str += _tmp_2.getCourse_name() 
 						+ " " + generateSubStrByFeq(_tmp_2.getCourse_time_week().getCourse_freq(_week_day));
 			}
