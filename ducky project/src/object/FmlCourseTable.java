@@ -103,15 +103,20 @@ public class FmlCourseTable extends CourseTable {
 				return exp;
 			}
 		}
+		DebugClass.debug_info(this.toString(), "add course " + _new.getCourse_name()
+				+"to the fixed course list");
 		course_list_fixedCourses.add(_new);
 		course_addedCourses.add(_new);
 		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
 			//判断此门课程是否和别的课程有冲突
 			if(CourseTimeOperation.isConflict(course_list_fixedCourses.elementAt(_index).getCourse_time_week(),
 					_new.getCourse_time_week()).size() != 0){
+				DebugClass.debug_info(this.toString(), "check the error! "+ _new.getCourse_name()
+						+ " and " + course_list_fixedCourses.elementAt(_index).getCourse_name());
 				return exp;
 			}
 		}
+		DebugClass.debug_info(this.toString(), "no error , add the data...");
 		//没有冲突则实时保存,并且正选人数加一
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
