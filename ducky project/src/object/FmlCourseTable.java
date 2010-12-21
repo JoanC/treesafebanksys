@@ -97,14 +97,27 @@ public class FmlCourseTable extends CourseTable {
 			if(course_list_fixedCourses.elementAt(_index).getCourse_id().equals(_new.getCourse_id())){
 				return exp;
 			}
+			//判断此门课程是否和别的课程有冲突
+			if(CourseTimeOperation.isConflict(course_list_fixedCourses.elementAt(_index).getCourse_time_week(),
+					_new.getCourse_time_week()).size() != 0){
+				return exp;
+			}
 		}
 		course_list_fixedCourses.add(_new);
 		course_addedCourses.add(_new);
-		//正选加一
+		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
+			//判断此门课程是否和别的课程有冲突
+			if(CourseTimeOperation.isConflict(course_list_fixedCourses.elementAt(_index).getCourse_time_week(),
+					_new.getCourse_time_week()).size() != 0){
+				return exp;
+			}
+		}
+		//没有冲突则实时保存,并且正选人数加一
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
 		dbo.doUpdateTabCourseCurrentSelectNum(_new.getCourse_id(), new IncreaseByOne());
+	    dbo.doInsert2TabCourseSelect(u_id, _new.getCourse_id());
 		dbo.disconnectDB();
 		return exp;
 	}
@@ -114,10 +127,12 @@ public class FmlCourseTable extends CourseTable {
 		Exp exp = new Exp();
 		course_list_fixedCourses.remove(_old);
 		course_deletedCourses.add(_old);
+		//数据减一并且实时保存
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
 		dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
+		dbo.doDeleteFromTabCourseSelect(u_id, _old.getCourse_id());
 		dbo.disconnectDB();
 		return exp;
 	}
