@@ -75,7 +75,6 @@ public abstract class CourseTable {
 	}
 
 	private static String generateSubStrForFmlTab(Vector<Course> _list, int _week_day) {
-		DebugClass.debug_info("Coursetable", "course in the list : ");
 		for(int i = 0 ; i < _list.size() ; ++i){
 			DebugClass.debug_info("CourseTable", " " + _list.elementAt(i) + " ");
 		}
