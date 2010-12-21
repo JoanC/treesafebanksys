@@ -239,6 +239,7 @@ public class CourseListsServlet extends HttpServlet {
 		Vector<Course> rCourses = new Vector<Course>();
 		rCourses.add(remove);
 		courseselmgr.RemoveCourseFromFmlTab(rCourses);
+		session.removeAttribute("coursetable");
 		Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
 		session.setAttribute("coursetable", crstable);
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
