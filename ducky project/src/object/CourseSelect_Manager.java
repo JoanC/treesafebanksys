@@ -142,6 +142,7 @@ public class CourseSelect_Manager {
 	public Exp RemoveCourseFromFmlTab(Vector<Course> _rmv){
 		Exp exp = null;
 		DebugClass.debug_info(this.toString(), "start to remove...");
+		DebugClass.debug_info(this.toString(), "the remove size is : " + _rmv.size());
 		for(int _all_index = 0; _all_index < _rmv.size() ; ++_all_index){
 			Course _targrt = _rmv.elementAt(_all_index);
 			for(int _index = 0 ; _index < fml_tab.get_course_list().size() ; ++_index){
