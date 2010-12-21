@@ -93,6 +93,8 @@ public abstract class CourseTable {
 			// 判断单双周序列是否一致,若有一致则冲突
 			if (!CourseTimeOperation.isConflict(_tmp_1.getCourse_time_week(), _tmp_2.getCourse_time_week()).isEmpty()) {
 				// 如果序列相同,则冲突
+				DebugClass.debug_info("CourseTable", "course1:" + _tmp_1.getCourse_name()
+						+ "course2:" + _tmp_2.getCourse_name());
 				_generate_str += "课程 " + _tmp_1.getCourse_name() + " " + _tmp_2.getCourse_name() + "存在冲突!";
 			} else {
 				// 单双周不冲突
