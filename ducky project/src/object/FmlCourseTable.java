@@ -138,6 +138,8 @@ public class FmlCourseTable extends CourseTable {
 		//删除课程数据
 		dbo.doDeleteFromTabCourseSelect(u_id, _old.getCourse_id());
 		//更新数据
+		course_list_fixedCourses.clear();
+		course_list_org.clear();
 		course_list_org = this.searchCourseList();
 		course_list_fixedCourses.addAll(course_list_org);
 		dbo.disconnectDB();
