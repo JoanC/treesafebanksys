@@ -211,4 +211,14 @@ public class FmlCourseTable extends CourseTable {
 		dbo.disconnectDB();
 		return exp;
 	}
+	
+	public  boolean getIsConflic() {
+		Vector<String> _check = CourseTable.convertFmlTabFormat(course_list_fixedCourses);
+		for(int i = 0 ; i < _check.size() ; ++i){
+			if(_check.elementAt(i).equals("¿Î³Ì³åÍ»!")){
+				return true;
+			}
+		}
+		return false;
+	}
 }
