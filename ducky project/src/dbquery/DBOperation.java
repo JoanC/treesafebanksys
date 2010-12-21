@@ -468,7 +468,7 @@ public class DBOperation {
 		return rtn;
 	}
 	
-	public void doUpdateTabCourseCurrentSelectNumPlusOne(String course_id,CalcMethod method)
+	public void doUpdateTabCourseCurrentSelectNum(String course_id,CalcMethod method)
 	{
 		Course buff = doQueryCertainCourse(course_id) ;
 		int currentNum = buff.getCourse_current_seleted_num() ;
