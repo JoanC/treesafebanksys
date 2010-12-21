@@ -129,8 +129,6 @@ public class FmlCourseTable extends CourseTable {
 	// 将一个课程从正式课表中清除
 	public Exp deleteCourse(Course _old) {
 		Exp exp = new Exp();
-		course_list_fixedCourses.remove(_old);
-		course_deletedCourses.add(_old);
 		//数据减一并且实时保存
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
@@ -139,6 +137,9 @@ public class FmlCourseTable extends CourseTable {
 		dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
 		//删除课程数据
 		dbo.doDeleteFromTabCourseSelect(u_id, _old.getCourse_id());
+		//更新数据
+		course_list_org = this.searchCourseList();
+		course_list_fixedCourses.addAll(course_list_org);
 		dbo.disconnectDB();
 		return exp;
 	}
@@ -189,7 +190,6 @@ public class FmlCourseTable extends CourseTable {
 		// 首先删除所有旧课表
 		dbo.doDeleteAllInTabCourseSelectByUID(u_id);
 		// 再通过循环添加新的修改过的课表
-
 		for (int i = 0; i < course_list_fixedCourses.size(); ++i) {
 			DebugClass.debug_info(this.toString(), "save the course : ");
 			dbo.doInsert2TabCourseSelect(u_id, course_list_fixedCourses
