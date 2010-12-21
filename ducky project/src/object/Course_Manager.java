@@ -1,6 +1,8 @@
 package object;
 
 import db_data_structure.Course;
+import db_data_structure.SysParam;
+import db_data_structure.enCourseSelType;
 import dbquery.* ;
 
 import java.util.Vector;
@@ -29,10 +31,19 @@ public class Course_Manager {
 		 DBOperation dbo = new DBOperation() ;
 		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		 Vector<Course> _result = dbo.doQuerybyCourseName(_course_name);
-		 for(int i = 0; i < _result.size() ; ++i){
-			 DebugClass.debug_info("Course_Manager", "search the course_id:" + 
-					 _result.elementAt(i).getCourse_id() + "the teacher id is " + _result.elementAt(i).getU_id());
-		 }
+		 Vector<Course> _final_result = new Vector<Course>();
+		 SysParam _sys = dbo.doQuerySysParam();
+		if (_sys.getCourseSelType() == enCourseSelType.CST_FSFG) {
+			//如果是先到先得,则进行数据的进一步清理
+			for (int i = 0; i < _result.size(); ++i) {
+				// 如果课程的容量未满才放到结果中
+				 if(_result.elementAt(i).getCourse_current_seleted_num() < 
+						 _result.elementAt(i).getCourse_volume()){
+					 //如果已选人数小于课程容量,则添加到最终结果中
+					 _final_result.add(_result.elementAt(i));
+				 }
+			}
+		}
 		 dbo.disconnectDB() ;
 		 return _result;
 	 }
