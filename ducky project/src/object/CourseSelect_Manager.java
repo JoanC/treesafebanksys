@@ -143,13 +143,17 @@ public class CourseSelect_Manager {
 		Exp exp = null;
 		DebugClass.debug_info(this.toString(), "start to remove...");
 		for(int _all_index = 0; _all_index < _rmv.size() ; ++_all_index){
+			Course _targrt = _rmv.elementAt(_all_index);
 			for(int _index = 0 ; _index < fml_tab.get_course_list().size() ; ++_index){
-				if(_rmv.elementAt(_all_index).getCourse_name().equals(fml_tab.get_course_list().elementAt(_index))){
-					//ÕÒµ½¸Ã¿Î³Ì
-					DebugClass.debug_info(this.toString(), "remove course " + _rmv.elementAt(_all_index));
-					_rmv.elementAt(_all_index).setCourse_id(fml_tab.get_course_list().elementAt(_index).getCourse_id());
+				Course _check = fml_tab.get_course_list().elementAt(_index);
+				DebugClass.debug_info(this.toString(),"check the course name...");
+				DebugClass.debug_info(this.toString(),"target:" + _targrt.getCourse_name()
+						+ "the list course name : " + _check.getCourse_name());
+				if(_targrt.getCourse_name().equals(_check.getCourse_name())){
+					_targrt.setCourse_id(_check.getCourse_id());
 					//É¾³ý
-					fml_tab.deleteCourse(_rmv.elementAt(_all_index));
+					DebugClass.debug_info(this.toString(), "start to delete course " + _targrt.getCourse_name());
+					fml_tab.deleteCourse(_targrt);
 				}
 			}
 		}
