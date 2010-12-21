@@ -97,7 +97,7 @@ public abstract class CourseTable {
 				// 如果序列相同,则冲突
 				DebugClass.debug_info("CourseTable", "course1:" + _tmp_1.getCourse_name()
 						+ "course2:" + _tmp_2.getCourse_name());
-				_generate_str += "课程 " + _tmp_1.getCourse_name() + " " + _tmp_2.getCourse_name() + "存在冲突!";
+				_generate_str += "课程冲突!";
 			} else {
 				// 单双周不冲突
 				_generate_str += _tmp_1.getCourse_name()
