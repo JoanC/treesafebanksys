@@ -8,6 +8,8 @@ import db_data_structure.Week;
 import db_data_structure.enCourseFreq;
 import dbquery.CourseTimeOperation;
 import dbquery.DBOperation;
+import dbquery.DecreaseByOne;
+import dbquery.IncreaseByOne;
 import dbquery.dbConnectParam;
 import object.CourseTable;
 import object.Exp;
@@ -96,13 +98,14 @@ public class FmlCourseTable extends CourseTable {
 				return exp;
 			}
 		}
-		
 		course_list_fixedCourses.add(_new);
 		course_addedCourses.add(_new);
-		DebugClass.debug_info(this.toString(), "now the fixed fml_table list is : ");
-		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
-			DebugClass.debug_info(this.toString(), "course_name:" + course_list_fixedCourses.elementAt(_index).getCourse_name());
-		}
+		//正选加一
+		DBOperation dbo = new DBOperation();
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
+				dbConnectParam.userName, dbConnectParam.dbPwd);
+		dbo.doUpdateTabCourseCurrentSelectNum(_new.getCourse_id(), new IncreaseByOne());
+		dbo.disconnectDB();
 		return exp;
 	}
 
@@ -111,6 +114,11 @@ public class FmlCourseTable extends CourseTable {
 		Exp exp = new Exp();
 		course_list_fixedCourses.remove(_old);
 		course_deletedCourses.add(_old);
+		DBOperation dbo = new DBOperation();
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
+				dbConnectParam.userName, dbConnectParam.dbPwd);
+		dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
+		dbo.disconnectDB();
 		return exp;
 	}
 
@@ -168,7 +176,7 @@ public class FmlCourseTable extends CourseTable {
 		}
 
 		// 下面更新选课人数信息
-
+		
 		// 更新辅助列表信息
 		course_addedCourses.clear();
 		course_deletedCourses.clear();
