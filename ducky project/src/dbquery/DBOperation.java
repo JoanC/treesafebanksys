@@ -6,7 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-import db_data_structure.*;
+import db_data_structure.Course;
+import db_data_structure.LoginUser;
+import db_data_structure.PreCourseSelectInfo;
+import db_data_structure.SysParam;
+import db_data_structure.User;
+import db_data_structure.Week;
 
 /*
  * created by Sun 2010-11-?
@@ -19,6 +24,7 @@ import db_data_structure.*;
  * modified by Sun 2010-12-7
  * modified by Sun 2010-12-13
  * modified by Sun 2010-12-14
+ * modified by Sun 2010-12-21
  */
 
 public class DBOperation {
@@ -437,6 +443,52 @@ public class DBOperation {
 			ps.executeUpdate();
 
 			m_conn.commit();/* commit it if there is no exception */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
+	public SysParam doQuerySysParam(){
+		SysParam rtn = new SysParam() ;
+		try {
+			String query_str = "SELECT * " 
+							 + "FROM TB_SYS_PARAM " ;
+						  
+			PreparedStatement ps = m_conn.prepareStatement(query_str);
+			ResultSet results = ps.executeQuery();
+			/*do query*/
+
+			while (results.next()) {
+				rtn.setCourseSelOpened(results.getBoolean("IS_CS_OPENED")) ;
+				rtn.setCourseSelType(results.getInt("CS_TYPE")) ;
+			}
+			results.close();
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn;
+	}
+	
+	public void doUpdateTabCourseCurrentSelectNumPlusOne(String course_id,CalcMethod method)
+	{
+		Course buff = doQueryCertainCourse(course_id) ;
+		int currentNum = buff.getCourse_current_seleted_num() ;
+		
+		int rlt = method.theMethod(currentNum) ;
+		/*use the method*/
+		
+		try {
+			String query_str = "UPDATE TB_COURSE SET COURSE_CURRENT_SELECTED_NUM=? WHERE COURSE_ID=?";
+
+			PreparedStatement ps = m_conn.prepareStatement(query_str) ;
+
+			ps.setInt(1,rlt) ;
+			ps.setString(2, course_id) ;
+			/* some preparing work... */
+			// System.out.println("query = "+ps) ;//for test
+			ps.executeUpdate();
+			/* do update */
+			m_conn.commit();
+
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
