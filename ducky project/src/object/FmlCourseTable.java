@@ -121,7 +121,9 @@ public class FmlCourseTable extends CourseTable {
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
+		//已选人数加一
 		dbo.doUpdateTabCourseCurrentSelectNum(_new.getCourse_id(), new IncreaseByOne());
+		//向数据库添加正式课表
 	    dbo.doInsert2TabCourseSelect(u_id, _new.getCourse_id());
 		dbo.disconnectDB();
 		return exp;
@@ -136,7 +138,9 @@ public class FmlCourseTable extends CourseTable {
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
+		//人数减一
 		dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
+		//删除课程数据
 		dbo.doDeleteFromTabCourseSelect(u_id, _old.getCourse_id());
 		dbo.disconnectDB();
 		return exp;
