@@ -92,7 +92,8 @@ public abstract class CourseTable {
 			Course _tmp_1 = _list.elementAt(0);
 			Course _tmp_2 = _list.elementAt(1);
 			// 判断单双周序列是否一致,若有一致则冲突
-			if (!CourseTimeOperation.isConflict(_tmp_1.getCourse_time_week(), _tmp_2.getCourse_time_week()).isEmpty()) {
+			if (_tmp_1.getCourse_time_week().getCourse_freq(_week_day) == _tmp_2.getCourse_time_week().getCourse_freq(_week_day)
+					&& 0 != _tmp_1.getCourse_time_week().getCourse_freq(_week_day)*_tmp_2.getCourse_time_week().getCourse_freq(_week_day)) {
 				// 如果序列相同,则冲突
 				DebugClass.debug_info("CourseTable", "course1:" + _tmp_1.getCourse_name()
 						+ "course2:" + _tmp_2.getCourse_name());
