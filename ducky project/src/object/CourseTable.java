@@ -4,6 +4,8 @@ package object;
 import java.util.Map;
 import java.util.Vector;
 
+import com.sun.net.ssl.internal.ssl.Debug;
+
 import db_data_structure.Course;
 import db_data_structure.enCourseFreq;
 import dbquery.CourseTimeOperation;
@@ -46,7 +48,7 @@ public abstract class CourseTable {
 			// 查找对应的坐标
 			int _week = _index % WEEK_DAYS;
 			int _seq = _index / WEEK_DAYS;
-			DebugClass.debug_info("CourseTable", "the course position is (" + _week + "," + _seq + ");");
+			//DebugClass.debug_info("CourseTable", "the course position is (" + _week + "," + _seq + ");");
 			Vector<Course> _temp_list = new Vector<Course>();// 存储一个格子中的课程列表,最多两个
 			for (int _index_all_list = 0; _index_all_list < _fml_tab
 					.size(); ++_index_all_list) {
@@ -66,8 +68,8 @@ public abstract class CourseTable {
 			}
 			// 步骤3:取得了当前坐标的课程列表,再通过数目,单双周,判断显示出什么信息,即在_rlt中加入怎样的字符串
 			_rlt.add(generateSubStrForFmlTab(_temp_list, _week));
-			DebugClass.debug_info("CourseTable","time -- week : " + (_week+1) + " seq: " 
-					+ (_seq + 1) + generateSubStrForFmlTab(_temp_list, _week));
+			/*DebugClass.debug_info("CourseTable","time -- week : " + (_week+1) + " seq: " 
+					+ (_seq + 1) + generateSubStrForFmlTab(_temp_list, _week));*/
 		}
 		return _rlt;
 	}
@@ -114,6 +116,7 @@ public abstract class CourseTable {
 
 	private static String generateSubStrByFeq(int _feq) {
 		String _sub = "";
+		DebugClass.debug_info("CourseTable", "the feq is : " + _feq);
 		if (_feq == enCourseFreq.NONE) {
 			// 没有课程
 			_sub += "<课程暂停>";
