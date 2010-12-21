@@ -90,10 +90,13 @@ public class FmlCourseTable extends CourseTable {
 	// 将一门的课程加入到正式课表中
 	public Exp addCourse(Course _new) {
 		Exp exp = new Exp();
-		if(course_list_fixedCourses.contains(_new)){
-			DebugClass.debug_info(this.toString(), "contain the class! return ...");
-			return exp;
+		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
+			//判断此门课程是否已经加入
+			if(course_list_fixedCourses.elementAt(_index).getCourse_id().equals(_new.getCourse_id())){
+				return exp;
+			}
 		}
+		
 		course_list_fixedCourses.add(_new);
 		course_addedCourses.add(_new);
 		DebugClass.debug_info(this.toString(), "now the fixed fml_table list is : ");
