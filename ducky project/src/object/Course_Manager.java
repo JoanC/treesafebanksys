@@ -44,7 +44,11 @@ public class Course_Manager {
 				 }
 			}
 		}
+		else{
+			dbo.disconnectDB() ;
+			return _result;
+		}
 		 dbo.disconnectDB() ;
-		 return _result;
+		 return _final_result;
 	 }
 }
