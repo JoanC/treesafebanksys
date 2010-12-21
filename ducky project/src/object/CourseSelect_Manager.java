@@ -141,10 +141,12 @@ public class CourseSelect_Manager {
 	//把一门或者多门课程从正式课表中移出
 	public Exp RemoveCourseFromFmlTab(Vector<Course> _rmv){
 		Exp exp = null;
+		DebugClass.debug_info(this.toString(), "start to remove...");
 		for(int _all_index = 0; _all_index < _rmv.size() ; ++_all_index){
 			for(int _index = 0 ; _index < fml_tab.get_course_list().size() ; ++_index){
 				if(_rmv.elementAt(_all_index).getCourse_name().equals(fml_tab.get_course_list().elementAt(_index))){
 					//找到该课程
+					DebugClass.debug_info(this.toString(), "remove course " + _rmv.elementAt(_all_index));
 					_rmv.elementAt(_all_index).setCourse_id(fml_tab.get_course_list().elementAt(_index).getCourse_id());
 					//删除
 					fml_tab.deleteCourse(_rmv.elementAt(_all_index));
