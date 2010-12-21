@@ -67,7 +67,7 @@ public abstract class CourseTable {
 				}
 			}
 			// 步骤3:取得了当前坐标的课程列表,再通过数目,单双周,判断显示出什么信息,即在_rlt中加入怎样的字符串
-			_rlt.add(generateSubStrForFmlTab(_temp_list, _week));
+			_rlt.add(generateSubStrForFmlTab(_temp_list, (_week+1)));
 			/*DebugClass.debug_info("CourseTable","time -- week : " + (_week+1) + " seq: " 
 					+ (_seq + 1) + generateSubStrForFmlTab(_temp_list, _week));*/
 		}
