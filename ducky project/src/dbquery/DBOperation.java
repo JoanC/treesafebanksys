@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import db_data_structure.Course;
 import db_data_structure.LoginUser;
+import db_data_structure.PointGoal;
 import db_data_structure.PreCourseSelectInfo;
 import db_data_structure.SysParam;
 import db_data_structure.User;
@@ -25,6 +26,7 @@ import db_data_structure.Week;
  * modified by Sun 2010-12-13
  * modified by Sun 2010-12-14
  * modified by Sun 2010-12-21
+ * modified by Sun 2010-12-22
  */
 
 public class DBOperation {
@@ -159,7 +161,7 @@ public class DBOperation {
 
 				temp.setCourse_name(results.getString("COURSE_NAME"));
 				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-				
+
 				rtn.addElement(temp);
 				/* write to rtn */
 			}
@@ -197,7 +199,7 @@ public class DBOperation {
 
 	private Course doMappingCourse(ResultSet results) {
 		Course rtn = new Course();
-		Week buff = new Week() ;
+		Week buff = new Week();
 		try {
 			rtn.setCourse_id(results.getString("COURSE_ID"));
 			rtn.setCourse_name(results.getString("COURSE_NAME"));
@@ -210,7 +212,7 @@ public class DBOperation {
 			rtn.setCourse_current_seleted_num(results
 					.getInt("COURSE_CURRENT_SELECTED_NUM"));
 			rtn.setCourse_exam_type(results.getInt("COURSE_EXAM_TYPE"));
-			
+
 			buff.setCourse_time_mon(results.getInt("COURSE_TIME_MON"));
 			buff.setCourse_time_tues(results.getInt("COURSE_TIME_TUES"));
 			buff.setCourse_time_wed(results.getInt("COURSE_TIME_WED"));
@@ -218,16 +220,16 @@ public class DBOperation {
 			buff.setCourse_time_fri(results.getInt("COURSE_TIME_FRI"));
 			buff.setCourse_time_sat(results.getInt("COURSE_TIME_SAT"));
 			buff.setCourse_time_sun(results.getInt("COURSE_TIME_SUN"));
-			
-			buff.setCourse_mon_freq(results.getInt("COURSE_MON_FREQ")) ;
-			buff.setCourse_tues_freq(results.getInt("COURSE_TUES_FREQ")) ;
-			buff.setCourse_wed_freq(results.getInt("COURSE_WED_FREQ")) ;
-			buff.setCourse_thur_freq(results.getInt("COURSE_THUR_FREQ")) ;
-			buff.setCourse_fri_freq(results.getInt("COURSE_FRI_FREQ")) ;
-			buff.setCourse_sat_freq(results.getInt("COURSE_SAT_FREQ")) ;
-			buff.setCourse_sun_freq(results.getInt("COURSE_SUN_FREQ")) ;
-			
-			rtn.setCourse_time_week(buff) ;
+
+			buff.setCourse_mon_freq(results.getInt("COURSE_MON_FREQ"));
+			buff.setCourse_tues_freq(results.getInt("COURSE_TUES_FREQ"));
+			buff.setCourse_wed_freq(results.getInt("COURSE_WED_FREQ"));
+			buff.setCourse_thur_freq(results.getInt("COURSE_THUR_FREQ"));
+			buff.setCourse_fri_freq(results.getInt("COURSE_FRI_FREQ"));
+			buff.setCourse_sat_freq(results.getInt("COURSE_SAT_FREQ"));
+			buff.setCourse_sun_freq(results.getInt("COURSE_SUN_FREQ"));
+
+			rtn.setCourse_time_week(buff);
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
@@ -447,19 +449,20 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 	}
-	public SysParam doQuerySysParam(){
-		SysParam rtn = new SysParam() ;
+
+	public SysParam doQuerySysParam() {
+		SysParam rtn = null;
 		try {
-			String query_str = "SELECT * " 
-							 + "FROM TB_SYS_PARAM " ;
-						  
+			String query_str = "SELECT * " + "FROM TB_SYS_PARAM ";
+
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 			ResultSet results = ps.executeQuery();
-			/*do query*/
+			/* do query */
 
 			while (results.next()) {
-				rtn.setCourseSelOpened(results.getBoolean("IS_CS_OPENED")) ;
-				rtn.setCourseSelType(results.getInt("CS_TYPE")) ;
+				rtn = new SysParam();
+				rtn.setCourseSelOpened(results.getBoolean("IS_CS_OPENED"));
+				rtn.setCourseSelType(results.getInt("CS_TYPE"));
 			}
 			results.close();
 		} catch (Exception e) {
@@ -467,22 +470,22 @@ public class DBOperation {
 		}
 		return rtn;
 	}
-	
-	public void doUpdateTabCourseCurrentSelectNum(String course_id,CalcMethod method)
-	{
-		Course buff = doQueryCertainCourse(course_id) ;
-		int currentNum = buff.getCourse_current_seleted_num() ;
-		
-		int rlt = method.theMethod(currentNum) ;
-		/*use the method*/
-		
+
+	public void doUpdateTabCourseCurrentSelectNum(String course_id,
+			CalcMethod method) {
+		Course buff = doQueryCertainCourse(course_id);
+		int currentNum = buff.getCourse_current_seleted_num();
+
+		int rlt = method.theMethod(currentNum);
+		/* use the method */
+
 		try {
 			String query_str = "UPDATE TB_COURSE SET COURSE_CURRENT_SELECTED_NUM=? WHERE COURSE_ID=?";
 
-			PreparedStatement ps = m_conn.prepareStatement(query_str) ;
+			PreparedStatement ps = m_conn.prepareStatement(query_str);
 
-			ps.setInt(1,rlt) ;
-			ps.setString(2, course_id) ;
+			ps.setInt(1, rlt);
+			ps.setString(2, course_id);
 			/* some preparing work... */
 			// System.out.println("query = "+ps) ;//for test
 			ps.executeUpdate();
@@ -492,5 +495,75 @@ public class DBOperation {
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
+	}
+
+	private PointGoal doMappingPointGoal(ResultSet results) {
+		PointGoal rtn = null;
+		try {
+			rtn = new PointGoal();
+			rtn.setSchool_name(results.getString("SCHOOL_NAME"));
+			rtn.setU_school_id(results.getInt("U_SCHOOL_ID"));
+			rtn.setA1(results.getFloat("A1"));
+			rtn.setA2(results.getFloat("A2"));
+			rtn.setA3(results.getFloat("A3"));
+			rtn.setB1(results.getFloat("B1"));
+			rtn.setB2(results.getFloat("B2"));
+			rtn.setA3(results.getFloat("B3"));
+			rtn.setC1(results.getFloat("C1"));
+			rtn.setC2(results.getFloat("C2"));
+			rtn.setC3(results.getFloat("C3"));
+			rtn.setD1(results.getFloat("D1"));
+			rtn.setD2(results.getFloat("D2"));
+			rtn.setD3(results.getFloat("D3"));
+			rtn.setE1(results.getFloat("E1"));
+			rtn.setE2(results.getFloat("E2"));
+			rtn.setE3(results.getFloat("E3"));
+			rtn.setF1(results.getFloat("F1"));
+			rtn.setF2(results.getFloat("F2"));
+			rtn.setF3(results.getFloat("F3"));
+
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn;
+	}
+
+	public PointGoal doQueryPointGoalFromTbPG(int school_id) {
+		PointGoal rtn = null ;
+		try {
+			String query_str = "SELECT * " + "FROM TB_POINT_GOAL "
+					+ "WHERE U_SCHOOL_ID=?";
+
+			PreparedStatement ps = m_conn.prepareStatement(query_str);
+			ps.setInt(1, school_id);
+			ResultSet results = ps.executeQuery();
+			/* do query */
+
+			while (results.next()) {
+				rtn = this.doMappingPointGoal(results);
+			}
+			results.close();
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn ;
+	}
+	public Vector<Course> doQueryAllFinishedCourseOfCertainStudent(String uid)
+	{
+		Vector<Course> rtn = null ;
+		Vector<Course> temp = this.doQueryAllCourseTabCourseSelectByUid(uid) ;
+		/*找到这个学生所选的所有课程（已过和未过）*/
+		if( null != temp )
+		{
+			rtn = new Vector<Course>() ;
+			for ( int i = 0 ; i < temp.size(); ++i )
+			{
+				if ( temp.elementAt(i).getCourse_type() > 0 )/*如果是未过的*/
+				{
+					rtn.addElement( temp.elementAt(i) ) ;
+				}
+			}
+		}
+		return rtn ;
 	}
 }

@@ -3,6 +3,7 @@ package db_data_structure;
 
 //这个类对一个学院的培养计划做了一个数据的记录和读取
 public class PointGoal {
+	String school_name ;//学院名 （孙超加）
 	int u_school_id;	//学院的对应标识号
 	float a1;			//A1课程应该达到的标准学分
 	float a2;			//A2课程应该达到的标准学分
@@ -23,6 +24,14 @@ public class PointGoal {
 	float f2;			//F2课程应该达到的标准学分
 	float f3;			//F3课程应该达到的标准学分
 	
+	
+	public String getSchool_name() {
+		return school_name;
+	}
+
+	public void setSchool_name(String schoolName) {
+		school_name = schoolName;
+	}
 	public int getU_school_id() {
 		return u_school_id;
 	}
