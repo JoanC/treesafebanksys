@@ -112,7 +112,7 @@ public abstract class CourseTable {
 				_generate_str += _list.elementAt(_index).getCourse_name() + " ";
 			}
 			_generate_str += "存在冲突!";*/
-			_generate_str += "此时间存在严重冲突! 为避免恶意行为,请先解决冲突再继续选课!";
+			_generate_str += "课程冲突!!";
 		}
 		if(_generate_str == "") _generate_str += "--";
 		return _generate_str;
