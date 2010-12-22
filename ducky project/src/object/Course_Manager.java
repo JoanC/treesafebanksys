@@ -49,4 +49,13 @@ public class Course_Manager {
 		 dbo.disconnectDB() ;
 		 return _final_result;
 	 }
+	 
+	 //在数据库中,将选了某节课的学生列出
+	 public static Vector<String> searchSelectStudentByCourseId(String _course_id) {
+		 DBOperation dbo = new DBOperation() ;
+		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+	     Vector<String> _all = dbo.doQueryAllStudentSelectCertainCourse(_course_id);
+		 dbo.disconnectDB();
+		 return _all;
+	 }
 }

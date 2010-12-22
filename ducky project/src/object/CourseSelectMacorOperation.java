@@ -43,8 +43,7 @@ public class CourseSelectMacorOperation {
 		if (_diff <= 0)
 			return _rlt;// 返回结果
 		// 找到所有选过这门课的学生id
-		// *******************************//等待孙超接口
-		// //////////////////////////////////
+		_all = Course_Manager.searchSelectStudentByCourseId(_course.getCourse_id());
 		for (int _index = 0; _index < _diff; ++_index) {
 			int _rdm = getRadomNumber(_all.size());
 			DebugClass.debug_info("MacroOperation", "get the radom number : "
