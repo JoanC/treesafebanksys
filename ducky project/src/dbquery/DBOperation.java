@@ -601,7 +601,6 @@ public class DBOperation {
 			ps.setBoolean(1,sp.isCourseSelOpened());
 			ps.setInt(2, sp.getCourseSelType());
 			/* some preparing work... */
-			// System.out.println("query = "+ps) ;//for test
 			ps.executeUpdate();
 			/* do update */
 			m_conn.commit();
