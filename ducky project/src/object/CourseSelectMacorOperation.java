@@ -3,11 +3,7 @@ package object;
 import java.util.Vector;
 
 import db_data_structure.Course;
-import dbquery.DBOperation;
-import dbquery.dbConnectParam;
-
 import object.Exp;
-import sun.nio.cs.ext.MacRoman;
 
 //
 public class CourseSelectMacorOperation {
