@@ -3,25 +3,25 @@ package object;
 
 //这个类对一个学院的培养计划做了一个数据的记录和读取
 public class PointGoal {
-	int u_school_id;	//学院的对应标识号
-	float a1;			//A1课程应该达到的标准学分
-	float a2;			//A2课程应该达到的标准学分
-	float a3;			//A3课程应该达到的标准学分
-	float b1;			//B1课程应该达到的标准学分
-	float b2;			//B2课程应该达到的标准学分
-	float b3;			//B3课程应该达到的标准学分
-	float c1;			//C1课程应该达到的标准学分
-	float c2;			//C2课程应该达到的标准学分
-	float c3;			//C3课程应该达到的标准学分
-	float d1;			//D1课程应该达到的标准学分
-	float d2;			//D2课程应该达到的标准学分
-	float d3;			//D3课程应该达到的标准学分
-	float e1;			//E1课程应该达到的标准学分
-	float e2;			//E2课程应该达到的标准学分
-	float e3;			//E3课程应该达到的标准学分
-	float f1;			//F1课程应该达到的标准学分
-	float f2;			//F2课程应该达到的标准学分
-	float f3;			//F3课程应该达到的标准学分
+	private int u_school_id;	//学院的对应标识号
+	private float a1;			//A1课程应该达到的标准学分
+	private float a2;			//A2课程应该达到的标准学分
+	private float a3;			//A3课程应该达到的标准学分
+	private float b1;			//B1课程应该达到的标准学分
+	private float b2;			//B2课程应该达到的标准学分
+	private float b3;			//B3课程应该达到的标准学分
+	private float c1;			//C1课程应该达到的标准学分
+	private float c2;			//C2课程应该达到的标准学分
+	private float c3;			//C3课程应该达到的标准学分
+	private float d1;			//D1课程应该达到的标准学分
+	private float d2;			//D2课程应该达到的标准学分
+	private float d3;			//D3课程应该达到的标准学分
+	private float e1;			//E1课程应该达到的标准学分
+	private float e2;			//E2课程应该达到的标准学分
+	private float e3;			//E3课程应该达到的标准学分
+	private float f1;			//F1课程应该达到的标准学分
+	private float f2;			//F2课程应该达到的标准学分
+	private float f3;			//F3课程应该达到的标准学分
 	
 	public int getU_school_id() {
 		return u_school_id;
