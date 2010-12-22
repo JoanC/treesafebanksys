@@ -2,6 +2,7 @@ package object;
 
 
 import db_data_structure.PointGoal;
+import dbquery.DBOperation;
 import object.Exp;
 
 
@@ -11,8 +12,7 @@ public class PointGoal_Manager {
 	//根据学院的标识号码获取培养计划数据
 	static public PointGoal SearchPointGoal(int _school_id){
 		PointGoal point_goal = new PointGoal();
-		point_goal.setU_school_id(_school_id);
-		//DB query...
+		//point_goal = doQueryPointGoalFromTbPG(_school_id);
 		return point_goal;
 	}
 	
