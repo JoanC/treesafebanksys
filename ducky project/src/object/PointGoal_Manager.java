@@ -2,8 +2,7 @@ package object;
 
 
 import db_data_structure.PointGoal;
-import dbquery.DBOperation;
-import object.Exp;
+import dbquery.*;
 
 
 //这个类负责培养计划数据的处理，包含了一个查找操作和修改保存操作，
@@ -11,8 +10,10 @@ import object.Exp;
 public class PointGoal_Manager {
 	//根据学院的标识号码获取培养计划数据
 	static public PointGoal SearchPointGoal(int _school_id){
-		PointGoal point_goal = new PointGoal();
-		//point_goal = doQueryPointGoalFromTbPG(_school_id);
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd);
+		PointGoal point_goal = dbo.doQueryPointGoalFromTbPG(_school_id);
+		dbo.disconnectDB();
 		return point_goal;
 	}
 	
