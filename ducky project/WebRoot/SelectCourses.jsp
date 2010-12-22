@@ -22,7 +22,14 @@
 	<body>	
 	<form id="SelectCourse" name="SelectCourse" method="post"
 			action="/TJSelCrsSys/servlet/CourseListsServlet">	
-	<%
+	<% 
+	boolean iConflict = false;
+	Vector<String> _check = (Vector<String>)session.getAttribute("coursetable");
+	for(int i = 0 ; i < _check.size() ; ++i){
+		if(_check.elementAt(i).equals("课程冲突!")){
+		iConflict = true;
+		}
+	}
 	Vector<PreCourseSelectInfo> pcourses = (Vector<PreCourseSelectInfo>)session.getAttribute("precrslist");
 	DebugClass.debug_info("selecting courses module", "the final result size : " + pcourses.size());
 	out.print("<table width = \"1000\"border = \"1\">");
@@ -33,9 +40,16 @@
 		out.print("<td>");
 		out.print(name);
 		out.print("<td>");
-		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelPrsCrs" + i + "\" src=\"images/Button_Login.gif\" >");
-		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"SelCrsTea" + i + "\" src=\"images/Button_Login.gif\" >");
-		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelFmlCrs" + i + "\" src=\"images/Button_Login.gif\" >");
+		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelPrsCrs" + i + "\" src=\"images/Button_Login.gif\" >退课");
+		if(iConflict)
+		{
+			out.print("<image src=\"images/Button_Login.gif\" >无效");
+		}
+		else
+		{
+			out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"SelCrsTea" + i + "\" src=\"images/Button_Login.gif\" >选择");
+		}		
+		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelFmlCrs" + i + "\" src=\"images/Button_Login.gif\" >清除" );
 		out.print("</td>");
 		out.print("</tr>");
 	}

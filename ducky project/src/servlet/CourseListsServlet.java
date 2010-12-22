@@ -276,6 +276,6 @@ public class CourseListsServlet extends HttpServlet {
 		} else if(para.equals("DelFmlCrs")){
 			DebugClass.debug_info(this.toString(),"¿ªÊ¼É¾³ý¿Î³Ì");
 			Request_DelFmlCrs();
-		}
+		} 	
 	}
 }
