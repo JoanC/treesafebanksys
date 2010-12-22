@@ -23,7 +23,10 @@ public class SystemParameter_Manager {
 	//编辑新的系统配置信息
 	static public Exp editSystemParameter(SysParam _new_config){
 		Exp exp = new Exp();
-		//
+		DBOperation dbo = new DBOperation();
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		dbo.doUpdateSysParam(_new_config);
+		dbo.disconnectDB();
 		return exp;
 	}
 }
