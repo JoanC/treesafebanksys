@@ -62,8 +62,6 @@ public class CourseListsServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		DebugClass.debug_start();
-		DebugClass.debug_info(this.toString(), "doGet");
 		if(courseselmgr == null)
 		{
 			courseselmgr = new CourseSelect_Manager((String)request.getSession().getAttribute("userid"));
@@ -256,10 +254,10 @@ public class CourseListsServlet extends HttpServlet {
 	}
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
-		DebugClass.debug_info(this.toString(), "get request!");
 		iRequest = req;
 		iResponse = response;
 		String value = (String) req.getParameter("SelectCrsCommit");
+		DebugClass.debug_info(this.toString(),"value: " + value);
 		String para = value.substring(0, "DelPrsCrs".length());
 		DebugClass.debug_info(this.toString(), "value" + value);
 		getCourseTables();
