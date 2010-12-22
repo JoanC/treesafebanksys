@@ -1,6 +1,8 @@
 package object;
 
 import db_data_structure.SysParam;
+import dbquery.DBOperation;
+import dbquery.dbConnectParam;
 
 
 
@@ -11,7 +13,11 @@ public class SystemParameter_Manager {
 	static public SysParam getSystemParameter(){
 		SysParam system_parameter = new SysParam();
 		//DB query...
-		return system_parameter;
+		DBOperation dbo = new DBOperation();
+		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		 system_parameter = dbo.doQuerySysParam();//查询
+		 dbo.disconnectDB();
+		 return system_parameter;
 	}
 	
 	//编辑新的系统配置信息
