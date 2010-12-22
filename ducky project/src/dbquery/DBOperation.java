@@ -566,4 +566,48 @@ public class DBOperation {
 		}
 		return rtn ;
 	}
+	public Vector<String> doQueryAllStudentSelectCertainCourse(String course_id)
+	{
+		Vector<String> rtn = new Vector<String>() ;
+		try {
+			String query_str = "SELECT U_ID " 
+							+ "FROM TB_COURSE_SELECT "
+							+ "WHERE COURSE_ID=?";
+
+			PreparedStatement ps = m_conn.prepareStatement(query_str);
+			ps.setString(1, course_id);
+			ResultSet results = ps.executeQuery();
+			/* do query */
+
+			while (results.next()) {
+				rtn.addElement(results.getString("U_ID")) ;
+			}
+			results.close();
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn ;
+	}
+	public void doUpdateSysParam(SysParam sp)
+	{
+		try {
+			String query_str = "UPDATE TB_SYS_PARAM " +
+							   "SET IS_CS_OPENED=?," +
+							   "CS_TYPE=? " +
+							   "WHERE COURSE_ID=?";
+
+			PreparedStatement ps = m_conn.prepareStatement(query_str);
+
+			ps.setBoolean(1,sp.isCourseSelOpened());
+			ps.setInt(2, sp.getCourseSelType());
+			/* some preparing work... */
+			// System.out.println("query = "+ps) ;//for test
+			ps.executeUpdate();
+			/* do update */
+			m_conn.commit();
+
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
 }
