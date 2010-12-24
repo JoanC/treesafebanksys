@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sun.net.ssl.internal.ssl.Debug;
 
 import db_data_structure.SysParam;
+import db_data_structure.enCourseSelType;
 
 import object.DebugClass;
 import object.SystemParameter_Manager;
@@ -97,13 +98,20 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	{
 		String name = (String)request.getParameter(para);
 		DebugClass.debug_info(this.toString(), "name: "+ name);
+		
+		SysParam _update = SystemParameter_Manager.getSystemParameter();
 		if(para.equals("FCFS"))
 		{
 			//先到先得模式
+			_update.setCourseSelType(enCourseSelType.CST_FSFG);
 		}
 		else {
 			//随机踢课模式
+			_update.setCourseSelType(enCourseSelType.CST_RANDOUT);
 		}
+		//更新数据库
+		SystemParameter_Manager.editSystemParameter(_update);
+		
 	}
 	public void processRequest(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
