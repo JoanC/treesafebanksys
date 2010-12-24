@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.sun.mail.iap.Response;
 import com.sun.net.ssl.internal.ssl.Debug;
 
 import db_data_structure.SysParam;
@@ -115,19 +117,31 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		SystemParameter_Manager.editSystemParameter(_update);
 		
 	}
+	private void Request_Init(HttpServletRequest request, HttpServletResponse response,String para)
+	throws ServletException, IOException
+	{
+		HttpSession session = request.getSession();
+	    session.setAttribute("SystemPara", para);
+	    //系统参数
+	    
+	    response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp");
+	}
 	public void processRequest(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
 		DebugClass.debug_start();
 		DebugClass.debug_info(this.toString(),"Adm Start");
 		String value = (String) request.getParameter("SelCrsSysPara");
-		DebugClass.debug_info(this.toString(),value);
 		if (value.equals("SelCrsOnOffCmt")) {
 			Request_SelCrsOnOff(request,response,value);
 		}
 		else if(value.equals("SelCrsModeCmt"))
 		{
 			Request_SelCrsMode(request,response,value);
+		}
+		else if(value.equals(null))
+		{
+			Request_Init(request,response,value);
 		}
 	}
 }
