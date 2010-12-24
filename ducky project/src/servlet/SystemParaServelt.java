@@ -121,9 +121,10 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	throws ServletException, IOException
 	{
 		HttpSession session = request.getSession();
-	    session.setAttribute("SystemPara", para);
+	   
 	    //系统参数
-	    
+	    SysParam _data = SystemParameter_Manager.getSystemParameter();
+	    session.setAttribute("SystemPara", _data);
 	    response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp");
 	}
 	public void processRequest(HttpServletRequest request, HttpServletResponse response)
