@@ -100,6 +100,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		DebugClass.debug_info(this.toString(), "name: "+ name);
 		
 		SysParam _update = SystemParameter_Manager.getSystemParameter();
+		DebugClass.debug_info(this.toString(), "open ? " + _update.isCourseSelOpened() + "select?" + _update.getCourseSelType());
 		if(para.equals("FCFS"))
 		{
 			//先到先得模式
