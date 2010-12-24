@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sun.net.ssl.internal.ssl.Debug;
 
+import db_data_structure.SysParam;
+
 import object.DebugClass;
+import object.SystemParameter_Manager;
 
 public class SystemParaServelt extends HttpServlet implements Servlet {
 
@@ -74,13 +77,20 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		DebugClass.debug_info(this.toString(), "para:" + para);
 		String name = (String)request.getParameter(para);
 		DebugClass.debug_info(this.toString(), "name: "+ name);
+		
+		SysParam _update = SystemParameter_Manager.getSystemParameter();
 		if(para.equals("On"))
 		{
 			//开启选课操作
+			_update.setCourseSelOpened(true);
 		}
 		else {
 			//关闭选课操作
+			_update.setCourseSelOpened(false);
 		}
+		//更新数据库
+		SystemParameter_Manager.editSystemParameter(_update);
+		
 	}
 	private void Request_SelCrsMode(HttpServletRequest request, HttpServletResponse response,String para)
 	throws ServletException, IOException
