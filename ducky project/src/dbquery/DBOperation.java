@@ -593,8 +593,8 @@ public class DBOperation {
 		try {
 			String query_str = "UPDATE TB_SYS_PARAM " +
 							   "SET IS_CS_OPENED=?," +
-							   "CS_TYPE=? " +
-							   "WHERE COURSE_ID=?";
+							   "CS_TYPE=? ";// +
+							  // "WHERE COURSE_ID=?";
 
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 
