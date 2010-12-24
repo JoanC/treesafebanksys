@@ -118,7 +118,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	{
 		DebugClass.debug_start();
 		DebugClass.debug_info(this.toString(),"Adm Start");
-		String value = (String) request.getAttribute("SelCrsSysPara");
+		String value = (String) request.getParameter("SelCrsSysPara");
 		DebugClass.debug_info(this.toString(),value);
 		if (value.equals("SelCrsOnOffCmt")) {
 			Request_SelCrsOnOff(request,response,value);
