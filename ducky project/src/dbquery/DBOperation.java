@@ -609,4 +609,93 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 	}
+	private PreparedStatement doPsCourseMapping(PreparedStatement ps,Course course)
+	{
+		try{
+			int i = 1 ;
+			ps.setString(i++, course.getCourse_id()) ;
+			ps.setString(i++, course.getCourse_name()) ;
+			ps.setInt(i++, course.getCourse_type()) ;
+			ps.setString(i++, course.getU_id()) ;
+			ps.setFloat(i++, course.getCourse_point()) ;
+			ps.setString(i++, course.getCourse_place()) ;
+			ps.setString(i++, course.getCourse_comment()) ;
+			ps.setInt(i++, course.getCourse_volume()) ;
+			ps.setInt(i++, course.getCourse_current_seleted_num()) ;
+			ps.setInt(i++, course.getCourse_exam_type()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_mon()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_tues()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_wed()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_thur()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_fri()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_sat()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_sun()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_mon_freq()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_tues_freq()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_wed_freq()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_thur_freq()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_fri_freq()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_sat_freq()) ;
+			ps.setInt(i++ ,course.getCourse_time_week().getCourse_sun_freq()) ;
+		}catch(Exception e){
+			System.err.println("error : " + e);
+			}
+		
+		return ps ;
+	}
+	public void insertCourse2TabCourse(Course course)
+	{
+		try {
+			String query_str = "INSERT INTO " +
+							   "TB_SYS_PARAM " +
+							   "VALUES(" +
+							   " ? , ? , ? , ? , ? , ? , ? , ? ," +
+							   " ? , ? , ? , ? , ? , ? , ? , ? ," +
+							   " ? , ? , ? , ? , ? , ? , ? , ? )"  ; // 每行8个，共24个
+							 
+			PreparedStatement ps = m_conn.prepareStatement(query_str);
+			ps = doPsCourseMapping(ps , course) ;
+			/* some preparing work... */
+			ps.executeUpdate();
+			/* do update */
+			m_conn.commit();
+
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
+	public void doDeleteCourseFromTabCourse(String course_id)
+	{
+		try {
+			String sql_delete = "DELETE FROM " +
+								"TB_COURSE " +
+								"WHERE COURSE_ID=?";
+			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
+			ps.setString(1, course_id);
+			/* prepare sql string */
+			ps.executeUpdate();
+
+			m_conn.commit();/* commit it if there is no exception */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
+	public void doDeleteCourseSelFromTabCourseSel(String uid,String course_id)
+	{
+		try {
+			String sql_delete = "DELETE FROM " +
+								"TB_COURSE_SELECT " +
+								"WHERE U_ID=? AND COURSE_ID=?";
+			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
+			ps.setString(1, uid);
+			ps.setString(2, course_id);
+			/* prepare sql string */
+			ps.executeUpdate();
+
+			m_conn.commit();/* commit it if there is no exception */
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
+
 }
