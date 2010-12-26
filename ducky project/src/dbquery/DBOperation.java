@@ -548,6 +548,52 @@ public class DBOperation {
 		}
 		return rtn ;
 	}
+	public void doUpdatePointGoalFromTabPG(PointGoal pg)
+	{
+		try {
+			String query_login = "UPDATE TB_POINT_GOAL " +
+								 "SET U_SCHOOL_ID=?," +
+								 "A1=?,A2=?,A3=?," +
+								 "B1=?,B2=?,B3=?," +
+								 "C1=?,C2=?,C3=?," +
+								 "D1=?,D2=?,D3=?," +
+								 "E1=?,E2=?,E3=?," +
+								 "F1=?,F2=?,F3=? " +
+								 "WHERE U_SCHOOL_ID=?";
+
+			PreparedStatement ps = m_conn.prepareStatement(query_login);
+
+			int i = 1 ;
+			ps.setInt(i++, pg.getU_school_id()) ;
+			ps.setFloat(i++, pg.getA1()) ;
+			ps.setFloat(i++, pg.getA2()) ;
+			ps.setFloat(i++, pg.getA3()) ;
+			ps.setFloat(i++, pg.getB1()) ;
+			ps.setFloat(i++, pg.getB2()) ;
+			ps.setFloat(i++, pg.getB3()) ;
+			ps.setFloat(i++, pg.getC1()) ;
+			ps.setFloat(i++, pg.getC2()) ;
+			ps.setFloat(i++, pg.getC3()) ;
+			ps.setFloat(i++, pg.getD1()) ;
+			ps.setFloat(i++, pg.getD2()) ;
+			ps.setFloat(i++, pg.getD3()) ;
+			ps.setFloat(i++, pg.getE1()) ;
+			ps.setFloat(i++, pg.getE2()) ;
+			ps.setFloat(i++, pg.getE3()) ;
+			ps.setFloat(i++, pg.getF1()) ;
+			ps.setFloat(i++, pg.getF2()) ;
+			ps.setFloat(i++, pg.getF3()) ;
+			ps.setInt(i++, pg.getU_school_id()) ;
+			/* some preparing work... */
+			// System.out.println("query = "+ps) ;//for test
+			ps.executeUpdate();
+			/* do update */
+			m_conn.commit();
+
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+	}
 	public Vector<Course> doQueryAllFinishedCourseOfCertainStudent(String uid)
 	{
 		Vector<Course> rtn = null ;
