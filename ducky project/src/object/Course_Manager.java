@@ -58,4 +58,37 @@ public class Course_Manager {
 		 dbo.disconnectDB();
 		 return _all;
 	 }
+	 public Course_Manager() {
+		// TODO Auto-generated constructor stub
+	}
+	 
+	 public static Exp AddCourse(Course _course){
+		 //添加一门课程
+		 Exp _exp = new Exp();
+		 DBOperation dbo = new DBOperation() ;
+		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		 dbo.insertCourse2TabCourse(_course);
+		 dbo.disconnectDB();
+		 return _exp;
+	 }
+	 
+	 public static Exp DeleteCourse(Course _course){
+		 Exp _exp = new Exp();
+		 DBOperation dbo = new DBOperation() ;
+		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		 dbo.doDeleteCourseFromTabCourse(_course.getCourse_id());
+		 dbo.disconnectDB();
+		 return _exp;
+	 }
+	 
+	 public static Exp EditCourse(Course _new,Course _old){
+		 Exp _exp = new Exp();
+		 DBOperation dbo = new DBOperation() ;
+		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		 dbo.doDeleteCourseFromTabCourse(_old.getCourse_id());
+		 dbo.insertCourse2TabCourse(_new);
+		 dbo.disconnectDB();
+		 return _exp;
+	 }
+	 
 }
