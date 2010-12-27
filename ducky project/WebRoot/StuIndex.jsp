@@ -83,6 +83,15 @@ a:hover
 	font-size:24px;
 	font-weight:bold;
 }
+ibutton
+{
+	height: 45px;
+	background-image: url(gradVert.jpg);
+	background-repeat: repeat-x;
+	border-style: 0px solid #fff;
+	display: block;
+	cursor: pointer;
+}
 </style>
 <script>
 function showLayer(layerid){   
@@ -99,8 +108,8 @@ function showLayer(layerid){
   <form id="SelCrsForm" name="SelCrsForm" method="get" action="/TJSelCrsSys/servlet/CourseListsServlet">
   <table width="430" border="0" align="center">
     <tr>
-      <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
-			value="SttSelCrs" src="images/StuMenuBT.png" onclick="document.getElementById("SelCrsForm").submit()"/></td>
+      <td width="25%"><input type="submit" class="MenuFont" style="background:none;border:none" name="SelectCrsCommit" id="SttSelCrs"
+			value="选课"/></td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
 			value="SttSelCrs" src="images/StuMenuBT.png" /></td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"

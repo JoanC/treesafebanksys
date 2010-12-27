@@ -264,12 +264,14 @@ public class CourseListsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		iRequest = req;
 		iResponse = response;
+		req.setCharacterEncoding("UTF-8");
+		iRequest.setCharacterEncoding("UTF-8");
 		String value = (String)req.getParameter("SelectCrsCommit");
 		DebugClass.debug_info(this.toString(),"value: " + value);
 		String para = value.substring(0, "DelPrsCrs".length());
 		DebugClass.debug_info(this.toString(), "value" + value);
 		getCourseTables();
-		if (para.equals("SttSelCrs")) {
+		if (para.equals("Ñ¡¿Î")) {
 			Request_StartSelCrs();
 		} else if (para.equals("PreSelCrs")) {
 			Request_PreSelCrs();
