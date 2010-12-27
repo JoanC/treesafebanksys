@@ -74,6 +74,7 @@ public class LoginUser_Manager {
 			//µÇÂ½ÕýÈ·
 			DebugClass.debug_info("Login modle", "login data check done!");
 			_rlt.setIs_succ(true);
+			_rlt.setU_type(_query.getU_type());
 		}
 		return _rlt;
 	}

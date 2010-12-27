@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 
 import com.sun.mail.iap.Response;
 import com.sun.net.ssl.internal.ssl.Debug;
@@ -80,19 +81,24 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		DebugClass.debug_info(this.toString(), "para:" + para);
 		String name = (String)request.getParameter(para);
 		DebugClass.debug_info(this.toString(), "name: "+ name);
-		
+		HttpSession session = request.getSession();
 		SysParam _update = SystemParameter_Manager.getSystemParameter();
-		if(para.equals("On"))
+		if(name.equals("on"))
 		{
 			//开启选课操作
+			DebugClass.debug_info(this.toString(), "open");
 			_update.setCourseSelOpened(true);
 		}
 		else {
 			//关闭选课操作
+			DebugClass.debug_info(this.toString(), "close");
 			_update.setCourseSelOpened(false);
 		}
 		//更新数据库
 		SystemParameter_Manager.editSystemParameter(_update);
+		session.removeAttribute("SystemPara");
+		session.setAttribute("SystemPara", _update);
+		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
 		
 	}
 	private void Request_SelCrsMode(HttpServletRequest request, HttpServletResponse response,String para)
@@ -100,33 +106,28 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	{
 		String name = (String)request.getParameter(para);
 		DebugClass.debug_info(this.toString(), "name: "+ name);
-		
+		HttpSession session = request.getSession();
 		SysParam _update = SystemParameter_Manager.getSystemParameter();
 		DebugClass.debug_info(this.toString(), "open ? " + _update.isCourseSelOpened() + "select? " + _update.getCourseSelType());
-		if(para.equals("FCFS"))
+		if(name.equals("FCFS"))
 		{
 			//先到先得模式
+			DebugClass.debug_info(this.toString(), "FCFS");
 			_update.setCourseSelType(enCourseSelType.CST_FSFG);
 		}
 		else {
 			//随机踢课模式
+			DebugClass.debug_info(this.toString(), "RANDOUT");
 			_update.setCourseSelType(enCourseSelType.CST_RANDOUT);
 		}
 		//更新数据库
 		DebugClass.debug_info(this.toString(), "update ? " + _update.isCourseSelOpened() + "select? " + _update.getCourseSelType());
 		SystemParameter_Manager.editSystemParameter(_update);
+		session.removeAttribute("SystemPara");
+		session.setAttribute("SystemPara", _update);
+		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
 		
-	}
-	private void Request_Init(HttpServletRequest request, HttpServletResponse response,String para)
-	throws ServletException, IOException
-	{
-		HttpSession session = request.getSession();
-	   
-	    //系统参数
-	    SysParam _data = SystemParameter_Manager.getSystemParameter();
-	    session.setAttribute("SystemPara", _data);
-	    response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp");
-	}
+	}	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
@@ -139,10 +140,6 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		else if(value.equals("SelCrsModeCmt"))
 		{
 			Request_SelCrsMode(request,response,value);
-		}
-		else if(value.equals(null))
-		{
-			Request_Init(request,response,value);
-		}
+		}		
 	}
 }

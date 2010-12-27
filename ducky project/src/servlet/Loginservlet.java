@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import db_data_structure.LoginInputInfo;
+import db_data_structure.SysParam;
 
 import object.*;
 
@@ -116,10 +117,26 @@ public class Loginservlet extends HttpServlet {
         	DebugClass.debug_info("Login servlet", "login fail!");
         }
         else{
-          System.out.println(_rlt.getU_type());
-          System.out.println(_rlt.getU_id());
+          //System.out.println(_rlt.getU_type());
+          //System.out.println(_rlt.getU_id());
           DebugClass.debug_info("Login servlet", "login success!");
-		  response.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + username);
+          session.setAttribute("info", "»¶Ó­Äú£¡" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
+          if (_rlt.getU_type() == 1) {
+        	  DebugClass.debug_info("Login servlet", "login 1!");
+        	  response.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + username);
+          }
+          else if(_rlt.getU_type() == 2)
+          {
+        	  DebugClass.debug_info("Login servlet", "login 2!");
+        	  response.sendRedirect("/TJSelCrsSys/TeaIndex.jsp?userid=" + username);
+          }
+          else if(_rlt.getU_type() == 3)
+          {
+        	  DebugClass.debug_info("Login servlet", "login 3!");
+        	  SysParam _data = SystemParameter_Manager.getSystemParameter();
+        	  session.setAttribute("SystemPara", _data);
+        	  response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + username);
+          }
         }
 	}
 	

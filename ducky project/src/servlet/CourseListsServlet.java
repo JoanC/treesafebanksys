@@ -168,13 +168,21 @@ public class CourseListsServlet extends HttpServlet {
 
 	private void Request_StartSelCrs() throws ServletException, IOException {
 		DebugClass.debug_info(this.toString(), "get the course list...");
-		Vector<Course> courses = courseselmgr.getListData();
-		// Vector<Course> courses = Course_Manager.getAllCourseList();
-		DebugClass.debug_info(this.toString(), "size: " + courses.size());
+		//判断选课是否开启？
 		HttpSession session = iRequest.getSession();
-		session.setAttribute("CourseList",courses);
-		iResponse.sendRedirect("/TJSelCrsSys/CourseLists.jsp?userid=" + session.getAttribute("userid"));
-	}
+		if(!SystemParameter_Manager.getSystemParameter().isCourseSelOpened()){
+			DebugClass.debug_info(this.toString(), "选课功能关闭 ");
+			session.setAttribute("info", "选课功能已关闭");
+			iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+		}
+		else {
+			DebugClass.debug_info(this.toString(), "选课功能开启 ");
+			Vector<Course> courses = courseselmgr.getListData();
+			session.setAttribute("CourseList",courses);
+			iResponse.sendRedirect("/TJSelCrsSys/CourseLists.jsp?userid=" + session.getAttribute("userid"));
+		}
+	}		
+		
 	private void Request_DelPrsCrs()throws ServletException, IOException 
 	{
 		DebugClass.debug_info(this.toString(), "del start...");
