@@ -22,7 +22,7 @@ public class EncodeTool {
     return temp;
     }
     
-    public static String UTF8toISO(String input) throws Exception
+    public static String UTF8toISO(String input)
     {
     String temp="";
     try{
