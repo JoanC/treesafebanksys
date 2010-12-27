@@ -26,11 +26,14 @@ public class EncodeTool {
     {
     String temp="";
     try{
-       byte[] bytes = input.getBytes("utf-8");
+       byte[] bytes = input.getBytes("UTF-8");
        temp=new String(bytes,"ISO8859-1");
     }catch(Exception ex){
        ex.printStackTrace();
     }
     return temp;
     }
+    
+    
+    
 }
