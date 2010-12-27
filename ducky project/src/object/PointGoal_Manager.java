@@ -2,7 +2,8 @@ package object;
 
 
 import db_data_structure.PointGoal;
-import dbquery.*;
+import dbquery.DBOperation;
+import dbquery.dbConnectParam;
 
 
 //这个类负责培养计划数据的处理，包含了一个查找操作和修改保存操作，
@@ -20,7 +21,12 @@ public class PointGoal_Manager {
 	//编辑培养计划并保存
 	static public Exp EditPointGoal(PointGoal _old, PointGoal _new){
 		Exp exp = new Exp();
-		//DB options...
+		
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd);
+		dbo.doUpdatePointGoalFromTabPG(_new);
+		dbo.disconnectDB();
+		
 		return exp;
 	}
 }
