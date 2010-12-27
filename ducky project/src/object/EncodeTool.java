@@ -34,6 +34,16 @@ public class EncodeTool {
     return temp;
     }
     
-    
-    
+    public static String UTF8toGB2312(String input)
+    {
+    String temp="";
+    try{
+       byte[] bytes = input.getBytes("UTF-8");
+       temp=new String(bytes,"gb2312");
+    }catch(Exception ex){
+       ex.printStackTrace();
+    }
+    return temp;
+    }
+ 
 }
