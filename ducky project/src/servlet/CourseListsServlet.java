@@ -264,7 +264,7 @@ public class CourseListsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		iRequest = req;
 		iResponse = response;
-		String value = (String) req.getParameter("SelectCrsCommit");
+		String value = (String)req.getParameter("SelectCrsCommit");
 		DebugClass.debug_info(this.toString(),"value: " + value);
 		String para = value.substring(0, "DelPrsCrs".length());
 		DebugClass.debug_info(this.toString(), "value" + value);

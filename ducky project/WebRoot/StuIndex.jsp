@@ -95,12 +95,12 @@ function showLayer(layerid){
 <div id="StuBanner">
 <div id="StuTJWord"></div>
 <div id="Menu">
-  <br /><br />
-  <form id="selectcourse" name="selectcourse" method="post" action="/TJSelCrsSys/servlet/CourseListsServlet">
+  do<br /><br />
+  <form id="SelCrsForm" name="SelCrsForm" method="get" action="/TJSelCrsSys/servlet/CourseListsServlet">
   <table width="430" border="0" align="center">
     <tr>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
-			value="SttSelCrs" src="images/StuMenuBT.png" /></td>
+			value="SttSelCrs" src="images/StuMenuBT.png" onclick="document.getElementById("SelCrsForm").submit()"/></td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
 			value="SttSelCrs" src="images/StuMenuBT.png" /></td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
