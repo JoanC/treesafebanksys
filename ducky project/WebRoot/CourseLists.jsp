@@ -1,17 +1,18 @@
 <%@ page language="java" import="object.*"
-	contentType="text/html; charset=gb2312"%>
+	contentType="text/html; charset=GBK"%>
 <%@ page language="java" import="db_data_structure.Course"
-	contentType="text/html; charset=gb2312"%>
+	contentType="text/html; charset=GBK"%>
 <%@ page language="java" import="java.util.*"
-	contentType="text/html; charset=gb2312"%>
+	contentType="text/html; charset=GBK"%>
 <%@page import="object.CourseSelect_Manager"%>
-<body>
 		<form id="CourseSel" name="CourseSel" method="post"
 			action="/TJSelCrsSys/servlet/CourseListsServlet">
 			<%
+			DebugClass.debug_info(this.toString(),"嵌入 网页成功");
 				//Vector<Course> course = Course_Manager.getAllCourseList();
 				//调用sevelet中的取得列表函数
 				Vector<Course> course = (Vector<Course>) session.getAttribute("CourseList");
+				DebugClass.debug_info(this.toString(),"读取session？");
 				if (course.size() != 0) {
 					Course tempcourse = course.elementAt(0);
 					int type = tempcourse.getCourse_type();
@@ -62,4 +63,3 @@
 				value="PreSelCrs" src="images/Button_Login.gif" />
 			开始选课
 		</form>
-	</body>

@@ -172,7 +172,7 @@ public class CourseListsServlet extends HttpServlet {
 			Vector<Course> courses = courseselmgr.getListData();
 			session.setAttribute("CourseList",courses);
 			session.setAttribute("pages", "CourseLists.jsp");
-			iResponse.sendRedirect("/TJSelCrsSys/CourseLists.jsp?userid=" + session.getAttribute("userid"));
+			iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 		}
 	}		
 		

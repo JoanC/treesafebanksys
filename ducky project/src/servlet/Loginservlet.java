@@ -120,7 +120,7 @@ public class Loginservlet extends HttpServlet {
           //System.out.println(_rlt.getU_type());
           //System.out.println(_rlt.getU_id());
           DebugClass.debug_info("Login servlet", "login success!");
-          session.setAttribute("info", "��ӭ��" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
+          session.setAttribute("info", "欢迎您！" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
           session.setAttribute("pages", "none");
           if (_rlt.getU_type() == 1) {
         	  DebugClass.debug_info("Login servlet", "login 1!");
