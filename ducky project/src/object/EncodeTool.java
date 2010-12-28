@@ -1,5 +1,7 @@
 package object;
 
+import java.io.UnsupportedEncodingException;
+
 public class EncodeTool {
     public static String ISOtoGB2312(String input) throws Exception
     {
@@ -44,6 +46,17 @@ public class EncodeTool {
        ex.printStackTrace();
     }
     return temp;
+    }
+    
+    public static String ByteToISO(String _code){
+		byte[] B = null;
+		try {
+			B = _code.getBytes("iso-8859-1");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new String(B);
     }
  
 }
