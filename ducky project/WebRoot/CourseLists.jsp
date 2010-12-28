@@ -8,6 +8,8 @@
 		<form id="CourseSel" name="CourseSel" method="post"
 			action="/TJSelCrsSys/servlet/CourseListsServlet">
 			<%
+			if(session.getAttribute("pages").equals("CourseLists.jsp"))
+			{
 			DebugClass.debug_info(this.toString(),"嵌入 网页成功");
 				//Vector<Course> course = Course_Manager.getAllCourseList();
 				//调用sevelet中的取得列表函数
@@ -58,8 +60,9 @@
 					}
 					out.print("</table>");
 				}
-			%>
-			<input type="image" name="SelectCrsCommit" id="PreSelCrs"
-				value="PreSelCrs" src="images/Button_Login.gif" />
-			开始选课
+				out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"PreSelCrs\" value=\"PreSelCrs\" src=\"images/Button_Login.gif\" />开始选课");
+			}
+			
+			
+			%>			
 		</form>

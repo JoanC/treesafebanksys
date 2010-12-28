@@ -124,26 +124,8 @@ function showLayer(layerid){
 <div id="TextArea">
 <table width="730" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
   <tr>
-    <td>
-    
-    <%
-    if(session.getAttribute("pages").equals("none"))
-    {
-    	out.print("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>");
-    }
-    else if(session.getAttribute("pages").equals("CourseLists.jsp"))
-    {
-    	DebugClass.debug_info(this.toString(),"嵌入课程列表页面");
-    	String _temp = "<%@ include file=" + "\"CourseLists.jsp\"" + "%" + ">";
-    	DebugClass.debug_info(this.toString(),"temp: " + _temp);
-    	out.println(_temp);
-    }
-    else if(session.getAttribute("pages").equals("SelectCourses.jsp"))
-    {
-    	out.print("<jsp:include page=\"/TJSelCrsSys/SelectCourses.jsp\" flush=\"true\"/>");
-    }    
-    %>
-    
+    <td>    
+    <jsp:include page="CourseLists.jsp"/>
     </td>
   </tr>
 </table>

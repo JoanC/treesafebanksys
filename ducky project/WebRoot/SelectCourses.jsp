@@ -6,23 +6,11 @@
 	contentType="text/html; charset=gb2312"%>
 <%@page import="object.DebugClass"%>
 <%@page import="java.io.IOException"%>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>course list</title>
-
-		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-		<meta http-equiv="description" content="this is my page">
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
-		<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-
-	</head>
-
-	<body>	
 	<form id="SelectCourse" name="SelectCourse" method="post"
 			action="/TJSelCrsSys/servlet/CourseListsServlet">	
 	<% 
+	if(session.getAttribute("pages").equals("SelectCourses.jsp"))
+	{
 	boolean iConflict = false;
 	Vector<String> _check = (Vector<String>)session.getAttribute("coursetable");
 	for(int i = 0 ; i < _check.size() ; ++i){
@@ -54,9 +42,12 @@
 		out.print("</tr>");
 	}
     out.print("</table>");
-	 %>
-	  <table width="1000" border="1">
+    }
+	 %>	  
 	 <%
+	 out.print("<table width=\"1000\" border=\"1\">");
+	 if(session.getAttribute("pages").equals("SelectCourses.jsp"))
+	{
 	 	Vector<Course> _current;
 	 	_current = (Vector<Course>)session.getAttribute("coursestea");
 	 	if(_current != null)
@@ -83,6 +74,7 @@
   		}	
   		//session.removeAttribute("coursestea");
   		} 
+  		}
 	  %>
 	  </table>
 	<table width="555" border="1">
@@ -114,6 +106,5 @@
   	}
   %>
 </table>
-	 </form>
-	</body>
-</html>
+</form>
+

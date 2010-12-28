@@ -131,7 +131,6 @@ public class CourseListsServlet extends HttpServlet {
 		if (checkv == null) {
 			DebugClass.debug_info(this.toString(), "NULL");
 		} else {
-
 			DebugClass.debug_info("CouseSelectModle",
 					"start to convert from course to preCourseInfo..");
 			DebugClass.debug_info("CouseSelectModle", "checkv.legth" + checkv);
@@ -156,7 +155,7 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", _result);
 	    session.setAttribute("pages", "SelectCourses.jsp");
-	    iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
+	    iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 	}
 
 	private void Request_StartSelCrs() throws ServletException, IOException {
@@ -192,7 +191,7 @@ public class CourseListsServlet extends HttpServlet {
 	    HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", course);
 	    session.setAttribute("pages", "SelectCourses.jsp");
-	    iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
+	    iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 	    
 	}
 	private void Request_SelFmlCrs()throws ServletException, IOException 
@@ -209,7 +208,7 @@ public class CourseListsServlet extends HttpServlet {
 		DebugClass.debug_info(this.toString(),"ת���������");
 		session.removeAttribute("coursestea");
 		session.setAttribute("pages", "SelectCourses.jsp");
-		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));				
+		iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));				
 	}
 	private void Request_SelCrsTea()throws ServletException, IOException 
 	{
@@ -226,7 +225,7 @@ public class CourseListsServlet extends HttpServlet {
 		}*/
 		session.setAttribute("coursestea", _detail);
 		session.setAttribute("pages", "SelectCourses.jsp");
-		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
+		iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 	}
 	private void Request_DelFmlCrs()throws ServletException, IOException 
 	{
@@ -244,7 +243,7 @@ public class CourseListsServlet extends HttpServlet {
 		Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
 		session.setAttribute("coursetable", crstable);
 		session.setAttribute("pages", "SelectCourses.jsp");
-		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
+		iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 	}
 	public void getCourseTables() throws ServletException, IOException 
 	{
