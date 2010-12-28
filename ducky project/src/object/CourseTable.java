@@ -97,7 +97,7 @@ public abstract class CourseTable {
 				// ���������ͬ,���ͻ
 				DebugClass.debug_info("CourseTable", "course1:" + _tmp_1.getCourse_name()
 						+ "course2:" + _tmp_2.getCourse_name());
-				_generate_str += "�γ̳�ͻ!";
+				_generate_str += "课程冲突";
 			} else {
 				// ��˫�ܲ���ͻ
 				_generate_str += _tmp_1.getCourse_name()
