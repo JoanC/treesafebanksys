@@ -12,61 +12,61 @@ import dbquery.CourseTimeOperation;
 
 
 public abstract class CourseTable {
-	//Ñ§Éú»òÕßÀÏÊ¦µÄÓÃ»§idµÄ¼ÇÂ¼
+	//Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½Ã»ï¿½idï¿½Ä¼ï¿½Â¼
 
 	private static final int MAX_NUM_OF_COURSES_PER_DAY = 11;
 	private static final int WEEK_DAYS = 7;
 	
 	public abstract void set_u_id(String uid);
 	
-	//Ñ§Éú»òÕßÀÏÊ¦µÄÓÃ»§idµÄ»ñÈ¡
+	//Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½Ã»ï¿½idï¿½Ä»ï¿½È¡
 	public abstract String get_u_id();
 	
-	//Õâ¸ö¿Î±íÖĞµÄËùÓĞ¿Î³ÌĞÅÏ¢ÁĞ±íµÄ¼ÇÂ¼
+	//ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½Ğ¿Î³ï¿½ï¿½ï¿½Ï¢ï¿½Ğ±ï¿½Ä¼ï¿½Â¼
 	public abstract Vector get_course_list();
 	
-	//ÔÚ³õÊ¼»¯Ê±»ñÈ¡Õâ¸öu_idÏÂµÄ¿Î±íÖĞµÄËùÓĞ¿Î³ÌÁĞ±í
+	//ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½È¡ï¿½ï¿½ï¿½u_idï¿½ÂµÄ¿Î±ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½Ğ¿Î³ï¿½ï¿½Ğ±ï¿½
 	protected abstract Vector searchCourseList();
 	
-	// ×÷Õß:Íò¾ıÑÇ
-	// Ê±¼ä:2010/12/15
-	// ½«¿Î³Ì±í×ª»¯ÎªseveletÓëÍøÒ³¶Ë¿ÉÊ¶±ğµÄÊı¾İ¸ñÊ½
+	// ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Ê±ï¿½ï¿½:2010/12/15
+	// ï¿½ï¿½ï¿½Î³Ì±ï¿½×ªï¿½ï¿½Îªseveletï¿½ï¿½ï¿½ï¿½Ò³ï¿½Ë¿ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½İ¸ï¿½Ê½
 	public static Vector<String> convertFmlTabFormat(Vector<Course> _fml_tab) {
 		/*
-		 * ·µ»ØÒ»¸ö´æ·Å¿Î³ÌÁĞ±íĞÅÏ¢µÄÒ»Î¬Êı×é ´æ·Åµ¥ÔªÎªcourse_id ¸ñÊ½ÈçÏÂ
-		 * ÒÔÆß¸öÎ»µ¥Î»,µÚÒ»¸öÆß¸ö·Ö±ğ±íÊ¾Àñ°İÒ»~ÆßµÄµÚÒ»½Ú¿Î..ÒÀ´ÎÀàÍÆ
+		 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Å¿Î³ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ò»Î¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Åµï¿½ÔªÎªcourse_id ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+		 * ï¿½ï¿½ï¿½ß¸ï¿½Î»ï¿½ï¿½Î»,ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß¸ï¿½ï¿½Ö±ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ò»~ï¿½ßµÄµï¿½Ò»ï¿½Ú¿ï¿½..ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		Vector<String> _rlt = new Vector<String>();
 		/*
-		 * ÊµÏÖÔ­Àí 1.¶Ô7*11¸÷¸ö±íÏî½øĞĞÖğÒ»ÅĞ¶¨ËÑË÷ 2.ÕÒµ½¶ÔÓ¦µÄ¿Î³Ì×ø±êÇÒ¸öÊıµÈÓÚ1µÄ,ÔòÌîÈë¶ÔÓ¦µÄÃû³Æ
-		 * 3.¶ÔÓÚµ¥/Ë«ÖÜµÄ¿Î³ÌÒª×öÒ»²½ÅĞ¶Ï. 4.ÀíÂÛÉÏÀ´Ëµ,Ò»¸ö¸ñ×ÓÄÚ,×î¶à½öÓĞÁ½ÃÅ¿Î(µ¥Ë«ÖÜ)..
+		 * Êµï¿½ï¿½Ô­ï¿½ï¿½ 1.ï¿½ï¿½7*11ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ 2.ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½Ä¿Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½
+		 * 3.ï¿½ï¿½ï¿½Úµï¿½/Ë«ï¿½ÜµÄ¿Î³ï¿½Òªï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ğ¶ï¿½. 4.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµ,Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¿ï¿½(ï¿½ï¿½Ë«ï¿½ï¿½)..
 		 */
-		// ²½Öè1:±éÀúÈ«²¿¿Î±í¸ñ,×ÜÊıÎª7*11
+		// ï¿½ï¿½ï¿½ï¿½1:ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½Î±ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Îª7*11
 		for (int _index = 0; _index < MAX_NUM_OF_COURSES_PER_DAY * WEEK_DAYS; ++_index) {
-			// ²½Öè2:¶ÔÓÚÃ¿Ò»¸ö¸ñ×Ó,½øĞĞ×ø±ê²éÕÒ,ÕÒ³ö¶ÔÓ¦µÄ¿Î³Ì¸öÊıÄ¿,´æ´¢ÔÚÒ»¸öVectorÖĞ
-			// ĞòºÅ¾ù´Ó0¿ªÊ¼¼ÆËã,·ÇÏÖÊµµÄ1,2,3,4...ÀıÈçĞÇÆÚÎª0,1,2,3,4,5,6...
-			// ²éÕÒ¶ÔÓ¦µÄ×ø±ê
+			// ï¿½ï¿½ï¿½ï¿½2:ï¿½ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ò³ï¿½ï¿½ï¿½Ó¦ï¿½Ä¿Î³Ì¸ï¿½ï¿½ï¿½Ä¿,ï¿½æ´¢ï¿½ï¿½Ò»ï¿½ï¿½Vectorï¿½ï¿½
+			// ï¿½ï¿½Å¾ï¿½ï¿½0ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½1,2,3,4...ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0,1,2,3,4,5,6...
+			// ï¿½ï¿½ï¿½Ò¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½
 			int _week = _index % WEEK_DAYS;
 			int _seq = _index / WEEK_DAYS;
 			//DebugClass.debug_info("CourseTable", "the course position is (" + _week + "," + _seq + ");");
-			Vector<Course> _temp_list = new Vector<Course>();// ´æ´¢Ò»¸ö¸ñ×ÓÖĞµÄ¿Î³ÌÁĞ±í,×î¶àÁ½¸ö
+			Vector<Course> _temp_list = new Vector<Course>();// ï¿½æ´¢Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ĞµÄ¿Î³ï¿½ï¿½Ğ±ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			for (int _index_all_list = 0; _index_all_list < _fml_tab
 					.size(); ++_index_all_list) {
-				// È¡µÃ¿Î³ÌĞÅÏ¢Óë×ø±êĞÅÏ¢
+				// È¡ï¿½Ã¿Î³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 				Course _course = _fml_tab
 						.elementAt(_index_all_list);
 				Map<Integer, Vector<Boolean>> _time = CourseTimeOperation
 						.convert2Detail(_course.getCourse_time_week());
 				if (_time.containsKey(_week)) {
-					// ÕÒµ½¿Î³ÌÔÚ¸ÃĞÇÆÚÓĞ¿Î,²éÕÒ½ÚÊıÊÇ·ñÓĞ
+					// ï¿½Òµï¿½ï¿½Î³ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¿ï¿½,ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½
 					Vector<Boolean> _seqs = _time.get(_week);
 					if (_seqs.elementAt(_seq) == true) {
-						// È·¶¨ÔÚÕâ¸ö×ø±êÉÏÓĞ´Ë¿Î
+						// È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ´Ë¿ï¿½
 						_temp_list.add(_course);
 					}
 				}
 			}
-			// ²½Öè3:È¡µÃÁËµ±Ç°×ø±êµÄ¿Î³ÌÁĞ±í,ÔÙÍ¨¹ıÊıÄ¿,µ¥Ë«ÖÜ,ÅĞ¶ÏÏÔÊ¾³öÊ²Ã´ĞÅÏ¢,¼´ÔÚ_rltÖĞ¼ÓÈëÔõÑùµÄ×Ö·û´®
+			// ï¿½ï¿½ï¿½ï¿½3:È¡ï¿½ï¿½ï¿½Ëµï¿½Ç°ï¿½ï¿½ï¿½Ä¿Î³ï¿½ï¿½Ğ±ï¿½,ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ä¿,ï¿½ï¿½Ë«ï¿½ï¿½,ï¿½Ğ¶ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê²Ã´ï¿½ï¿½Ï¢,ï¿½ï¿½ï¿½ï¿½_rltï¿½Ğ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
 			_rlt.add(generateSubStrForFmlTab(_temp_list, (_week+1)));
 			/*DebugClass.debug_info("CourseTable","time -- week : " + (_week+1) + " seq: " 
 					+ (_seq + 1) + generateSubStrForFmlTab(_temp_list, _week));*/
@@ -81,38 +81,38 @@ public abstract class CourseTable {
 		}
 		String _generate_str = "";
 		if (_list.size() == 0) {
-			// Ã»ÓĞ¿Î³Ì
+			// Ã»ï¿½Ğ¿Î³ï¿½
 		} else if (_list.size() == 1) {
-			// Ç¡ºÃÒ»ÃÅ¿Î³Ì,²»´æÔÚ³åÍ»
-			// ÅĞ¶Ïµ¥Ë«ÖÜÎÊÌâ
+			// Ç¡ï¿½ï¿½Ò»ï¿½Å¿Î³ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Í»
+			// ï¿½Ğ¶Ïµï¿½Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			Course _tmp = _list.elementAt(0);
 			_generate_str += _tmp.getCourse_name()
 					+ " " + generateSubStrByFeq(_tmp.getCourse_time_week().getCourse_freq(_week_day));
 		} else if (_list.size() == 2) {
 			Course _tmp_1 = _list.elementAt(0);
 			Course _tmp_2 = _list.elementAt(1);
-			// ÅĞ¶Ïµ¥Ë«ÖÜĞòÁĞÊÇ·ñÒ»ÖÂ,ÈôÓĞÒ»ÖÂÔò³åÍ»
+			// ï¿½Ğ¶Ïµï¿½Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ò»ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Í»
 			if (_tmp_1.getCourse_time_week().getCourse_freq(_week_day) == _tmp_2.getCourse_time_week().getCourse_freq(_week_day)
 					&& 0 != _tmp_1.getCourse_time_week().getCourse_freq(_week_day)*_tmp_2.getCourse_time_week().getCourse_freq(_week_day)) {
-				// Èç¹ûĞòÁĞÏàÍ¬,Ôò³åÍ»
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬,ï¿½ï¿½ï¿½Í»
 				DebugClass.debug_info("CourseTable", "course1:" + _tmp_1.getCourse_name()
 						+ "course2:" + _tmp_2.getCourse_name());
-				_generate_str += "¿Î³Ì³åÍ»!";
+				_generate_str += "ï¿½Î³Ì³ï¿½Í»!";
 			} else {
-				// µ¥Ë«ÖÜ²»³åÍ»
+				// ï¿½ï¿½Ë«ï¿½Ü²ï¿½ï¿½ï¿½Í»
 				_generate_str += _tmp_1.getCourse_name()
 						+ " " + generateSubStrByFeq(_tmp_1.getCourse_time_week().getCourse_freq(_week_day));
 				_generate_str += _tmp_2.getCourse_name() 
 						+ " " + generateSubStrByFeq(_tmp_2.getCourse_time_week().getCourse_freq(_week_day));
 			}
 		}else{
-			//¿Î³Ì³åÍ»
-			/*_generate_str += "¿Î³Ì ";
+			//ï¿½Î³Ì³ï¿½Í»
+			/*_generate_str += "ï¿½Î³ï¿½ ";
 			for(int _index = 0 ; _index < _list.size() ; ++_index){
 				_generate_str += _list.elementAt(_index).getCourse_name() + " ";
 			}
-			_generate_str += "´æÔÚ³åÍ»!";*/
-			_generate_str += "¿Î³Ì³åÍ»!!";
+			_generate_str += "ï¿½ï¿½ï¿½Ú³ï¿½Í»!";*/
+			_generate_str += "è¯¾ç¨‹å†²çª";
 		}
 		if(_generate_str == "") _generate_str += "--";
 		return _generate_str;
@@ -122,18 +122,18 @@ public abstract class CourseTable {
 		String _sub = "";
 		DebugClass.debug_info("CourseTable", "the feq is : " + _feq);
 		if (_feq == enCourseFreq.NONE) {
-			// Ã»ÓĞ¿Î³Ì
-			_sub += "<¿Î³ÌÔİÍ£>";
+			// Ã»ï¿½Ğ¿Î³ï¿½
+			_sub += "<è¯¾ç¨‹æš‚åœ>";
 		} else if (_feq == enCourseFreq.ODD_WEEK) {
-			// µ¥ÖÜ
-			_sub += "<µ¥ÖÜ>";
+			// ï¿½ï¿½ï¿½ï¿½
+			_sub += "<å•å‘¨>";
 		} else if (_feq == enCourseFreq.EVEN_WEEK) {
-			// Ë«ÖÜ
-			_sub += "<Ë«ÖÜ>";
+			// Ë«ï¿½ï¿½
+			_sub += "<åŒå‘¨>";
 		} else {
-			// Ã¿ÖÜ
-			// ²»ÏÔÊ¾
-			//_sub += "<Ã¿ÖÜ>";
+			// Ã¿ï¿½ï¿½
+			// ï¿½ï¿½ï¿½ï¿½Ê¾
+			//_sub += "<Ã¿ï¿½ï¿½>";
 		}
 		return _sub;
 	}
