@@ -11,6 +11,7 @@
 	<% 
 	if(session.getAttribute("pages").equals("SelectCourses.jsp"))
 	{
+	DebugClass.debug_info(this.toString(),"嵌入选课网页");
 	boolean iConflict = false;
 	Vector<String> _check = (Vector<String>)session.getAttribute("coursetable");
 	for(int i = 0 ; i < _check.size() ; ++i){
@@ -28,16 +29,16 @@
 		out.print("<td>");
 		out.print(name);
 		out.print("<td>");
-		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelPrsCrs" + i + "\" src=\"images/Button_Login.gif\" >退课");
+		out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"预删" + i + "\"/>");
 		if(iConflict)
 		{
 			out.print("<image src=\"images/Button_Login.gif\" >无效");
 		}
 		else
 		{
-			out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"SelCrsTea" + i + "\" src=\"images/Button_Login.gif\" >选择");
+			out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"SelFmlCrs\" value=\"正选" + i + "\"/>");
 		}		
-		out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"CourseClear\" value=\"DelFmlCrs" + i + "\" src=\"images/Button_Login.gif\" >清除" );
+		out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"正删" + i + "\"/>");
 		out.print("</td>");
 		out.print("</tr>");
 	}
@@ -45,7 +46,7 @@
     }
 	 %>	  
 	 <%
-	 out.print("<table width=\"1000\" border=\"1\">");
+	 out.print("<table width=\"700\" border=\"1\">");
 	 if(session.getAttribute("pages").equals("SelectCourses.jsp"))
 	{
 	 	Vector<Course> _current;
@@ -69,26 +70,18 @@
   		  out.print(" <td colspan=\"7\">");
  		  out.print(_current.elementAt(i).getCourse_comment());
  		  out.print("</td>");
- 		  out.print("<td><input type=\"image\" name=\"SelectCrsCommit\" id=\"selcourse\" value=\"SelFmlCrs" + i + "\" src=\"images/Button_Login.gif\"</td>");
+ 		  out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"老师" + i + "\"/>");
  		  out.print("</tr>");
   		}	
   		//session.removeAttribute("coursestea");
   		} 
   		}
+  		out.print("</table>");
 	  %>
-	  </table>
-	<table width="555" border="1">
-  <tr>
-    <td width="16">&nbsp;</td>
-    <td width="75">星期一</td>
-    <td width="75">星期二</td>
-    <td width="75">星期三</td>
-    <td width="75">星期四</td>
-    <td width="75">星期五</td>
-    <td width="75">星期六</td>
-    <td width="75">星期日</td>
-  </tr>
-  <%
+  <%  	 
+	if(session.getAttribute("pages").equals("SelectCourses.jsp"))
+	{
+	out.print("<table width=\"555\" border=\"1\"><tr><td width=\"16\">&nbsp;</td><td width=\"75\">星期一</td><td width=\"75\">星期二</td><td width=\"75\">星期三</td><td width=\"75\">星期四</td><td width=\"75\">星期五</td><td width=\"75\">星期六</td><td width=\"75\">星期日</td></tr>");
   	//DebugClass.debug_start();
     Vector<String> crstable = (Vector<String>)session.getAttribute("coursetable");
     int weekdays = 7;
@@ -103,6 +96,7 @@
   			  out.println("<td width=\"75\">" + crstable.elementAt(i * weekdays + j) + "</td>");  			  		 
   		}
   		out.println("</tr>");
+  	}
   	}
   %>
 </table>

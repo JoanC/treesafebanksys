@@ -179,7 +179,7 @@ public class CourseListsServlet extends HttpServlet {
 	{
 		DebugClass.debug_info(this.toString(), "del start...");
 		String value = (String)iRequest.getParameter("SelectCrsCommit");
-		int id = Integer.parseInt(value.substring("DelPrsCrs".length()));
+		int id = Integer.parseInt(value.substring("选课".length()));
 		DebugClass.debug_info(this.toString(), "Select Index: " + id);
 		Vector<PreCourseSelectInfo> predel = new Vector<PreCourseSelectInfo>();
 		predel.add((PreCourseSelectInfo) courseselmgr.getPre_tab()
@@ -199,7 +199,7 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 		Vector<Course> _old = (Vector<Course>)session.getAttribute("coursestea");
 		String value = (String)iRequest.getParameter("SelectCrsCommit");
-		int id = Integer.parseInt(value.substring("SelFmlCrs".length()));
+		int id = Integer.parseInt(value.substring("选课".length()));
 		Vector<Course> _new = new Vector<Course>();
 		_new.add(_old.elementAt(id));
 		courseselmgr.SelectCourseToFmlTab(_new);
@@ -232,7 +232,7 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 		Vector<PreCourseSelectInfo> old = (Vector<PreCourseSelectInfo>) session.getAttribute("precrslist");
 		String value = (String)iRequest.getParameter("SelectCrsCommit");
-		int id = Integer.parseInt(value.substring("DelFmlCrs".length()));
+		int id = Integer.parseInt(value.substring("选课".length()));
 		Course remove = new Course();
 		remove.setCourse_name(old.elementAt(id).getCourse_name());
 		DebugClass.debug_info(this.toString(),old.elementAt(id).getCourse_name());
@@ -256,6 +256,7 @@ public class CourseListsServlet extends HttpServlet {
 		iRequest = req;
 		iResponse = response;
 		String value = (String)req.getParameter("SelectCrsCommit");
+		DebugClass.debug_info(this.toString(),"value: " + value);
 		byte[] B=value.getBytes("iso-8859-1");
 		value = new String(B);
 		DebugClass.debug_info(this.toString(),"value: " + value);

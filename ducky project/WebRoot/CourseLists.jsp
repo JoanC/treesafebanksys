@@ -60,9 +60,7 @@
 					}
 					out.print("</table>");
 				}
-				out.print("<input type=\"image\" name=\"SelectCrsCommit\" id=\"PreSelCrs\" value=\"PreSelCrs\" src=\"images/Button_Login.gif\" />开始选课");
-			}
-			
-			
+				out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"PreSelCrs\" value=\"预选\"/>");
+			}			
 			%>			
 		</form>

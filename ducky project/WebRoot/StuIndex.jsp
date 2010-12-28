@@ -126,6 +126,7 @@ function showLayer(layerid){
   <tr>
     <td>    
     <jsp:include page="CourseLists.jsp"/>
+    <jsp:include page="SelectCourses.jsp"/>
     </td>
   </tr>
 </table>
