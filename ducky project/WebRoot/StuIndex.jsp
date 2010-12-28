@@ -1,10 +1,10 @@
-<%@ page pageEncoding="UTF-8"%>
+<%@ page pageEncoding="GBK"%>
 <%@page import="object.DebugClass"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>å­¦ç”Ÿä¸»ç•Œé¢</title>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>Ñ§ÉúÖ÷½çÃæ</title>
 <style type="text/css">
 body{
 	background-image:url(images/StuBck.jpg);
@@ -67,14 +67,14 @@ body{
 }
 .MenuFont {
 	font-size: 22px;
-	font-family: "é»‘ä½“";
+	font-family: "ºÚÌå";
 	color: #063;
 	text-decoration:underline;
 }
 a
 {
 	font-size: 22px;
-	font-family: "é»‘ä½“";
+	font-family: "ºÚÌå";
 	color: #063;
 	text-decoration:underline;
 }
@@ -104,16 +104,16 @@ function showLayer(layerid){
 <div id="StuBanner">
 <div id="StuTJWord"></div>
 <div id="Menu">
-  do<br /><br />
-  <form id="SelCrsForm" name="SelCrsForm" method="get" action="/TJSelCrsSys/servlet/CourseListsServlet">
+  <br /><br />
+  <form id="SelCrsForm" name="SelCrsForm" method="post" action="/TJSelCrsSys/servlet/CourseListsServlet">
   <table width="430" border="0" align="center">
     <tr>
       <td width="25%"><input type="submit" class="MenuFont" style="background:none;border:none" name="SelectCrsCommit" id="SttSelCrs"
-			value="é€‰è¯¾"/></td>
+			value="Ñ¡¿Î"/></td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
-			value="SttSelCrs" src="images/StuMenuBT.png" /></td>
+			value="¿Î±í" src="images/StuMenuBT.png" /></td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
-			value="SttSelCrs" src="images/StuMenuBT.png" /></td>
+			value="Ñ§·Ö" src="images/StuMenuBT.png" /></td>
       <td width="25%">&nbsp;</td>
     </tr>
   </table>
@@ -125,20 +125,21 @@ function showLayer(layerid){
 <table width="730" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
   <tr>
     <td>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
-   <p>&nbsp;</p>
+    <%
+    if(session.getAttribute("pages").equals("none"))
+    {
+    	out.print("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>");
+    }
+    if(session.getAttribute("pages").equals("CourseLists.jsp"))
+    {
+    	out.print("<jsp:include page=\"CourseLists.jsp\" flush=\"true\"/>");
+    }
+    else if(session.getAttribute("pages").equals("SelectCourses.jsp"))
+    {
+    	out.print("<jsp:include page=\"SelectCourses.jsp\" flush=\"true\"/>");
+    }    
+    %>
+    
     </td>
   </tr>
 </table>

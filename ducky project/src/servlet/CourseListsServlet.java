@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
+import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -94,10 +95,8 @@ public class CourseListsServlet extends HttpServlet {
 			courseselmgr = new CourseSelect_Manager((String)request.getSession().getAttribute("userid"));
 			DebugClass.debug_info(this.toString(), "new finish!");
 		}
-		
 		processRequest(request, response);
 	}
-
 	/**
 	 * Initialization of the servlet. <br>
 	 * 
@@ -112,25 +111,18 @@ public class CourseListsServlet extends HttpServlet {
 	 * doprocess
 	 */
 	private Vector PreCourseData(Vector<PreCourseSelectInfo> _new_select) {
-		// Ê×ÏÈ´ÓmgrÖĞ¶ÁÈ¡µ±Ç°Ô¤Ñ¡¿Î±íµÄ³õÊ¼ĞÅÏ¢
-		DebugClass.debug_info("CouseSelectModle", "start to add two info...");
 		Vector<PreCourseSelectInfo> _init = courseselmgr.getPre_tab().get_course_list();
 		Vector<PreCourseSelectInfo> _result = new Vector<PreCourseSelectInfo>();
-		// ÔÚ½«ĞÂµÄÊäÈëºÍ³õÊ¼Êı¾İÏàÁ¬,×Ô¶¯¼à²âÖØ¸´²¢ÅÅ³ıÖØ¸´
 		for (int i = 0; i < _init.size(); i++) {
 			_result.add(_init.elementAt(i));
 		}
-		// ·µ»ØĞÂµÄÁĞ±íÊı¾İ
-		DebugClass.debug_info("CouseSelectModle", "add end...");
-		DebugClass.debug_info("CouseSelectModle", "add course : "
-				+ _result.size());
 		return _result;
 	}
 
 	private void Request_PreSelCrs() throws ServletException, IOException {
 		Vector<PreCourseSelectInfo> preCourseInfos = new Vector<PreCourseSelectInfo>();
 		Vector<Course> preCourses = courseselmgr.getListData();
-		DebugClass.debug_info(this.toString(), "ËùÓĞ¿Î±í" + preCourses.size());
+		DebugClass.debug_info(this.toString(), "ï¿½ï¿½ï¿½Ğ¿Î±ï¿½" + preCourses.size());
 		for (int i = 0; i < preCourses.size(); i++) {
 			DebugClass.debug_info("processRequet.for", preCourses.elementAt(i)
 					.getCourse_name());
@@ -163,22 +155,23 @@ public class CourseListsServlet extends HttpServlet {
 				+ _result.size());
 		HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", _result);
+	    session.setAttribute("pages", "SelectCourses.jsp");
 	    iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
 
 	private void Request_StartSelCrs() throws ServletException, IOException {
 		DebugClass.debug_info(this.toString(), "get the course list...");
-		//ÅĞ¶ÏÑ¡¿ÎÊÇ·ñ¿ªÆô£¿
+		//ï¿½Ğ¶ï¿½Ñ¡ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpSession session = iRequest.getSession();
 		if(!SystemParameter_Manager.getSystemParameter().isCourseSelOpened()){
-			DebugClass.debug_info(this.toString(), "Ñ¡¿Î¹¦ÄÜ¹Ø±Õ ");
-			session.setAttribute("info", "Ñ¡¿Î¹¦ÄÜÒÑ¹Ø±Õ");
+			session.setAttribute("info", "é€‰è¯¾æœªå¼€å¯");
+			session.setAttribute("pages", "StuIndex.jsp");
 			iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 		}
 		else {
-			DebugClass.debug_info(this.toString(), "Ñ¡¿Î¹¦ÄÜ¿ªÆô ");
 			Vector<Course> courses = courseselmgr.getListData();
 			session.setAttribute("CourseList",courses);
+			session.setAttribute("pages", "CourseLists.jsp");
 			iResponse.sendRedirect("/TJSelCrsSys/CourseLists.jsp?userid=" + session.getAttribute("userid"));
 		}
 	}		
@@ -198,6 +191,7 @@ public class CourseListsServlet extends HttpServlet {
 	    Vector<PreCourseSelectInfo> course = courseselmgr.getPre_tab().get_course_list();
 	    HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", course);
+	    session.setAttribute("pages", "SelectCourses.jsp");
 	    iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	    
 	}
@@ -210,10 +204,11 @@ public class CourseListsServlet extends HttpServlet {
 		Vector<Course> _new = new Vector<Course>();
 		_new.add(_old.elementAt(id));
 		courseselmgr.SelectCourseToFmlTab(_new);
-		DebugClass.debug_info(this.toString(), "¿Î±í¸ñÊ½×ª»¯");
+		DebugClass.debug_info(this.toString(), "ï¿½Î±ï¿½ï¿½Ê½×ªï¿½ï¿½");
 		getCourseTables();
-		DebugClass.debug_info(this.toString(),"×ª»¯Íê³ÉÁËÂğ£¿");
+		DebugClass.debug_info(this.toString(),"×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		session.removeAttribute("coursestea");
+		session.setAttribute("pages", "SelectCourses.jsp");
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));				
 	}
 	private void Request_SelCrsTea()throws ServletException, IOException 
@@ -226,11 +221,11 @@ public class CourseListsServlet extends HttpServlet {
 		/*Vector<String> _teacher_name = new Vector<String>();
 		DebugClass.debug_start();
 		for(int _index = 0 ; _index  < _detail.size() ; ++ _index){
-			//Ôö¼ÓÀÏÊ¦µÄĞÕÃû
 			_teacher_name.add((User_Manager.queryUserInfo(_detail.elementAt(_index).getU_id()).getU_name()));
 		    DebugClass.debug_info(this.toString(), "name:" + _teacher_name.elementAt(_index));
 		}*/
 		session.setAttribute("coursestea", _detail);
+		session.setAttribute("pages", "SelectCourses.jsp");
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
 	private void Request_DelFmlCrs()throws ServletException, IOException 
@@ -248,41 +243,37 @@ public class CourseListsServlet extends HttpServlet {
 		session.removeAttribute("coursetable");
 		Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
 		session.setAttribute("coursetable", crstable);
+		session.setAttribute("pages", "SelectCourses.jsp");
 		iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
 	}
 	public void getCourseTables() throws ServletException, IOException 
 	{
-		DebugClass.debug_info(this.toString(), "getCourseTables");
 		HttpSession session = iRequest.getSession();
 		Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
-		session.setAttribute("coursetable", crstable);
-		DebugClass.debug_info(this.toString(), "¿Î±í´óĞ¡" + crstable.size());
-		//iResponse.sendRedirect("/TJSelCrsSys/SelectCourses.jsp?userid=" + session.getAttribute("userid"));
-		
+		session.setAttribute("coursetable", crstable);		
 	}
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		iRequest = req;
 		iResponse = response;
-		req.setCharacterEncoding("UTF-8");
-		iRequest.setCharacterEncoding("UTF-8");
 		String value = (String)req.getParameter("SelectCrsCommit");
+		byte[] B=value.getBytes("iso-8859-1");
+		value = new String(B);
 		DebugClass.debug_info(this.toString(),"value: " + value);
-		String para = value.substring(0, "DelPrsCrs".length());
+		String para = value.substring(0, "é€‰è¯¾".length());
 		DebugClass.debug_info(this.toString(), "value" + value);
 		getCourseTables();
-		if (para.equals("Ñ¡¿Î")) {
+		if (para.equals("é€‰è¯¾")){
 			Request_StartSelCrs();
-		} else if (para.equals("PreSelCrs")) {
+		} else if (para.equals("é¢„é€‰")) {
 			Request_PreSelCrs();
-		} else if (para.equals("DelPrsCrs")) {
+		} else if (para.equals("é¢„åˆ ")) {
 			Request_DelPrsCrs();
-		} else if(para.equals("SelCrsTea")) {
+		} else if(para.equals("è€å¸ˆ")) {
 			Request_SelCrsTea();
-		} else if(para.equals("SelFmlCrs"))	{
+		} else if(para.equals("æ­£é€‰"))	{
 			Request_SelFmlCrs();
-		} else if(para.equals("DelFmlCrs")){
-			DebugClass.debug_info(this.toString(),"¿ªÊ¼É¾³ı¿Î³Ì");
+		} else if(para.equals("æ­£åˆ ")){
 			Request_DelFmlCrs();
 		} 	
 	}

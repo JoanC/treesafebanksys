@@ -120,7 +120,8 @@ public class Loginservlet extends HttpServlet {
           //System.out.println(_rlt.getU_type());
           //System.out.println(_rlt.getU_id());
           DebugClass.debug_info("Login servlet", "login success!");
-          session.setAttribute("info", "»¶Ó­Äú£¡" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
+          session.setAttribute("info", "ï¿½ï¿½Ó­ï¿½ï¿½" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
+          session.setAttribute("pages", "none");
           if (_rlt.getU_type() == 1) {
         	  DebugClass.debug_info("Login servlet", "login 1!");
         	  response.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + username);
@@ -143,8 +144,8 @@ public class Loginservlet extends HttpServlet {
 	/*
 	 * 2010_11_18
 	 * by Jiraiya
-	 * ¶Ô´ÓÍøÒ³ÖÐ´«»ØµÄÓÃ»§ÃûºÍÃÜÂë½øÐÐ´¦Àí·ÖÎö
-	 * ·µ»ØÒ»¸ölogin_rlt_info
+	 * ï¿½Ô´ï¿½ï¿½ï¿½Ò³ï¿½Ð´ï¿½ï¿½Øµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½login_rlt_info
 	 */
 	public LoginRltInfo loginFrame(String _name,String _pwd){
 		LoginInputInfo _input = new LoginInputInfo();

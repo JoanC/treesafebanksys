@@ -5,20 +5,7 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=gb2312"%>
 <%@page import="object.CourseSelect_Manager"%>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>course list</title>
-
-		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-		<meta http-equiv="description" content="this is my page">
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
-		<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-
-	</head>
-
-	<body>
+<body>
 		<form id="CourseSel" name="CourseSel" method="post"
 			action="/TJSelCrsSys/servlet/CourseListsServlet">
 			<%
@@ -76,4 +63,3 @@
 			¿ªÊ¼Ñ¡¿Î
 		</form>
 	</body>
-</html>
