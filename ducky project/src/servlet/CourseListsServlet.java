@@ -178,7 +178,7 @@ public class CourseListsServlet extends HttpServlet {
 	private void Request_DelPrsCrs()throws ServletException, IOException 
 	{
 		DebugClass.debug_info(this.toString(), "del start...");
-		String value = (String)iRequest.getParameter("SelectCrsCommit");
+		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
 		int id = Integer.parseInt(value.substring("选课".length()));
 		DebugClass.debug_info(this.toString(), "Select Index: " + id);
 		Vector<PreCourseSelectInfo> predel = new Vector<PreCourseSelectInfo>();
@@ -198,14 +198,14 @@ public class CourseListsServlet extends HttpServlet {
 	{
 		HttpSession session = iRequest.getSession();
 		Vector<Course> _old = (Vector<Course>)session.getAttribute("coursestea");
-		String value = (String)iRequest.getParameter("SelectCrsCommit");
+		DebugClass.debug_info(this.toString(), "课表大小：" + _old.size());
+		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
 		int id = Integer.parseInt(value.substring("选课".length()));
+		DebugClass.debug_info(this.toString(), "id:" + id);
 		Vector<Course> _new = new Vector<Course>();
 		_new.add(_old.elementAt(id));
 		courseselmgr.SelectCourseToFmlTab(_new);
-		DebugClass.debug_info(this.toString(), "�α��ʽת��");
 		getCourseTables();
-		DebugClass.debug_info(this.toString(),"ת���������");
 		session.removeAttribute("coursestea");
 		session.setAttribute("pages", "SelectCourses.jsp");
 		iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));				
@@ -214,8 +214,8 @@ public class CourseListsServlet extends HttpServlet {
 	{
 		HttpSession session = iRequest.getSession();
 		Vector<PreCourseSelectInfo> precrs = (Vector<PreCourseSelectInfo>)session.getAttribute("precrslist");
-		String value = (String)iRequest.getParameter("SelectCrsCommit");
-		int id = Integer.parseInt(value.substring("SelCrsTea".length()));
+		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
+		int id = Integer.parseInt(value.substring("课程".length()));
 		Vector<Course> _detail = Course_Manager.getCourseListByName(precrs.elementAt(id).getCourse_name());	 
 		/*Vector<String> _teacher_name = new Vector<String>();
 		DebugClass.debug_start();
@@ -231,7 +231,7 @@ public class CourseListsServlet extends HttpServlet {
 	{
 		HttpSession session = iRequest.getSession();
 		Vector<PreCourseSelectInfo> old = (Vector<PreCourseSelectInfo>) session.getAttribute("precrslist");
-		String value = (String)iRequest.getParameter("SelectCrsCommit");
+		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
 		int id = Integer.parseInt(value.substring("选课".length()));
 		Course remove = new Course();
 		remove.setCourse_name(old.elementAt(id).getCourse_name());
@@ -255,11 +255,11 @@ public class CourseListsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		iRequest = req;
 		iResponse = response;
-		String value = (String)req.getParameter("SelectCrsCommit");
-		DebugClass.debug_info(this.toString(),"value: " + value);
-		byte[] B=value.getBytes("iso-8859-1");
-		value = new String(B);
-		DebugClass.debug_info(this.toString(),"value: " + value);
+		String value = EncodeTool.ByteToISO((String)req.getParameter("SelectCrsCommit"));
+		//DebugClass.debug_info(this.toString(),"value: " + value);
+		//byte[] B=value.getBytes("iso-8859-1");
+		//value = new String(B);
+		//DebugClass.debug_info(this.toString(),"value: " + value);
 		String para = value.substring(0, "选课".length());
 		DebugClass.debug_info(this.toString(), "value" + value);
 		getCourseTables();
@@ -269,9 +269,9 @@ public class CourseListsServlet extends HttpServlet {
 			Request_PreSelCrs();
 		} else if (para.equals("预删")) {
 			Request_DelPrsCrs();
-		} else if(para.equals("老师")) {
+		} else if(para.equals("正选")) {
 			Request_SelCrsTea();
-		} else if(para.equals("正选"))	{
+		} else if(para.equals("老师"))	{
 			Request_SelFmlCrs();
 		} else if(para.equals("正删")){
 			Request_DelFmlCrs();

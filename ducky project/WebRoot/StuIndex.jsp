@@ -130,17 +130,7 @@ function showLayer(layerid){
     </td>
   </tr>
 </table>
-<div id="Tips">
-<br/><br/>
-<% 
-  String info = (String)session.getAttribute("info");
-  DebugClass.debug_info(this.toString(),"info" + info);
-  if(info != null)
-  {  	
-  		out.println(info);
-  }
-%>
-</div>
+
 </div></div>
 </body>
 </html>
