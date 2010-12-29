@@ -9,7 +9,7 @@ import dbquery.DBOperation;
 import dbquery.dbConnectParam;
 
 
-//ÓÃÓÚÔÚµÇÂ¼ºÍ×¢ÏúµÄÓÃÀýÖÐ½øÐÐÊý¾Ý¿âµÄ²éÑ¯ºÍÐ´Èë²Ù×÷.
+//ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Â¼ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ä²ï¿½Ñ¯ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½.
 public class LoginUser_Manager {
 	private static LoginQueryInfo sendLoginInfoToDB(LoginReqDB reqDb){
 		LoginQueryInfo queryInfo = new LoginQueryInfo();
@@ -19,7 +19,7 @@ public class LoginUser_Manager {
 		
 		LoginUser lu = dbo.doQueryLogin(reqDb.getU_id()) ;
 		User user = dbo.doQueryUser(reqDb.getU_id()) ;
-		if(lu != null){
+		if(lu.getU_id() != null){
 			//get the data from database to the query information
 			DebugClass.debug_info("Login modle", "connect the DB success!");
 			DebugClass.debug_info("Login modle", "get the user information!");
@@ -31,13 +31,6 @@ public class LoginUser_Manager {
 			DebugClass.debug_info("Login modle", "user password : " + lu.getU_pwd());
 			DebugClass.debug_info("Login modle", "user is : " + (lu.isU_isLogin() ? "online" : "offline") + " now");
 			DebugClass.debug_info("Login modle","user type is : " + user.getU_type());
-/*
-			if(lu.getU_pwd() == pwd){
-				queryInfo.setU_isLogin(true);
-			}else{
-				queryInfo.setU_isLogin(false);
-			}
-	*/		
 		}
 		else{
 			//id not exist!!!
@@ -52,17 +45,17 @@ public class LoginUser_Manager {
 	}
 	
 	private static LoginRltInfo LoginCheck(LoginInputInfo _input , LoginQueryInfo _query){
-		//²ì¿´ÊÇ·ñ´æÔÚÓÃ»§
+		//ï¿½ì¿´ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 		LoginRltInfo _rlt = new LoginRltInfo();
 		_rlt.setU_id(_query.getU_id());
 		if(_query.getU_id() == null){
-			//ÓÃ»§²»´æÔÚµÄ´¦Àíº¯Ê½..
-			//_rlt.setExp("ÓÃ»§²»´æÔÚ!");
+			//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ´ï¿½ï¿½?Ê½..
+			//_rlt.setExp("ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 			DebugClass.debug_info("Login modle", "user not exist!");
 			_rlt.setIs_succ(false);
 		}
 		else if(!_query.getU_pwd().equals(_input.getU_pwd())){
-			//ÃÜÂë´íÎó´¦Àíº¯Ê½
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?Ê½
 			DebugClass.debug_info("Login modle", "password not correct!");
 			_rlt.setIs_succ(false);
 		}
@@ -71,7 +64,7 @@ public class LoginUser_Manager {
 			_rlt.setIs_succ(false);
 		}
 		else{ 
-			//µÇÂ½ÕýÈ·
+			//ï¿½ï¿½Â½ï¿½ï¿½È·
 			DebugClass.debug_info("Login modle", "login data check done!");
 			_rlt.setIs_succ(true);
 			_rlt.setU_type(_query.getU_type());
@@ -106,12 +99,11 @@ public class LoginUser_Manager {
 		DebugClass.debug_info("Login modle", "user input id is : " + inputInfo.getU_id() + " user input password is : " + inputInfo.getU_pwd());
 		reqDb.setU_id(inputInfo.getU_id());
 		LoginQueryInfo queryInfo = sendLoginInfoToDB(reqDb);
+		DebugClass.debug_info("Login modle", "user input id is : " + queryInfo.getU_id());
 		LoginRltInfo rltInfo = LoginCheck(inputInfo,queryInfo);
-		//Èç¹ûµÇÂ½³É¹¦,Ôò½«µ±Ç°µÄÓÃ»§ÔÚÏß×´Ì¬¸ÄÎªonline
-
-		
+		//ï¿½ï¿½ï¿½ï¿½Â½ï¿½É¹ï¿½,ï¿½ò½«µï¿½Ç°ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Îªonline
 		/*
-		 * ´Ë´¦×¢ÊÍÓÃ!
+		 * ï¿½Ë´ï¿½×¢ï¿½ï¿½ï¿½ï¿½!
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		dbo.connectDB(driverName, url, userName, dbPwd) ;
 		
