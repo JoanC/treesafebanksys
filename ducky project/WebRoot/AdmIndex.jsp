@@ -92,7 +92,7 @@ a:hover
 <div id="AdmTJWord"></div>
 <div id="Menu">
   <br /><br />
-  <form id="SelCrsForm" name="SelCrsForm" method="post" action="/TJSelCrsSys/servlet/CourseListsServlet">
+  <form id="SelCrsForm" name="SelCrsForm" method="post" action="/TJSelCrsSys/servlet/SystemParaServelt">
   <table width="430" border="0" align="center">
     <tr>
       <td width="25%"><input type="submit" class="MenuFont" style="background:none;border:none" name="SelCrsSysPara" id="AddSelCrs"
@@ -111,7 +111,12 @@ a:hover
 <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
 <tr>
      <td>
-     <div id="Tips"></div>
+     <div id="Tips">
+     <br/><br/>
+     <%
+     out.print(session.getAttribute("info"));
+     %>
+     </div>
      </td>
 <td>
 <table width="729" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
@@ -119,7 +124,6 @@ a:hover
     <td>    
     <jsp:include page="Adm_SelCrsMode.jsp"/>
     <jsp:include page="Adm_SystemStatus.jsp"/>
-    </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
     </td>
   </tr>
 </table>

@@ -1,11 +1,11 @@
-<%@ page pageEncoding="GBK"%>
+<%@page pageEncoding="GBK"%>
 <%@page import="object.DebugClass"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>学生主界面</title>
-<style type="text/css">
+<style type="text/css" media="screen">
+<!--
 body{
 	background-image:url(images/StuBck.jpg);
 	background-attachment:fixed;
@@ -49,8 +49,8 @@ body{
 }
 #TextArea
 {
-	position:relative;
-	width:950px;
+	position:absoulute;
+	width:700px;
 	z-index:1;
 	min-height:500px;
 }
@@ -92,45 +92,82 @@ ibutton
 	display: block;
 	cursor: pointer;
 }
-</style>
-<script>
-function showLayer(layerid){   
-	document.getElementById("StuMenu1").style.display = true; 
-}   
-</script>  
-</head>
+#level1
+{ 
+	display: none; width: 120px; border: 0px #3399FF solid; background: #ffffff;
+}
 
+-->
+</style>
+</head>
 <body>
 <div id="StuBanner">
 <div id="StuTJWord"></div>
 <div id="Menu">
   <br /><br />
   <form id="SelCrsForm" name="SelCrsForm" method="post" action="/TJSelCrsSys/servlet/CourseListsServlet">
-  <table width="430" border="0" align="center">
+  <table width="430" border="1" align="center">
     <tr>
-      <td width="25%"><input type="submit" class="MenuFont" style="background:none;border:none" name="SelectCrsCommit" id="SttSelCrs"
-			value="选课"/></td>
+      <td width="25%" class="MenuFont">
+      <input type="button" class="MenuFont" style="background:none;border:none" name="SelCrsSysPara" id="stu_menu_1"
+			value="课程"/>
+      </td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
 			value="课表" src="images/StuMenuBT.png" /></td>
       <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
 			value="学分" src="images/StuMenuBT.png" /></td>
-      <td width="25%">&nbsp;</td>
+      <td width="25%"></td>
     </tr>
+    <tr>
+      <td colspan="4">
+	<div id="level1">
+		<input type="submit" class="MenuFont" style="background:none;border:none;" name="SelectCrsCommit" id="SttSelCrs"
+			value="选择课程"/>	
+		</div>
+      </td>
+      </tr>
+
   </table>
   </form>
 </div>
 </div>
+<script language="JavaScript" type="text/javascript">
+<!--//--><![CDATA[//><!--
+var tips = document.getElementById("level1");
+var button = document.getElementById("stu_menu_1");
+button.onclick = show;
+function show() {
+	if (tips.style.display=="block"){ tips.style.cssText = "display: none;" }
+	else { tips.style.cssText = "display: block;" }
+}
+//--><!]]>
+</script>
 <div id="StuMainBody">
+<table width="950" border="1" align="center" cellpadding="0" cellspacing="0">
+<tr>
+     <td>
+     <div id="Tips">
+     <br/><br/>
+     <%
+     out.print(session.getAttribute("info"));
+     %>
+     </div>
+     </td>
+<td>
 <div id="TextArea">
-<table width="730" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
+<table width="700" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
   <tr>
     <td>    
     <jsp:include page="CourseLists.jsp"/>
-    <jsp:include page="SelectCourses.jsp"/>
+    <jsp:include page="SelectCourses.jsp"/>   
     </td>
   </tr>
 </table>
+</div>
+</td>
+</tr>
+</table>
+</div>
 
-</div></div>
 </body>
 </html>

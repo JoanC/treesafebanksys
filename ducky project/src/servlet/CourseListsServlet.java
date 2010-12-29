@@ -179,7 +179,7 @@ public class CourseListsServlet extends HttpServlet {
 	{
 		DebugClass.debug_info(this.toString(), "del start...");
 		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
-		int id = Integer.parseInt(value.substring("选课".length()));
+		int id = Integer.parseInt(value.substring("选择课程".length()));
 		DebugClass.debug_info(this.toString(), "Select Index: " + id);
 		Vector<PreCourseSelectInfo> predel = new Vector<PreCourseSelectInfo>();
 		predel.add((PreCourseSelectInfo) courseselmgr.getPre_tab()
@@ -200,7 +200,7 @@ public class CourseListsServlet extends HttpServlet {
 		Vector<Course> _old = (Vector<Course>)session.getAttribute("coursestea");
 		DebugClass.debug_info(this.toString(), "课表大小：" + _old.size());
 		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
-		int id = Integer.parseInt(value.substring("选课".length()));
+		int id = Integer.parseInt(value.substring("选择课程".length()));
 		DebugClass.debug_info(this.toString(), "id:" + id);
 		Vector<Course> _new = new Vector<Course>();
 		_new.add(_old.elementAt(id));
@@ -215,7 +215,7 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 		Vector<PreCourseSelectInfo> precrs = (Vector<PreCourseSelectInfo>)session.getAttribute("precrslist");
 		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
-		int id = Integer.parseInt(value.substring("课程".length()));
+		int id = Integer.parseInt(value.substring("选择课程".length()));
 		Vector<Course> _detail = Course_Manager.getCourseListByName(precrs.elementAt(id).getCourse_name());	 
 		/*Vector<String> _teacher_name = new Vector<String>();
 		DebugClass.debug_start();
@@ -232,7 +232,7 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 		Vector<PreCourseSelectInfo> old = (Vector<PreCourseSelectInfo>) session.getAttribute("precrslist");
 		String value = EncodeTool.ByteToISO((String)iRequest.getParameter("SelectCrsCommit"));
-		int id = Integer.parseInt(value.substring("选课".length()));
+		int id = Integer.parseInt(value.substring("选择课程".length()));
 		Course remove = new Course();
 		remove.setCourse_name(old.elementAt(id).getCourse_name());
 		DebugClass.debug_info(this.toString(),old.elementAt(id).getCourse_name());
@@ -260,20 +260,20 @@ public class CourseListsServlet extends HttpServlet {
 		//byte[] B=value.getBytes("iso-8859-1");
 		//value = new String(B);
 		//DebugClass.debug_info(this.toString(),"value: " + value);
-		String para = value.substring(0, "选课".length());
+		String para = value.substring(0, "选择课程".length());
 		DebugClass.debug_info(this.toString(), "value" + value);
 		getCourseTables();
-		if (para.equals("选课")){
+		if (para.equals("选择课程")){
 			Request_StartSelCrs();
-		} else if (para.equals("预选")) {
+		} else if (para.equals("预选课程")) {
 			Request_PreSelCrs();
-		} else if (para.equals("预删")) {
+		} else if (para.equals("退该课程")) {
 			Request_DelPrsCrs();
-		} else if(para.equals("正选")) {
+		} else if(para.equals("选择老师")) {
 			Request_SelCrsTea();
-		} else if(para.equals("老师"))	{
+		} else if(para.equals("正选课程"))	{
 			Request_SelFmlCrs();
-		} else if(para.equals("正删")){
+		} else if(para.equals("清除课程")){
 			Request_DelFmlCrs();
 		} 	
 	}

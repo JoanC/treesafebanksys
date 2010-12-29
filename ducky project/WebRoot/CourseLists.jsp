@@ -20,7 +20,7 @@
 					int type = tempcourse.getCourse_type();
 					int cols_num = 5;
 					int cursor = 0;
-					out.print("<table width=\"100%\" border=\"1\">");
+					out.print("<table width=\"700px\" border=\"1\">");
 					out.print("<tr>");
 					out.print("<td colspan=\"" + cols_num + "\">");
 					out.print(type);
@@ -60,7 +60,7 @@
 					}
 					out.print("</table>");
 				}
-				out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"PreSelCrs\" value=\"Ԥѡ\"/>");
+				out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"PreSelCrs\" value=\"Ԥѡ�γ�\"/>");
 			}			
 			%>			
 		</form>
