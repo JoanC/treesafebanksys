@@ -15,11 +15,11 @@ import object.CourseTable;
 import object.Exp;
 
 public class FmlCourseTable extends CourseTable {
-	private String u_id; // Ñ§ÉúµÄid
-	private Vector<Course> course_list_org; // ¿Î³Ì±íÖÐµÄ¿Î³ÌÊý¾ÝÈÝÆ÷µÄÔ­Ê¼Êý¾ÝÁÐ±í
-	private Vector<Course> course_list_fixedCourses;// ÕýÔÚ±»ÐÞ¸ÄµÄ¿Î³ÌÊý¾ÝÁÐ±í
-	private Vector<Course> course_addedCourses;// Ñ¡¿Î¹ý³ÌÖÐÌí¼ÓµÄ¿Î³Ì...ÎªÈËÊýÍ³¼ÆÓÃ
-	private Vector<Course> course_deletedCourses;// Ñ¡¿Î¹ý³ÌÖÐÉ¾³ýµÄ¿Î³Ì...ÎªÈËÊýÍ³¼ÆÓÃ
+	private String u_id; // Ñ§ï¿½ï¿½ï¿½id
+	private Vector<Course> course_list_org; // ï¿½Î³Ì±ï¿½ï¿½ÐµÄ¿Î³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­Ê¼ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	private Vector<Course> course_list_fixedCourses;// ï¿½ï¿½ï¿½Ú±ï¿½ï¿½Þ¸ÄµÄ¿Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	private Vector<Course> course_addedCourses;// Ñ¡ï¿½Î¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ¿Î³ï¿½...Îªï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½
+	private Vector<Course> course_deletedCourses;// Ñ¡ï¿½Î¹ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ä¿Î³ï¿½...Îªï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½
 
 	public FmlCourseTable(String _u_id) {
 		super();
@@ -29,7 +29,7 @@ public class FmlCourseTable extends CourseTable {
 		course_addedCourses = new Vector<Course>();
 		course_deletedCourses = new Vector<Course>();
 		course_list_org = new Vector<Course>();
-		// Ìî³äÔ­Ê¼Êý¾Ý
+		// ï¿½ï¿½ï¿½Ô­Ê¼ï¿½ï¿½ï¿½
 		DebugClass.debug_info(this.toString(),
 				"copy data... from org data to fixed data...");
 		course_list_org = this.searchCourseList();
@@ -50,12 +50,12 @@ public class FmlCourseTable extends CourseTable {
 		
 	}
 
-	// Ñ§Éú»òÕßÀÏÊ¦µÄÓÃ»§idµÄ¼ÇÂ¼
+	// Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½Ã»ï¿½idï¿½Ä¼ï¿½Â¼
 	public void set_u_id(String uid) {
 		u_id = uid;
 	}
 
-	// Ñ§Éú»òÕßÀÏÊ¦µÄÓÃ»§idµÄ»ñÈ¡
+	// Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½Ã»ï¿½idï¿½Ä»ï¿½È¡
 	public String get_u_id() {
 		return u_id;
 	}
@@ -63,16 +63,16 @@ public class FmlCourseTable extends CourseTable {
 	@Override
 	public Vector<Course> get_course_list() {
 		// TODO Auto-generated method stub
-		// ¶ÁÈ¡Êý¾Ý¿âÖÐµÄ¿Î±íÊý¾Ý
+		// ï¿½ï¿½È¡ï¿½ï¿½Ý¿ï¿½ï¿½ÐµÄ¿Î±ï¿½ï¿½ï¿½ï¿½
 		return course_list_fixedCourses;
 	}
 
 	public Vector<Course> get_org_data() {
-		// »ñÈ¡×î½üÒ»´Î±£´æÇ°µÄÔ­Ê¼Êý¾Ý
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ò»ï¿½Î±ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ô­Ê¼ï¿½ï¿½ï¿½
 		return course_list_org;
 	}
 
-	// ÔÚ³õÊ¼»¯Ê±»ñÈ¡Õâ¸öu_idÏÂµÄ¿Î±íÖÐµÄËùÓÐ¿Î³ÌÁÐ±í
+	// ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½È¡ï¿½ï¿½ï¿½u_idï¿½ÂµÄ¿Î±ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ð¿Î³ï¿½ï¿½Ð±ï¿½
 	protected Vector<Course> searchCourseList() {
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
@@ -89,24 +89,28 @@ public class FmlCourseTable extends CourseTable {
 		return _result;
 	}
 
-	// ½«Ò»ÃÅµÄ¿Î³Ì¼ÓÈëµ½ÕýÊ½¿Î±íÖÐ
+	// ï¿½ï¿½Ò»ï¿½ÅµÄ¿Î³Ì¼ï¿½ï¿½ëµ½ï¿½ï¿½Ê½ï¿½Î±ï¿½ï¿½ï¿½
 	public Exp addCourse(Course _new) {
 		Exp exp = new Exp();
 		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
-			//ÅÐ¶Ï´ËÃÅ¿Î³ÌÊÇ·ñÒÑ¾­¼ÓÈë
+			//ï¿½Ð¶Ï´ï¿½ï¿½Å¿Î³ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
 			if(course_list_fixedCourses.elementAt(_index).getCourse_id().equals(_new.getCourse_id())){
 				return exp;
 			}
-			//ÅÐ¶Ï´ËÃÅ¿Î³ÌÊÇ·ñºÍ±ðµÄ¿Î³ÌÓÐ³åÍ»
+			//ï¿½Ð¶Ï´ï¿½ï¿½Å¿Î³ï¿½ï¿½Ç·ï¿½Í±ï¿½Ä¿Î³ï¿½ï¿½Ð³ï¿½Í»
 		}
 		DebugClass.debug_info(this.toString(), "add course " + _new.getCourse_name()
 				+"to the fixed course list");
+		
+		//åŠ å…¥ä¹‹å‰åˆ é™¤åŒåå­—çš„è¯¾ç¨‹
+		this.DelConCourseWhenAddSameNameCourse(_new.getCourse_name());
+		
 		course_list_fixedCourses.add(_new);
 		course_addedCourses.add(_new);
 		
 		/*
 		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
-			//ÅÐ¶Ï´ËÃÅ¿Î³ÌÊÇ·ñºÍ±ðµÄ¿Î³ÌÓÐ³åÍ»
+			//ï¿½Ð¶Ï´ï¿½ï¿½Å¿Î³ï¿½ï¿½Ç·ï¿½Í±ï¿½Ä¿Î³ï¿½ï¿½Ð³ï¿½Í»
 			if(_new.getCourse_id().equals(course_list_fixedCourses.elementAt(_index).getCourse_id())) continue;
 			if(CourseTimeOperation.isConflict(course_list_fixedCourses.elementAt(_index).getCourse_time_week(),
 					_new.getCourse_time_week()).size() != 0){
@@ -117,30 +121,30 @@ public class FmlCourseTable extends CourseTable {
 		}*/
 		
 		DebugClass.debug_info(this.toString(), "no error , add the data...");
-		//Ã»ÓÐ³åÍ»ÔòÊµÊ±±£´æ,²¢ÇÒÕýÑ¡ÈËÊý¼ÓÒ»
+		//Ã»ï¿½Ð³ï¿½Í»ï¿½ï¿½ÊµÊ±ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
-		//ÒÑÑ¡ÈËÊý¼ÓÒ»
+		//ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
 		dbo.doUpdateTabCourseCurrentSelectNum(_new.getCourse_id(), new IncreaseByOne());
-		//ÏòÊý¾Ý¿âÌí¼ÓÕýÊ½¿Î±í
+		//ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Î±ï¿½
 	    dbo.doInsert2TabCourseSelect(u_id, _new.getCourse_id());
 		dbo.disconnectDB();
 		return exp;
 	}
 
-	// ½«Ò»¸ö¿Î³Ì´ÓÕýÊ½¿Î±íÖÐÇå³ý
+	// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ê½ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Exp deleteCourse(Course _old) {
 		Exp exp = new Exp();
-		//Êý¾Ý¼õÒ»²¢ÇÒÊµÊ±±£´æ
+		//ï¿½ï¿½Ý¼ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ÊµÊ±ï¿½ï¿½ï¿½ï¿½
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
-		//ÈËÊý¼õÒ»
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
 		dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
-		//É¾³ý¿Î³ÌÊý¾Ý
+		//É¾ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½
 		dbo.doDeleteFromTabCourseSelect(u_id, _old.getCourse_id());
-		//¸üÐÂÊý¾Ý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		course_list_fixedCourses.clear();
 		course_list_org.clear();
 		course_list_org = this.searchCourseList();
@@ -149,24 +153,22 @@ public class FmlCourseTable extends CourseTable {
 		return exp;
 	}
 
-	// ¼ì²â¿Î±íÖÐµÄ³åÍ»
+	// ï¿½ï¿½ï¿½Î±ï¿½ï¿½ÐµÄ³ï¿½Í»
 	public Vector<Exp_CourseConfict> checkException() {
 		Vector<Exp_CourseConfict> vec_exp = new Vector<Exp_CourseConfict>();
-		// ¼ì²âfixedÖ®ºó¿Î±í±¾ÉíµÄ³åÍ»
-		// ¸´ÖÆÁ½¸öÁÐ±í½øÐÐ±È½Ï
+
 		Vector<Course> _temp_1 = new Vector<Course>();
 		Vector<Course> _temp_2 = new Vector<Course>();
 		_temp_1.addAll(course_list_fixedCourses);
 		_temp_2.addAll(course_list_fixedCourses);
-		// ÅÐ¶¨³åÍ»
-		// Á½Á½ÅÐ¶¨
+
 		
 		for (int _index_time = 0; _index_time < _temp_1.size(); ++_index_time) {
 			for (int _j = _index_time; _j < _temp_2.size(); _j++) {
 				Course _course_1 = _temp_1.elementAt(_index_time);
 				Course _couese_2 = _temp_2.elementAt(_j);
 				if (CourseTimeOperation.isConflict(_course_1.getCourse_time_week(),
-						_couese_2.getCourse_time_week()).size() != 0) { // ·¢ÏÖ³åÍ»
+						_couese_2.getCourse_time_week()).size() != 0) { // ï¿½ï¿½ï¿½Ö³ï¿½Í»
 					Exp_CourseConfict _new_exp = new Exp_CourseConfict();
 					_new_exp.setmCourse_id_1(_course_1.getCourse_id());
 					_new_exp.setmCourse_id_2(_couese_2.getCourse_id());
@@ -179,35 +181,35 @@ public class FmlCourseTable extends CourseTable {
 		return vec_exp;
 	}
 
-	// ±£´æÕýÊ½¿Î±í
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Î±ï¿½
 	@SuppressWarnings("unchecked")
 	public Exp save() {
 		DebugClass.debug_info(this.toString(), "start to save the course...");
 		Exp exp = new Exp();
-		// ¸üÐÂÊý¾Ý¿âÁÐ±íÊý¾Ý
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½
 		course_list_org.clear();
-		course_list_org = (Vector<Course>) course_list_fixedCourses.clone();// ¸üÐÂcourse_list_orgÖÐµÄÊý¾Ý
-		// ¸üÐÂËùÓÐÁÐ±í
-		// Ê×ÏÈÉ¾³ýËùÓÐ¿Î³Ì
+		course_list_org = (Vector<Course>) course_list_fixedCourses.clone();// ï¿½ï¿½ï¿½ï¿½course_list_orgï¿½Ðµï¿½ï¿½ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+		// ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿Î³ï¿½
 		DBOperation dbo = new DBOperation();
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
-		// Ê×ÏÈÉ¾³ýËùÓÐ¾É¿Î±í
+		// ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ð¾É¿Î±ï¿½
 		dbo.doDeleteAllInTabCourseSelectByUID(u_id);
-		// ÔÙÍ¨¹ýÑ­»·Ìí¼ÓÐÂµÄÐÞ¸Ä¹ýµÄ¿Î±í
+		// ï¿½ï¿½Í¨ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Þ¸Ä¹ï¿½Ä¿Î±ï¿½
 		for (int i = 0; i < course_list_fixedCourses.size(); ++i) {
 			DebugClass.debug_info(this.toString(), "save the course : ");
 			dbo.doInsert2TabCourseSelect(u_id, course_list_fixedCourses
 					.elementAt(i).getCourse_id());
 		}
 
-		// ÏÂÃæ¸üÐÂÑ¡¿ÎÈËÊýÐÅÏ¢
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		
-		// ¸üÐÂ¸¨ÖúÁÐ±íÐÅÏ¢
+		// ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ï¢
 		course_addedCourses.clear();
 		course_deletedCourses.clear();
 
-		// ¹Ø±ÕÊý¾Ý¿â
+		// ï¿½Ø±ï¿½ï¿½ï¿½Ý¿ï¿½
 		dbo.disconnectDB();
 		return exp;
 	}
@@ -215,10 +217,24 @@ public class FmlCourseTable extends CourseTable {
 	public  boolean getIsConflic() {
 		Vector<String> _check = CourseTable.convertFmlTabFormat(course_list_fixedCourses);
 		for(int i = 0 ; i < _check.size() ; ++i){
-			if(_check.elementAt(i).equals("¿Î³Ì³åÍ»!")){
+			if(_check.elementAt(i).equals("ï¿½Î³Ì³ï¿½Í»!")){
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	//æ·»åŠ è¯¾ç¨‹æ—¶,æŠŠåŽŸæ¥åœ¨è¯¾è¡¨ä¸­çš„åç§°ç›¸åŒè¯¾ç¨‹åŽ»é™¤
+	public void DelConCourseWhenAddSameNameCourse(String _course_name){
+		Vector<Course> _rlt = new Vector<Course>();
+		for(int _index = 0 ; _index <  course_list_fixedCourses.size() ; ++_index){
+			if(course_list_fixedCourses.elementAt(_index).getCourse_name().equals(_course_name)){
+				_rlt.addElement(course_list_fixedCourses.elementAt(_index));
+			}
+		}
+		
+		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
+			this.deleteCourse(_rlt.elementAt(_index));
+		}
 	}
 }
