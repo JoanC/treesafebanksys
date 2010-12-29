@@ -85,19 +85,20 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		SysParam _update = SystemParameter_Manager.getSystemParameter();
 		if(name.equals("on"))
 		{
-			//¿ªÆôÑ¡¿Î²Ù×÷
+			//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Î²ï¿½ï¿½ï¿½
 			DebugClass.debug_info(this.toString(), "open");
 			_update.setCourseSelOpened(true);
 		}
 		else {
-			//¹Ø±ÕÑ¡¿Î²Ù×÷
+			//ï¿½Ø±ï¿½Ñ¡ï¿½Î²ï¿½ï¿½ï¿½
 			DebugClass.debug_info(this.toString(), "close");
 			_update.setCourseSelOpened(false);
 		}
-		//¸üĞÂÊı¾İ¿â
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½
 		SystemParameter_Manager.editSystemParameter(_update);
 		session.removeAttribute("SystemPara");
 		session.setAttribute("SystemPara", _update);
+		session.setAttribute("pages", "Adm_SystemStatus.jsp");
 		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
 		
 	}
@@ -111,20 +112,21 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		DebugClass.debug_info(this.toString(), "open ? " + _update.isCourseSelOpened() + "select? " + _update.getCourseSelType());
 		if(name.equals("FCFS"))
 		{
-			//ÏÈµ½ÏÈµÃÄ£Ê½
+			//ï¿½Èµï¿½ï¿½Èµï¿½Ä£Ê½
 			DebugClass.debug_info(this.toString(), "FCFS");
 			_update.setCourseSelType(enCourseSelType.CST_FSFG);
 		}
 		else {
-			//Ëæ»úÌß¿ÎÄ£Ê½
+			//ï¿½ï¿½ï¿½ï¿½ß¿ï¿½Ä£Ê½
 			DebugClass.debug_info(this.toString(), "RANDOUT");
 			_update.setCourseSelType(enCourseSelType.CST_RANDOUT);
 		}
-		//¸üĞÂÊı¾İ¿â
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½
 		DebugClass.debug_info(this.toString(), "update ? " + _update.isCourseSelOpened() + "select? " + _update.getCourseSelType());
 		SystemParameter_Manager.editSystemParameter(_update);
 		session.removeAttribute("SystemPara");
 		session.setAttribute("SystemPara", _update);
+		session.setAttribute("pages", "Adm_SelCrsMode.jsp");
 		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
 		
 	}	
@@ -134,10 +136,10 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		DebugClass.debug_start();
 		DebugClass.debug_info(this.toString(),"Adm Start");
 		String value = (String) request.getParameter("SelCrsSysPara");
-		if (value.equals("SelCrsOnOffCmt")) {
+		if (value.equals("çŠ¶æ€ç¡®å®š")) {
 			Request_SelCrsOnOff(request,response,value);
 		}
-		else if(value.equals("SelCrsModeCmt"))
+		else if(value.equals("æ¨¡å¼ç¡®å®š"))
 		{
 			Request_SelCrsMode(request,response,value);
 		}		
