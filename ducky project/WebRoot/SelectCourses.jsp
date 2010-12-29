@@ -15,13 +15,13 @@
 	boolean iConflict = false;
 	Vector<String> _check = (Vector<String>)session.getAttribute("coursetable");
 	for(int i = 0 ; i < _check.size() ; ++i){
-		if(_check.elementAt(i).equals("课程冲突!")){
+		if(_check.elementAt(i).equals("课程冲突")){
 		iConflict = true;
 		}
 	}
 	Vector<PreCourseSelectInfo> pcourses = (Vector<PreCourseSelectInfo>)session.getAttribute("precrslist");
 	DebugClass.debug_info("selecting courses module", "the final result size : " + pcourses.size());
-	out.print("<table width = \"700\"border = \"1\">");
+	out.print("<table width = \"100%\"border = \"1\">");
 	for(int i =0 ;i!=pcourses.size();i++)
 	{
 		String name = pcourses.elementAt(i).getCourse_name();
@@ -32,7 +32,7 @@
 		out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"清除课程" + i + "\"/>");
 		if(iConflict)
 		{
-			out.print("<image src=\"images/Button_Login.gif\" >");
+			out.print("无效按钮");
 		}
 		else
 		{
@@ -45,10 +45,10 @@
     out.print("</table>");
     }
 	 %>	  
-	 <%
-	 out.print("<table border=\"1\">");
+	 <%	
 	 if(session.getAttribute("pages").equals("SelectCourses.jsp"))
 	{
+	 out.print("<table width=\"100%\" border=\"1\">");
 	 	Vector<Course> _current;
 	 	_current = (Vector<Course>)session.getAttribute("coursestea");
 	 	if(_current != null)
@@ -75,8 +75,9 @@
   		}	
   		//session.removeAttribute("coursestea");
   		} 
-  		}
   		out.print("</table>");
+  		}
+  		
 	  %>
   <%  	 
 	if(session.getAttribute("pages").equals("SelectCourses.jsp"))
@@ -99,6 +100,5 @@
   	}
   	}
   %>
-</table>
 </form>
 

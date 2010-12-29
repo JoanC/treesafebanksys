@@ -23,6 +23,7 @@ body{
 	z-index:3;
 	background-image:url(images/StuBanner.png);
 	background-repeat:repeat-x;	
+	margin-left:0px;
 }
 #StuMainBody {
 	position:absolute;
@@ -50,7 +51,7 @@ body{
 #TextArea
 {
 	position:absoulute;
-	width:700px;
+	width:632px;
 	z-index:1;
 	min-height:500px;
 }
@@ -143,7 +144,7 @@ function show() {
 //--><!]]>
 </script>
 <div id="StuMainBody">
-<table width="950" border="1" align="center" cellpadding="0" cellspacing="0">
+<table width="900" border="1" align="center" cellpadding="0" cellspacing="0">
 <tr>
      <td>
      <div id="Tips">
@@ -155,7 +156,7 @@ function show() {
      </td>
 <td>
 <div id="TextArea">
-<table width="700" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
+<table width="100%" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
   <tr>
     <td>    
     <jsp:include page="CourseLists.jsp"/>
