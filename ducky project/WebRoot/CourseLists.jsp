@@ -44,8 +44,7 @@
 							out.print("<tr>");
 						}
 						out.print("<td width=\"20%\">");
-						out
-								.print("<input type=\"checkbox\" name=\"checkbox\" value="
+						out.print("<input type=\"checkbox\" name=\"checkbox\" value="
 										+ idx + " id=\"course" + idx + "\">");
 						out.print(tempcourse.getCourse_name());
 						out.print("</td>");

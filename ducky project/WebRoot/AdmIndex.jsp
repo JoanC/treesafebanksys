@@ -1,18 +1,18 @@
-<%@ page pageEncoding="GBK"%>
+<%@page pageEncoding="GBK"%>
 <%@page import="object.DebugClass"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>管理员主界面</title>
-<style type="text/css">
+<style type="text/css" media="screen">
+<!--
 body{
 	background-image:url(images/AdmBck.jpg);
 	background-attachment:fixed;
 	background-repeat: no-repeat;
 	background-position:center;
 	margin-top: 130px;
-	background-color:#003
+	background-color:#030;
 }
 #AdmBanner {
 	position:absolute;
@@ -23,6 +23,7 @@ body{
 	z-index:3;
 	background-image:url(images/AdmBanner.jpg);
 	background-repeat:repeat-x;	
+	margin-left:0px;
 }
 #AdmMainBody {
 	position:absolute;
@@ -49,33 +50,33 @@ body{
 }
 #TextArea
 {
-	position:relative;
-	width:950px;
+	position:absoulute;
+	width:632px;
 	z-index:1;
 	min-height:500px;
 }
 #Tips
-{
-	position:absolute;
+{	
 	height:268px;
-	width:271px;
+	width:268px;
+	top:100px;
 	background-image:url(images/tips.png);
 	z-index:2;
+	margin-top:100px;
 	text-align:left
-	left:0px;
 	background-repeat:no-repeat;
 }
 .MenuFont {
 	font-size: 22px;
 	font-family: "黑体";
-	color:#13969E;
+	color: #063;
 	text-decoration:underline;
 }
 a
 {
 	font-size: 22px;
 	font-family: "黑体";
-	color: #13969E;
+	color: #063;
 	text-decoration:underline;
 }
 a:hover
@@ -83,32 +84,91 @@ a:hover
 	font-size:24px;
 	font-weight:bold;
 }
+ibutton
+{
+	height: 45px;
+	background-image: url(gradVert.jpg);
+	background-repeat: repeat-x;
+	border-style: 0px solid #fff;
+	display: block;
+	cursor: pointer;
+}
+#level1
+{ 
+	display: none; width: 120px; border: 0px #3399FF solid; background: #ffffff;
+}
+#level2
+{ 
+	display: none; width: 120px; border: 0px #3399FF solid; background: #ffffff;
+}
+-->
 </style>
-
 </head>
-
 <body>
 <div id="AdmBanner">
 <div id="AdmTJWord"></div>
 <div id="Menu">
   <br /><br />
-  <form id="SelCrsForm" name="SelCrsForm" method="post" action="/TJSelCrsSys/servlet/SystemParaServelt">
-  <table width="430" border="0" align="center">
+  <form id="SelCrsForm" name="SelCrsForm" method="post" action="/TJSelCrsSys/servlet/CourseListsServlet">
+  <table width="430" border="1" align="center">
     <tr>
-      <td width="25%"><input type="submit" class="MenuFont" style="background:none;border:none" name="SelCrsSysPara" id="AddSelCrs"
-			value="课程"/></td>
-      <td width="25%"><input type="submit"  class="MenuFont" style="background:none;border:none" name="SelCrsSysPara" id="SttSelCrs"
-			value="系统" /></td>
-      <td width="25%">&nbsp;</td>
-      <td width="25%">&nbsp;</td>
+      <td width="25%" class="MenuFont">
+      <input type="button" class="MenuFont" style="background:none;border:none" name="SelCrsSysPara" id="Adm_menu_1"
+			value="课程"/>
+      </td>
+      <td width="25%" class="MenuFont">
+<input type="button" class="MenuFont" style="background:none;border:none" name="SelCrsSysPara" id="Adm_menu_2"
+			value="系统"/>
+	   </td>
+      <td width="25%" class="MenuFont"><input type="image" name="SelectCrsCommit" id="SttSelCrs"
+			value="学分" src="images/AdmMenuBT.png" /></td>
+      <td width="25%"></td>
     </tr>
+    <tr>
+      <td colspan="4">
+	<div id="level1">
+		<input type="submit" class="MenuFont" style="background:none;border:none;" name="SelectCrsCommit" id="SttSelCrs"
+			value="新增课程"/>	
+		<input type="submit" class="MenuFont" style="background:none;border:none;" name="SelectCrsCommit" id="SttSelCrs"
+			value="修改课程"/>
+		</div>
+		<div id="level2">
+		<input type="submit" class="MenuFont" style="background:none;border:none;" name="SelectCrsCommit" id="SttSelCrs"
+			value="选课状态"/>	
+		<input type="submit" class="MenuFont" style="background:none;border:none;" name="SelectCrsCommit" id="SttSelCrs"
+			value="选课模式"/>
+		</div>
+      </td>
+      </tr>
+
   </table>
   </form>
 </div>
 </div>
+<script language="JavaScript" type="text/javascript">
+<!--//--><![CDATA[//><!--
+var tips = document.getElementById("level1");
+var button = document.getElementById("Adm_menu_1");
+button.onclick = show;
+function show() {
+	if (tips.style.display=="block"){ tips.style.cssText = "display: none;" }
+	else { tips.style.cssText = "display: block;" }
+}
+//--><!]]>
+</script>
+<script language="JavaScript" type="text/javascript">
+<!--//--><![CDATA[//><!--
+var tips = document.getElementById("level2");
+var button = document.getElementById("Adm_menu_2");
+button.onclick = show;
+function show() {
+	if (tips.style.display=="block"){ tips.style.cssText = "display: none;" }
+	else { tips.style.cssText = "display: block;" }
+}
+//--><!]]>
+</script>
 <div id="AdmMainBody">
-<div id="TextArea">
-<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="900" border="1" align="center" cellpadding="0" cellspacing="0">
 <tr>
      <td>
      <div id="Tips">
@@ -119,19 +179,20 @@ a:hover
      </div>
      </td>
 <td>
-<table width="729" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
+<div id="TextArea">
+<table width="100%" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
   <tr>
     <td>    
     <jsp:include page="Adm_SelCrsMode.jsp"/>
-    <jsp:include page="Adm_SystemStatus.jsp"/>
+    <jsp:include page="Adm_SystemStatus.jsp"/>   
     </td>
   </tr>
 </table>
+</div>
 </td>
 </tr>
 </table>
+</div>
 
-</div>
-</div>
-</html>
 </body>
+</html>

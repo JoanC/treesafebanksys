@@ -136,10 +136,10 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		DebugClass.debug_start();
 		DebugClass.debug_info(this.toString(),"Adm Start");
 		String value = (String) request.getParameter("SelCrsSysPara");
-		if (value.equals("状态确定")) {
+		if (value.equals("选课状态")) {
 			Request_SelCrsOnOff(request,response,value);
 		}
-		else if(value.equals("模式确定"))
+		else if(value.equals("选课模式"))
 		{
 			Request_SelCrsMode(request,response,value);
 		}		
