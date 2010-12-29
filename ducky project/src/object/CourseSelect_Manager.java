@@ -12,9 +12,9 @@ import db_data_structure.*;
 
 public class CourseSelect_Manager {
 
-	String u_id; 				//µÇÂ¼µÄÑ§Éú±àºÅ
-	PreCourseTable pre_tab;		//Ô¤Ñ¡¿Î±íĞÅÏ¢
-	FmlCourseTable fml_tab;		//ÕıÊ½¿Î±íĞÅÏ¢
+	String u_id; 				//ï¿½ï¿½Â¼ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½
+	PreCourseTable pre_tab;		//Ô¤Ñ¡ï¿½Î±ï¿½ï¿½ï¿½Ï¢
+	FmlCourseTable fml_tab;		//ï¿½ï¿½Ê½ï¿½Î±ï¿½ï¿½ï¿½Ï¢
 	
 	public CourseSelect_Manager(String uId) {
 		super();
@@ -53,38 +53,38 @@ public class CourseSelect_Manager {
 	}
 	
 	/*
-	 * ÓÃÓÚÔÚÏÔÊ¾´óÁĞ±íÊ±È¡µÃ´óÁĞ±íµÄÊı¾İ
-	 * ×÷Õß:Íò¾ıÑÇ
-	 * ÈÕÆÚ: 2010/12/9
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ğ±ï¿½Ê±È¡ï¿½Ã´ï¿½ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½: 2010/12/9
 	 */
 	 public Vector<Course> getListData(){
 		DebugClass.debug_info(this.toString(), "generate all the course list...");
-		Vector<Course> _data = new Vector<Course>();//½á¹ûÊı¾İ
-		//È¡µÃÊı¾İ¿âÖĞËùÓĞµÄ¿Î³ÌÊı¾İ
+		Vector<Course> _data = new Vector<Course>();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//È¡ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ĞµÄ¿Î³ï¿½ï¿½ï¿½ï¿½
 		Vector<Course> _all = Course_Manager.getAllCourseList();
-		//¸ù¾İÕâ¸öÑ§ÉúµÄidÈ¡µÃËùÓĞÔ¤Ñ¡Êı¾İ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½idÈ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤Ñ¡ï¿½ï¿½ï¿½
 		Vector<PreCourseSelectInfo> _pre_tab = this.getPre_tab().get_course_list();
-		//È¡µÃÕâ¸öÑ§ÉúµÄÕıÑ¡¿Î±í
-		//...ÉĞÎ´ÊµÏÖ
+		//È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Î±ï¿½
+		//...ï¿½ï¿½Î´Êµï¿½ï¿½
 		
-		//É¾Ñ¡ĞÅÏ¢,½«Ô¤Ñ¡ĞÅÏ¢ºÍÕıÑ¡ĞÅÏ¢Óë´óÁĞ±íÖĞµÄÖØ¸´ĞÅÏ¢ÅÅ³ı
-		//ÅÅ³ıÒÀ¾İÎª¿Î³ÌµÄÃû³Æ
+		//É¾Ñ¡ï¿½ï¿½Ï¢,ï¿½ï¿½Ô¤Ñ¡ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½Ğµï¿½ï¿½Ø¸ï¿½ï¿½ï¿½Ï¢ï¿½Å³ï¿½
+		//ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Î³Ìµï¿½ï¿½ï¿½ï¿½
 		for (int _index = 0; _index < _all.size(); _index++) {
-			//ÖğÒ»ÅĞ¶Ï
-			//ÏÈ´ÓÔ¤Ñ¡ĞÅÏ¢ÖĞ¿ªÊ¼²éÕÒ..ÓÉÓÚÊÇ¿Î³ÌÃû,²»µÃ²»Ğ´Ò»¸öÑ­»·Öğ¸ö²éÕÒ
+			//ï¿½ï¿½Ò»ï¿½Ğ¶ï¿½
+			//ï¿½È´ï¿½Ô¤Ñ¡ï¿½ï¿½Ï¢ï¿½Ğ¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½..ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿Î³ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ã²ï¿½Ğ´Ò»ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			Course _temp_data = _all.elementAt(_index);
-			boolean _is_corr = true;//ÊÇ·ñÓ¦¸Ã¼ÓÈë,³õÊ¼ÎªÕæ
+			boolean _is_corr = true;//ï¿½Ç·ï¿½Ó¦ï¿½Ã¼ï¿½ï¿½ï¿½,ï¿½ï¿½Ê¼Îªï¿½ï¿½
 			for(int _index_pre = 0 ; _index_pre < _pre_tab.size() ; ++_index_pre){
 				if(_temp_data.getCourse_name().equals(_pre_tab.elementAt(_index_pre).getCourse_name())){
-					//Ãû×ÖÏàÍ¬
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬
 					DebugClass.debug_info(this.toString(), "the course " + "'" + _temp_data.getCourse_name()
 							+ "'" + " has already existed in the pre_select_table of user : " + u_id);
 					_is_corr = false;
 					break;
 				}
 			}
-			//×öÕıÊ½Ñ¡¿ÎÖĞµÄĞÅÏ¢ÅĞ¶¨..
-			//**Î´Íê³É**
+			//ï¿½ï¿½ï¿½ï¿½Ê½Ñ¡ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½Ï¢ï¿½Ğ¶ï¿½..
+			//**Î´ï¿½ï¿½ï¿½**
 			if(_is_corr){
 				_data.add(_temp_data);
 			}
@@ -92,7 +92,7 @@ public class CourseSelect_Manager {
 		return _data;
 	}
 	 
-	//°ÑÒ»ÃÅ»òÕß¶àÃÅ¿Î³ÌÑ¡ÈëÔ¤Ñ¡¿Î±í
+	//ï¿½ï¿½Ò»ï¿½Å»ï¿½ï¿½ß¶ï¿½ï¿½Å¿Î³ï¿½Ñ¡ï¿½ï¿½Ô¤Ñ¡ï¿½Î±ï¿½
 	public Exp SelectCourseToPreTab(Vector<PreCourseSelectInfo> _new){
 		Exp exp = null;
 		
@@ -110,7 +110,7 @@ public class CourseSelect_Manager {
 	}
 	
 	
-	//°ÑÒ»ÃÅ»òÕß¶àÃÅ¿Î³ÌÑ¡ÈëÕıÊ½¿Î±í
+	//ï¿½ï¿½Ò»ï¿½Å»ï¿½ï¿½ß¶ï¿½ï¿½Å¿Î³ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Î±ï¿½
 	public Exp SelectCourseToFmlTab(Vector<Course> _new){
 		Exp exp = null;
 		for(int i = 0; i < _new.size(); i++){
@@ -122,7 +122,7 @@ public class CourseSelect_Manager {
 		return exp;
 	}
 	
-	//°ÑÒ»ÃÅ»òÕß¶àÃÅ¿Î³Ì´ÓÔ¤Ñ¡¿Î±íÖĞÒÆ³ö
+	//ï¿½ï¿½Ò»ï¿½Å»ï¿½ï¿½ß¶ï¿½ï¿½Å¿Î³Ì´ï¿½Ô¤Ñ¡ï¿½Î±ï¿½ï¿½ï¿½ï¿½Æ³ï¿½
 	public Exp RemoveCourseFromPreTab(Vector<PreCourseSelectInfo> _rmv){
 		Exp exp = null;
 		int i;
@@ -132,13 +132,15 @@ public class CourseSelect_Manager {
 			tmpCourse = _rmv.get(i);
 			tmpCourse.setUid(u_id);
 			pre_tab.deleteCourse(tmpCourse);
+			fml_tab.DelConCourseWhenAddSameNameCourse(tmpCourse.getCourse_name());
+			//ä¹Ÿå¿…é¡»ä»æ­£å¼è¯¾è¡¨ä¸­åˆ é™¤
 			DebugClass.debug_info("CourseSelectManger:", "delete course name: " 
 					+ tmpCourse.getCourse_name());
 		}
 		return exp;
 	}
 	
-	//°ÑÒ»ÃÅ»òÕß¶àÃÅ¿Î³Ì´ÓÕıÊ½¿Î±íÖĞÒÆ³ö
+	//ï¿½ï¿½Ò»ï¿½Å»ï¿½ï¿½ß¶ï¿½ï¿½Å¿Î³Ì´ï¿½ï¿½ï¿½Ê½ï¿½Î±ï¿½ï¿½ï¿½ï¿½Æ³ï¿½
 	public Exp RemoveCourseFromFmlTab(Vector<Course> _rmv){
 		Exp exp = null;
 		DebugClass.debug_info(this.toString(), "start to remove...");
@@ -152,7 +154,7 @@ public class CourseSelect_Manager {
 						+ "the list course name : " + _check.getCourse_name());
 				if(_targrt.getCourse_name().equals(_check.getCourse_name())){
 					_targrt.setCourse_id(_check.getCourse_id());
-					//É¾³ı
+					//É¾ï¿½ï¿½
 					DebugClass.debug_info(this.toString(), "start to delete course " + _targrt.getCourse_name());
 					fml_tab.deleteCourse(_targrt);
 				}
@@ -161,7 +163,7 @@ public class CourseSelect_Manager {
 		return exp;
 	}
 	
-	//½áÊø´Ë´ÎµÄÑ¡¿Î²Ù×÷,±£´æ¶ÔÓ¦µÄÊı¾İ
+	//ï¿½ï¿½ï¿½ï¿½Ë´Îµï¿½Ñ¡ï¿½Î²ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Exp SelectDone(){
 		Exp exp = null;
 		//...
