@@ -99,12 +99,12 @@ public class FmlCourseTable extends CourseTable {
 			}
 			//�жϴ��ſγ��Ƿ�ͱ�Ŀγ��г�ͻ
 		}
-		DebugClass.debug_info(this.toString(), "add course " + _new.getCourse_name()
-				+"to the fixed course list");
 		
 		//加入之前删除同名字的课程
 		this.DelConCourseWhenAddSameNameCourse(_new.getCourse_name());
 		
+		DebugClass.debug_info(this.toString(), "add course " + _new.getCourse_name()
+				+"to the fixed course list");
 		course_list_fixedCourses.add(_new);
 		course_addedCourses.add(_new);
 		
@@ -229,11 +229,13 @@ public class FmlCourseTable extends CourseTable {
 		Vector<Course> _rlt = new Vector<Course>();
 		for(int _index = 0 ; _index <  course_list_fixedCourses.size() ; ++_index){
 			if(course_list_fixedCourses.elementAt(_index).getCourse_name().equals(_course_name)){
+				DebugClass.debug_info(this.toString(), "the same course name  " + _course_name);
 				_rlt.addElement(course_list_fixedCourses.elementAt(_index));
 			}
 		}
 		
-		for(int _index = 0 ; _index < course_list_fixedCourses.size() ; ++_index){
+		for(int _index = 0 ; _index < _rlt.size() ; ++_index){
+			DebugClass.debug_info(this.toString(), "delete course : " + _rlt.elementAt(_index).getCourse_id());
 			this.deleteCourse(_rlt.elementAt(_index));
 		}
 	}
