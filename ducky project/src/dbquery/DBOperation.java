@@ -27,6 +27,7 @@ import db_data_structure.Week;
  * modified by Sun 2010-12-14
  * modified by Sun 2010-12-21
  * modified by Sun 2010-12-22
+ * modified by Sun 2010-12-29
  */
 
 public class DBOperation {
@@ -598,13 +599,13 @@ public class DBOperation {
 	{
 		Vector<Course> rtn = null ;
 		Vector<Course> temp = this.doQueryAllCourseTabCourseSelectByUid(uid) ;
-		/*ÕÒµ½Õâ¸öÑ§ÉúËùÑ¡µÄËùÓÐ¿Î³Ì£¨ÒÑ¹ýºÍÎ´¹ý£©*/
+		/*ï¿½Òµï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿Î³Ì£ï¿½ï¿½Ñ¹ï¿½ï¿½Î´ï¿½ï¿½*/
 		if( null != temp )
 		{
 			rtn = new Vector<Course>() ;
 			for ( int i = 0 ; i < temp.size(); ++i )
 			{
-				if ( temp.elementAt(i).getCourse_type() > 0 )/*Èç¹ûÊÇÎ´¹ýµÄ*/
+				if ( temp.elementAt(i).getCourse_type() > 0 )/*ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½*/
 				{
 					rtn.addElement( temp.elementAt(i) ) ;
 				}
@@ -697,7 +698,7 @@ public class DBOperation {
 							   "VALUES(" +
 							   " ? , ? , ? , ? , ? , ? , ? , ? ," +
 							   " ? , ? , ? , ? , ? , ? , ? , ? ," +
-							   " ? , ? , ? , ? , ? , ? , ? , ? )"  ; // Ã¿ÐÐ8¸ö£¬¹²24¸ö
+							   " ? , ? , ? , ? , ? , ? , ? , ? )"  ; // Ã¿ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½24ï¿½ï¿½
 							 
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 			ps = doPsCourseMapping(ps , course) ;
