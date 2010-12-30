@@ -12,6 +12,7 @@ import db_data_structure.PointGoal;
 import db_data_structure.PreCourseSelectInfo;
 import db_data_structure.SysParam;
 import db_data_structure.User;
+import db_data_structure.UserType;
 import db_data_structure.Week;
 
 /*
@@ -28,6 +29,7 @@ import db_data_structure.Week;
  * modified by Sun 2010-12-21
  * modified by Sun 2010-12-22
  * modified by Sun 2010-12-29
+ * modified by Sun 2010-12-30
  */
 
 public class DBOperation {
@@ -109,14 +111,8 @@ public class DBOperation {
 			ResultSet results = ps_user.executeQuery();
 			/* do query */
 			while (results.next()) {
-				rtn.setU_id(results.getString("U_ID"));
-				rtn.setU_name(results.getString("U_NAME"));
-				rtn.setU_type(results.getInt("U_TYPE"));
-				rtn.setU_class(results.getInt("U_CLASS"));
-				rtn.setU_school_id(results.getInt("U_SCHOOL_ID"));
-				rtn.setU_grade(results.getInt("U_GRADE"));
+				rtn = this.doMappingUser(results) ;
 				/* write to rtn */
-
 				results.close();
 				/* close the resultset */
 				return rtn;
@@ -530,7 +526,7 @@ public class DBOperation {
 	}
 
 	public PointGoal doQueryPointGoalFromTbPG(int school_id) {
-		PointGoal rtn = null ;
+		PointGoal rtn = null;
 		try {
 			String query_str = "SELECT * " + "FROM TB_POINT_GOAL "
 					+ "WHERE U_SCHOOL_ID=?";
@@ -547,44 +543,39 @@ public class DBOperation {
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
-		return rtn ;
+		return rtn;
 	}
-	public void doUpdatePointGoalFromTabPG(PointGoal pg)
-	{
+
+	public void doUpdatePointGoalFromTabPG(PointGoal pg) {
 		try {
-			String query_login = "UPDATE TB_POINT_GOAL " +
-								 "SET U_SCHOOL_ID=?," +
-								 "A1=?,A2=?,A3=?," +
-								 "B1=?,B2=?,B3=?," +
-								 "C1=?,C2=?,C3=?," +
-								 "D1=?,D2=?,D3=?," +
-								 "E1=?,E2=?,E3=?," +
-								 "F1=?,F2=?,F3=? " +
-								 "WHERE U_SCHOOL_ID=?";
+			String query_login = "UPDATE TB_POINT_GOAL " + "SET U_SCHOOL_ID=?,"
+					+ "A1=?,A2=?,A3=?," + "B1=?,B2=?,B3=?," + "C1=?,C2=?,C3=?,"
+					+ "D1=?,D2=?,D3=?," + "E1=?,E2=?,E3=?," + "F1=?,F2=?,F3=? "
+					+ "WHERE U_SCHOOL_ID=?";
 
 			PreparedStatement ps = m_conn.prepareStatement(query_login);
 
-			int i = 1 ;
-			ps.setInt(i++, pg.getU_school_id()) ;
-			ps.setFloat(i++, pg.getA1()) ;
-			ps.setFloat(i++, pg.getA2()) ;
-			ps.setFloat(i++, pg.getA3()) ;
-			ps.setFloat(i++, pg.getB1()) ;
-			ps.setFloat(i++, pg.getB2()) ;
-			ps.setFloat(i++, pg.getB3()) ;
-			ps.setFloat(i++, pg.getC1()) ;
-			ps.setFloat(i++, pg.getC2()) ;
-			ps.setFloat(i++, pg.getC3()) ;
-			ps.setFloat(i++, pg.getD1()) ;
-			ps.setFloat(i++, pg.getD2()) ;
-			ps.setFloat(i++, pg.getD3()) ;
-			ps.setFloat(i++, pg.getE1()) ;
-			ps.setFloat(i++, pg.getE2()) ;
-			ps.setFloat(i++, pg.getE3()) ;
-			ps.setFloat(i++, pg.getF1()) ;
-			ps.setFloat(i++, pg.getF2()) ;
-			ps.setFloat(i++, pg.getF3()) ;
-			ps.setInt(i++, pg.getU_school_id()) ;
+			int i = 1;
+			ps.setInt(i++, pg.getU_school_id());
+			ps.setFloat(i++, pg.getA1());
+			ps.setFloat(i++, pg.getA2());
+			ps.setFloat(i++, pg.getA3());
+			ps.setFloat(i++, pg.getB1());
+			ps.setFloat(i++, pg.getB2());
+			ps.setFloat(i++, pg.getB3());
+			ps.setFloat(i++, pg.getC1());
+			ps.setFloat(i++, pg.getC2());
+			ps.setFloat(i++, pg.getC3());
+			ps.setFloat(i++, pg.getD1());
+			ps.setFloat(i++, pg.getD2());
+			ps.setFloat(i++, pg.getD3());
+			ps.setFloat(i++, pg.getE1());
+			ps.setFloat(i++, pg.getE2());
+			ps.setFloat(i++, pg.getE3());
+			ps.setFloat(i++, pg.getF1());
+			ps.setFloat(i++, pg.getF2());
+			ps.setFloat(i++, pg.getF3());
+			ps.setInt(i++, pg.getU_school_id());
 			/* some preparing work... */
 			// System.out.println("query = "+ps) ;//for test
 			ps.executeUpdate();
@@ -595,31 +586,28 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 	}
-	public Vector<Course> doQueryAllFinishedCourseOfCertainStudent(String uid)
-	{
-		Vector<Course> rtn = null ;
-		Vector<Course> temp = this.doQueryAllCourseTabCourseSelectByUid(uid) ;
-		/*�ҵ����ѧ����ѡ�����пγ̣��ѹ��δ��*/
-		if( null != temp )
-		{
-			rtn = new Vector<Course>() ;
-			for ( int i = 0 ; i < temp.size(); ++i )
-			{
-				if ( temp.elementAt(i).getCourse_type() > 0 )/*�����δ���*/
+
+	public Vector<Course> doQueryAllFinishedCourseOfCertainStudent(String uid) {
+		Vector<Course> rtn = null;
+		Vector<Course> temp = this.doQueryAllCourseTabCourseSelectByUid(uid);
+		/* �ҵ����ѧ����ѡ�����пγ̣��ѹ��δ�� */
+		if (null != temp) {
+			rtn = new Vector<Course>();
+			for (int i = 0; i < temp.size(); ++i) {
+				if (temp.elementAt(i).getCourse_type() > 0)/* �����δ��� */
 				{
-					rtn.addElement( temp.elementAt(i) ) ;
+					rtn.addElement(temp.elementAt(i));
 				}
 			}
 		}
-		return rtn ;
+		return rtn;
 	}
-	public Vector<String> doQueryAllStudentSelectCertainCourse(String course_id)
-	{
-		Vector<String> rtn = new Vector<String>() ;
+
+	public Vector<String> doQueryAllStudentSelectCertainCourse(String course_id) {
+		Vector<String> rtn = new Vector<String>();
 		try {
-			String query_str = "SELECT U_ID " 
-							+ "FROM TB_COURSE_SELECT "
-							+ "WHERE COURSE_ID=?";
+			String query_str = "SELECT U_ID " + "FROM TB_COURSE_SELECT "
+					+ "WHERE COURSE_ID=?";
 
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 			ps.setString(1, course_id);
@@ -627,25 +615,24 @@ public class DBOperation {
 			/* do query */
 
 			while (results.next()) {
-				rtn.addElement(results.getString("U_ID")) ;
+				rtn.addElement(results.getString("U_ID"));
 			}
 			results.close();
 		} catch (Exception e) {
 			System.err.println("error : " + e);
 		}
-		return rtn ;
+		return rtn;
 	}
-	public void doUpdateSysParam(SysParam sp)
-	{
+
+	public void doUpdateSysParam(SysParam sp) {
 		try {
-			String query_str = "UPDATE TB_SYS_PARAM " +
-							   "SET IS_CS_OPENED=?," +
-							   "CS_TYPE=? ";// +
-							  // "WHERE COURSE_ID=?";
+			String query_str = "UPDATE TB_SYS_PARAM " + "SET IS_CS_OPENED=?,"
+					+ "CS_TYPE=? ";// +
+			// "WHERE COURSE_ID=?";
 
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 
-			ps.setBoolean(1,sp.isCourseSelOpened());
+			ps.setBoolean(1, sp.isCourseSelOpened());
 			ps.setInt(2, sp.getCourseSelType());
 			/* some preparing work... */
 			ps.executeUpdate();
@@ -656,52 +643,51 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 	}
-	private PreparedStatement doPsCourseMapping(PreparedStatement ps,Course course)
-	{
-		try{
-			int i = 1 ;
-			ps.setString(i++, course.getCourse_id()) ;
-			ps.setString(i++, course.getCourse_name()) ;
-			ps.setInt(i++, course.getCourse_type()) ;
-			ps.setString(i++, course.getU_id()) ;
-			ps.setFloat(i++, course.getCourse_point()) ;
-			ps.setString(i++, course.getCourse_place()) ;
-			ps.setString(i++, course.getCourse_comment()) ;
-			ps.setInt(i++, course.getCourse_volume()) ;
-			ps.setInt(i++, course.getCourse_current_seleted_num()) ;
-			ps.setInt(i++, course.getCourse_exam_type()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_mon()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_tues()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_wed()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_thur()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_fri()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_sat()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_time_sun()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_mon_freq()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_tues_freq()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_wed_freq()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_thur_freq()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_fri_freq()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_sat_freq()) ;
-			ps.setInt(i++ ,course.getCourse_time_week().getCourse_sun_freq()) ;
-		}catch(Exception e){
-			System.err.println("error : " + e);
-			}
-		
-		return ps ;
-	}
-	public void insertCourse2TabCourse(Course course)
-	{
+
+	private PreparedStatement doPsCourseMapping(PreparedStatement ps,
+			Course course) {
 		try {
-			String query_str = "INSERT INTO " +
-							   "TB_SYS_PARAM " +
-							   "VALUES(" +
-							   " ? , ? , ? , ? , ? , ? , ? , ? ," +
-							   " ? , ? , ? , ? , ? , ? , ? , ? ," +
-							   " ? , ? , ? , ? , ? , ? , ? , ? )"  ; // ÿ��8������24��
-							 
+			int i = 1;
+			ps.setString(i++, course.getCourse_id());
+			ps.setString(i++, course.getCourse_name());
+			ps.setInt(i++, course.getCourse_type());
+			ps.setString(i++, course.getU_id());
+			ps.setFloat(i++, course.getCourse_point());
+			ps.setString(i++, course.getCourse_place());
+			ps.setString(i++, course.getCourse_comment());
+			ps.setInt(i++, course.getCourse_volume());
+			ps.setInt(i++, course.getCourse_current_seleted_num());
+			ps.setInt(i++, course.getCourse_exam_type());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_time_mon());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_time_tues());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_time_wed());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_time_thur());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_time_fri());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_time_sat());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_time_sun());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_mon_freq());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_tues_freq());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_wed_freq());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_thur_freq());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_fri_freq());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_sat_freq());
+			ps.setInt(i++, course.getCourse_time_week().getCourse_sun_freq());
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+
+		return ps;
+	}
+
+	public void insertCourse2TabCourse(Course course) {
+		try {
+			String query_str = "INSERT INTO " + "TB_SYS_PARAM " + "VALUES("
+					+ " ? , ? , ? , ? , ? , ? , ? , ? ,"
+					+ " ? , ? , ? , ? , ? , ? , ? , ? ,"
+					+ " ? , ? , ? , ? , ? , ? , ? , ? )"; // ÿ��8������24��
+
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
-			ps = doPsCourseMapping(ps , course) ;
+			ps = doPsCourseMapping(ps, course);
 			/* some preparing work... */
 			ps.executeUpdate();
 			/* do update */
@@ -711,12 +697,11 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 	}
-	public void doDeleteCourseFromTabCourse(String course_id)
-	{
+
+	public void doDeleteCourseFromTabCourse(String course_id) {
 		try {
-			String sql_delete = "DELETE FROM " +
-								"TB_COURSE " +
-								"WHERE COURSE_ID=?";
+			String sql_delete = "DELETE FROM " + "TB_COURSE "
+					+ "WHERE COURSE_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
 			ps.setString(1, course_id);
 			/* prepare sql string */
@@ -727,12 +712,11 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 	}
-	public void doDeleteCourseSelFromTabCourseSel(String uid,String course_id)
-	{
+
+	public void doDeleteCourseSelFromTabCourseSel(String uid, String course_id) {
 		try {
-			String sql_delete = "DELETE FROM " +
-								"TB_COURSE_SELECT " +
-								"WHERE U_ID=? AND COURSE_ID=?";
+			String sql_delete = "DELETE FROM " + "TB_COURSE_SELECT "
+					+ "WHERE U_ID=? AND COURSE_ID=?";
 			PreparedStatement ps = m_conn.prepareStatement(sql_delete);
 			ps.setString(1, uid);
 			ps.setString(2, course_id);
@@ -745,4 +729,39 @@ public class DBOperation {
 		}
 	}
 
+	private User doMappingUser(ResultSet results) {
+		User rtn = new User();
+		try {
+			rtn.setU_id(results.getString("U_ID"));
+			rtn.setU_name(results.getString("U_NAME"));
+			rtn.setU_type(results.getInt("U_TYPE"));
+			rtn.setU_class(results.getInt("U_CLASS"));
+			rtn.setU_school_id(results.getInt("U_SCHOOL_ID"));
+			rtn.setU_grade(results.getInt("U_GRADE"));
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn;
+	}
+
+	public Vector<User> doQueryAllTeacher() {
+		Vector<User> rtn = new Vector<User>();
+		try {
+			String query_str = "SELECT * " + "FROM TB_USER " + "WHERE U_TYPE=?";
+
+			PreparedStatement ps = m_conn.prepareStatement(query_str) ;
+			ps.setInt(1, UserType.teacher) ;
+			ResultSet results = ps.executeQuery() ;
+			/* do query */
+			while (results.next()) {
+				User buf = new User() ;
+				buf = this.doMappingUser(results) ;
+				rtn.addElement(buf) ;
+			}
+			results.close() ;
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+		}
+		return rtn;
+	}
 }

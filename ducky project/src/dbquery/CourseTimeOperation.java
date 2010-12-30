@@ -14,6 +14,7 @@ import db_data_structure.enCourseFreq;
  * created by Sun 2010-12-1 
  * modified by Sun 2010-12-14
  * modified by Sun 2010-12-15
+ * modified by Sun 2010-12-30
  * */
 public class CourseTimeOperation {
 	private static final int MAX_NUM_OF_COURSES_PER_DAY = 11;
