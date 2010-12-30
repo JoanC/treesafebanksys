@@ -13,10 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import db_data_structure.Course;
 import db_data_structure.PreCourseSelectInfo;
+import db_data_structure.User;
 
+import object.CourseTable;
 import object.Course_Manager;
 import object.DebugClass;
 import object.EncodeTool;
+import object.FmlCourseTable;
+import object.User_Manager;
 
 public class QueryCrsTable extends HttpServlet implements Servlet {
 
@@ -77,20 +81,23 @@ public class QueryCrsTable extends HttpServlet implements Servlet {
 	{
 		HttpSession session = request.getSession();
 		//查看课表
-		
-		
-		
-		//得到vector<String>
-		session.setAttribute("crstable", /*vector<string>名称*/);
+		String _id = (String)session.getAttribute("userid");
+		FmlCourseTable _table = new FmlCourseTable(_id);
+		Vector<String> _list = CourseTable.convertFmlTabFormat(_table.get_course_list());
+		User _current = User_Manager.queryUserInfo(_id);
+	    
+		session.setAttribute("crstable",_list);
 		session.setAttribute("pages", "CrsTable.jsp");
-		if(/*如果是学生*/)
+		if(_current.getU_type() == 1)
 		{
 			response.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 		}
-		else if(/*如果是老师*/)
+		else if(_current.getU_type() == 2)
+		{
 			response.sendRedirect("/TJSelCrsSys/TeaIndex.jsp?userid=" + session.getAttribute("userid"));
 		}
 	}
+
 	public void processRequest(HttpServletRequest req,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = req.getSession();

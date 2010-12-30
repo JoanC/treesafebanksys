@@ -95,6 +95,9 @@ public class CourseListsServlet extends HttpServlet {
 			courseselmgr = new CourseSelect_Manager((String)request.getSession().getAttribute("userid"));
 			DebugClass.debug_info(this.toString(), "new finish!");
 		}
+		else{
+			courseselmgr.setU_id((String)iRequest.getSession().getAttribute("userid"));
+		}
 		processRequest(request, response);
 	}
 	/**
@@ -155,9 +158,6 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", _result);
 	    session.setAttribute("pages", "SelectCourses.jsp");
-	    if(courseselmgr != null) {
-	    	courseselmgr.setU_id((String)session.getAttribute("userid"));
-	    }
 	    iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 	}
 
