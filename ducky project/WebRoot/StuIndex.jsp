@@ -166,7 +166,7 @@ ibutton {
 								<form id="QueryCrsTableForm" name="QueryCrsTable" method="post"
 					action="/TJSelCrsSys/servlet/QueryCrsTable">
 									<input type="submit" class="MenuFont"
-										style="background: none; border: none;" name="SelectCrsCommit"
+										style="background: none; border: none;" name="QueryCrsTable"
 										id="SttSelCrs" value="²é¿´¿Î±í" />
 										</form>
 								</div>
@@ -244,8 +244,10 @@ ibutton {
 								bordercolor="#FFFFFF" style="border-collapse: collapse">
 								<tr>
 									<td>
-										<jsp:include
-											page="<%=session.getAttribute("pages").toString()%>" />
+									<%
+										DebugClass.debug_info(this.toString(),"pages:" + session.getAttribute("pages"));
+											%>
+										<jsp:include page="<%=session.getAttribute("pages").toString()%>" />
 									</td>
 								</tr>
 							</table>
