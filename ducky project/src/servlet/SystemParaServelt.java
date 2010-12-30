@@ -18,6 +18,7 @@ import db_data_structure.SysParam;
 import db_data_structure.enCourseSelType;
 
 import object.DebugClass;
+import object.EncodeTool;
 import object.SystemParameter_Manager;
 
 public class SystemParaServelt extends HttpServlet implements Servlet {
@@ -78,23 +79,22 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	private void Request_SelCrsOnOff(HttpServletRequest request, HttpServletResponse response,String para)
 	throws ServletException, IOException
 	{
-		DebugClass.debug_info(this.toString(), "para:" + para);
-		String name = (String)request.getParameter(para);
+		String name = (String)request.getParameter("SelCrsOnOffCmt");
 		DebugClass.debug_info(this.toString(), "name: "+ name);
 		HttpSession session = request.getSession();
 		SysParam _update = SystemParameter_Manager.getSystemParameter();
 		if(name.equals("on"))
 		{
-			//����ѡ�β���
+			//
 			DebugClass.debug_info(this.toString(), "open");
 			_update.setCourseSelOpened(true);
 		}
 		else {
-			//�ر�ѡ�β���
+			//
 			DebugClass.debug_info(this.toString(), "close");
 			_update.setCourseSelOpened(false);
 		}
-		//������ݿ�
+		//
 		SystemParameter_Manager.editSystemParameter(_update);
 		session.removeAttribute("SystemPara");
 		session.setAttribute("SystemPara", _update);
@@ -105,7 +105,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	private void Request_SelCrsMode(HttpServletRequest request, HttpServletResponse response,String para)
 	throws ServletException, IOException
 	{
-		String name = (String)request.getParameter(para);
+		String name = EncodeTool.ByteToISO((String)request.getParameter("SelCrsModeCmt"));
 		DebugClass.debug_info(this.toString(), "name: "+ name);
 		HttpSession session = request.getSession();
 		SysParam _update = SystemParameter_Manager.getSystemParameter();
@@ -130,18 +130,54 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
 		
 	}	
+	private void Request_SelCrsStatus(HttpServletRequest request, HttpServletResponse response,String para)
+	throws ServletException, IOException
+	{
+		HttpSession session = request.getSession();
+		session.setAttribute("pages", "Adm_SystemStatus.jsp");
+		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
+		
+	}
+	private void Request_SelCrsWays(HttpServletRequest request, HttpServletResponse response,String para)
+	throws ServletException, IOException
+	{
+		HttpSession session = request.getSession();
+		session.setAttribute("pages", "Adm_SelCrsMode.jsp");
+		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
+		
+	}
+	private void Request_AddNewCrs(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException
+	{
+		HttpSession session = request.getSession();
+		session.setAttribute("pages", "Adm_NewCrs.jsp");
+		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
+	}
 	public void processRequest(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
 		DebugClass.debug_start();
 		DebugClass.debug_info(this.toString(),"Adm Start");
-		String value = (String) request.getParameter("SelCrsSysPara");
-		if (value.equals("选课状态")) {
-			Request_SelCrsOnOff(request,response,value);
+		String value = EncodeTool.ByteToISO((String) request.getParameter("SelCrsSysPara"));
+		
+		if(value.equals("选课状态"))
+		{
+			Request_SelCrsStatus(request,response,value);
 		}
 		else if(value.equals("选课模式"))
 		{
+			Request_SelCrsWays(request,response,value);
+		}
+		else if (value.equals("状态确定")) {
+			Request_SelCrsOnOff(request,response,value);
+		}
+		else if(value.equals("模式确定"))
+		{
 			Request_SelCrsMode(request,response,value);
-		}		
+		}
+		else if(value.equals("新增课程"))
+		{
+			Request_AddNewCrs(request,response);
+		}
 	}
 }

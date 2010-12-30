@@ -159,8 +159,7 @@ function show() {
 <table width="100%" border="5" align="right" bgcolor="#DEFEE1" bordercolor="#FFFFFF" style="border-collapse:collapse">
   <tr>
     <td>    
-    <jsp:include page="CourseLists.jsp"/>
-    <jsp:include page="SelectCourses.jsp"/>   
+<jsp:include page = "<%=session.getAttribute("pages").toString()%>" />
     </td>
   </tr>
 </table>

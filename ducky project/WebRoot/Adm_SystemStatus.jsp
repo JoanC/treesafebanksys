@@ -8,15 +8,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <form id="SelCrsStatusForm" name="SelCrsStatusForm" method="post"
 	action="/TJSelCrsSys/servlet/SystemParaServelt">
+			<table><tr><td><label>
 	<%
-	if(session.getAttribute("pages").equals("Adm_SystemStatus.jsp"))
-	{
-		out.print("<table><tr><td><label>");
+
 		SysParam sys = (SysParam)session.getAttribute("SystemPara");
 		DebugClass.debug_info(this.toString(),"sys: " + sys);
 		if (sys.isCourseSelOpened()) {
+			out.println("当前系统选课状态为：选课开启中</br>");
 			out.println("<input type=\"radio\" name=\"SelCrsOnOffCmt\" value=\"on\" id=\"SelCrsSysOnOff_0\" checked/>开启选课");
 		} else {
+			out.println("当前系统选课状态为：选课关闭中</br>");
 			out.println("<input type=\"radio\" name=\"SelCrsOnOffCmt\" value=\"on\" id=\"SelCrsSysOnOff_0\"/>开启选课");
 		}
 		out.print("</label></td></tr><tr><td><label>");				
@@ -26,8 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		} else {
 			out.println("<input type=\"radio\" name=\"SelCrsOnOffCmt\" value=\"off\" id=\"SelCrsSysOnOff_0\" checked/>关闭选课");
 		}
-		out.print("</label></td></tr></table>");				
-		out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelCrsSysPara\" id=\"SelCrsSysPara\" value=\"状态确定\"/>");
-	}
-	%>
+		%>
+		</label></td></tr></table>				
+		<input type="submit" style="background:none;border:none" name="SelCrsSysPara" id="SelCrsSysPara" value="状态确定"/>
+		
 </form>
