@@ -8,7 +8,7 @@
     //DebugClass.debug_info(this.toString(),"ฟฮฑํด๓ะก" + crstable.size());
   	for(int i=0;i < crstable.size()/weekdays;i++)
   	{
-  		out.println("<tr>");
+  		out.println("<tr>"); 
   		out.println("<td>" + (i+1) + "</td>");
   		for(int j=0;j!=weekdays;j++)
   		{
