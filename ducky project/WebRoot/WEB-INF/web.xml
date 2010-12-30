@@ -25,6 +25,13 @@
     <servlet-name>QueryCrsTable</servlet-name>
     <servlet-class>servlet.QueryCrsTable</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateCrsInfo</servlet-name>
+    <servlet-class>servlet.UpdateCrsInfo</servlet-class>
+  </servlet>
+
 
  <servlet-mapping>
   <servlet-name>Loginservlet</servlet-name>
@@ -41,6 +48,10 @@
   <servlet-mapping>
     <servlet-name>QueryCrsTable</servlet-name>
     <url-pattern>/servlet/QueryCrsTable</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateCrsInfo</servlet-name>
+    <url-pattern>/servlet/UpdateCrsInfo</url-pattern>
   </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>

@@ -46,9 +46,7 @@
     }
 	 %>	  
 	 <%	
-	 if(session.getAttribute("pages").equals("SelectCourses.jsp"))
-	{
-	 out.print("<table width=\"100%\" border=\"1\">");
+		 out.print("<table width=\"100%\" border=\"1\">");
 	 	Vector<Course> _current;
 	 	_current = (Vector<Course>)session.getAttribute("coursestea");
 	 	if(_current != null)
@@ -76,12 +74,10 @@
   		//session.removeAttribute("coursestea");
   		} 
   		out.print("</table>");
-  		}
   		
 	  %>
   <%  	 
-	if(session.getAttribute("pages").equals("SelectCourses.jsp"))
-	{
+	
 	out.print("<table border=\"1\"><tr><td width=\"16\">&nbsp;</td><td width=\"75\">星期一</td><td width=\"75\">星期二</td><td width=\"75\">星期三</td><td width=\"75\">星期四</td><td width=\"75\">星期五</td><td width=\"75\">星期六</td><td width=\"75\">星期日</td></tr>");
   	//DebugClass.debug_start();
     Vector<String> crstable = (Vector<String>)session.getAttribute("coursetable");
@@ -97,7 +93,6 @@
   			  out.println("<td width=\"75\">" + crstable.elementAt(i * weekdays + j) + "</td>");  			  		 
   		}
   		out.println("</tr>");
-  	}
   	}
   %>
 </form>

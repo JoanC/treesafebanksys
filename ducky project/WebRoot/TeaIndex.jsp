@@ -120,8 +120,7 @@ ibutton {
 			<div id="Menu">
 				<br />
 				<br />
-				<form id="SelCrsForm" name="SelCrsForm" method="post"
-					action="/TJSelCrsSys/servlet/SystemParaServelt">
+				
 					<table width="430" border="1" align="center">
 						<tr>
 							<td width="25%" class="MenuFont">
@@ -142,18 +141,24 @@ ibutton {
 						<tr>
 							<td>
 								<div id="level1">
+								<form id="UpdateCrsInfoForm" name="UpdateCrsInfo" method="post"
+					action="/TJSelCrsSys/servlet/QueryCrsTable">
 									<input type="submit" class="MenuFont"
-										style="background: none; border: none;" name="SelCrsSysPara"
+										style="background: none; border: none;" name="UpdateCrsInfo"
 										id="SttSelCrs" value="查看课程" />
 									<input type="submit" class="MenuFont"
-										style="background: none; border: none;" name="SelCrsSysPara"
+										style="background: none; border: none;" name="UpdateCrsInfo"
 										id="SttSelCrs" value="修改课程" />
+									</form>
 								</div>
 								</td><td>
 								<div id="level2">
+								<form id="QueryCrsTableForm" name="QueryCrsTable" method="post"
+					action="/TJSelCrsSys/servlet/QueryCrsTable">
 									<input type="submit" class="MenuFont"
 										style="background: none; border: none;" name="SelCrsSysPara"
 										id="SttSelCrs" value="查看课表" />
+										</form>
 								</div>
 								</td>
 								<td>
