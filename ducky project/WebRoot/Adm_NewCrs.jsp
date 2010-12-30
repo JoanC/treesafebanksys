@@ -34,18 +34,116 @@
         <td width="48" align="center">ÐÇÆÚÁù</td>
         <td width="49" align="center">ÐÇÆÚÈÕ</td>
       </tr>
-      <%
-      for(int i=1;i<=11;i++)
-	  {
-	   out.print("<tr><td align=\"center\">" + i + "</td>");
-	      for(int j=1;j<=7;j++)
-	      {
-	      	out.print("<td align=\"center\"><input type=\"checkbox\" name=\"coursetime\" id=\"coursetime" + ((i-1)*11 + j) + "></td>");
-	      }
-	     out.print("</tr>");
-      }
-      
-      %>       
+     <tr>
+    <td>1</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=2" id="coursetime1&gt;&lt;/td&gt;&lt;td align=3"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=2" id="coursetime1&gt;&lt;/td&gt;&lt;td align=3"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=2" id="coursetime1&gt;&lt;/td&gt;&lt;td align=3"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=2" id="coursetime1&gt;&lt;/td&gt;&lt;td align=3"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=2" id="coursetime1&gt;&lt;/td&gt;&lt;td align=3"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=2" id="coursetime1&gt;&lt;/td&gt;&lt;td align=3"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=2" id="coursetime1&gt;&lt;/td&gt;&lt;td align=3"center"></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=" id="coursetime1&gt;&lt;/td&gt;&lt;td align=2"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=" id="coursetime1&gt;&lt;/td&gt;&lt;td align=2"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=" id="coursetime1&gt;&lt;/td&gt;&lt;td align=2"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=" id="coursetime1&gt;&lt;/td&gt;&lt;td align=2"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=" id="coursetime1&gt;&lt;/td&gt;&lt;td align=2"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=" id="coursetime1&gt;&lt;/td&gt;&lt;td align=2"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=" id="coursetime1&gt;&lt;/td&gt;&lt;td align=2"center"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=3" id="coursetime1&gt;&lt;/td&gt;&lt;td align=4"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=3" id="coursetime1&gt;&lt;/td&gt;&lt;td align=4"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=3" id="coursetime1&gt;&lt;/td&gt;&lt;td align=4"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=3" id="coursetime1&gt;&lt;/td&gt;&lt;td align=4"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=3" id="coursetime1&gt;&lt;/td&gt;&lt;td align=4"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=3" id="coursetime1&gt;&lt;/td&gt;&lt;td align=4"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=3" id="coursetime1&gt;&lt;/td&gt;&lt;td align=4"center"></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=4" id="coursetime1&gt;&lt;/td&gt;&lt;td align=5"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=4" id="coursetime1&gt;&lt;/td&gt;&lt;td align=5"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=4" id="coursetime1&gt;&lt;/td&gt;&lt;td align=5"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=4" id="coursetime1&gt;&lt;/td&gt;&lt;td align=5"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=4" id="coursetime1&gt;&lt;/td&gt;&lt;td align=5"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=4" id="coursetime1&gt;&lt;/td&gt;&lt;td align=5"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=4" id="coursetime1&gt;&lt;/td&gt;&lt;td align=5"center"></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=5" id="coursetime1&gt;&lt;/td&gt;&lt;td align=6"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=5" id="coursetime1&gt;&lt;/td&gt;&lt;td align=6"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=5" id="coursetime1&gt;&lt;/td&gt;&lt;td align=6"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=5" id="coursetime1&gt;&lt;/td&gt;&lt;td align=6"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=5" id="coursetime1&gt;&lt;/td&gt;&lt;td align=6"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=5" id="coursetime1&gt;&lt;/td&gt;&lt;td align=6"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=5" id="coursetime1&gt;&lt;/td&gt;&lt;td align=6"center"></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=6" id="coursetime1&gt;&lt;/td&gt;&lt;td align=7"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=6" id="coursetime1&gt;&lt;/td&gt;&lt;td align=7"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=6" id="coursetime1&gt;&lt;/td&gt;&lt;td align=7"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=6" id="coursetime1&gt;&lt;/td&gt;&lt;td align=7"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=6" id="coursetime1&gt;&lt;/td&gt;&lt;td align=7"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=6" id="coursetime1&gt;&lt;/td&gt;&lt;td align=7"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=6" id="coursetime1&gt;&lt;/td&gt;&lt;td align=7"center"></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=7" id="coursetime1&gt;&lt;/td&gt;&lt;td align=8"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=7" id="coursetime1&gt;&lt;/td&gt;&lt;td align=8"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=7" id="coursetime1&gt;&lt;/td&gt;&lt;td align=8"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=7" id="coursetime1&gt;&lt;/td&gt;&lt;td align=8"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=7" id="coursetime1&gt;&lt;/td&gt;&lt;td align=8"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=7" id="coursetime1&gt;&lt;/td&gt;&lt;td align=8"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=7" id="coursetime1&gt;&lt;/td&gt;&lt;td align=8"center"></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=8" id="coursetime1&gt;&lt;/td&gt;&lt;td align=9"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=8" id="coursetime1&gt;&lt;/td&gt;&lt;td align=9"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=8" id="coursetime1&gt;&lt;/td&gt;&lt;td align=9"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=8" id="coursetime1&gt;&lt;/td&gt;&lt;td align=9"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=8" id="coursetime1&gt;&lt;/td&gt;&lt;td align=9"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=8" id="coursetime1&gt;&lt;/td&gt;&lt;td align=9"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=8" id="coursetime1&gt;&lt;/td&gt;&lt;td align=9"center"></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=9" id="coursetime1&gt;&lt;/td&gt;&lt;td align=10"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=9" id="coursetime1&gt;&lt;/td&gt;&lt;td align=10"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=9" id="coursetime1&gt;&lt;/td&gt;&lt;td align=10"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=9" id="coursetime1&gt;&lt;/td&gt;&lt;td align=10"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=9" id="coursetime1&gt;&lt;/td&gt;&lt;td align=10"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=9" id="coursetime1&gt;&lt;/td&gt;&lt;td align=10"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=9" id="coursetime1&gt;&lt;/td&gt;&lt;td align=10"center"></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=10" id="coursetime1&gt;&lt;/td&gt;&lt;td align=11"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=10" id="coursetime1&gt;&lt;/td&gt;&lt;td align=11"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=10" id="coursetime1&gt;&lt;/td&gt;&lt;td align=11"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=10" id="coursetime1&gt;&lt;/td&gt;&lt;td align=11"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=10" id="coursetime1&gt;&lt;/td&gt;&lt;td align=11"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=10" id="coursetime1&gt;&lt;/td&gt;&lt;td align=11"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=10" id="coursetime1&gt;&lt;/td&gt;&lt;td align=11"center"></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=11" id="coursetime1&gt;&lt;/td&gt;&lt;td align=12"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=11" id="coursetime1&gt;&lt;/td&gt;&lt;td align=12"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=11" id="coursetime1&gt;&lt;/td&gt;&lt;td align=12"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=11" id="coursetime1&gt;&lt;/td&gt;&lt;td align=12"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=11" id="coursetime1&gt;&lt;/td&gt;&lt;td align=12"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=11" id="coursetime1&gt;&lt;/td&gt;&lt;td align=12"center"></td>
+    <td><input type="checkbox" name="coursetime1&gt;&lt;/td&gt;&lt;td align=11" id="coursetime1&gt;&lt;/td&gt;&lt;td align=12"center"></td>
+  </tr>    
        
       <tr>
         <td align="center"></td>

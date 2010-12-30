@@ -164,7 +164,7 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 		if(!SystemParameter_Manager.getSystemParameter().isCourseSelOpened()){
 			session.setAttribute("info", "选课未开启");
-			session.setAttribute("pages", "StuIndex.jsp");
+			session.setAttribute("pages", "welcome.jsp");
 			iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 		}
 		else {
