@@ -38,7 +38,7 @@
       for(int i=1;i<=11;i++)
 	  {
 	   out.print("<tr><td align=\"center\">" + i + "</td>");
-	      for(int j=1;i<=7;j++)
+	      for(int j=1;j<=7;j++)
 	      {
 	      	out.print("<td align=\"center\"><input type=\"checkbox\" name=\"coursetime\" id=\"coursetime" + ((i-1)*11 + j) + "></td>");
 	      }
