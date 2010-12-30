@@ -155,6 +155,9 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", _result);
 	    session.setAttribute("pages", "SelectCourses.jsp");
+	    if(courseselmgr != null) {
+	    	courseselmgr.setU_id((String)session.getAttribute("userid"));
+	    }
 	    iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
 	}
 

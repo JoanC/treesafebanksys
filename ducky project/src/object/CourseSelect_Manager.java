@@ -34,6 +34,12 @@ public class CourseSelect_Manager {
 	
 	public void setU_id(String uId) {
 		u_id = uId;
+		DebugClass.debug_info("CourseSelectManager",	"the init uId is :" + uId);
+		pre_tab = new PreCourseTable();
+		pre_tab.set_u_id(u_id);
+		//formal table
+		fml_tab = new FmlCourseTable(u_id);
+		fml_tab.set_u_id(u_id);
 	}
 	
 	public PreCourseTable getPre_tab() {
