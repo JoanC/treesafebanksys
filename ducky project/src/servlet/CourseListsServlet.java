@@ -24,7 +24,7 @@ import db_data_structure.PreCourseSelectInfo;
 import object.*;
 import sun.io.Converters;
 
-public class CourseListServlet extends HttpServlet {
+public class CourseListsServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
@@ -33,7 +33,7 @@ public class CourseListServlet extends HttpServlet {
 	private HttpServletRequest iRequest;
 	private HttpServletResponse iResponse;
 
-	public CourseListServlet() {
+	public CourseListsServlet() {
 		super();
 		//courseselmgr = new CourseSelect_Manager("");
 		// courseselmgr.setU_id();
