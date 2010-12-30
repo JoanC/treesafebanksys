@@ -112,6 +112,7 @@ public class Loginservlet extends HttpServlet {
 		//zhou
         LoginRltInfo _rlt = this.loginFrame(username, userpassword);
         HttpSession session = req.getSession();
+        session.removeAttribute("userid");
         session.setAttribute("userid", username);
         if(_rlt.isIs_succ() == false) {
         	DebugClass.debug_info("Login servlet", "login fail!");
