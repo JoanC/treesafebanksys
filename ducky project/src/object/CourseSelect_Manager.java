@@ -72,7 +72,6 @@ public class CourseSelect_Manager {
 		Vector<PreCourseSelectInfo> _pre_tab = this.getPre_tab().get_course_list();
 		//ȡ�����ѧ�����ѡ�α�
 		//...��δʵ��
-		
 		//ɾѡ��Ϣ,��Ԥѡ��Ϣ����ѡ��Ϣ����б��е��ظ���Ϣ�ų�
 		//�ų�����Ϊ�γ̵����
 		for (int _index = 0; _index < _all.size(); _index++) {
