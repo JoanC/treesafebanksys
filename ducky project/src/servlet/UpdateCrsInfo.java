@@ -69,10 +69,27 @@ public class UpdateCrsInfo extends HttpServlet {
 		{
 			Request_AddNewCrs();
 		}
-		else if(value.endsWith("确认增加"))
+		else if(value.equals("确认增加"))
 		{
 			Request_AddNewCrsCmt();
 		}
+		else if(value.equals("删除课程"))
+		{
+			Request_DelCrs();
+		}
+		else if(value.equals("确认删除"))
+		{
+			Request_DelCrsCmt();
+		}
+	}
+	private void Request_DelCrs() throws IOException
+	{
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "DelCrs.jsp");
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+	}
+	private void Request_DelCrsCmt() throws IOException
+	{
+		
 	}
 	private void Request_AddNewCrs() throws IOException
 	{

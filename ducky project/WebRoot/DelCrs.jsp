@@ -1,12 +1,11 @@
  <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@page import="object.DebugClass"%>
-<%@page import="object.Course_Manager"%>
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
 课号：
           <select name="courseid_name" id="courseid_name">
          <%
-         	Vector<Course> _all = Course_Manager.getAllCourseList();
+         	session.getAttribute("");
          %>
       <option value="1">全部</option>
       <option value="2">单周</option>
@@ -106,5 +105,5 @@
     </table>
     <input type="submit" class="MenuFont" 
     		style="background: none; border: none" name="UpdateCrsInfo"
-			id="Tea_menu_1" value="确认增加"/>    
+			id="Tea_menu_1" value="确认删除"/>    
     </form>

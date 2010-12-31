@@ -148,6 +148,9 @@ ibutton {
 									<input type="submit" class="MenuFont"
 										style="background: none; border: none;" name="UpdateCrsInfo"
 										id="SttSelCrs" value="ÐÞ¸Ä¿Î³Ì" />
+										<input type="submit" class="MenuFont"
+										style="background: none; border: none;" name="UpdateCrsInfo"
+										id="SttSelCrs" value="É¾³ý¿Î³Ì" />
 										</form>
 								</div>
 								</td><td>
