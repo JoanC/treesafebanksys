@@ -10,7 +10,7 @@ import java.util.Vector;
 
 public class Course_Manager {
 	//ȡ�����пγ���Ϣ�б�,������Ԥѡ���������ʾ
-	private static final int course_min_id = 100001;
+	private static final int course_min_id = 10001;
 	static public Vector<Course> getAllCourseList(){
 		Vector<Course> allCourseList = null ;
 				
