@@ -1,12 +1,10 @@
 package dbquery;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import sun.org.mozilla.javascript.internal.ObjToIntMap.Iterator;
-
-import db_data_structure.Course;
 import db_data_structure.Week;
 import db_data_structure.enCourseFreq;
 
@@ -22,31 +20,32 @@ public class CourseTimeOperation {
 
 	static public String dateToString(Week _oneWeek){
 		String _rlt = "";
-		//��ʱ���ͼת��Ϊstring����
-		Map<Integer, Vector<Boolean>> _all = CourseTimeOperation.convert2Detail(_oneWeek);
-		//�����ж��ܼ��п�
+	
+		Map<Integer, Vector<Boolean>> _all = CourseTimeOperation.convert2Detail
+
+(_oneWeek);
+		
 		Vector<Integer> _days_have_course = new Vector<Integer>();
 		for(int _index = 0 ; _index < WEEK_DAYS ; ++_index){
 			if(_all.containsKey(_index) == true){
-				//�����п�
+			
 				_days_have_course.add(_index);
 			}
 		}
-		//���ÿ��,�ж���Щ�����п�,����Ӧ����ַ�
-		//ע������ַ�ʱ��Ҫ��˫�ܵ���Ϣ
+	
 		for(int _index = 0 ; _index < _days_have_course.size();++_index){
-			//��һȡ��
+		
 		    String _one_day_time_str = "";
 		    int _day = _days_have_course.elementAt(_index);
-		    _one_day_time_str += generate_week_string(_day, _oneWeek) + "�� ";
+		    _one_day_time_str += generate_week_string(_day, _oneWeek) + "?? ";
 		    Vector<Boolean> _day_times = _all.get(_day);
 		    for(int _j = 0 ; _j <  _day_times.size() ; ++_j){
 		    	if(_day_times.elementAt(_j) == true){
-		    		//��ʾ��ʱ�п�
+		    	
 		    		_one_day_time_str += (_j+1) + " ";
 		    	}
 		    }
-		    _one_day_time_str += " ��";
+		    _one_day_time_str += " ??";
 		    _rlt += _one_day_time_str;
 		}
 		System.out.println(_rlt);
@@ -54,20 +53,20 @@ public class CourseTimeOperation {
 	}
 	
 	private static String generate_week_string(int _week_day,Week _oneWeek){
-		String _week_day_string = "��" + (_week_day+1);
-		//�жϵ�˫��
+		String _week_day_string = "??" + (_week_day+1);
+
 		int _feq = _oneWeek.getCourse_freq(_week_day+1);
 		if(_feq == enCourseFreq.NONE){
-			_week_day_string += "<" + "��ʱ�����ͣ" + ">";
+			_week_day_string += "<" + "?????????" + ">";
 		}
 		else if(_feq == enCourseFreq.EVERY_WEEK){
-			_week_day_string += "<" + "ÿ��" + ">";
+			_week_day_string += "<" + "???" + ">";
 		}
 		else if (_feq == enCourseFreq.ODD_WEEK){
-			_week_day_string += "<" + "����"  + ">";
+			_week_day_string += "<" + "????"  + ">";
 		}
 		else{
-			_week_day_string += "<" + "˫��" + ">";
+			_week_day_string += "<" + "???" + ">";
 		}
 		return _week_day_string;
 	} 
@@ -78,16 +77,17 @@ public class CourseTimeOperation {
 				oneWeek.getCourse_time_tues(), oneWeek.getCourse_time_wed(),
 				oneWeek.getCourse_time_thur(), oneWeek.getCourse_time_fri(),
 				oneWeek.getCourse_time_sat(), oneWeek.getCourse_time_sun() };
-		for (int i = 0; i < WEEK_DAYS; ++i) // 7��
+		for (int i = 0; i < WEEK_DAYS; ++i) 
 		{
-			if (0 != time[i])// ��������п�
+			if (0 != time[i])// 
 			{
 				Vector<Boolean> temp = new Vector<Boolean>();
 				int sample = 1;
-				for (int j = MAX_NUM_OF_COURSES_PER_DAY; j > 0; --j) // MAX_NUM_OF_COURSES_PER_DAY
-				// �ڿ�
+				for (int j = MAX_NUM_OF_COURSES_PER_DAY; j > 0; --j) 
 				{
-					Boolean buff = new Boolean((sample & time[i]) == sample);
+					Boolean buff = new Boolean((sample & time[i]) == 
+
+sample);
 					temp.addElement(buff);
 					sample <<= 1;
 				}
@@ -97,7 +97,7 @@ public class CourseTimeOperation {
 		return rtn;
 	}
 
-	static public Map<Integer, Vector<Boolean>> isConflict(Week lhs, Week rhs) // �������Ϊ���ڿε�ʱ���
+	static public Map<Integer, Vector<Boolean>> isConflict(Week lhs, Week rhs) 
 	{
 		Map<Integer, Vector<Boolean>> rtn = new HashMap<Integer, Vector<Boolean>>();
 		int[] ltime = { lhs.getCourse_time_mon(), lhs.getCourse_time_tues(),
@@ -122,20 +122,28 @@ public class CourseTimeOperation {
 
 		for (int i = 0; i < WEEK_DAYS; ++i) {
 
-			boolean flag = (lfreq[i] == enCourseFreq.EVERY_WEEK || rfreq[i] == enCourseFreq.EVERY_WEEK) // ��һ����ÿ�ܶ��е�
-					|| (lfreq[i] == enCourseFreq.ODD_WEEK && rfreq[i] == enCourseFreq.ODD_WEEK) // ���ǵ���
-					|| (lfreq[i] == enCourseFreq.EVEN_WEEK && rfreq[i] == enCourseFreq.EVEN_WEEK); // ����˫��
-			/* ���������������Ҫ�����жϵ� */
+			boolean flag = (lfreq[i] == enCourseFreq.EVERY_WEEK || rfreq[i] == 
+
+enCourseFreq.EVERY_WEEK) 
+					|| (lfreq[i] == enCourseFreq.ODD_WEEK && rfreq[i] == 
+
+enCourseFreq.ODD_WEEK) 
+					|| (lfreq[i] == enCourseFreq.EVEN_WEEK && rfreq[i] == 
+
+enCourseFreq.EVEN_WEEK);
+
 			if (flag) {
-				if ((ltime[i] & rtime[i]) != 0) // ����ͻ
+				if ((ltime[i] & rtime[i]) != 0) 
 				{
 					Vector<Boolean> vecbuff = new Vector<Boolean>();
 					int buff = ltime[i] & rtime[i];
 					int sample = 1;
 					for (int j = 0; j < MAX_NUM_OF_COURSES_PER_DAY; ++j) {
-						Boolean boobuff = new Boolean((buff & sample) == sample);
+						Boolean boobuff = new Boolean((buff & sample) == 
+
+sample);
 						vecbuff.addElement(boobuff);
-						sample <<= 1; // ����һλ
+						sample <<= 1; 
 					}
 					rtn.put(new Integer(i+1), vecbuff);
 				}
@@ -148,10 +156,13 @@ public class CourseTimeOperation {
 		int rtn = 0 ;
 		for (int i = 0 ; i < MAX_NUM_OF_COURSES_PER_DAY ; ++i )
 		{
-			int temp = 1 ;
+			int temp = 0 ;
 			if ( data.elementAt(start_index + i) )
+			{
+				temp = 1 ;
 				temp <<= i ; //左移i位
-			rtn += temp ;
+			}
+			rtn |= temp ;
 		}
 		return rtn ;
 	}
