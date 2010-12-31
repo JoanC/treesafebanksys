@@ -118,9 +118,16 @@ public class UpdateCrsInfo extends HttpServlet {
 		}
 		//进一步时间处理		
 		_new.setCourse_time_week( CourseTimeOperation.convert2Course(coursetime, coursefre));
-		Course_Manager.AddCourse(_new);
+		String _check = Course_Manager.checkNewCourse(_new);
+		if(_check.equals("")){
+			Course_Manager.AddCourse(_new);
+			UpdateCrsInfo_Req.getSession().setAttribute("info", "添加课程成功！");
+		}
+		else{
+			UpdateCrsInfo_Req.getSession().setAttribute("info", _check);
+		}
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
-		UpdateCrsInfo_Req.getSession().setAttribute("info", "课程增加成功");
+		
 		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_QueryCrsInfo() throws IOException
