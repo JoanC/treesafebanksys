@@ -4,16 +4,16 @@ import dbquery.CourseTimeOperation;
 
 
 public class Course {
-	private String course_id; // ¿Î³Ì±êÊ¶ºÅ
-	private String course_name; // ¿Î³ÌÃû³Æ
-	private int course_type; // ¿Î³ÌÀàĞÍ
-	private String u_id; // ¿Î³ÌµÄÈÎ¿Î½ÌÊ¦
-	private String course_place; // ¿Î³ÌµÄÉÏ¿ÎµØµã
-	private String course_comment; // ¿Î³ÌµÄÃèÊö
-	private int course_volume; // ¿Î³ÌÈİÁ¿
-	private int course_current_seleted_num; // ÒÑÑ¡ÈËÊı
-	private int course_exam_type; // ¿Î³ÌµÄ¿¼ÊÔÀàĞÍ
-	private int course_point; // ¿Î³ÌÑ§·Ö
+	private String course_id; // ï¿½Î³Ì±ï¿½Ê¶ï¿½ï¿½
+	private String course_name; // ï¿½Î³ï¿½ï¿½ï¿½ï¿½
+	private int course_type; // ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String u_id; // ï¿½Î³Ìµï¿½ï¿½Î¿Î½ï¿½Ê¦
+	private String course_place; // ï¿½Î³Ìµï¿½ï¿½Ï¿ÎµØµï¿½
+	private String course_comment; // ï¿½Î³Ìµï¿½ï¿½ï¿½ï¿½ï¿½
+	private int course_volume; // ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int course_current_seleted_num; // ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½
+	private int course_exam_type; // ï¿½Î³ÌµÄ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private float course_point; // ï¿½Î³ï¿½Ñ§ï¿½ï¿½
 
 	private Week course_time_week ;
 
@@ -25,11 +25,11 @@ public class Course {
 		course_time_week = courseTimeWeek;
 	}
 
-	public int getCourse_point() {
+	public float getCourse_point() {
 		return course_point;
 	}
 
-	public void setCourse_point(int coursePoint) {
+	public void setCourse_point(float coursePoint) {
 		course_point = coursePoint;
 	}
 
@@ -106,7 +106,7 @@ public class Course {
 	}
 	
 	public String getCourseTimeDetail(){
-		//·µ»Ø¿Î³ÌµÄÊ±¼äÃèÊö
+		//ï¿½ï¿½ï¿½Ø¿Î³Ìµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return CourseTimeOperation.dateToString(this.getCourse_time_week());
 	}
 }

@@ -93,10 +93,10 @@ public class UpdateCrsInfo extends HttpServlet {
 		DebugClass.debug_info(this.toString(), "[" + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_place")) + "]" + UpdateCrsInfo_Req.getParameter("course_building") + UpdateCrsInfo_Req.getParameter("course_class"));
 		String[] check = (String[])UpdateCrsInfo_Req.getParameterValues("coursetime");
 		
+		_new.setCourse_volume(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_column")));
+		_new.setCourse_point((float) (Float.parseFloat(UpdateCrsInfo_Req.getParameter("course_point_int")) + 0.1 * Float.parseFloat((UpdateCrsInfo_Req.getParameter("course_point_digit")))));
 		/*******************************/
-		_new.setU_id("100001");		
-		_new.setCourse_point(0);//学分 
-		_new.setCourse_volume(50);//课程容量
+		_new.setU_id(UpdateCrsInfo_Req.getParameter("course_tea"));		
 		/*******************************/
 		_new.setCourse_comment("内容未填");
 		_new.setCourse_exam_type(0);//考试类型
