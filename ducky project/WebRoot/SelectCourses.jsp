@@ -63,7 +63,7 @@
   		  out.print("<td>" + _current.elementAt(i).getCourse_current_seleted_num() + "/"
   		                   + _current.elementAt(i).getCourse_volume());
   		  out.print("<td>" + _current.elementAt(i).getCourse_exam_type());
-  		  out.print("<td>" + _current.elementAt(i).getCourse_point());
+  		  out.print("<td>" + Float.toString(_current.elementAt(i).getCourse_point()));
 		  out.print("</tr><tr>");
   		  out.print(" <td colspan=\"7\">");
  		  out.print(_current.elementAt(i).getCourse_comment());

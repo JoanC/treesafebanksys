@@ -83,8 +83,8 @@ public class UpdateCrsInfo extends HttpServlet {
 	{
 		//String _old_id = "";
 		Course _new = new Course();
-		//_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
-		_new.setCourse_id(Course_Manager.generateCourseID());
+		_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
+		//_new.setCourse_id(Course_Manager.generateCourseID());
 		DebugClass.debug_info(this.toString(), "id: " + UpdateCrsInfo_Req.getParameter("course_id"));
 		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_type")));
 		DebugClass.debug_info(this.toString(), "type: " + UpdateCrsInfo_Req.getParameter("course_type"));
@@ -119,7 +119,8 @@ public class UpdateCrsInfo extends HttpServlet {
 		}
 		//进一步时间处理		
 		_new.setCourse_time_week( CourseTimeOperation.convert2Course(coursetime, coursefre));
-		String _check = Course_Manager.checkNewCourse(_new);
+		//String _check = Course_Manager.checkNewCourse(_new);
+		String _check = "";
 		if(_check.equals("")){
 			Course_Manager.AddCourse(_new);
 			UpdateCrsInfo_Req.getSession().setAttribute("info", "添加课程成功！");
