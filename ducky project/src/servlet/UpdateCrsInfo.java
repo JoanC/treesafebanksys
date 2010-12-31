@@ -60,10 +60,10 @@ public class UpdateCrsInfo extends HttpServlet {
 			Request_QueryCrsInfo();
 		}
 		else if(para.equals("修改课程")){
-			
+			Request_ModifyCrsInfo();
 		}
 		else if(para.equals("确认修改")){
-			Request_ModifyCrsInfo();
+			Request_ModifyCrsInfoCmt();
 		}
 		else if(value.equals("新增课程"))
 		{
@@ -82,6 +82,11 @@ public class UpdateCrsInfo extends HttpServlet {
 			Request_DelCrsCmt();
 		}
 	}
+	private void Request_ModifyCrsInfo() throws IOException
+	{
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrsInfo.jsp");
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+	}
 	private void Request_DelCrs() throws IOException
 	{
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "DelCrs.jsp");
@@ -89,7 +94,11 @@ public class UpdateCrsInfo extends HttpServlet {
 	}
 	private void Request_DelCrsCmt() throws IOException
 	{
-		
+		Course _new = new Course();
+		_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
+		Course_Manager.DeleteCourse(_new);
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Welcome.jsp");
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_AddNewCrs() throws IOException
 	{
@@ -97,6 +106,67 @@ public class UpdateCrsInfo extends HttpServlet {
 		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_AddNewCrsCmt() throws IOException
+	{
+		//String _old_id = "";
+		Course _new = new Course();
+		//_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
+		_new.setCourse_id(Course_Manager.generateCourseID());
+		DebugClass.debug_info(this.toString(), "id: " + UpdateCrsInfo_Req.getParameter("course_id"));
+		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_type")));
+		DebugClass.debug_info(this.toString(), "type: " + UpdateCrsInfo_Req.getParameter("course_type"));
+		_new.setCourse_name(EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_name")));
+		DebugClass.debug_info(this.toString(), "name: " + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_name")));
+		_new.setCourse_place("[" + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_place")) + "]" + UpdateCrsInfo_Req.getParameter("course_building") + UpdateCrsInfo_Req.getParameter("course_class"));
+		DebugClass.debug_info(this.toString(), "[" + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_place")) + "]" + UpdateCrsInfo_Req.getParameter("course_building") + UpdateCrsInfo_Req.getParameter("course_class"));
+		String[] check = (String[])UpdateCrsInfo_Req.getParameterValues("coursetime");
+		
+		_new.setCourse_volume(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_column")));
+		_new.setCourse_point((float) (Float.parseFloat(UpdateCrsInfo_Req.getParameter("course_point_int")) + 0.1 * Float.parseFloat((UpdateCrsInfo_Req.getParameter("course_point_digit")))));
+		/*******************************/
+		_new.setU_id(UpdateCrsInfo_Req.getParameter("course_tea"));		
+		/*******************************/
+		_new.setCourse_comment("内容未填");
+		_new.setCourse_exam_type(0);//考试类型
+		
+		//时间处理。。。。。。。
+		Vector<Boolean> coursetime = new Vector<Boolean>();
+		for (int i = 0; i != 77; i++) {
+			coursetime.addElement(false);
+		}
+		DebugClass.debug_info(this.toString(),"vector size: " + coursetime.size());
+		for (int i = 0; i < check.length; i++) {
+			coursetime.set(Integer.parseInt(check[i])-1,true);
+			DebugClass.debug_info(this.toString(), "check[i]: " + Integer.parseInt(check[i]));
+		}	
+		Vector<Integer> coursefre = new Vector<Integer>();
+		for (int i = 0; i < 7; i++) {
+			DebugClass.debug_info(this.toString(), "coursefre" + i + UpdateCrsInfo_Req.getParameter("coursefre" + i));
+			coursefre.add(Integer.parseInt(UpdateCrsInfo_Req.getParameter("coursefre" + i)));		
+		}
+		//进一步时间处理		
+		_new.setCourse_time_week( CourseTimeOperation.convert2Course(coursetime, coursefre));
+		String _check = Course_Manager.checkNewCourse(_new);
+		//String _check = "";
+		if(_check.equals("")){
+			Course_Manager.AddCourse(_new);
+			UpdateCrsInfo_Req.getSession().setAttribute("info", "添加课程成功！");
+		}
+		else{
+			UpdateCrsInfo_Req.getSession().setAttribute("info", _check);
+		}
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
+		
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+	}
+	private void Request_QueryCrsInfo() throws IOException
+	{
+		//万君亚
+		//查询课程信息
+		Vector<Course> _course_list = Course_Manager.getAllCourseList();
+		UpdateCrsInfo_Req.getSession().setAttribute("CourseInfo", _course_list);
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+	}
+	private void Request_ModifyCrsInfoCmt() throws IOException
 	{
 		//String _old_id = "";
 		Course _new = new Course();
@@ -139,8 +209,9 @@ public class UpdateCrsInfo extends HttpServlet {
 		//String _check = Course_Manager.checkNewCourse(_new);
 		String _check = "";
 		if(_check.equals("")){
+			Course_Manager.DeleteCourse(_new);
 			Course_Manager.AddCourse(_new);
-			UpdateCrsInfo_Req.getSession().setAttribute("info", "添加课程成功！");
+			UpdateCrsInfo_Req.getSession().setAttribute("info", "修改课程成功！");
 		}
 		else{
 			UpdateCrsInfo_Req.getSession().setAttribute("info", _check);
@@ -148,19 +219,7 @@ public class UpdateCrsInfo extends HttpServlet {
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
 		
 		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
-	}
-	private void Request_QueryCrsInfo() throws IOException
-	{
-		//万君亚
-		//查询课程信息
-		Vector<Course> _course_list = Course_Manager.getAllCourseList();
-		UpdateCrsInfo_Req.getSession().setAttribute("CourseInfo", _course_list);
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
-	}
-	private void Request_ModifyCrsInfo() throws IOException
-	{
-		//万君亚
-		//修改课程信息
+
 	}
 
 	/**

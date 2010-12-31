@@ -1,16 +1,19 @@
  <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@page import="object.DebugClass"%>
 <%@page import="object.Course_Manager"%>
+<%@page import="db_data_structure.Course"%>
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
 课号：
-          <select name="courseid_name" id="courseid_name">
+          <select name="courseid_" id="courseid_id">
          <%
          	Vector<Course> _all = Course_Manager.getAllCourseList();
+         	for(int i=0; i!=_all.size() ;i++)
+         	{
+         		out.println("<option value=\"" + _all.elementAt(i).getCourse_id() + "\">" + _all.elementAt(i).getCourse_id() + _all.elementAt(i).getCourse_name() + "</option>");
+         	}
+         	
          %>
-      <option value="1">全部</option>
-      <option value="2">单周</option>
-      <option value="3">双周</option>
     </select>
     </p>
     <p>课程类型：
@@ -49,8 +52,6 @@
         <td width="48" align="center">星期六</td>
         <td width="49" align="center">星期日</td>
       </tr>
-    
-
     <% 
     for(int i=1;i<=11;i++)
     {
@@ -106,5 +107,5 @@
     </table>
     <input type="submit" class="MenuFont" 
     		style="background: none; border: none" name="UpdateCrsInfo"
-			id="Tea_menu_1" value="确认增加"/>    
+			id="Tea_menu_1" value="确认修改"/>    
     </form>
