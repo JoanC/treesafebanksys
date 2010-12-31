@@ -10,6 +10,7 @@ import java.util.Vector;
 
 public class Course_Manager {
 	//ȡ�����пγ���Ϣ�б�,������Ԥѡ���������ʾ
+	private static final int course_min_id = 10000;
 	static public Vector<Course> getAllCourseList(){
 		Vector<Course> allCourseList = null ;
 				
@@ -116,10 +117,8 @@ public class Course_Manager {
 	 
 	 public static String generateCourseID(){
 		Vector<Course> _list = getAllCourseList();
-		DebugClass.debug_info("Course Manager", "last course id : " + _list.elementAt(_list.size() - 1).getCourse_id());
-		int _id = Integer.parseInt(_list.elementAt(_list.size() - 1).getCourse_id());
-		DebugClass.debug_info("Course Manager", "new id is : " + ("" + (_id ++)));
-		return ("" + (_id ++));
+		DebugClass.debug_info("Course Manager", "course_size : " + _list.size());
+		return ("" + (course_min_id + _list.size()));
 	 }
 	 
 	 public static String checkNewCourse(Course _course){
@@ -131,10 +130,10 @@ public class Course_Manager {
 				//时间有冲突,则继续判定 
 				 if(_tmp.getU_id().equals(_course.getU_id())){
 					//教师冲突
-				 return ("与课程" + _tmp.getCourse_id() + "  " + _tmp.getCourse_name() + "有教师冲突");
+				 return ("与课程" + _tmp.getCourse_id()+_tmp.getCourse_name() + "有教师冲突");
 				 }
 				 if(_tmp.getCourse_place().equals(_course.getCourse_place())){
-				 return ("与课程" + _tmp.getCourse_id() + "  " + _tmp.getCourse_name() + "有地点冲突");
+				 return ("与课程" + _tmp.getCourse_id() + _tmp.getCourse_name() + "有地点冲突");
 				 }
 			 }
 		 }
