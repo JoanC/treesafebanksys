@@ -103,4 +103,9 @@ public class Course_Manager {
 		 return _exp;
 	 }
 	 
+	 public static String generateCourseID(){
+		Vector<Course> _list = getAllCourseList();
+		int _id = Integer.parseInt(_list.elementAt(_list.size() - 1).getCourse_id());
+		return ("" + (_id ++));
+	 }
 }
