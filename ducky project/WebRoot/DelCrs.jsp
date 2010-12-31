@@ -5,7 +5,7 @@
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
 ¿ÎºÅ£º
-          <select name="courseid_" id="courseid_id">
+          <select name="course_id" id="courseid">
          <%
          	Vector<Course> _all = Course_Manager.getAllCourseList();
          	for(int i=0; i!=_all.size() ;i++)

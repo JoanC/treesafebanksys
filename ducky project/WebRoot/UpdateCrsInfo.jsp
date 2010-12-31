@@ -9,7 +9,7 @@
 ¿ÎºÅ£º
           <select name="course_id" id="courseid">
          <%
-         	Vector<Course> _all = Course_Manager.getAllCourseList();
+         	Vector<Course> _all = Course_Manager.getAllCourseListOderbyID();
          	for(int i=0; i!=_all.size() ;i++)
          	{
          		out.println("<option value=\"" + _all.elementAt(i).getCourse_id() + "\">" + _all.elementAt(i).getCourse_id() + _all.elementAt(i).getCourse_name() + "</option>");
@@ -66,14 +66,14 @@
         <td width="48" align="center">ÐÇÆÚÁù</td>
         <td width="49" align="center">ÐÇÆÚÈÕ</td>
       </tr>
-    <% 
+   <% 
     for(int i=1;i<=11;i++)
     {
     	out.print("<tr><td>" + i + "</td>");
     	for(int j=1;j<=7;j++)
     	{
     		out.print("<td>");
-    		out.print("<input type=\"checkbox\" name=\"coursetime\" id=\"coursetime\"" + "value=\"" + Integer.toString((i-1)*7+j) + "\">");
+    		out.print("<input type=\"checkbox\" name=\"coursetime\" id=\"coursetime\"" + "value=\"" + Integer.toString((j-1)*11+i,10) + "\">");
     		out.print("</td>");
     	}    	
     	out.print("</tr>");

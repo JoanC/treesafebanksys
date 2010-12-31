@@ -4,9 +4,6 @@
 <%@page import="object.User_Manager"%>
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
-øŒ∫≈£∫
-      <input name="course_id" type="text" id="courseid" maxlength="6">
-    </p>
     <p>øŒ≥Ã¿‡–Õ£∫
       <select name="course_type" id="coursetype">
         <option value="0">A1</option>

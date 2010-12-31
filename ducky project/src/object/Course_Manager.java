@@ -111,6 +111,7 @@ public class Course_Manager {
 		 Exp _exp = new Exp();
 		 DBOperation dbo = new DBOperation() ;
 		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		 DebugClass.debug_info("Course Manager", "delete course : " + _course.getCourse_id());
 		 dbo.doDeleteCourseFromTabCourse(_course.getCourse_id());
 		 dbo.disconnectDB();
 		 return _exp;
