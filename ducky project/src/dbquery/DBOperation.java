@@ -147,7 +147,7 @@ public class DBOperation {
 	public Vector<Course> doQueryAllDistinctCourseName() {
 		Vector<Course> rtn = new Vector<Course>();
 		try {
-			String query_course = "SELECT DISTINCT COURSE_NAME,COURSE_TYPE "
+			String query_course = "SELECT DISTINCT COURSE_NAME,COURSE_TYPE,COURSE_POINT "
 					+ "FROM TB_COURSE " + "ORDER BY COURSE_TYPE";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
 			/* some preparing work... */
@@ -155,11 +155,12 @@ public class DBOperation {
 			ResultSet results = ps.executeQuery();
 			while (results.next()) {
 				Course temp = new Course();
-
+				temp.setCourse_point(results.getFloat("COURSE_POINT"));
 				temp.setCourse_name(results.getString("COURSE_NAME"));
 				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-
-				rtn.addElement(temp);
+				
+				if ( temp.getCourse_point() >= 0 )
+					rtn.addElement(temp);
 				/* write to rtn */
 			}
 			results.close();
@@ -174,7 +175,7 @@ public class DBOperation {
 	public Vector<Course> doQueryAllCourseName() {
 		Vector<Course> rtn = new Vector<Course>();
 		try {
-			String query_course = "SELECT COURSE_NAME,COURSE_TYPE "
+			String query_course = "SELECT COURSE_NAME,COURSE_TYPE,COURSE_POINT "
 					+ "FROM TB_COURSE " + "ORDER BY COURSE_TYPE";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
 			/* some preparing work... */
@@ -182,11 +183,12 @@ public class DBOperation {
 			ResultSet results = ps.executeQuery();
 			while (results.next()) {
 				Course temp = new Course();
-
+				temp.setCourse_point(results.getFloat("COURSE_POINT"));
 				temp.setCourse_name(results.getString("COURSE_NAME"));
 				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-
-				rtn.addElement(temp);
+				
+				if ( temp.getCourse_point() >= 0 )
+					rtn.addElement(temp);
 				/* write to rtn */
 			}
 			results.close();
