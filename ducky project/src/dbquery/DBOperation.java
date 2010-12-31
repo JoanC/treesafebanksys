@@ -171,7 +171,33 @@ public class DBOperation {
 		}
 		return rtn;
 	}
+	public Vector<Course> doQueryAllCourseName() {
+		Vector<Course> rtn = new Vector<Course>();
+		try {
+			String query_course = "SELECT COURSE_NAME,COURSE_TYPE "
+					+ "FROM TB_COURSE " + "ORDER BY COURSE_TYPE";
+			PreparedStatement ps = m_conn.prepareStatement(query_course);
+			/* some preparing work... */
 
+			ResultSet results = ps.executeQuery();
+			while (results.next()) {
+				Course temp = new Course();
+
+				temp.setCourse_name(results.getString("COURSE_NAME"));
+				temp.setCourse_type(results.getInt("COURSE_TYPE"));
+
+				rtn.addElement(temp);
+				/* write to rtn */
+			}
+			results.close();
+			/* close the resultset */
+
+		} catch (Exception e) {
+			System.err.println("error : " + e);
+
+		}
+		return rtn;
+	}
 	private Vector<String> doQueryCourseID(String uid) {
 		Vector<String> rtn = new Vector<String>();
 
