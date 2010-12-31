@@ -22,6 +22,17 @@ public class Course_Manager {
 		return allCourseList;
 	}
 	
+	static public Vector<Course> getAllCourseListOderbyID(){
+		Vector<Course> allCourseList = null ;
+				
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		allCourseList = dbo.doQueryAllCourseNameOderByID() ;
+		/*do query*/
+		dbo.disconnectDB() ;
+		return allCourseList;
+	}
+	
 	static public Vector<Course> getDistinctCourseList(){
 		Vector<Course> allCourseList = null ;
 				
@@ -116,9 +127,9 @@ public class Course_Manager {
 	 }
 	 
 	 public static String generateCourseID(){
-		Vector<Course> _list = getAllCourseList();
+		Vector<Course> _list = getAllCourseListOderbyID();
 		DebugClass.debug_info("Course Manager", "course_size : " + _list.size());
-		return ("" + (course_min_id + _list.size()));
+		return ("" + (Integer.parseInt(_list.lastElement().getCourse_id())+ 1));
 	 }
 	 
 	 public static String checkNewCourse(Course _course){
