@@ -9,7 +9,7 @@ import java.util.Vector;
 
 
 public class Course_Manager {
-	//È¡µÃËùÓÐ¿Î³ÌÐÅÏ¢ÁÐ±í,ÓÃÓÚÔÚÔ¤Ñ¡½çÃæ½øÐÐÏÔÊ¾
+	//È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿Î³ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 	static public Vector<Course> getAllCourseList(){
 		Vector<Course> allCourseList = null ;
 				
@@ -21,8 +21,18 @@ public class Course_Manager {
 		return allCourseList;
 	}
 	
-	 //Í¨¹ýÔ¤Ñ¡ÖÐµÄ¿Î³ÌÐÅÏ¢,²éÑ¯Ïà¹ØµÄÆ¥ÅäÊý¾ÝÁÐ±í
-	//ÉÐÎ´²âÊÔ
+	static public Vector<String> getAllCourseID(){
+		Vector<String> _list = new Vector<String>();
+		Vector<Course> _crsCourses = getAllCourseList();
+		for(int i = 0 ; i < _crsCourses.size() ; ++i){
+			Course _tmpCourse = _crsCourses.elementAt(i);
+			_list.add(_tmpCourse.getCourse_id() + " " + _tmpCourse.getCourse_name());
+		}
+		return _list;
+	}
+	
+	 //Í¨ï¿½ï¿½Ô¤Ñ¡ï¿½ÐµÄ¿Î³ï¿½ï¿½ï¿½Ï¢,ï¿½ï¿½Ñ¯ï¿½ï¿½Øµï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	//ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½
 	 static public Vector<Course> getCourseListByName(String _course_name){
 		 DebugClass.debug_info("Course_Manager", "query all courses which has name " + "'" + 
 				 _course_name + "'" + "...");
@@ -32,12 +42,12 @@ public class Course_Manager {
 		 Vector<Course> _final_result = new Vector<Course>();
 		 SysParam _sys = dbo.doQuerySysParam();
 		if (_sys.getCourseSelType() == enCourseSelType.CST_FSFG) {
-			//Èç¹ûÊÇÏÈµ½ÏÈµÃ,Ôò½øÐÐÊý¾ÝµÄ½øÒ»²½ÇåÀí
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èµï¿½ï¿½Èµï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			for (int i = 0; i < _result.size(); ++i) {
-				// Èç¹û¿Î³ÌµÄÈÝÁ¿Î´Âú²Å·Åµ½½á¹ûÖÐ
+				// ï¿½ï¿½ï¿½Î³Ìµï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Å·Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				 if(_result.elementAt(i).getCourse_current_seleted_num() < 
 						 _result.elementAt(i).getCourse_volume()){
-					 //Èç¹ûÒÑÑ¡ÈËÊýÐ¡ÓÚ¿Î³ÌÈÝÁ¿,ÔòÌí¼Óµ½×îÖÕ½á¹ûÖÐ
+					 //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ú¿Î³ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½
 					 _final_result.add(_result.elementAt(i));
 				 }
 			}
@@ -50,7 +60,7 @@ public class Course_Manager {
 		 return _final_result;
 	 }
 	 
-	 //ÔÚÊý¾Ý¿âÖÐ,½«Ñ¡ÁËÄ³½Ú¿ÎµÄÑ§ÉúÁÐ³ö
+	 //ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½,ï¿½ï¿½Ñ¡ï¿½ï¿½Ä³ï¿½Ú¿Îµï¿½Ñ§ï¿½ï¿½ï¿½Ð³ï¿½
 	 public static Vector<String> searchSelectStudentByCourseId(String _course_id) {
 		 DBOperation dbo = new DBOperation() ;
 		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
@@ -63,11 +73,13 @@ public class Course_Manager {
 	}
 	 
 	 public static Exp AddCourse(Course _course){
-		 //Ìí¼ÓÒ»ÃÅ¿Î³Ì
+		 //ï¿½ï¿½ï¿½Ò»ï¿½Å¿Î³ï¿½
 		 Exp _exp = new Exp();
 		 DBOperation dbo = new DBOperation() ;
 		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		 DebugClass.debug_info("Course Manager", "start to add course...");
 		 dbo.insertCourse2TabCourse(_course);
+		 DebugClass.debug_info("Course Manager", "add success!");
 		 dbo.disconnectDB();
 		 return _exp;
 	 }

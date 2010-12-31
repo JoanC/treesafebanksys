@@ -3,7 +3,14 @@
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
 课号：
-      <input name="course_id" type="text" id="courseid" maxlength="6">
+          <select name="courseid_name" id="courseid_name">
+         <%
+         	//session.getAttribute("");
+         %>
+      <option value="1">全部</option>
+      <option value="2">单周</option>
+      <option value="3">双周</option>
+    </select>
     </p>
     <p>课程类型：
       <select name="course_type" id="coursetype">
@@ -50,7 +57,7 @@
     	for(int j=1;j<=7;j++)
     	{
     		out.print("<td>");
-    		out.print("<input type=\"checkbox\" name=\"coursetime\" id=\"coursetime\"" + "value=\"" + Integer.toString((j-1)*11+i,10) + "\">");
+    		out.print("<input type=\"checkbox\" name=\"coursetime\" id=\"coursetime\"" + "value=\"" + Integer.toString((i-1)*7+j) + "\">");
     		out.print("</td>");
     	}    	
     	out.print("</tr>");

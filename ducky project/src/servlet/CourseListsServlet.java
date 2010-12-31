@@ -63,11 +63,8 @@ public class CourseListsServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if(courseselmgr == null)
-		{
-			courseselmgr = new CourseSelect_Manager((String)request.getSession().getAttribute("userid"));
-		}		
-		processRequest(request, response);
+
+		doPost(request, response);
 	}
 
 	/**
@@ -96,6 +93,7 @@ public class CourseListsServlet extends HttpServlet {
 			DebugClass.debug_info(this.toString(), "new finish!");
 		}
 		else{
+			DebugClass.debug_info(this.toString(), "the user id is " + (String)iRequest.getSession().getAttribute("userid"));
 			courseselmgr.setU_id((String)iRequest.getSession().getAttribute("userid"));
 		}
 		processRequest(request, response);

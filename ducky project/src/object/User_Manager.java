@@ -1,13 +1,15 @@
 package object;
 
+import java.util.Vector;
+
 import db_data_structure.User;
 import dbquery.DBOperation;
 import dbquery.dbConnectParam;
 
 public class User_Manager {
 	//2010.12.14
-	//¸ù¾Ýu_idÈ¡µÃÒ»¸öÓÃ»§µÄÏà¹ØÐÅÏ¢
-	//×÷Õß:Jiraiya
+	//ï¿½ï¿½ï¿½u_idÈ¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	//ï¿½ï¿½ï¿½ï¿½:Jiraiya
 	public static User queryUserInfo(String u_id){
 		User _info = new User();;
 		DBOperation dbo = new DBOperation() ;
@@ -18,4 +20,13 @@ public class User_Manager {
 		dbo.disconnectDB();
 		return _info;
 	}
+	
+	public static Vector<User> queryAllTea(){
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+	    Vector<User> _all_tea = dbo.doQueryAllTeacher();
+	    dbo.disconnectDB();
+	    return _all_tea;
+	}
+	
 }

@@ -146,13 +146,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
 		
 	}
-	private void Request_AddNewCrs(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException
-	{
-		HttpSession session = request.getSession();
-		session.setAttribute("pages", "Adm_NewCrs.jsp");
-		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
-	}
+
 	public void processRequest(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
@@ -175,9 +169,6 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		{
 			Request_SelCrsMode(request,response,value);
 		}
-		else if(value.equals("新增课程"))
-		{
-			Request_AddNewCrs(request,response);
-		}
+		
 	}
 }

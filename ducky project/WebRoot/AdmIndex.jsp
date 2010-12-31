@@ -120,8 +120,7 @@ ibutton {
 			<div id="Menu">
 				<br />
 				<br />
-				<form id="SelCrsForm" name="SelCrsForm" method="post"
-					action="/TJSelCrsSys/servlet/SystemParaServelt">
+				
 					<table width="430" border="1" align="center">
 						<tr>
 							<td width="25%" class="MenuFont">
@@ -141,21 +140,27 @@ ibutton {
 						<tr>
 							<td>
 								<div id="level1">
+								<form id="SelCrsForm" name="SelCrsForm" method="post"
+					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
 									<input type="submit" class="MenuFont"
-										style="background: none; border: none;" name="SelCrsSysPara"
+										style="background: none; border: none;" name="UpdateCrsInfo"
 										id="SttSelCrs" value="新增课程" />
 									<input type="submit" class="MenuFont"
-										style="background: none; border: none;" name="SelCrsSysPara"
+										style="background: none; border: none;" name="UpdateCrsInfo"
 										id="SttSelCrs" value="修改课程" />
+										</form>
 								</div>
 								</td><td>
 								<div id="level2">
+								<form id="SelCrsForm" name="SelCrsForm" method="post"
+					action="/TJSelCrsSys/servlet/SystemParaServelt">
 									<input type="submit" class="MenuFont"
 										style="background: none; border: none;" name="SelCrsSysPara"
 										id="SttSelCrs" value="选课状态" />
 									<input type="submit" class="MenuFont"
 										style="background: none; border: none;" name="SelCrsSysPara"
 										id="SttSelCrs" value="选课模式" />
+										</form>
 								</div>
 								</td>
 								<td>
