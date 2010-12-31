@@ -105,7 +105,9 @@ public class Course_Manager {
 	 
 	 public static String generateCourseID(){
 		Vector<Course> _list = getAllCourseList();
+		DebugClass.debug_info("Course Manager", "last course id : " + _list.elementAt(_list.size() - 1).getCourse_id());
 		int _id = Integer.parseInt(_list.elementAt(_list.size() - 1).getCourse_id());
+		DebugClass.debug_info("Course Manager", "new id is : " + ("" + (_id ++)));
 		return ("" + (_id ++));
 	 }
 	 
