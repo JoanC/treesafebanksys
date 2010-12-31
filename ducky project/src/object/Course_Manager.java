@@ -21,6 +21,17 @@ public class Course_Manager {
 		return allCourseList;
 	}
 	
+	static public Vector<Course> getDistinctCourseList(){
+		Vector<Course> allCourseList = null ;
+				
+		DBOperation dbo = new DBOperation() ;
+		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
+		allCourseList = dbo.doQueryAllDistinctCourseName() ;
+		/*do query*/
+		dbo.disconnectDB() ;
+		return allCourseList;
+	}
+	
 	static public Vector<String> getAllCourseID(){
 		Vector<String> _list = new Vector<String>();
 		Vector<Course> _crsCourses = getAllCourseList();

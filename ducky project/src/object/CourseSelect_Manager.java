@@ -67,7 +67,7 @@ public class CourseSelect_Manager {
 		DebugClass.debug_info(this.toString(), "generate all the course list...");
 		Vector<Course> _data = new Vector<Course>();//������
 		//ȡ����ݿ������еĿγ����
-		Vector<Course> _all = Course_Manager.getAllCourseList();
+		Vector<Course> _all = Course_Manager.getDistinctCourseList();
 		//������ѧ���idȡ������Ԥѡ���
 		Vector<PreCourseSelectInfo> _pre_tab = this.getPre_tab().get_course_list();
 		//ȡ�����ѧ�����ѡ�α�
