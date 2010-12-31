@@ -681,7 +681,7 @@ public class DBOperation {
 
 	public void insertCourse2TabCourse(Course course) {
 		try {
-			String query_str = "INSERT INTO " + "TB_SYS_PARAM " + "VALUES("
+			String query_str = "INSERT INTO " + "TB_COURSE " + "VALUES("
 					+ " ? , ? , ? , ? , ? , ? , ? , ? ,"
 					+ " ? , ? , ? , ? , ? , ? , ? , ? ,"
 					+ " ? , ? , ? , ? , ? , ? , ? , ? )"; // ÿ��8������24��
