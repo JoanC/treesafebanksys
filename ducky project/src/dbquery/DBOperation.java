@@ -154,8 +154,10 @@ public class DBOperation {
 
 			ResultSet results = ps.executeQuery();
 			while (results.next()) {
-				Course temp ;
-				temp = this.doMappingCourse(results) ;
+				Course temp = new Course();
+				temp.setCourse_point(results.getFloat("COURSE_POINT"));
+				temp.setCourse_name(results.getString("COURSE_NAME"));
+				temp.setCourse_type(results.getInt("COURSE_TYPE"));
 				if ( temp.getCourse_point() >= 0 )
 					rtn.addElement(temp);
 				/* write to rtn */
@@ -172,7 +174,7 @@ public class DBOperation {
 	public Vector<Course> doQueryAllCourseName() {
 		Vector<Course> rtn = new Vector<Course>();
 		try {
-			String query_course = "SELECT COURSE_NAME,COURSE_TYPE,COURSE_POINT "
+			String query_course = "SELECT * "
 					+ "FROM TB_COURSE " + "ORDER BY COURSE_TYPE";
 			PreparedStatement ps = m_conn.prepareStatement(query_course);
 			/* some preparing work... */
@@ -180,7 +182,7 @@ public class DBOperation {
 			ResultSet results = ps.executeQuery();
 			while (results.next()) {
 				Course temp ;
-				temp = this.doMappingCourse(results) ;
+				temp = this.doMappingCourse(results );
 				
 				if ( temp.getCourse_point() >= 0 )
 					rtn.addElement(temp);
