@@ -154,11 +154,8 @@ public class DBOperation {
 
 			ResultSet results = ps.executeQuery();
 			while (results.next()) {
-				Course temp = new Course();
-				temp.setCourse_point(results.getFloat("COURSE_POINT"));
-				temp.setCourse_name(results.getString("COURSE_NAME"));
-				temp.setCourse_type(results.getInt("COURSE_TYPE"));
-				
+				Course temp ;
+				temp = this.doMappingCourse(results) ;
 				if ( temp.getCourse_point() >= 0 )
 					rtn.addElement(temp);
 				/* write to rtn */
@@ -182,10 +179,8 @@ public class DBOperation {
 
 			ResultSet results = ps.executeQuery();
 			while (results.next()) {
-				Course temp = new Course();
-				temp.setCourse_point(results.getFloat("COURSE_POINT"));
-				temp.setCourse_name(results.getString("COURSE_NAME"));
-				temp.setCourse_type(results.getInt("COURSE_TYPE"));
+				Course temp ;
+				temp = this.doMappingCourse(results) ;
 				
 				if ( temp.getCourse_point() >= 0 )
 					rtn.addElement(temp);
