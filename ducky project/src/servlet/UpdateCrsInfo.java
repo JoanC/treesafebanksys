@@ -207,7 +207,7 @@ public class UpdateCrsInfo extends HttpServlet {
 		//进一步时间处理		
 		_new.setCourse_time_week( CourseTimeOperation.convert2Course(coursetime, coursefre));
 		//String _check = Course_Manager.checkNewCourse(_new);
-		String _check = "";
+		String _check = Course_Manager.checkNewCourse(_new);
 		if(_check.equals("")){
 			Course_Manager.DeleteCourse(_new);
 			Course_Manager.AddCourse(_new);
@@ -216,7 +216,7 @@ public class UpdateCrsInfo extends HttpServlet {
 		else{
 			UpdateCrsInfo_Req.getSession().setAttribute("info", _check);
 		}
-		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Welcome.jsp");
 		
 		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 

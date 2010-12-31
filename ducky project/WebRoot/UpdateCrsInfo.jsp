@@ -2,10 +2,12 @@
 <%@page import="object.DebugClass"%>
 <%@page import="object.Course_Manager"%>
 <%@page import="db_data_structure.Course"%>
+<%@page import="db_data_structure.User"%>
+<%@page import="object.User_Manager"%>
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
 课号：
-          <select name="courseid_" id="courseid_id">
+          <select name="course_id" id="courseid">
          <%
          	Vector<Course> _all = Course_Manager.getAllCourseList();
          	for(int i=0; i!=_all.size() ;i++)
@@ -25,6 +27,18 @@
     </p>
     <p>课名：
       <input type="text" name="course_name" id="coursename">
+    </p>
+     <p>授课教师：
+    <select name="course_tea" id="course_tea">
+    <%
+    Vector<User> _all_tea = User_Manager.queryAllTea();
+    for(int i=0;i!=_all_tea.size();i++)
+    {
+    	User tmp = _all_tea.elementAt(i);
+    	out.print("<option value=\"" + tmp.getU_id() + "\">" + tmp.getU_id() + tmp.getU_name()+ "</option>");
+    }
+    %>
+    </select>
     </p>
     <p>上课地点：
       <select name="course_place" id="courseplace">
@@ -105,6 +119,22 @@
         </select></td>
       </tr>
     </table>
+     <p></p>上课容量：<input name="course_column" type="text" id="coursecolumn" maxlength="6">
+     学分：
+    <select name="course_point_int" id="course_point_int">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      .
+      <select name="course_point_digit" id="ourse_point_digit">
+        <option value="0">0</option>
+        <option value="5">5</option>
+      </select>
+     <p> </p>
     <input type="submit" class="MenuFont" 
     		style="background: none; border: none" name="UpdateCrsInfo"
 			id="Tea_menu_1" value="确认修改"/>    
