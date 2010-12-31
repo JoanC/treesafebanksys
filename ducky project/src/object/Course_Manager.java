@@ -15,7 +15,7 @@ public class Course_Manager {
 				
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
-		allCourseList = dbo.doQueryAllDistinctCourseName() ;
+		allCourseList = dbo.doQueryAllCourseName() ;
 		/*do query*/
 		dbo.disconnectDB() ;
 		return allCourseList;
@@ -113,19 +113,20 @@ public class Course_Manager {
 	 
 	 public static String checkNewCourse(Course _course){
 		 Vector<Course> _list = getAllCourseList();
-		 for(int _index = 0 ; _index < _list.size() ; ++_index){
-			 Course _tmp = _list.elementAt(_index);
-			 if(!CourseTimeOperation.isConflict(_tmp.getCourse_time_week(), _course.getCourse_time_week()).isEmpty()){
-				//时间有冲突,则继续判定 
-				 if(_tmp.getU_id().equals(_course.getU_id())){
-					//教师冲突
-					 return ("与课程" + _tmp.getCourse_id() + "  " + _tmp.getCourse_name() + "有教师冲突");
-				 }
-				 if(_tmp.getCourse_place().equals(_course.getCourse_place())){
-					 return ("与课程" + _tmp.getCourse_id() + "  " + _tmp.getCourse_name() + "有地点冲突");
-				 }
-			 }
-		 }
+		 
+//		 for(int _index = 0 ; _index < _list.size() ; ++_index){
+//			 Course _tmp = _list.elementAt(_index);
+//			 if(!CourseTimeOperation.isConflict(_tmp.getCourse_time_week(), _course.getCourse_time_week()).isEmpty()){
+//				//时间有冲突,则继续判定 
+//				 if(_tmp.getU_id().equals(_course.getU_id())){
+//					//教师冲突
+//					 return ("与课程" + _tmp.getCourse_id() + "  " + _tmp.getCourse_name() + "有教师冲突");
+//				 }
+//				 if(_tmp.getCourse_place().equals(_course.getCourse_place())){
+//					 return ("与课程" + _tmp.getCourse_id() + "  " + _tmp.getCourse_name() + "有地点冲突");
+//				 }
+//			 }
+//		 }
 		 return "";
 	 }
 }

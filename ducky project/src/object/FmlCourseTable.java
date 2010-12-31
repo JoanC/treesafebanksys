@@ -217,7 +217,7 @@ public class FmlCourseTable extends CourseTable {
 	public  boolean getIsConflic() {
 		Vector<String> _check = CourseTable.convertFmlTabFormat(course_list_fixedCourses);
 		for(int i = 0 ; i < _check.size() ; ++i){
-			if(_check.elementAt(i).equals("�γ̳�ͻ!")){
+			if(_check.elementAt(i).equals("课程冲突")){
 				return true;
 			}
 		}
