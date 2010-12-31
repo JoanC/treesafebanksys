@@ -83,7 +83,8 @@ public class UpdateCrsInfo extends HttpServlet {
 	{
 		//String _old_id = "";
 		Course _new = new Course();
-		_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
+		//_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
+		_new.setCourse_id(Course_Manager.generateCourseID());
 		DebugClass.debug_info(this.toString(), "id: " + UpdateCrsInfo_Req.getParameter("course_id"));
 		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_type")));
 		DebugClass.debug_info(this.toString(), "type: " + UpdateCrsInfo_Req.getParameter("course_type"));
