@@ -7,6 +7,8 @@ import dbquery.* ;
 
 import java.util.Vector;
 
+import javax.mail.search.FromStringTerm;
+
 
 public class Course_Manager {
 	//ȡ�����пγ���Ϣ�б�,������Ԥѡ���������ʾ
@@ -112,6 +114,8 @@ public class Course_Manager {
 		 DBOperation dbo = new DBOperation() ;
 		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		 DebugClass.debug_info("Course Manager", "delete course : " + _course.getCourse_id());
+		 //更新其他数据
+		 delCourseUpdateTab(_course.getCourse_id());
 		 dbo.doDeleteCourseFromTabCourse(_course.getCourse_id());
 		 dbo.disconnectDB();
 		 return _exp;
@@ -153,7 +157,15 @@ public class Course_Manager {
 	 }
 	 
 	 public static void delCourseUpdateTab(String _course_id){
-		 //在所有人的预选课表中删除这门课
-		 
+		 //在所有人的正选课表中删除这门课
+		 Vector<String> _users = searchSelectStudentByCourseId(_course_id);
+		 for(int _index = 0 ; _index < _users.size() ; ++_index){
+			 FmlCourseTable _fml = new FmlCourseTable(_users.elementAt(_index));
+			 Course _oldCourse = new Course();
+			 _oldCourse.setCourse_id(_course_id);
+			 _fml.deleteCourse(_oldCourse);
+			 DebugClass.debug_info("Course Manager", "the user id : " + _users.elementAt(_index)
+					 + "the delete course  : " + _course_id);
+		 }
 	 }
 }
