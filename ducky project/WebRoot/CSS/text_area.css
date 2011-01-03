@@ -1,0 +1,19 @@
+@charset "GBK";
+.StuTable
+{
+	width:100%;
+	text-align:left;
+	background-color:"#DEFEE1";
+}
+.TeaTable
+{
+	width:100%;
+	text-align:left;
+	background-color:"#E1DFBF";
+}
+.AdmTable
+{
+	width:100%;
+	text-align:left;
+	background-color:"#D9F1FD";
+}

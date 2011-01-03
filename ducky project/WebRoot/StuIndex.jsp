@@ -5,7 +5,6 @@
 	<head>
 		<title>学生主界面</title>
 		<style type="text/css" media="screen">
-<!--
 body {
 	background-image: url(images/StuBck.jpg);
 	background-attachment: fixed;
@@ -116,7 +115,6 @@ ibutton {
 	border: 0px #3399FF solid;
 	background: #ffffff;
 }
--->
 </style>
 	</head>
 	<body>
