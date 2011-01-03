@@ -513,6 +513,8 @@ public class DBOperation {
 				rtn = new SysParam();
 				rtn.setCourseSelOpened(results.getBoolean("IS_CS_OPENED"));
 				rtn.setCourseSelType(results.getInt("CS_TYPE"));
+				rtn.setOpenTime(results.getDate("OPEN_TIME")) ;
+				rtn.setCloseTime(results.getDate("CLOSE_TIME")) ;
 			}
 			results.close();
 		} catch (Exception e) {
@@ -679,14 +681,19 @@ public class DBOperation {
 
 	public void doUpdateSysParam(SysParam sp) {
 		try {
-			String query_str = "UPDATE TB_SYS_PARAM " + "SET IS_CS_OPENED=?,"
-					+ "CS_TYPE=? ";// +
+			String query_str = "UPDATE TB_SYS_PARAM " + 
+							   "SET IS_CS_OPENED=?," +
+ 							   "CS_TYPE=? " +
+ 							   "OPEN_TIME=?" +
+ 							   "CLOSE_TIME=?" ;
 			// "WHERE COURSE_ID=?";
 
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 
 			ps.setBoolean(1, sp.isCourseSelOpened());
 			ps.setInt(2, sp.getCourseSelType());
+			ps.setDate(3, sp.getOpenTime()) ;
+			ps.setDate(4, sp.getCloseTime()) ;
 			/* some preparing work... */
 			ps.executeUpdate();
 			/* do update */
