@@ -9,4 +9,12 @@ public class Query_SessionVar {
 	{
 		return "userid";
 	}
+	public static String Stu_Grades()
+	{
+		return "stugrades";
+	}
+	public static String User_Pages()
+	{
+		return "pages";
+	}
 }

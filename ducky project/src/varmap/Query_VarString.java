@@ -17,5 +17,6 @@ public class Query_VarString {
 			return "Adm";
 		}
 		return _id;		
-	}
+	}	
 }
+

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
+import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -85,6 +86,9 @@ public class UpdateGrades extends HttpServlet {
 		//查询
 		String useridString = (String)UpdateGrades_Req.getSession().getAttribute(Query_SessionVar.User_ID());
 		Vector<Float> _rlt = PointGoalPrac_Manager.TurnPointGoalPracToVector(useridString);
+		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.Stu_Grades(), _rlt);
+		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.User_Pages(),"QueryGrades.jsp");
+		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
 		
 	}
 	private void Request_ModifyGrades() throws IOException

@@ -171,9 +171,12 @@ ibutton {
 								</td>
 								<td>
 								<div id="level3">
+								<form id="QueryCrsTableForm" name="QueryCrsTable" method="post"
+					action="/TJSelCrsSys/servlet/UpdateGrades">
 									<input type="submit" class="MenuFont"
-										style="background: none; border: none;" name="SelectCrsCommit"
-										id="SttSelCrs" value="学分统计" />
+										style="background: none; border: none;" name="UpdateCrsInfo""
+										id="SttSelCrs" value="查看学分" />
+										</form>
 								</div>
 							</td>
 							<td>
