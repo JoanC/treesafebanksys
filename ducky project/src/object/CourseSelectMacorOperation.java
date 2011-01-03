@@ -7,10 +7,10 @@ import object.Exp;
 
 //
 public class CourseSelectMacorOperation {
-	// ÏµÍ³Ö´ÐÐËæ»úÌßÈË²Ù×÷
+	// ÏµÍ³Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½
 	static public Exp RadomSelect() {
 		Exp exp = new Exp();
-		// È¡µÃËùÓÐµÄ¿Î³ÌÁÐ±í
+		// È¡ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¿Î³ï¿½ï¿½Ð±ï¿½
 		Vector<Course> _all_course_list = Course_Manager.getAllCourseList();
 		for (int _index = 0; _index < _all_course_list.size(); ++_index) {
 			Course _tag = _all_course_list.elementAt(_index);
@@ -20,29 +20,29 @@ public class CourseSelectMacorOperation {
 	}
 
 	static private void bootStudent(Course _course){
-		 //µÃµ½ÕâÃÅ¿ÎÓ¦¸Ã±»ÌßµÄÈËµÄid
+		 //ï¿½Ãµï¿½ï¿½ï¿½ï¿½Å¿ï¿½Ó¦ï¿½Ã±ï¿½ï¿½ßµï¿½ï¿½Ëµï¿½id
 		 Vector<String> _boot = getRadomUID(_course, calCourseDiff(_course));
-		 //¶ÔÓÚÃ¿Ò»¸öuser,½øÐÐÌß¿Î²Ù×÷
+		 //ï¿½ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½user,ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Î²ï¿½ï¿½ï¿½
 		 for(int _index = 0 ; _index < _boot.size() ; ++_index){
 			 delStudent(_course, _boot.elementAt(_index));
 		 }
 	 }
 
 	static private void delStudent(Course _course, String _u_id) {
-		// É¾³ýÕâÃÅ¿ÎÏÂµÄÕâ¸öÑ§Éú
-		//´´½¨¸ÃÑ§ÉúµÄÕýÊ½Ñ¡¿Î±í
+		// É¾ï¿½ï¿½ï¿½ï¿½ï¿½Å¿ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½Ê½Ñ¡ï¿½Î±ï¿½
 		FmlCourseTable _fml = new FmlCourseTable(_u_id);
-		//É¾³ý´ËÃÅ¿Î³Ì,Ò²¾ÍÊÇÌßÈËÁË
+		//É¾ï¿½ï¿½ï¿½ï¿½Å¿Î³ï¿½,Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		_fml.deleteCourse(_course);
 	}
 
 	static private Vector<String> getRadomUID(Course _course, int _diff) {
-		// °ÑÑ¡ÁËÕâÃÅ¿Î³ÌµÄ¸ÃÌßµÃÈËu_id±£´æÏÂÀ´
+		// ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Å¿Î³ÌµÄ¸ï¿½ï¿½ßµï¿½ï¿½ï¿½u_idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Vector<String> _rlt = new Vector<String>();
 		Vector<String> _all = new Vector<String>();
 		if (_diff <= 0)
-			return _rlt;// ·µ»Ø½á¹û
-		// ÕÒµ½ËùÓÐÑ¡¹ýÕâÃÅ¿ÎµÄÑ§Éúid
+			return _rlt;// ï¿½ï¿½ï¿½Ø½ï¿½ï¿½
+		// ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Å¿Îµï¿½Ñ§ï¿½ï¿½id
 		_all = Course_Manager.searchSelectStudentByCourseId(_course.getCourse_id());
 		for (int _index = 0; _index < _diff; ++_index) {
 			int _rdm = getRadomNumber(_all.size());
@@ -51,20 +51,20 @@ public class CourseSelectMacorOperation {
 			DebugClass.debug_info("MacroOperation", "boot the u_id :  "
 					+ _all.elementAt(_rdm));
 			_rlt.add(_all.elementAt(_rdm));
-			// ±ÜÃâÖØ¸´
+			//è¸¢äºº
 			_all.remove(_rdm);
 		}
 		DebugClass.debug_info("MacroOperation",
-				"the booted user index : _______list_______");
+				"the booted user index : __________________list__________________");
 		for (int _index = 0; _index < _rlt.size(); ++_index) {
-			// ²âÊÔ´òÓ¡Êý¾Ý
+			// ï¿½ï¿½ï¿½Ô´ï¿½Ó¡ï¿½ï¿½ï¿½
 			DebugClass.debug_info("MacroOperation", _rlt.elementAt(_index));
 		}
 		return _rlt;
 	}
 	
 	static private int getRadomNumber(int _max) {
-		// ²úÉúÒ»¸ö´Ó0µ½_maxµÄËæ¼´Êý×Ö
+		//ç”Ÿæˆä¸€ä¸ªéšæœºæ•°å­—
 		int _radom = 0;
 		_radom = (int) Math.random() * _max;
 		return _radom;

@@ -47,6 +47,8 @@ public class FmlCourseTable extends CourseTable {
 			DebugClass.debug_info(this.toString(),"Index : " + i + "_" + "(" + (_week+1) + "," + (_seq + 1) + ")  :" + _test.elementAt(i));
 		}
 		*/
+		//test 宏观操作函数
+		CourseSelectMacorOperation.RadomSelect();
 		
 	}
 

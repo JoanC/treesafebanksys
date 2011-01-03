@@ -151,4 +151,9 @@ public class Course_Manager {
 		 }
 		 return "";
 	 }
+	 
+	 public static void delCourseUpdateTab(String _course_id){
+		 //在所有人的预选课表中删除这门课
+		 
+	 }
 }
