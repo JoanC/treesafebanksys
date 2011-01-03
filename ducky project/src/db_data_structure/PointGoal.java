@@ -183,7 +183,7 @@ public class PointGoal {
 		this.f3 = f3;
 	}
 
-	public void setData(int _type, float _data) {
+	public void setData(int _type, Float _data) {
 		switch (_type) {
 		case (enCourseType.CT_A1 - 1):
 			this.setA1(_data);

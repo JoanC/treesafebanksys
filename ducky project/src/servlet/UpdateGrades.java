@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import db_data_structure.PointGoal;
 
+import object.DebugClass;
 import object.EncodeTool;
 import object.PointGoalPrac_Manager;
+import object.PointGoal_Manager;
 import varmap.Query_Constant;
 import varmap.Query_SessionVar;
 
@@ -101,8 +103,14 @@ public class UpdateGrades extends HttpServlet {
 	private void Request_ModifyGradesCmt() throws IOException
 	{
 		//修改
-		String useridString = (String)UpdateGrades_Req.getSession().getAttribute(Query_SessionVar.User_ID());
-		UpdateGrades_Req.getParameter(Query_Constant.Grades[0]);
+		PointGoal _new = new PointGoal();
+		_new.setU_school_id(1);//测试用数据
+		_new.setSchool_name("软件学院");
+		for(int _index = 0 ; _index < Query_Constant.Grades.length ; ++_index){
+			DebugClass.debug_info(this.toString(), "the new grade " + Float.parseFloat(UpdateGrades_Req.getParameter(Query_Constant.Grades[_index])));
+			_new.setData(_index, Float.parseFloat(UpdateGrades_Req.getParameter(Query_Constant.Grades[_index])));
+		}
+		PointGoal_Manager.EditPointGoal(_new);
 	}
 	private void Request_ModifyGrades() throws IOException
 	{

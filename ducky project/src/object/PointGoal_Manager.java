@@ -6,10 +6,10 @@ import dbquery.DBOperation;
 import dbquery.dbConnectParam;
 
 
-//Õâ¸öÀà¸ºÔðÅàÑø¼Æ»®Êý¾ÝµÄ´¦Àí£¬°üº¬ÁËÒ»¸ö²éÕÒ²Ù×÷ºÍÐÞ¸Ä±£´æ²Ù×÷£¬
-//·Ö±ðÓÃÓÚ¡°Ñ§·ÖÍ³¼Æ¡±ºÍ¡°¿Î³ÌÅàÑø¼Æ»®±à¼­¡±Á½¸öÓÃÀý
+//ï¿½ï¿½ï¿½ï¿½à¸ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ÝµÄ´ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ï¿½Ö±ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½Ñ§ï¿½ï¿½Í³ï¿½Æ¡ï¿½ï¿½Í¡ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class PointGoal_Manager {
-	//¸ù¾ÝÑ§ÔºµÄ±êÊ¶ºÅÂë»ñÈ¡ÅàÑø¼Æ»®Êý¾Ý
+	//ï¿½ï¿½ï¿½Ñ§Ôºï¿½Ä±ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½
 	static public PointGoal SearchPointGoal(int _school_id){
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd);
@@ -18,8 +18,8 @@ public class PointGoal_Manager {
 		return point_goal;
 	}
 	
-	//±à¼­ÅàÑø¼Æ»®²¢±£´æ
-	static public Exp EditPointGoal(PointGoal _old, PointGoal _new){
+	//ï¿½à¼­ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static public Exp EditPointGoal(PointGoal _new){
 		Exp exp = new Exp();
 		
 		DBOperation dbo = new DBOperation() ;
