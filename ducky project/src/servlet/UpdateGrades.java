@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import object.EncodeTool;
+import object.PointGoalPrac_Manager;
 import varmap.Query_SessionVar;
 
 public class UpdateGrades extends HttpServlet {
@@ -82,6 +84,8 @@ public class UpdateGrades extends HttpServlet {
 	{
 		//查询
 		String useridString = (String)UpdateGrades_Req.getSession().getAttribute(Query_SessionVar.User_ID());
+		Vector<Float> _rlt = PointGoalPrac_Manager.TurnPointGoalPracToVector(useridString);
+		
 	}
 	private void Request_ModifyGrades() throws IOException
 	{
