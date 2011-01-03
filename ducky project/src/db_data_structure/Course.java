@@ -4,7 +4,7 @@ import dbquery.CourseTimeOperation;
 
 
 public class Course {
-	private String course_id; // �γ̱�ʶ��
+	private String course_id; // 课程编号
 	private String course_name; // �γ����
 	private int course_type; // �γ�����
 	private String u_id; // �γ̵��ον�ʦ
