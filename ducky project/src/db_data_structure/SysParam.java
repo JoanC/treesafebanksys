@@ -10,19 +10,19 @@ import java.sql.Date;
 public class SysParam {
 	boolean isCourseSelOpened = false ;
 	int courseSelType = enCourseSelType.CST_NONE ;
-	Date openTime ;
-	Date closeTime ;
+	long openTime ;  // 格林威治时间
+	long closeTime ;
 	
-	public Date getOpenTime() {
+public long getOpenTime() {
 		return openTime;
 	}
-	public void setOpenTime(Date openTime) {
+	public void setOpenTime(long openTime) {
 		this.openTime = openTime;
 	}
-	public Date getCloseTime() {
+	public long getCloseTime() {
 		return closeTime;
 	}
-	public void setCloseTime(Date closeTime) {
+	public void setCloseTime(long closeTime) {
 		this.closeTime = closeTime;
 	}
 	public boolean isCourseSelOpened() {

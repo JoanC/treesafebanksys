@@ -30,6 +30,7 @@ import db_data_structure.Week;
  * modified by Sun 2010-12-22
  * modified by Sun 2010-12-29
  * modified by Sun 2010-12-30
+ * modified by Sun 2010-1-3
  */
 
 public class DBOperation {
@@ -513,8 +514,8 @@ public class DBOperation {
 				rtn = new SysParam();
 				rtn.setCourseSelOpened(results.getBoolean("IS_CS_OPENED"));
 				rtn.setCourseSelType(results.getInt("CS_TYPE"));
-				rtn.setOpenTime(results.getDate("OPEN_TIME")) ;
-				rtn.setCloseTime(results.getDate("CLOSE_TIME")) ;
+				rtn.setOpenTime(results.getLong("OPEN_TIME")) ;
+				rtn.setCloseTime(results.getLong("CLOSE_TIME")) ;
 			}
 			results.close();
 		} catch (Exception e) {
@@ -548,7 +549,6 @@ public class DBOperation {
 			System.err.println("error : " + e);
 		}
 	}
-
 	private PointGoal doMappingPointGoal(ResultSet results) {
 		PointGoal rtn = null;
 		try {
@@ -645,11 +645,11 @@ public class DBOperation {
 	public Vector<Course> doQueryAllFinishedCourseOfCertainStudent(String uid) {
 		Vector<Course> rtn = null;
 		Vector<Course> temp = this.doQueryAllCourseTabCourseSelectByUid(uid);
-		/* �ҵ����ѧ����ѡ�����пγ̣��ѹ��δ�� */
+		/* ?????????????????пγ??????δ?? */
 		if (null != temp) {
 			rtn = new Vector<Course>();
 			for (int i = 0; i < temp.size(); ++i) {
-				if (temp.elementAt(i).getCourse_type() > 0)/* �����δ��� */
+				if (temp.elementAt(i).getCourse_type() > 0)/* ?????δ??? */
 				{
 					rtn.addElement(temp.elementAt(i));
 				}
@@ -683,8 +683,8 @@ public class DBOperation {
 		try {
 			String query_str = "UPDATE TB_SYS_PARAM " + 
 							   "SET IS_CS_OPENED=?," +
- 							   "CS_TYPE=? " +
- 							   "OPEN_TIME=?" +
+ 							   "CS_TYPE=?," +
+ 							   "OPEN_TIME=?," +
  							   "CLOSE_TIME=?" ;
 			// "WHERE COURSE_ID=?";
 
@@ -692,8 +692,8 @@ public class DBOperation {
 
 			ps.setBoolean(1, sp.isCourseSelOpened());
 			ps.setInt(2, sp.getCourseSelType());
-			ps.setDate(3, sp.getOpenTime()) ;
-			ps.setDate(4, sp.getCloseTime()) ;
+			ps.setLong(3, sp.getOpenTime()) ;
+			ps.setLong(4, sp.getCloseTime()) ;
 			/* some preparing work... */
 			ps.executeUpdate();
 			/* do update */
@@ -744,7 +744,7 @@ public class DBOperation {
 			String query_str = "INSERT INTO " + "TB_COURSE " + "VALUES("
 					+ " ? , ? , ? , ? , ? , ? , ? , ? ,"
 					+ " ? , ? , ? , ? , ? , ? , ? , ? ,"
-					+ " ? , ? , ? , ? , ? , ? , ? , ? )"; // ÿ��8������24��
+					+ " ? , ? , ? , ? , ? , ? , ? , ? )"; // ???8??????24??
 
 			PreparedStatement ps = m_conn.prepareStatement(query_str);
 			ps = doPsCourseMapping(ps, course);
