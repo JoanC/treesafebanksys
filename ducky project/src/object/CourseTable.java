@@ -87,7 +87,8 @@ public abstract class CourseTable {
 			// �жϵ�˫������
 			Course _tmp = _list.elementAt(0);
 			_generate_str += _tmp.getCourse_name()
-					+ " " + generateSubStrByFeq(_tmp.getCourse_time_week().getCourse_freq(_week_day));
+					+ " " + generateSubStrByFeq(_tmp.getCourse_time_week().getCourse_freq(_week_day))
+					+ getAddrForCourse(_tmp);
 		} else if (_list.size() == 2) {
 			Course _tmp_1 = _list.elementAt(0);
 			Course _tmp_2 = _list.elementAt(1);
@@ -101,9 +102,11 @@ public abstract class CourseTable {
 			} else {
 				// ��˫�ܲ���ͻ
 				_generate_str += _tmp_1.getCourse_name()
-						+ " " + generateSubStrByFeq(_tmp_1.getCourse_time_week().getCourse_freq(_week_day));
+						+ " " + generateSubStrByFeq(_tmp_1.getCourse_time_week().getCourse_freq(_week_day))
+						+getAddrForCourse(_tmp_1);
 				_generate_str += _tmp_2.getCourse_name() 
-						+ " " + generateSubStrByFeq(_tmp_2.getCourse_time_week().getCourse_freq(_week_day));
+						+ " " + generateSubStrByFeq(_tmp_2.getCourse_time_week().getCourse_freq(_week_day))
+						+getAddrForCourse(_tmp_2);
 			}
 		}else{
 			//�γ̳�ͻ
@@ -136,5 +139,9 @@ public abstract class CourseTable {
 			//_sub += "<ÿ��>";
 		}
 		return _sub;
+	}
+	
+	private static String getAddrForCourse(Course _course){
+		return _course.getCourse_place();
 	}
 }

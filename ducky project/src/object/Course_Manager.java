@@ -104,6 +104,8 @@ public class Course_Manager {
 		 dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, dbConnectParam.userName, dbConnectParam.dbPwd) ;
 		 DebugClass.debug_info("Course Manager", "start to add course...");
 		 dbo.insertCourse2TabCourse(_course);
+		 //更新老师的数据库表
+		 addCourseUpdateTab(_course);
 		 DebugClass.debug_info("Course Manager", "add success!");
 		 dbo.disconnectDB();
 		 return _exp;
@@ -156,7 +158,7 @@ public class Course_Manager {
 		 return "";
 	 }
 	 
-	 public static void delCourseUpdateTab(String _course_id){
+	 private static void delCourseUpdateTab(String _course_id){
 		 //在所有人的正选课表中删除这门课
 		 Vector<String> _users = searchSelectStudentByCourseId(_course_id);
 		 for(int _index = 0 ; _index < _users.size() ; ++_index){
@@ -167,5 +169,12 @@ public class Course_Manager {
 			 DebugClass.debug_info("Course Manager", "the user id : " + _users.elementAt(_index)
 					 + "the delete course  : " + _course_id);
 		 }
+	 }
+	 
+	 private static void addCourseUpdateTab(Course _course){
+		 //将这门课加入老师对应的正式课表中
+		 //老师即为u_id
+		 FmlCourseTable _fml = new FmlCourseTable(_course.getU_id());
+		 _fml.addCourse(_course);
 	 }
 }

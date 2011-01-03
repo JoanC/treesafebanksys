@@ -17,6 +17,7 @@ import com.sun.net.ssl.internal.ssl.Debug;
 import db_data_structure.SysParam;
 import db_data_structure.enCourseSelType;
 
+import object.CourseSelectMacorOperation;
 import object.DebugClass;
 import object.EncodeTool;
 import object.SystemParameter_Manager;
@@ -93,6 +94,11 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 			//
 			DebugClass.debug_info(this.toString(), "close");
 			_update.setCourseSelOpened(false);
+			//如果选项为"随机踢人"则进行随机踢人
+			if(SystemParameter_Manager.getSystemParameter().getCourseSelType()
+					== enCourseSelType.CST_RANDOUT){
+				CourseSelectMacorOperation.RadomSelect();
+			}
 		}
 		//
 		SystemParameter_Manager.editSystemParameter(_update);
