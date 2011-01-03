@@ -5,4 +5,8 @@ public class Query_SessionVar {
 	{
 		return "usertype";
 	}
+	public static String User_ID()
+	{
+		return "userid";
+	}
 }

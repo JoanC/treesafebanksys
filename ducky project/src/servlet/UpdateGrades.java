@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import object.EncodeTool;
+import varmap.Query_SessionVar;
 
 public class UpdateGrades extends HttpServlet {
 
@@ -80,10 +81,12 @@ public class UpdateGrades extends HttpServlet {
 	private void Request_QueryGrades() throws IOException
 	{
 		//查询
+		String useridString = (String)UpdateGrades_Req.getSession().getAttribute(Query_SessionVar.User_ID());
 	}
 	private void Request_ModifyGrades() throws IOException
 	{
 		//修改
+		String useridString = (String)UpdateGrades_Req.getSession().getAttribute(Query_SessionVar.User_ID());
 	}
 
 }
