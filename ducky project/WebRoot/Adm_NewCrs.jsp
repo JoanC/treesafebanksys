@@ -2,13 +2,17 @@
 <%@page import="object.DebugClass"%>
 <%@page import="db_data_structure.User"%>
 <%@page import="object.User_Manager"%>
+<%@page import="varmap.Query_Constant"%>
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
     <p>课程类型：
       <select name="course_type" id="coursetype">
-        <option value="0">A1</option>
-        <option value="1">A2</option>
-        <option value="2">A3</option>
+        <% 
+        	for(int i=0;i!=Query_Constant.Grades.length;i++)
+        	{
+        		out.print("<option value=\"" + i + "\">" + Query_Constant.Grades[i] + "</option>");
+        	}
+        %>
       </select>
     </p>
     <p>课名：
