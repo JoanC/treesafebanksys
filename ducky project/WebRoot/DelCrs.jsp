@@ -1,4 +1,4 @@
- <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@page import="object.DebugClass"%>
 <%@page import="object.Course_Manager"%>
 <%@page import="db_data_structure.Course"%>

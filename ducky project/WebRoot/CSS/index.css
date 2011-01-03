@@ -1,0 +1,68 @@
+@charset "GBK";
+body
+{
+	background-attachment: fixed;
+	padding:0px;
+	margin:0px;
+	background-color:#000;
+}
+#banner
+{
+	top:0px;
+	left:0px;
+	width:100%;
+	height:110px;
+	margin:0px;
+	padding:0px;
+	background-color:#FF9;
+}
+#title
+{
+	position:absolute;
+	left:50px;
+	top:20px;
+	width:136px;
+	height:52px;	
+	background-color:#3CF;
+}
+#menu
+{
+	position:fixed;
+	height: 80px;
+	width: 100%;
+	background-image: url(../images/MenuDecoration.png);
+	background-repeat: no-repeat;
+	background-position: center;	
+}
+#mainbody
+{
+	left:0px;
+	width:100%;
+	min-height:500px;	
+	background-color:#603;
+	text-align:center;
+}
+#validArea
+{
+	width:1000px;
+	min-height:500px;
+	background-color:#3FF;
+	text-align:left;
+}
+#Text
+{
+	position:absolute;
+	min-height:500px;
+	width:720px;
+	background-color:#C00;
+	margin-left:250px;
+}
+#tips
+{
+	position:absolute;
+	width:250px;
+	height:270px;
+	margin-left:30px;
+	margin-top:100px;
+	background-color:#63C;
+}

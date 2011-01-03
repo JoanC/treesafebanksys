@@ -15,6 +15,8 @@ import db_data_structure.LoginInputInfo;
 import db_data_structure.SysParam;
 
 import object.*;
+import varmap.Query_SessionVar;
+import varmap.Query_VarString;
 
 public class Loginservlet extends HttpServlet {
 
@@ -123,7 +125,9 @@ public class Loginservlet extends HttpServlet {
           DebugClass.debug_info("Login servlet", "login success!");
           session.setAttribute("info", "欢迎您！" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
           session.setAttribute("pages", "welcome.jsp");
-          if (_rlt.getU_type() == 1) {
+          session.setAttribute(Query_SessionVar.User_Type(), Integer.toString(_rlt.getU_type()));
+          response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + username);
+         /* if (_rlt.getU_type() == 1) {
         	  DebugClass.debug_info("Login servlet", "login 1!");
         	  response.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + username);
           }
@@ -139,6 +143,7 @@ public class Loginservlet extends HttpServlet {
         	  session.setAttribute("SystemPara", _data);
         	  response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + username);
           }
+          */
         }
 	}
 	
