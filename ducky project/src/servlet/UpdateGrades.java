@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db_data_structure.PointGoal;
+
 import object.EncodeTool;
 import object.PointGoalPrac_Manager;
+import varmap.Query_Constant;
 import varmap.Query_SessionVar;
 
 public class UpdateGrades extends HttpServlet {
@@ -53,8 +56,12 @@ public class UpdateGrades extends HttpServlet {
 		if(para.equals("查看学分")){
 			Request_QueryGrades();
 		}
-		else if(para.equals("修改学分")){
+		else if(para.equals("修改学分"))
+		{
 			Request_ModifyGrades();
+		}
+		else if(para.equals("确认修改")){
+			Request_ModifyGradesCmt();
 		}
 	}
 
@@ -91,10 +98,16 @@ public class UpdateGrades extends HttpServlet {
 		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
 		
 	}
-	private void Request_ModifyGrades() throws IOException
+	private void Request_ModifyGradesCmt() throws IOException
 	{
 		//修改
 		String useridString = (String)UpdateGrades_Req.getSession().getAttribute(Query_SessionVar.User_ID());
+		UpdateGrades_Req.getParameter(Query_Constant.Grades[0]);
+	}
+	private void Request_ModifyGrades() throws IOException
+	{
+		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.User_Pages(),"ModifyGrades.jsp");
+		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
 	}
 
 }

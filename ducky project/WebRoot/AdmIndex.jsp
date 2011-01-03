@@ -111,6 +111,13 @@ ibutton {
 	border: 0px #3399FF solid;
 	background: #ffffff;
 }
+
+#level3 {
+	display: none;
+	width: 120px;
+	border: 0px #3399FF solid;
+	background: #ffffff;
+}
 -->
 </style>
 	</head>
@@ -134,7 +141,11 @@ ibutton {
 									id="Adm_menu_2" value="系统" onclick="show2()"/>
 							</td>
 							<td width="25%" class="MenuFont">
+								<input type="button" class="MenuFont"
+									style="background: none; border: none" name="SelCrsSysPara"
+									id="stu_menu_3" value="学分" onclick="show3()"/>
 							</td>
+							<td width="25%"></td>
 							<td width="25%"></td>
 						</tr>
 						<tr>
@@ -167,6 +178,14 @@ ibutton {
 								</div>
 								</td>
 								<td>
+								<div id="level3">
+								<form id="QueryCrsTableForm" name="QueryCrsTable" method="post"
+					action="/TJSelCrsSys/servlet/UpdateGrades">
+									<input type="submit" class="MenuFont"
+										style="background: none; border: none;" name="UpdateCrsInfo"
+										id="SttSelCrs" value="修改学分" />
+										</form>
+								</div>
 							</td>
 							<td>
 							</td>
@@ -194,6 +213,19 @@ ibutton {
 	function show2() {
 		var tips = document.getElementById("level2");
 	var button = document.getElementById("Adm_menu_2");
+		if (tips.style.display == "block") {
+			tips.style.cssText = "display: none;"
+		} else {
+			tips.style.cssText = "display: block;"
+		}
+	}
+	//--><!]]>
+</script>
+		<script language="JavaScript" type="text/javascript">
+	//--><![CDATA[//><!--
+	function show3() {
+		var tips = document.getElementById("level3");
+	var button = document.getElementById("Adm_menu_3");
 		if (tips.style.display == "block") {
 			tips.style.cssText = "display: none;"
 		} else {
