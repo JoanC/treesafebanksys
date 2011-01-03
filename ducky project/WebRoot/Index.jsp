@@ -27,15 +27,7 @@ DebugClass.debug_info(this.toString(),Permission);
 	<link href="CSS/index.css" rel="stylesheet" type="text/css" />
 	<link href="CSS/text_area.css" rel="stylesheet" type="text/css" />
 
-<style type="text/css" media="screen">
-.StuTable {
-	font-size: 22px;
-	font-family: "黑体";
-	color: #063;
-	background-color:"#DEFEE1";
-	text-decoration: underline;
-}
-</style>
+
   </head>
   
 <body style="background-image:url(images/<%=Permission%>Bck.jpg)" class="<%=Permission%>Table">
@@ -46,14 +38,32 @@ DebugClass.debug_info(this.toString(),Permission);
 <div id="menu">  
 <br /><br />
 <table width="430" border="1" align="center">
+<tr>
 <%
-/*for(int i=0;i!=Query_Constant.;i++)
+for(int i=0;i!=Query_VarString.User_Menu(Permission).length;i++)
 {
-	out.print("<tr><td>");
-	
-	out.print("</td><tr>");
-}*/
+	out.print("<td width=\"25%\">");
+	out.print("<input type=\"button\" class=\"MenuFont\" style=\"background: none; border: none\" name=\"SelCrsSysPara\" id=\"stu_menu_1\" value=\"" + Query_VarString.User_Menu(Permission)[i] + "\" onclick=\"show()\"/>");
+	out.print("</td>");
+}
 %>
+</tr>
+<tr>
+<%
+for(int i=0;i!=Query_VarString.User_Menu(Permission).length;i++)
+{
+
+}
+%>
+<td>
+    <div id="level2">
+	<form id="QueryCrsTableForm" name="QueryCrsTable" method="post" action="/TJSelCrsSys/servlet/QueryCrsTable">
+	<input type="submit" class="MenuFont"
+		style="background: none; border: none;" name="QueryCrsTable" id="SttSelCrs" value="查看课表" />
+	</form>
+	</div>
+</td>
+</tr>
 </table>
 </div>
 </div>

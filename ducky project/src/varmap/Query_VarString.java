@@ -5,18 +5,27 @@ public class Query_VarString {
 	public static String User_Permission(String _id)
 	{
 		int id = Integer.parseInt(_id);
-		if (id == 1) {
-			return "Stu";
+		return Query_Constant.Permission[id];	
+	}
+	public static String[] User_Menu(String _permission)
+	{
+		if (_permission.equals(Query_Constant.Permission[1])) {
+			return Query_Constant.Stu_menu;
 		}
-		else if(id == 2)
+		else if(_permission.equals(Query_Constant.Permission[2]))
 		{
-			return "Tea";
+			return Query_Constant.Tea_menu;
 		}
-		else if(id == 3)
+		else if(_permission.equals(Query_Constant.Permission[3]))
 		{
-			return "Adm";
+			return Query_Constant.Adm_menu;
 		}
-		return _id;		
-	}	
+		return null;
+	}
+	public static String[] Menu_Levels(String _menuname)
+	{
+		
+		return null;
+	}
 }
 
