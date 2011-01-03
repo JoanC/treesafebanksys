@@ -76,7 +76,7 @@ public class UpdateGrades extends HttpServlet {
 	 * Initialization of the servlet. <br>
 	 *
 	 * @throws ServletException if an error occurs
-	 */
+	 */ 
 	public void init() throws ServletException {
 		// Put your code here
 	}
