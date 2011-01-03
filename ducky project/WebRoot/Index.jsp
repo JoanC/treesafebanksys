@@ -52,17 +52,24 @@ for(int i=0;i!=Query_VarString.User_Menu(Permission).length;i++)
 <%
 for(int i=0;i!=Query_VarString.User_Menu(Permission).length;i++)
 {
-
+	out.print("<td width=\"25%\">");
+	for(int i=0;i!=Query_VarString.Menu_Levels().length;i++)
+	{
+		
+		out.print("<div id=\"level2\">");
+		out.print("<input type=\"submit\" style=\"background: none; border: none;\" name=\"QueryCrsTable\" id=\"SttSelCrs\" value=\"" + + "\" />");
+		out.print("</div>");
+		out.print("<\td>");
+	}
+	out.print("")
 }
 %>
-<td>
-    <div id="level2">
+
 	<form id="QueryCrsTableForm" name="QueryCrsTable" method="post" action="/TJSelCrsSys/servlet/QueryCrsTable">
 	<input type="submit" class="MenuFont"
 		style="background: none; border: none;" name="QueryCrsTable" id="SttSelCrs" value="²é¿´¿Î±í" />
 	</form>
-	</div>
-</td>
+
 </tr>
 </table>
 </div>
