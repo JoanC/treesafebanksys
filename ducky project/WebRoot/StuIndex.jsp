@@ -174,7 +174,7 @@ ibutton {
 								<form id="QueryCrsTableForm" name="QueryCrsTable" method="post"
 					action="/TJSelCrsSys/servlet/UpdateGrades">
 									<input type="submit" class="MenuFont"
-										style="background: none; border: none;" name="UpdateCrsInfo""
+										style="background: none; border: none;" name="UpdateCrsInfo"
 										id="SttSelCrs" value="查看学分" />
 										</form>
 								</div>

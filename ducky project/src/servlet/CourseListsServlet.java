@@ -23,6 +23,8 @@ import db_data_structure.PreCourseSelectInfo;
 
 import object.*;
 import sun.io.Converters;
+import varmap.Query_Constant;
+import varmap.Query_SessionVar;
 
 public class CourseListsServlet extends HttpServlet {
 
@@ -93,8 +95,8 @@ public class CourseListsServlet extends HttpServlet {
 			DebugClass.debug_info(this.toString(), "new finish!");
 		}
 		else{
-			DebugClass.debug_info(this.toString(), "the user id is " + (String)iRequest.getSession().getAttribute("userid"));
-			courseselmgr.setU_id((String)iRequest.getSession().getAttribute("userid"));
+			DebugClass.debug_info(this.toString(), "the user id is " + (String)request.getSession().getAttribute("userid"));
+			courseselmgr.setU_id((String)request.getSession().getAttribute("userid"));
 		}
 		processRequest(request, response);
 	}
@@ -156,7 +158,7 @@ public class CourseListsServlet extends HttpServlet {
 		HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", _result);
 	    session.setAttribute("pages", "SelectCourses.jsp");
-	    iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+	    iResponse.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 	}
 
 	private void Request_StartSelCrs() throws ServletException, IOException {
@@ -164,15 +166,15 @@ public class CourseListsServlet extends HttpServlet {
 		//�ж�ѡ���Ƿ�����
 		HttpSession session = iRequest.getSession();
 		if(!SystemParameter_Manager.getSystemParameter().isCourseSelOpened()){
-			session.setAttribute("info", "选课未开启");
-			session.setAttribute("pages", "welcome.jsp");
-			iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+			session.setAttribute(Query_SessionVar.User_Info(), "选课未开启");
+			session.setAttribute(Query_SessionVar.User_Pages(), "welcome.jsp");
+			iResponse.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		}
 		else {
 			Vector<Course> courses = courseselmgr.getListData();
 			session.setAttribute("CourseList",courses);
-			session.setAttribute("pages", "CourseLists.jsp");
-			iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+			session.setAttribute(Query_SessionVar.User_Pages(), "CourseLists.jsp");
+			iResponse.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		}
 	}		
 		

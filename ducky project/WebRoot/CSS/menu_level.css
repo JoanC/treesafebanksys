@@ -1,0 +1,21 @@
+@charset "GBK";
+#level1{
+	display: none;
+	width: 120px;
+	border: 0px #3399FF solid;
+	background: #ffffff;
+}
+
+#level2{
+	display: none;
+	width: 120px;
+	border: 0px #3399FF solid;
+	background: #ffffff;
+}
+
+#level3{
+	display: none;
+	width: 120px;
+	border: 0px #3399FF solid;
+	background: #ffffff;
+}

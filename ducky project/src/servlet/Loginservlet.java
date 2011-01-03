@@ -78,20 +78,6 @@ public class Loginservlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		processRequest(request,response);
-		/*response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out
-				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();*/
 	}
 
 	/**
@@ -114,8 +100,8 @@ public class Loginservlet extends HttpServlet {
 		//zhou
         LoginRltInfo _rlt = this.loginFrame(username, userpassword);
         HttpSession session = req.getSession();
-        session.removeAttribute("userid");
-        session.setAttribute("userid", username);
+        session.removeAttribute(Query_SessionVar.User_ID());
+        session.setAttribute(Query_SessionVar.User_ID(), username);
         if(_rlt.isIs_succ() == false) {
         	DebugClass.debug_info("Login servlet", "login fail!");
         }
@@ -123,8 +109,8 @@ public class Loginservlet extends HttpServlet {
           //System.out.println(_rlt.getU_type());
           //System.out.println(_rlt.getU_id());
           DebugClass.debug_info("Login servlet", "login success!");
-          session.setAttribute("info", "欢迎您！" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
-          session.setAttribute("pages", "welcome.jsp");
+          session.setAttribute(Query_SessionVar.User_Info(), "欢迎您！" + User_Manager.queryUserInfo(_rlt.getU_id()).getU_name());
+          session.setAttribute(Query_SessionVar.User_Pages(), "welcome.jsp");
           session.setAttribute(Query_SessionVar.User_Type(), Integer.toString(_rlt.getU_type()));
           response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + username);
          /* if (_rlt.getU_type() == 1) {
@@ -138,9 +124,7 @@ public class Loginservlet extends HttpServlet {
           }
           else if(_rlt.getU_type() == 3)
           {
-        	  DebugClass.debug_info("Login servlet", "login 3!");
-        	  SysParam _data = SystemParameter_Manager.getSystemParameter();
-        	  session.setAttribute("SystemPara", _data);
+        	  DebugClass.debug_info("Login servlet", "login 3!");        	  
         	  response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + username);
           }
           */

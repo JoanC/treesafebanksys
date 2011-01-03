@@ -159,6 +159,8 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		DebugClass.debug_start();
 		DebugClass.debug_info(this.toString(),"Adm Start");
 		String value = EncodeTool.ByteToISO((String) request.getParameter("SelCrsSysPara"));
+		SysParam _data = SystemParameter_Manager.getSystemParameter();
+		request.getSession().setAttribute("SystemPara", _data);
 		
 		if(value.equals("选课状态"))
 		{

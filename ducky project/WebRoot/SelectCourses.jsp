@@ -9,8 +9,7 @@
 	<form id="SelectCourse" name="SelectCourse" method="post"
 			action="/TJSelCrsSys/servlet/CourseListsServlet">	
 	<% 
-	if(session.getAttribute("pages").equals("SelectCourses.jsp"))
-	{
+
 	DebugClass.debug_info(this.toString(),"嵌入选课网页");
 	boolean iConflict = false;
 	Vector<String> _check = (Vector<String>)session.getAttribute("coursetable");
@@ -21,7 +20,7 @@
 	}
 	Vector<PreCourseSelectInfo> pcourses = (Vector<PreCourseSelectInfo>)session.getAttribute("precrslist");
 	DebugClass.debug_info("selecting courses module", "the final result size : " + pcourses.size());
-	out.print("<table width = \"100%\"border = \"1\">");
+	out.print("<table align=\"center\" width=\"100%\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"##009966\" style=\"font-size:12px\">");
 	for(int i =0 ;i!=pcourses.size();i++)
 	{
 		String name = pcourses.elementAt(i).getCourse_name();
@@ -29,21 +28,26 @@
 		out.print("<td>");
 		out.print(name);
 		out.print("<td>");
-		out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"清除课程" + i + "\"/>");
+		out.print("<div style=\"background-image:url(images/StuBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px\">");
+		out.print("<input type=\"submit\" style=\"left:10px;width:79px;height:39px;background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"清除课程" + i + "\"/>");
+		out.print("</div></td>");
 		if(iConflict)
 		{
-			out.print("无效按钮");
+			out.print("<td>无效按钮</td>");
 		}
 		else
 		{
-			out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"SelFmlCrs\" value=\"选择老师" + i + "\"/>");
+		out.print("<td><div style=\"background-image:url(images/StuBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px\">");
+			out.print("<input type=\"submit\" style=\"left:10px;width:79px;height:39px;background:none;border:none\" name=\"SelectCrsCommit\" id=\"SelFmlCrs\" value=\"选择老师" + i + "\"/>");
+			out.print("</div></td>");
 		}		
-		out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"退该课程" + i + "\"/>");
-		out.print("</td>");
+		out.print("<td><div style=\"background-image:url(images/StuBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px\">");
+		out.print("<input type=\"submit\" style=\"left:10px;width:79px;height:39px;background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"退该课程" + i + "\"/>");
+		out.print("</div></td>");
 		out.print("</tr>");
 	}
     out.print("</table>");
-    }
+
 	 %>	  
 	 <%	
 		 out.print("<table width=\"100%\" border=\"1\">");

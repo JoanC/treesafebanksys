@@ -17,4 +17,8 @@ public class Query_SessionVar {
 	{
 		return "pages";
 	}
+	public static String User_Info()
+	{
+		return "info";
+	}
 }
