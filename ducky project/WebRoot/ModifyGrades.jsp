@@ -34,4 +34,16 @@
 			</div>
  </form>
  </td></tr>
+<script language="javascript" type="text/javascript">
+//点击按钮触发的js代码，用html控件的onclick事件触发
+function onOK()
+{
+   var text1=document.getElementById("textfield");
+
+   if(text1.value=="")
+   {
+     alert("不能为空哦！");
+   }
+}
+</script>
 </table>
