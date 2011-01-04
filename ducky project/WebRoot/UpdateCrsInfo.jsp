@@ -8,7 +8,9 @@
 <%@page import="varmap.Query_Constant"%>
 <%@page import="varmap.Query_SessionVar"%>
 
-
+<table align="center" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#003366" style="font-size:12px">
+	<tr><td colspan="8" bgcolor="#003366" style="color:#FFF;font-weight:bold;">填写新课程信息 </td></tr>
+<tr><td>
 <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 	action="/TJSelCrsSys/servlet/UpdateCrsInfo">
 
@@ -81,7 +83,7 @@
 	<p>
 		上课时间：<%=_old.getCourseTimeDetail()%>
 	</p>
-	<table align="center" width="100%" border="0" cellpadding="1"
+	<table align="center" width="80%" border="0" cellpadding="1"
 		cellspacing="1" bordercolor="#003366" style="font-size: 12px">
 		<tr>
 			<td colspan="8" bgcolor="#003366"
@@ -90,26 +92,26 @@
 			</td>
 		</tr>
 		<tr>
-			<td width="36" align="center"></td>
-			<td width="55" align="center">
+			<td width="9%" align="center"></td>
+			<td width="13%" align="center">
 				星期一
 			</td>
-			<td width="53" align="center">
+			<td width="13%" align="center">
 				星期二
 			</td>
-			<td width="51" align="center">
+			<td width="13%" align="center">
 				星期三
 			</td>
-			<td width="52" align="center">
+			<td width="13%" align="center">
 				星期四
 			</td>
-			<td width="50" align="center">
+			<td width="13%" align="center">
 				星期五
 			</td>
-			<td width="48" align="center">
+			<td width="13%" align="center">
 				星期六
 			</td>
-			<td width="49" align="center">
+			<td width="13%" align="center">
 				星期日
 			</td>
 		</tr>
@@ -260,7 +262,13 @@
 	</select>
 	<p>
 	</p>
-	<input type="submit" class="MenuFont"
-		style="background: none; border: none" name="UpdateCrsInfo"
-		id="Tea_menu_1" value="修改确认" />
+
+<div style="background-image:url(images/AdmBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px">	
+
+<input type="submit" class="MenuFont" 
+    		style="width:79px;height:39px;background: none; border: none;color:#FFF;font-weight:bold;font-size:14px" name="UpdateCrsInfo"
+			id="Tea_menu_1" value="修改确认"/>   
+			</div>
 </form>
+</td></tr>
+</table>

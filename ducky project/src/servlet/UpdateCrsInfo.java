@@ -185,10 +185,9 @@ public class UpdateCrsInfo extends HttpServlet {
 	private void Request_ModifyCrsInfoCmt() throws IOException
 	{
 		//String _old_id = "";
-		Course _new = new Course();
-		_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
+		Course _new = (Course)UpdateCrsInfo_Req.getSession().getAttribute("edit_crs_old_info");
 		//_new.setCourse_id(Course_Manager.generateCourseID());
-		DebugClass.debug_info(this.toString(), "id: " + UpdateCrsInfo_Req.getParameter("course_id"));
+		DebugClass.debug_info(this.toString(), "id: " + UpdateCrsInfo_Req.getSession().getAttribute("edit_crs_old_info"));
 		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_type")));
 		DebugClass.debug_info(this.toString(), "type: " + UpdateCrsInfo_Req.getParameter("course_type"));
 		_new.setCourse_name(EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_name")));
@@ -220,7 +219,9 @@ public class UpdateCrsInfo extends HttpServlet {
 			DebugClass.debug_info(this.toString(), "coursefre" + i + UpdateCrsInfo_Req.getParameter("coursefre" + i));
 			coursefre.add(Integer.parseInt(UpdateCrsInfo_Req.getParameter("coursefre" + i)));		
 		}
-		//进一步时间处理		
+		//进一步时间处理
+		if(coursetime.size()==0)
+		{
 		_new.setCourse_time_week( CourseTimeOperation.convert2Course(coursetime, coursefre));
 		String _check = Course_Manager.checkNewCourse(_new);
 		//String _check = "";
@@ -232,9 +233,10 @@ public class UpdateCrsInfo extends HttpServlet {
 		else{
 			UpdateCrsInfo_Req.getSession().setAttribute("info", _check);
 		}
+		}
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "welcome.jsp");
 		
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 
 	}
 
