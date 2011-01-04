@@ -90,11 +90,11 @@ public class QueryCrsTable extends HttpServlet implements Servlet {
 		session.setAttribute("pages", "CrsTable.jsp");
 		if(_current.getU_type() == 1)
 		{
-			response.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+			response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		}
 		else if(_current.getU_type() == 2)
 		{
-			response.sendRedirect("/TJSelCrsSys/TeaIndex.jsp?userid=" + session.getAttribute("userid"));
+			response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		}
 	}
 

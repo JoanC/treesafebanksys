@@ -20,7 +20,8 @@
 	}
 	Vector<PreCourseSelectInfo> pcourses = (Vector<PreCourseSelectInfo>)session.getAttribute("precrslist");
 	DebugClass.debug_info("selecting courses module", "the final result size : " + pcourses.size());
-	out.print("<table align=\"center\" width=\"100%\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"##009966\" style=\"font-size:12px\">");
+	out.print("<table align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" bordercolor=\"##009966\" style=\"font-size:12px\">");
+	out.print("<tr><td colspan=\"" + 4 + "\" bgcolor=\"#009966\" style=\"color:#FFF;font-weight:bold;\">" + "已预选课程" + "</td></tr>");
 	for(int i =0 ;i!=pcourses.size();i++)
 	{
 		String name = pcourses.elementAt(i).getCourse_name();
@@ -29,7 +30,7 @@
 		out.print(name);
 		out.print("<td>");
 		out.print("<div style=\"background-image:url(images/StuBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px\">");
-		out.print("<input type=\"submit\" style=\"left:10px;width:79px;height:39px;background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"清除课程" + i + "\"/>");
+		out.print("<input type=\"submit\" style=\"width:79px;height:39px;background:none;border:none;color:#FFF;font-weight:bold;font-size:14px\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"清除课程" + i + "\"/>");
 		out.print("</div></td>");
 		if(iConflict)
 		{
@@ -38,23 +39,26 @@
 		else
 		{
 		out.print("<td><div style=\"background-image:url(images/StuBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px\">");
-			out.print("<input type=\"submit\" style=\"left:10px;width:79px;height:39px;background:none;border:none\" name=\"SelectCrsCommit\" id=\"SelFmlCrs\" value=\"选择老师" + i + "\"/>");
+			out.print("<input type=\"submit\" style=\"width:79px;height:39px;background:none;border:none;color:#FFF;font-weight:bold;font-size:14px\" name=\"SelectCrsCommit\" id=\"SelFmlCrs\" value=\"选择老师" + i + "\"/>");
 			out.print("</div></td>");
 		}		
 		out.print("<td><div style=\"background-image:url(images/StuBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px\">");
-		out.print("<input type=\"submit\" style=\"left:10px;width:79px;height:39px;background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"退该课程" + i + "\"/>");
+		out.print("<input type=\"submit\" style=\"width:79px;height:39px;background:none;border:none;color:#FFF;font-weight:bold;font-size:14px\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"退该课程" + i + "\"/>");
 		out.print("</div></td>");
 		out.print("</tr>");
 	}
-    out.print("</table>");
+    out.print("</table><br />");
 
 	 %>	  
 	 <%	
-		 out.print("<table width=\"100%\" border=\"1\">");
+	
+		 
 	 	Vector<Course> _current;
 	 	_current = (Vector<Course>)session.getAttribute("coursestea");
 	 	if(_current != null)
 	 	{
+	 	 out.print("<table align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" bordercolor=\"##009966\" style=\"font-size:12px\">");
+	out.print("<tr><td colspan=\"" + 5 + "\" bgcolor=\"#009966\" style=\"color:#FFF;font-weight:bold;\">" + "课程详细信息" + "</td></tr>");
 		for(int i = 0;i!=_current.size();i++)
 		{
 		  //DebugClass.debug_info(this.toString(),"_current size:" + _current.size());
@@ -72,17 +76,20 @@
   		  out.print(" <td colspan=\"7\">");
  		  out.print(_current.elementAt(i).getCourse_comment());
  		  out.print("</td>");
- 		  out.print("<input type=\"submit\" style=\"background:none;border:none\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"正选课程" + i + "\"/>");
- 		  out.print("</tr>");
+ 		  out.print("<tr><td><div style=\"background-image:url(images/StuBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px\">");
+ 		  out.print("<input type=\"submit\" style=\"width:79px;height:39px;background:none;border:none;color:#FFF;font-weight:bold;font-size:14px\" name=\"SelectCrsCommit\" id=\"DelPreCrs\" value=\"正选课程" + i + "\"/>");
+ 		  out.print("</div></td></tr>");
   		}	
   		//session.removeAttribute("coursestea");
+  		out.print("</table><br />");
   		} 
-  		out.print("</table>");
+  		
   		
 	  %>
   <%  	 
-	
-	out.print("<table border=\"1\"><tr><td width=\"16\">&nbsp;</td><td width=\"75\">星期一</td><td width=\"75\">星期二</td><td width=\"75\">星期三</td><td width=\"75\">星期四</td><td width=\"75\">星期五</td><td width=\"75\">星期六</td><td width=\"75\">星期日</td></tr>");
+	 out.print("<table align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" bordercolor=\"##009966\" style=\"font-size:12px\">");
+	out.print("<tr><td colspan=\"" + 8 + "\" bgcolor=\"#009966\" style=\"color:#FFF;font-weight:bold;\">" + "我的课表" + "</td></tr>");
+	out.print("<tr><td width=\"16\">&nbsp;</td><td width=\"75\">星期一</td><td width=\"75\">星期二</td><td width=\"75\">星期三</td><td width=\"75\">星期四</td><td width=\"75\">星期五</td><td width=\"75\">星期六</td><td width=\"75\">星期日</td></tr>");
   	//DebugClass.debug_start();
     Vector<String> crstable = (Vector<String>)session.getAttribute("coursetable");
     int weekdays = 7;

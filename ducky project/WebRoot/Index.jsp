@@ -102,11 +102,9 @@ for(int i=0;i!=Query_VarString.User_Menu(Permission).length;i++)
 <div id="Text">
 <table width="100%" border="5px" bordercolor="#FFFFFF" style="border-collapse: collapse" class="<%=Permission%>Table">
 <tr>
- <td>
+<td>
  <jsp:include page = "<%=session.getAttribute(Query_SessionVar.User_Pages()).toString()%>" />
- 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p>
-  1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p>
-   1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p> 1<p></p></td>
+</td>
 </tr>
 </table>
 </div>

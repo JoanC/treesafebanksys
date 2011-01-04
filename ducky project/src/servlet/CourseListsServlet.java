@@ -194,7 +194,10 @@ public class CourseListsServlet extends HttpServlet {
 	    HttpSession session = iRequest.getSession();
 	    session.setAttribute("precrslist", course);
 	    session.setAttribute("pages", "SelectCourses.jsp");
-	    iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+	    Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
+		session.setAttribute("coursetable", crstable);
+		session.removeAttribute("coursestea");
+	    iResponse.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 	    
 	}
 	private void Request_SelFmlCrs()throws ServletException, IOException 
@@ -211,7 +214,7 @@ public class CourseListsServlet extends HttpServlet {
 		getCourseTables();
 		session.removeAttribute("coursestea");
 		session.setAttribute("pages", "SelectCourses.jsp");
-		iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));				
+		iResponse.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));				
 	}
 	private void Request_SelCrsTea()throws ServletException, IOException 
 	{
@@ -228,7 +231,7 @@ public class CourseListsServlet extends HttpServlet {
 		}*/
 		session.setAttribute("coursestea", _detail);
 		session.setAttribute("pages", "SelectCourses.jsp");
-		iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+		iResponse.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 	}
 	private void Request_DelFmlCrs()throws ServletException, IOException 
 	{
@@ -246,7 +249,7 @@ public class CourseListsServlet extends HttpServlet {
 		Vector<String> crstable = CourseTable.convertFmlTabFormat(courseselmgr.getFml_tab().get_course_list());
 		session.setAttribute("coursetable", crstable);
 		session.setAttribute("pages", "SelectCourses.jsp");
-		iResponse.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + session.getAttribute("userid"));
+		iResponse.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 	}
 	public void getCourseTables() throws ServletException, IOException 
 	{
