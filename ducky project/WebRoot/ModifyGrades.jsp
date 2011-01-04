@@ -37,6 +37,7 @@
 //点击按钮触发的js代码，用html控件的onclick事件触发
 function judge()
 {
+     alert("check?");
 	 if(document.getElementById("textfield0").value=="" ||
 	 	document.getElementById("textfield1").value=="" ||
 	 	document.getElementById("textfield2").value=="" ||
