@@ -22,6 +22,7 @@ public class CourseSelectMacorOperation {
 	static private void bootStudent(Course _course){
 		 //�õ����ſ�Ӧ�ñ��ߵ��˵�id
 		 Vector<String> _boot = getRadomUID(_course, calCourseDiff(_course));
+		 DebugClass.debug_info("Macro Operation", "the boot id number is " + _boot.size());
 		 //����ÿһ��user,�����߿β���
 		 for(int _index = 0 ; _index < _boot.size() ; ++_index){
 			 delStudent(_course, _boot.elementAt(_index));
@@ -32,12 +33,14 @@ public class CourseSelectMacorOperation {
 		// ɾ�����ſ��µ����ѧ��
 		//������ѧ�����ʽѡ�α�
 		FmlCourseTable _fml = new FmlCourseTable(_u_id);
-		//ɾ����ſγ�,Ҳ����������
+		DebugClass.debug_info("Macro Operation", "delete course " + _course.getCourse_name()
+				+ " from the user " + _u_id);
 		_fml.deleteCourse(_course);
 	}
 
 	static private Vector<String> getRadomUID(Course _course, int _diff) {
 		// ��ѡ�����ſγ̵ĸ��ߵ���u_id��������
+		DebugClass.debug_info("Macro Operation","the diff of +" + _course.getCourse_id() + "is " + _diff);
 		Vector<String> _rlt = new Vector<String>();
 		Vector<String> _all = new Vector<String>();
 		if (_diff <= 0)

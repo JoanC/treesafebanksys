@@ -47,9 +47,6 @@ public class FmlCourseTable extends CourseTable {
 			DebugClass.debug_info(this.toString(),"Index : " + i + "_" + "(" + (_week+1) + "," + (_seq + 1) + ")  :" + _test.elementAt(i));
 		}
 		*/
-		//test 宏观操作函数
-		CourseSelectMacorOperation.RadomSelect();
-		
 	}
 
 	// ѧ�������ʦ���û�id�ļ�¼
@@ -143,8 +140,10 @@ public class FmlCourseTable extends CourseTable {
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
 		//�����һ
+		DebugClass.debug_info(this.toString(), "Update the course select number");
 		dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
 		//ɾ��γ����
+		DebugClass.debug_info(this.toString(), "delete course : " + _old.getCourse_id());
 		dbo.doDeleteFromTabCourseSelect(u_id, _old.getCourse_id());
 		//�������
 		course_list_fixedCourses.clear();
