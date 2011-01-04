@@ -26,6 +26,7 @@ public class UpdateCrsInfo extends HttpServlet {
 
 	public HttpServletRequest UpdateCrsInfo_Req;
 	public HttpServletResponse UpdateCrsInfo_Rep;
+
 	/**
 	 * Constructor of the object.
 	 */
@@ -43,212 +44,272 @@ public class UpdateCrsInfo extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
-	 *
+	 * 
 	 * This method is called when a form has its tag value method equals to get.
 	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
+	 * @param request
+	 *            the request send by the client to the server
+	 * @param response
+	 *            the response send by the server to the client
+	 * @throws ServletException
+	 *             if an error occurred
+	 * @throws IOException
+	 *             if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UpdateCrsInfo_Req = request;
-		UpdateCrsInfo_Rep = response;		
-		String value = EncodeTool.ByteToISO((String)request.getParameter("UpdateCrsInfo"));
+		UpdateCrsInfo_Rep = response;
+		String value = EncodeTool.ByteToISO((String) request
+				.getParameter("UpdateCrsInfo"));
 		String para = value.substring(0, "查看课程".length());
-		if(para.equals("查看课程")){
+		if (para.equals("查看课程")) {
 			Request_QueryCrsInfo();
-		}
-		else if(para.equals("修改课程")){
+		} else if (para.equals("修改课程")) {
 			Request_ModifyCrsInfo();
-		}
-		else if(para.equals("确认修改")){
+		} else if (para.equals("确认修改")) {
 			Request_ModifyFirstCmt();
-		}
-		else if(value.equals("新增课程"))
-		{
+		} else if (value.equals("新增课程")) {
 			Request_AddNewCrs();
-		}
-		else if(value.equals("确认增加"))
-		{
+		} else if (value.equals("确认增加")) {
 			Request_AddNewCrsCmt();
-		}
-		else if(value.equals("删除课程"))
-		{
+		} else if (value.equals("删除课程")) {
 			Request_DelCrs();
-		}
-		else if(value.equals("确认删除"))
-		{
+		} else if (value.equals("确认删除")) {
 			Request_DelCrsCmt();
-		}
-		else if(value.equals("修改确认"))
-		{
+		} else if (value.equals("修改确认")) {
 			Request_ModifyCrsInfoCmt();
 		}
 	}
-	private void Request_ModifyFirstCmt() throws IOException
-	{
-		String courseid = (String)UpdateCrsInfo_Req.getParameter("course_id");
+
+	private void Request_ModifyFirstCmt() throws IOException {
+		String courseid = (String) UpdateCrsInfo_Req.getParameter("course_id");
 		DebugClass.debug_info(this.toString(), "courseid" + courseid);
 		Course _old = Course_Manager.queryCourse(courseid);
 		UpdateCrsInfo_Req.getSession().setAttribute("edit_crs_old_info", _old);
-		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrsInfo.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Req.getSession().setAttribute("pages",
+				"UpdateCrsInfo.jsp");
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+				+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
-	private void Request_ModifyCrsInfo() throws IOException
-	{
+
+	private void Request_ModifyCrsInfo() throws IOException {
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrs.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+				+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
-	private void Request_DelCrs() throws IOException
-	{
+
+	private void Request_DelCrs() throws IOException {
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrs.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+				+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
-	private void Request_DelCrsCmt() throws IOException
-	{
-		DebugClass.debug_info(this.toString(),"删除确认");
+
+	private void Request_DelCrsCmt() throws IOException {
+		DebugClass.debug_info(this.toString(), "删除确认");
 		Course _new = new Course();
 		_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
 		Course_Manager.DeleteCourse(_new);
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Welcome.jsp");
-		UpdateCrsInfo_Req.getSession().setAttribute(Query_SessionVar.User_Info(), "删除课程" + UpdateCrsInfo_Req.getParameter("course_id") + "成功");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Req.getSession().setAttribute(
+				Query_SessionVar.User_Info(),
+				"删除课程" + UpdateCrsInfo_Req.getParameter("course_id") + "成功");
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+				+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
-	private void Request_AddNewCrs() throws IOException
-	{
+
+	private void Request_AddNewCrs() throws IOException {
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+				+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
-	private void Request_AddNewCrsCmt() throws IOException
-	{
-		//String _old_id = "";
+
+	private void Request_AddNewCrsCmt() throws IOException {
+		// String _old_id = "";
 		Course _new = new Course();
-		//_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
+		// _new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
 		_new.setCourse_id(Course_Manager.generateCourseID());
-		DebugClass.debug_info(this.toString(), "id: " + UpdateCrsInfo_Req.getParameter("course_id"));
-		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_type")));
-		DebugClass.debug_info(this.toString(), "type: " + UpdateCrsInfo_Req.getParameter("course_type"));
-		_new.setCourse_name(EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_name")));
-		DebugClass.debug_info(this.toString(), "name: " + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_name")));
-		_new.setCourse_place("[" + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_place")) + "]" + UpdateCrsInfo_Req.getParameter("course_building") + UpdateCrsInfo_Req.getParameter("course_class"));
-		DebugClass.debug_info(this.toString(), "[" + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_place")) + "]" + UpdateCrsInfo_Req.getParameter("course_building") + UpdateCrsInfo_Req.getParameter("course_class"));
-		String[] check = (String[])UpdateCrsInfo_Req.getParameterValues("coursetime");
-		
-		_new.setCourse_volume(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_column")));
-		_new.setCourse_point((float) (Float.parseFloat(UpdateCrsInfo_Req.getParameter("course_point_int")) + 0.1 * Float.parseFloat((UpdateCrsInfo_Req.getParameter("course_point_digit")))));
+		DebugClass.debug_info(this.toString(), "id: "
+				+ UpdateCrsInfo_Req.getParameter("course_id"));
+		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req
+				.getParameter("course_type")));
+		DebugClass.debug_info(this.toString(), "type: "
+				+ UpdateCrsInfo_Req.getParameter("course_type"));
+		_new.setCourse_name(EncodeTool.ByteToISO(UpdateCrsInfo_Req
+				.getParameter("course_name")));
+		DebugClass.debug_info(this.toString(), "name: "
+				+ EncodeTool.ByteToISO(UpdateCrsInfo_Req
+						.getParameter("course_name")));
+		_new.setCourse_place("["
+				+ EncodeTool.ByteToISO(UpdateCrsInfo_Req
+						.getParameter("course_place")) + "]"
+				+ UpdateCrsInfo_Req.getParameter("course_building")
+				+ UpdateCrsInfo_Req.getParameter("course_class"));
+		DebugClass.debug_info(this.toString(), "["
+				+ EncodeTool.ByteToISO(UpdateCrsInfo_Req
+						.getParameter("course_place")) + "]"
+				+ UpdateCrsInfo_Req.getParameter("course_building")
+				+ UpdateCrsInfo_Req.getParameter("course_class"));
+		String[] check = (String[]) UpdateCrsInfo_Req
+				.getParameterValues("coursetime");
+
+		_new.setCourse_volume(Integer.parseInt(UpdateCrsInfo_Req
+				.getParameter("course_column")));
+		_new.setCourse_point((float) (Float.parseFloat(UpdateCrsInfo_Req
+				.getParameter("course_point_int")) + 0.1 * Float
+				.parseFloat((UpdateCrsInfo_Req
+						.getParameter("course_point_digit")))));
 		/*******************************/
-		_new.setU_id(UpdateCrsInfo_Req.getParameter("course_tea"));		
+		_new.setU_id(UpdateCrsInfo_Req.getParameter("course_tea"));
 		/*******************************/
 		_new.setCourse_comment("内容未填");
-		_new.setCourse_exam_type(0);//考试类型
-		
-		//时间处理。。。。。。。
+		_new.setCourse_exam_type(0);// 考试类型
+
+		// 时间处理。。。。。。。
 		Vector<Boolean> coursetime = new Vector<Boolean>();
 		for (int i = 0; i != 77; i++) {
 			coursetime.addElement(false);
 		}
-		DebugClass.debug_info(this.toString(),"vector size: " + coursetime.size());
+		DebugClass.debug_info(this.toString(), "vector size: "
+				+ coursetime.size());
 		for (int i = 0; i < check.length; i++) {
-			coursetime.set(Integer.parseInt(check[i])-1,true);
-			DebugClass.debug_info(this.toString(), "check[i]: " + Integer.parseInt(check[i]));
-		}	
+			coursetime.set(Integer.parseInt(check[i]) - 1, true);
+			DebugClass.debug_info(this.toString(), "check[i]: "
+					+ Integer.parseInt(check[i]));
+		}
 		Vector<Integer> coursefre = new Vector<Integer>();
 		for (int i = 0; i < 7; i++) {
-			DebugClass.debug_info(this.toString(), "coursefre" + i + UpdateCrsInfo_Req.getParameter("coursefre" + i));
-			coursefre.add(Integer.parseInt(UpdateCrsInfo_Req.getParameter("coursefre" + i)));		
+			DebugClass.debug_info(this.toString(), "coursefre" + i
+					+ UpdateCrsInfo_Req.getParameter("coursefre" + i));
+			coursefre.add(Integer.parseInt(UpdateCrsInfo_Req
+					.getParameter("coursefre" + i)));
 		}
-		//进一步时间处理		
-		_new.setCourse_time_week( CourseTimeOperation.convert2Course(coursetime, coursefre));
+		// 进一步时间处理
+		_new.setCourse_time_week(CourseTimeOperation.convert2Course(coursetime,
+				coursefre));
 		String _check = Course_Manager.checkNewCourse(_new);
-		//String _check = "";
-		if(_check.equals("")){
+		// String _check = "";
+		if (_check.equals("")) {
 			Course_Manager.AddCourse(_new);
 			UpdateCrsInfo_Req.getSession().setAttribute("info", "添加课程成功！");
-		}
-		else{
+		} else {
 			UpdateCrsInfo_Req.getSession().setAttribute("info", _check);
 		}
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
-		
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+				+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
-	private void Request_QueryCrsInfo() throws IOException
-	{
-		//万君亚
-		//查询课程信息
+
+	private void Request_QueryCrsInfo() throws IOException {
+		// 万君亚
+		// 查询课程信息
 		Vector<Course> _course_list = Course_Manager.getAllCourseList();
 		UpdateCrsInfo_Req.getSession().setAttribute("CourseInfo", _course_list);
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+				+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
-	private void Request_ModifyCrsInfoCmt() throws IOException
-	{
-		//String _old_id = "";
-		Course _new = (Course)UpdateCrsInfo_Req.getSession().getAttribute("edit_crs_old_info");
-		//_new.setCourse_id(Course_Manager.generateCourseID());
-		DebugClass.debug_info(this.toString(), "id: " + UpdateCrsInfo_Req.getSession().getAttribute("edit_crs_old_info"));
-		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_type")));
-		DebugClass.debug_info(this.toString(), "type: " + UpdateCrsInfo_Req.getParameter("course_type"));
-		_new.setCourse_name(EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_name")));
-		DebugClass.debug_info(this.toString(), "name: " + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_name")));
-		_new.setCourse_place("[" + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_place")) + "]" + UpdateCrsInfo_Req.getParameter("course_building") + UpdateCrsInfo_Req.getParameter("course_class"));
-		DebugClass.debug_info(this.toString(), "[" + EncodeTool.ByteToISO(UpdateCrsInfo_Req.getParameter("course_place")) + "]" + UpdateCrsInfo_Req.getParameter("course_building") + UpdateCrsInfo_Req.getParameter("course_class"));
-		String[] check = (String[])UpdateCrsInfo_Req.getParameterValues("coursetime");
-		
-		_new.setCourse_volume(Integer.parseInt(UpdateCrsInfo_Req.getParameter("course_column")));
-		_new.setCourse_point((float) (Float.parseFloat(UpdateCrsInfo_Req.getParameter("course_point_int")) + 0.1 * Float.parseFloat((UpdateCrsInfo_Req.getParameter("course_point_digit")))));
+
+	private void Request_ModifyCrsInfoCmt() throws IOException {
+		// String _old_id = "";
+		Course _new = (Course) UpdateCrsInfo_Req.getSession().getAttribute(
+				"edit_crs_old_info");
+		// _new.setCourse_id(Course_Manager.generateCourseID());
+		DebugClass.debug_info(this.toString(), "id: " + _new.getCourse_id());
+		_new.setCourse_type(Integer.parseInt(UpdateCrsInfo_Req
+				.getParameter("course_type")));
+		DebugClass.debug_info(this.toString(), "type: "
+				+ UpdateCrsInfo_Req.getParameter("course_type"));
+		_new.setCourse_name(EncodeTool.ByteToISO(UpdateCrsInfo_Req
+				.getParameter("course_name")));
+		DebugClass.debug_info(this.toString(), "name: "
+				+ EncodeTool.ByteToISO(UpdateCrsInfo_Req
+						.getParameter("course_name")));
+		_new.setCourse_place("["
+				+ EncodeTool.ByteToISO(UpdateCrsInfo_Req
+						.getParameter("course_place")) + "]"
+				+ UpdateCrsInfo_Req.getParameter("course_building")
+				+ UpdateCrsInfo_Req.getParameter("course_class"));
+		DebugClass.debug_info(this.toString(), "["
+				+ EncodeTool.ByteToISO(UpdateCrsInfo_Req
+						.getParameter("course_place")) + "]"
+				+ UpdateCrsInfo_Req.getParameter("course_building")
+				+ UpdateCrsInfo_Req.getParameter("course_class"));
+		String[] check = (String[]) UpdateCrsInfo_Req
+				.getParameterValues("coursetime");
+
+		_new.setCourse_volume(Integer.parseInt(UpdateCrsInfo_Req
+				.getParameter("course_column")));
+		_new.setCourse_point((float) (Float.parseFloat(UpdateCrsInfo_Req
+				.getParameter("course_point_int")) + 0.1 * Float
+				.parseFloat((UpdateCrsInfo_Req
+						.getParameter("course_point_digit")))));
 		/*******************************/
-		_new.setU_id(UpdateCrsInfo_Req.getParameter("course_tea"));		
+		_new.setU_id(UpdateCrsInfo_Req.getParameter("course_tea"));
 		/*******************************/
 		_new.setCourse_comment("内容未填");
-		_new.setCourse_exam_type(0);//考试类型
-		
-		//时间处理。。。。。。。
+		_new.setCourse_exam_type(0);// 考试类型
+
+		// 时间处理。。。。。。。
 		Vector<Boolean> coursetime = new Vector<Boolean>();
-		for (int i = 0; i != 77; i++) {
-			coursetime.addElement(false);
-		}
-		DebugClass.debug_info(this.toString(),"vector size: " + coursetime.size());
-		for (int i = 0; i < check.length; i++) {
-			coursetime.set(Integer.parseInt(check[i])-1,true);
-			DebugClass.debug_info(this.toString(), "check[i]: " + Integer.parseInt(check[i]));
-		}	
 		Vector<Integer> coursefre = new Vector<Integer>();
-		for (int i = 0; i < 7; i++) {
-			DebugClass.debug_info(this.toString(), "coursefre" + i + UpdateCrsInfo_Req.getParameter("coursefre" + i));
-			coursefre.add(Integer.parseInt(UpdateCrsInfo_Req.getParameter("coursefre" + i)));		
+
+		DebugClass.debug_info(this.toString(), "vector size: "
+				+ coursetime.size());
+		if (check != null) {
+			for (int i = 0; i != 77; i++) {
+				coursetime.addElement(false);
+			}
+			for (int i = 0; i < check.length; i++) {
+				coursetime.set(Integer.parseInt(check[i]) - 1, true);
+				DebugClass.debug_info(this.toString(), "check[i]: "
+						+ Integer.parseInt(check[i]));
+			}
+			for (int i = 0; i < 7; i++) {
+				DebugClass.debug_info(this.toString(), "coursefre" + i
+						+ UpdateCrsInfo_Req.getParameter("coursefre" + i));
+				coursefre.add(Integer.parseInt(UpdateCrsInfo_Req
+						.getParameter("coursefre" + i)));
+			}
 		}
-		//进一步时间处理
-		if(coursetime.size()==0)
-		{
-		_new.setCourse_time_week( CourseTimeOperation.convert2Course(coursetime, coursefre));
+		// 进一步时间处理
+		if (coursetime.size() != 0) {
+			_new.setCourse_time_week(CourseTimeOperation.convert2Course(
+					coursetime, coursefre));
+		}
 		String _check = Course_Manager.checkNewCourse(_new);
-		//String _check = "";
-		if(_check.equals("")){
+		// String _check = "";
+		if (_check.equals("")) {
 			Course_Manager.DeleteCourse(_new);
 			Course_Manager.AddCourse(_new);
-			UpdateCrsInfo_Req.getSession().setAttribute("info", "修改课程成功！");
+			UpdateCrsInfo_Req.getSession().setAttribute(
+					Query_SessionVar.User_Info(), "修改课程成功！");
+			UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrs.jsp");
+			UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+					+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		} else {
+			UpdateCrsInfo_Req.getSession().setAttribute(
+					Query_SessionVar.User_Info(), _check);
+			UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrsInfo.jsp");
+			UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid="
+					+ UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 		}
-		else{
-			UpdateCrsInfo_Req.getSession().setAttribute("info", _check);
-		}
-		}
-		UpdateCrsInfo_Req.getSession().setAttribute("pages", "welcome.jsp");
-		
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
-
 	}
 
 	/**
 	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
 	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
+	 * This method is called when a form has its tag value method equals to
+	 * post.
+	 * 
+	 * @param request
+	 *            the request send by the client to the server
+	 * @param response
+	 *            the response send by the server to the client
+	 * @throws ServletException
+	 *             if an error occurred
+	 * @throws IOException
+	 *             if an error occurred
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -257,20 +318,22 @@ public class UpdateCrsInfo extends HttpServlet {
 
 	/**
 	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
+	 * 
+	 * @throws ServletException
+	 *             if an error occurs
 	 */
 	public void init() throws ServletException {
 		// Put your code here
 	}
-	
-	private Vector<String> getAllTeacherInfo(){
+
+	private Vector<String> getAllTeacherInfo() {
 		Vector<String> _rlt = new Vector<String>();
-		Vector<User> _tea_list= User_Manager.queryAllTea();
-		for(int _index = 0 ; _index < _tea_list.size() ; ++_index){
-			_rlt.add(_tea_list.elementAt(_index).getU_id() + " " + _tea_list.get(_index).getU_name());
+		Vector<User> _tea_list = User_Manager.queryAllTea();
+		for (int _index = 0; _index < _tea_list.size(); ++_index) {
+			_rlt.add(_tea_list.elementAt(_index).getU_id() + " "
+					+ _tea_list.get(_index).getU_name());
 		}
 		return _rlt;
 	}
-	
+
 }
