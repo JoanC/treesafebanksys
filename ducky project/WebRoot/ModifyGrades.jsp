@@ -18,7 +18,7 @@
 	
  	for(int i=0;i!=Query_Constant.Grades.length;i++)
  	{
- 		String tmp = Query_Constant.Grades[i];
+ 		String tmp = Query_Constant.Grades[i]; 
  		out.print(tmp + ":");
  		out.print("<input type=\"text\" name=\"" + tmp + "\" id=\"textfield" + i + "\" value=\"" + old.getData(i) + "\"/>");
  		out.print("<br />");
