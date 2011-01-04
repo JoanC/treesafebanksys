@@ -20,6 +20,7 @@ import object.Course_Manager;
 import object.DebugClass;
 import object.EncodeTool;
 import object.User_Manager;
+import varmap.Query_SessionVar;
 
 public class UpdateCrsInfo extends HttpServlet {
 
@@ -63,7 +64,7 @@ public class UpdateCrsInfo extends HttpServlet {
 			Request_ModifyCrsInfo();
 		}
 		else if(para.equals("确认修改")){
-			Request_ModifyCrsInfoCmt();
+			Request_ModifyFirstCmt();
 		}
 		else if(value.equals("新增课程"))
 		{
@@ -81,23 +82,38 @@ public class UpdateCrsInfo extends HttpServlet {
 		{
 			Request_DelCrsCmt();
 		}
+		else if(value.equals("修改确认"))
+		{
+			Request_ModifyCrsInfoCmt();
+		}
+	}
+	private void Request_ModifyFirstCmt() throws IOException
+	{
+		String courseid = (String)UpdateCrsInfo_Req.getParameter("course_id");
+		DebugClass.debug_info(this.toString(), "courseid" + courseid);
+		Course _old = Course_Manager.queryCourse(courseid);
+		UpdateCrsInfo_Req.getSession().setAttribute("edit_crs_old_info", _old);
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrsInfo.jsp");
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_ModifyCrsInfo() throws IOException
 	{
-		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrsInfo.jsp");
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrs.jsp");
 		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_DelCrs() throws IOException
 	{
-		UpdateCrsInfo_Req.getSession().setAttribute("pages", "DelCrs.jsp");
+		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrs.jsp");
 		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_DelCrsCmt() throws IOException
 	{
+		DebugClass.debug_info(this.toString(),"删除确认");
 		Course _new = new Course();
 		_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
 		Course_Manager.DeleteCourse(_new);
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Welcome.jsp");
+		UpdateCrsInfo_Req.getSession().setAttribute(Query_SessionVar.User_Info(), "删除课程" + UpdateCrsInfo_Req.getParameter("course_id") + "成功");
 		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_AddNewCrs() throws IOException

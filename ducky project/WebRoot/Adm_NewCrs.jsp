@@ -161,9 +161,6 @@
    <script language= "javascript"> 
 function isnum() 
 { 
-if(event.keyCode <48 || event.keyCode> 57) 
-{ 
-event.keyCode=0; 
-} 
+	
 } 
 </script> 

@@ -37,7 +37,7 @@ public class CourseTimeOperation {
 		
 		    String _one_day_time_str = "";
 		    int _day = _days_have_course.elementAt(_index);
-		    _one_day_time_str += generate_week_string(_day, _oneWeek) + "?? ";
+		    _one_day_time_str += generate_week_string(_day, _oneWeek) + "第 ";
 		    Vector<Boolean> _day_times = _all.get(_day);
 		    for(int _j = 0 ; _j <  _day_times.size() ; ++_j){
 		    	if(_day_times.elementAt(_j) == true){
@@ -45,28 +45,28 @@ public class CourseTimeOperation {
 		    		_one_day_time_str += (_j+1) + " ";
 		    	}
 		    }
-		    _one_day_time_str += " ??";
+		    _one_day_time_str += " 节";
 		    _rlt += _one_day_time_str;
 		}
-		System.out.println(_rlt);
+		//System.out.println(_rlt);
 		return _rlt;
 	}
 	
 	private static String generate_week_string(int _week_day,Week _oneWeek){
-		String _week_day_string = "??" + (_week_day+1);
+		String _week_day_string = "星期" + (_week_day+1);
 
 		int _feq = _oneWeek.getCourse_freq(_week_day+1);
 		if(_feq == enCourseFreq.NONE){
-			_week_day_string += "<" + "?????????" + ">";
+			_week_day_string += "<" + "课程暂停" + ">";
 		}
 		else if(_feq == enCourseFreq.EVERY_WEEK){
-			_week_day_string += "<" + "???" + ">";
+			_week_day_string += "<" + "双周" + ">";
 		}
 		else if (_feq == enCourseFreq.ODD_WEEK){
-			_week_day_string += "<" + "????"  + ">";
+			_week_day_string += "<" + "单周"  + ">";
 		}
 		else{
-			_week_day_string += "<" + "???" + ">";
+			//_week_day_string += "<" + "???" + ">";
 		}
 		return _week_day_string;
 	} 

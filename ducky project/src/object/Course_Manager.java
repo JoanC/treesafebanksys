@@ -177,4 +177,14 @@ public class Course_Manager {
 		 FmlCourseTable _fml = new FmlCourseTable(_course.getU_id());
 		 _fml.addCourse(_course);
 	 }
+	 
+	 public static Course queryCourse(String _course_id){
+		 Vector<Course> _rlt = getAllCourseList();
+		 for(int _index = 0 ; _index < _rlt.size() ; ++_index){
+			 if(_rlt.elementAt(_index).getCourse_id().equals(_course_id)){
+				 return _rlt.elementAt(_index);
+			 }
+		 }
+		 return null;
+	 }
 }
