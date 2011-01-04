@@ -6,9 +6,12 @@
 <%@page import="varmap.Query_Constant"%>
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
- <%  out.print("<table align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" bordercolor=\"##009966\" style=\"font-size:12px\">");
+ <%  out.print("<table align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" bordercolor=\"#009966\" style=\"font-size:12px\">");
 	out.print("<tr><td bgcolor=\"#003366\" style=\"color:#FFF;font-weight:bold;\">" + "请输入新课程详细信息" + "</td></tr>");
 	out.print("</table>");
+    %>
+    <%
+    String courseplace = "嘉定";
     %>
     <table style="font-size:12px">
 	<tr><td>
@@ -26,17 +29,29 @@
       <input type="text" name="course_name" id="coursename">
     </p>
     <p>上课地点：
-      <select name="course_place" id="courseplace">
-        <option value="本部">本部</option>
-        <option value="嘉定">嘉定</option>
+      <select name="course_place" id="courseplace" onChange="showBuilding()">
+      	<%
+      	 for(int i=0;i!=Query_Constant.CoursePlaces.length;i++)
+        {
+        	out.print("<option value=\"" + Query_Constant.CoursePlaces[i] + "\">" + Query_Constant.CoursePlaces[i] + "</option>");
+        }  
+      	%>
       </select>
       <select name="course_building" id="courseplace">
-        <option value="A">A</option>
-        <option value="B">B</option>
+        <%
+        for(int i=0;i!=Query_Constant.JDCourseBuildings.length;i++)
+        {
+        	out.print("<option value=\"" + Query_Constant.JDCourseBuildings[i] + "\">" + Query_Constant.JDCourseBuildings[i] + "</option>");
+        }
+      	%>
       </select>
       <select name="course_class" id="courseplace">
-        <option value="101">101</option>
-        <option value="102">102</option>
+        <%
+      	 for(int i=0;i!=Query_Constant.CourseClasses.length;i++)
+        {
+        	out.print("<option value=\"" + Query_Constant.CourseClasses[i] + "\">" + Query_Constant.CourseClasses[i] + "</option>");
+        }  
+      	%>
       </select>
     </p>
     <p>授课教师：
@@ -52,7 +67,8 @@
     </select>
     </p>
     <p>上课时间：</p>
-    <table width="446" border="1">
+    <table align="center" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#003366" style="font-size:12px">
+	<tr><td colspan="8" bgcolor="#003366" style="color:#FFF;font-weight:bold;">选择时间 </td></tr>
       <tr>
         <td width="36" align="center"></td>
         <td width="55" align="center">星期一</td>
@@ -118,7 +134,7 @@
         </select></td>
       </tr>
     </table>
-    <p></p>上课容量：<input name="course_column" type="text" id="coursecolumn" maxlength="6">
+    <p></p>上课容量：<input name="course_column" type="text" id="coursecolumn" maxlength="6" onKeyPress="isnum()"/>
      学分：
     <select name="course_point_int" id="course_point_int">
         <option value="0">0</option>
@@ -134,10 +150,20 @@
         <option value="5">5</option>
       </select>
      <p> </p>
-     </td></tr>
-     </table>
-    <input type="submit" class="MenuFont" 
-    		style="background: none; border: none" name="UpdateCrsInfo"
-			id="Tea_menu_1" value="确认增加"/>    
+
+     <div style="background-image:url(images/AdmBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px">
 			
+			<input type="submit" style="left:10px;width:79px;height:39px;background:none;border:none;color:#FFF;font-weight:bold;font-size:14px" name="UpdateCrsInfo" id="Tea_menu_1" value="确认增加"/>   
+			</div>
+     
+	</td></tr></table>		
     </form>
+   <script language= "javascript"> 
+function isnum() 
+{ 
+if(event.keyCode <48 || event.keyCode> 57) 
+{ 
+event.keyCode=0; 
+} 
+} 
+</script> 

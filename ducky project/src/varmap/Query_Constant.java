@@ -41,5 +41,12 @@ public class Query_Constant {
 											"SystemParaServelt"};
 	//课程类型
 	static public final String[] CourseType = {"公共课","选修课","专业课"};
+	//上课地点
+	static public final String[] CoursePlaces = {"嘉定"};
+	//上课大楼号
+	static public final String[] CourseBuildings = {"南楼","北楼"};
+	static public final String[] JDCourseBuildings = {"A","B","C","D","E","F"};
+	//上课教室
+	static public final String[] CourseClasses = {"101","102","103","104","105"};
 	
 }
