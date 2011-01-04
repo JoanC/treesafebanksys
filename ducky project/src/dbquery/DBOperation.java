@@ -649,7 +649,7 @@ public class DBOperation {
 		if (null != temp) {
 			rtn = new Vector<Course>();
 			for (int i = 0; i < temp.size(); ++i) {
-				if (temp.elementAt(i).getCourse_type() > 0)/* ?????δ??? */
+				if (temp.elementAt(i).getCourse_point() > 0)/* ?????δ??? */
 				{
 					rtn.addElement(temp.elementAt(i));
 				}
