@@ -30,7 +30,7 @@
 
 <input type="submit" class="MenuFont" 
     		style="width:79px;height:39px;background: none; border: none;color:#FFF;font-weight:bold;font-size:14px" name="UpdateCrsInfo"
-			id="Tea_menu_1" value="确认修改"/>   
+			id="Tea_menu_1" value="确认修改 " onclick="onOK()"/>   
 			</div>
  </form>
  </td></tr>
