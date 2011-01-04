@@ -70,6 +70,9 @@ public class Course_Manager {
 			//������ȵ��ȵ�,�������ݵĽ�һ������
 			for (int i = 0; i < _result.size(); ++i) {
 				// ���γ̵�����δ��ŷŵ������
+				if(_result.elementAt(i).getCourse_point() < 0){
+					continue;
+				}
 				 if(_result.elementAt(i).getCourse_current_seleted_num() < 
 						 _result.elementAt(i).getCourse_volume()){
 					 //�����ѡ����С�ڿγ�����,����ӵ����ս����

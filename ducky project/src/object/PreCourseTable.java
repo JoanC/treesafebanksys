@@ -11,46 +11,46 @@ import object.Exp;
 import dbquery.* ;
 
 public class PreCourseTable extends CourseTable {
-	String u_id; 				//Ñ§ÉúµÄid
-//	Vector<Course> course_list; //¿Î³Ì±íÖĞµÄ¿Î³ÌÊı¾İÈİÆ÷
+	String u_id; 				//Ñ§ï¿½ï¿½ï¿½id
+//	Vector<Course> course_list; //ï¿½Î³Ì±ï¿½ï¿½ĞµÄ¿Î³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	//Ñ§Éú»òÕßÀÏÊ¦µÄÓÃ»§idµÄ¼ÇÂ¼
+	//Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½Ã»ï¿½idï¿½Ä¼ï¿½Â¼
 	public void set_u_id(String uid){
 		u_id = uid;
 	}
 	
-	//Ñ§Éú»òÕßÀÏÊ¦µÄÓÃ»§idµÄ»ñÈ¡
+	//Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½Ã»ï¿½idï¿½Ä»ï¿½È¡
 	public String get_u_id(){
 		return u_id;
 	}
 	
-	//Õâ¸ö¿Î±íÖĞµÄËùÓĞ¿Î³ÌĞÅÏ¢ÁĞ±íµÄ¼ÇÂ¼
-	//´ÓÊı¾İ¿âÖĞ¶ÁÈ¡ÁĞ±íÊı¾İ
+	//ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½Ğ¿Î³ï¿½ï¿½ï¿½Ï¢ï¿½Ğ±ï¿½Ä¼ï¿½Â¼
+	//ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½Ğ¶ï¿½È¡ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½
 	public Vector<PreCourseSelectInfo> get_course_list(){
 		return this.searchCourseList();
      }
 	
-	//ÔÚ³õÊ¼»¯Ê±»ñÈ¡Õâ¸öu_idÏÂµÄ¿Î±íÖĞµÄËùÓĞ¿Î³ÌÁĞ±í
+	//ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½È¡ï¿½ï¿½ï¿½u_idï¿½ÂµÄ¿Î±ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½Ğ¿Î³ï¿½ï¿½Ğ±ï¿½
 	protected Vector<PreCourseSelectInfo> searchCourseList(){
 		//...
-		//course_list = null;	//¸øcourse_list¸³Öµ
+		//course_list = null;	//ï¿½ï¿½course_listï¿½ï¿½Öµ
 		Vector<PreCourseSelectInfo> course_list = null;
 		DBOperation dbo = new DBOperation() ;
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url, 
 				dbConnectParam.userName, dbConnectParam.dbPwd) ;
-		//¶ÁÈ¡ÁĞ±í´úÂë
+		//ï¿½ï¿½È¡ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½
 		course_list = dbo.doQueryPreCourseInfoFromTabPreCourseSelectByID(u_id);
-		//µ×²ãÊı¾İµÄµ÷ÊÔĞÅÏ¢
+		//ï¿½×²ï¿½ï¿½ï¿½İµÄµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		DebugClass.debug_info("PreTable", "get all course list from id :" + u_id);
 		for(int i = 0; i< course_list.size();++i){
 			DebugClass.debug_info("PreTable get list", course_list.elementAt(i).getCourse_name());
 		}
-		//¶Ï¿ªÊı¾İ¿â
+		//ï¿½Ï¿ï¿½ï¿½ï¿½İ¿ï¿½
 		dbo.disconnectDB();
 		return course_list;
 	}
 	
-	//½«Ò»ÃÅ¿Î³Ì´ÓÑ¡¿Î³õÊ¼µÄ´óÁĞ±íÑ¡Èëµ½Ô¤Ñ¡¿Î³Ì±íÖĞ
+	//ï¿½ï¿½Ò»ï¿½Å¿Î³Ì´ï¿½Ñ¡ï¿½Î³ï¿½Ê¼ï¿½Ä´ï¿½ï¿½Ğ±ï¿½Ñ¡ï¿½ëµ½Ô¤Ñ¡ï¿½Î³Ì±ï¿½ï¿½ï¿½
 	public Exp addCourse(PreCourseSelectInfo info){
 
 		Exp exp = null;
@@ -65,7 +65,7 @@ public class PreCourseTable extends CourseTable {
 		return exp;
 	}
 	
-	//½«Ò»ÃÅ¿Î³Ì´ÓÔ¤Ñ¡¿Î³Ì±íÖĞÉ¾³ı
+	//ï¿½ï¿½Ò»ï¿½Å¿Î³Ì´ï¿½Ô¤Ñ¡ï¿½Î³Ì±ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	public Exp deleteCourse(PreCourseSelectInfo info){
 		Exp exp = null;
 		//altoSave();

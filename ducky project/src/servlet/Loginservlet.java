@@ -103,7 +103,9 @@ public class Loginservlet extends HttpServlet {
         session.removeAttribute(Query_SessionVar.User_ID());
         session.setAttribute(Query_SessionVar.User_ID(), username);
         if(_rlt.isIs_succ() == false) {
-        	DebugClass.debug_info("Login servlet", "login fail!");
+        	//DebugClass.debug_info("Login servlet", "login fail!");
+        	session.setAttribute("login_fail", "用户名或密码不正确，登录失败！");
+        	response.sendRedirect("/TJSelCrsSys/Login.jsp");
         }
         else{
           //System.out.println(_rlt.getU_type());

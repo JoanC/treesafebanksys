@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -55,11 +56,19 @@ body,html {
 	width: 100%;
 	height: 55px;
 }
+#info{
+   font-color:#FF0000;
+   left:650px;
+   top:300px;
+   position:absolute;
+   width:200px;
+   heitht:100px;
+}
 </style>
 	</head>
-
 	<body>
 		<div id="container">
+		
 			<div id="topper">
 			<img src="images/title.png"></img>
 			</div>
@@ -91,13 +100,24 @@ body,html {
 								</td>
 							</tr>
 						</table>
-						<%
-							session.getAttribute("login_fail");
-						%>
+						
 					</form>
+					
 				</div>
+				
 			</div>
+			
+			
 		</div>
-
+<div id="info">
+			
+			<%
+							String msg = (String)session.getAttribute("login_fail");
+							if(msg != null && msg.equals("用户名或密码不正确，登录失败！"))
+							{
+								out.print("用户名或密码不正确，登录失败！");
+							}
+						%>
+			</div>
 	</body>
 </html>

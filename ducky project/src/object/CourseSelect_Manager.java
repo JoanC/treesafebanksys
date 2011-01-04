@@ -75,21 +75,16 @@ public class CourseSelect_Manager {
 		//ɾѡ��Ϣ,��Ԥѡ��Ϣ����ѡ��Ϣ����б��е��ظ���Ϣ�ų�
 		//�ų�����Ϊ�γ̵����
 		for (int _index = 0; _index < _all.size(); _index++) {
-			//��һ�ж�
-			//�ȴ�Ԥѡ��Ϣ�п�ʼ����..�����ǿγ���,���ò�дһ��ѭ���������
 			Course _temp_data = _all.elementAt(_index);
 			boolean _is_corr = true;//�Ƿ�Ӧ�ü���,��ʼΪ��
 			for(int _index_pre = 0 ; _index_pre < _pre_tab.size() ; ++_index_pre){
 				if(_temp_data.getCourse_name().equals(_pre_tab.elementAt(_index_pre).getCourse_name())){
-					//������ͬ
 					DebugClass.debug_info(this.toString(), "the course " + "'" + _temp_data.getCourse_name()
 							+ "'" + " has already existed in the pre_select_table of user : " + u_id);
 					_is_corr = false;
 					break;
 				}
 			}
-			//����ʽѡ���е���Ϣ�ж�..
-			//**δ���**
 			if(_is_corr){
 				_data.add(_temp_data);
 			}

@@ -125,7 +125,8 @@ public class FmlCourseTable extends CourseTable {
 		dbo.connectDB(dbConnectParam.driverName, dbConnectParam.url,
 				dbConnectParam.userName, dbConnectParam.dbPwd);
 		//��ѡ�����һ
-		dbo.doUpdateTabCourseCurrentSelectNum(_new.getCourse_id(), new IncreaseByOne());
+		if(User_Manager.queryUserInfo(u_id).getU_type() == 1)
+			dbo.doUpdateTabCourseCurrentSelectNum(_new.getCourse_id(), new IncreaseByOne());
 		//����ݿ������ʽ�α�
 	    dbo.doInsert2TabCourseSelect(u_id, _new.getCourse_id());
 		dbo.disconnectDB();
@@ -141,7 +142,8 @@ public class FmlCourseTable extends CourseTable {
 				dbConnectParam.userName, dbConnectParam.dbPwd);
 		//�����һ
 		DebugClass.debug_info(this.toString(), "Update the course select number");
-		dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
+		if(User_Manager.queryUserInfo(u_id).getU_type() == 1)
+			dbo.doUpdateTabCourseCurrentSelectNum(_old.getCourse_id(), new DecreaseByOne());
 		//ɾ��γ����
 		DebugClass.debug_info(this.toString(), "delete course : " + _old.getCourse_id());
 		dbo.doDeleteFromTabCourseSelect(u_id, _old.getCourse_id());
