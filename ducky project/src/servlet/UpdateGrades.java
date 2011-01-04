@@ -97,7 +97,7 @@ public class UpdateGrades extends HttpServlet {
 		Vector<Float> _rlt = PointGoalPrac_Manager.TurnPointGoalPracToVector(useridString);
 		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.Stu_Grades(), _rlt);
 		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.User_Pages(),"QueryGrades.jsp");
-		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
+		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
 		
 	}
 	private void Request_ModifyGradesCmt() throws IOException
@@ -115,7 +115,7 @@ public class UpdateGrades extends HttpServlet {
 	private void Request_ModifyGrades() throws IOException
 	{
 		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.User_Pages(),"ModifyGrades.jsp");
-		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/StuIndex.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
+		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
 	}
 
 }

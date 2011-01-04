@@ -86,7 +86,7 @@ public class QueryCrsTable extends HttpServlet implements Servlet {
 		Vector<String> _list = CourseTable.convertFmlTabFormat(_table.get_course_list());
 		User _current = User_Manager.queryUserInfo(_id);
 	    
-		session.setAttribute("crstable",_list);
+		session.setAttribute("coursetable",_list);
 		session.setAttribute("pages", "CrsTable.jsp");
 		if(_current.getU_type() == 1)
 		{
