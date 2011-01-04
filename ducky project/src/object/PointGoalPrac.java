@@ -1,83 +1,83 @@
 package object;
 
 
-//Õâ¸öÀà¼ÇÂ¼ÁËÒ»¸öÑ§ÉúµÄÅàÑø¼Æ»®Íê³ÉÇé¿ö
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ò»ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class PointGoalPrac {
-	private String u_id;	//ÓÃ»§id
+	private String u_id;	//ï¿½Ã»ï¿½id
 
-	private float a1_finished;			//a1Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float a1_unfinished;		//a1Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float a1_all;				//a1Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float a1_finished;			//a1ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float a1_unfinished;		//a1ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float a1_all;				//a1ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float a2_finished;			//a2Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float a2_unfinished;		//a2Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float a2_all;				//a2Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float a2_finished;			//a2ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float a2_unfinished;		//a2ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float a2_all;				//a2ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float a3_finished;			//a3Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float a3_unfinished;		//a3Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float a3_all;				//a3Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float a3_finished;			//a3ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float a3_unfinished;		//a3ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float a3_all;				//a3ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float b1_finished;			//b1Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float b1_unfinished;		//b1Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float b1_all;				//b1Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float b1_finished;			//b1ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float b1_unfinished;		//b1ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float b1_all;				//b1ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float b2_finished;			//b2Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float b2_unfinished;		//b2Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float b2_all;				//b2Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float b2_finished;			//b2ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float b2_unfinished;		//b2ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float b2_all;				//b2ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float b3_finished;			//b3Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float b3_unfinished;		//b3Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float b3_all;				//b3Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float b3_finished;			//b3ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float b3_unfinished;		//b3ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float b3_all;				//b3ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float c1_finished;			//c1Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float c1_unfinished;		//c1Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float c1_all;				//c1Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float c1_finished;			//c1ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float c1_unfinished;		//c1ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float c1_all;				//c1ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float c2_finished;			//c2Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float c2_unfinished;		//c2Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float c2_all;				//c2Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float c2_finished;			//c2ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float c2_unfinished;		//c2ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float c2_all;				//c2ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float c3_finished;			//c3Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float c3_unfinished;		//c3Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float c3_all;				//c3Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float c3_finished;			//c3ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float c3_unfinished;		//c3ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float c3_all;				//c3ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float d1_finished;			//d1Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float d1_unfinished;		//d1Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float d1_all;				//d1Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float d1_finished;			//d1ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float d1_unfinished;		//d1ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float d1_all;				//d1ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float d2_finished;			//d2Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float d2_unfinished;		//d2Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float d2_all;				//d2Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float d2_finished;			//d2ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float d2_unfinished;		//d2ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float d2_all;				//d2ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float d3_finished;			//d3Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float d3_unfinished;		//d3Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float d3_all;				//d3Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float d3_finished;			//d3ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float d3_unfinished;		//d3ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float d3_all;				//d3ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float e1_finished;			//e1Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float e1_unfinished;		//e1Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float e1_all;				//e1Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float e1_finished;			//e1ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float e1_unfinished;		//e1ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float e1_all;				//e1ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float e2_finished;			//e2Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float e2_unfinished;		//e2Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float e2_all;				//e2Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float e2_finished;			//e2ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float e2_unfinished;		//e2ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float e2_all;				//e2ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float e3_finished;			//e3Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float e3_unfinished;		//e3Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float e3_all;				//e3Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float e3_finished;			//e3ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float e3_unfinished;		//e3ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float e3_all;				//e3ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float f1_finished;			//f1Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float f1_unfinished;		//f1Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float f1_all;				//f1Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float f1_finished;			//f1ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float f1_unfinished;		//f1ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float f1_all;				//f1ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float f2_finished;			//f2Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float f2_unfinished;		//f2Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float f2_all;				//f2Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float f2_finished;			//f2ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float f2_unfinished;		//f2ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float f2_all;				//f2ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	private float f3_finished;			//f3Àà¿Î³ÌÒÑÐÞÑ§·Ö
-	private float f3_unfinished;		//f3Àà¿Î³Ì´ýÐÞÑ§·Ö
-	private float f3_all;				//f3Àà¿Î³ÌÓ¦ÐÞÑ§·Ö
+	private float f3_finished;			//f3ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float f3_unfinished;		//f3ï¿½ï¿½Î³Ì´ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+	private float f3_all;				//f3ï¿½ï¿½Î³ï¿½Ó¦ï¿½ï¿½Ñ§ï¿½ï¿½
 	
-	//set/getº¯Êý
+	//set/getï¿½ï¿½ï¿½ï¿½
 	public String getU_id() {
 		return u_id;
 	}
