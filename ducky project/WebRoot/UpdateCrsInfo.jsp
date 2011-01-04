@@ -11,7 +11,7 @@
 	<tr><td colspan="8" bgcolor="#003366" style="color:#FFF;font-weight:bold;">填写新课程信息 </td></tr>
 <tr><td>
 <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
-	action="/TJSelCrsSys/servlet/UpdateCrsInfo">
+	action="/TJSelCrsSys/servlet/UpdateCrsInfo" onsubmit="return judge()">
 
 	<%  
 	Course _old = (Course)session.getAttribute("edit_crs_old_info"); 
@@ -271,3 +271,20 @@
 </form>
 </td></tr>
 </table>
+<script language="javascript" type="text/javascript">
+//点击按钮触发的js代码，用html控件的onclick事件触发
+function judge()
+{
+	 if(document.getElementById("coursename").value==""
+	 {
+	    alert("课程名称未填写");
+	    return false;
+	 }
+	 if(/^(\-?)(\d+)$/.test(document.getElementById("coursename").value))
+	 {
+	 	alert("课程容量只能为数字");
+	 	return false;
+	 }
+}	
+}
+</script>

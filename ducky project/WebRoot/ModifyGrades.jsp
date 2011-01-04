@@ -11,7 +11,7 @@
 </select>
 <br />
  <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
-					action="/TJSelCrsSys/servlet/UpdateGrades">
+					action="/TJSelCrsSys/servlet/UpdateGrades" onsubmit="return judge()" >
 		
  <%
 	PointGoal old = (PointGoal)session.getAttribute("old_point_goal_info");
@@ -20,30 +20,46 @@
  	{
  		String tmp = Query_Constant.Grades[i];
  		out.print(tmp + ":");
- 		out.print("<input type=\"text\" name=\"" + tmp + "\" id=\"textfield\" value=\"" + old.getData(i) + "\"/>");
+ 		out.print("<input type=\"text\" name=\"" + tmp + "\" id=\"textfield" + i + "\" value=\"" + old.getData(i) + "\"/>");
  		out.print("<br />");
  	}
  
  %>
- </div>
 <div style="background-image:url(images/AdmBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px">	
 
 <input type="submit" class="MenuFont" 
     		style="width:79px;height:39px;background: none; border: none;color:#FFF;font-weight:bold;font-size:14px" name="UpdateCrsInfo"
-			id="Tea_menu_1" value="确认修改 " onclick="onOK()"/>   
+			id="Tea_menu_1" value="确认修改 "/>   
 			</div>
  </form>
  </td></tr>
 <script language="javascript" type="text/javascript">
 //点击按钮触发的js代码，用html控件的onclick事件触发
-function onOK()
+function judge()
 {
-   var text1=document.getElementById("textfield");
-
-   if(text1.value=="")
-   {
-     alert("不能为空哦！");
-   }
+	 if(document.getElementById("textfield0").value=="" ||
+	 	document.getElementById("textfield1").value=="" ||
+	 	document.getElementById("textfield2").value=="" ||
+	 	document.getElementById("textfield3").value=="" ||
+	 	document.getElementById("textfield4").value=="" ||
+	 	document.getElementById("textfield5").value=="" ||
+	 	document.getElementById("textfield6").value=="" ||
+	 	document.getElementById("textfield7").value=="" ||
+	 	document.getElementById("textfield8").value=="" ||
+	 	document.getElementById("textfield9").value=="" ||
+	 	document.getElementById("textfield10").value=="" ||
+	 	document.getElementById("textfield11").value=="" ||
+	 	document.getElementById("textfield12").value=="" ||
+	 	document.getElementById("textfield13").value=="" ||
+	 	document.getElementById("textfield14").value=="" ||
+	 	document.getElementById("textfield15").value=="" ||
+	 	document.getElementById("textfield16").value=="" ||
+	 	document.getElementById("textfield17").value=="")
+	 {
+	    alert("信息填写不完整");
+	    return false;
+	 }
+}	
 }
 </script>
 </table>
