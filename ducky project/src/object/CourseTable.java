@@ -68,8 +68,8 @@ public abstract class CourseTable {
 			}
 			// ����3:ȡ���˵�ǰ���Ŀγ��б�,��ͨ����Ŀ,��˫��,�ж���ʾ��ʲô��Ϣ,����_rlt�м���������ַ�
 			_rlt.add(generateSubStrForFmlTab(_temp_list, (_week+1)));
-			/*DebugClass.debug_info("CourseTable","time -- week : " + (_week+1) + " seq: " 
-					+ (_seq + 1) + generateSubStrForFmlTab(_temp_list, _week));*/
+			DebugClass.debug_info("CourseTable","time -- week : " + (_week+1) + " seq: " 
+					+ (_seq + 1) + generateSubStrForFmlTab(_temp_list, _week));
 		}
 		return _rlt;
 	}
