@@ -78,13 +78,13 @@ public class Course_Manager {
 					continue;
 				}
 				if (_sys.getCourseSelType() == enCourseSelType.CST_FSFG) {
-				 if(_result.elementAt(i).getCourse_current_seleted_num() < 
+				   if(_result.elementAt(i).getCourse_current_seleted_num() >= 
 						 _result.elementAt(i).getCourse_volume()){
 					 //�����ѡ����С�ڿγ�����,����ӵ����ս����
-					 _final_result.add(_result.elementAt(i));
-				 }
+					   continue;
+				   }
 				}
-			
+				 _final_result.add(_result.elementAt(i));
 		}
 		 dbo.disconnectDB() ;
 		 return _final_result;
