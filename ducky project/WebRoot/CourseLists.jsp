@@ -6,6 +6,7 @@
 	contentType="text/html; charset=GBK"%>
 <%@page import="object.CourseSelect_Manager"%>
 <%@page import="varmap.Query_VarString"%>
+<%@page import="varmap.Query_Constant"%>
 <form id="CourseSel" name="CourseSel" method="post"
 	action="/TJSelCrsSys/servlet/CourseListsServlet">
 	<%
@@ -22,7 +23,7 @@
 					out.print("<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"3\" bordercolor=\"#000000\" style=\"font-size:12px\">");
 					out.print("<tr>");
 					out.print("<td colspan=\"" + cols_num + "\" bgcolor=\"#009966\" style=\"color:#FFF;font-weight:bold;\">");
-					out.print(Query_VarString.CourseType(type));
+					out.print(Query_Constant.Grades[type]);
 					out.print("</td>");
 					out.print("</tr>");
 					for (int idx = 0; idx != course.size(); idx++) {
@@ -35,7 +36,7 @@
 							type = tempcourse.getCourse_type();
 							out.print("<tr>");
 							out.print("<td colspan=\"" + cols_num + "\" bgcolor=\"#009966\" style=\"color:#FFF;font-weight:bold;\">");
-							out.print(Query_VarString.CourseType(type));
+							out.print(Query_Constant.Grades[type]);
 							out.print("</td>");  
 							out.print("</tr>");
 						}

@@ -85,12 +85,12 @@ public class UpdateCrsInfo extends HttpServlet {
 	private void Request_ModifyCrsInfo() throws IOException
 	{
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "UpdateCrsInfo.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_DelCrs() throws IOException
 	{
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "DelCrs.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_DelCrsCmt() throws IOException
 	{
@@ -98,12 +98,12 @@ public class UpdateCrsInfo extends HttpServlet {
 		_new.setCourse_id(UpdateCrsInfo_Req.getParameter("course_id"));
 		Course_Manager.DeleteCourse(_new);
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Welcome.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_AddNewCrs() throws IOException
 	{
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_AddNewCrsCmt() throws IOException
 	{
@@ -156,7 +156,7 @@ public class UpdateCrsInfo extends HttpServlet {
 		}
 		UpdateCrsInfo_Req.getSession().setAttribute("pages", "Adm_NewCrs.jsp");
 		
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_QueryCrsInfo() throws IOException
 	{
@@ -164,7 +164,7 @@ public class UpdateCrsInfo extends HttpServlet {
 		//查询课程信息
 		Vector<Course> _course_list = Course_Manager.getAllCourseList();
 		UpdateCrsInfo_Req.getSession().setAttribute("CourseInfo", _course_list);
-		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
+		UpdateCrsInfo_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateCrsInfo_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_ModifyCrsInfoCmt() throws IOException
 	{

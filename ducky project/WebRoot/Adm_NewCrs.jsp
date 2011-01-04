@@ -2,13 +2,24 @@
 <%@page import="object.DebugClass"%>
 <%@page import="db_data_structure.User"%>
 <%@page import="object.User_Manager"%>
+<%@page import="varmap.Query_VarString"%>
+<%@page import="varmap.Query_Constant"%>
     <form id="UpCrsInfoForm" name="UpCrsInfoForm" method="post"
 					action="/TJSelCrsSys/servlet/UpdateCrsInfo">
+ <%  out.print("<table align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" bordercolor=\"##009966\" style=\"font-size:12px\">");
+	out.print("<tr><td bgcolor=\"#003366\" style=\"color:#FFF;font-weight:bold;\">" + "请输入新课程详细信息" + "</td></tr>");
+	out.print("</table>");
+    %>
+    <table style="font-size:12px">
+	<tr><td>
     <p>课程类型：
       <select name="course_type" id="coursetype">
-        <option value="0">A1</option>
-        <option value="1">A2</option>
-        <option value="2">A3</option>
+        <%
+        for(int i=0;i!=Query_Constant.Grades.length;i++)
+        {
+        	out.print("<option value=\"" + i + "\">" + Query_Constant.Grades[i] + "</option>");
+        }        
+        %>
       </select>
     </p>
     <p>课名： 
@@ -123,7 +134,10 @@
         <option value="5">5</option>
       </select>
      <p> </p>
+     </td></tr>
+     </table>
     <input type="submit" class="MenuFont" 
     		style="background: none; border: none" name="UpdateCrsInfo"
 			id="Tea_menu_1" value="确认增加"/>    
+			
     </form>
