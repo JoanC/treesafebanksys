@@ -560,7 +560,7 @@ public class DBOperation {
 			rtn.setA3(results.getFloat("A3"));
 			rtn.setB1(results.getFloat("B1"));
 			rtn.setB2(results.getFloat("B2"));
-			rtn.setA3(results.getFloat("B3"));
+			rtn.setB3(results.getFloat("B3"));
 			rtn.setC1(results.getFloat("C1"));
 			rtn.setC2(results.getFloat("C2"));
 			rtn.setC3(results.getFloat("C3"));

@@ -260,4 +260,85 @@ public class PointGoal {
 			break;
 		}
 	}
+	
+	public Float getData(int _type) {
+		Float _rlt = 0.0f;
+		switch (_type) {
+		case (enCourseType.CT_A1 - 1):
+			_rlt = this.getA1();
+			break;
+			
+		case (enCourseType.CT_A2 - 1):
+			_rlt = this.getA2();
+			break;
+			
+		case (enCourseType.CT_A3 - 1):
+			_rlt = this.getA3();
+			break;
+
+		case (enCourseType.CT_B1 - 1):
+			_rlt = this.getB1();
+			break;
+
+		case (enCourseType.CT_B2 - 1):
+			_rlt = this.getB2();
+			break;
+
+		case (enCourseType.CT_B3 - 1):
+			_rlt = this.getB3();
+			break;
+
+		case (enCourseType.CT_C1 - 1):
+			_rlt = this.getC1();
+			break;
+
+		case (enCourseType.CT_C2 - 1):
+			_rlt = this.getC2();
+			break;
+
+		case (enCourseType.CT_C3 - 1):
+			_rlt = this.getC3();
+			break;
+
+		case (enCourseType.CT_D1 - 1):
+			_rlt = this.getD1();
+			break;
+
+		case (enCourseType.CT_D2 - 1):
+			_rlt = this.getD2();
+			break;
+
+		case (enCourseType.CT_D3 - 1):
+			_rlt = this.getD3();
+			break;
+
+		case (enCourseType.CT_E1 - 1):
+			_rlt = this.getE1();
+			break;
+
+		case (enCourseType.CT_E2 - 1):
+			_rlt = this.getE2();
+			break;
+
+		case (enCourseType.CT_E3 - 1):
+			_rlt = this.getE3();
+			break;
+
+		case (enCourseType.CT_F1 - 1):
+			_rlt = this.getF1();
+			break;
+
+		case (enCourseType.CT_F2 - 1):
+			_rlt = this.getF2();
+			break;
+
+		case (enCourseType.CT_F3 - 1):
+			_rlt = this.getF3();
+			break;
+		default:
+			_rlt = 0.0f;
+			break;
+		}
+		return _rlt;
+	}
 }

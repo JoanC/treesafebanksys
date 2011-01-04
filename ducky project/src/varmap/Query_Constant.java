@@ -5,14 +5,14 @@ public class Query_Constant {
 	static public final String[] Permission = {"","Stu","Tea","Adm"};
 	//用户一级菜单
 	static public final String[] Stu_menu = {"课程","课表","学分"};
-	static public final String[] Tea_menu = {"课程","课表"," "};
+	static public final String[] Tea_menu = {" ","课表"," "};
 	static public final String[] Adm_menu = {"课程","系统","学分"};
 	//学生二级菜单
 	static public final String[] Stu_level1 = {"选择课程"};
 	static public final String[] Stu_level2 = {"查看课表"};
 	static public final String[] Stu_level3 = {"查看学分"};
 	//教师二级菜单
-	static public final String[] Tea_level1 = {"查看课程","修改课程"};
+	static public final String[] Tea_level1 = {"",""};
 	static public final String[] Tea_level2 = {"查看课表"};
 	static public final String[] Tea_level3 = {" "};
 	//管理员二级菜单

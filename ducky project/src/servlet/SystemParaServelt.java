@@ -105,7 +105,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		session.removeAttribute("SystemPara");
 		session.setAttribute("SystemPara", _update);
 		session.setAttribute("pages", "Adm_SystemStatus.jsp");
-		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
+		response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		
 	}
 	private void Request_SelCrsMode(HttpServletRequest request, HttpServletResponse response,String para)
@@ -133,7 +133,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 		session.removeAttribute("SystemPara");
 		session.setAttribute("SystemPara", _update);
 		session.setAttribute("pages", "Adm_SelCrsMode.jsp");
-		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
+		response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		
 	}	
 	private void Request_SelCrsStatus(HttpServletRequest request, HttpServletResponse response,String para)
@@ -141,7 +141,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	{
 		HttpSession session = request.getSession();
 		session.setAttribute("pages", "Adm_SystemStatus.jsp");
-		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
+		response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		
 	}
 	private void Request_SelCrsWays(HttpServletRequest request, HttpServletResponse response,String para)
@@ -149,7 +149,7 @@ public class SystemParaServelt extends HttpServlet implements Servlet {
 	{
 		HttpSession session = request.getSession();
 		session.setAttribute("pages", "Adm_SelCrsMode.jsp");
-		response.sendRedirect("/TJSelCrsSys/AdmIndex.jsp?userid=" + session.getAttribute("userid"));
+		response.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + session.getAttribute("userid"));
 		
 	}
 

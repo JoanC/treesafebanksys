@@ -6,6 +6,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<table align="center" width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#003366" style="font-size:12px">
+	<tr><td colspan="8" bgcolor="#003366" style="color:#FFF;font-weight:bold;">选课状态系统状态</td></tr>
+	<tr><td>
 <form id="SelCrsStatusForm" name="SelCrsStatusForm" method="post"
 	action="/TJSelCrsSys/servlet/SystemParaServelt">
 			<table><tr><td><label>
@@ -28,7 +31,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			out.println("<input type=\"radio\" name=\"SelCrsOnOffCmt\" value=\"off\" id=\"SelCrsSysOnOff_0\" checked/>关闭选课");
 		}
 		%>
-		</label></td></tr></table>				
-		<input type="submit" style="background:none;border:none" name="SelCrsSysPara" id="SelCrsSysPara" value="状态确定"/>
-		
+		</label></td></tr></table>	
+		<div style="background-image:url(images/AdmBT.png);background-repeat:no-repeat;color:#FFF;font-size:14px">	
+    	<input type="submit" class="MenuFont" 
+    		style="width:79px;height:39px;background: none; border: none;color:#FFF;font-weight:bold;font-size:14px" name="SelCrsSysPara"
+			id="Tea_menu_1" value="状态确定""/> 
+     	</div>
 </form>
+</td></tr>
+</table>

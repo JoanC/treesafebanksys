@@ -111,9 +111,15 @@ public class UpdateGrades extends HttpServlet {
 			_new.setData(_index, Float.parseFloat(UpdateGrades_Req.getParameter(Query_Constant.Grades[_index])));
 		}
 		PointGoal_Manager.EditPointGoal(_new);
+		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.User_Pages(),"welcome.jsp");
+		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.User_Info(),"修改培养计划成功！");
+		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
 	}
 	private void Request_ModifyGrades() throws IOException
 	{
+		PointGoal _old = new PointGoal();
+		_old = PointGoal_Manager.SearchPointGoal(1);
+		UpdateGrades_Req.getSession().setAttribute("old_point_goal_info", _old);
 		UpdateGrades_Req.getSession().setAttribute(Query_SessionVar.User_Pages(),"ModifyGrades.jsp");
 		UpdateGrades_Rep.sendRedirect("/TJSelCrsSys/Index.jsp?userid=" + UpdateGrades_Req.getSession().getAttribute("userid"));
 	}
