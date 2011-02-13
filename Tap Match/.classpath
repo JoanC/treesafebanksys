@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="/WiEngine_library/libs/WiEngine-lua.jar"/>
 	<classpathentry kind="lib" path="/WiEngine_library/libs/WiEngine-sound.jar"/>
 	<classpathentry kind="lib" path="/WiEngine_library/libs/WiEngine.jar"/>
+	<classpathentry kind="src" path="WiEngine_library_src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
